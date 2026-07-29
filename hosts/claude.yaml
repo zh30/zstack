@@ -1,0 +1,9 @@
+name: claude
+display_name: Claude Code
+skills_root: ~/.claude/skills
+link_mode: symlink
+enabled: true
+frontmatter:
+  required:
+    - name
+    - description

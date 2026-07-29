@@ -1,0 +1,11 @@
+name: codex
+display_name: OpenAI Codex CLI
+skills_root: ~/.codex/skills
+link_mode: symlink
+enabled: true
+frontmatter:
+  required:
+    - name
+    - description
+  # Soft limit — doctor warns; Codex may skip invalid skills
+  description_max_chars: 1024

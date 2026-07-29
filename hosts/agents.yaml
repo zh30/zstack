@@ -1,0 +1,9 @@
+name: agents
+display_name: Agent Skills hub
+skills_root: ~/.agents/skills
+link_mode: symlink
+enabled: true
+frontmatter:
+  required:
+    - name
+    - description

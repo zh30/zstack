@@ -1,0 +1,97 @@
+# zstack skill registry
+# status: active | draft | deprecated
+# hosts: agents | claude | codex | grok
+# All skill ids MUST use the z- prefix (OSS collision safety).
+version: 1
+skills:
+  - id: z-market-validate
+    path: skills/z-market-validate
+    status: active
+    category: research
+    hosts:
+      - agents
+      - claude
+      - codex
+      - grok
+    tags:
+      - indie
+      - research
+      - validation
+      - market
+    summary: >-
+      Multi-channel market validation for rough ideas — demand signals,
+      indie fit, short-term return odds, and entry wedges.
+
+  - id: z-write-prd
+    path: skills/z-write-prd
+    status: active
+    category: product
+    hosts:
+      - agents
+      - claude
+      - codex
+      - grok
+    tags:
+      - indie
+      - product
+      - prd
+      - specs
+    summary: >-
+      Professional PRD authoring from provided notes, research, or drafts —
+      scoped for independent developers with testable MVP requirements.
+
+  - id: z-seo-plan
+    path: skills/z-seo-plan
+    status: active
+    category: growth
+    hosts:
+      - agents
+      - claude
+      - codex
+      - grok
+    tags:
+      - indie
+      - seo
+      - growth
+      - keywords
+    summary: >-
+      SEO execution plan from PRD, URL, or page code — keyword research,
+      primary terms, page map, and indie-feasible optimization notes.
+
+  - id: z-landing-smoke
+    path: skills/z-landing-smoke
+    status: active
+    category: validation
+    hosts:
+      - agents
+      - claude
+      - codex
+      - grok
+    tags:
+      - indie
+      - validation
+      - landing
+      - growth
+      - smoke-test
+    summary: >-
+      Lowest-cost demand smoke test: English landing page, waitlist/pre-order
+      CTA, traffic plan, and conversion decision rules before heavy build.
+
+  - id: z-customer-discovery
+    path: skills/z-customer-discovery
+    status: active
+    category: validation
+    hosts:
+      - agents
+      - claude
+      - codex
+      - grok
+    tags:
+      - indie
+      - validation
+      - discovery
+      - interviews
+      - mom-test
+    summary: >-
+      Mom Test customer discovery: 5–15 real interviews, past-behavior focus,
+      debriefs, and synthesis on pain / existing spend / switch willingness.

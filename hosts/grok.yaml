@@ -1,0 +1,10 @@
+name: grok
+display_name: Grok Build
+skills_root: ~/.grok/skills
+link_mode: symlink
+# Default off: Grok already scans ~/.claude/skills and ~/.agents/skills
+enabled: false
+frontmatter:
+  required:
+    - name
+    - description
