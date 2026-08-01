@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: 请求是公开社区/竞品/抱怨与替代方案研究，并要给出继续、收窄或停止判断，符合市场验证。

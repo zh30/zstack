@@ -1,0 +1,2 @@
+selection: none
+reason: The request is an engineering architecture task not covered by the candidate skills.

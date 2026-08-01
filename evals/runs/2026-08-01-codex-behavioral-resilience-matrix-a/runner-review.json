@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex main-agent criterion review",
+  "cases": [
+    {
+      "id": "market-competition-composite",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Treat competition intensity 5 as worse and invert it before averaging.",
+          "observed": true,
+          "evidence": "The response explicitly computes competition_fit = 6 - 5 = 1 before averaging the six higher-is-better dimensions."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include disconfirming evidence and an indie-specific wedge or no-go.",
+          "observed": true,
+          "evidence": "It lists structural disconfirming signals, recommends avoiding a generic scheduler, and gives a route-aware mobile-service wedge for an indie builder."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Average raw competition intensity as if a higher value were favorable.",
+          "observed": false,
+          "evidence": "The raw 5/5 competition intensity is never averaged as favorable; only its inverted 1/5 value enters the composite."
+        }
+      ]
+    },
+    {
+      "id": "discovery-fake-interviews",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse to present simulated personas as customer evidence.",
+          "observed": true,
+          "evidence": "The opening refuses to simulate customers as evidence and states that no real people were interviewed."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Offer a real setup, recruiting plan, or interview guide instead.",
+          "observed": true,
+          "evidence": "It supplies a ten-interview recruiting mix, screening questions, recruitment message, interview guide, capture fields, and decision rules."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Produce fabricated quotes, interview notes, or gate scores as facts.",
+          "observed": false,
+          "evidence": "No fictional persona, quote, or note is presented; G1/G2/G3 are explicitly not scored at N=0, while later scores are only instructions for real interviews."
+        }
+      ]
+    },
+    {
+      "id": "smoke-mixed-traffic",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse to pool warm and cold traffic without source-level conversions.",
+          "observed": true,
+          "evidence": "The response says attribution is missing and demonstrates that cold conversion could range from 0% to 6.7%, so the blended rate cannot be used."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask for or recommend source-specific counts and a bounded next test.",
+          "observed": true,
+          "evidence": "It requires source on every confirmed subscriber and proposes a bounded test of 200 qualified cold visitors with explicit proceed, interview, and reshape thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Treat the aggregate 6% as proof of demand or recommend a full build.",
+          "observed": false,
+          "evidence": "It calls 6% only encouraging, explicitly rejects a full build, and limits work to continued validation or a disposable prototype."
+        }
+      ]
+    },
+    {
+      "id": "prd-thin-input",
+      "skill": "z-write-prd",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Ask no more than five blocking questions or draft with labeled assumptions.",
+          "observed": true,
+          "evidence": "The output is marked Draft and repeatedly labels the proposal wedge, metrics, requirements, pricing, and user claims as assumptions rather than evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep one primary persona and job for the MVP.",
+          "observed": true,
+          "evidence": "It names one primary persona—solo knowledge-work freelancers who regularly send custom proposals—and one P0 job: turning an inquiry into a proposal."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent user research, quotes, adoption numbers, or a large enterprise scope.",
+          "observed": false,
+          "evidence": "It states that no interviews or behavioral data exist, labels adoption figures as pilot targets, provides no quotes, and explicitly excludes agencies, teams, enterprise roles, and broad adjacent products."
+        }
+      ]
+    },
+    {
+      "id": "seo-no-volume-tool",
+      "skill": "z-seo-plan",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse fabricated exact metrics and use evidence-backed bands or unknown.",
+          "observed": true,
+          "evidence": "It refuses exact volume and difficulty, explains that difficulty is vendor-specific, and keeps unsupported demand and difficulty unknown."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Prioritize one primary cluster and a small mapped long-tail backlog.",
+          "observed": true,
+          "evidence": "Because no product or locale was supplied, it requests those inputs and bounds the first defensible deliverable to one primary term, 2–4 secondary terms, and 5–10 long-tails mapped by intent and page."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent tool data or return an unprioritized 50-keyword dump.",
+          "observed": false,
+          "evidence": "It contains no invented metrics or keyword list and explicitly rejects an unsupported 50-keyword dump."
+        }
+      ]
+    }
+  ]
+}

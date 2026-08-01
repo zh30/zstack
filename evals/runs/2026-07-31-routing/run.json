@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "routing",
+  "host": {
+    "name": "Codex",
+    "version": null
+  },
+  "provenance": {
+    "status": "partial",
+    "gaps": [
+      "The host version, model, permission mode, web-search availability, turn limit, subagent availability, and stop status were not recorded."
+    ]
+  },
+  "executionDefaults": {
+    "model": null,
+    "workspace": "independent clean-context Codex subagent session without repository access",
+    "permissions": null,
+    "webSearch": null,
+    "subagents": null,
+    "maxTurns": null,
+    "stopStatus": null
+  },
+  "runs": [
+    {"id": "market-vague", "case": "market-vague", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "market-public", "case": "market-public", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "discovery-plan", "case": "discovery-plan", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "discovery-debrief", "case": "discovery-debrief", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "landing-waitlist", "case": "landing-waitlist", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "landing-metrics", "case": "landing-metrics", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "prd-notes", "case": "prd-notes", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "prd-rewrite", "case": "prd-rewrite", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "seo-live-url", "case": "seo-live-url", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "seo-prd-map", "case": "seo-prd-map", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "none-code-fix", "case": "none-code-fix", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "none-architecture", "case": "none-architecture", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "boundary-real-interviews", "case": "boundary-real-interviews", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "boundary-public-research", "case": "boundary-public-research", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]},
+    {"id": "boundary-waitlist-demand", "case": "boundary-waitlist-demand", "phase": "baseline", "grade": "pass", "artifacts": ["responses.md"]}
+  ],
+  "runnerIncidents": []
+}

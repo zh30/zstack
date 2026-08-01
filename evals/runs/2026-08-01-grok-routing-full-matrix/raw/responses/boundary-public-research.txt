@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: The request asks for public community and competitor evidence to judge whether a rough idea warrants deeper validation, with no customer access yet.

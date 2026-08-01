@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: The user wants pre-build market research for demand, competitors, objections, and a solo-founder entry wedge—exactly what z-market-validate covers.

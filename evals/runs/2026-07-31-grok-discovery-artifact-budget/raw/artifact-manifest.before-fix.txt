@@ -1,0 +1,12 @@
+1115  a868a632f7fd18be4f257a3b019621856882a2a6d454a64e109f9fafcac21119  docs/discovery/README.md
+5241  7edc1f14d3e23a7404177fcfa70f6c2cc55e4fdbd6c96b5cbad73d8882354c7e  docs/discovery/decision.md
+2951  20f6974e7f463f7e9fb535cd50ce1b6ceb7dbef1be3312f1b66c2406658b6831  docs/discovery/notes/01-agency-pm.md
+2685  daf3708749451a07d60268de1ef501f50f3507d04d9c1bdaf92718b1ef985b90  docs/discovery/notes/02-consultant.md
+2235  e9003e5be5026f1edcc94d01a9c12c795f3be14e460efdc49a3a00b2bf21f2da  docs/discovery/notes/03-founder.md
+2402  6524abaa6e679c79edc1505ab8773dff650544b6d965a3c349c9f1aa12af017c  docs/discovery/notes/04-bookkeeper.md
+2596  2a1fda3bdcc8862110611b1bf0732c69ae0997ab7f5a121918b4edb402530ba7  docs/discovery/notes/05-marketer.md
+10249  1139a7e55fa66061b4e1fb26c53e368d6fa9e1d304e09e90624b0990528d5dec  docs/discovery/synthesis.md
+
+8 files, 29474 bytes total.
+Hashes are SHA-256. The exact synthesis and decision artifacts are archived beside this manifest; the manifest retains the complete failed artifact set's names, sizes, and hashes.
+Unarchived entries are inventory-only: docs/discovery/README.md, docs/discovery/notes/01-agency-pm.md, docs/discovery/notes/02-consultant.md, docs/discovery/notes/03-founder.md, docs/discovery/notes/04-bookkeeper.md, docs/discovery/notes/05-marketer.md

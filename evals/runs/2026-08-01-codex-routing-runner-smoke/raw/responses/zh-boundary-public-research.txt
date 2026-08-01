@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: 请求是在无法联系客户时，通过公开社区和竞品证据判断想法是否值得深入验证。

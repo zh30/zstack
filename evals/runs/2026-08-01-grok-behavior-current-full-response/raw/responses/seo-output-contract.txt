@@ -1,0 +1,325 @@
+# SEO execution plan: Ownership-aware client onboarding for small agencies
+
+| Field | Value |
+|-------|--------|
+| **Date** | 2026-08-01 |
+| **Markets / languages** | English–US only |
+| **Inputs used** | Unverified founder notes only (no PRD path, live URL fetch, or codebase). Current pages described: generic homepage, pricing, thin checklist article. |
+| **Primary conversion goal** | Signup / trial / demo request for the ownership-aware onboarding product |
+| **Site authority context** | New domain — no authority, GSC, backlinks, or paid keyword tools |
+
+**Evidence limit (this run):** Web search, browser, SERP sampling, Trends, forums, and keyword tools were unavailable and must not be invented. Demand and difficulty bands below are **relative heuristics from supplied notes only**, labeled as such. No volumes, rankings, CTR, or traffic figures are claimed.
+
+---
+
+## 1. Executive summary
+
+- **Primary keyword (main money term):** `agency client onboarding workflow`
+- **Primary page:** `/` (homepage rewrite as cluster hub)
+- **Strategy in one paragraph:** Own one problem-language cluster—**client onboarding workflow for small agencies with clear step ownership**—not generic “agency software.” Supplied notes say broad software SERPs are CRM/portal-heavy (poor fit for a zero-authority domain) while agency workflow / owner-specific results look mixed and community language centers on *who owns the next step* and *why checklists don’t get done*. With ~6 hours/week, rewrite the homepage for the commercial primary, refresh the checklist article as the informational spoke (different intent, no cannibalization), keep pricing transactional, and ship a few ownership-framed long-tails. Expand only after GSC shows impressions on the cluster.
+- **Do not chase:** Agency CRM / client portal / “agency software” head terms, generic automation, and broad “checklist software” SERPs dominated by large vendors.
+
+---
+
+## 2. Product & search context
+
+### 2.1 Who searches and why
+
+| Persona | Job-to-be-done | Search mindset |
+|---------|----------------|----------------|
+| Small agency owner / ops lead | Stand up a repeatable client onboarding process that does not stall | “How do we run onboarding without things falling through the cracks?” |
+| Account / project manager | Know who owns the next step after kickoff | Problem language: ownership, handoffs, incomplete checklists |
+| Agency founder evaluating tools | Replace ad-hoc docs/checklists with a workflow that enforces accountability | Commercial: workflow / process / template / checklist + agency |
+
+### 2.2 Current footprint (described; not fetched)
+
+| URL / route | Title / H1 | Apparent target | Issues |
+|-------------|------------|-----------------|--------|
+| `/` | Generic homepage (unknown exact title) | Brand / vague product | No clear primary intent or ownership wedge |
+| `/pricing` (assumed) | Pricing | Transactional | Fine as support; must not target workflow head terms |
+| Checklist article (thin) | Checklist-oriented | Informational checklist | Thin; risk of competing with homepage if both target the same KW |
+
+Exact titles/H1s/meta were not provided and were not fetched.
+
+### 2.3 Assumptions
+
+- Product differentiator is **ownership-aware** onboarding (next-step owner visible and enforceable), not a full CRM or client portal.
+- ICP is **small agencies** (US English searchers).
+- Conversion is product signup / contact, not content ads.
+- Notes about autocomplete-style phrases (checklist, process, workflow, template, automation, agency-software) and SERP shape (CRM/portal on broad software; mixed on agency workflow / owner-specific) are **unverified secondhand**—treated as weak directional signals only.
+- Domain starts at zero trust; long-tail problem language beats category head terms for 90 days.
+
+---
+
+## 3. Research method notes
+
+| Step | What was done | Limits |
+|------|---------------|--------|
+| Seed generation | Built from product one-liner + supplied phrase families + community wording | No live autocomplete/PAA capture |
+| SERP sampling | Used founder-supplied SERP shape notes only | **Blocked** — no live SERP, page, or competitor fetch |
+| Competitor pages | Not sampled | Cannot cite titles, H1s, or URLs |
+| Volume tools | Not available | No volumes; bands are note-based heuristics or `unknown` |
+| Community language | “Who owns the next step”; “why checklists do not get done” | Unverified notes, not primary quotes with URLs |
+
+---
+
+## 4. Keyword strategy
+
+### 4.1 Primary keyword
+
+| Field | Value |
+|-------|--------|
+| Keyword | `agency client onboarding workflow` |
+| Intent | commercial (mixed: research process + evaluate tooling) |
+| Demand band | **unknown** (notes: workflow/process phrases present in autocomplete-style list; not measured) |
+| Difficulty band | **med** *relative guess from notes only* — agency workflow results “mixed” vs CRM-dominated broad software; still unproven without SERP |
+| Why primary | Closest commercial fit to the product (workflow for agencies), not a pure software category fight; pairs with ownership differentiator on the homepage |
+| Evidence | Supplied notes: workflow/process/template language; mixed agency-workflow SERPs; community ownership pain. **No live SERP URLs.** |
+| Target page | `/` homepage |
+
+**Confidence:** Low–medium (assumption-heavy until GSC + manual SERP checks exist).
+
+### 4.2 Secondary keywords (2–4; same cluster, no cannibalization)
+
+| Keyword | Intent | Demand | Difficulty | Page / section |
+|---------|--------|--------|------------|----------------|
+| `client onboarding checklist for agencies` | informational | unknown (checklist phrases in notes) | unknown → likely lower than CRM heads | Checklist article only |
+| `client onboarding process for agencies` | informational / commercial mix | unknown | unknown | Homepage H2 section (not a second URL) |
+| `who owns the next step` client onboarding (phrase family) | informational | unknown (community language) | low–med *heuristic* (problem language) | New long-tail post |
+| `why onboarding checklists fail` / don’t get done | informational | unknown (community language) | low–med *heuristic* | New long-tail post |
+
+Secondary commercial modifiers (`template`, `automation`) stay as **entities on the hub**, not separate money pages in days 0–90.
+
+### 4.3 Long-tail backlog (mapped; 5–10)
+
+| Priority | Keyword | Intent | Content format | Notes |
+|----------|---------|--------|----------------|-------|
+| P0 | `client onboarding checklist for agencies` | informational | Refresh existing article | One URL owns checklist intent |
+| P0 | `who owns the next step in client onboarding` | informational | Blog / guide | Ownership wedge; link → homepage |
+| P0 | `why client onboarding checklists don’t get done` | informational | Blog / guide | Problem language; link → checklist + home |
+| P1 | `agency client onboarding template` | commercial/info | Section on home + short template page *or* FAQ only | Prefer section first to avoid thin pages |
+| P1 | `small agency client onboarding process` | informational | Spoke post or home H2 | Audience modifier |
+| P1 | `client onboarding handoff ownership agency` | informational | FAQ / short post | Process + ownership |
+| P2 | `onboarding workflow vs checklist for agencies` | commercial/info | Comparison-style post | Positions product vs static lists |
+| P2 | `client kickoff checklist agency who is responsible` | informational | FAQ block on checklist article | Do not create a third competing URL |
+
+### 4.4 Clusters (topic map)
+
+```text
+[Hub: / — agency client onboarding workflow + ownership]
+  ├─ Spoke: checklist article — client onboarding checklist for agencies
+  ├─ Spoke: post — who owns the next step in client onboarding
+  ├─ Spoke: post — why onboarding checklists don’t get done
+  ├─ Support: /pricing — brand + plan selection (no workflow primary)
+  └─ Defer: template-only, automation-only, CRM/portal category pages
+```
+
+**Cannibalization rules**
+
+| Intent | Single owner URL |
+|--------|------------------|
+| Commercial workflow / product | `/` only |
+| Checklist how-to | Checklist article only |
+| Ownership / failure diagnosis | Dedicated posts (not re-targeting homepage primary) |
+| Buy / plan | Pricing only |
+
+### 4.5 Avoid / defer list
+
+| Keyword / theme | Why skip now |
+|-----------------|--------------|
+| `agency software`, `agency management software` | Notes: broad software SERPs CRM/portal-dominated; zero-authority domain |
+| `client portal`, `agency CRM`, `client portal software` | Wrong category; vendor giants; product is ownership-aware onboarding, not full CRM/portal |
+| `workflow automation software`, `business process automation` | Head terms; weak ICP specificity |
+| Generic `checklist app` / `checklist software` | Tool-category fight; dilutes agency + ownership wedge |
+| Competitor brand + alternative / vs | No verified competitor list; skip until real substitutes known |
+| Multi-language / non-US locales | Scope is English–US; no capacity |
+| Doorway pages for every synonym | White-hat; one intent per URL |
+
+---
+
+## 5. Page–keyword map
+
+| Page | Primary KW | Secondaries | Intent | Action |
+|------|------------|-------------|--------|--------|
+| `/` | `agency client onboarding workflow` | process (H2), ownership, template (section) | commercial | **rewrite** |
+| Checklist article | `client onboarding checklist for agencies` | kickoff responsibilities (FAQ) | informational | **rewrite / expand** |
+| `/pricing` | brand + pricing | plan features tied to ownership (not new head KWs) | transactional | **keep; align copy** |
+| `/blog/...-owns-next-step` (new) | who owns the next step… | handoffs | informational | **create** |
+| `/blog/...-checklists-dont-get-done` (new) | why checklists don’t get done | accountability | informational | **create** |
+
+---
+
+## 6. On-page briefs (P0 pages)
+
+### Page: `/` (homepage — P0)
+
+- **Title:** Agency Client Onboarding Workflow with Clear Ownership | {Brand}
+- **H1:** Client onboarding workflow for agencies—know who owns the next step
+- **Slug:** `/`
+- **Meta angle:** Small agencies get a repeatable onboarding workflow where every step has an owner—so checklists actually finish. CTA: start / book demo.
+- **Must cover:**
+  - Problem: stalled onboarding, unclear ownership, checklists that die in docs
+  - Job: run client onboarding as a workflow, not a static list
+  - Differentiator: ownership-aware steps (who, by when, what’s blocked)
+  - Process overview (high-level stages)—not a full CRM feature dump
+  - Who it’s for: small agencies (and who it’s not: enterprise portal buyers)
+  - Proof placeholders: founder story, early user quotes when real; no invented metrics
+  - CTA above fold + after process section
+- **Internal links:** → checklist article (“full checklist”), → ownership post, → “why checklists fail” post, → pricing
+- **CTA:** Primary signup/demo; secondary “see the checklist”
+
+### Page: Checklist article (P0)
+
+- **Title:** Client Onboarding Checklist for Agencies (With Owners per Step)
+- **H1:** Client onboarding checklist for agencies
+- **Slug:** keep existing if indexed; prefer `/blog/client-onboarding-checklist-agencies` or equivalent single stable URL
+- **Meta angle:** Step-by-step agency client onboarding checklist with a named owner per item—so work doesn’t stall after kickoff.
+- **Must cover:** Phased checklist; **owner role per step**; common failure modes (brief); link to product workflow for enforcement; FAQ (2–4 real Qs only)
+- **Internal links:** → homepage (workflow product), → pricing, → “why checklists fail” when live
+- **CTA:** Soft: “Turn this checklist into an ownership-aware workflow”
+
+### Page: Ownership long-tail post (P0)
+
+- **Title:** Who Owns the Next Step in Client Onboarding?
+- **H1:** Who owns the next step in client onboarding?
+- **Slug:** `/blog/who-owns-next-step-client-onboarding`
+- **Meta angle:** Onboarding stalls when ownership is implicit. How small agencies assign the next step.
+- **Must cover:** Handoff patterns; RACI-lite for agencies; link to checklist + homepage
+- **Internal links:** → `/`, → checklist article
+- **CTA:** Product trial/demo
+
+### Page: `/pricing` (align only)
+
+- **Title:** Pricing | {Brand} ownership-aware onboarding
+- **H1:** Pricing
+- **Primary KW:** none competitive—brand/transactional
+- **Must cover:** Plans, limits, what “ownership-aware” means in-product; link back to homepage value prop
+- **Avoid:** Targeting `agency software` or CRM terms
+
+---
+
+## 7. Technical & trust checklist (baseline)
+
+| Item | Status | Action |
+|------|--------|--------|
+| Indexability | Unknown (not crawled) | Ensure public marketing pages are server-rendered or prerendered; no `noindex` on hub/spokes; no auth wall on content |
+| Canonical / duplicates | Risk if checklist exists at multiple paths | One canonical URL per intent; 301 extras |
+| Sitemap / robots | Unknown | `robots.txt` allow crawl; XML sitemap with `/`, pricing, checklist, new posts; submit when GSC exists |
+| Core meta on key templates | Weak if generic home | Unique title + meta per URL; one H1; primary intent in first screen |
+| i18n | N/A | English–US only; no hreflang |
+| Core Web Vitals | No scores | Don’t optimize from invented Lighthouse numbers; fix only if real UX pain |
+| Trust / about / policies | Likely thin on new domain | Ship `/about` (who built it, for whom), contact, basic privacy; no fake case studies |
+| Structured data | Optional | FAQ schema **only** if real FAQ content exists on checklist page |
+| Analytics + GSC | Missing | Install analytics + Search Console in week 1 (measurement depends on this) |
+
+---
+
+## 8. Competitive SERP notes
+
+| Query | Who wins (from notes only) | Content angle | Gap for us |
+|-------|----------------------------|---------------|------------|
+| Broad agency/client software | CRM / portal vendors | Platform / suite | Do not compete head-on |
+| Agency workflow / owner-specific | Mixed (unverified) | Process / ownership language | Lean into ownership + small-agency onboarding |
+| Checklist-style queries | Unknown (not sampled) | Lists / templates | Own **agency + owners per step**, not generic checklists |
+
+No competitor page titles, URLs, or SERP feature lists were observed in this run.
+
+---
+
+## 9. 7 / 30 / 60 / 90 day plan
+
+**Capacity:** ~6 hours/week → ~24 hours/month. Bias to rewrite + 1–2 solid pages over many thin posts.
+
+### Next 7 days (~6 hrs)
+
+1. Lock primary KW + page map (this plan); write one-sentence positioning: *ownership-aware client onboarding workflow for small agencies*.
+2. Set up Google Search Console + basic analytics; verify domain; confirm homepage/checklist/pricing are indexable.
+3. Rewrite homepage title, H1, meta, hero, and process section for `agency client onboarding workflow` + ownership; add CTAs and internal links to checklist + pricing.
+4. Outline (do not publish yet) the two P0 posts and the checklist expansion.
+
+### 30 days
+
+1. Fully expand checklist article for `client onboarding checklist for agencies` with owners-per-step; FAQ only if real.
+2. Publish **one** P0 post: *Who owns the next step in client onboarding?* — internal links to hub + checklist.
+3. Align pricing copy with ownership benefits; no new keyword targets.
+4. Technical baseline: sitemap, canonicals, about/trust page stub.
+5. Manual monthly check: search primary + 5 long-tails in an incognito US context; log who ranks (no invented ranks).
+
+### 60 days
+
+1. Publish second P0 post: *Why client onboarding checklists don’t get done*.
+2. Add homepage sections only if needed: template overview, “workflow vs static checklist” (still one hub URL).
+3. Strengthen internal link graph: every spoke → hub + pricing CTA.
+4. Review GSC (if data): impressions/queries for cluster terms; **do not** expand to CRM/software themes.
+5. Retire or noindex any accidental duplicate checklist URLs.
+
+### 90 days
+
+1. Keep or cut: double down only on terms that show GSC impressions or clear manual SERP progress; pause posts with zero signal.
+2. Optional P1: one template-oriented section or single short page **only if** checklist + hub are stable and non-overlapping.
+3. Collect 1–2 real customer phrases for copy (not fake testimonials).
+4. Revisit avoid list; still defer agency CRM/portal head terms unless evidence flips.
+5. Plan next quarter only after one cluster has measurable search signal.
+
+---
+
+## 10. Measurement
+
+| Signal | How to check | Target (realistic for new domain) |
+|--------|--------------|-----------------------------------|
+| GSC impressions on cluster queries | Search Console → queries containing onboarding / checklist / workflow / ownership | First goal: **any** impressions on primary + checklist within 90 days (not a rank # promise) |
+| GSC clicks to `/` and checklist | GSC pages report | Directional uptick after rewrites; no fake CTR targets |
+| Ranking movement | Manual US SERP check for primary + 5 long-tails monthly | Record position band (e.g. not visible / 11–20 / 5–10); no guaranteed #1 |
+| Organic signups / demos | Analytics UTM + “organic / direct / referral” with content landing path | Attribute loosely; success = **some** organic-assisted trials, not a fixed volume |
+| Cannibalization | GSC: two URLs swapping for same query | Fix by consolidating intent owners |
+| Content ops load | Hours logged | Stay ≤ ~6 hrs/week average |
+
+**Do not use:** Invented volumes, fabricated “expected traffic,” or paid-tool difficulty scores.
+
+---
+
+## 11. SEO risks & notes
+
+- **Cannibalization:** Homepage and checklist must not share the same primary; checklist = checklist intent only.
+- **Brand vs non-brand:** Brand queries will be near-zero until awareness; all acquisition work is non-brand problem language.
+- **YMYL / compliance:** Not medical/finance; still avoid unverifiable ROI claims.
+- **Content ops (solo):** Prefer depth on 3–4 URLs over 15 thin posts; 6 hrs/week cannot support a media company.
+- **Category trap:** Sliding into “agency software” messaging invites CRM SERPs the domain cannot win.
+- **Evidence quality:** Plan is executable but **search demand is unproven** until GSC/SERP work is done live.
+
+---
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|--------|
+| Current decision | Execute the ownership-aware **agency client onboarding workflow** cluster on the homepage with a small non-cannibalizing spoke set; validate demand via GSC + manual SERP before expanding beyond the cluster |
+| Evidence classes | assumption |
+| Supported claims | Product wedge and page architecture can be planned from founder notes (ownership-aware onboarding for small agencies; existing home, pricing, thin checklist). Supplied notes suggest avoiding CRM/portal-dominated software heads and leaning into workflow/ownership/checklist problem language—**not confirmed by this run’s own SERP sampling** |
+| Still unproven | Search demand bands, difficulty, rankings, traffic, clicks, conversion, payment, retention, and live SERP composition for every keyword |
+| Contradictions / exclusions | Broad software terms deferred due to reported CRM/portal dominance; generic checklist/automation software deferred; no multi-URL targeting of the same primary intent; no fabricated volumes or competitor URLs |
+| Source anchors | User-supplied notes only (autocomplete-style phrase families: checklist, process, workflow, template, automation, agency-software; SERP shape notes; community phrases on ownership and checklist failure; site state: no authority/GSC/backlinks/paid tools; capacity 6 hrs/week). No live SERP/page URLs collected this run |
+| Next validation | Founder: install GSC + analytics in week 1; after homepage + checklist rewrite, use 30-day GSC impressions on `agency client onboarding workflow` / checklist / ownership queries (or continued zero impressions) as the go / narrow / stop signal for cluster expansion |
+
+Search opportunity is not product-market fit. Upstream product demand remains separate from this SEO plan.
+
+---
+
+## 13. Source appendix
+
+- **Inputs:** User request + unverified notes (no PRD file path, no live URLs fetched, no codebase).
+- **SERP / page URLs used:** None (research channels blocked for this run).
+- **Skill guidance:** `.zstack-skill/z-seo-plan/SKILL.md` and its references (workflow cheatsheet, plan template, quality bar).
+- **Not used:** Paid keyword tools, GSC exports, backlink data, invented metrics.
+
+---
+
+### This week — top 3 actions
+
+1. Rewrite homepage for **`agency client onboarding workflow`** + ownership (title, H1, hero, process, CTAs).  
+2. Install **GSC + analytics**; confirm indexability and one canonical checklist URL.  
+3. Expand the checklist article for **`client onboarding checklist for agencies`** with **owner per step**, linking to the homepage—not a second workflow landing page.
+
+### Keywords to **not** chase
+
+`agency software` / CRM / client portal heads · generic checklist or automation software · multi-locale terms · competitor alternatives without verified substitutes.

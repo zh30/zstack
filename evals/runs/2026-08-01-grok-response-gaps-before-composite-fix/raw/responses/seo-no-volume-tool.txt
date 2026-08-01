@@ -1,0 +1,88 @@
+I'll follow only the copied z-seo-plan skill and read its instructions first.## What I will not do
+
+I **cannot** give exact monthly search volumes or keyword difficulty scores for 50 keywords (or any count) without tools like Ahrefs, Search Console, Semrush, or similar.
+
+Inventing those numbers would be false data. This run also has **web, browser, apps, and computer use blocked**, so I cannot pull live SERP, autocomplete, Trends, or public keyword APIs either. There is no basis for exact `volume` / `KD` figures.
+
+**Do not treat any guessed “monthly searches” or “difficulty 0–100” as real.**
+
+---
+
+## Evidence limit (this run)
+
+| Channel | Status |
+|--------|--------|
+| Ahrefs / SEMrush / similar | Not available (you said none; I have none) |
+| Google Search Console | Not available |
+| Live web / SERP / Trends | **Blocked** for this run |
+| PRD / live URL / project code | **Not provided** |
+
+Without product context **and** demand tools, a 50-keyword volume/difficulty table is not an SEO deliverable—it would be fiction.
+
+---
+
+## What a real first deliverable looks like (when inputs exist)
+
+Per a proper indie SEO workflow, the first slice is **not** 50 exact metrics. It is:
+
+1. **One primary cluster** (money / hub term)  
+2. **2–4 secondary terms**  
+3. **5–10 mapped long-tails** (with intent + page map)  
+4. Demand/difficulty only as **relative bands** (high / med / low / unknown) **when something is observed** (SERP composition, related queries, community language, etc.)—never fake monthly counts  
+
+Expand the list only after that cluster has evidence and a page map.
+
+---
+
+## Minimum inputs needed to start (pick any that apply)
+
+Send at least one of:
+
+- **Product one-liner** + who it’s for (ICP)  
+- **PRD** or feature/non-goals list  
+- **Live URL(s)** or routes you already ship  
+- **Language / geo** (e.g. EN-US, zh-CN)  
+- **Conversion goal** (signup, waitlist, purchase, install)  
+
+Optional but useful: 3–5 competitor or substitute URLs, phrases customers already use.
+
+With those, and when research channels are available, the next step is a **narrow, evidence-backed cluster**—still **without** invented Ahrefs-style numbers unless a real tool is connected.
+
+---
+
+## Interim plan shape (blocked research)
+
+Until product + search signals exist:
+
+| Piece | Status |
+|-------|--------|
+| Primary keyword | **Cannot choose honestly** — no product seed, no SERP |
+| Secondary / long-tail | Same |
+| Exact volume / KD × 50 | **Refused** — no tool, no inventing |
+| Relative bands for 50 terms | **Also refused** as a substitute dump — skill requires narrow first slice + evidence, not 50 guessed bands |
+
+**This week (once you share product inputs):**  
+1. One primary cluster from ICP + JTBD language  
+2. Map 1 hub page + supporting FAQ/comparison URLs  
+3. Score terms on relevance, commercial proximity, and **winnability for a low-authority site**—not on fake KD  
+4. Measure later with free GSC (when you have a property) or manual rank checks—not with invented volumes  
+
+**Do not chase:** head terms owned by marketplaces/Wikipedia/giants, or any “top 50 keywords with volume” list sold without a product page map.
+
+---
+
+## Evidence handoff
+
+| Field | Content |
+|-------|---------|
+| **Current decision** | Refuse exact monthly volume and difficulty for 50 keywords; refuse a substitute list of 50 guessed bands; require product/market inputs and a narrow first cluster before any keyword plan expands. |
+| **Evidence classes** | `assumption` |
+| **Supported claims** | Exact volume/KD require keyword or analytics tools; this run has no Ahrefs/GSC and blocked web research; inventing metrics would mislead; standard workflow starts with 1 primary + 2–4 secondary + 5–10 long-tails, not a 50-row metric dump. |
+| **Still unproven** | Product category, ICP, search language, demand bands, difficulty bands, SERP composition, winnable terms, page inventory, conversion path. |
+| **Contradictions / exclusions** | User asked for exact volumes without tools; that conflicts with “evidence over vibes / do not invent volumes.” No black-hat or fabricated Ahrefs numbers. |
+| **Source anchors** | User request (no Ahrefs/GSC; exact volume + difficulty for 50 KWs); skill non-negotiables on invented volumes and large unsupported lists; run constraint: web/browser unavailable. |
+| **Next validation** | Provide PRD, URL, or one-liner + ICP + geo/language + goal; re-run with SERP/public tools when unblocked; deliver one evidenced cluster with intent + page map and relative bands only where observed; connect GSC/keyword tool if exact metrics are required. |
+
+---
+
+**Bottom line:** Exact monthly volume and difficulty for 50 keywords **cannot** be produced honestly here. Share the product (and ideally a URL or PRD); the useful next artifact is a **small, mapped, intent-first cluster**—not a fake 50-row metrics spreadsheet.

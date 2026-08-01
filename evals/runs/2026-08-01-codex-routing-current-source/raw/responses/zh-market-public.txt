@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: 请求是在接触用户前通过公开社区、竞品、抱怨和替代方案评估创意，并给出继续、收窄或停止建议。

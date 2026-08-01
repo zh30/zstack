@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; Read tool only; permission mode dontAsk",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "response",
+    "requestedModel": "grok-4.5",
+    "sessionPersistence": false,
+    "maxTurnsPerCase": 3,
+    "ambientAgentSkillsMayBeDiscovered": true
+  },
+  "runs": [
+    {
+      "id": "after-composite-fix-market-evidence-packet",
+      "case": "market-evidence-packet",
+      "phase": "after-composite-fix",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 76.899,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/market-evidence-packet.txt",
+        "responses/market-evidence-packet.txt",
+        "skill-snapshots/z-market-validate/SKILL.md",
+        "skill-snapshots/z-market-validate/references/quality-bar.md",
+        "skill-snapshots/z-market-validate/references/report-template.md",
+        "skill-snapshots/z-market-validate/references/sources.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 3,
+      "totalCostUsd": 0.0524556,
+      "tokenUsage": {
+        "input_tokens": 8940,
+        "cache_read_input_tokens": 11392,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 5193,
+        "reasoning_tokens": 806,
+        "total_tokens": 25525
+      }
+    }
+  ],
+  "runnerIncidents": [
+    "market-evidence-packet: Grok wrote 5495 private stderr bytes.",
+    "market-evidence-packet: Grok attempted MCP startup despite the MCP tool exclusion."
+  ],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

@@ -1,0 +1,2 @@
+selection: none
+reason: The request is backend schema/API architecture work, which none of the product-validation candidate skills cover.

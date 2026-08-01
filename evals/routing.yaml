@@ -1,0 +1,154 @@
+version: 1
+cases:
+  - id: market-vague
+    prompt: >-
+      Before I spend a month building an AI meeting-to-invoice tool for
+      freelancers, find demand signals, competitors, objections, and a viable
+      solo-founder entry wedge.
+    expected_skill: z-market-validate
+
+  - id: market-public
+    prompt: >-
+      Research public communities and competing products for my early product
+      idea, then give me an evidence-based go, narrow, or stop recommendation.
+    expected_skill: z-market-validate
+
+  - id: discovery-plan
+    prompt: >-
+      Help me recruit eight real users and write a non-leading interview guide
+      focused on what they did the last time this problem happened.
+    expected_skill: z-customer-discovery
+
+  - id: discovery-debrief
+    prompt: >-
+      I completed six interviews. Debrief my notes for leading questions,
+      compliments, past behavior, current spend, and evidence that people would
+      actually switch.
+    expected_skill: z-customer-discovery
+
+  - id: landing-waitlist
+    prompt: >-
+      Write a coming-soon waitlist page for my unbuilt app, choose one CTA, give
+      me a cheap traffic plan, and define conversion thresholds that tell me
+      whether to continue.
+    expected_skill: z-landing-smoke
+
+  - id: landing-metrics
+    prompt: >-
+      My prelaunch page has 350 qualified visitors, 21 signups, four replies,
+      and no preorders. Help me interpret the funnel and choose the next bounded
+      smoke test.
+    expected_skill: z-landing-smoke
+
+  - id: prd-notes
+    prompt: >-
+      Turn my research notes and feature list into a professional MVP PRD with
+      explicit scope, non-goals, acceptance criteria, risks, and milestones.
+    expected_skill: z-write-prd
+
+  - id: prd-rewrite
+    prompt: >-
+      My current product spec is vague and every feature is P0. Rewrite it into
+      a decision-ready PRD a solo developer can build from.
+    expected_skill: z-write-prd
+
+  - id: seo-live-url
+    prompt: >-
+      Audit my live SaaS site for keyword opportunities, choose a realistic
+      primary term, and map supporting queries to existing or new pages.
+    expected_skill: z-seo-plan
+
+  - id: seo-prd-map
+    prompt: >-
+      Use this PRD to create an SEO keyword and page plan with search intent,
+      long-tail priorities, on-page briefs, and technical notes.
+    expected_skill: z-seo-plan
+
+  - id: none-code-fix
+    prompt: >-
+      Fix the failing TypeScript unit test in the checkout service and run the
+      relevant test suite.
+    expected_skill: none
+
+  - id: none-architecture
+    prompt: >-
+      Design a D1 schema and Hono API architecture for a multi-tenant billing
+      service.
+    expected_skill: none
+
+  - id: boundary-real-interviews
+    prompt: >-
+      I have a rough product idea and want to validate it by recruiting and
+      interviewing ten real customers about their past workflows.
+    expected_skill: z-customer-discovery
+
+  - id: boundary-public-research
+    prompt: >-
+      I have a rough idea but no customer access yet. Use public communities and
+      competitor evidence to decide whether it deserves deeper research.
+    expected_skill: z-market-validate
+
+  - id: boundary-waitlist-demand
+    prompt: >-
+      Validate demand for my unbuilt product by shipping a waitlist page,
+      driving a small amount of traffic, and defining success and kill
+      thresholds.
+    expected_skill: z-landing-smoke
+
+  - id: zh-market-public
+    prompt: >-
+      我有个给独立咨询师自动整理会议纪要并生成发票草稿的想法，但还没接触到用户。
+      请先查公开社区、竞品、抱怨和替代方案，判断值得继续、收窄还是停止。
+    expected_skill: z-market-validate
+
+  - id: zh-discovery-plan
+    prompt: >-
+      帮我招募八位真实用户，并设计一份不诱导的访谈提纲，重点追问这个问题最近一次
+      发生时他们实际怎么处理、花了什么成本。
+    expected_skill: z-customer-discovery
+
+  - id: zh-landing-waitlist
+    prompt: >-
+      产品还没开发。请写一个只有单一行动按钮的等待名单落地页，给出低成本引流计划，
+      以及明确的继续、调整和停止阈值。
+    expected_skill: z-landing-smoke
+
+  - id: zh-prd-notes
+    prompt: >-
+      把我的访谈摘要、竞品笔记和功能草稿整理成一份可直接执行的 MVP 产品需求文档，
+      明确范围、非目标、验收标准、风险和里程碑。
+    expected_skill: z-write-prd
+
+  - id: zh-seo-live-url
+    prompt: >-
+      根据我的线上 SaaS 网站和现有 PRD 做关键词研究，选一个现实的主关键词，并把
+      搜索意图、长尾词和页面目标整理成 SEO 执行方案。
+    expected_skill: z-seo-plan
+
+  - id: zh-none-code-fix
+    prompt: >-
+      修复结账服务里失败的 TypeScript 单元测试，并运行相关测试套件。
+    expected_skill: none
+
+  - id: zh-none-architecture
+    prompt: >-
+      为多租户订阅计费服务设计 D1 数据表和 Hono API 架构。
+    expected_skill: none
+
+  - id: zh-boundary-real-interviews
+    prompt: >-
+      我有一个粗糙的产品想法，接下来想通过招募并访谈十位真实客户，了解他们过去
+      实际使用的工作流程和替代方案。
+    expected_skill: z-customer-discovery
+
+  - id: zh-boundary-public-research
+    prompt: >-
+      我有一个粗糙想法，但暂时联系不到客户。先用公开社区讨论和竞品证据判断它是否
+      值得进入更深入的用户研究。
+    expected_skill: z-market-validate
+
+  - id: zh-boundary-waitlist-demand
+    prompt: >-
+      用一个等待名单页面和少量真实流量来验证尚未开发的产品需求，并预先规定成功和
+      叫停阈值。
+    expected_skill: z-landing-smoke

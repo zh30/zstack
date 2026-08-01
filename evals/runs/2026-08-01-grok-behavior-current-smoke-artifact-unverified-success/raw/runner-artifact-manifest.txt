@@ -1,0 +1,3 @@
+sha256                                                            bytes  path
+aed0aafd3f504c53c63813da3a441546e0e8f840848133cf44924a1261e51c8b    22760  artifacts/smoke-complete-pack/landing/index.html
+ff2f9c123d7dab898ee1298be8b587ac2bc0854e01e54ac350fb2ef207811485    25154  artifacts/smoke-complete-pack/smoke-pack.md

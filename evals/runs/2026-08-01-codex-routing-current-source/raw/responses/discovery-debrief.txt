@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: The request is to debrief completed customer interviews for bias and concrete behavioral, spending, and switching evidence.

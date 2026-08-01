@@ -1,0 +1,6 @@
+Use the skill instructions at `.zstack-skill/z-market-validate/SKILL.md` to answer the user request below.
+Treat only that copied skill as task guidance. Do not inspect evaluation manifests, grading criteria, or other zstack files.
+Return the complete answer in your final response. Do not modify files. Web, browser, apps, computer use, and subagents are unavailable for this run; state any resulting evidence limit instead of inventing results.
+
+User request:
+I am considering a Chrome extension that restores a client-specific tab workspace for customer-support agents. Use only my unverified notes: 12 community participants described rebuilding client context, five said it happens daily, three support leads estimated 10–20 minutes lost per shift, and two people asked for team workspaces. Counter-evidence: Chrome has saved groups/profiles, four people prefer bookmarks, two admins may block extensions, and nobody has paid for this exact outcome. A dated but unverified capture puts an adjacent paid tool around $7–12/user/month. I am solo, have four weeks and $500, and want $500 MRR in 90 days. Do not browse or invent missing URLs. Produce the full decision-ready report, transparent composite calculation, one primary wedge, and exactly three next-48-hour actions.

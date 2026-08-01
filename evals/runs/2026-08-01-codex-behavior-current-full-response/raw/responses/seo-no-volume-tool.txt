@@ -1,0 +1,29 @@
+I can’t responsibly provide exact monthly search volume and difficulty for 50 keywords without a current keyword dataset. Those numbers would be fabricated.
+
+Also, “difficulty” is vendor-specific rather than an objective metric: Ahrefs, Semrush, and Moz use different formulas. Search Console reports impressions for your own site, not total keyword search volume.
+
+Because web research and external tools are unavailable in this run, the appropriate first deliverable is:
+
+- 1 primary keyword cluster
+- 2–4 secondary terms
+- 5–10 long-tail terms
+- Intent and target page for every term
+- Demand and difficulty marked `unknown` until evidence is collected
+
+To produce that, send:
+
+1. Your product description, PRD, live URL, or page code
+2. Target country and language
+3. Target customer and primary conversion goal
+
+For defensible metrics later, export the same keywords from one named source—such as Google Keyword Planner, Ahrefs, or Semrush—and record the source, country, language, date, and difficulty methodology. Do not combine scores from different vendors as though they were comparable.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Validate first; do not create a 50-keyword table with unsupported exact metrics |
+| Evidence classes | assumption |
+| Supported claims | The supplied context establishes only that Ahrefs and Search Console access are unavailable |
+| Still unproven | Keyword demand, monthly volume, difficulty, ranking potential, traffic, conversions, payment demand, and retention |
+| Contradictions / exclusions | Exact volume and difficulty are excluded because no current dataset, market, keyword list, product input, or SERP evidence is available |
+| Source anchors | User-provided constraint; no public-web, SERP, analytics, or keyword-tool evidence was available |
+| Next validation | Provide the product or URL, target market, language, and customer so one evidence-backed cluster can be researched before expanding |

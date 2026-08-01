@@ -1,0 +1,90 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            lint: true
+          - os: macos-latest
+            lint: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check changed whitespace
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            git diff --check "$PR_BASE_SHA" HEAD
+          elif [[ -n "$PUSH_BEFORE_SHA" ]] &&
+               [[ "$PUSH_BEFORE_SHA" != "0000000000000000000000000000000000000000" ]] &&
+               git cat-file -e "$PUSH_BEFORE_SHA^{commit}" 2>/dev/null; then
+            git diff --check "$PUSH_BEFORE_SHA" HEAD
+          else
+            git diff-tree --check --root HEAD
+          fi
+
+      - name: Check Bash syntax
+        run: bash -n scripts/*.sh scripts/lib/*.sh
+
+      - name: Check Ruby syntax
+        run: |
+          ruby --version
+          for script in scripts/*.rb scripts/lib/*.rb; do
+            ruby -c "$script"
+          done
+
+      - name: Install and run ShellCheck
+        if: matrix.lint
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes shellcheck
+          shellcheck scripts/*.sh scripts/lib/*.sh
+
+      - name: Lint GitHub Actions
+        if: matrix.lint
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
+
+      - name: Validate YAML syntax and duplicate keys
+        run: ruby scripts/validate-yaml.rb
+
+      - name: Check deterministic evidence manifests
+        run: ruby scripts/generate-evidence-manifests.rb --check
+
+      - name: Enforce published evidence coverage
+        run: |
+          ruby scripts/report-evidence-coverage.rb --require-current-complete-pass
+          ruby scripts/report-evidence-coverage.rb \
+            --require-current-complete-pass-host codex \
+            --require-current-complete-pass-host grok
+          ruby scripts/report-evidence-coverage.rb \
+            --suite routing \
+            --require-current-complete-pass-host codex \
+            --require-current-complete-pass-host grok
+
+      - name: Validate skills and installer behavior
+        run: ./scripts/test.sh

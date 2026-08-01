@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Client Restore</title>
+  <desc id="desc">One-click context restore for SaaS support teams</desc>
+  <rect width="1200" height="630" fill="#f8f8f2"/>
+  <rect x="62" y="58" width="1076" height="514" rx="30" fill="#10231c"/>
+  <text x="115" y="150" fill="#82d9ad" font-family="Arial, sans-serif" font-weight="700" font-size="26" letter-spacing="3">CLIENT RESTORE</text>
+  <text x="115" y="260" fill="#ffffff" font-family="Arial, sans-serif" font-weight="800" font-size="63">One click. Every client tab,</text>
+  <text x="115" y="335" fill="#ffffff" font-family="Arial, sans-serif" font-weight="800" font-size="63">right where you left it.</text>
+  <text x="115" y="415" fill="#bac8c1" font-family="Arial, sans-serif" font-size="30">A planned Chrome extension for hands-on SaaS support.</text>
+  <rect x="115" y="468" width="370" height="62" rx="31" fill="#dff6e9"/>
+  <text x="144" y="509" fill="#0d4b34" font-family="Arial, sans-serif" font-weight="700" font-size="26">Planned from $9/month</text>
+</svg>

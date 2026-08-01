@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117"
+  },
+  "provenance": {
+    "status": "partial",
+    "gaps": [
+      "The exact permission mode was not recorded."
+    ]
+  },
+  "runs": [
+    {
+      "id": "baseline",
+      "case": "market-evidence-packet",
+      "phase": "baseline",
+      "model": "grok-4.5-build",
+      "workspace": "fresh temporary working directory",
+      "permissions": null,
+      "webSearch": false,
+      "subagents": false,
+      "writeTools": false,
+      "turns": 3,
+      "stopStatus": "end_turn",
+      "grade": "pass",
+      "artifacts": [
+        "market-evidence-packet.md"
+      ],
+      "tokenUsage": {
+        "input": 34359,
+        "cacheReadInput": 65152,
+        "output": 5869,
+        "reasoning": 1050,
+        "total": 105380
+      },
+      "costUsd": 0.1234776
+    }
+  ],
+  "runnerIncidents": []
+}

@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: The request explicitly asks for an SEO keyword and page plan based on a PRD.

@@ -1,0 +1,96 @@
+Mode: full
+
+I can’t simulate ten customers and treat their answers as research. No real people were interviewed, and fictional responses cannot establish pain, spending, or willingness to switch. Because browsing, outreach, and subagents are unavailable here, the evidence count is **N=0**.
+
+**Decision: do not build the product yet.** Park the implementation while you run ten real conversations. A disposable landing page or manual test is reasonable; a substantial MVP is not yet justified.
+
+## Ten-interview discovery round
+
+Before recruiting, define:
+
+- **Product:** `[one private sentence—do not lead interviews with it]`
+- **ICP:** `[role]` who encounters `[specific situation/trigger]`
+- **Anti-ICP:** People without that trigger, close supporters, and anyone unable to describe a recent incident
+- **Geography/language:** `[market and interview language]`
+- **Sample:** 10 completed interviews: ideally 7 cold prospects and no more than 3 warm contacts
+
+Use falsifiable gates:
+
+| Gate | Provisional pass signal |
+|---|---|
+| G1 Pain | At least 6/10 independently describe a recent incident; at least 4 report recurring or materially costly pain |
+| G2 Spend | At least 4/10 already spend meaningful money, labor, time, or accept measurable risk |
+| G3 Switch | At least 3/10 have searched for, tried, bought, replaced, or built a solution—and switching barriers appear feasible |
+
+These thresholds are planning assumptions, not evidence.
+
+## Recruitment message
+
+> Hi — I’m researching how `[specific role]` handles `[specific situation]`. I’m not selling anything, and I’m looking for recent real examples rather than feedback on a product. Would you have 30 minutes this week? I’d also like to understand what you currently use and what it costs in time or money.
+
+Screen candidates with:
+
+1. When did you last encounter `[situation]`?
+2. What responsibility did you personally have?
+3. How often has it happened in the last three months?
+
+Exclude candidates who have never encountered it recently.
+
+## Interview guide
+
+Keep the product idea private until the final minute.
+
+1. “Tell me about the last time `[situation]` happened.”
+2. “What triggered it?”
+3. “Walk me through what you did, step by step.”
+4. “Who else was involved?”
+5. “Which tools, documents, or services did you use?”
+6. “Where did the process break down?”
+7. “What did that incident cost in time, money, delay, or risk?”
+8. “How often has this happened recently?”
+9. “What have you already tried to improve it?”
+10. “What did you pay for those attempts?”
+11. “Have you ever changed tools or workflows for this? What triggered the change?”
+12. “Why did you keep or abandon the replacement?”
+13. “Who controls the budget or approves a change?”
+14. “What happens if nothing changes?”
+15. “Who else has dealt with this recently and might speak with me?”
+
+Avoid asking whether they like the idea, would use it, or would pay for it. If you accidentally pitch, recover with: “Ignore my possible solution—what did you do the last time this happened?”
+
+## What to record
+
+For every interview, capture:
+
+- Recruitment source and warm/cold status
+- One concrete incident and approximate date
+- Frequency and consequences
+- Current tools and workaround
+- Existing time or money cost
+- Previous searches, purchases, or switches
+- Budget owner and switching barriers
+- Short verbatim quotations
+- Leading questions or pitch leakage
+- G1/G2/G3 as support, neutral, or contradict
+
+Then classify each participant as:
+
+- **Bleeding and paying:** recurring pain plus existing expenditure
+- **Bleeding, not paying:** real pain but no demonstrated spending behavior
+- **Polite only:** opinions, praise, or hypothetical intent without behavior
+
+After ten interviews:
+
+- **Advance** only if all three gates show repeated independent behavioral evidence. Start with a smoke test or thin/manual MVP.
+- **Reshape** if pain is credible but the ICP, trigger, workflow, or wedge is wrong.
+- **Park** if interviews produce mostly generic annoyance, no existing cost, or no credible switching behavior.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Park |
+| Evidence classes | assumption |
+| Supported claims | None about customer pain, spending, switching, payment, retention, or market size; no customer evidence was collected |
+| Still unproven | The product idea, ICP, trigger frequency, current costs, purchase authority, switching feasibility, demand, payment, and retention |
+| Contradictions / exclusions | Fictional interviews, persona role-play, compliments, and hypothetical purchase intent are excluded as evidence |
+| Source anchors | N=0; no interview notes, transcripts, observed experiments, or public research were available |
+| Next validation | Founder completes 10 real interviews—at least 5 cold ICP prospects—and advances only if repeated recent pain, existing cost, and credible switching behavior support G1–G3 |

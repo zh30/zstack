@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex criterion-by-criterion review of the complete Grok responses",
+  "cases": [
+    {
+      "id": "discovery-sparse-debrief",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Flag compliments, future intent, pitching, and a leading question.",
+          "observed": true,
+          "evidence": "The debrief labels demo praise as a compliment, probably-pay as future intent, the demo as pitch leakage, and the save-time yes/no question as leading."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep G1, G2, and G3 neutral or unsupported without past behavior.",
+          "observed": true,
+          "evidence": "The gate table records G1 neutral, G2 neutral, and G3 neutral with only a soft contradiction of strong claims, explaining the missing incident, spend, and switch evidence."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a build or invent missing workflow and spend details.",
+          "observed": false,
+          "evidence": "The response explicitly says not to advance or green-light a large build, leaves the workflow and spend tables empty, and recommends a past-behavior re-interview."
+        }
+      ]
+    },
+    {
+      "id": "smoke-mixed-traffic",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse to pool warm and cold traffic without source-level conversions.",
+          "observed": true,
+          "evidence": "The opening rejects the pooled 6% as a build metric, shows both source numerators as unknown, and explains that friends and broad ads test different hypotheses."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask for or recommend source-specific counts and a bounded next test.",
+          "observed": true,
+          "evidence": "The response asks to join UTMs to confirmed emails or use separate forms, contact the 12 signups, and run a 7-14 day cold-only test with pre-registered success and reshape thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Treat the aggregate 6% as proof of demand or recommend a full build.",
+          "observed": false,
+          "evidence": "It calls 6% non-decisive aggregate noise, says no/not yet to a full product, and permits only continued learning or a later thin slice if source-specific conversion and engagement hold."
+        }
+      ]
+    },
+    {
+      "id": "prd-thin-input",
+      "skill": "z-write-prd",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Ask no more than five blocking questions or draft with labeled assumptions.",
+          "observed": true,
+          "evidence": "The response drafts immediately and repeatedly labels unverified problem, metric, market, platform, and scope choices as assumptions, including a dedicated six-item assumptions log."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep one primary persona and job for the MVP.",
+          "observed": true,
+          "evidence": "It keeps one primary persona, the solo service freelancer, and centers the MVP on the single client-facing drafting job, with proposal generation as the first vertical slice."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent user research, quotes, adoption numbers, or a large enterprise scope.",
+          "observed": false,
+          "evidence": "The PRD says no research was supplied, labels planning targets rather than reporting adoption, includes no quotes, and explicitly excludes agencies, SSO, native apps, full PM, invoicing, and enterprise billing."
+        }
+      ]
+    },
+    {
+      "id": "seo-no-volume-tool",
+      "skill": "z-seo-plan",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse fabricated exact metrics and use evidence-backed bands or unknown.",
+          "observed": true,
+          "evidence": "The response refuses exact volume and difficulty without tools, marks product, demand, difficulty, and SERP evidence unknown, and allows relative bands only after observable evidence exists."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Prioritize one primary cluster and a small mapped long-tail backlog.",
+          "observed": true,
+          "evidence": "It makes one primary cluster the first deliverable, limits it to 2-4 secondary terms and 5-10 mapped long-tails, and defers concrete selection until the missing product input is supplied."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent tool data or return an unprioritized 50-keyword dump.",
+          "observed": false,
+          "evidence": "No keyword metrics or 50-row list are produced; the response explicitly refuses both exact figures and a substitute dump of guessed bands."
+        }
+      ]
+    },
+    {
+      "id": "market-evidence-packet",
+      "skill": "z-market-validate",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Separate supplied unverified notes from unavailable channel evidence and state the confidence limit.",
+          "observed": true,
+          "evidence": "The report labels every supplied note and price capture unverified, marks live channels blocked, states low confidence, and says no public URLs, volumes, or competitor pages were retrieved."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Score all six dimensions, invert competition intensity, and show the composite calculation.",
+          "observed": false,
+          "evidence": "All six dimensions and the correct inversion are present, but the report is not internally consistent: the executive summary says about 2.7, the score table says 2.67, and the visible arithmetic correctly computes 17/6 = 2.83. A decision report cannot have three composite values."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Give a commercial, solo-fit, and 30–90 day verdict plus one bounded wedge and exactly three actions.",
+          "observed": true,
+          "evidence": "The response gives separate commercial, indie-fit, and short-term verdicts, narrows the product to single-agent client-keyed restore, and numbers exactly three next-48-hour actions."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, verified prices, or willingness-to-pay evidence.",
+          "observed": false,
+          "evidence": "Links are reported as not found, all notes are attributed to the user input, the adjacent price is repeatedly labeled dated and unverified, and exact-outcome payment evidence is stated as absent."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Recommend a full team-sync or enterprise build before paid and security validation.",
+          "observed": false,
+          "evidence": "The wedge explicitly excludes team workspaces, SSO, and admin consoles, and requires agent usage, a paid-pilot decision, extension-policy checks, and privacy consideration before expansion."
+        }
+      ]
+    }
+  ]
+}

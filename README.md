@@ -5,8 +5,9 @@
 **Languages:** English (this file) · [中文说明](./README.zh-CN.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Validate](https://github.com/zh30/zstack/actions/workflows/validate.yml/badge.svg)](https://github.com/zh30/zstack/actions/workflows/validate.yml)
 [![Skills](https://img.shields.io/badge/skills-5-brightgreen)](./skills/)
-[![Hosts](https://img.shields.io/badge/hosts-Claude%20%7C%20Codex%20%7C%20Grok-black)](#works-with-your-agent)
+[![Hosts](https://img.shields.io/badge/hosts-Claude%20%7C%20Codex%20%7C%20Grok-black)](./ARCHITECTURE.md#3-how-each-host-discovers-skills)
 
 ---
 
@@ -36,9 +37,10 @@ You do not need to be an AI engineer to use this.
 
 Think of a **skill** as a **playbook your agent loads on demand**:
 
-1. You type something like `/z-market-validate` or describe an intent in plain language.  
-2. The agent opens a `SKILL.md` file — a structured set of steps, checklists, and quality bars.  
-3. It follows that playbook with its normal tools (search, edit files, run commands).  
+1. You select `z-market-validate` with your host's syntax (`/` in Claude/Grok,
+   `$` in Codex), or describe the intent in plain language.
+2. The agent opens a `SKILL.md` file — a structured set of steps, checklists, and quality bars.
+3. It follows that playbook with its normal tools (search, edit files, run commands).
 4. You get a **repeatable workflow**, not a one-off chat that evaporates next week.
 
 **For practitioners:** skills follow the common Agent Skills convention (`name` + `description` frontmatter + markdown body). One source file installs into Claude Code, Codex, and Grok-compatible skill roots via symlink. See [ARCHITECTURE.md](./ARCHITECTURE.md) for host discovery paths, frontmatter policy, and install model.
@@ -115,13 +117,13 @@ zstack skills are designed to chain. You can enter at any step; the default path
 
 Every skill id starts with **`z-`** so it does not collide with other packs on the same machine.
 
-| Skill | Command | In plain language | Deeper purpose |
+| Skill | Skill id | In plain language | Deeper purpose |
 |-------|---------|-------------------|----------------|
-| [z-market-validate](./skills/z-market-validate/) | `/z-market-validate` | “Is this idea even worth a week?” | Multi-channel demand scan (X, Reddit, HN, PH, …), pro **and** con evidence, indie fit, 30–90 day return odds, entry wedge |
-| [z-customer-discovery](./skills/z-customer-discovery/) | `/z-customer-discovery` | “Talk to 5–15 real people without fooling yourself” | Mom Test coaching: recruit, interview guide, debrief, synthesis on pain / existing spend / switch willingness |
-| [z-landing-smoke](./skills/z-landing-smoke/) | `/z-landing-smoke` | “Cheapest way to see if anyone cares” | English landing + waitlist/pre-order, traffic plan, conversion & kill criteria before a large build |
-| [z-write-prd](./skills/z-write-prd/) | `/z-write-prd` | “Turn notes into something you can build” | Indie-sized PRD: problem, scope, FR IDs, acceptance criteria, non-goals, milestones |
-| [z-seo-plan](./skills/z-seo-plan/) | `/z-seo-plan` | “What should we actually try to rank for?” | Keyword research from PRD/URL/code, primary terms, page map, on-page & technical notes — no fake volume numbers |
+| [z-market-validate](./skills/z-market-validate/) | `z-market-validate` | “Is this idea even worth a week?” | Multi-channel demand scan (X, Reddit, HN, PH, …), pro **and** con evidence, indie fit, 30–90 day return odds, entry wedge |
+| [z-customer-discovery](./skills/z-customer-discovery/) | `z-customer-discovery` | “Talk to 5–15 real people without fooling yourself” | Mom Test coaching: recruit, interview guide, debrief, synthesis on pain / existing spend / switch willingness |
+| [z-landing-smoke](./skills/z-landing-smoke/) | `z-landing-smoke` | “Cheapest way to see if anyone cares” | English landing + waitlist/pre-order, traffic plan, conversion & kill criteria before a large build |
+| [z-write-prd](./skills/z-write-prd/) | `z-write-prd` | “Turn notes into something you can build” | Indie-sized PRD: problem, scope, FR IDs, acceptance criteria, non-goals, milestones |
+| [z-seo-plan](./skills/z-seo-plan/) | `z-seo-plan` | “What should we actually try to rank for?” | Keyword research from PRD/URL/code, primary terms, page map, on-page & technical notes — no fake volume numbers |
 
 Each skill ships with `references/` (templates, quality bars, playbooks). Read those when you want the full methodology; the agent is instructed to load them during a run.
 
@@ -131,41 +133,63 @@ Each skill ships with `references/` (templates, quality bars, playbooks). Read t
 
 ### Requirements
 
-- macOS or Linux (symlink-based install; Windows users: enable Developer Mode or re-run setup after pulls)
+- macOS or Linux. On Windows, use WSL; native Windows is not currently tested.
 - [Git](https://git-scm.com/)
-- At least one of: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [OpenAI Codex CLI](https://github.com/openai/codex), [Grok Build](https://x.ai)
+- At least one of: [Claude Code](https://code.claude.com/docs/en/skills), [OpenAI Codex](https://developers.openai.com/codex/skills), [Grok Build](https://x.ai)
 - `bash` (for install/doctor scripts)
+- Ruby 2.6+ for contributor tests, strict YAML/evidence validation, and routing
+  evaluation tooling; basic install/unlink remains Bash-only
 
 ### Install
 
 ```bash
-git clone https://github.com/<your-org>/zstack.git ~/code/zstack
+git clone https://github.com/zh30/zstack.git ~/code/zstack
 cd ~/code/zstack
 ./scripts/setup.sh
 ./scripts/doctor.sh
 ```
 
-`setup.sh` symlinks each skill into:
+`doctor.sh` reports every problem it finds by default. Use `--source-only` to
+skip installed-link checks, or `--fail-fast` to stop at the first error during
+focused iteration.
 
-| Host | Default skill root |
-|------|--------------------|
-| Agent Skills hub | `~/.agents/skills/` |
-| Claude Code | `~/.claude/skills/` |
-| Codex | `~/.codex/skills/` |
-| Grok Build | Uses compat scan of agents/claude by default (`hosts/grok` off) |
+`setup.sh` symlinks each active catalog skill into the current required discovery
+roots. Optional compatibility profiles are available through `--hosts`:
+
+| Profile | Root | Default | Why |
+|---------|------|---------|-----|
+| Agent Skills hub | `~/.agents/skills/` | Yes | Current Codex user root; also discovered by Grok |
+| Claude Code | `~/.claude/skills/` | Yes | Claude Code user root; also compatible with Grok |
+| Legacy Codex | `~/.codex/skills/` | No | Older compatibility root: `./scripts/setup.sh --hosts codex` |
+| Explicit Grok | `~/.grok/skills/` | No | Optional dedicated root: `./scripts/setup.sh --hosts grok` |
+
+An explicit `--hosts` selection enables an optional profile. Later default runs
+leave that unselected root untouched.
 
 Edit a skill under `skills/` and every host sees the change immediately (symlink).
+Conflicts are skipped and make setup exit non-zero; pass `--force` to preserve
+the old path as a timestamped backup. If link creation then fails, setup restores
+the original path. Managed global and `--project` links are recorded for cleanup:
+
+```bash
+./scripts/unlink.sh
+```
+
+Unlinking never removes conflict backups or non-symlink content.
+Re-running setup reconciles only the selected host roots: links for skills that
+became draft/deprecated or lost that host are removed, while unselected hosts
+and other zstack clones are left untouched.
 
 ### Use
 
-In your agent session:
+Explicit invocation differs by host:
 
 ```text
-/z-market-validate
-I want to build a tool that turns meeting notes into client invoices for freelancers.
+Claude / Grok: /z-market-validate
+Codex:         $z-market-validate
 ```
 
-Or natural language:
+Natural language is portable across hosts:
 
 ```text
 Run customer discovery setup for ICP: independent design consultants.
@@ -182,11 +206,12 @@ Pain: weekly client reporting. Target 10 interviews.
 │  skills/z-*/SKILL.md     │  ← source of truth
 └────────────┬─────────────┘
              │  ./scripts/setup.sh  (symlink)
-     ┌───────┼────────┐
-     ▼       ▼        ▼
- ~/.agents  ~/.claude ~/.codex
-     │       │
-     └───────┴──► Grok also scans these roots
+         ┌───────┴────────┐
+         ▼                ▼
+ ~/.agents/skills  ~/.claude/skills
+   Codex + Grok       Claude + Grok
+
+ Optional explicit compatibility roots: ~/.codex/skills, ~/.grok/skills
 ```
 
 **Design choices (first principles):**
@@ -197,7 +222,8 @@ Pain: weekly client reporting. Target 10 interviews.
 | Symlink install | One edit, all hosts; no stale copies |
 | `z-` prefix | Shared skill directories are crowded; namespaces prevent collisions |
 | Original skills only | Quality and licensing stay coherent for open source |
-| No Grok-only install by default | Grok already reads `~/.agents` / `~/.claude` |
+| Current roots by default | Codex uses `~/.agents`; Claude uses `~/.claude`; Grok discovers both |
+| Legacy roots are opt-in | Avoid unsupported duplicate installs while retaining older Codex and explicit Grok compatibility |
 | Evidence over vibes | Skills force disconfirming search, Mom Test rules, kill criteria |
 
 Deeper internals: **[ARCHITECTURE.md](./ARCHITECTURE.md)** · authoring: **[docs/authoring.md](./docs/authoring.md)** · agent rules for contributors: **[AGENTS.md](./AGENTS.md)**.
@@ -212,13 +238,32 @@ zstack/
 ├── README.zh-CN.md           # Chinese
 ├── ARCHITECTURE.md           # Multi-host design
 ├── AGENTS.md                 # Rules when AI edits this repo
+├── CONTRIBUTING.md           # Contribution workflow and quality gates
 ├── catalog.yaml              # Skill registry
 ├── hosts/                    # Per-agent install profiles
+├── evals/
+│   ├── cases.yaml            # Behavioral regression prompts and criteria
+│   ├── routing.yaml          # Description-only skill-selection cases
+│   └── runs/                 # Dated clean-context responses and grades
 ├── scripts/
 │   ├── setup.sh              # Install / refresh symlinks
 │   ├── doctor.sh             # Validate skills + links
+│   ├── test.sh               # Installer + validator integration tests
 │   ├── new-skill.sh          # Scaffold z-* skill
-│   └── unlink.sh             # Remove zstack-managed links only
+│   ├── unlink.sh             # Remove zstack-managed links only
+│   ├── report-evidence-coverage.rb # Behavioral/routing provenance matrices
+│   ├── run-behavioral-evals.rb # Shared isolated behavioral-runner core
+│   ├── run-{codex,claude,grok}-behavioral-evals.rb # Host entry points
+│   ├── archive-behavioral-run.rb # Shared reviewed-archive core
+│   ├── archive-{codex,claude,grok}-behavioral-run.rb # Host entry points
+│   ├── run-routing-evals.rb # Shared isolated description-routing core
+│   ├── run-{codex,claude,grok}-routing-evals.rb # Host entry points
+│   ├── archive-routing-run.rb # Shared atomic routing-archive core
+│   ├── archive-{codex,claude,grok}-routing-run.rb # Host entry points
+│   ├── generate-evidence-manifests.rb # Rebuild / check whole eval archives
+│   ├── validate-yaml.rb      # Optional strict YAML + duplicate-key validation
+│   ├── validate-evidence.rb  # Eval archive JSON / byte / SHA-256 validation
+│   └── lib/                  # Shared shell parsing + immutable eval host inputs
 ├── skills/
 │   ├── _template/
 │   ├── z-market-validate/
@@ -228,6 +273,9 @@ zstack/
 │   └── z-seo-plan/
 └── docs/
     ├── authoring.md
+    ├── compatibility.md
+    ├── evidence-handoff.md
+    ├── evaluation.md
     └── frontmatter.md
 ```
 
@@ -236,20 +284,85 @@ zstack/
 ## Create or extend a skill
 
 ```bash
-./scripts/new-skill.sh z-my-workflow
-# edit skills/z-my-workflow/SKILL.md
-# register in catalog.yaml
-./scripts/doctor.sh
+./scripts/new-skill.sh z-my-workflow product
+# edit SKILL.md and customize the generated references/quality-bar.md
+# review the auto-created draft in catalog.yaml
+# add three behavioral (including happy-path) + two routing cases, then activate
+./scripts/test.sh
 ./scripts/setup.sh
 ```
 
 Rules of thumb:
 
-1. **Name** = directory = slash command; must match `z-[a-z0-9-]+`.  
-2. **`description`** is the API for auto-invocation — put triggers in it.  
-3. Write the body for **any** host: prefer “run this command / read this file” over host-specific tool brand names.  
-4. Put long material in `references/`; keep `SKILL.md` executable.  
+1. **Name** = directory = portable skill id; must match `z-[a-z0-9-]+`.
+2. **`description`** is the API for auto-invocation — put triggers in it.
+3. Write the body for **any** host: prefer “run this command / read this file” over host-specific tool brand names.
+4. Put long material in `references/`; keep `SKILL.md` executable.
 5. No secrets, no machine-local absolute paths.
+6. New scaffolds include the Evidence handoff and quality-bar baseline, but
+   intentionally fail validation until skill and catalog placeholders are
+   replaced; draft skills do not require behavioral or routing eval cases yet.
+
+Pull requests are welcome; see [CONTRIBUTING.md](./CONTRIBUTING.md) for the
+original-content policy, required checks, and smoke-test evidence.
+Behavioral and routing test methodology lives in
+[docs/evaluation.md](./docs/evaluation.md).
+Archived runs preserve the model response separately from its grade; the
+[host compatibility evidence](./docs/compatibility.md) links the current run
+matrix. A passing archive is evidence for that runner and date, not a guarantee
+across every model or host. The latest Codex routing evidence includes a
+[context-budget regression](./evals/runs/2026-08-01-codex-routing-budget/summary.md)
+and a [Chinese routing regression](./evals/runs/2026-08-01-codex-routing-zh/summary.md),
+both with raw selections preserved.
+The same routing protocol now has a reviewed
+[Grok 25-case matrix](./evals/runs/2026-08-01-grok-routing-full-matrix/summary.md)
+covering all English, Chinese, boundary, and no-match requests with complete
+provenance.
+The complete-output [happy-path run](./evals/runs/2026-07-31-happy-path/summary.md)
+passed all five skills with raw artifacts preserved.
+The reviewed Codex resilience matrices [A](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-a/summary.md)
+and [B](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-b/summary.md)
+bring complete-provenance behavioral coverage to 20/20 current cases.
+The subsequent [host-gap audit](./evals/runs/2026-08-01-codex-happy-gap-regression/summary.md)
+preserved three passes and one real artifact failure; the isolated
+[artifact rerun](./evals/runs/2026-08-01-codex-landing-artifact-pass/summary.md)
+retains the deployable page and closes Codex-specific complete coverage at
+20/20.
+The same snapshot, anti-leak, review, and atomic-archive protocol now has a
+Claude Code adapter that records requested versus actual model ids and rejects
+API errors even when the host wraps them in a nominal success result.
+The current local Claude provider rejects its configured models before
+generation; the runner reports this as a redacted `model-unavailable` failure,
+so Claude behavior coverage remains honestly at 0/20.
+The Grok adapter adds an isolated host home, prompt-file transport, an exact
+final-response boundary, tool/sandbox controls, redacted API-error categories,
+and the same private-provenance checks. Its reviewed
+[19-case response matrix](./evals/runs/2026-08-01-grok-behavior-current-full-response/summary.md)
+remains current for the 16 non-landing cases. The retained
+[landing artifact failure](./evals/runs/2026-08-01-grok-behavior-current-smoke-artifact-unverified-success/summary.md)
+triggered stricter provider-confirmed-success rules; all four landing cases now
+need a fresh Grok rerun. The local Grok CLI currently reports unauthenticated,
+so current-source Grok behavior coverage is honestly 16/20. Deterministic
+adapter fixtures do not count as model evidence. A retained
+[provider-schema failure](./evals/runs/2026-08-01-codex-landing-artifact-provider-schema-failure/summary.md)
+then exposed a guessed Buttondown tag-ID contract. The skill now requires dated
+official provider semantics or an explicit launch-blocking `VERIFY_*` mapping.
+Codex combines its
+[19-case response matrix](./evals/runs/2026-08-01-codex-behavior-current-full-response/summary.md)
+with the reviewed [three-case landing rerun](./evals/runs/2026-08-01-codex-landing-response-after-closed-analytics-gate/summary.md)
+and [real landing artifact](./evals/runs/2026-08-01-codex-landing-artifact-after-closed-analytics-gate/summary.md)
+for 20/20 current-source coverage. The artifact keeps unknown attribution out
+of decision lanes, strips the query and fragment before analytics setup, makes
+no analytics or Buttondown request while explicit contract placeholders remain,
+and exposes no raw provider or exception data. Its Function passed 18 local
+adversarial intake/provider scenarios, including actual streamed-byte limits
+without trusting `Content-Length`; deterministic browser checks also proved the
+closed analytics gate and bounded attribution. CI requires current skill bytes
+for both behavior and routing; the open Grok gap therefore fails closed until a
+reviewed authenticated rerun is published.
+Cross-host discovery evidence and all five Grok happy-path runs are
+recorded in [host compatibility](./docs/compatibility.md), including retained
+failures that led to discovery, landing-integrity, and PRD fixes.
 
 ---
 
@@ -274,14 +387,15 @@ Project policy: **original skills only**. Link out in docs if useful.
 
 ## Status
 
-Actively developed. Public remote URL may still be private until you publish — replace the clone URL in Quick start with your GitHub path when ready.
+Actively developed at `github.com/zh30/zstack`.
 
 | Area | State |
 |------|--------|
 | Skill catalog (5) | Usable |
 | Multi-host setup/doctor | Usable |
 | Architecture docs | Usable |
-| CI / CONTRIBUTING | Planned |
+| CI validation | Configured; currently fails closed on the documented Grok 16/20 behavior-evidence gap |
+| Contributor guide | Usable |
 
 ---
 

@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: 请求基于线上网站和现有 PRD 做关键词研究，并整理搜索意图、长尾词及页面目标的 SEO 执行方案。

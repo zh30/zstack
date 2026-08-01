@@ -1,0 +1,415 @@
+I'll load the skill's PRD template and quality bar next so the document matches the required structure.# PRD: Agency Onboard Runbook
+
+| Field | Value |
+|-------|--------|
+| **Status** | Draft |
+| **Owner** | Solo founder |
+| **Last updated** | 2026-08-01 |
+| **Version** | 0.1 |
+| **Primary persona** | Small-agency ops lead / account manager |
+| **Platform** | Web (desktop-first) |
+| **Related docs** | Landing smoke results (cold/warm); discovery notes (owners, steps, links, CSV) |
+
+## Revision history
+
+| Version | Date | Summary |
+|---------|------|---------|
+| 0.1 | 2026-08-01 | Initial six-week solo MVP PRD from discovery + smoke inputs |
+
+---
+
+## 1. Overview
+
+### 1.1 One-liner
+
+For small-agency operators who lose track of who owns each client-onboarding step, Agency Onboard Runbook is a web app that runs one ownership-aware onboarding workflow with due states, completion/exceptions, manual reminders, external record links, CSV export, and missed-step history—without portals, file storage, or bookkeeping.
+
+### 1.2 Problem statement
+
+- **Current situation:** Small agencies onboard clients with scattered checklists (docs, sheets, chat threads). Steps are reusable in theory but ownership and due dates drift; external client records live in other tools.
+- **Pain:** Missed steps, unclear owners, weak handoff when someone is out, and no lightweight history of what slipped—without wanting another portal, DMS, or accounting system.
+- **Why now:** Cold landing smoke showed interest (27 signups / 300 visits) and two pilot volunteers; warm traffic (12 / 40) is stronger but must be measured separately. Product intent is clear enough to build a six-week vertical slice for pilots.
+- **Cost of status quo:** Assumption: rework, delayed kickoff, and partner blame when a step is missed; quantified cost not measured yet.
+
+### 1.3 Goals
+
+**Product goals (user outcomes)**
+
+1. An agency can define **one** reusable client-onboarding workflow with explicit step owners and due semantics.
+2. An agency can run **one live onboarding** per client engagement, mark complete/exception, send manual reminders, attach external record links, export CSV, and see missed-step history.
+3. Sensitive files and bookkeeping stay **out of product**; links point out, not store in.
+
+**Business goals (indie)**
+
+1. Ship a six-week solo MVP usable by the two pilot volunteers end-to-end.
+2. Learn whether pilots complete a real client run (activation), not just signup.
+3. Keep pricing at hypothesis only: **$29/month was not tested** (no payment asked in smoke).
+
+### 1.4 Non-goals (v1)
+
+- Client portals / client-facing login
+- Sensitive file storage / document vault
+- Bookkeeping, invoicing, payments, or billing integration
+- Data migration tooling from other systems
+- Connectors / OAuth sync to PM, CRM, email, calendar
+- AI generation, prioritization, or “smart” reminders
+- Native mobile apps
+- Enterprise roles, SSO, multi-team governance, compliance certifications (SOC2, HIPAA-as-product-scope, etc.)
+- Multi-workflow catalogs, templates marketplace, white-label
+
+### 1.5 Success metrics
+
+| Metric | Definition | Target / signal | Timeframe |
+|--------|------------|-----------------|-----------|
+| Pilot activation | Pilot creates 1 workflow + starts 1 live run with ≥1 owned step | 2/2 pilots complete | Weeks 5–6 |
+| Run completion signal | Live run reaches terminal state (all steps complete/exception) or ≥70% steps closed | ≥1 real client run closed or advanced | By end of week 6 |
+| Missed-step utility | Pilot views or acts on missed-step history ≥1 time | ≥1 event per active pilot | Weeks 5–6 |
+| Traffic source hygiene | Cold vs warm signup and pilot cohorts tracked separately | Never pool conversion rates | Ongoing |
+| Payment (hypothesis only) | Willingness to pay $29/mo | **Not a v1 success gate**; test only after pilots use product | Post-MVP |
+
+**Kill / pivot triggers** (also §10): see Launch.
+
+---
+
+## 2. Users & context
+
+### 2.1 Primary persona
+
+| Attribute | Detail |
+|-----------|--------|
+| Name / label | **Alex — small-agency ops lead** |
+| Who they are | Owner-operator or senior AM at a 2–15 person service agency (marketing, design, dev, consulting) |
+| Context / environment | Desktop browser; juggles 3–10 concurrent client starts; tools already hold files and money |
+| Top jobs-to-be-done | Ensure every onboarding step has an owner and due state; recover from missed steps; export status for internal review |
+| Current tools / workarounds | Shared docs, spreadsheets, chat checklists, ad-hoc Notion/Asana boards without run history |
+| Triggers to seek a solution | A client start slipped; partner asks “who owned kickoff form?”; pilot interest after smoke |
+| Anti-persona (not for) | Enterprise PMO, freelancers with one client, agencies needing client portal or compliance vault |
+
+### 2.2 Secondary users
+
+Internal step owners (colleagues) may be named as owners. **Assumption:** v1 is single-operator account; owners are labels/emails for assignment and reminders, not full multi-seat RBAC.
+
+### 2.3 Use contexts
+
+- Desktop deep work when starting a new client
+- Quick status check before a stand-up
+- Manual reminder when a step is overdue
+- CSV pull for weekly internal report
+- **Not** mobile-native fieldwork; **not** offline-first
+
+---
+
+## 3. Solution
+
+### 3.1 Value proposition
+
+For **Alex** who **loses ownership and due clarity on client onboarding**, **Agency Onboard Runbook** is an **ownership-aware runbook runner** that **makes one workflow and one live run legible (owners, dues, complete/exception, reminders, links, CSV, miss history)**. Unlike **generic checklists and project tools**, we **optimize for agency onboarding runs and explicit ownership—not portals, files, or books**.
+
+### 3.2 Product principles
+
+1. **One happy path first** — one workflow definition, one live run model, before multi-template power.
+2. **Ownership is first-class** — every step has an owner and a due/completion state.
+3. **Link out, don’t store sensitive bulk** — external record links only; no file vault.
+4. **Human-in-the-loop** — reminders are manual; no AI or auto-chasing in MVP.
+5. **Evidence stays honest** — smoke interest ≠ paid retention; cold ≠ warm.
+
+### 3.3 Scope summary
+
+| In scope (MVP / P0) | Out of scope (v1) |
+|---------------------|-------------------|
+| One reusable workflow with ordered steps | Multi-workflow product surface, marketplace |
+| One live run per engagement from that workflow | Parallel product lines (files, books) |
+| Explicit owners + due states | Enterprise roles / SSO |
+| Complete + exception states | Client portal |
+| Manual reminders | Automated/AI reminders, connectors |
+| External record links | File storage |
+| CSV export | Migration importers |
+| Missed-step history | Compliance program scope |
+| Web desktop-first | Native mobile |
+
+---
+
+## 4. User journeys (P0)
+
+### Journey A — Define one onboarding workflow
+
+1. Alex signs in and creates **Workflow** “Client onboarding”.
+2. Adds ordered steps (e.g. kickoff call, contract signed, access checklist, kickoff deck).
+3. Assigns default **owner** (self or labeled teammate) and default **due rule** (e.g. due in N days after run start, or fixed offset from previous step).  
+   **Assumption:** due rule is simple offset or absolute date at run time—not calendar OAuth.
+4. Saves workflow as reusable definition (not yet a live client).
+
+**Success state:** Workflow has ≥1 step; each step has owner + due configuration; editable later without destroying past runs’ history.  
+**Failure / recovery:** Empty workflow cannot be used to start a run; validation message lists missing owners/dues.
+
+### Journey B — Start one live run
+
+1. Alex starts **Live run** for client label “Acme Co” from the workflow.
+2. System materializes steps with owners, due states (e.g. pending / due soon / overdue / complete / exception).
+3. Alex attaches **external record links** (CRM URL, shared drive folder link, contract e-sign link)—URLs only.
+4. As work proceeds, owners (or Alex) mark **complete** or **exception** with optional short note.
+5. Alex sends **manual reminder** on a stuck step.
+6. Alex exports **CSV** of run status for internal review.
+7. Alex opens **missed-step history** for steps that went overdue or were completed late.
+
+**Success state:** Run shows coherent owner/due/completion picture; CSV matches on-screen state; misses are queryable.  
+**Failure / recovery:** Cannot complete without owner; exception requires note or reason code (minimal); reminder failure surfaces error without losing run state.
+
+### Journey C — Recover from a miss
+
+1. A step passes due without complete/exception → state **overdue**; entry written to missed-step history.
+2. Alex filters history by run/client, sees when it was due vs acted.
+3. Alex reminds owner and closes step (complete or exception).
+
+**Success state:** Miss is durable in history even after step is closed.  
+**Failure / recovery:** If due date edited, history retains original miss event (append-only miss log).
+
+### States (P0)
+
+| Object | States |
+|--------|--------|
+| Workflow | draft / active (MVP may treat saved = active) |
+| Live run | in_progress / completed / abandoned (abandoned optional P1; P0 at least in_progress + completed) |
+| Step (on run) | pending · due_soon · overdue · complete · exception |
+| Reminder | queued_send_attempt · sent · failed (manual trigger only) |
+
+---
+
+## 5. Requirements
+
+### 5.1 Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|----|-------------|----------|---------------------|
+| FR-001 | User can create and edit **one** reusable onboarding workflow with ordered steps | P0 | Given a signed-in user, when they create a workflow and add ≥1 step with title + order, then it persists and reloads with same order. |
+| FR-002 | Each step supports an **explicit owner** | P0 | Given a step, when user sets owner (name and/or email string), then owner is required before a live run can start from that workflow; displayed on run steps. |
+| FR-003 | Each step supports **due configuration** and run-time **due states** | P0 | Given a run start, when due is computed, then each step shows pending/due_soon/overdue/complete/exception consistently; overdue when now > due and not complete/exception. |
+| FR-004 | User can start **one live run** from the workflow for a named client/engagement | P0 | Given an active workflow with valid steps, when user starts run with client label, then a run instance is created with copied step list and independent state from the template. |
+| FR-005 | User can mark step **complete** or **exception** | P0 | Given an in-progress step, when user marks complete or exception, then state updates, timestamp stored; exception requires non-empty note or reason. |
+| FR-006 | User can send **manual reminders** for a step | P0 | Given a step with owner email, when user clicks remind, then system records attempt and either sends email or shows explicit “copy reminder text” fallback if email not configured; failure is visible. |
+| FR-007 | User can attach **external record links** to a run and/or step | P0 | Given a run, when user adds https URL + label, then link is stored and openable; non-URL rejected; **no file upload control exists**. |
+| FR-008 | User can **export CSV** of a live run | P0 | Given a run with steps, when user exports CSV, then file includes step title, owner, due, state, completed_at, exception note, link labels/URLs; values match UI. |
+| FR-009 | System records **missed-step history** | P0 | Given a step becomes overdue, when history is opened, then an event shows step, run/client, due_at, detected_at; event remains after step is later completed. |
+| FR-010 | Auth for single operator account | P0 | Given valid credentials/magic link, when user signs in, then only their workflows/runs are visible. |
+| FR-011 | Multiple saved workflows | P1 | Not required for six-week P0; single workflow sufficient if product enforces one. |
+| FR-012 | In-app teammate accounts / roles | P2 | Out of MVP; owners are fields only. |
+| FR-013 | Email provider polish (templates, digests) | P1 | Manual remind path may be minimal. |
+
+### 5.2 Non-functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria / validation method |
+|----|-------------|----------|-----------------------------------------|
+| NFR-001 | No sensitive file storage in product | P0 | Test: no upload endpoint or file-input in UI; only URL fields for records. |
+| NFR-002 | No bookkeeping/payment capture in MVP | P0 | Test: no invoice, ledger, or checkout flows; $29/mo not collected. |
+| NFR-003 | Cold vs warm traffic/pilot data kept separate | P0 | Analytics or spreadsheet cohort field `source=cold|warm`; reports never sum conversion without split. |
+| NFR-004 | Solo-operable cost | P1 | Hosting + email within founder budget; no multi-service enterprise stack required. |
+| NFR-005 | Desktop web usable | P0 | Primary flows completable at 1280×800 without horizontal breakage on main tables. |
+| NFR-006 | Basic data isolation | P0 | User A cannot read User B workflow/run by ID guessing (authz check on all run/workflow routes). |
+
+### 5.3 Tracking / analytics events
+
+| Event | When | Properties |
+|-------|------|------------|
+| workflow_created | Workflow saved | source_cohort |
+| run_started | Live run created | source_cohort, step_count |
+| step_state_changed | complete/exception/overdue | state, had_owner |
+| reminder_manual | Remind clicked | channel, success |
+| csv_exported | Export | step_count |
+| miss_history_viewed | History opened | miss_count |
+
+---
+
+## 6. UX & content notes
+
+### 6.1 Screens / pages (IA)
+
+- Sign-in
+- Home: workflow + active runs list (simple)
+- Workflow editor (steps, owners, due rules)
+- Live run board/detail (states, links, actions)
+- Missed-step history (filter by run)
+- CSV export action (on run)
+- Account / cohort note for founder (internal)
+
+### 6.2 Critical empty / error states
+
+- **No workflow yet:** CTA “Create your onboarding workflow”
+- **Workflow missing owners:** block “Start run” with list of incomplete steps
+- **No runs:** empty state explains one live client run
+- **Reminder without email:** inline error + copy-to-clipboard message body
+- **Invalid link:** URL validation error
+- **Overdue badge:** visible without opening history
+
+### 6.3 Key copy
+
+- Onboarding: “Own every client-start step—without another portal or file dump.”
+- Primary CTA: “Start live run”
+- Empty state: “Define steps once. Run them per client with owners and due dates.”
+- Pricing: **do not claim $29/mo validated**; if shown later, label as planned price.
+
+---
+
+## 7. Data & integrations
+
+### 7.1 Core concepts / entities
+
+| Entity | Purpose | Key fields (conceptual) |
+|--------|---------|-------------------------|
+| User | Operator account | id, email, source_cohort (cold/warm/other) |
+| Workflow | Reusable template | id, user_id, name, steps[] |
+| WorkflowStep | Template step | id, title, order, default_owner, due_rule |
+| Run | Live client instance | id, workflow_id, client_label, status, started_at |
+| RunStep | Instantiated step | owner, due_at, state, completed_at, exception_note |
+| ExternalLink | Outbound record | label, url, parent (run or run_step) |
+| ReminderEvent | Manual remind audit | run_step_id, at, result |
+| MissEvent | Missed-step history | run_step_id, due_at, detected_at, resolved_at? |
+
+### 7.2 Integrations
+
+| System | Purpose | MVP? | Notes |
+|--------|---------|------|-------|
+| Email (transactional) | Manual reminders | Y if cheap; else clipboard fallback | No CRM connector |
+| Auth (email magic link or password) | Account access | Y | Solo |
+| Stripe / payments | Billing | **N** | $29/mo hypothesis only |
+| File storage / e-sign / books | — | **N** | Explicit non-goals |
+| CSV | Export only | Y | Generated download, not external sync |
+
+### 7.3 Permissions & roles
+
+Single-user ownership of all data. Owner fields are **not** enterprise RBAC. No client roles.
+
+### 7.4 Data boundaries
+
+| In product | Out of product (link only / never store) |
+|------------|------------------------------------------|
+| Workflow definitions, run state, owners, dues, exceptions, miss history, URL links, CSV snapshots at export | Sensitive files, credentials vaults, invoices, bank data, full CRM records, portal content |
+| Cohort labels for evidence hygiene | Merged cold+warm vanity metrics |
+
+---
+
+## 8. Edge cases & risks
+
+| Item | Impact | Mitigation |
+|------|--------|------------|
+| Owner is free-text / not a user | Reminders weak | Allow email string; clipboard fallback |
+| Due rule too complex | Build slip | Only start+offset or manual due on run start |
+| Pilots expect file upload | Support burden / scope creep | Hard non-goal; link-only UX copy |
+| Warm/cold pooled metrics | False confidence | NFR-003; separate dashboards |
+| $29 treated as validated | Bad pricing decision | Evidence handoff; no paywall in MVP |
+| Miss history performance | Noise | Per-run list first; no global analytics product |
+| Solo six-week overrun | Incomplete P0 | Vertical slice first (M1) |
+
+**Support burden:** Manual reminder + “how do I attach files?” will generate questions—answer with links-only policy.
+
+**Open product questions**
+
+1. Exact due_rule primitives (offset from run start vs per-step manual dates only)?  
+2. Email send vs clipboard-only for v1 reminders?  
+3. One workflow hard-cap vs allow many but market “one path”?  
+4. When to run a real payment test post-pilot?
+
+---
+
+## 9. Milestones (indie delivery) — six weeks
+
+| Milestone | Week | Outcome | Exit criteria |
+|-----------|------|---------|---------------|
+| **M0 Spike** | 1 | Auth + data model + empty shells | User can sign in; create workflow row; no polish |
+| **M1 Vertical slice** | 2–3 | **First vertical slice (build this first):** one workflow → start one run → set owners/dues → complete one step → see state | Happy path demoable without CSV/history/remind |
+| **M2 P0 complete** | 4–5 | Exceptions, manual remind, links, CSV, miss history | All P0 FRs FR-001–010 + NFR-001/002/003/005/006 pass checklist |
+| **M3 Pilot** | 6 | Two pilot volunteers on real or realistic client start | Activation metrics; feedback log; kill/pivot review |
+
+**Suggested first build slice (M1):**  
+Workflow with 3 hard-coded-capable steps → Start run “Acme” → Owner + due on each RunStep → Mark complete → Persist reload. No CSV, no email, no history until slice is solid.
+
+**Build vs buy:** Buy auth + hosted DB + transactional email; build domain model and UI yourself. Do not build connectors or AI.
+
+---
+
+## 10. Launch & feedback
+
+- **Beta audience:** Two pilot volunteers from smoke; keep **cold vs warm** tags on accounts. Do not mix conversion math (cold 27/300 ≈ 9%; warm 12/40 = 30%—report separately).
+- **Feedback channel:** Short weekly call or shared note: activation blockers, missing ownership cases, pressure for files/portals.
+- **Kill / pivot triggers:**
+  - Neither pilot starts a live run by end of week 6 → **hold build expansion**; re-interview.
+  - Both pilots insist MVP is useless without portals/files/books → **reshape** or stop; do not bolt those on under same PRD.
+  - No step completion in real work (only tour clicks) → product not activated; improve JTBD or kill.
+  - Payment: **no kill on $29** yet—untested hypothesis only.
+
+---
+
+## 11. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Build six-week solo web MVP: one ownership-aware onboarding workflow + one live run with owners/due states, complete/exception, manual reminders, external links, CSV, missed-step history; exclude portals, files, bookkeeping, migration, connectors, AI, mobile, enterprise roles, compliance scope |
+| Evidence classes | observed experiment; assumption |
+| Supported claims | Cold smoke produced 27 signups from 300 visits and two pilot volunteers; warm traffic produced 12 signups from 40 visits and must be reported separately from cold; discovery intent includes explicit owners, reusable steps, external record links, and CSV; sensitive file storage and bookkeeping are separate concerns; no payment was requested in smoke |
+| Still unproven | Willingness to pay $29/month; retention after first run; that pilots will complete real client onboarding in-product; that manual reminders and miss history are sufficient without automation; long-term solo support load; due-rule design fit |
+| Contradictions / exclusions | Do not treat warm and cold conversion as one rate; do not upgrade signups or pilot volunteers into validated payment or retention; $29/month is hypothesis only; excluded from v1: portals, file storage, bookkeeping, migration, connectors, AI, mobile, enterprise roles, compliance-as-scope |
+| Source anchors | Cold smoke 27/300 + 2 pilots; warm smoke 12/40; user discovery constraints (owners, reusable steps, links, CSV); P0 list FR-001–FR-009; non-goals §1.4; NFR-001–003 |
+| Next validation | Owner: founder. Action: run M3 with both pilots on one real or realistic client run each; accept if both activate (workflow + live run + ≥1 owned step closed) and ≥1 miss-history or CSV use; kill/pivot if neither starts a live run or both block on excluded file/portal/books scope |
+
+Requirements may be necessary for a build without being market-validated. Smoke interest supports a build decision for a narrow pilot MVP; it does not support a paid-retention claim.
+
+---
+
+## 12. Appendix
+
+### 12.1 Source materials used
+
+- User request: ownership-aware client-onboarding runbook; six-week solo MVP
+- Smoke: cold 27/300, 2 pilots; warm 12/40 (separate)
+- Discovery: owners, reusable steps, external links, CSV; files/books separate
+- Pricing: no payment asked; $29/mo hypothesis
+- P0 / exclusion lists as specified
+
+### 12.2 Assumptions log
+
+| ID | Assumption | Impact if wrong |
+|----|------------|-----------------|
+| A-001 | Desktop web is enough for agency ops | Need responsive priority earlier |
+| A-002 | Owner as name/email field beats multi-seat auth for pilots | Teammates cannot self-serve updates |
+| A-003 | Manual email or clipboard remind is acceptable | Pilots demand automation → P1 pressure |
+| A-004 | Simple due offsets are enough | Calendar integration demand |
+| A-005 | Two pilots can represent activation learning | Need more pilots before pricing test |
+
+### 12.3 Glossary
+
+| Term | Definition |
+|------|------------|
+| Workflow | Reusable ordered step template |
+| Live run | Client-specific instantiation of a workflow |
+| Owner | Named person responsible for a step (field, not RBAC role) |
+| Exception | Terminal non-success close with reason |
+| Missed-step history | Append-oriented log of overdue (and late close) events |
+| External record link | URL pointing to system of record outside this product |
+
+### 12.4 Rejected ideas
+
+- Client portal for checklist completion  
+- In-app file vault  
+- QuickBooks/Xero-style bookkeeping  
+- Zapier/native CRM connectors  
+- AI step suggestions  
+- $29 paywall as MVP gate  
+- Merged cold+warm “success rate” storytelling  
+
+---
+
+### Postscript (not part of the formal PRD body)
+
+**Confirm explicitly**
+
+1. Owner model: free-text email labels only vs invite-based accounts in week 5–6.  
+2. Reminder channel: email provider in MVP vs clipboard-only.  
+3. Hard cap to a single workflow row for P0 vs allowing many quietly.
+
+**Best next implementation slices**
+
+1. M1 vertical slice: workflow → run → owner/due → complete (persist).  
+2. Exception + overdue state machine + miss events.  
+3. Links + CSV + manual remind; then pilot.
+
+**Market-validate?**  
+Not required before M1 if pilots already volunteered; **do** re-validate before any payment or expansion into files/portals. Smoke is observed experiment only—keep $29 and retention in assumption until a payment test.

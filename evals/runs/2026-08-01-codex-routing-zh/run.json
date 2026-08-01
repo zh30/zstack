@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "routing",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "workspace": "separate initialized disposable Git repository with no zstack files",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "maxTurns": 1,
+    "stopStatus": "completed with CLI exit 0",
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSearch": false,
+    "apps": false
+  },
+  "runs": [
+    {
+      "id": "zh-market-public",
+      "case": "zh-market-public",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-market-public.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-discovery-plan",
+      "case": "zh-discovery-plan",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-discovery-plan.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-landing-waitlist",
+      "case": "zh-landing-waitlist",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-landing-waitlist.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-prd-notes",
+      "case": "zh-prd-notes",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-prd-notes.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-seo-live-url",
+      "case": "zh-seo-live-url",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-seo-live-url.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-none-code-fix",
+      "case": "zh-none-code-fix",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-none-code-fix.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-none-architecture",
+      "case": "zh-none-architecture",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-none-architecture.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-boundary-real-interviews",
+      "case": "zh-boundary-real-interviews",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-boundary-real-interviews.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-boundary-public-research",
+      "case": "zh-boundary-public-research",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-boundary-public-research.txt",
+        "candidate-descriptions.txt"
+      ]
+    },
+    {
+      "id": "zh-boundary-waitlist-demand",
+      "case": "zh-boundary-waitlist-demand",
+      "phase": "zh-routing",
+      "grade": "pass",
+      "artifacts": [
+        "zh-boundary-waitlist-demand.txt",
+        "candidate-descriptions.txt"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "All 10 runs emitted state-database fallback messages during ephemeral-session startup and then completed normally.",
+    "All 10 runs emitted a Cloudflare MCP OAuth invalid_grant warning; no run invoked that connector or any MCP tool.",
+    "All 10 runs warned that installed skill descriptions were shortened to the two-percent skills context budget; the five candidate descriptions under test were supplied directly in each routing prompt."
+  ],
+  "archiveNote": "Final response files are verbatim --output-last-message outputs. Candidate descriptions retain the exact shared inputs. Runner logs were excluded because they contain ephemeral session identifiers and machine-local paths."
+}

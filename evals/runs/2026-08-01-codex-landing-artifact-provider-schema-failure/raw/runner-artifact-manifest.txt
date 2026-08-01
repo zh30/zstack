@@ -1,0 +1,8 @@
+sha256                                                            bytes  path
+7cc7be6b90b92641115a80c73e999934af051c1536977cfdcd489646b0b7acf3     2595  artifacts/smoke-complete-pack/README.md
+c32217a3e9d97fea687cdb73cc49ce9fcea1fa39cb640072a1f0dc1c6f80a707     2928  artifacts/smoke-complete-pack/landing/functions/api/waitlist.js
+908867e2ea25cf40ef892f3d21f315033f30a5cf1abc4fbe038db37fdb0b43de    15124  artifacts/smoke-complete-pack/landing/index.html
+7e76aff0a3f5b6ff838a4da97c833ac1ac080724b8e0910ecf8ca30eeb4dba3e   118386  artifacts/smoke-complete-pack/landing/og-card.png
+beae14a6e78a3f3ed3676a3ca26a4d96376df6a33262cc3b1c08f36c85fd38dc     1286  artifacts/smoke-complete-pack/landing/og-card.svg
+a5c96ace8f1719b9ede53f26f4b2a3f6214d09dfbc90ff232d9ec6ab0c109564      917  artifacts/smoke-complete-pack/measurement-template.csv
+e4444ce292eb9a386a5b51d3fe30a840cb07a44ca696a56a9bcd36ab652b3204    26416  artifacts/smoke-complete-pack/smoke-test-plan.md

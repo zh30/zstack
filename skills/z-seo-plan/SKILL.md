@@ -1,19 +1,10 @@
 ---
 name: z-seo-plan
 description: >-
-  SEO execution expert for independent developers: from a PRD, live URL, or
-  project page code, research real search demand, pick primary and supporting
-  keywords, map intent and page targets, and deliver an actionable SEO plan
-  with on-page, technical, and content notes. Use when asked for SEO, keyword
-  research, 关键词, 搜索优化, SEO 方案, ranking plan, or /z-seo-plan.
-license: MIT
-metadata:
-  author: henry
-  tags:
-    - indie
-    - seo
-    - growth
-    - keywords
+  Use when an independent developer asks for SEO, keyword research, ranking,
+  关键词, 搜索优化, or an SEO plan for a PRD, live URL, or page code.
+  Researches demand and intent, maps primary and supporting terms to pages, and
+  specifies on-page, technical, and content actions.
 ---
 
 # SEO Plan
@@ -33,13 +24,6 @@ founder can implement without an agency.
 
 If none of the three is usable, ask for at least one. Prefer proceeding with
 partial inputs and labeling assumptions over stalling.
-
-## When to use
-
-- Need keywords and an SEO plan before or after launch
-- Have a PRD and want search demand language for landing / blog / docs
-- Audit or re-focus an existing site’s targeting
-- User asks 主打词 / 长尾词 / SEO 注意事项 / 怎么做 SEO
 
 ## When not to use
 
@@ -64,6 +48,11 @@ call that out explicitly).
    bands** (High / Med / Low demand *as evidenced*) and cite what you saw
    (autocomplete, SERP density, forum repetition, Google Trends direction if
    available). Never fake exact monthly volumes.
+   If a user requests a large list with unsupported exact metrics, do **not**
+   replace it with an equally large list of guessed bands. Explain the evidence
+   limit, request the minimum product/market inputs, and narrow the first
+   deliverable to **one primary cluster, 2–4 secondary terms, and 5–10 mapped
+   long-tails**. Expand only after that cluster earns evidence.
 3. **Intent first.** Every recommended term gets an intent label.
 4. **Indie realism.** Prefer winnable long-tail and problem-language over
    head terms owned by Amazon/Wikipedia/giants — unless evidence shows a gap.
@@ -71,12 +60,30 @@ call that out explicitly).
 6. **White-hat only.** No doorway pages, hidden text, purchased links, spam.
 7. **Tools vary by host.** Use web search, page fetch/browse, code read, and
    public keyword/SERP tools when available. Mark channels `blocked` if not.
+8. **Evidence does not upgrade on handoff.** Search demand supports a search
+   opportunity, not product-market fit, payment demand, or retention; preserve
+   upstream assumptions and experiment limits.
+9. **The handoff is a fixed interface.** End the plan with exactly one
+   two-column, seven-row Evidence handoff table headed `Field | Value` using
+   these exact labels: `Current decision`,
+   `Evidence classes`, `Supported claims`, `Still unproven`, `Contradictions /
+   exclusions`, `Source anchors`, and `Next validation`. The class cell may
+   contain only applicable names from `primary behavior`, `observed experiment`,
+   `secondary public`, `search signal`, and `assumption`; put research limits
+   and metric confidence in the other fields. Include a class only when
+   supplied inputs or actual results in this plan belong to it; planned SERP
+   research, GSC collection, or publishing does not make that class current.
+   Never leave the class cell empty. With no usable search evidence, use
+   `assumption` and keep demand, difficulty, ranking, and traffic unproven.
 
 ---
 
 ## Expert workflow
 
 ### Phase 0 — Business & content inventory
+
+Read `references/workflow-cheatsheet.md` for seed, intent, demand, difficulty,
+and cannibalization heuristics before building the inventory.
 
 From PRD / URL / code, extract:
 
@@ -128,8 +135,9 @@ Record **keyword cards**:
 - suggested_url_or_page:
 ```
 
-Aim for a researched set, not hundreds of noise terms: typically
-**1 primary cluster + 3–7 secondary + 8–20 long-tail**.
+Aim for a researched set, not hundreds of noise terms. The first decision slice
+is **1 primary cluster + 2–4 secondary + 5–10 mapped long-tail**. Expand toward
+8–20 long-tails only after the first slice is prioritized and evidence-backed.
 
 ### Phase 2 — Cluster & prioritize
 
@@ -221,6 +229,9 @@ Define **success metrics** an indie can see:
 
 Use `references/seo-plan-template.md`.  
 Pass `references/quality-bar.md` before delivery.
+
+Do not merge risks and Evidence handoff into free text or rename its rows; keep
+the fixed table even when every result-dependent value is still unproven.
 
 **Delivery**
 

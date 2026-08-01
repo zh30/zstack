@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: The request is a pre-build waitlist smoke test with traffic and explicit continue/kill thresholds, which matches this skill.

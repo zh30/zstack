@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: It covers recruiting real users and Mom Test–style interviews focused on past behavior.

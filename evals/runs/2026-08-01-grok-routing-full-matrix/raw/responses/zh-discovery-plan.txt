@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: 需求是招募真实用户并设计不诱导的访谈提纲、追问最近一次实际处理与成本，与客户发现/用户访谈技能完全匹配。

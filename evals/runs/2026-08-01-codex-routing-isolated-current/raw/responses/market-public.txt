@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: The request explicitly asks for public community and competitor research culminating in an evidence-based go, narrow, or stop recommendation.

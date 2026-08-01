@@ -1,0 +1,105 @@
+I'll pull the debrief template and Mom Test rules next so the note is scored against the skill's required structure.Mode: **debrief**
+
+This note is almost all soft signal: a demo compliment, a future-pay promise, and a leading hypothetical. It does **not** support G1/G2/G3. Below is the structured debrief (not written to disk per your instruction). **Evidence limit:** only the pasted sentence was available—no transcript, role, date, or past-behavior detail.
+
+---
+
+# Interview 01 — sparse-demo-praise
+
+| Field | Value |
+|-------|--------|
+| **Date** | Unknown (not in note) |
+| **Interviewee** | Unknown role / anonymized |
+| **ICP fit** | unknown |
+| **Source** | unknown |
+| **Channel recruited** | unknown |
+| **Duration** | unknown |
+| **Founder pitch leakage (0–5)** | **5** — demo + feature framing drove the whole exchange |
+
+## 1. Context
+
+Founder ran a **demo** and discussed a **feature**. The note records only reactions to the product (praise, likely pay, “would save time”), not the interviewee’s life, workflow, or recent incidents. Meta fields (who, when, warm/cold, how recruited) are missing.
+
+## 2. Past incidents (G1)
+
+| Incident | When (approx) | What happened | Frequency signal | Cost |
+|----------|---------------|---------------|------------------|------|
+| — | — | None captured | None | None |
+
+No “last time…”, trigger, frequency, or time/money/emotion cost.
+
+## 3. Current solutions & money/time (G2)
+
+| Solution | Type | Cost signal | Satisfaction |
+|----------|------|-------------|--------------|
+| — | — | None | None |
+
+No named tools, hacks, freelancers, invoices, or hours already spent.
+
+## 4. Switch signals (G3)
+
+- **Barriers:** Not discussed  
+- **Prior failed switches:** Not discussed  
+- **Decision process:** Not discussed (budget owner, approval, “what if nothing changes”)  
+- **“Would probably pay”** = polite future intent after a pitch — **not** switching evidence  
+
+## 5. Verbatim quotes
+
+From founder note (paraphrase-level; not true transcript):
+
+> “They said my demo was great”  
+> “they would probably pay”  
+> [Founder asked whether the feature would save them time] → “yes”
+
+## 6. Mom Test audit
+
+| Issue | Example from talk | Better next time |
+|-------|-------------------|------------------|
+| **Compliments ≠ demand** | “Demo was great” | Ignore praise; ask for a concrete recent story before any product talk |
+| **Future promise** | “Would probably pay” | “What do you pay for this today?” / “What did you last try?” |
+| **Leading + hypothetical** | “Would the feature save you time?” → yes | “Walk me through last week—where did time go on this problem?” |
+| **Pitch-first / demo-first** | Entire note is about the demo & feature | Open with their workflow; 30–60s product only at the end, if at all |
+| **No past behavior** | Zero incidents/tools/costs | “Tell me about the last time this broke. What did you do?” |
+
+**Recovery lines for next chat:**
+
+- “Thanks—ignore the demo for a minute. When was the last time this actually blocked you?”  
+- “Before any feature: how do you handle that today, and what does that cost?”
+
+## 7. Gate deltas
+
+| Gate | support / neutral / contradict | Why (1 line) |
+|------|--------------------------------|--------------|
+| G1 Pain | **neutral** | No recent story, frequency, or cost—only agreement that a feature “would save time” |
+| G2 Spend | **neutral** | No current spend/workaround; “probably pay” is hypothetical |
+| G3 Switch | **neutral** (soft lean **contradict** for *credible* switch) | Post-demo enthusiasm without prior search, failed alts, or decision process |
+
+None of the gates move to **support**. Do not treat this as a positive validation datapoint.
+
+## 8. Follow-ups
+
+- **People to contact:** Unknown—get a referral only after real stories  
+- **Facts to verify (must re-ask or re-interview):**  
+  1. Role, ICP fit, warm/cold  
+  2. Last 1–2 concrete incidents (when, what, how often)  
+  3. Current tools/process and time or money cost  
+  4. Who decides budget; what they already paid for  
+  5. What happens if nothing changes in 6–12 months  
+
+**Do not pad.** Thin notes stay thin until past-behavior detail exists.
+
+## Coach verdict
+
+This conversation was **demo validation theater**, not Mom Test discovery. Celebrate honesty of the note; **discount the outcome**. Book (or re-run) interviews that start in **their past week**, not your feature set. Target remains **5–15** real interviews with ≥50% cold/warm-but-not-friends ICP before any strong claim.
+
+---
+
+| Field | Value |
+|-------|-------|
+| Current decision | Continue discovery — this note does not support build or pay claims; reshape the next interview to past behavior only |
+| Evidence classes | assumption |
+| Supported claims | None from concrete past behavior; only that a demo drew polite praise and affirmative answers to leading questions |
+| Still unproven | Real/frequent pain (G1); existing spend or costly workarounds (G2); credible willingness or ability to switch (G3); ICP fit; who buys |
+| Contradictions / exclusions | “Demo was great” (compliment); “would probably pay” (future promise); “would save time → yes” (leading hypothetical after pitch); missing interviewee meta and all hard data |
+| Source anchors | Pasted note only: “demo was great”; “would probably pay”; founder asked if feature would save time → “yes” |
+| Next validation | One re-interview or new ICP talk with zero demo until end; success = ≥1 dated incident + named current solution + cost; fail = only compliments/hypotheticals again |

@@ -1,0 +1,2 @@
+selection: none
+reason: 请求是修 TypeScript 单元测试并跑测试，与所列获客/落地页/市场/SEO/PRD 技能均无关。

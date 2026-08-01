@@ -1,0 +1,150 @@
+# Metrics guide — z-landing-smoke
+
+## Contents
+
+- [Funnel](#funnel)
+- [Directional benchmarks](#what-good-roughly-looks-like-directional-only)
+- [Sample size humility](#sample-size-humility)
+- [Email engagement](#email-engagement)
+- [Conversion integrity](#conversion-integrity)
+- [Attribution integrity](#attribution-integrity)
+- [Paid intent hierarchy](#paid-intent-hierarchy-strongest-last)
+- [Kill criteria examples](#kill-criteria-examples-adapt)
+
+## Funnel
+
+```text
+Impression / click from channel
+  → Landing view
+    → CTA click
+      → Email / pre-order submit
+        → Welcome open / reply / pay
+```
+
+## What “good” roughly looks like (directional only)
+
+These are **not laws**. Cold Reddit ≠ warm DM.
+
+| Context | Visitor → email | Notes |
+|---------|-----------------|-------|
+| Warm / intent traffic | often higher (10%+ possible) | DM, niche community that asked for tool |
+| Mixed social | often mid-single to low teens % | depends on ICP fit |
+| Cold broad ads | can be 1–5% | watch cost per email |
+| Pre-order on cold traffic | usually rare | any prepaid is strong signal |
+
+**Better than rate alone:**
+
+- 20 emails with thoughtful “I’d pay for X” replies  
+  beats  
+- 200 silent signups from giveaway hunters  
+
+## Sample size humility
+
+- &lt; 50 qualified visits → treat rates as **unstable**.  
+- Prefer hitting a **minimum visit + conversion count** before kill decisions.  
+- If traffic is impossible to get, the distribution thesis failed — different problem than product thesis.
+
+## Email engagement
+
+- Treat opens as a **diagnostic**, not a demand verdict; privacy features and
+  email clients make them noisy.
+- Compare against the founder's own provider and traffic-source baseline rather
+  than a universal percentage.
+- Zero apparent engagement may mean deliverability or weak subject/copy; check
+  operations before killing the idea.
+- Replies, qualified answers, bookings, and payments are stronger than opens.
+
+## Conversion integrity
+
+- Define one source of truth for a successful email conversion before launch.
+- Increment the conversion only after the provider confirms acceptance. Invalid,
+  rejected, duplicate, or merely attempted submissions do not count.
+- A native cross-origin form often cannot prove success in its local submit
+  handler. In that case, use the provider's confirmed subscriber record for the
+  conversion count; optionally name the client-side signal `attempt_waitlist`,
+  but never report it as `submit_waitlist` or as visitor-to-email conversion.
+- The same boundary applies to visible UX. Do not replace the form with “You’re
+  on the list” after a timeout or submit attempt. Show confirmed-success copy
+  only after a provider-signed or server-validated callback/redirect. A query
+  parameter, URL hash, cookie, `localStorage`, or `sessionStorage` value that the
+  browser can set is not provider confirmation. On a static page without a
+  verifiable callback, leave confirmed UX on the provider page; locally
+  acknowledge only that the submission was sent and tell the user to check the
+  inbox.
+- If custom validation is used, prevent invalid submissions explicitly. Test one
+  valid and one invalid submission before buying traffic.
+
+## Attribution integrity
+
+Source-specific decisions require the numerator and denominator to use the same
+traffic class. Pageviews grouped by UTM plus one undifferentiated provider
+subscriber total cannot produce source-specific conversion rates.
+
+- Preserve UTMs or a derived traffic class in provider-supported subscriber
+  metadata, or use distinct provider-native forms/tags for each source class.
+- Verify with a real valid submission that the source value appears on the
+  provider-confirmed subscriber record.
+- Map only pre-registered exact source/campaign combinations to decision lanes.
+  Preserve missing or unknown combinations as `unattributed`; exclude them from
+  lane CVR rather than assigning them to a convenient default.
+- Never infer subscriber source from aggregate timing or allocate a total across
+  channels. If attribution is unavailable, report only the defensible aggregate
+  and fix capture before applying source-specific thresholds.
+
+Provider diagnostics must not create a second data leak. Never log raw provider
+response bodies, authorization material, submitted email addresses, or free-text
+answers. A bounded category, HTTP status, and non-PII request id are sufficient.
+Validate the intake before reading fields: require the exact JSON media type,
+cap bytes from the actual request stream rather than trusting `Content-Length`,
+and reject malformed JSON plus `null`, array, or scalar roots through the same
+bounded 4xx shape. Put an explicit deadline around the provider fetch so a
+stalled upstream becomes a finite availability category instead of an
+unhandled request or indefinite pending state. Exception text is not a category:
+never return, log, or emit `error.message`, a stack/cause, or a raw error object.
+Map each trusted control-flow branch to one hard-coded allow-listed label, even
+when the exception originates in a helper intended to throw only known values.
+
+Analytics is also an external log sink. Map the landing query through the exact
+registered attribution allow-list before analytics loads, then emit only
+bounded canonical values such as `decision_lane`, registered placement, and
+variant. Never copy raw query strings, full URLs, URL fragments/hashes,
+arbitrary UTM/referrer values, email addresses, form text, or provider content
+into event properties or pageview URLs. Remove query and fragment before
+analytics initializes. If local anchor navigation must be restored, accept only
+a finite registered anchor after the pageview boundary and keep it out of every
+analytics payload. Unknown input becomes `unattributed` with its raw value
+discarded. Recompute the lane on the server for the provider record; client
+analytics properties are not a conversion-authority boundary.
+
+An unverified analytics integration is offline, not merely mislabeled. Keep the
+script URL, event API, domain, and material privacy behavior behind explicit
+`VERIFY_*` values and skip external script creation while any required value is
+unresolved. An example hostname does not prevent a request and therefore is not
+a launch gate. A local queue/no-op shim is acceptable only while it emits no
+network traffic.
+
+Named-provider mappings are evidence, not boilerplate. Verify the current
+official endpoint, authentication, success response, and whether attribution
+fields accept names, IDs, slugs, or structured metadata. Record the source URL
+and date. When that lookup is unavailable, use an explicit launch-blocking
+`VERIFY_*` placeholder and prove it with a provider-accepted test record before
+traffic.
+
+## Paid intent hierarchy (strongest last)
+
+1. Page view  
+2. CTA click  
+3. Email submit  
+4. Qualifying form answer  
+5. Reply with use case  
+6. Calendar book  
+7. Pre-order / deposit  
+
+Climb this ladder before writing a large app.
+
+## Kill criteria examples (adapt)
+
+- After **200+** ICP-ish visits and **&lt; 1–2%** email CVR across 2 copy variants → reshape offer.  
+- Strong CVR but **zero** replies after follow-up → interview before building.  
+- **Any** organic prepay or credible “invoice me” request → prioritize learning
+  from that buyer and testing a paid slice; one event is a lead, not proof of scale.

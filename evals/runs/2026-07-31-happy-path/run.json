@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex",
+    "version": null
+  },
+  "provenance": {
+    "status": "partial",
+    "gaps": [
+      "The host version, model, permission mode, turn limit, subagent availability, and stop status were not recorded."
+    ]
+  },
+  "executionDefaults": {
+    "model": null,
+    "workspace": "independent clean-context Codex subagent session",
+    "permissions": null,
+    "webSearch": false,
+    "subagents": null,
+    "maxTurns": null,
+    "stopStatus": null
+  },
+  "runs": [
+    {
+      "id": "market-evidence-packet",
+      "case": "market-evidence-packet",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["market-evidence-packet.md"]
+    },
+    {
+      "id": "discovery-five-interviews",
+      "case": "discovery-five-interviews",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["discovery-five-interviews.md"]
+    },
+    {
+      "id": "smoke-complete-pack",
+      "case": "smoke-complete-pack",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["landing-complete-smoke-pack.md"]
+    },
+    {
+      "id": "prd-evidence-rich-mvp",
+      "case": "prd-evidence-rich-mvp",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["prd-evidence-rich-mvp.md"]
+    },
+    {
+      "id": "seo-supplied-search-notes",
+      "case": "seo-supplied-search-notes",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["seo-supplied-search-notes.md"]
+    }
+  ],
+  "runnerIncidents": []
+}

@@ -1,0 +1,2 @@
+selection: z-write-prd
+reason: The user wants a vague, all-P0 product spec rewritten into a decision-ready MVP PRD a solo developer can build from.

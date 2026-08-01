@@ -1,0 +1,2 @@
+selection: z-write-prd
+reason: The request explicitly asks to rewrite a vague product spec into a decision-ready PRD with prioritized, solo-developer-buildable scope.

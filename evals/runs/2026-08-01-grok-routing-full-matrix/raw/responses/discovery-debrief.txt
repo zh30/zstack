@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: The request is to debrief completed customer interviews for Mom Test signals (leading questions, past behavior, spend, switch evidence), which matches this skill’s debrief and synthesis use case.

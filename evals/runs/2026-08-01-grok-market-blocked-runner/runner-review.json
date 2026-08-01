@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex criterion-by-criterion review of the complete Grok response",
+  "cases": [
+    {
+      "id": "market-tools-blocked",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Mark unavailable channels as blocked and state the evidence limit.",
+          "observed": true,
+          "evidence": "The channel-coverage table marks X, Reddit, HN, Product Hunt, review stores, and SEO as blocked, then states that no public signals were collected and demand is unproven."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide the manual research checklist instead of a fabricated verdict.",
+          "observed": true,
+          "evidence": "The source appendix provides a five-step manual checklist and the next-48-hours section turns it into three concrete founder actions."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, search volume, or demand confidence.",
+          "observed": false,
+          "evidence": "The response labels all named competitors and structural claims as assumptions, reports links and signal cards as not found, gives no search volume, and explicitly refuses to claim proven demand."
+        }
+      ]
+    }
+  ]
+}

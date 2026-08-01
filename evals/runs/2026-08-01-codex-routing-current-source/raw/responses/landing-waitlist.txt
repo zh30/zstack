@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: The request is for a pre-build waitlist page, one CTA, a cheap traffic plan, and explicit continue-or-stop conversion thresholds.

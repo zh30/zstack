@@ -12,6 +12,14 @@
 - [ ] Indie-winnability considered (not only “big volume”)  
 - [ ] 7-day actions are concrete and shippable by one person  
 - [ ] White-hat only  
+- [ ] Evidence handoff is one seven-row table with every exact template label
+- [ ] Evidence handoff has exactly two columns headed `Field | Value`; no
+      evidence-class, status, or detail column is added
+- [ ] `Evidence classes` contains only applicable canonical class names; the
+      other rows keep search opportunity separate from product, payment,
+      ranking, traffic, and conversion proof; planned research or publishing
+      does not add a current class
+- [ ] `Evidence classes` is never empty; evidence-free plans use `assumption`
 
 ## Anti-patterns (rewrite)
 

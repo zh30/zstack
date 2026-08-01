@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "workspace sandbox; Read, Write, and Edit tools only; writes limited by prompt and post-run audit to artifacts/; permission mode bypassPermissions",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "timeoutSecondsPerCase": 900,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "artifact",
+    "requestedModel": "grok-4.5",
+    "sessionPersistence": false,
+    "maxTurnsPerCase": 8,
+    "ambientAgentSkillsMayBeDiscovered": true
+  },
+  "runs": [
+    {
+      "id": "before-fix-smoke-complete-pack",
+      "case": "smoke-complete-pack",
+      "phase": "before-fix",
+      "grade": "fail",
+      "exitStatus": 0,
+      "elapsedSeconds": 210.802,
+      "stopStatus": "end_turn",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "artifacts/smoke-complete-pack/smoke-pack.md"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-complete-pack.txt",
+        "responses/smoke-complete-pack.txt",
+        "runner-artifact-manifest.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md",
+        "artifacts/smoke-complete-pack/landing/index.html",
+        "artifacts/smoke-complete-pack/smoke-pack.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 5,
+      "totalCostUsd": 0.1931528,
+      "tokenUsage": {
+        "input_tokens": 50536,
+        "cache_read_input_tokens": 22016,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 14246,
+        "reasoning_tokens": 933,
+        "total_tokens": 86798
+      }
+    }
+  ],
+  "runnerIncidents": [
+    "smoke-complete-pack: Grok wrote 5495 private stderr bytes.",
+    "smoke-complete-pack: Grok attempted MCP startup despite the MCP tool exclusion."
+  ],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

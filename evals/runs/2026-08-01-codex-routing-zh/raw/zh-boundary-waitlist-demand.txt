@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: 请求明确需要用等待名单、少量真实流量及预设成功和叫停阈值进行需求烟雾测试。

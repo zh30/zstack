@@ -1,0 +1,22 @@
+I'll load the skill's reference templates next so the package matches the required structure.Creating the full smoke pack and a deployable landing page under `artifacts/`.## Deliverables
+
+| Artifact | Purpose |
+|----------|---------|
+| `artifacts/smoke-pack.md` | Full 10-day protocol: hypothesis, source-specific thresholds (warm never pooled with cold), decision rules, English copy + meta/OG + 3 headlines, form/events/UTMs, day calendar ($150 ad cap), non-build scope, Evidence handoff |
+| `artifacts/landing/index.html` | Deployable single-page waitlist (Cloudflare Pages–ready) with one CTA **Join the early-access waitlist**, planned **from $9/month**, honest unbuilt stage, Buttondown form + UTM/`traffic_class` fields, Plausible events (`view_landing`, `click_cta`, `attempt_waitlist`, `submit_waitlist` only on `?status=subscribed`) |
+
+## Remaining external setup
+
+Replace placeholders and wire credentials (not done in this run):
+
+- `BUTTONDOWN_USERNAME`, `PLAUSIBLE_DOMAIN`, `YOUR_DOMAIN`, `hello@YOUR_DOMAIN`
+- Cloudflare Pages deploy of `artifacts/landing/`
+- One valid + one invalid submit test; confirm Buttondown keeps `traffic_class` / UTMs before traffic
+- Ad accounts for ≤ **$150** paid
+
+**Evidence limit:** no live web/browser traffic was run here — conversion results stay `TBD after test` in the handoff.
+
+### Do today
+1. Wire placeholders → deploy Pages  
+2. Verify attribution + success redirect  
+3. Start warm DMs and cold calendar as **separate** dashboard rows

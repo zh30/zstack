@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "host": "Codex CLI",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "medium",
+  "sandbox": "workspace-write",
+  "approvalPolicy": "never",
+  "ephemeralSession": true,
+  "promptTransport": "generated prompt through stdin",
+  "skillSource": "exact copied source snapshots",
+  "executionMode": "artifact",
+  "artifactCapture": true,
+  "webSearch": false,
+  "subagents": false,
+  "jobs": 1,
+  "cases": [
+    "smoke-complete-pack"
+  ],
+  "dryRun": false,
+  "grading": "not performed by runner",
+  "ignoreUserConfig": true,
+  "ignoreRules": true,
+  "disabledFeatures": [
+    "multi_agent",
+    "multi_agent_v2",
+    "browser_use",
+    "in_app_browser",
+    "computer_use",
+    "apps",
+    "skill_search"
+  ],
+  "writeBoundary": "artifacts/ only; audited after execution"
+}

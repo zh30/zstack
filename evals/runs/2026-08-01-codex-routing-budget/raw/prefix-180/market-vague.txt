@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: It directly evaluates demand, competitors, objections, and a viable entry wedge before building.

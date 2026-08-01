@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: 无法触达客户，需用公开社区与竞品证据判断是否值得深入用户研究，正对公开市场验证。

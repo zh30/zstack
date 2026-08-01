@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClientTabs — One-click client tab workspaces for support agents</title>
+  <meta name="description" content="Restore every client’s Chrome tabs in one click. Built for hands-on support agents at small SaaS teams. Join the early-access waitlist. Planned pricing from $9/month." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://YOURDOMAIN/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOURDOMAIN/" />
+  <meta property="og:title" content="ClientTabs — Restore client tab workspaces in one click" />
+  <meta property="og:description" content="Support agents juggle clients all day. ClientTabs is a Chrome extension (in development) that restores each client’s tab workspace in one click. Join the early-access waitlist. From $9/month planned." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ClientTabs — Restore client tab workspaces in one click" />
+  <meta name="twitter:description" content="Support agents juggle clients all day. ClientTabs is a Chrome extension (in development) that restores each client’s tab workspace in one click. Join the early-access waitlist. From $9/month planned." />
+
+  <!--
+    Plausible: replace YOUR_PLAUSIBLE_DOMAIN with your site domain as registered in Plausible.
+    Goals to create in Plausible: cta_click, waitlist_attempt
+    Do NOT fire a “success conversion” goal from the submit handler — confirmed signups live in Buttondown.
+  -->
+  <script defer data-domain="YOUR_PLAUSIBLE_DOMAIN" src="https://plausible.io/js/script.tagged-events.js"></script>
+  <script>
+    window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #121a2b;
+      --surface-2: #1a2438;
+      --text: #eef2ff;
+      --muted: #a8b3c7;
+      --faint: #7b879c;
+      --accent: #5b8cff;
+      --accent-hover: #7aa3ff;
+      --border: #2a3650;
+      --warn-bg: #1c2436;
+      --radius: 12px;
+      --max: 720px;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 17px;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-hover); }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(11, 18, 32, 0.92);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      border: 0;
+      border-radius: 999px;
+      padding: 0.7rem 1.15rem;
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: #0b1220;
+      background: var(--accent);
+    }
+    .btn:hover { background: var(--accent-hover); color: #0b1220; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent-hover);
+      background: transparent;
+    }
+    .btn-block { width: 100%; }
+
+    /* Hero */
+    .hero {
+      padding: 2.75rem 0 2rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.85rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 1rem;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 1.25rem;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .chip {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+    }
+    .chip strong { color: var(--text); font-weight: 600; }
+    .honesty {
+      font-size: 0.92rem;
+      color: var(--faint);
+      margin: 0 0 1.5rem;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid var(--border);
+      background: var(--warn-bg);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    /* Form card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .card .hint {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+    .field { margin-bottom: 0.9rem; }
+    input[type="email"],
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text);
+      padding: 0.7rem 0.8rem;
+      font: inherit;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    textarea { min-height: 72px; resize: vertical; }
+    .consent {
+      font-size: 0.82rem;
+      color: var(--faint);
+      margin: 0 0 1rem;
+    }
+    .form-note {
+      margin: 0.75rem 0 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: none;
+    }
+    .form-note.is-visible { display: block; }
+    .form-note.is-error { color: #ffb4b4; }
+
+    /* Sections */
+    section {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+    h2 {
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+    }
+    h3 {
+      font-size: 1.02rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+    .muted { color: var(--muted); }
+    ul.clean {
+      margin: 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+    }
+    ul.clean li { margin-bottom: 0.55rem; }
+    ol.steps {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+    ol.steps li { margin-bottom: 0.75rem; }
+    ol.steps strong { color: var(--text); }
+
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .split { grid-template-columns: 1fr 1fr; }
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+    }
+    .panel h3 { margin-top: 0; }
+    .panel ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+    .panel li { margin-bottom: 0.4rem; }
+
+    .founder {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .founder strong { color: var(--text); }
+
+    details.faq {
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+    }
+    details.faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq summary::after {
+      content: "+";
+      float: right;
+      color: var(--faint);
+      font-weight: 400;
+    }
+    details.faq[open] summary::after { content: "–"; }
+    details.faq p {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .final {
+      text-align: center;
+    }
+    .final .lead { max-width: 36rem; margin-inline: auto  auto; margin-bottom: 1.25rem; }
+
+    footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--border);
+      color: var(--faint);
+      font-size: 0.85rem;
+    }
+    footer p { margin: 0 0 0.45rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="logo" href="#">ClientTabs</a>
+      <a class="btn" href="#waitlist" data-cta="nav">Join the early-access waitlist</a>
+    </header>
+
+    <main>
+      <section class="hero" style="border-top: 0; padding-top: 2.5rem;">
+        <p class="eyebrow">Chrome extension for support agents · In development</p>
+        <h1>One-click restore for every client’s tab workspace</h1>
+        <p class="lead">
+          Hands-on support agents at small SaaS teams jump between accounts all day.
+          ClientTabs saves a named set of tabs per client—and restores that full context
+          in one click when the next ticket hits.
+        </p>
+        <div class="chips">
+          <span class="chip"><strong>Planned pricing from $9/month</strong></span>
+          <span class="chip">Unbuilt · demand test</span>
+          <span class="chip">US small SaaS support</span>
+        </div>
+        <p class="honesty">
+          Unbuilt on purpose—we’re validating demand with real agents before shipping the extension.
+          No testimonials, no logos, no invented user counts, and no firm ship date.
+        </p>
+
+        <div class="card" id="waitlist">
+          <h2>Join the early-access waitlist</h2>
+          <p class="hint">
+            One CTA. Work email preferred. We’ll only email early-access updates—unsubscribe anytime.
+          </p>
+
+          <!--
+            Replace YOUR_BUTTONDOWN_USERNAME before deploy.
+            Conversion source of truth = Buttondown confirmed subscriber (tag + metadata), not this UI.
+            After submit we only acknowledge that the submission was sent.
+          -->
+          <form
+            id="waitlist-form"
+            class="waitlist-form"
+            action="https://buttondown.com/api/emails/embed-subscribe/YOUR_BUTTONDOWN_USERNAME"
+            method="post"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="field">
+              <label for="email">Work email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="you@company.com"
+              />
+            </div>
+
+            <div class="field">
+              <label for="pain">Biggest tab-switching pain today? <span class="muted">(optional)</span></label>
+              <textarea
+                id="pain"
+                name="metadata__pain"
+                maxlength="500"
+                placeholder="e.g. Rebuilding admin + billing tabs after every client switch"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label for="company_size">Company size <span class="muted">(optional)</span></label>
+              <select id="company_size" name="metadata__company_size">
+                <option value="">Prefer not to say</option>
+                <option value="solo">Solo</option>
+                <option value="2-10">2–10</option>
+                <option value="11-50">11–50</option>
+                <option value="51+">51+</option>
+              </select>
+            </div>
+
+            <!-- Attribution: set by JS from UTMs. Required for source-specific thresholds. -->
+            <input type="hidden" name="tag" id="bd-tag" value="smoke-direct" />
+            <input type="hidden" name="metadata__utm_source" id="m-utm-source" value="" />
+            <input type="hidden" name="metadata__utm_medium" id="m-utm-medium" value="" />
+            <input type="hidden" name="metadata__utm_campaign" id="m-utm-campaign" value="" />
+            <input type="hidden" name="metadata__utm_content" id="m-utm-content" value="" />
+            <input type="hidden" name="metadata__traffic_class" id="m-traffic-class" value="direct" />
+            <input type="hidden" name="metadata__smoke_id" value="clienttabs_20260801" />
+
+            <p class="consent">
+              By submitting, you agree we may email you early-access updates about ClientTabs.
+              We never sell your address. Unsubscribe anytime.
+            </p>
+
+            <button class="btn btn-block" type="submit" data-cta="form">
+              Join the early-access waitlist
+            </button>
+            <p id="form-note" class="form-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="problem" aria-labelledby="problem-title">
+        <h2 id="problem-title">You don’t lose tickets. You lose context.</h2>
+        <ul class="clean">
+          <li>You close five tabs after Client A, open Client B, then rebuild A’s admin, billing, and status pages from memory.</li>
+          <li>Shared “start here” bookmarks ignore <em>this</em> client’s quirks—and still take a dozen clicks.</li>
+          <li>Switching costs compound across a shift: slower first responses, more “let me pull that up again,” more end-of-day fatigue.</li>
+        </ul>
+      </section>
+
+      <section id="how" aria-labelledby="how-title">
+        <h2 id="how-title">How it works</h2>
+        <ol class="steps">
+          <li><strong>Name a client workspace</strong> — e.g. “Acme — production” with the tabs you actually use.</li>
+          <li><strong>Save the set once</strong> — ClientTabs remembers that layout for next time.</li>
+          <li><strong>Restore in one click</strong> — when Acme writes in, open their workspace instead of hunting URLs.</li>
+        </ol>
+        <p class="muted" style="margin-top: 1rem;">
+          No AI magic pitch. No “second brain.” Just client-specific tab context, restored fast.
+        </p>
+      </section>
+
+      <section id="who" aria-labelledby="who-title">
+        <h2 id="who-title">Who it’s for</h2>
+        <div class="split">
+          <div class="panel">
+            <h3>For</h3>
+            <ul>
+              <li>Hands-on support, CS, or success agents who live in Chrome across many customer accounts</li>
+              <li>Small US SaaS teams (roughly 5–50) where agents own full ticket context</li>
+              <li>People who already keep informal tab rituals, bookmark folders, or “don’t close these” windows</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Not for</h3>
+            <ul>
+              <li>Enterprise IT programs shopping a full digital-employee platform</li>
+              <li>Teams that only need a generic session manager with no client naming</li>
+              <li>Anyone expecting a live Chrome Web Store install today—this page is a demand test</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="proof" aria-labelledby="proof-title">
+        <h2 id="proof-title">Honest stage</h2>
+        <div class="founder">
+          <p style="margin: 0;">
+            <strong>Founder note.</strong>
+            I’m testing whether support agents want one-click client workspaces badly enough to join an
+            early-access list before code ships. If you do, your email and one sentence of pain are the
+            most useful signal. There are no testimonials, partner logos, or user counts here—because
+            we don’t have them yet, and we won’t invent them.
+          </p>
+        </div>
+      </section>
+
+      <section id="offer" aria-labelledby="offer-title">
+        <h2 id="offer-title">Early access offer</h2>
+        <ul class="clean">
+          <li><strong style="color: var(--text);">Now:</strong> a place on the early-access list and short product updates.</li>
+          <li><strong style="color: var(--text);">Price signal:</strong> planned pricing from <strong style="color: var(--text);">$9/month</strong> (subject to change; you’ll hear before any charge).</li>
+          <li><strong style="color: var(--text);">Later:</strong> access when a thin first build can save and restore named client tab sets—no firm ship date on this page.</li>
+          <li><strong style="color: var(--text);">Not included:</strong> spam, selling your email, or a fake “live product” story.</li>
+        </ul>
+        <p style="margin-top: 1.25rem;">
+          <a class="btn" href="#waitlist" data-cta="offer">Join the early-access waitlist</a>
+        </p>
+      </section>
+
+      <section id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">FAQ</h2>
+
+        <details class="faq">
+          <summary>Is ClientTabs live?</summary>
+          <p>No. It is an unbuilt Chrome extension. This page tests whether the problem is real enough to build.</p>
+        </details>
+        <details class="faq">
+          <summary>When will founding users get access?</summary>
+          <p>When a thin first build can save and restore named client tab sets. We will not publish a firm ship date on this page.</p>
+        </details>
+        <details class="faq">
+          <summary>How is my email used?</summary>
+          <p>Early-access updates and occasional questions about your workflow. Stored in Buttondown. Never sold. Unsubscribe anytime.</p>
+        </details>
+        <details class="faq">
+          <summary>What’s the price?</summary>
+          <p>Planned pricing starts from $9/month. Final founding terms may differ slightly; we won’t charge without a clear offer.</p>
+        </details>
+        <details class="faq">
+          <summary>Who is this not for?</summary>
+          <p>Teams that need broad browser session tools without per-client workspaces, or buyers who only want a finished store listing today.</p>
+        </details>
+        <details class="faq">
+          <summary>What happens after I join?</summary>
+          <p>You’ll get a welcome message if the address is accepted. If volume allows, we may ask one follow-up about your tab workflow. No obligation.</p>
+        </details>
+      </section>
+
+      <section class="final" id="final" aria-labelledby="final-title">
+        <h2 id="final-title">Restore client context without rebuilding tabs</h2>
+        <p class="lead">
+          If you support multiple SaaS customers in Chrome every day, join the list.
+          One CTA. Honest stage. Planned from $9/month.
+        </p>
+        <a class="btn" href="#waitlist" data-cta="final">Join the early-access waitlist</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built as a demand test for ClientTabs.</p>
+      <p>Contact: <a href="mailto:hello@YOURDOMAIN">hello@YOURDOMAIN</a></p>
+      <p>Privacy: we use your email only for early-access updates. No selling lists. Analytics via privacy-friendly Plausible.</p>
+      <p>© 2026 ClientTabs</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var utmSource = params.get("utm_source") || "";
+      var utmMedium = (params.get("utm_medium") || "").toLowerCase();
+      var utmCampaign = params.get("utm_campaign") || "";
+      var utmContent = params.get("utm_content") || "";
+
+      function mapTrafficClass(medium, source) {
+        if (medium === "warm") return "warm";
+        if (medium === "cpc" || medium === "paid" || medium === "ppc") return "ads";
+        if (medium === "social" || medium === "community") return "social";
+        // Fallback hints if medium omitted
+        var s = (source || "").toLowerCase();
+        if (s === "dm" || s === "email_personal" || s === "friend" || s === "slack_dm") return "warm";
+        if (s === "google" || s === "meta" || s === "reddit_ads" || s === "x_ads") return "ads";
+        if (s === "twitter" || s === "reddit" || s === "indiehackers" || s === "linkedin" || s === "slack_community") return "social";
+        return "direct";
+      }
+
+      var trafficClass = mapTrafficClass(utmMedium, utmSource);
+      var tag = "smoke-" + trafficClass;
+
+      var el = function (id) { return document.getElementById(id); };
+      el("m-utm-source").value = utmSource;
+      el("m-utm-medium").value = utmMedium;
+      el("m-utm-campaign").value = utmCampaign;
+      el("m-utm-content").value = utmContent;
+      el("m-traffic-class").value = trafficClass;
+      el("bd-tag").value = tag;
+
+      // Persist class for same-session internal navigations without query string
+      try {
+        sessionStorage.setItem("ct_traffic_class", trafficClass);
+        sessionStorage.setItem("ct_utm_source", utmSource);
+        sessionStorage.setItem("ct_utm_medium", utmMedium);
+        sessionStorage.setItem("ct_utm_campaign", utmCampaign);
+        sessionStorage.setItem("ct_utm_content", utmContent);
+      } catch (e) { /* ignore */ }
+
+      if (!utmSource && !utmMedium) {
+        try {
+          var storedClass = sessionStorage.getItem("ct_traffic_class");
+          if (storedClass) {
+            trafficClass = storedClass;
+            el("m-traffic-class").value = trafficClass;
+            el("bd-tag").value = "smoke-" + trafficClass;
+            el("m-utm-source").value = sessionStorage.getItem("ct_utm_source") || "";
+            el("m-utm-medium").value = sessionStorage.getItem("ct_utm_medium") || "";
+            el("m-utm-campaign").value = sessionStorage.getItem("ct_utm_campaign") || "";
+            el("m-utm-content").value = sessionStorage.getItem("ct_utm_content") || "";
+          }
+        } catch (e2) { /* ignore */ }
+      }
+
+      function trackCta(place) {
+        if (typeof window.plausible === "function") {
+          window.plausible("cta_click", { props: { place: place || "unknown", traffic_class: trafficClass } });
+        }
+      }
+
+      document.querySelectorAll("[data-cta]").forEach(function (node) {
+        node.addEventListener("click", function () {
+          trackCta(node.getAttribute("data-cta"));
+        });
+      });
+
+      var form = document.getElementById("waitlist-form");
+      var note = document.getElementById("form-note");
+
+      form.addEventListener("submit", function () {
+        // Attempt only — not a confirmed conversion. SoT is Buttondown.
+        if (typeof window.plausible === "function") {
+          window.plausible("waitlist_attempt", { props: { traffic_class: trafficClass } });
+        }
+        note.textContent = "Submission sent — check your inbox if the address is accepted. Confirmed signups are verified on our list provider, not by this page alone.";
+        note.classList.add("is-visible");
+        note.classList.remove("is-error");
+      });
+    })();
+  </script>
+</body>
+</html>

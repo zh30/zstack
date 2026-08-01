@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: 请求涉及招募真实用户并设计聚焦既往行为、处理方式和实际成本的不诱导访谈。

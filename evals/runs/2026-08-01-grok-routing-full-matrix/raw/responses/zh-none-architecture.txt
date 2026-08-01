@@ -1,0 +1,2 @@
+selection: none
+reason: 请求是多租户计费的 D1 表与 Hono API 技术架构设计，与候选中的落地页、市场验证、SEO、PRD、用户访谈均不匹配。

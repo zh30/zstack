@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: It evaluates rough ideas using public community demand and competitor evidence before deeper research.

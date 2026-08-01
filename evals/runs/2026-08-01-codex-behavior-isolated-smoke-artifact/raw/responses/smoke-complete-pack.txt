@@ -1,0 +1,18 @@
+Created the complete 10-day smoke-test package:
+
+- `artifacts/smoke-test-plan.md` — copy, metrics, UTMs, traffic calendar, source-specific thresholds, and decision rules.
+- `artifacts/site/index.html` — deployable landing page.
+- `artifacts/site/og-card.png` — 1200×630 social image.
+- `artifacts/functions/api/waitlist.js` — Buttondown capture endpoint.
+- `artifacts/site/_headers` — Cloudflare security headers.
+- `artifacts/measurement-template.csv` — source-separated reporting sheet.
+- `artifacts/README.md` — deployment and launch instructions.
+
+Remaining external setup:
+
+1. Configure Cloudflare Pages and `BUTTONDOWN_API_KEY`.
+2. Replace domain/email placeholders.
+3. Configure Buttondown double opt-in and Plausible events.
+4. Run the attribution and submission preflight before activating the $150 campaign.
+
+No extension, billing, or product backend should be built yet. Web/browser access was unavailable, so provider APIs, rendering, community rules, ad inventory, and real demand results remain unverified.

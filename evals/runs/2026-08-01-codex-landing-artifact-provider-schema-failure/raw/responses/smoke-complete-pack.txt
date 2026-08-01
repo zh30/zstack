@@ -1,0 +1,18 @@
+Created the complete 10-day smoke-test package:
+
+- `artifacts/smoke-test-plan.md` — protocol, copy, UTMs, calendar, thresholds, email sequence, and decision rules
+- `artifacts/landing/index.html` — deployable landing page
+- `artifacts/landing/functions/api/waitlist.js` — Cloudflare/Buttondown integration
+- `artifacts/landing/og-card.png` — 1200×630 OG image
+- `artifacts/landing/og-card.svg` — editable OG source
+- `artifacts/measurement-template.csv` — source-separated results ledger
+- `artifacts/README.md` — deployment checklist
+
+Remaining external setup:
+
+1. Configure Buttondown double opt-in, tags, API credentials, and email sequence.
+2. Deploy through Cloudflare Pages, replace domain/email placeholders, and connect Plausible.
+3. Verify every UTM-to-Buttondown tag path before traffic.
+4. Obtain community permission and configure Reddit Ads with the $150 lifetime cap.
+
+Warm outreach and cold traffic remain strictly separated. No live traffic or provider evidence was available, and current Buttondown/Plausible contracts could not be web-verified; the package labels these limits instead of claiming results.

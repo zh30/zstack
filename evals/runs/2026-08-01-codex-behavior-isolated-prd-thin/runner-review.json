@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex manual criterion review, 2026-08-01",
+  "cases": [
+    {
+      "id": "prd-thin-input",
+      "skill": "z-write-prd",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/prd-thin-input.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask no more than five blocking questions or draft with labeled assumptions.",
+          "observed": true,
+          "evidence": "The PRD drafts from clearly labeled assumptions and asks only three implementation decisions at the end."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep one primary persona and job for the MVP.",
+          "observed": true,
+          "evidence": "It defines one multi-client freelancer persona and one brief-to-plan-to-update job for the MVP."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent user research, quotes, adoption numbers, or a large enterprise scope.",
+          "observed": false,
+          "evidence": "It states that no research exists, labels numeric targets as validation thresholds, excludes enterprise scope, and invents no quotes."
+        }
+      ]
+    }
+  ]
+}

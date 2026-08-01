@@ -1,0 +1,2 @@
+selection: z-write-prd
+reason: 请求把访谈摘要、竞品笔记与功能草稿整理为含范围、非目标、验收标准、风险与里程碑的可执行 MVP 产品需求文档，与 z-write-prd 描述完全匹配。

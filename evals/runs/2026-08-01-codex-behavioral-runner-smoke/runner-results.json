@@ -1,0 +1,13 @@
+[
+  {
+    "id": "market-tools-blocked",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 117.404,
+    "promptPath": "prompts/market-tools-blocked.txt",
+    "responsePath": "responses/market-tools-blocked.txt",
+    "logPath": "logs/market-tools-blocked.log",
+    "grade": null
+  }
+]

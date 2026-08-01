@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: The request explicitly asks to turn a PRD into an SEO keyword, intent, page, on-page, and technical plan.

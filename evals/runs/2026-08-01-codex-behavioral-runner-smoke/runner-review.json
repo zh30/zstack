@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex main-agent criterion review",
+  "cases": [
+    {
+      "id": "market-tools-blocked",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Mark unavailable channels as blocked and state the evidence limit.",
+          "observed": true,
+          "evidence": "The opening evidence limit lists unavailable research, and the channel table marks X, Reddit, HN, Product Hunt, Indie Hackers, reviews, and search as blocked."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide the manual research checklist instead of a fabricated verdict.",
+          "observed": true,
+          "evidence": "The verdict says demand is not proven, and a dedicated manual research checklist gives channels, queries, and disconfirming searches."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, search volume, or demand confidence.",
+          "observed": false,
+          "evidence": "The response contains no external links, quotes, or volume claims; it labels planning scores as assumptions and does not claim positive demand confidence."
+        }
+      ]
+    }
+  ]
+}

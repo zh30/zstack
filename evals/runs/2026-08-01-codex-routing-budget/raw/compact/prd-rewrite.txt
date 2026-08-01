@@ -1,0 +1,2 @@
+selection: z-write-prd
+reason: The request is to transform a vague feature-heavy spec into a scoped, decision-ready PRD for a solo developer.

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "prd-thin-input",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 149.534,
+    "timedOut": false,
+    "promptPath": "prompts/prd-thin-input.txt",
+    "responsePath": "responses/prd-thin-input.txt",
+    "logPath": "logs/prd-thin-input.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null
+  }
+]

@@ -1,0 +1,9 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' VERIFY_PLAUSIBLE_SCRIPT_ORIGIN; connect-src 'self' VERIFY_PLAUSIBLE_EVENT_ORIGIN; img-src 'self' data:; style-src 'self' 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'
+
+/og-contextdeck.svg
+  Cache-Control: public, max-age=86400

@@ -1,0 +1,2 @@
+selection: none
+reason: The request is about fixing a TypeScript unit test and running tests, which matches none of the product/validation candidate skills.

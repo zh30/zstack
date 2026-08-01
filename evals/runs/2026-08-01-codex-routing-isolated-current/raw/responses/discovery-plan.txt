@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: The request involves recruiting eight real users and conducting non-leading, past-behavior-focused interviews.

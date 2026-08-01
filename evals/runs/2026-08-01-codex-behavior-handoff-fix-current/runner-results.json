@@ -1,0 +1,52 @@
+[
+  {
+    "id": "discovery-sparse-debrief",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 60.245,
+    "timedOut": false,
+    "promptPath": "prompts/discovery-sparse-debrief.txt",
+    "responsePath": "responses/discovery-sparse-debrief.txt",
+    "logPath": "logs/discovery-sparse-debrief.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/discovery-sparse-debrief.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "smoke-mixed-traffic",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 60.232,
+    "timedOut": false,
+    "promptPath": "prompts/smoke-mixed-traffic.txt",
+    "responsePath": "responses/smoke-mixed-traffic.txt",
+    "logPath": "logs/smoke-mixed-traffic.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/smoke-mixed-traffic.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

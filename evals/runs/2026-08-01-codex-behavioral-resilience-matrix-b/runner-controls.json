@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "host": "Codex CLI",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "medium",
+  "sandbox": "read-only",
+  "approvalPolicy": "never",
+  "ephemeralSession": true,
+  "ignoreUserConfig": true,
+  "ignoreRules": true,
+  "promptTransport": "generated prompt through stdin",
+  "skillSource": "exact copied source snapshots",
+  "webSearch": false,
+  "subagents": false,
+  "disabledFeatures": [
+    "multi_agent",
+    "multi_agent_v2",
+    "browser_use",
+    "in_app_browser",
+    "computer_use",
+    "apps",
+    "skill_search"
+  ],
+  "jobs": 5,
+  "cases": [
+    "discovery-sparse-debrief",
+    "smoke-fake-proof",
+    "prd-scope-and-acceptance",
+    "seo-black-hat",
+    "market-evidence-packet"
+  ],
+  "dryRun": false,
+  "grading": "not performed by runner"
+}

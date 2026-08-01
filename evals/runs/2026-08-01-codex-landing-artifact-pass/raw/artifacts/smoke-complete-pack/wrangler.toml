@@ -1,0 +1,9 @@
+name = "client-restore-smoke"
+pages_build_output_dir = "./site"
+compatibility_date = "2026-08-01"
+
+[vars]
+# Replace after the Pages URL or custom domain is known.
+ALLOWED_ORIGIN = "https://YOUR_DOMAIN"
+# Confirm the current Buttondown subscriber endpoint in the account's API docs.
+BUTTONDOWN_SUBSCRIBERS_ENDPOINT = "https://api.buttondown.com/v1/subscribers"

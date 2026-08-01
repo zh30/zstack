@@ -1,0 +1,186 @@
+Mode: synthesize
+
+# Client-onboarding discovery synthesis
+
+Study snapshot: 5 interviews, 4 cold and 1 warm. The supplied summaries do not identify which participant was warm, so that bias cannot be attributed to a specific interview. No transcripts, dates, exact spending, interview questions, or verbatim quotes were provided. The role summaries below are therefore the complete source record.
+
+## Evidence audit
+
+| Interview | Behavioral evidence | Gate lean | Evidence limitations |
+|---|---|---|---|
+| Agency PM | Repeatedly spends 45 minutes copying across tools; pays for Zapier; abandoned a template because ownership was unclear; requested a real pilot | G1 support; G2 support; G3 partial support | Frequency and Zapier spend unknown. Pilot request is intent until they commit workflow, data, or time |
+| Consultant | Pays an assistant; identified migration as a barrier | G2 support; G3 caution | No recent incident, frequency, assistant cost, or explicit onboarding task confirmed |
+| Founder | No recent pain or spend; complimented the pitch | G1 contradict; G2 contradict; G3 neutral | Compliment is not demand and may indicate pitch leakage |
+| Bookkeeper | Experiences weekly failures; pays for VA labor; raised sensitive-file concerns | G1 strong support; G2 support; G3 caution | Failure mechanism, VA cost, and security requirements are unspecified |
+| Marketer | Uses free automation; has switched tools before; requires CSV | G1 weak/neutral; G2 weak support through effort but no monetary spend; G3 support | No pain frequency or recent failed onboarding incident supplied |
+
+Evidence hygiene:
+
+- The strongest signals are past behavior: manual copying, weekly failures, paid tools, paid labor, an abandoned workaround, and a previous tool switch.
+- The agency PM’s pilot request is useful commitment intent, but it is not yet observed adoption or payment.
+- The founder’s praise receives no demand weight.
+- No direct quotes can be reported.
+- The interview summaries do not reveal the questions asked, so leading questions and future-tense traps cannot be fully audited.
+- Pitch leakage occurred at least in the founder interview because the response included praise for the pitch. Leakage scores for the other interviews are unknown.
+- The sample meets the minimum synthesis threshold but is spread across four distinct professional contexts. It does not establish one broad, homogeneous client-onboarding market.
+
+## Segments observed
+
+| Segment | Participants | N | Interpretation |
+|---|---|---:|---|
+| Bleeding and paying cost | Agency PM, bookkeeper, consultant | 3 | Best recruiting pool, although the consultant needs a concrete recent-incident follow-up |
+| Bleeding, not paying | Marketer | 1 | Has automation and switching behavior, but monetary urgency and pain frequency remain unclear |
+| Polite only | Founder | 1 | Exclude from demand calculations unless later behavior contradicts this result |
+
+A more actionable behavioral segmentation is:
+
+- Primary wedge: agency teams coordinating client onboarding across multiple tools, with recurring manual transfer and ambiguous ownership.
+- Security-sensitive adjacent segment: bookkeeping operations with weekly failures and paid VA work.
+- Migration-sensitive adjacent segment: consultants already delegating the process.
+- Low-priority segment: users satisfied with free automation unless CSV portability is a blocking requirement.
+- Anti-ICP for now: founders without recent pain, workarounds, or spend.
+
+## Pain patterns — G1
+
+| Pattern | Observed frequency | Assessment |
+|---|---:|---|
+| Manual or delegated cross-tool work | 3/5 | Agency PM copies manually; consultant and bookkeeper pay labor, though their exact workflows need confirmation |
+| Recurring operational failure | 2/5 clearly supported | Agency PM reports repeated work; bookkeeper reports weekly failures |
+| Ownership ambiguity | 1/5 | Caused the agency PM to abandon a template; potentially a strong wedge, not yet a stable cross-sample pattern |
+| Data portability or migration friction | 2/5 | Consultant cited migration; marketer requires CSV |
+| Sensitive-file risk | 1/5 | Material for bookkeeping, but not yet shown across segments |
+| No active problem | 1/5 | Founder directly contradicts broad demand |
+
+Conclusion: pain is real for a plausible operational segment, but “client onboarding” is too broad as the working ICP.
+
+## Status quo and spend — G2
+
+| Existing response | Cost form | Evidenced gap |
+|---|---|---|
+| Zapier plus manual copying | Subscription and 45 minutes of labor per occurrence | Automation does not remove cross-tool coordination |
+| Paid assistant | Labor expense | Migration may prevent adoption of a replacement |
+| Paid VA | Labor expense plus operational risk | Weekly failures remain; sensitive files complicate automation |
+| Free automation | Setup and maintenance effort | CSV portability is required |
+| No workaround | No demonstrated cost | Founder is not presently a buyer |
+
+Three of five participants already pay money for tools or labor. The evidence does not establish amounts, budgets, or whether those costs are specifically attributable to client onboarding in every case.
+
+## Switch barriers and signals — G3
+
+| Signal or barrier | Evidence | Product implication |
+|---|---|---|
+| Requested pilot | Agency PM | Offer a real, manual-first pilot with an explicit commitment; do not count the request as conversion yet |
+| Abandoned alternative | Agency PM abandoned a template | Ownership and handoffs must be explicit, not merely configurable |
+| Prior switching | Marketer has switched tools | Credible switching behavior; CSV import/export is a likely prerequisite |
+| Migration burden | Consultant | Provide assisted migration and a reversible rollout |
+| Sensitive files | Bookkeeper | Security boundaries and data handling must be validated before targeting this segment |
+| No motivation to switch | Founder | Exclude inactive users from initial positioning |
+
+Switching behavior is plausible but not yet stable. Only the marketer has confirmed a past tool switch. The PM’s failed template and pilot request are positive signals, while migration and file sensitivity could block adoption.
+
+## Gate scores
+
+| Gate | Score | Confidence | Rationale |
+|---|---:|---|---|
+| G1 Pain | 4/5 | Medium | Repeated behavioral support from the agency PM and bookkeeper, with paid delegation suggesting further pain. One explicit counterexample and thin incident detail prevent a 5 |
+| G2 Spend | 4/5 | Medium | Zapier, assistant labor, and VA labor demonstrate existing cost across three participants. Exact amounts and budget ownership are missing |
+| G3 Switch | 3/5 | Low | Prior switching, an abandoned alternative, and pilot interest support a viable segment, but migration, security, and portability are material barriers. No completed pilot or purchase exists |
+
+The scores describe evidence strength; confidence remains lower because the inputs are summaries and the ICP is heterogeneous.
+
+## Decision
+
+Verdict: **Advance—but only to a narrow, commitment-bearing pilot and smoke test, not a broad product build.**
+
+The best-supported wedge is:
+
+> Client-onboarding operations for small agencies that repeatedly transfer client information across tools and need explicit ownership of every handoff.
+
+Why this wedge:
+
+- It contains the clearest quantified time cost.
+- It has current tool spend.
+- An alternative was already tried and abandoned.
+- There is a named organizational failure: unclear ownership.
+- The participant requested a real pilot.
+
+The bookkeeper segment should not be folded into the first pilot. Sensitive-file handling creates a materially different security and compliance problem. The consultant and marketer remain useful follow-up segments for migration and CSV validation.
+
+## Concrete downstream handoff
+
+### Immediate pilot
+
+Owner: founder.
+
+Participant: agency PM.
+
+Offer: a two-week, manual-first pilot covering one real client-onboarding workflow. Map the existing tools, assign an owner to every handoff, automate only the repeated transfers, and preserve a CSV export.
+
+Required commitment before calling it validated:
+
+- The PM supplies one live workflow and the necessary non-sensitive sample data.
+- The PM names the workflow owner and stakeholders.
+- The team uses the pilot for at least two real onboarding cases.
+- A follow-up review is booked before setup begins.
+- Ideally, collect a deposit or written agreement to pay if the agreed outcome is achieved.
+
+Success signal:
+
+- At least two real cases completed.
+- Manual copying falls materially below the reported 45 minutes per occurrence.
+- Ownership-related exceptions are visible and assigned.
+- The PM continues using it or agrees to pay after the trial.
+
+Failure signal:
+
+- The PM does not provide workflow/data access within seven days.
+- The pilot is used only with dummy data.
+- No second real onboarding occurs.
+- Migration or stakeholder coordination prevents activation.
+- The PM declines continued use or payment despite the workflow working.
+
+### Landing smoke test
+
+Use paraphrases only; no verbatim customer language was supplied.
+
+- Audience: agency PMs or operations leads managing client onboarding across multiple tools.
+- Core problem: repeated copying and unclear ownership during handoffs.
+- Promise to test: reduce repetitive transfer work while making every onboarding handoff accountable.
+- Single CTA: “Apply for a two-week onboarding workflow pilot.”
+- Form qualification: tools used, last onboarding date, time spent copying, failures in the last month, current automation spend, workflow owner, and willingness to provide a real case.
+- Advance threshold: 3 qualified pilot applications from 30 directly contacted cold agency PMs, with at least 2 agreeing to provide a live workflow.
+- Kill/reshape threshold: fewer than 2 qualified applications, or interest that produces no live-workflow commitment.
+
+### Thin-PRD boundary
+
+Include only:
+
+- A workflow map across existing tools.
+- Explicit owner and status for each handoff.
+- Minimal field transfer for one agency workflow.
+- CSV import/export.
+- Exception logging and manual recovery.
+- Assisted setup or migration.
+
+Non-goals until further evidence:
+
+- A universal onboarding platform for all professional services.
+- Bookkeeping or sensitive-file storage.
+- Fully self-serve migration.
+- Replacing every existing tool.
+- Advanced template libraries.
+- Broad integrations beyond those required by the pilot.
+
+### Next interview round
+
+Recruit five additional cold agency PMs or operations leads matching the wedge. Ask about the last completed onboarding, exact copying frequency, who owned each handoff, recent failures, current Zapier/tool spending, attempted fixes, and what happened after those attempts. Avoid showing the product until those stories are collected.
+
+| Field | Value |
+|---|---|
+| Current decision | Advance to a narrow agency-PM pilot and landing smoke test; do not green-light a broad build |
+| Evidence classes | primary behavior |
+| Supported claims | A plausible segment repeatedly performs cross-tool work; at least three participants bear tool or labor cost; ownership, migration, CSV portability, and sensitive-file handling can affect adoption |
+| Still unproven | Segment prevalence, exact spend, budget ownership, willingness to pay, successful migration, security acceptability, pilot activation, retention, and scalable acquisition |
+| Contradictions / exclusions | Founder had no recent pain or spend; compliments do not support demand. Bookkeeping has distinct sensitive-file requirements. Marketer has no demonstrated monetary spend. Consultant lacks a concrete recent incident in the supplied summary |
+| Source anchors | The five user-supplied role summaries: agency PM, consultant, founder, bookkeeper, and marketer. Summary-level evidence only; no transcripts or verbatim quotes |
+| Next validation | Founder runs the two-week agency PM pilot and contacts 30 cold agency PMs; advance only if the pilot handles two real onboardings and the smoke test yields at least 3 qualified applications, including 2 live-workflow commitments |

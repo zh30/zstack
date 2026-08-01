@@ -1,0 +1,120 @@
+I'll follow only the copied z-customer-discovery skill and read its instructions first.**Mode: setup** (refusal of simulated interviews as evidence)
+
+## Direct answer
+
+**I will not simulate ten customer interviews and treat them as a build decision.**
+
+Per customer-discovery (Mom Test) rules:
+
+- **Real discovery requires real humans.** Invented interviewees are not evidence.
+- **Past behavior > future promises.** “Persona X said they’d pay” from a chat role-play is worthless for G1–G3.
+- Explicit guardrail: *“Simulate N personas in chat and call it research” → refuse.*
+
+So: **there is no primary interview evidence yet.** I cannot honestly **Advance / Reshape / Park** from fabricated talks. Any “build / don’t build” from fake interviews would be vibes dressed as research.
+
+**Evidence limit this run:** no real interviews, no notes, no web/recruit tools, and you asked not to write files. Public market signal and live outreach are out of scope here unless you supply them.
+
+---
+
+## What *is* valid instead
+
+Use **setup** so you can run **10 real conversations**, then **debrief → synthesize** when N≥5 (ideally 10).
+
+You didn’t name the product. Assumptions below are **labeled**; replace them with your one-liner before outreach.
+
+| Field | Assumption (replace) |
+|-------|----------------------|
+| Product one-liner | *Keep private in interviews* — e.g. “tool that helps [role] do [job] faster/cheaper” |
+| Narrow ICP | Role + context + **trigger** (last time the pain happened) |
+| Anti-ICP | Friends who only compliment; people outside the job-to-be-done |
+| Target N | **10** (≥50% cold / not close friends-family) |
+| Geography / language | Match yours and your ICP’s |
+
+---
+
+## The three gates (what real interviews must answer)
+
+| Gate | Question | Strong evidence | Weak / fake |
+|------|----------|-----------------|-------------|
+| **G1 Pain** | Real & frequent? | Recent stories, triggers, workarounds, time/money/emotion cost | Hypotheticals, “sounds annoying” |
+| **G2 Spend** | Already paying cost for bad solutions? | Tools, freelancers, hours in sheets, risk taken | “I’d pay if it existed” |
+| **G3 Switch** | Switch credible? | Past switches, active search, budget owner, switching cost, cost of doing nothing | Polite enthusiasm after your pitch |
+
+Without G1–G3 from **primary** conversations, **do not green-light a large build.**
+
+---
+
+## Recruit plan (book first 3 this week)
+
+**Pipeline:** list 20–30 names → book 10–15 → complete 10.
+
+**Mix:** ≥5 cold ICP (communities, LinkedIn/X, customers of adjacent tools, warm intros to *their* peers). ≤5 warm is OK for practice, not for decision weight.
+
+**Screen (before full interview):**
+
+1. Have you hit [problem area] in the last 90 days?  
+2. What did you do about it last time?  
+3. Who owns budget/time if you change tools?
+
+**DM / email skeleton (adapt):**
+
+> I’m talking to [role] about how they handle [problem area] today—not selling. 25–30 min. Open to a call this week?
+
+No product pitch in the ask.
+
+---
+
+## Interview guide (25–40 min, Mom Test)
+
+**Open (no pitch):** “Walk me through the last time [trigger].”
+
+**Must-ask (past behavior):**
+
+1. What happened, step by step?  
+2. How often does that show up (last month / quarter)?  
+3. What did you try? Spreadsheets, tools, people, ignore it?  
+4. What did that cost (money, hours, stress, missed outcomes)?  
+5. Have you switched tools or vendors for this before? Why / why not?  
+6. If nothing changes for 12 months, what happens?
+
+**Avoid:** “Would you use…?”, “Would you pay $X?”, pitching early, leading “Isn’t X painful?”
+
+**Optional last 60s:** one-sentence concept only *after* stories; note reaction as **weak** unless they describe budget, timeline, or intro to a buyer.
+
+**After each call:** debrief with story timeline, costs, switch signals, gold quotes, Mom Test audit, G1/G2/G3 ∈ {support, neutral, contradict}.
+
+---
+
+## Decision rule (after real N, not simulation)
+
+| Verdict | When |
+|---------|------|
+| **Advance** | Enough G1–G3 support for smoke test and/or thin MVP |
+| **Reshape** | Pain real but ICP/wedge wrong |
+| **Park** | Weak primary evidence after honest N — stop building |
+
+**Now, with zero real interviews:**  
+**Current decision: Park build / do not build yet** — not “idea is bad,” but **unproven**. Simulation cannot upgrade this.
+
+---
+
+## Evidence handoff
+
+| Field | Content |
+|-------|---------|
+| **Current decision** | **Park** large build until ≥5–10 real ICP interviews (target 10); run setup + outreach only |
+| **Evidence classes** | `assumption` |
+| **Supported claims** | None from primary customer behavior in this session |
+| **Still unproven** | G1 pain frequency/severity; G2 existing spend/workarounds; G3 switch willingness and budget owner; ICP fit; willingness to pay |
+| **Contradictions / exclusions** | Simulated interviews are excluded as evidence by design |
+| **Source anchors** | Skill non-negotiables (no fabricated interviews); user request = simulate 10; no interview notes provided |
+| **Next validation** | Lock ICP + hypotheses → recruit 10 (≥50% cold) → debrief each → synthesize at N=5 and N=10; optional parallel: `z-landing-smoke` for behavior at scale, or `z-market-validate` for secondary public signal |
+
+---
+
+## Single next action
+
+**Do not build from simulated interviews.**  
+**This week:** name the product one-liner (private), write a 1-line ICP + trigger, list 15 people/channels, **book 3 calls**.
+
+If you paste **real** notes (or rough transcripts) for ≥5 interviews, switch to **debrief / synthesize** and score G1–G3 with a real **Advance / Reshape / Park** decision. If you only want desk research or a waitlist test, use market-validate or landing-smoke instead—not fake personas.

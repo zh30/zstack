@@ -1,0 +1,6 @@
+sha256                                                            bytes  path
+e343cc8fd7c586969c3aa8279d5bbb2f18c3ff2638472a705efec8e43e5cd59f     1369  artifacts/smoke-complete-pack/README.md
+7252a9b8a519559f32b5f5926bf1e266d2a27c3b37507cf5e383b4c06c05a7a4     4314  artifacts/smoke-complete-pack/landing/functions/api/waitlist.js
+cefbf9fba66e24248e985ca65e1b86d20c784fdaa2ce5b87fc8b2d775d3a81ca    14939  artifacts/smoke-complete-pack/landing/index.html
+5eef8fdf4b9da15afaea30a1959a0146648095d5c3668c9a07041576a4e6e580      483  artifacts/smoke-complete-pack/measurement-template.csv
+a090bfa8c0334078b24c060f4e49a4f383768c6d1f92104f073f83987acd0f5f    30336  artifacts/smoke-complete-pack/smoke-test-package.md

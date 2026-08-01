@@ -1,0 +1,10 @@
+sha256                                                            bytes  path
+9d07a6c67d757574de0e2a70084d9e3426324465aad31f03888e051824afda2b  226  prompts.md
+da24260a966e37680d40cf37fb2dd83d57cccb824a47aab393822ec7c71a2db4  402  raw/artifact-manifest.txt
+67f05b0be1526c8cba288504ede5e277b55bdc77b6d1d084d8048d72d1b75a91  1498  raw/candidate-descriptions.txt
+c1ccdf41163af5668d29bd7d433ea751e43a4efcfba1472293aee44f5e5607e0  1959  raw/prompts/zh-boundary-public-research.txt
+91da91442c38e4ffc5940f1047a9111eceddbcb89162e749a4f09b9d364bbc14  145  raw/responses/zh-boundary-public-research.txt
+8ac3f04b39565ffef154b0ce179720a484fabbf213fd4118701ffb8fc85c21bd  1521  run.json
+861c28bccc21fc6765b8ab4426b0001c7fcafcc6ddbba428ad0c189d6f8d09fe  702  runner-controls.json
+89c831884e97dfcd53bb3ccb19cf36c48b7033dcc80a4c3f3ed999d8a881c3b6  426  runner-results.json
+d2b543d36c31a43b1bdd8c6ec658f9082f14727752755d85c53bc268871eb6ae  1173  summary.md

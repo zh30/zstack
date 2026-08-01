@@ -1,0 +1,130 @@
+Mode: full
+
+I can’t simulate ten customers and treat invented answers as evidence. No real interviews, product description, target customer, or public research were provided, and web/subagents are unavailable. Therefore the defensible decision is:
+
+**Do not build the product yet.** This is a procedural **Park**, not evidence that the idea is bad. Run ten real interviews first, then decide.
+
+## What I need from you
+
+Reply with these five items so the interview plan can be tailored:
+
+1. Product idea in one sentence.
+2. Intended customer: role, industry, and situation.
+3. The specific problem or triggering event.
+4. Geography and interview language.
+5. Where you can reach potential customers.
+
+Until then, the following plan uses placeholders.
+
+## Ten-interview discovery plan
+
+Interview:
+
+- 7 cold target customers who are not friends, family, or existing supporters.
+- 3 warm or adjacent target customers.
+- Skip people who have never recently experienced `{problem trigger}`.
+- Build a list of 25–40 candidates, contact 15–25, and aim to book 10–15 to complete 10.
+
+Book the first three this week. Recruiting without a product pitch:
+
+> Hi {name} — I’m researching how {target customers} handle {problem area} today. I’m not selling anything on the call. I’d like to understand the last time this happened, what you did, and what it cost. Would you have 25 minutes this week?
+
+Screen candidates with:
+
+1. What is your role and involvement in `{workflow}`?
+2. When did you last encounter `{problem area}`?
+3. What did you use or do to handle it?
+
+## Interview guide
+
+Keep each conversation to 25–40 minutes. Do not explain the product until the final three minutes, if at all.
+
+Ask:
+
+- “Tell me about the last time `{trigger}` happened.”
+- “What led up to it?”
+- “What did you do next?”
+- “Who else was involved?”
+- “How often has this happened recently?”
+- “What did it cost in time, money, risk, or lost business?”
+- “How do you handle it today?”
+- “Which tools, people, spreadsheets, or workarounds are involved?”
+- “What have you already tried and abandoned?”
+- “What did those approaches cost?”
+- “Who owns the budget or decides whether the workflow changes?”
+- “Tell me about the last time you switched tools or processes.”
+- “Why did you switch, and what made it difficult?”
+- “What happens if this remains unchanged for another year?”
+- “Who else should I speak with?”
+
+Avoid:
+
+- “Would you use my product?”
+- “Is this a good idea?”
+- “Would you pay for it?”
+- “How much would you pay?”
+- Leading descriptions of how painful the problem ought to be.
+
+Record concrete incidents and behavior, not compliments.
+
+## What to capture after every interview
+
+For each conversation, record:
+
+- Interview number and date.
+- Participant role and relevant context.
+- Cold or warm recruitment source.
+- Most recent incident and approximate timing.
+- Frequency of the problem.
+- Named tools and workarounds.
+- Existing time or money cost.
+- Previously abandoned solutions.
+- Past switching behavior and barriers.
+- Budget owner.
+- Short verbatim quotations.
+- Whether the interview supports, contradicts, or is neutral on each gate.
+- Any leading questions, pitching, or future-tense questions you accidentally used.
+- Pitch leakage score from 0–5, where lower is better.
+
+## Decision gates
+
+After ten genuine interviews, segment participants into:
+
+- **Bleeding and paying:** frequent concrete pain plus existing expenditure of money, labor, or risk.
+- **Bleeding, not paying:** real pain but little action or cost.
+- **Polite only:** opinions, compliments, and hypothetical interest without relevant behavior.
+
+Score each gate from 1–5:
+
+- **G1 Pain:** repeated, recent incidents with meaningful frequency and consequences.
+- **G2 Spend:** existing money, labor, workarounds, or risk committed to solving it.
+- **G3 Switch:** evidence of active searching, previous switching, accessible budget, and manageable migration barriers.
+
+Use these decision rules:
+
+- **Advance to a smoke test or very thin MVP:** repeated independent behavioral evidence supports all three gates, with a clearly identifiable bleeding-and-paying segment. Do not interpret this as permission for a large build.
+- **Reshape:** pain is repeated, but spending or switching evidence points to a different customer, trigger, or narrower wedge.
+- **Park:** pain is rare or mild, interviewees take no meaningful action, or switching is structurally implausible.
+
+A practical success signal is at least four or five independent target customers describing closely related recent incidents, with several already paying a concrete cost and showing credible switching behavior. It is pattern evidence, not market sizing.
+
+## Current gate assessment
+
+| Gate | Score | Confidence | Current finding |
+|---|---:|---|---|
+| G1 Pain | Not scorable | None | No real customer incidents |
+| G2 Spend | Not scorable | None | No observed tools, labor, or expenditure |
+| G3 Switch | Not scorable | None | No switching history or constraints |
+| Overall | Park before build | High | There is currently no primary evidence on which to authorize a build |
+
+## Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Park — do not build yet; reopen after ten real interviews |
+| Evidence classes | assumption |
+| Supported claims | Only that the proposed product and customer evidence have not yet been supplied |
+| Still unproven | Target customer, pain frequency, present costs, willingness and ability to switch, payment, retention, and market scale |
+| Contradictions / exclusions | Simulated personas, invented quotations, compliments, and hypothetical purchase intent are excluded as discovery evidence |
+| Source anchors | The user request; N=0 completed interviews; no interview notes or external research available |
+| Next validation | Founder books three real target-customer interviews this week; continue to ten, then require recent incidents, current costs, and credible switching evidence before advancing |

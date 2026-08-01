@@ -1,0 +1,34 @@
+I can’t honestly provide exact monthly search volume and difficulty for 50 keywords without a data source. Those would be fabricated numbers. Keyword difficulty is also vendor-specific—not an objective universal metric.
+
+Evidence limits:
+
+- Ahrefs/SEMrush or equivalent: unavailable
+- Search Console: unavailable
+- Live SERP and public-web research: blocked for this run
+- Product, site, target market, and seed topic: not provided
+
+To create a defensible first keyword set, send:
+
+1. A live URL, PRD, or product description
+2. Target country and language
+3. Primary conversion goal, such as signup or purchase
+
+I’ll then narrow the first deliverable to:
+
+- 1 primary keyword
+- 2–4 secondary keywords
+- 5–10 mapped long-tail keywords
+- Intent and target page for every term
+- Demand and difficulty marked `unknown` until supported, or relative bands only when observable evidence justifies them
+
+For exact estimates, export the keywords from Google Keyword Planner, Ahrefs, Semrush, or another named provider and share the CSV. I can clean, cluster, prioritize, and map all 50 while preserving the provider, location, language, date, and metric definitions.
+
+| Field | Value |
+|---|---|
+| Current decision | Validate first |
+| Evidence classes | assumption |
+| Supported claims | Exact monthly volume and difficulty cannot be supported from the supplied inputs; difficulty depends on the provider’s methodology. |
+| Still unproven | Keyword demand, competition, rankings, traffic, conversion, payment, and retention |
+| Contradictions / exclusions | No fabricated metrics; no unsupported 50-keyword list or guessed demand bands |
+| Source anchors | User-reported lack of Ahrefs and Search Console; web and browser channels blocked for this run |
+| Next validation | User supplies product context and target locale—or a keyword-tool CSV—then the first evidence-backed cluster is prioritized. |

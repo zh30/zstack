@@ -5,8 +5,9 @@
 **语言：** [English](./README.md) · 中文（本文件）
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Validate](https://github.com/zh30/zstack/actions/workflows/validate.yml/badge.svg)](https://github.com/zh30/zstack/actions/workflows/validate.yml)
 [![Skills](https://img.shields.io/badge/skills-5-brightgreen)](./skills/)
-[![Hosts](https://img.shields.io/badge/hosts-Claude%20%7C%20Codex%20%7C%20Grok-black)](#兼容哪些-agent)
+[![Hosts](https://img.shields.io/badge/hosts-Claude%20%7C%20Codex%20%7C%20Grok-black)](./ARCHITECTURE.md#3-how-each-host-discovers-skills)
 
 ---
 
@@ -36,9 +37,10 @@
 
 可以把 **Skill** 理解成：**Agent 按需加载的作业手册**：
 
-1. 你输入 `/z-market-validate`，或用自然语言说出意图。  
-2. Agent 打开一份 `SKILL.md` —— 里面是步骤、清单、质量标准。  
-3. 它用平时的能力（搜索、改文件、跑命令）按手册执行。  
+1. 你用宿主语法选择 `z-market-validate`（Claude/Grok 用 `/`，Codex 用
+   `$`），或直接用自然语言说出意图。
+2. Agent 打开一份 `SKILL.md` —— 里面是步骤、清单、质量标准。
+3. 它用平时的能力（搜索、改文件、跑命令）按手册执行。
 4. 你得到的是**可重复的流程**，不是聊完就散的一次性对话。
 
 **给专业读者：** Skill 遵循常见的 Agent Skills 约定（YAML frontmatter 的 `name` / `description` + Markdown 正文）。一份源文件通过 symlink 安装到 Claude Code、Codex、Grok 兼容目录。发现路径、frontmatter 策略与安装模型见 [ARCHITECTURE.md](./ARCHITECTURE.md)。
@@ -115,13 +117,13 @@ Skill 可以串联使用。默认路径：
 
 所有 skill 以 **`z-` 前缀**命名，避免和机器上其他 skill 包撞名。
 
-| Skill | 命令 | 一句话（外行） | 更深层目标 |
+| Skill | Skill id | 一句话（外行） | 更深层目标 |
 |-------|------|----------------|------------|
-| [z-market-validate](./skills/z-market-validate/) | `/z-market-validate` | 「这想法值不值得花一周？」 | 多渠道需求扫描（X、Reddit、HN、PH…），正反证据，独立开发者适配度，30–90 天回报，切入 wedge |
-| [z-customer-discovery](./skills/z-customer-discovery/) | `/z-customer-discovery` | 「找 5–15 个真人聊，且别被恭维骗了」 | Mom Test 教练：招募、提纲、复盘、合成痛点 / 已有支出 / 切换意愿 |
-| [z-landing-smoke](./skills/z-landing-smoke/) | `/z-landing-smoke` | 「最便宜地看有没有人在乎」 | 英文落地页 + 等待列表/预售、引流计划、转化与止损线 |
-| [z-write-prd](./skills/z-write-prd/) | `/z-write-prd` | 「把笔记变成能开工的规格」 | 一人公司体量 PRD：问题、范围、需求 ID、验收标准、非目标、里程碑 |
-| [z-seo-plan](./skills/z-seo-plan/) | `/z-seo-plan` | 「到底该抢哪些搜索词？」 | 从 PRD/URL/代码做关键词研究、主词、页面地图、on-page/技术注意 — 禁止伪造搜索量 |
+| [z-market-validate](./skills/z-market-validate/) | `z-market-validate` | 「这想法值不值得花一周？」 | 多渠道需求扫描（X、Reddit、HN、PH…），正反证据，独立开发者适配度，30–90 天回报，切入 wedge |
+| [z-customer-discovery](./skills/z-customer-discovery/) | `z-customer-discovery` | 「找 5–15 个真人聊，且别被恭维骗了」 | Mom Test 教练：招募、提纲、复盘、合成痛点 / 已有支出 / 切换意愿 |
+| [z-landing-smoke](./skills/z-landing-smoke/) | `z-landing-smoke` | 「最便宜地看有没有人在乎」 | 英文落地页 + 等待列表/预售、引流计划、转化与止损线 |
+| [z-write-prd](./skills/z-write-prd/) | `z-write-prd` | 「把笔记变成能开工的规格」 | 一人公司体量 PRD：问题、范围、需求 ID、验收标准、非目标、里程碑 |
+| [z-seo-plan](./skills/z-seo-plan/) | `z-seo-plan` | 「到底该抢哪些搜索词？」 | 从 PRD/URL/代码做关键词研究、主词、页面地图、on-page/技术注意 — 禁止伪造搜索量 |
 
 每个 skill 带有 `references/`（模板、质检清单、手册）。完整方法论在那里；Agent 执行时会按指示去读。
 
@@ -131,41 +133,61 @@ Skill 可以串联使用。默认路径：
 
 ### 环境要求
 
-- macOS 或 Linux（默认 symlink 安装；Windows 需开发者模式或 pull 后重跑 setup）
+- macOS 或 Linux。Windows 请使用 WSL；原生 Windows 目前尚未测试。
 - [Git](https://git-scm.com/)
-- 至少一种：[Claude Code](https://docs.anthropic.com/en/docs/claude-code)、[OpenAI Codex CLI](https://github.com/openai/codex)、[Grok Build](https://x.ai)
+- 至少一种：[Claude Code](https://code.claude.com/docs/en/skills)、[OpenAI Codex](https://developers.openai.com/codex/skills)、[Grok Build](https://x.ai)
 - `bash`（安装与检查脚本）
+- 贡献测试、严格 YAML/证据校验及路由评测工具需要 Ruby 2.6+；基础安装与卸载仍
+  只依赖 Bash
 
 ### 安装
 
 ```bash
-git clone https://github.com/<your-org>/zstack.git ~/code/zstack
+git clone https://github.com/zh30/zstack.git ~/code/zstack
 cd ~/code/zstack
 ./scripts/setup.sh
 ./scripts/doctor.sh
 ```
 
-`setup.sh` 会把各个 skill 链接到：
+`doctor.sh` 默认会报告发现的全部问题。专注迭代时可用 `--source-only`
+跳过已安装链接检查，或用 `--fail-fast` 在首个错误处停止。
 
-| 宿主 | 默认目录 |
-|------|----------|
-| Agent Skills 中枢 | `~/.agents/skills/` |
-| Claude Code | `~/.claude/skills/` |
-| Codex | `~/.codex/skills/` |
-| Grok Build | 默认依赖对 agents/claude 的兼容扫描（`hosts/grok` 关闭） |
+`setup.sh` 默认只把 active skill 链接到当前必要的发现目录；旧版或专用
+兼容目录可通过 `--hosts` 显式启用：
+
+| Profile | 目录 | 默认 | 原因 |
+|---------|------|------|------|
+| Agent Skills 中枢 | `~/.agents/skills/` | 是 | 当前 Codex 用户目录；Grok 也会发现 |
+| Claude Code | `~/.claude/skills/` | 是 | Claude 用户目录；Grok 兼容扫描 |
+| 旧版 Codex | `~/.codex/skills/` | 否 | 旧版兼容：`./scripts/setup.sh --hosts codex` |
+| Grok 专用目录 | `~/.grok/skills/` | 否 | 显式可选：`./scripts/setup.sh --hosts grok` |
+
+显式 `--hosts` 会启用 optional profile；以后不带参数的默认运行不会改动
+该未选目录。
 
 在 `skills/` 里改文件，所有宿主立刻看到更新（symlink）。
+遇到冲突时，setup 会跳过并返回非零状态；传入 `--force` 才会把旧路径
+保存为带时间戳的备份。若随后创建链接失败，setup 会自动恢复原路径。
+全局链接与 `--project` 链接都会被记录，可安全清理：
+
+```bash
+./scripts/unlink.sh
+```
+
+卸载不会删除冲突备份或任何非符号链接内容。
+重复运行 setup 时，只会对账所选宿主目录：已变为 draft/deprecated、或不再
+允许该宿主的链接会被移除；未选择的宿主和其他 zstack clone 不受影响。
 
 ### 使用
 
-在 Agent 会话中：
+显式调用语法因宿主而异：
 
 ```text
-/z-market-validate
-我想做一个把会议纪要自动变成客户发票的工具，面向自由职业者。
+Claude / Grok: /z-market-validate
+Codex:         $z-market-validate
 ```
 
-或自然语言：
+自然语言在各宿主间可移植：
 
 ```text
 做客户发现 setup。ICP：独立设计顾问。痛点：每周客户报告。目标 10 场访谈。
@@ -181,11 +203,12 @@ cd ~/code/zstack
 │  skills/z-*/SKILL.md     │  ← 唯一真相源
 └────────────┬─────────────┘
              │  ./scripts/setup.sh  （符号链接）
-     ┌───────┼────────┐
-     ▼       ▼        ▼
- ~/.agents  ~/.claude ~/.codex
-     │       │
-     └───────┴──► Grok 也会扫描这些目录
+         ┌───────┴────────┐
+         ▼                ▼
+ ~/.agents/skills  ~/.claude/skills
+   Codex + Grok       Claude + Grok
+
+ 显式可选兼容目录：~/.codex/skills、~/.grok/skills
 ```
 
 **设计取舍（第一性原理）：**
@@ -196,7 +219,8 @@ cd ~/code/zstack
 | Symlink 安装 | 改一处、处处生效，无过期副本 |
 | `z-` 前缀 | 共享 skill 目录拥挤，命名空间防撞车 |
 | 只放原创 skill | 开源许可与质量口径一致 |
-| 默认不单独装 Grok 目录 | Grok 已读 `~/.agents` / `~/.claude` |
+| 默认只装当前目录 | Codex 使用 `~/.agents`，Claude 使用 `~/.claude`，Grok 会发现两者 |
+| 旧版目录显式启用 | 避免写入无效重复目录，同时保留旧版 Codex 与 Grok 专用目录兼容性 |
 | 证据优于感觉 | 强制反面检索、Mom Test、止损线 |
 
 更深： **[ARCHITECTURE.md](./ARCHITECTURE.md)** · 写作规范： **[docs/authoring.md](./docs/authoring.md)** · 仓库内 AI 协作规则： **[AGENTS.md](./AGENTS.md)**。
@@ -211,13 +235,32 @@ zstack/
 ├── README.zh-CN.md           # 中文（本文件）
 ├── ARCHITECTURE.md           # 多宿主架构
 ├── AGENTS.md                 # 改本仓库时的 Agent 规则
+├── CONTRIBUTING.md           # 贡献流程与质量门禁
 ├── catalog.yaml              # Skill 注册表
 ├── hosts/                    # 各 Agent 安装配置
+├── evals/
+│   ├── cases.yaml            # 行为回归提示与判定标准
+│   ├── routing.yaml          # 仅基于 description 的技能路由案例
+│   └── runs/                 # 按日期保存的干净上下文响应与评分
 ├── scripts/
 │   ├── setup.sh              # 安装 / 刷新链接
 │   ├── doctor.sh             # 校验 skill 与链接
+│   ├── test.sh               # 安装器与校验器集成测试
 │   ├── new-skill.sh          # 脚手架 z-* skill
-│   └── unlink.sh             # 仅移除 zstack 管理的链接
+│   ├── unlink.sh             # 仅移除 zstack 管理的链接
+│   ├── report-evidence-coverage.rb # 行为 / 路由 provenance 覆盖矩阵
+│   ├── run-behavioral-evals.rb # 共享的隔离行为 runner 核心
+│   ├── run-{codex,claude,grok}-behavioral-evals.rb # 宿主入口
+│   ├── archive-behavioral-run.rb # 共享的已复核归档核心
+│   ├── archive-{codex,claude,grok}-behavioral-run.rb # 宿主入口
+│   ├── run-routing-evals.rb # 共享的隔离 description 路由核心
+│   ├── run-{codex,claude,grok}-routing-evals.rb # 各宿主入口
+│   ├── archive-routing-run.rb # 共享的路由原子归档核心
+│   ├── archive-{codex,claude,grok}-routing-run.rb # 各宿主归档入口
+│   ├── generate-evidence-manifests.rb # 重建 / 检查完整评测档案摘要
+│   ├── validate-yaml.rb      # 可选严格 YAML / 重复键校验
+│   ├── validate-evidence.rb  # 评测档案 JSON / 字节数 / SHA-256 校验
+│   └── lib/                  # 共享 shell 解析与不可变评测宿主输入
 ├── skills/
 │   ├── _template/
 │   ├── z-market-validate/
@@ -227,6 +270,9 @@ zstack/
 │   └── z-seo-plan/
 └── docs/
     ├── authoring.md
+    ├── compatibility.md
+    ├── evidence-handoff.md
+    ├── evaluation.md
     └── frontmatter.md
 ```
 
@@ -235,20 +281,75 @@ zstack/
 ## 新增或扩展 Skill
 
 ```bash
-./scripts/new-skill.sh z-my-workflow
-# 编辑 skills/z-my-workflow/SKILL.md
-# 在 catalog.yaml 注册
-./scripts/doctor.sh
+./scripts/new-skill.sh z-my-workflow product
+# 编辑 SKILL.md，并定制自动生成的 references/quality-bar.md
+# 检查 catalog.yaml 中自动创建的 draft 条目
+# 添加三个行为案例（含 happy-path）+ 两个路由案例，再改为 active
+./scripts/test.sh
 ./scripts/setup.sh
 ```
 
 要点：
 
-1. **name** = 目录名 = 斜杠命令；必须符合 `z-[a-z0-9-]+`。  
-2. **`description`** 是自动触发的接口 —— 写清触发词。  
-3. 正文对**任意宿主**可执行：少写宿主专有工具名，多写「跑命令 / 读文件」。  
-4. 长材料放 `references/`；`SKILL.md` 保持可执行。  
+1. **name** = 目录名 = 可移植 skill id；必须符合 `z-[a-z0-9-]+`。
+2. **`description`** 是自动触发的接口 —— 写清触发词。
+3. 正文对**任意宿主**可执行：少写宿主专有工具名，多写「跑命令 / 读文件」。
+4. 长材料放 `references/`；`SKILL.md` 保持可执行。
 5. 无密钥、无本机绝对路径。
+6. 新脚手架已包含 Evidence handoff 与质量门槛基线，但会故意保持验证失败，
+   直到正文与 catalog 占位符都被替换；draft 状态暂不要求行为或路由案例。
+
+欢迎提交 PR；原创内容规则、必跑检查与 smoke-test 证据要求见
+[CONTRIBUTING.md](./CONTRIBUTING.md)。
+行为与路由测试方法见 [docs/evaluation.md](./docs/evaluation.md)。
+归档运行会把模型原始响应与评分分开保存；当前运行矩阵见
+[宿主兼容性证据](./docs/compatibility.md)。通过的归档只代表该日期、该运行器下的
+证据，不保证所有模型和宿主都会得到相同结果。最新 Codex 路由证据包括
+[上下文预算回归](./evals/runs/2026-08-01-codex-routing-budget/summary.md) 与
+[中文路由回归](./evals/runs/2026-08-01-codex-routing-zh/summary.md)，两者都保留了
+原始选择结果。
+同一路由协议现已拥有经复核的
+[Grok 25 案例矩阵](./evals/runs/2026-08-01-grok-routing-full-matrix/summary.md)，
+以完整 provenance 覆盖全部英文、中文、边界和 no-match 请求。
+五个 skill 的完整产出 [happy-path 测试](./evals/runs/2026-07-31-happy-path/summary.md)
+也已全部通过，并保留了原始工件。
+经逐条复核的 Codex 韧性矩阵 [A](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-a/summary.md)
+与 [B](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-b/summary.md)
+把当前行为案例的完整 provenance 覆盖提升到 20/20。
+随后的 [宿主缺口审计](./evals/runs/2026-08-01-codex-happy-gap-regression/summary.md)
+保留了 3 个通过与 1 个真实工件失败；隔离的
+[artifact 重跑](./evals/runs/2026-08-01-codex-landing-artifact-pass/summary.md)
+保留了可部署页面，并把 Codex 宿主自身的完整覆盖补到 20/20。
+同一套源码快照、防泄漏、人工复核与原子归档协议现已提供 Claude Code
+适配器；它分别记录请求模型与实际模型，并在宿主把 API 错误包装成名义上的
+success 结果时仍会拒绝归档。当前本机配置的 Claude 提供方会在生成前返回
+模型不可用；运行器会将其脱敏标记为 `model-unavailable`，因此 Claude 的真实
+行为证据仍保持 0/20，而不会把外部配置错误算成 skill 通过。
+Grok 适配器进一步加入隔离宿主目录、prompt-file 传输、精确 final-response
+边界、工具与 sandbox 控制、脱敏 API 错误分类，以及同样的私有 provenance
+核验。经复核的
+[19 案例 response 矩阵](./evals/runs/2026-08-01-grok-behavior-current-full-response/summary.md)
+对 16 个非 landing 案例仍匹配当前源码；已保留的
+[landing artifact 失败](./evals/runs/2026-08-01-grok-behavior-current-smoke-artifact-unverified-success/summary.md)
+推动了更严格的 provider-confirmed-success 规则，因此四个 landing 案例都必须
+重新运行。当前本机 Grok CLI 明确报告未认证，所以 Grok 当前源码行为覆盖如实
+保持在 16/20；确定性的假宿主测试不计入模型证据。随后保留的
+[provider schema 失败](./evals/runs/2026-08-01-codex-landing-artifact-provider-schema-failure/summary.md)
+又识别出猜测 Buttondown tag ID 的问题。skill 现在要求带日期的官方 provider
+语义，或显式、阻止上线的 `VERIFY_*` 映射。Codex 把
+[19 案例 response 矩阵](./evals/runs/2026-08-01-codex-behavior-current-full-response/summary.md)、
+[三个 landing response 重跑](./evals/runs/2026-08-01-codex-landing-response-after-closed-analytics-gate/summary.md)
+和 [真实 landing artifact](./evals/runs/2026-08-01-codex-landing-artifact-after-closed-analytics-gate/summary.md)
+组合成 20/20 当前源码覆盖。最新 artifact 会把未知归因排除在决策 lane 外，
+在 analytics 初始化前清除 query 与 fragment，在显式 contract 占位符尚未解决时
+不请求 analytics 或 Buttondown，并且不暴露 provider 或异常原始数据。Function
+通过了 18 个本地恶意 intake/provider 场景，包括不信任 `Content-Length` 的真实
+流字节上限；确定性的浏览器检查也证明了关闭的 analytics gate 与有界归因。
+CI 会同时要求行为与路由证据匹配当前 skill 字节，因此 Grok 缺口会失败关闭，
+直到认证恢复并发布经复核的新归档。
+跨宿主发现证据及五个 Grok happy-path 的完整结果，记录在
+[宿主兼容性证据](./docs/compatibility.md) 中；其中保留了推动 discovery、
+landing 完整性与 PRD 修复的失败证据。
 
 ---
 
@@ -273,14 +374,15 @@ Skill 产出的是**决策与工件**（报告、访谈提纲、落地页文案�
 
 ## 状态
 
-持续开发中。公开远程地址在发布前请自行替换 Quick start 中的 clone URL。
+持续开发中：`github.com/zh30/zstack`。
 
 | 模块 | 状态 |
 |------|------|
 | Skill 目录（5 个） | 可用 |
 | 多宿主 setup/doctor | 可用 |
 | 架构文档 | 可用 |
-| CI / CONTRIBUTING | 计划中 |
+| CI 校验 | 已配置；当前会因文档所述 Grok 行为证据 16/20 缺口而失败关闭 |
+| 贡献指南 | 可用 |
 
 ---
 

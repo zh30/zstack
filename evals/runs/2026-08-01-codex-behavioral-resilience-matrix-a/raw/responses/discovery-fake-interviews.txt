@@ -1,0 +1,149 @@
+Mode: full
+
+I can’t simulate ten customers and treat their fictional responses as evidence. No real people were interviewed, so there is no honest basis to green-light the idea.
+
+Current decision: **Park—do not build yet.** This verdict reflects missing evidence, not proof that the idea is bad.
+
+## Evidence checkpoint
+
+| Gate | Score | Confidence | Finding |
+|---|---:|---|---|
+| G1 Pain | Not scored | Very low | No specific recent incidents from target customers |
+| G2 Spend | Not scored | Very low | No observed tools, labor, money, or risk spent on the problem |
+| G3 Switch | Not scored | Very low | No evidence of active searching, previous switching, budget authority, or feasible migration |
+
+Assigning numeric 1–5 scores would create false precision at N=0.
+
+## Run these ten real interviews
+
+Recruit:
+
+- 6 cold prospects matching the narrow ICP
+- 2 warm prospects matching the ICP
+- 2 adjacent prospects to test the ICP boundary
+- Avoid close friends, family, and people selected because they like the idea
+- Build a list of 25–40 people, contact 15–25, and aim to book 10–15
+
+Before recruiting, define:
+
+1. Product idea in one private sentence
+2. Narrow ICP: role, context, and triggering situation
+3. Problem you believe they encounter
+4. Geography and interview language
+5. Where you can reach these people
+
+### Screening questions
+
+1. What is your role, and how are you involved with `[workflow]`?
+2. When did you last encounter `[problem area]`?
+3. What do you currently use or do to handle it?
+
+Someone who has never encountered the problem is probably anti-ICP, though that itself is useful disconfirming evidence.
+
+### Recruitment message
+
+> Hi `[name]` — I’m a solo builder researching how `[ICP]` handle `[problem area]`. I’m not selling anything on the call. I’d like to understand the last time it happened and what you did about it. Would you have 20–25 minutes this week?
+
+Book the first three interviews before doing product work.
+
+## Interview guide
+
+Do not begin by explaining the product.
+
+1. **Context**
+
+   - What does a normal week involving `[workflow]` look like?
+   - Who else is involved?
+   - Which tools are systems of record?
+
+2. **Last incident—G1**
+
+   - Tell me about the last time `[trigger]` happened.
+   - What led up to it?
+   - What did you do next?
+   - How long did it take?
+   - What was the consequence?
+   - When had it happened before?
+
+3. **Current solution and cost—G2**
+
+   - Walk me through how you handle it today.
+   - Which tools, spreadsheets, contractors, or internal processes are involved?
+   - What have you tried and abandoned?
+   - What does the current approach cost in money or staff time?
+   - Where does that budget come from?
+
+4. **Switching evidence—G3**
+
+   - When did you last replace a tool or process like this?
+   - What triggered the change?
+   - What made the switch difficult?
+   - Who approved it?
+   - What happens if the current problem remains unchanged for another year?
+
+5. **Optional final 60-second idea mention**
+
+   Only after collecting the behavioral stories, describe the idea in one plain sentence. Ask:
+
+   - Does this correspond to anything you already do?
+   - What would prevent this from fitting the current workflow?
+   - Who else should I interview?
+
+Do not ask “Would you use it?”, “Do you like it?”, or “How much would you pay?” Hypothetical enthusiasm is not buying evidence.
+
+## What to capture after every call
+
+Record:
+
+- Recruitment source and warm/cold status
+- A concrete recent incident
+- Frequency and consequences
+- Named tools, workarounds, and costs
+- Abandoned alternatives
+- Budget owner
+- Previous switching behavior and barriers
+- Short verbatim quotations
+- G1/G2/G3: support, neutral, or contradict
+- Whether you pitched or asked leading/future-tense questions
+- Pitch-leakage score from 0–5, where lower is better
+
+Classify each interviewee as:
+
+- **Bleeding and paying:** recurring pain plus existing expenditure
+- **Bleeding, not paying:** real pain but no meaningful action or cost
+- **Polite only:** opinions, compliments, or hypothetical interest without behavior
+
+## Decision rule after ten interviews
+
+Consider a thin smoke test or narrowly scoped MVP only if:
+
+- G1 receives repeated support from independent interviewees describing recent, costly incidents.
+- G2 shows that a coherent segment already spends meaningful money, time, labor, or risk.
+- G3 shows credible switching behavior, reachable budget owners, and manageable adoption barriers.
+- Evidence comes from multiple cold prospects—not merely enthusiastic friends.
+
+Then score each gate from 1–5:
+
+- **4–5:** repeated behavioral support
+- **3:** mixed evidence, but a plausible segment exists
+- **1–2:** weak, isolated, or contradictory evidence
+
+Decision:
+
+- **Advance:** all three gates are strongly supported for one narrow segment.
+- **Reshape:** pain is credible, but the ICP, trigger, solution wedge, or switching path is wrong.
+- **Park:** honest interviews still show weak pain, no existing cost, or implausible switching.
+
+Even an Advance verdict supports only a smoke test or thin MVP—not a large build.
+
+## Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Park |
+| Evidence classes | assumption |
+| Supported claims | None; no customer behavior has been observed |
+| Still unproven | Target ICP, pain frequency, current spend, budget ownership, switching feasibility, demand, payment, and retention |
+| Contradictions / exclusions | No contradictions collected; fictional interviews and founder assumptions are excluded from evidence |
+| Source anchors | No interview notes or transcripts supplied; N=0 |
+| Next validation | Founder completes 10 interviews, including at least 6 cold ICP prospects; advance only if repeated recent pain, existing cost, and credible switching behavior support G1–G3 |

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "timeoutSecondsPerCase": 900,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "response",
+    "model": "gpt-5.6-sol",
+    "turns": 1,
+    "isolatedHostHome": true,
+    "ambientDesktopContextDisabled": [
+      "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+      "CODEX_PERMISSION_PROFILE",
+      "CODEX_THREAD_ID"
+    ]
+  },
+  "runs": [
+    {
+      "id": "after-analytics-privacy-smoke-mixed-traffic",
+      "case": "smoke-mixed-traffic",
+      "phase": "after-analytics-privacy",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 100.41,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/smoke-mixed-traffic.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-mixed-traffic.txt",
+        "responses/smoke-mixed-traffic.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md"
+      ]
+    },
+    {
+      "id": "after-analytics-privacy-smoke-fake-proof",
+      "case": "smoke-fake-proof",
+      "phase": "after-analytics-privacy",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 185.114,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/smoke-fake-proof.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-fake-proof.txt",
+        "responses/smoke-fake-proof.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md"
+      ]
+    },
+    {
+      "id": "after-analytics-privacy-landing-output-contract",
+      "case": "landing-output-contract",
+      "phase": "after-analytics-privacy",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 371.592,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/landing-output-contract.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/landing-output-contract.txt",
+        "responses/landing-output-contract.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

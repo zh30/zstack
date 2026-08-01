@@ -1,0 +1,320 @@
+I won’t add fake customer logos or a fabricated “2,000 users” claim. Those may lift short-term conversions, but they invalidate the smoke test and create reputational and legal risk. The page below uses honest pre-launch proof instead.
+
+Because no product, ICP, or outcome was provided, bracketed fields must be replaced before publishing. Web, browser, apps, and customer research were unavailable, so all positioning and thresholds below are assumptions—not observed evidence.
+
+# Landing smoke test: [PRODUCT]
+
+| Field | Value |
+|---|---|
+| Date | 2026-08-01 |
+| Timebox | 10 days |
+| ICP | [NARROW CUSTOMER TYPE] |
+| Promise | [ONE MEASURABLE OUTCOME] |
+| CTA | Join the waitlist |
+| Page language | English |
+| Stage | Not built; validating demand |
+
+## 1. Smoke protocol
+
+Hypothesis: If `[PRODUCT]` offers `[ONE MEASURABLE OUTCOME]` to `[NARROW CUSTOMER TYPE]`, qualified visitors will join an early-access waitlist and describe a credible use case.
+
+Primary metric: provider-confirmed waitlist signups ÷ qualified unique visitors.
+
+Secondary metrics:
+
+- CTA click rate
+- Qualifying-answer completion
+- Welcome-email replies describing a real problem
+- Explicit willingness-to-pay messages
+- Traffic and conversions by attributable source
+
+Sample plan:
+
+- Target 240 qualified cold/mixed visitors.
+- Aim for roughly 80 visitors each from a buyer community, mixed social traffic, and one small paid test.
+- Track 20 warm contacts separately; never pool them with cold traffic.
+- Test two headlines sequentially with similar source mixes.
+- Treat fewer than 50 visits in a source class as unstable.
+
+Pre-registered directional thresholds:
+
+| Source class | Promising | Weak |
+|---|---:|---:|
+| Buyer community | ≥5% confirmed CVR | <2% |
+| Mixed social | ≥4% confirmed CVR | <2% |
+| Cold ads | ≥2.5% confirmed CVR | <1% |
+| Warm personal outreach | ≥10% confirmed CVR | Diagnostic only |
+
+Strong outcome: at least two cold/mixed source classes clear their thresholds, with at least 10 confirmed signups and 3 substantive replies.
+
+Pivot outcome: after 200+ qualified cold/mixed visits across two headline variants, confirmed CVR remains below 2%, with no substantive replies. Reshape the ICP or promise; this does not prove the whole problem is dead.
+
+Timebox: August 3–12, 2026.
+
+## 2. Landing-page copy
+
+### Meta
+
+- Title: `[OUTCOME] for [ICP] | [PRODUCT]`
+- Description: `[PRODUCT] helps [ICP] achieve [OUTCOME] without [PAINFUL STATUS QUO]. Join the founding-user waitlist.`
+- OG blurb: `Still [PAINFUL STATUS QUO]? We’re exploring a simpler way for [ICP] to [OUTCOME]. Join the early-access waitlist.`
+
+### Headline variants
+
+1. Ship first: `[OUTCOME] for [NARROW CUSTOMER TYPE]`
+2. `Stop [PAINFUL REPEATED PROCESS]`
+3. `The [PRODUCT CATEGORY] built specifically for [NARROW CUSTOMER TYPE]`
+
+### Nav
+
+**[PRODUCT]**
+
+Button: **Join the waitlist**
+
+### Hero
+
+#### [OUTCOME] for [NARROW CUSTOMER TYPE]
+
+Tired of `[SPECIFIC PAINFUL STATUS QUO]`? `[PRODUCT]` is being designed to help you `[CORE JOB]`, so you can `[VALUABLE RESULT]`.
+
+**We’re validating demand before building the full product.** Join the founding-user waitlist to influence what gets made.
+
+Email: `you@company.com`
+
+Optional qualifier: `What is the hardest part of [JOB] today?`
+
+Button: **Join the waitlist**
+
+Microcopy: Get occasional product updates and early-access invitations. Unsubscribe anytime.
+
+The optional qualifier should be retained if signup quality matters more than maximum conversion volume.
+
+### Problem
+
+#### [JOB] should not require this much effort
+
+- You lose `[TIME OR MONEY]` repeatedly doing `[MANUAL PROCESS]`.
+- Existing tools make you `[UNWANTED WORKAROUND]`.
+- Important `[OUTPUT OR DECISION]` gets delayed, missed, or handled inconsistently.
+
+### Solution
+
+#### A focused path from [STARTING POINT] to [OUTCOME]
+
+1. **Bring in `[INPUT]`**  
+   Start with the information or workflow you already use.
+
+2. **Let `[PRODUCT]` handle `[CORE MECHANISM]`**  
+   Replace the most repetitive or error-prone step.
+
+3. **Get `[TANGIBLE OUTPUT]`**  
+   Review it, make the final decision, and move forward faster.
+
+These describe the proposed workflow, not currently available features.
+
+### Who it is for
+
+#### Built for
+
+- `[SPECIFIC ROLE]` who regularly `[CORE JOB]`
+- Small teams dealing with `[CONCRETE CONSTRAINT]`
+- People actively looking to replace `[CURRENT WORKAROUND]`
+
+#### Not built for
+
+- Anyone who only needs `[SIMPLE ALTERNATIVE]`
+- Large organizations requiring `[ENTERPRISE REQUIREMENT]` immediately
+- People who do not experience `[CORE PROBLEM]` regularly
+
+### Honest proof
+
+#### Help shape the first useful version
+
+`[PRODUCT]` is not launched yet. We are speaking with potential founding users before committing to the full build.
+
+Early members can:
+
+- Tell us which workflow hurts most
+- Review the proposed solution
+- Receive access in small batches if development proceeds
+
+Founder note:
+
+> I’m testing whether this problem is painful enough to deserve a product. I’ll share what I learn and won’t pretend the product or customer base already exists. — [FOUNDER NAME]
+
+Add customer logos, testimonials, interview counts, or signup totals later only when they are real, documented, and used with permission.
+
+### Offer
+
+#### Join the founding-user waitlist
+
+Get concise development updates, an opportunity to influence the first release, and an early-access invitation if the test shows enough demand.
+
+Button: **Join the waitlist**
+
+No invented launch date or discount is promised.
+
+### FAQ
+
+#### Is the product available now?
+
+No. We are validating demand before building the full product. Joining indicates interest; it does not guarantee that the product will launch.
+
+#### What happens after I join?
+
+You’ll receive a confirmation or welcome message and may be invited to answer a few questions about your current workflow.
+
+#### When will early access begin?
+
+There is no committed release date yet. If development proceeds, access will be offered in small batches and updates will be sent by email.
+
+#### How much will it cost?
+
+Pricing has not been finalized. A follow-up may ask what you currently spend and what a useful solution would be worth.
+
+#### How will my email be used?
+
+Only for this product’s research, updates, and early-access invitations. It will not be sold. You can unsubscribe at any time.
+
+#### Who should not join?
+
+Do not join if `[CORE PROBLEM]` is rare for you or if you need a production-ready solution immediately.
+
+### Final CTA
+
+#### Is `[CORE PROBLEM]` costing you `[TIME, MONEY, OR RISK]`?
+
+Join the waitlist and help determine whether `[PRODUCT]` should be built.
+
+Button: **Join the waitlist**
+
+Footer:
+
+`Built by [FOUNDER NAME] · [CONTACT EMAIL] · Your email will not be sold.`
+
+## 3. Implementation pack
+
+Use one static HTML page on Cloudflare Pages with a hosted form provider such as Formspree, Basin, or Getform. Provider capabilities could not be verified during this run, so confirm callback, redirect, double-opt-in, and metadata behavior before launch.
+
+Form specification:
+
+- Email: required
+- Biggest pain today: optional
+- `utm_source`: hidden
+- `utm_medium`: hidden
+- `utm_campaign`: hidden
+- `utm_content`: hidden
+- Landing variant: hidden
+- Consent: explicit and unchecked where legally required
+- Honeypot or provider spam protection
+
+Use double opt-in when jurisdiction, provider policy, deliverability, or list-quality needs require it. Store email only with the selected provider and publish a short privacy notice.
+
+Success behavior:
+
+- With a verified provider callback or controlled success redirect: “You’re on the list. Check your inbox for confirmation.”
+- Without verified confirmation: “Submission sent. Check your inbox if the provider accepts it.”
+- Never show confirmed-success UI merely because the browser attempted submission.
+
+Events:
+
+- `view_landing`
+- `click_waitlist`
+- `attempt_waitlist`
+- `confirm_waitlist` only after provider-confirmed acceptance
+- `welcome_reply` recorded from actual replies
+
+Use the provider’s confirmed subscriber record as the conversion source of truth. Invalid, duplicate, rejected, and attempted submissions are not conversions.
+
+UTM examples:
+
+```text
+?utm_source=twitter&utm_medium=social&utm_campaign=smoke_v1
+?utm_source=reddit&utm_medium=community&utm_campaign=smoke_v1&utm_content=[subreddit]
+?utm_source=indiehackers&utm_medium=community&utm_campaign=smoke_v1
+?utm_source=ads&utm_medium=cpc&utm_campaign=smoke_v1
+?utm_source=dm&utm_medium=personal&utm_campaign=smoke_v1
+```
+
+Verify with one real valid and one invalid submission that:
+
+- The valid record reaches the provider.
+- The invalid record does not count.
+- UTM and headline-variant metadata survive on the confirmed record.
+
+If subscriber attribution cannot be preserved, report only aggregate CVR and do not make source-specific decisions.
+
+## 4. Ten-day traffic plan
+
+| Day | Channel | Action | Notes |
+|---|---|---|---|
+| 1 | Setup | Publish and test tracking, valid/invalid submissions, mobile layout, and metadata | No promotional traffic yet |
+| 2 | Warm outreach | Send 10 personal messages to relevant people | Track separately from cold traffic |
+| 3 | Reddit/community | Publish one value-first problem post in a buyer community | Read rules; disclose that you are the maker |
+| 4 | X | Post the problem story and proposed outcome | Engage every relevant reply |
+| 5 | Warm outreach | Send 10 more personalized messages | Ask for honest reaction, not a favor signup |
+| 6 | Indie Hackers/forum | Share the smoke-test hypothesis and request critique | Include one UTM-tagged link |
+| 7 | Review | Check source quality, attribution, and objections | Do not change audience, copy, and channel together |
+| 8 | Variant test | Switch only the headline | Preserve the rest of the page |
+| 9–10 | Best cold channel or ads | Repeat the best honest channel or run a $20–$50 ad test | One ICP, one creative, one promise |
+| 10 | Decide | Export confirmed subscribers and analyze source-specific results | Apply the pre-registered rules |
+
+Post drafts:
+
+**X**
+
+> `[ICP]`: how much time do you lose to `[PAINFUL PROCESS]` each week? I’m exploring `[PRODUCT]`, a focused way to `[OUTCOME]`. It isn’t built yet—I’m testing whether the problem deserves a product. Details: [UTM LINK]
+
+**Reddit/community**
+
+> I keep hearing that `[ICP]` struggle with `[SPECIFIC PROCESS]`, especially when `[CONTEXT]`. I’m considering a focused tool that would `[PROPOSED OUTCOME]`, but I don’t want to build it based on assumptions. Does this match how you work today? I’m the maker; the waitlist and proposed workflow are here if linking is permitted: [UTM LINK]
+
+Do not paste identical posts across multiple communities or make the waitlist the sole purpose of the discussion.
+
+**Warm message**
+
+> Hi [NAME]—you work with `[PROBLEM AREA]`, so I’d value your blunt reaction. I’m testing a proposed tool for `[OUTCOME]`; it isn’t built yet. Would you spend two minutes reviewing the page? No pressure to join unless the problem is real for you: [UTM LINK]
+
+## 5. Dashboard and decision rules
+
+Track unique visitors, CTA clicks, attempted submissions, provider-confirmed signups, confirmed CVR, qualifying answers, welcome-email replies, explicit payment signals, variant, and source.
+
+| Outcome | Decision |
+|---|---|
+| Strong | Interview the most qualified respondents, test pricing, then define a thin MVP |
+| Conversion passes but replies are weak | Treat as soft curiosity; interview before building |
+| One source passes while others fail | Narrow distribution and verify that the source contains real buyers |
+| Traffic is qualified but CVR is weak | Rewrite the promise and retest one controlled variant |
+| All cold/mixed sources remain below 2% after 200+ visits | Reshape the ICP or offer, or park the idea |
+| Credible paid intent appears | Test a transparent paid reservation or refundable deposit separately |
+
+## 6. What not to build yet
+
+- Product backend or authentication
+- Billing integration
+- Dashboard or mobile app
+- Multiple landing-page routes
+- Referral mechanics or gamified waitlist positions
+- Fake product screenshots
+- Customer-logo strips, testimonials, or counters without real evidence
+- A full brand system
+
+## 7. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | TBD after test |
+| Evidence classes | assumption |
+| Supported claims | TBD after test |
+| Still unproven | Actual demand, signup conversion, willingness to pay, retention, product feasibility, and product value |
+| Contradictions / exclusions | No web research, browser testing, customer interviews, provider verification, observed traffic, confirmed signups, or payment evidence was available in this run; fake logos and the “2,000 users” claim were excluded |
+| Source anchors | TBD after test |
+| Next validation | Founder publishes the honest page and collects 200+ qualified cold/mixed visits; success requires at least two source classes meeting their registered thresholds, 10 confirmed signups, and 3 substantive replies |
+
+Top three actions today:
+
+1. Replace every bracketed field with one narrow ICP, one concrete pain, and one outcome.
+2. Configure the form and verify one accepted and one rejected submission with attribution intact.
+3. Publish the page and send the first 10 personalized messages.
+
+If you cannot fill the ICP, pain, and outcome from firsthand knowledge, run customer discovery or market validation before buying traffic. Do not build the product until the smoke test produces confirmed behavior beyond page visits.

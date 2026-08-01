@@ -1,25 +1,33 @@
 # Frontmatter compatibility
 
-Portable intersection for Claude Code, Codex, and Grok Build:
+zstack uses the smallest reliable intersection across Claude Code, Codex, and
+Grok Build. Every `SKILL.md` frontmatter contains **exactly two keys**:
 
-| Field | Required | Notes |
-|-------|----------|-------|
-| `name` | Yes | Must match directory name; **must start with `z-`**, then kebab-case, ≤64 chars |
-| `description` | Yes | Routing + auto-invoke; include triggers and `/name` |
-| `license` | Recommended | Use `MIT` to match repo |
-| `metadata` | Optional | `author`, `tags`, `source` for forks |
-| `allowed-tools` | Optional | Host-enforced inconsistently; ok to omit |
-| `disable-model-invocation` | Optional | Force slash-only when `true` |
+| Field | Required | Rule |
+|-------|----------|------|
+| `name` | Yes | Match the directory; start with `z-`; kebab-case; ≤64 characters |
+| `description` | Yes | Explain what and when; omit host-specific invocation syntax; 80–1024 characters |
 
-## Avoid in zstack (host- or vendor-specific)
+Example:
 
-- `preamble-tier`, gstack-only generators fields  
-- Hard dependency on Claude-only tool ids in **body** text  
-- Oversized multi-paragraph `description` (Codex is pickier)
+```yaml
+---
+name: z-example-workflow
+description: >-
+  Do a specific job for independent developers. Use when the user asks for
+  the relevant outcome, artifact, or concrete trigger phrase.
+---
+```
+
+Repository-wide licensing lives in `LICENSE`; catalog metadata lives in
+`catalog.yaml`. Do not duplicate either in skill frontmatter. Avoid
+host-specific fields such as `allowed-tools`, `disable-model-invocation`,
+`metadata`, `preamble-tier`, or vendor-specific trigger keys.
 
 ## Description checklist
 
-- [ ] Says **what** the skill does  
-- [ ] Says **when** to use it (verbs / keywords)  
-- [ ] Mentions `/skill-name`  
-- [ ] Fits comfortably under ~500–1024 characters  
+- [ ] Says **what** the skill does
+- [ ] Says **when** to use it with concrete verbs and keywords
+- [ ] Omits `/z-*` and `$z-*`; hosts expose different explicit prefixes
+- [ ] Fits under 1024 characters; prefer roughly 500 or fewer
+- [ ] Does not depend on host-specific tool names

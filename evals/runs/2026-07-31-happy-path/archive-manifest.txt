@@ -1,0 +1,10 @@
+sha256                                                            bytes  path
+c3f0ea911db1ac3644be6011aebb7a400496af7deecf5f4b81182555f73cd216  10047  prompts.md
+639c9aa20d5e1a2cff752efb9ec92adb133e02ed833f6aa14a17bc7d95c51a4b  583  raw/artifact-manifest.txt
+5f13baa62f88c957c22b7f98c52ae70c9d45c9c416bcb9a05f650a3f804f6ecb  12359  raw/discovery-five-interviews.md
+b60d53f5dd7828221121c9680b40de2b96b8438b62d6924675be17c0512e2884  27432  raw/landing-complete-smoke-pack.md
+7cbfa5bf142dc98aabfabc9e61d1ab9297b492a3e55722be746eb832fac1fa0d  15699  raw/market-evidence-packet.md
+f82bd924d2204004f2afb8acff1fa76a63e5984690c4cf276549c65cc54f9735  52224  raw/prd-evidence-rich-mvp.md
+ae7aacfd8cb99170f2d4d6e8ded7f8eff5879f4807f95658db1d9081ce419742  21271  raw/seo-supplied-search-notes.md
+c051cb8a41b0b54fd45a9e8d21a726936a034fd03bf4701f5862747d62d32f3b  1567  run.json
+9d4a8a5a181c0b067558e7cda9cb061c0f640b3a2d8f74023d9d1276326531e3  2334  summary.md

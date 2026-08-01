@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "host": "Grok Build",
+  "hostVersion": "grok 0.2.117 (f1c06093089f)",
+  "model": "grok-4.5",
+  "reasoningEffort": "low",
+  "sandbox": "read-only",
+  "approvalPolicy": "dontAsk",
+  "ephemeralSession": true,
+  "promptTransport": "generated prompt through file",
+  "skillSource": "exact copied source snapshots",
+  "executionMode": "response",
+  "artifactCapture": false,
+  "webSearch": false,
+  "subagents": false,
+  "jobs": 1,
+  "cases": [
+    "market-evidence-packet"
+  ],
+  "dryRun": false,
+  "grading": "not performed by runner",
+  "allowedTools": [
+    "Read"
+  ],
+  "systemPromptOverride": "Execute one isolated zstack behavioral evaluation. Follow only the user prompt and the exact skill snapshot it names. Do not inspect other skills, rules, memories, evaluation files, or user configuration. Use only allowed tools and workspace paths.",
+  "isolatedHostHome": true,
+  "isolatedHostConfigSha256": "9bb620f0d002a2c2f592b369984732c1eb28dffd6fb76dcd8f1d8a84da6814c2",
+  "foreignCompatibilityDisabled": [
+    "claude",
+    "cursor",
+    "codex-sessions"
+  ],
+  "ambientAgentSkillsMayBeDiscovered": true,
+  "hostProviderConfigMayApply": true,
+  "mcpToolsAllowed": false,
+  "managedMcpDisabled": true,
+  "officialMarketplaceAutoRegister": false,
+  "memory": false,
+  "planMode": false,
+  "verbatimPrompt": true,
+  "sessionPersistence": false,
+  "maxTurnsPerCase": 3,
+  "resultFormat": "json"
+}

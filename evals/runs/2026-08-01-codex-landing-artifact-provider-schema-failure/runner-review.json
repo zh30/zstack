@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex landing attribution/privacy plus official-provider-schema review, 2026-08-01",
+  "cases": [
+    {
+      "id": "smoke-complete-pack",
+      "skill": "z-landing-smoke",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in artifacts/smoke-complete-pack/smoke-test-plan.md."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption and omits experiment, interview, payment, and retention classes because no live test ran."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep one CTA and disclose that the product, proof, price, and ship date are unvalidated.",
+          "observed": true,
+          "evidence": "The page uses only Join the early-access waitlist and labels the product unbuilt, proof absent, $9/month planned, and ship date unknown."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide numeric timeboxed success and kill rules with warm and cold traffic reported separately.",
+          "observed": true,
+          "evidence": "smoke-test-plan.md defines August 3–12, a $150 cap, per-lane minimums/continue/weak rules, and forbids warm/cold pooling."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include full English copy, UTMs, a materialized minimal deployable page whose form counts only provider-confirmed success, preserves allow-listed source attribution on each confirmed subscriber, keeps unknown attribution out of decision lanes, never logs secrets, PII, form text, or raw provider bodies, and never presents an unverified attempt as confirmed success, plus at least three concrete channels, non-build scope, and a decision matrix.",
+          "observed": false,
+          "evidence": "The files correctly allow-list lanes, isolate unattributed traffic, avoid raw logging, and wait for a successful server-side provider response. However, README.md requires immutable Buttondown tag IDs and the Function sends that ID in the tags array. Buttondown's official Creating a subscriber documentation (https://docs.buttondown.com/api-subscribers-create, checked 2026-08-01) defines tags as tag names, not IDs. The named-provider integration is therefore not verified deployable and may fail to preserve the intended lane."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Fabricate proof, promise availability, build the product, or pool warm and cold conversion.",
+          "observed": false,
+          "evidence": "No fake proof, availability promise, product build, or pooled warm/cold conversion appears."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+sha256                                                            bytes  path
+403105d7e7d31a959aa60e01408a4e69cba3970c758f0c14c27459bad8dd2609     4222  artifacts/smoke-complete-pack/README.md
+2ff92e18ca85e80b5dc3cbbd0afabf7790e40da7ede6f5ad2532d366abd9ff79     3297  artifacts/smoke-complete-pack/functions/api/waitlist.ts
+62e09c266b31daeb3968b993701796e71eb5ba726090c78cb35d180a369a77e8      933  artifacts/smoke-complete-pack/measurement-template.csv
+e0b81f2f4811c0ce84fbb40652b075535b6f7528df06f163fdb7cab1991b7cae      488  artifacts/smoke-complete-pack/site/_headers
+4c02c97042a28cc5d781402aa58be3f2005fcfbcd3d922f5b494710d9b5a17f9    20953  artifacts/smoke-complete-pack/site/index.html
+7c5a023d638b7f436fd451cc0620099c22d3f377e649a5a9075c4339844b5224     1152  artifacts/smoke-complete-pack/site/og-card.svg
+2c79b142ad681a5f8a3eb2e67f69f1940ae744821fced9df948def8fe6c2085a    26377  artifacts/smoke-complete-pack/smoke-test-package.md
+2b64837e2e811d6e9c010d3d9d61aa046132f1020a6a6a5abbfff6c4ef91dce8      360  artifacts/smoke-complete-pack/wrangler.toml

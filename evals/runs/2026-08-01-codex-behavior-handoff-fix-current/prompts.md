@@ -1,0 +1,7 @@
+# Codex CLI behavioral prompts
+
+Exact generated prompt bytes are retained under `raw/prompts/`. The grading
+criteria and review were never present in a case workspace or model prompt.
+
+- [discovery-sparse-debrief](./raw/prompts/discovery-sparse-debrief.txt)
+- [smoke-mixed-traffic](./raw/prompts/smoke-mixed-traffic.txt)

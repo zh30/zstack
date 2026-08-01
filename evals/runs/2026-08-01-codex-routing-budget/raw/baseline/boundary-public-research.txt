@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: The request asks to vet an early idea using public community demand and competitor evidence before deeper research.

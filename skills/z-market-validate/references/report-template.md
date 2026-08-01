@@ -6,6 +6,22 @@ Fill every section. Use `n/a` only when truly impossible; prefer “not found”
 
 # Market validation: {idea one-liner}
 
+## Contents
+
+1. Executive verdict
+2. Idea framing
+3. Evidence map
+4. Competition and substitutes
+5. Scores
+6. Commercial value
+7. Independent-developer fit
+8. Short-term return
+9. Entry directions
+10. Risks and open questions
+11. Next 48 hours
+12. Evidence handoff
+13. Source appendix
+
 - **Date:** YYYY-MM-DD  
 - **Analyst:** agent + skill `z-market-validate`  
 - **Geography focus:** …  
@@ -69,18 +85,32 @@ What people already pay; free expectations; budget owners.
 |-----------|-------|-------------------|
 | Demand reality | | |
 | Willingness to pay | | |
-| Competition intensity | | *(invert carefully in prose: high score = more room OR document direction)* |
+| Competition intensity | | *(1 = open, 5 = brutally crowded; higher is worse)* |
 | Indie fit | | |
 | Time-to-signal | | |
 | Short-term return odds | | |
-| **Composite (avg)** | | |
+| **Composite (avg)** | {copy `display_composite` below exactly} | *(do not recalculate here)* |
 
-**Note on competition row:** In prose, always state whether a high number means “more room” or “more crowded”. Prefer: **Competition intensity** where 5 = brutal crowded market (bad for indie), 1 = open field — then indie fit absorbs “can still win a wedge”.
+**Transparent composite calculation — single source of truth**
 
-Recommended convention for this skill:
+```text
+competition_fit = 6 - competition_intensity = 6 - {competition} = {fit}
+composite_sum = {demand} + {pay} + {fit} + {indie} + {time} + {return} = {sum}
+composite_exact = {sum} / 6 = {unrounded result}
+display_composite = round(composite_exact, 2) = {X.XX}
+```
 
-- **Competition intensity:** 1 = open, 5 = brutal (higher is worse for a new indie).
-- All other dimensions: 5 is better for proceeding.
+Use `{X.XX}` unchanged everywhere the composite appears, including the score
+table and executive summary. Do not introduce a one-decimal alternative. Before
+delivery, find every composite mention and verify it equals this displayed value.
+
+**Scoring convention:** Competition intensity is the only reversed raw score:
+1 = open and 5 = brutally crowded. All other dimensions use 5 = better for
+proceeding. Calculate the composite from demand, pay,
+`competition_fit = 6 - competition_intensity`, indie fit, time-to-signal, and
+short-term return. Never average raw competition intensity into the composite.
+The formula block is the only place to calculate or round it; all other mentions
+must copy `display_composite` exactly.
 
 ## 6. Commercial value
 
@@ -133,7 +163,25 @@ Define the success metric used (e.g. first paid user, $500 MRR, 20 waitlist emai
 2. …  
 3. …
 
-## 12. Source appendix
+## 12. Evidence handoff
+
+In the final `Evidence classes` cell, delete non-applicable choices and keep only
+canonical class names without qualifiers.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Build wedge now / Explore with spike / Park / Avoid |
+| Evidence classes | primary behavior / observed experiment / secondary public / search signal / assumption |
+| Supported claims | What this report actually supports |
+| Still unproven | Especially switching, payment, retention, and delivery feasibility |
+| Contradictions / exclusions | Strongest opposing evidence and wedges explicitly rejected |
+| Source anchors | Links, signal-card ids, and dated input paths |
+| Next validation | One action + owner + success/fail signal |
+
+Do not promote public discussion, upvotes, or competitor pricing into primary
+customer, payment, or retention evidence.
+
+## 13. Source appendix
 
 ### Strongest supporting links
 

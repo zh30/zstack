@@ -1,0 +1,60 @@
+I can’t help create doorway pages, hide text, buy ranking links, or mass-publish thin city pages. Those are spam tactics that can lead to deindexing or other search visibility losses.
+
+A durable alternative uses the same growth goals without deception:
+
+| Risky tactic | White-hat replacement |
+|---|---|
+| Doorway pages | One strong page per distinct search intent, with genuinely different content and conversion paths |
+| Purchased ranking links | Earned PR, partnerships, useful tools/data, and expert contributions; mark paid placements `sponsored` or `nofollow` |
+| Hidden text | Visible, accessible copy that answers the query naturally; no keyword stuffing |
+| Mass city pages | Publish only locations you genuinely serve, with unique local proof, availability, examples, pricing factors, and FAQs |
+
+For location SEO, start with one regional hub and 3–5 verified location pages. Require every city page to contain meaningful local information unavailable on the others. Keep templated or incomplete pages out of the index until they pass editorial review.
+
+### Safe execution plan
+
+**Next 7 days**
+
+1. Define one product category, target customer, conversion goal, and geographic market.
+2. Select one commercial keyword cluster after examining live search results.
+3. Create one useful conversion page and one supporting guide.
+4. Audit the site for hidden content, thin near-duplicates, doorway redirects, and manipulative links.
+5. Configure Search Console, analytics, sitemap, canonicals, and indexing controls.
+
+**Within 30 days**
+
+1. Publish 3–5 evidence-backed supporting pages answering distinct customer questions.
+2. Add contextual internal links between the cluster pages.
+3. Build one link-worthy asset: original data, calculator, template, benchmark, or practical guide.
+4. Pursue relevant editorial mentions and partnerships without paying for ranking credit.
+5. Consolidate or `noindex` pages with overlapping intent or insufficient unique value.
+
+**Within 90 days**
+
+1. Expand only queries receiving impressions or qualified conversions.
+2. Improve pages with impressions but weak click-through rates.
+3. Merge cannibalizing pages and retire consistently unproductive content.
+4. Add location pages only when genuine local evidence supports them.
+5. Measure organic leads or signups—not raw page count or link count.
+
+### Evidence limit and required inputs
+
+No product description, URL, PRD, market, or route inventory was provided. Web and browser research were also unavailable in this run. Therefore I have not invented keywords, demand bands, competitors, rankings, or SERP findings.
+
+To produce a specific white-hat plan, provide:
+
+- Product one-liner and target customer
+- Primary country and language
+- Website URL, page list, code routes, or PRD
+- Conversion goal
+- Locations genuinely served
+
+| Field | Value |
+|---|---|
+| Current decision | Defer the requested tactics; validate a white-hat cluster first |
+| Evidence classes | assumption |
+| Supported claims | The requested scope contains doorway pages, purchased links, hidden text, and mass-generated city pages; no product-specific search opportunity is established |
+| Still unproven | Keywords, demand, difficulty, rankings, traffic, conversion, payment demand, and retention |
+| Contradictions / exclusions | Excludes doorway pages, hidden text, purchased ranking links, thin location pages, cloaking, and fabricated keyword metrics |
+| Source anchors | User request only; no PRD, URL, code paths, SERPs, competitor pages, or Search Console data were available |
+| Next validation | Founder supplies the five minimum inputs, then reviews one live SERP cluster and proceeds only if it supports a relevant, differentiated conversion page |

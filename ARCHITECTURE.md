@@ -49,7 +49,7 @@ Independent developers (solo founders, OPC builders, indie hackers) use AI codin
 | **Portable core** | Body of `SKILL.md` is host-agnostic Markdown instructions + shell/scripts. |
 | **Minimal frontmatter** | Only fields in the Agent Skills intersection by default (`name`, `description`). |
 | **Symlink over copy** | Default install is symlink from repo → host skill dirs so `git pull` is live. |
-| **Copy only when needed** | Windows without Developer Mode, or hosts that rewrite content (rare for zstack). |
+| **Symlink-only v1** | Keep one live source of truth; copy mode is not implemented. |
 | **Progressive complexity** | L0 pure MD → L1 + scripts/references → L2 host adapters (only if forced). |
 | **Discoverability first** | `description` is the API surface for auto-invocation; treat it as a product. |
 | **No secret in skills** | Skills never embed tokens; reference env vars / wrangler secrets. |
@@ -58,16 +58,19 @@ Independent developers (solo founders, OPC builders, indie hackers) use AI codin
 
 ## 3. How Each Host Discovers Skills
 
-Ground truth from current tooling (2026):
+Ground truth last verified on 2026-07-31; see
+[docs/compatibility.md](./docs/compatibility.md) for sources and runtime evidence:
 
 | Host | Global skill roots | Project / repo roots | Notes |
 |------|--------------------|----------------------|-------|
-| **Claude Code** | `~/.claude/skills/<name>/SKILL.md` | `.claude/skills/` | Also used by many other tools for compat. |
-| **Codex** | `~/.codex/skills/<name>/SKILL.md` | `.agents/skills/` | Strict frontmatter; invalid `SKILL.md` is skipped. Optional `agents/openai.yaml`. |
-| **Grok Build** | `~/.grok/skills/`, plus **compat scan** of `~/.claude/skills/`, `~/.cursor/skills/` | `.grok/skills/`, `.agents/skills/`, `.claude/skills/`, `.cursor/skills/` | Dedupes by skill **name** (higher priority wins). Scans `.agents/skills` at each tier. |
-| **Cross-tool hub** | `~/.agents/skills/` | `.agents/skills/` | De-facto standard path; Grok + many CLIs read it. Good default install target for OSS users. |
+| **Claude Code** | `~/.claude/skills/<name>/SKILL.md` | `.claude/skills/` | Official docs explicitly support symlinked skill directories. |
+| **Codex** | `~/.agents/skills/<name>/SKILL.md` | `.agents/skills/` from CWD to repo root | Official docs explicitly support symlinked skill directories. Optional `agents/openai.yaml`. |
+| **Grok Build** | `~/.grok/skills/`, plus compatibility discovery of `~/.agents/skills/` and `~/.claude/skills/` | `.grok/skills/`, `.agents/skills/`, `.claude/skills/` | Confirmed with `grok inspect --json` on Grok Build 0.2.117. |
 
-**Implication for zstack:** installing into **`~/.agents/skills`** + **`~/.claude/skills`** + **`~/.codex/skills`** (+ optional `~/.grok/skills`) covers the three primary agents with maximum overlap and least surprise.
+**Implication for zstack:** default installation needs only
+**`~/.agents/skills`** + **`~/.claude/skills`**. The former covers current Codex
+and Grok; the latter covers Claude and Grok. Keep `~/.codex/skills` as a legacy
+opt-in and `~/.grok/skills` as an explicit dedicated-root opt-in.
 
 ```
                     ┌─────────────────────────┐
@@ -75,18 +78,15 @@ Ground truth from current tooling (2026):
                     │   skills/<name>/…       │
                     └───────────┬─────────────┘
                                 │  setup / install
-              ┌─────────────────┼─────────────────┐
-              ▼                 ▼                 ▼
-     ~/.agents/skills    ~/.claude/skills   ~/.codex/skills
-     (hub + Grok)        (Claude Code)      (Codex)
-              │                 │
-              └────────┬────────┘
-                       ▼
-              Grok Build also scans
-              ~/.claude + ~/.agents
+                        ┌───────┴────────┐
+                        ▼                ▼
+               ~/.agents/skills  ~/.claude/skills
+                 (Codex + Grok)     (Claude + Grok)
 ```
 
-Optional: also link `~/.grok/skills` for explicit Grok-only overrides; usually unnecessary if Claude/agents links exist.
+Optional: `./scripts/setup.sh --hosts codex` installs the legacy Codex root;
+`--hosts grok` installs the dedicated Grok root. A later default setup leaves
+those unselected roots untouched.
 
 ---
 
@@ -97,23 +97,26 @@ zstack/
 ├── README.md                 # What / why / quick start
 ├── ARCHITECTURE.md           # This document
 ├── AGENTS.md                 # Agent-facing rules when working *on* zstack
+├── CONTRIBUTING.md           # Public contribution workflow and quality gates
 ├── LICENSE
-├── package.json              # Optional: scripts only (no runtime dep required)
 ├── catalog.yaml              # Skill registry (id, category, hosts, status)
+├── evals/
+│   ├── cases.yaml            # Post-selection behavioral regression manifest
+│   └── routing.yaml          # Description-only routing regression manifest
 ├── skills/                   # ★ Source of truth
 │   ├── _template/            # Scaffold for new skills
-│   │   └── SKILL.md
-│   ├── git-commit/
-│   │   └── SKILL.md
-│   ├── writing-daily-work-reports/
 │   │   ├── SKILL.md
 │   │   └── references/
-│   └── some-tool-skill/
+│   │       └── quality-bar.md
+│   ├── z-market-validate/
+│   │   └── SKILL.md
+│   ├── z-customer-discovery/
+│   │   ├── SKILL.md
+│   │   └── references/
+│   └── z-some-workflow/
 │       ├── SKILL.md
 │       ├── scripts/
 │       └── references/
-├── packs/                    # Optional logical groups (meta only, no duplicate content)
-│   └── opc-cloudflare.yaml   # lists skill ids in the pack
 ├── hosts/                    # Host profiles (declarative, small)
 │   ├── agents.yaml
 │   ├── claude.yaml
@@ -123,13 +126,25 @@ zstack/
 │   ├── setup.sh              # Primary installer (bash, zero deps)
 │   ├── unlink.sh             # Clean uninstall of zstack links only
 │   ├── doctor.sh             # Validate skills + link health
+│   ├── test.sh               # Integration tests
 │   ├── new-skill.sh          # Scaffold from _template
+│   ├── report-evidence-coverage.rb # Behavioral/routing evidence matrices
+│   ├── run-behavioral-evals.rb # Shared snapshot-isolated runner core
+│   ├── run-{codex,claude,grok}-behavioral-evals.rb # Host runner entries
+│   ├── archive-behavioral-run.rb # Shared reviewed-archive core
+│   ├── archive-{codex,claude,grok}-behavioral-run.rb # Host archive entries
+│   ├── run-routing-evals.rb # Shared description-only routing core
+│   ├── run-{codex,claude,grok}-routing-evals.rb # Host runner entries
+│   ├── archive-routing-run.rb # Shared atomic routing archiver
+│   ├── archive-{codex,claude,grok}-routing-run.rb # Host archive entries
 │   └── lib/
-│       └── common.sh
+│       ├── common.sh         # Shared installer/catalog shell parsing
+│       └── eval_host_contracts.rb # Immutable eval inputs + runner parsing
 ├── docs/
 │   ├── authoring.md          # How to write a portable skill
-│   ├── frontmatter.md        # Field compatibility matrix
-│   └── migration.md          # Import from ~/.agents, ~/.claude, …
+│   ├── compatibility.md      # Host discovery sources + runtime evidence
+│   ├── evaluation.md         # Clean-session forward-test method
+│   └── frontmatter.md        # Exact portable frontmatter contract
 └── .github/
     └── workflows/
         └── validate.yml      # Frontmatter + structure CI
@@ -140,7 +155,6 @@ zstack/
 - **`skills/` flat by name** — matches every host’s discovery model (`<root>/<name>/SKILL.md`). Nested categories would break discovery unless install rewrites paths.
 - **`catalog.yaml`** — human + machine registry without inventing a DB: status (active/draft/deprecated), tags, which hosts to install to.
 - **`hosts/*.yaml`** — install targets and frontmatter constraints in data, not hard-coded if-else forests.
-- **`packs/`** — optional “install these 8 skills for Cloudflare OPC work”; never copies skill bodies.
 - **Bash installer first** — works before Node/Bun is available; optional Node later if validation grows.
 
 ---
@@ -158,40 +172,45 @@ Every skill is a directory under `skills/<name>/` with:
 | `references/` | No | Long docs the agent should Read on demand (keep SKILL.md thin) |
 | `assets/` | No | Static templates, examples |
 | `agents/openai.yaml` | No | Codex-oriented metadata when needed |
-| `evals/` | No | Optional fixtures / check prompts for quality |
 
-**Naming:** `name` = directory name = slash command stem.  
+**Naming:** `name` = directory name = portable skill id. Claude/Grok expose
+`/name`; current Codex exposes `$name`.
 **Required pattern:** `^z-[a-z0-9]([a-z0-9-]{0,60}[a-z0-9])?$` (must start with `z-`, ≤64 chars total).
+
+Behavioral cases are centralized in root `evals/cases.yaml`; every active skill
+must have at least three cases with non-empty prompt, `must`, and `must_not`
+criteria, including one `happy-path` and one `edge` or `adversarial` case. Dated
+clean-context responses and explicit grades live under `evals/runs/`; raw output
+stays separate from the grading summary so a reviewer can audit regressions
+without trusting the score alone. A shared deterministic validator checks the
+exact two-column Evidence handoff against retained bytes; semantic criteria
+remain reviewer-owned, and the archiver rejects disagreement between the two.
+
+Routing cases are centralized in `evals/routing.yaml`; every active skill must
+have at least two natural-language prompts, and the manifest must include at
+least two unrelated `none` cases. Runners receive candidate descriptions and
+the prompt only—never skill bodies or `expected_skill`—so the test measures the
+actual discovery API rather than recall of an answer key.
 ### 5.2 Complexity tiers
 
 | Tier | Contents | When to use |
 |------|----------|-------------|
 | **L0** | `SKILL.md` only | Most personal workflows, conventions, checklists |
 | **L1** | + `scripts/` and/or `references/` | Need deterministic steps, long domain docs |
-| **L2** | + host-specific extras (`agents/openai.yaml`, rare frontmatter) | Codex packaging or host-only flags |
+| **L2** | + host-specific extras such as `agents/openai.yaml` | Optional packaging while shared frontmatter stays minimal |
 | **L3** | Content generation / multi-host rewrite | **Out of scope for v1** — that’s gstack’s job. If a skill needs L3, either (a) keep it host-agnostic, or (b) document it as Claude-primary |
 
 ### 5.3 Portable SKILL.md shape (canonical)
 
 ```markdown
 ---
-name: example-skill
+name: z-example-skill
 description: >-
-  One-line what + when. Include trigger phrases and /example-skill.
+  One-line what + when. Include natural trigger phrases, not host invocation syntax.
   Keep under ~500 chars when possible; Codex is pickier about invalid YAML.
-license: MIT
-# Optional, widely ignored if unknown:
-# allowed-tools: Bash, Read
-# disable-model-invocation: false
-# metadata:
-#   author: henry
-#   tags: git, opc
 ---
 
 # Example Skill
-
-## When to use
-…
 
 ## Steps
 1. …
@@ -206,9 +225,14 @@ license: MIT
 1. Prefer **shell commands** over host-specific tool names (`Bash` / “run this command” language).
 2. Prefer **“read the file”** over “use the Read tool”.
 3. Prefer **“edit the file”** over “use Edit / apply_patch / StrReplace”.
-4. Reference scripts as: `bash "$(dirname …)/scripts/foo.sh"` or document install root as `$ZSTACK_ROOT/skills/<name>/scripts/…` after setup exports `ZSTACK_ROOT`.
-5. Do not hardcode `~/.claude/skills/...` paths inside skill bodies — use `$ZSTACK_ROOT` or relative discovery.
-6. Keep **description** specific: verbs + nouns + slash name + failure-mode keywords.
+4. Reference bundled resources relative to the skill directory, such as
+   `scripts/foo.sh`, and tell the agent to resolve that path from `SKILL.md`.
+5. Do not hardcode host install roots or assume `ZSTACK_ROOT` is exported;
+   `setup.sh` records the root for maintenance but does not change future host
+   process environments.
+6. Keep **description** specific: verbs + nouns + trigger contexts + failure-mode keywords.
+7. Keep trigger guidance in **description**; do not repeat `When to use` after
+   the skill has already loaded.
 
 ### 5.4 Frontmatter compatibility matrix
 
@@ -216,15 +240,10 @@ license: MIT
 |-------|--------|-------|------|----------------|
 | `name` | ✓ | ✓ | ✓ | **Required** |
 | `description` | ✓ | ✓ | ✓ | **Required**; primary routing signal |
-| `license` | ✓ | ✓ | ✓ | Recommended (MIT to match repo) |
-| `allowed-tools` | ✓ | often ignored | ✓ | Optional; host-specific enforcement |
-| `disable-model-invocation` | ✓ | varies | ✓ | Optional |
-| `when-to-use` | some | rare | ✓ | Prefer folding into `description` for portability |
-| `triggers` / `preamble-tier` | gstack | — | — | **Avoid in zstack** (gstack-specific) |
-| `metadata` | ✓ | ✓ | ✓ | Free-form; ok |
-| `compatibility` | some | some | ✓ | Optional human note |
+| Any other key | varies | varies | varies | **Disallowed**; keep metadata in `catalog.yaml` |
 
-**Rule:** unknown keys should be harmless, but **Codex has rejected skills for invalid/oversized frontmatter**. Validate with `scripts/doctor.sh` before install.
+**Rule:** zstack deliberately uses only `name` and `description`. Validate with
+`scripts/doctor.sh --source-only` before install.
 
 ---
 
@@ -241,15 +260,20 @@ Default clone location (documented, not enforced):
 Environment:
 
 ```bash
-export ZSTACK_ROOT="$HOME/code/zstack"   # optional; setup can write to ~/.zstack/config
+export ZSTACK_ROOT="$HOME/code/zstack"   # optional convenience for manual commands
 ```
+
+Setup records the latest repository root in `~/.zstack/root` and every managed
+link as `repo-root|link-path` in `~/.zstack/links`. The latter lets uninstall
+find project-local links and links from more than one clone.
 
 ### 6.2 Link strategy (v1)
 
-For each skill marked `status: active` in `catalog.yaml`, and for each enabled host profile:
+For each skill marked `status: active` in `catalog.yaml`, and for each enabled
+host profile (or optional profile named explicitly by `--hosts`):
 
 ```text
-ln -sfn "$ZSTACK_ROOT/skills/<name>"  "<host_skills_root>/<name>"
+ln -s "$ZSTACK_ROOT/skills/<name>"  "<host_skills_root>/<name>"
 ```
 
 Examples:
@@ -258,16 +282,37 @@ Examples:
 |--------------|--------|
 | `agents` | `~/.agents/skills/<name>` |
 | `claude` | `~/.claude/skills/<name>` |
-| `codex` | `~/.codex/skills/<name>` |
+| `codex` | `~/.codex/skills/<name>` (legacy, explicit opt-in) |
 | `grok` | `~/.grok/skills/<name>` (optional) |
 
-**Idempotent:** re-running `./setup` refreshes links; does not delete non-zstack skills.
+**Idempotent:** re-running `./scripts/setup.sh` refreshes links; it does not
+delete non-zstack skills. A skipped conflict or failed link makes the command
+exit non-zero after reporting the complete summary.
+
+**Scoped reconciliation:** each run treats selected host roots (plus the current
+`--project` root) as desired-state scopes. It removes only links into this
+repository whose skill became draft/deprecated or lost that host allowlist.
+Unselected host roots, other clone records, non-links, and backups are retained.
+If `--force` successfully takes over the exact same destination from another
+clone, setup preserves the old symlink as a backup and transfers that path's
+manifest ownership to the new clone.
 
 **Safety:**
 
-- Never overwrite a **non-symlink** directory that doesn’t point into `ZSTACK_ROOT` without `--force`.
+- Never overwrite a conflicting path by default. With `--force`, move it to a
+  timestamped `.zstack-backup-*` sibling before creating the link. Restore the
+  original automatically if link creation fails.
+- Require an absolute, non-root-resolving `HOME`; host profiles must stay under
+  `~/` without `.` or `..` traversal components.
+- Refuse project-local installation when the current directory is `/`.
 - Only manage links whose targets resolve under `ZSTACK_ROOT/skills/`.
-- `unlink.sh` removes only zstack-managed links (detect via target path).
+- Record successful global and project-local links in `~/.zstack/links`.
+- Refuse a symlinked `~/.zstack` state directory so locks and manifests cannot
+  escape into an unrelated filesystem location.
+- Serialize setup and unlink mutations with a recoverable PID lock under
+  `~/.zstack/`; live operations block competitors and stale locks self-heal.
+- `unlink.sh` removes a recorded or discovered link only when its target resolves
+  under the current `ZSTACK_ROOT/skills/`; backups and non-links are preserved.
 
 ### 6.3 Conflict with existing skills
 
@@ -276,18 +321,22 @@ Install never overwrites a non-symlink path without explicit user action. If nam
 **User end state after install:**
 
 ```text
-zstack/skills/foo  ←── ~/.agents/skills/foo
-                   ←── ~/.claude/skills/foo
-                   ←── ~/.codex/skills/foo
+zstack/skills/z-foo  ←── ~/.agents/skills/z-foo
+                     ←── ~/.claude/skills/z-foo
+
+Optional:            ←── ~/.codex/skills/z-foo
+                     ←── ~/.grok/skills/z-foo
 ```
 
 ### 6.4 Project-local install (optional)
 
 ```bash
-./setup --project   # links into <repo>/.agents/skills for team sharing
+./scripts/setup.sh --project   # links into <repo>/.agents/skills
 ```
 
 Use when a skill is product-specific and should travel with an app repo. Personal daily tools stay global.
+The absolute project link paths are retained in the install manifest so
+`./scripts/unlink.sh` can remove them even when run elsewhere.
 
 ### 6.5 Relationship to gstack
 
@@ -295,47 +344,33 @@ Use when a skill is product-specific and should travel with an app repo. Persona
 |---------|-------|
 | `/qa`, `/ship`, `/browse`, multi-host generators | **gstack** |
 | Personal OPC skills, Chinese workflows, niche tools | **zstack** |
-| Install dir collision (`~/.claude/skills/foo`) | Names must not clash with gstack short names if both installed without prefix |
+| Install dir collision (`~/.claude/skills/z-foo`) | The `z-` prefix separates this pack from gstack short names |
 
-**Name policy:** avoid squatting gstack short names (`qa`, `ship`, `review`, `browse`, …). Prefer descriptive personal names (`cf-d1-migrate`, `opc-daily-report`, `stripe-webhook-smoke`).
+**Name policy:** the `z-` namespace avoids gstack short names (`qa`, `ship`,
+`review`, `browse`, …). Prefer descriptive names such as
+`z-cf-d1-migrate`, `z-opc-daily-report`, or `z-stripe-webhook-smoke`.
 
 ---
 
-## 7. Catalog & Packs
+## 7. Catalog
 
 ### 7.1 `catalog.yaml` (example)
 
 ```yaml
 version: 1
 skills:
-  - id: writing-daily-work-reports
-    path: skills/writing-daily-work-reports
+  - id: z-writing-daily-work-reports
+    path: skills/z-writing-daily-work-reports
     status: active          # active | draft | deprecated
     category: reporting
     hosts: [agents, claude, codex, grok]
     tags: [chinese, work]
 
-  - id: experimental-foo
-    path: skills/experimental-foo
+  - id: z-experimental-foo
+    path: skills/z-experimental-foo
     status: draft
     hosts: [claude]         # only install to Claude while drafting
 ```
-
-### 7.2 Packs
-
-```yaml
-# packs/opc-cloudflare.yaml
-name: opc-cloudflare
-description: Skills for Cloudflare-native OPC web apps
-skills:
-  - cf-d1-migrate
-  - wrangler-preview-checklist
-  - stripe-webhook-smoke
-```
-
-Install: `./setup --pack opc-cloudflare`.
-
----
 
 ## 8. Host Profiles
 
@@ -355,13 +390,13 @@ frontmatter:
 ```yaml
 # hosts/codex.yaml
 name: codex
-display_name: OpenAI Codex CLI
+display_name: Legacy Codex compatibility root
 skills_root: ~/.codex/skills
 link_mode: symlink
+enabled: false
 frontmatter:
   required: [name, description]
-  description_max_chars: 1024   # soft limit; doctor warns
-  strip_unknown: false          # v1: do not rewrite files
+  description_max_chars: 1024   # conservative cross-host limit
 ```
 
 ```yaml
@@ -388,25 +423,41 @@ enabled: false              # default off — Grok already reads ~/.claude + ~/.
 ## 9. Authoring Workflow
 
 ```
-1. ./scripts/new-skill.sh my-skill
-2. Edit skills/my-skill/SKILL.md (description + steps)
-3. Add scripts/references only if needed
-4. ./scripts/doctor.sh my-skill
-5. Register in catalog.yaml (status: draft → active)
-6. ./setup --hosts claude,codex,agents
-7. Smoke: invoke /my-skill in each agent
-8. git commit
+1. ./scripts/new-skill.sh z-my-skill product
+2. Edit skills/z-my-skill/SKILL.md (description, workflow, and handoff)
+3. Customize the generated references/quality-bar.md; add more references or
+   scripts only if needed
+4. Review the auto-created draft metadata in catalog.yaml
+5. Add at least three behavioral cases to evals/cases.yaml (including one
+   happy-path) and two routing cases to evals/routing.yaml; mark only cases that
+   require real files with `execution: artifact`
+6. ./scripts/test.sh && ./scripts/doctor.sh --source-only
+7. Change status to active and run ./scripts/setup.sh
+8. Run affected post-selection cases with
+   `ruby scripts/run-codex-behavioral-evals.rb --case <id>` or the Claude
+   counterpart, and relevant routing
+   cases with `ruby scripts/run-codex-routing-evals.rb --case <id>` or the
+   matching Claude/Grok entry point, then
+   smoke-test an explicit invocation and a natural-language auto-routing prompt
+   in one host
+9. git commit
 ```
 
 ### Quality bar for merge
 
 - [ ] Valid YAML frontmatter with `name` + `description`
 - [ ] Directory name matches `name`
-- [ ] Description includes triggers / slash command
+- [ ] Description includes natural triggers and no host-specific invocation prefix
 - [ ] No secrets, no absolute personal paths that break on another machine
 - [ ] Body uses portable wording (command/file oriented)
-- [ ] `doctor.sh` clean
-- [ ] Catalog entry present
+- [ ] No scaffold or catalog placeholders remain
+- [ ] Catalog category and tags are kebab-case; tags are unique and include `indie`
+- [ ] Catalog summary is non-empty and meaningful
+- [ ] Active skill links `references/quality-bar.md`
+- [ ] Primary output preserves exactly one two-column, seven-row evidence handoff
+- [ ] At least three behavioral cases include happy-path and resilience coverage
+- [ ] At least two clean-context routing cases exercise the description
+- [ ] `test.sh` and `doctor.sh` clean
 
 ---
 
@@ -414,14 +465,36 @@ enabled: false              # default off — Grok already reads ~/.claude + ~/.
 
 `scripts/doctor.sh` checks:
 
-1. **Structure** — every `skills/*/SKILL.md` exists; name regex; name == dirname.
-2. **Frontmatter** — parse YAML; required fields; description non-empty.
-3. **Portability lint** — warn on hardcoded `~/.claude/skills/gstack` or host-only tool jargon when avoidable.
-4. **Links** — for each host, if link exists, target must resolve under `$ZSTACK_ROOT/skills`.
-5. **Collisions** — detect non-zstack dirs occupying the same skill name.
-6. **Catalog sync** — warn if directory missing from catalog or catalog points to missing path.
+1. **Structure** — every `skills/*/SKILL.md` exists; name regex; name == dirname;
+   references over 100 lines expose a Contents section near the top.
+2. **YAML + frontmatter** — use Ruby's standard YAML parser when available to
+   reject syntax errors, aliases, and duplicate keys; always enforce required
+   frontmatter fields and a non-empty description with Bash/AWK.
+3. **Catalog** — require paths, status, hosts, kebab-case category, unique
+   kebab-case tags including `indie`, and a meaningful summary.
+4. **Host profiles** — require matching names, display names, safe HOME-contained
+   roots, symlink mode, positive limits, and frontmatter fields.
+5. **Portability lint** — reject machine-local skill paths and host-specific tool ids across skill content.
+6. **Links** — for each host, installed links must resolve under `$ZSTACK_ROOT/skills`.
+7. **Collisions** — detect non-zstack paths occupying the same skill name.
+8. **Behavioral manifest** — require unique, typed cases with non-empty prompts
+   and criteria; every active skill needs three total, including happy-path and
+   resilience coverage.
+9. **Routing manifest** — require natural prompts without expected-skill
+   leakage, valid active targets, two cases per active skill, two no-match
+   cases across the suite, and Chinese positive/no-match coverage when
+   descriptions advertise Chinese triggers.
+10. **Secret lint** — scan tracked and unignored commit candidates for common
+   credential and private-key signatures without reading ignored local secrets.
 
-CI runs the same checks without link verification (no home dirs on CI), or with a dry-run mode.
+CI runs Bash syntax, strict YAML, and the integration suite on Linux and macOS;
+both jobs parse every Ruby script, while Linux also runs ShellCheck and
+Actionlint. Ruby 2.6+ is required for contributor tests, evidence tooling, and
+live routing evaluation. It remains an optional doctor enhancement for basic
+install users: the portable Bash/AWK validation contract still runs when Ruby is
+absent. The suite copies only tracked or unignored source into temporary
+fixtures and uses temporary HOME directories, so it verifies link behavior
+without reading ignored local state or touching the runner's real skill roots.
 
 ---
 
@@ -429,14 +502,15 @@ CI runs the same checks without link verification (no home dirs on CI), or with 
 
 zstack does **not** run a daemon. Runtime is entirely host-driven:
 
-1. User (or model) invokes skill by slash command or auto-routing on `description`.
+1. User explicitly invokes the skill with host syntax (`/name` or `$name`), or
+   the model auto-routes from `description`.
 2. Host injects `SKILL.md` body into context.
 3. Agent follows steps; may execute scripts from the skill directory (resolved via symlink → real path).
 
 Optional helper for scripts that need the real repo root:
 
 ```bash
-# skills/foo/scripts/_root.sh
+# skills/z-foo/scripts/_root.sh
 ZSTACK_SKILL_DIR="$(cd "$(dirname "$0")/.." && pwd -P)"
 ZSTACK_ROOT="$(cd "$ZSTACK_SKILL_DIR/../.." && pwd -P)"
 ```
@@ -463,9 +537,9 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 | Option | Pros | Cons | Decision |
 |--------|------|------|----------|
 | **A. Symlink install (chosen)** | Live updates for contributors; simple for OSS clone | Windows symlink quirks | **v1 default** |
-| **B. Copy install** | Works everywhere | Stale after pull; needs re-setup | Fallback only |
+| **B. Copy install** | Works without symlinks | Stale after pull; needs lifecycle support | Not implemented in v1 |
 | **C. Full host codegen (gstack-style)** | Perfect per-host frontmatter | Heavy for an indie skill pack | Reject for v1 |
-| **D. Only `~/.agents/skills` as hub** | One install target | Claude/Codex may not all scan it equally | Use agents **plus** explicit claude/codex links |
+| **D. Only `~/.agents/skills` as hub** | One install target for Codex + Grok | Claude uses its own root | Use agents **plus** the Claude root |
 | **E. Nested categories as install paths** | Nice taxonomy | Breaks `<root>/<name>/SKILL.md` discovery | Taxonomy in catalog only |
 | **F. Migrate existing personal skills first** | Fast content fill | Wrong product (not OSS-ready original pack) | **Rejected** |
 
@@ -474,13 +548,14 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 ## 14. Key Decisions
 
 1. **Product = open-source indie-developer skill pack**, not a private skill dump.
-2. **Canonical format = Agent Skills `SKILL.md`** with minimal frontmatter (`name`, `description`, optional `license` / `metadata`).
+2. **Canonical format = Agent Skills `SKILL.md`** with exactly `name` and `description` in frontmatter.
 3. **Source of truth = this git repo’s `skills/`**; home directories are install targets only.
-4. **Install = symlink** into `~/.agents/skills`, `~/.claude/skills`, `~/.codex/skills`; **Grok via compat scan** (`hosts/grok` disabled).
+4. **Default install = symlink** into `~/.agents/skills` and
+   `~/.claude/skills`; legacy Codex and dedicated Grok roots are explicit opt-ins.
 5. **No content rewriting in v1** — portability via authoring rules + doctor.
 6. **Original skills only** — no migration of personal/third-party packs; external tools may be linked in docs only.
 7. **`z-` prefix on all skill ids** for multi-pack coexistence.
-8. **Catalog + packs** for discovery and partial install.
+8. **Catalog** controls discovery, lifecycle status, metadata, and per-host install.
 9. **Bash-first setup/doctor** so OSS users need no JS toolchain to install.
 10. **Progressive skill tiers L0–L2**; L3 generators deferred.
 
@@ -491,9 +566,10 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 | # | Question | Decision |
 |---|----------|----------|
 | 1 | Grok install | **`hosts/grok.enabled: false`** — rely on Grok’s compat scan of `~/.agents` + `~/.claude` |
-| 2 | Skill naming | **Mandatory `z-` prefix** (e.g. `z-market-validate`) for OSS collision safety |
-| 3 | Third-party skills | **Docs external links only** — never vendor marketplace packs into this repo |
-| 4 | Content source | **Pure original skills only** — no migration of personal or others’ skill dumps |
+| 2 | Codex install | **Current root is `~/.agents/skills`**; keep `hosts/codex` disabled as a legacy opt-in |
+| 3 | Skill naming | **Mandatory `z-` prefix** (e.g. `z-market-validate`) for OSS collision safety |
+| 4 | Third-party skills | **Docs external links only** — never vendor marketplace packs into this repo |
+| 5 | Content source | **Pure original skills only** — no migration of personal or others’ skill dumps |
 
 ### Still open (non-blocking)
 
@@ -502,22 +578,30 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 
 ---
 
-## 16. PR Plan (implementation slices)
+## 16. Current State and Next Milestones
 
-### PR1 — Scaffold ✅
-- Architecture, README, AGENTS, template, hosts, setup/doctor/new-skill
+### Shipped
 
-### PR2 — First original skills ✅
-- `z-market-validate`, `z-write-prd`
-- Catalog + multi-host install + `z-` naming lock
+- Five original product-judgment skills
+- Catalog-driven, per-host symlink installation
+- Source, link, portability, catalog, and host-profile validation
+- Integration tests, ShellCheck, and CI
+- Four behavioral regression cases per active skill (happy-path, edge, and adversarial)
+- English and Chinese description-only routing cases, including boundaries and no-matches
+- Grok runtime discovery and complete no-web behavior runs for all five skills
+- Shared isolated Codex/Claude/Grok behavioral and routing runners with
+  per-process-group wall-clock limits, plus reviewed atomic archivers
+- Response/artifact behavioral execution modes with audited deliverable capture
+  and byte-bound mechanical Evidence handoff validation
+- English and Chinese install docs plus a contribution guide
 
-### PR3 — OSS polish
-- Public install docs (clone → setup → verify on three hosts)
-- CONTRIBUTING.md for external skill PRs
-- CI: `doctor.sh` on push
+### Next, only with evidence
 
-### PR4 — Packs (optional)
-- Logical packs once enough skills exist (e.g. `shipping`, `growth`, `cloudflare-opc`)
+- Add clean Claude behavior archives once a configured provider/model pair is available,
+  then re-run host/model matrices after upgrades
+- Additional original workflows where the current product journey has a proven gap
+- Logical packs only after the catalog is large enough that selective install
+  solves a real problem
 
 ---
 
@@ -525,10 +609,12 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 
 - Stranger on GitHub: clone + `./scripts/setup.sh` → skills usable in Claude / Codex / Grok.
 - Each skill is **original**, documented, and safe to open-source.
-- `doctor.sh` catches broken frontmatter before Codex skips the skill.
+- `doctor.sh` catches broken frontmatter before a host loses reliable routing.
 - Zero accidental overwrites of unrelated host skills.
 - Authoring a new L0 skill takes &lt; 10 minutes including catalog + install.
 
 ---
 
-*Last updated: 2026-07-29 — locked: Grok compat scan, z- prefix, docs-only third-party links, original skills only.*
+*Last updated: 2026-07-31 — locked: minimal frontmatter, current default host
+roots, explicit legacy profiles, z- prefix, docs-only third-party links, and
+original skills only.*

@@ -1,0 +1,4 @@
+date,source_class,utm_source,utm_medium,utm_content,visits,cta_clicks,emails,cvr_pct,spend_usd,cpe_usd,qualified_replies,notes
+2026-08-01,warm,linkedin_dm,dm,batch1,0,0,0,,,0,,,"example row — replace with real data; never blend classes into one CVR"
+2026-08-03,cold_organic,reddit,community,r_saas,0,0,0,,,0,,
+2026-08-07,cold_paid,meta,cpc,creative_a,0,0,0,,,0,,

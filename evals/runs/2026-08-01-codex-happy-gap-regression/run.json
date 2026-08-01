@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "skillSource": "exact retained source snapshot",
+    "model": "gpt-5.6-sol",
+    "turns": 1
+  },
+  "runs": [
+    {
+      "id": "host-gap-audit-discovery-five-interviews",
+      "case": "discovery-five-interviews",
+      "phase": "host-gap-audit",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 87.119,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-five-interviews.txt",
+        "responses/discovery-five-interviews.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ]
+    },
+    {
+      "id": "host-gap-audit-smoke-complete-pack",
+      "case": "smoke-complete-pack",
+      "phase": "host-gap-audit",
+      "grade": "fail",
+      "exitStatus": 0,
+      "elapsedSeconds": 267.519,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-complete-pack.txt",
+        "responses/smoke-complete-pack.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md"
+      ]
+    },
+    {
+      "id": "host-gap-audit-prd-evidence-rich-mvp",
+      "case": "prd-evidence-rich-mvp",
+      "phase": "host-gap-audit",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 4289.083,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/prd-evidence-rich-mvp.txt",
+        "responses/prd-evidence-rich-mvp.txt",
+        "skill-snapshots/z-write-prd/SKILL.md",
+        "skill-snapshots/z-write-prd/references/prd-template.md",
+        "skill-snapshots/z-write-prd/references/quality-bar.md"
+      ]
+    },
+    {
+      "id": "host-gap-audit-seo-supplied-search-notes",
+      "case": "seo-supplied-search-notes",
+      "phase": "host-gap-audit",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 4289.069,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/seo-supplied-search-notes.txt",
+        "responses/seo-supplied-search-notes.txt",
+        "skill-snapshots/z-seo-plan/SKILL.md",
+        "skill-snapshots/z-seo-plan/references/quality-bar.md",
+        "skill-snapshots/z-seo-plan/references/seo-plan-template.md",
+        "skill-snapshots/z-seo-plan/references/workflow-cheatsheet.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "4/4 runner logs contained the state-database fallback.",
+    "4/4 runner logs contained the Cloudflare MCP OAuth invalid_grant.",
+    "4/4 runner logs contained the installed-skill context-budget warning."
+  ],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

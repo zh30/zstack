@@ -1,0 +1,386 @@
+I'll follow only the copied z-write-prd skill and draft a complete PRD from the brief idea.# PRD: FreelancePilot (working name)
+
+| Field | Value |
+|-------|--------|
+| **Status** | Draft |
+| **Owner** | Independent developer (TBD) |
+| **Last updated** | 2026-08-01 |
+| **Version** | 0.1 |
+| **Primary persona** | Solo service freelancer (writer / designer / consultant / marketer) |
+| **Platform** | Web app (desktop-first; mobile-usable browser) |
+| **Related docs** | None provided — idea only: “an AI app for freelancers” |
+
+## Revision history
+
+| Version | Date | Summary |
+|---------|------|---------|
+| 0.1 | 2026-08-01 | Initial PRD from one-liner; scope locked via labeled assumptions |
+
+---
+
+## 1. Overview
+
+### 1.1 One-liner
+
+For solo freelancers who lose billable hours to proposals, client emails, and project admin, **FreelancePilot** is a web AI workspace that turns a short brief into client-ready drafts (proposal, scope, follow-up) they can edit, save, and reuse—without becoming a full agency OS.
+
+### 1.2 Problem statement
+
+- **Current situation:** Freelancers win and run work with a messy stack: email, Docs/Notion, chat, optional CRM, and generic ChatGPT. Client-facing writing (proposals, scopes, status updates) is rewritten from scratch each time.
+- **Pain:** High cognitive load and time cost on non-billable “words work”; inconsistent quality; fear of under-scoping or sounding generic; context lost across tools.
+- **Why now:** Generative models make first drafts cheap; freelancers already paste briefs into ChatGPT but lack structure, project memory, and output formats tied to freelance workflows.
+- **Cost of status quo:** `Assumption:` 3–8 hours/week on drafting and admin that could be cut 30–50% with structured templates + memory. Not measured; treat as hypothesis.
+
+### 1.3 Goals
+
+**Product goals (user outcomes)**
+
+1. Produce a usable proposal or scope draft from a brief in under 10 minutes of user time.
+2. Keep per-client context (services, rates, tone) so the next draft is less generic.
+3. Leave the freelancer in control: every AI output is editable before send.
+
+**Business goals (indie)**
+
+1. Ship an MVP a solo builder can complete and put in front of 10–20 freelancers.
+2. Validate willingness to pay (paid pilot or clear “would pay $X/mo” with card or deposit).
+3. Learn which single job (proposals vs. email vs. invoices) drives retention.
+
+### 1.4 Non-goals (v1)
+
+- Full project management / Gantt / time tracking / invoicing / payments (Stripe Connect, etc.).
+- Multi-seat agencies, roles, SSO, or client portals.
+- Mobile native apps, browser extensions, or Slack bots.
+- Marketplace matching freelancers to clients, or “AI agent that emails clients for you” without review.
+- Training custom base models; auto-posting to client channels without human send.
+- Legal advice product positioning (contracts as attorney substitutes).
+
+### 1.5 Success metrics
+
+| Metric | Definition | Target / signal | Timeframe |
+|--------|------------|-----------------|-----------|
+| Activation | User creates ≥1 saved project + generates ≥1 proposal/scope draft | ≥40% of signups who complete onboarding | First 14 days post-launch |
+| Time-to-first-draft | Minutes from empty project to exported/copied draft | Median ≤10 min | MVP pilot |
+| Weekly return | Users who generate ≥1 draft in week 2 after first draft | ≥25% of activated users | Pilot cohort |
+| Willingness to pay | Paid conversion or committed pilot fee | ≥5 paying or pre-paid pilots, or ≥30% of activated say yes + price | By end of M2 |
+| LLM cost ceiling | Avg model cost per active user / month | Stay under a founder-set budget (e.g. $3–8) | Continuous |
+
+*No user research numbers were provided; targets are planning defaults, not validated.*
+
+---
+
+## 2. Users & context
+
+### 2.1 Primary persona
+
+| Attribute | Detail |
+|-----------|--------|
+| Name / label | **Maya — solo service freelancer** |
+| Who they are | Independent writer, designer, consultant, or marketer; 1–15 active clients; no full-time admin |
+| Context / environment | Laptop + browser; works evenings; juggles inbound leads and delivery |
+| Top jobs-to-be-done | Win work with clear proposals; set scope; stay professional in async client comms |
+| Current tools / workarounds | Gmail, Docs, Notion, ChatGPT/Claude freeform, optional HoneyBook/Bonsai/Dubsado |
+| Triggers to seek a solution | Lead asks for a proposal same day; proposal anxiety; late-night rewriting |
+| Anti-persona (not for) | Agencies needing multi-user PM; pure product builders; freelancers who only want automated cold outreach spam |
+
+### 2.2 Secondary users (deferred)
+
+- Small boutique studios (2–5 people) — same pain, but needs seats/roles → **P2 / later**.
+
+### 2.3 Use contexts
+
+- Desktop deep work when writing proposals.
+- Occasional mobile browser to copy a follow-up email (not optimized as primary).
+- Online required for generation; drafts must persist after generation completes.
+
+---
+
+## 3. Solution
+
+### 3.1 Value proposition
+
+For **solo freelancers** who **burn non-billable hours rewriting proposals and client messages**, **FreelancePilot** is an **AI freelance writing workspace** that **turns a brief + saved profile into editable client-ready drafts**. Unlike **generic chatbots**, we **structure outputs around freelance artifacts (proposal, scope, follow-up) and remember client/project context**. Unlike **all-in-one freelance suites**, we **do one job well first: better drafts, faster—no PM replacement required**.
+
+### 3.2 Product principles
+
+1. **Human sends, AI drafts** — never auto-send to clients in v1.
+2. **One happy path** — brief → draft → edit → copy/export before power features.
+3. **Context is product** — profile + client notes beat longer prompts.
+4. **Honest AI** — show uncertainty; avoid inventing rates/legal terms user did not provide.
+5. **Indie cost discipline** — cap tokens; prefer short structured generations.
+
+### 3.3 Scope summary
+
+| In scope (MVP / P0) | Out of scope (v1) |
+|---------------------|-------------------|
+| Auth + single-user account | Teams, SSO |
+| Freelancer profile (services, rates, tone, bio) | Public portfolio site builder |
+| Client + project records (lightweight) | Full CRM pipeline automation |
+| Generate: proposal, scope/SOW outline, follow-up email | Contracts e-sign, invoicing, calendar |
+| Edit draft in-app; copy; markdown/export text | Figma/design generation, code agents |
+| Generation history per project | Multi-language UI (English first; content language user-specified) |
+| Basic usage limits / soft paywall hook | Complex enterprise billing |
+
+---
+
+## 4. User journeys (P0)
+
+### Journey A — First value (signup → first draft)
+
+1. Land on product; create account (email magic link or OAuth).
+2. Complete short profile: name, services, typical rate range, tone (e.g. formal / friendly).
+3. Create first client + project; paste lead brief or bullets.
+4. Choose artifact: **Proposal**.
+5. System generates structured draft; user edits; copies to clipboard / downloads `.md` or `.txt`.
+6. User marks draft as “used” (optional lightweight flag).
+
+**Success state:** User has a saved draft they consider sendable with minor edits.  
+**Failure / recovery:** Generation fails → show retry + keep brief; partial timeout → don’t lose inputs.
+
+### Journey B — Returning user, new client email
+
+1. Open existing client; add notes from last call.
+2. Generate **Follow-up email** from notes + prior proposal summary.
+3. Edit and copy into email client.
+
+**Success state:** Email draft in &lt;5 minutes with correct names/services.  
+**Failure / recovery:** Missing context → prompt for 2–3 required fields before generate.
+
+### Journey C — Scope control
+
+1. From won proposal, generate **Scope / SOW outline** (deliverables, out-of-scope, assumptions).
+2. Edit exclusions; copy into contract template (external).
+
+**Success state:** Explicit out-of-scope list present.  
+**Failure / recovery:** If rates missing, draft placeholders like `[RATE TBD]` rather than inventing numbers.
+
+---
+
+## 5. Requirements
+
+### 5.1 Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|----|-------------|----------|---------------------|
+| FR-001 | User can sign up and sign in as a single-user account | P0 | Given a valid email/OAuth, when user completes auth, then they reach an empty or existing dashboard without admin intervention |
+| FR-002 | User can create and update a freelancer profile (display name, services, rate notes, default tone, bio snippet) | P0 | Given profile form, when saved, then fields persist across sessions and are available to the generator |
+| FR-003 | User can create, list, open, and archive clients | P0 | Given dashboard, when user creates client with name (required), then client appears in list and opens detail view |
+| FR-004 | User can create projects under a client with title + brief/notes | P0 | Given a client, when user adds project + brief (≥1 character after trim), then project is saved and listed under client |
+| FR-005 | User can generate a **Proposal** draft from project brief + profile | P0 | Given project with brief and profile, when user clicks Generate Proposal, then a structured draft appears within 60s under normal load, including sections: overview, approach, deliverables, timeline placeholder, investment/pricing placeholder, next steps |
+| FR-006 | User can generate a **Scope / SOW outline** | P0 | Given project, when Generate Scope, then draft includes deliverables, out-of-scope, assumptions, and dependencies sections |
+| FR-007 | User can generate a **Follow-up / client email** | P0 | Given project notes or brief, when Generate Email, then draft includes subject line + body suitable to paste into email |
+| FR-008 | User can edit generated draft in-app and save versions | P0 | Given a draft, when user edits and saves, then latest content reloads on revisit; at least last version retained |
+| FR-009 | User can copy full draft to clipboard and download as plain text or markdown | P0 | Given a draft, when user copies/downloads, then content matches editor (manual check) |
+| FR-010 | System shall not invent numeric rates or legal commitments absent from profile/brief | P0 | Given empty rate fields, when generating, then output uses explicit placeholders (e.g. `[RATE]`) rather than fabricated $ amounts (spot-check 5 runs) |
+| FR-011 | User can view generation history for a project | P1 | List of past generations with type + timestamp; open prior draft read-only or restore |
+| FR-012 | User can set soft usage limit messaging (free tier) | P1 | When free quota exceeded, generate is blocked with upgrade/wait message; prior drafts remain readable |
+| FR-013 | User can regenerate with optional extra instruction | P1 | “Regenerate with note” produces new version without deleting previous saved version |
+| FR-014 | Import past proposal text as style sample | P2 | Optional paste of sample writing influences tone (best-effort) |
+| FR-015 | Multi-language UI | P2 | English UI only for MVP |
+
+### 5.2 Non-functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria / validation method |
+|----|-------------|----------|-----------------------------------------|
+| NFR-001 | Draft generation latency | P0 | p95 successful generation &lt; 60s for briefs ≤ 2k characters in staging with chosen model; show progress state after 2s |
+| NFR-002 | Data isolation | P0 | User A cannot read User B’s clients/projects/drafts via API or UI (manual IDOR check on object IDs) |
+| NFR-003 | Secrets handling | P0 | LLM API keys only server-side; not exposed to client bundle (grep + network tab) |
+| NFR-004 | Privacy baseline | P0 | Privacy note states client briefs may be sent to LLM provider; no training opt-in claims unless true; delete account removes or schedules deletion of user content within 30 days |
+| NFR-005 | Cost control | P0 | Hard max tokens per generation; per-user daily generation cap configurable by founder; logging of token usage per user |
+| NFR-006 | Accessibility baseline | P1 | Forms keyboard-navigable; primary actions have visible labels; contrast sufficient for body text (spot WCAG AA where cheap) |
+| NFR-007 | Availability | P1 | Best-effort single-region host; no 99.9% SLA claim for MVP |
+
+### 5.3 Tracking / analytics events
+
+| Event | When | Properties |
+|-------|------|------------|
+| `signup_completed` | Auth success | method |
+| `profile_saved` | Profile save | fields_filled_count |
+| `project_created` | New project | has_brief |
+| `draft_generated` | Generation success | type (proposal\|scope\|email), latency_ms, token_est |
+| `draft_generation_failed` | Failure | type, error_class |
+| `draft_copied` | Copy click | type |
+| `draft_downloaded` | Download | type, format |
+| `paywall_hit` | Quota exceeded | — |
+
+---
+
+## 6. UX & content notes
+
+### 6.1 Screens / pages (IA)
+
+- Marketing / landing (minimal)
+- Auth
+- Onboarding: profile (3–5 fields)
+- Home: recent projects + “New project”
+- Client list / client detail
+- Project workspace: brief, generate buttons, draft editor, history
+- Settings: profile, account delete, plan/usage
+- (Optional) Pricing
+
+### 6.2 Critical empty / error states
+
+- **No clients:** CTA “Add your first client” + one-line why (context improves drafts).
+- **Brief empty:** Disable generate or inline validation “Add a few bullets about the lead.”
+- **Generation error:** “Couldn’t generate. Your brief is saved—retry.” + support email.
+- **Quota exceeded:** Explain limit; keep read access to drafts.
+
+### 6.3 Key copy
+
+- **Onboarding:** “Set up once—proposals stop starting from zero.”
+- **Primary CTA:** “Generate proposal”
+- **Empty project:** “Paste the lead’s email or 5 bullets. We’ll draft; you decide what sends.”
+- **Disclaimer near generate:** “AI can be wrong. You own final client communication.”
+
+---
+
+## 7. Data & integrations
+
+### 7.1 Core concepts / entities
+
+| Entity | Purpose | Key fields (conceptual) |
+|--------|---------|-------------------------|
+| User | Account | id, email, plan, usage counters |
+| Profile | Generation defaults | services[], rate_notes, tone, bio |
+| Client | Group projects | name, notes, optional company |
+| Project | Work unit | title, brief, status |
+| Draft | Generated artifact | type, content, version, timestamps |
+| UsageEvent | Cost/quota | tokens, type, user_id |
+
+### 7.2 Integrations
+
+| System | Purpose | MVP? | Notes |
+|--------|---------|------|-------|
+| Auth (e.g. magic link / OAuth provider) | Login | Y | Pick one low-ops option |
+| LLM API (OpenAI/Anthropic/etc.) | Generation | Y | Server-side only; structured prompts |
+| Email (transactional) | Auth + optional product mail | Y | Auth minimum |
+| Payments (Stripe) | Paid pilot | P1 | After free pilot if needed |
+| Analytics (Plausible/PostHog/etc.) | Events above | Y | Privacy-light preferred |
+
+### 7.3 Permissions & roles
+
+Single-user only. No sharing links in MVP (`Assumption:` reduces support and security surface).
+
+---
+
+## 8. Edge cases & risks
+
+| Item | Impact | Mitigation |
+|------|--------|------------|
+| Hallucinated pricing/legal terms | Client trust damage, founder liability | Placeholders; disclaimer; FR-010 tests |
+| Prompt injection in pasted client email | Odd outputs / instruction override | System prompt isolation; strip tool use; no browsing |
+| LLM cost spikes | Margin death | Caps, shorter contexts, model tiering |
+| “Write my whole business” expectations | Churn / bad reviews | Narrow positioning: drafts for proposals/scope/email only |
+| Support burden on “why is tone wrong?” | Founder time | Tone presets + “paste sample” later; docs FAQ |
+| Competing with free ChatGPT | Weak differentiation | Client/project memory + artifact structure + export habit loop |
+| No real demand for this wedge | Build waste | Paid pilot / kill triggers before feature sprawl |
+
+**Open product questions**
+
+1. Is the winning wedge **proposals**, **client email**, or **scope**—or a different freelance job (invoicing copy, LinkedIn)?
+2. Price point: subscription vs. credits vs. lifetime indie deal?
+3. Vertical focus (e.g. only designers) vs. horizontal freelancers?
+4. Must integrate with existing tools (Notion, Gmail) in MVP, or copy/paste enough?
+5. Geography/language: English-only freelancers first?
+
+---
+
+## 9. Milestones (indie delivery)
+
+| Milestone | Outcome | Exit criteria |
+|-----------|---------|---------------|
+| **M0 Spike** (3–7 days) | Prompt + schema for 3 artifacts; cost/latency measured | 10 sample briefs → usable drafts; cost/gen known |
+| **M1 Vertical slice** | Auth → profile → one project → proposal generate → edit → copy | Founder + 3 testers complete Journey A unassisted |
+| **M2 MVP pilot** | Clients list, all 3 generators, history, caps, privacy delete | 10–20 freelancers invited; metrics dashboard (even spreadsheet) |
+| **M3 Paid** | Stripe or invoice pilot; usage limits | ≥5 paid or explicit kill |
+
+**Suggested first build slice:** M1 proposal-only path (skip email/scope UI until proposal works end-to-end).
+
+**Build vs buy**
+
+- Buy: auth, hosting, email, payments, LLM API.
+- Build: domain model, prompts, editor UX, quota logic—not a custom model.
+
+**Support burden**
+
+- Expect tickets on: bad tone, “forgot context,” billing, data deletion. Cap free tier; async email support only.
+
+---
+
+## 10. Launch & feedback
+
+- **Beta audience:** 10–20 freelancers from communities (Indie Hackers, design/writing Discords, personal network)—service freelancers who send proposals monthly.
+- **Feedback channel:** Single form or email; optional 15-min call after first draft.
+- **Kill / pivot triggers:**
+  - &lt;20% activation after clear onboarding, or
+  - Almost no one returns week 2, or
+  - Zero willingness to pay after 20 activated users who used product for real client work → reshape wedge or stop.
+
+---
+
+## 11. Evidence handoff
+
+| Field | Value |
+|-------|--------|
+| **Current decision** | **Build a thin MVP** (web, single-user) focused on AI-assisted **proposal + scope + follow-up drafts** with client/project memory—not a full freelance OS. Proceed under heavy assumptions; prefer pilot validation in parallel with M0–M1. |
+| **Evidence classes** | assumption |
+| **Supported claims** | Only that the requester wants a professional PRD for “an AI app for freelancers.” No interviews, experiments, or market data were supplied. |
+| **Still unproven** | Problem severity; primary persona fit; willingness to pay; retention; that proposal drafting beats other freelance AI jobs; differentiation vs ChatGPT; unit economics at target price. |
+| **Contradictions / exclusions** | Excluded from v1: agency multiplayer, PM/invoicing/payments platform, auto-send agents, native mobile, marketplace. No conflicting source evidence (no sources). |
+| **Source anchors** | User one-liner only; FR-001–FR-010, NFR-001–NFR-005 define P0 boundary; assumptions A-001–A-006. |
+| **Next validation** | **Owner: founder.** Run 5–10 Mom Test–style interviews *or* a landing+waitlist smoke with one CTA (“Get proposal drafts in 10 minutes”) for 2 weeks. **Accept:** ≥20 qualified signups *or* ≥5 freelancers agree to a paid pilot at a stated price. **Kill/reshape:** no interest in proposal/admin drafting vs. other pains. |
+
+---
+
+## 12. Appendix
+
+### 12.1 Source materials used
+
+- User input: “an AI app for freelancers.”
+- No market-validate report, interviews, competitors list, or stack constraints provided.
+- **Evidence limit:** Web, browser, apps, computer use, and subagents were unavailable; no live market scan or competitor capture was performed. Do not treat any competitive or demand claim as measured.
+
+### 12.2 Assumptions log
+
+| ID | Assumption | Impact if wrong |
+|----|------------|-----------------|
+| A-001 | Solo service freelancers are the primary ICP | Wrong vertical → rebuild messaging and templates |
+| A-002 | Highest-leverage MVP job is client-facing **writing artifacts** (proposal/scope/email) | If pain is accounting/time tracking, this product misses |
+| A-003 | Web app + copy/paste is enough without Gmail/Notion integrations | Integrations may be required for retention |
+| A-004 | English-first is acceptable | Limits geo market |
+| A-005 | Users will edit drafts (human-in-the-loop is acceptable) | If they want full auto-send, different product/risk |
+| A-006 | Indie can ship P0 in weeks–few months part-time | Scope may need further cuts (proposal-only) |
+
+### 12.3 Glossary
+
+| Term | Definition |
+|------|------------|
+| Brief | User-provided notes about the lead/project used as generation input |
+| Artifact | A structured output type: proposal, scope, or email |
+| Activation | Profile + project + ≥1 successful generation |
+
+### 12.4 Rejected ideas (for v1)
+
+- AI that auto-negotiates with clients
+- Full CRM + pipeline kanban as core
+- Invoice generation + payment collection
+- “Second brain” for all freelance files
+- Voice-only mobile capture app
+
+---
+
+### Postscript (not part of the PRD body)
+
+**Confirm these 3 decisions**
+
+1. **Wedge:** Proposal/scope/email drafts (not PM, invoicing, or agency suite).  
+2. **Platform:** Desktop-first web, single-user.  
+3. **Name/positioning:** Keep “FreelancePilot” as working name or replace before landing page.
+
+**Best next implementation slices**
+
+1. M0: prompt suite + eval set of 10 fake briefs (proposal only).  
+2. M1: auth + profile + project + generate/edit/copy.  
+3. Add scope + email generators + usage caps; invite 10 pilots.
+
+**Market validate first?**  
+Yes, strongly recommended in parallel: the input is a category, not a validated problem. A short `z-market-validate` or 5–10 customer interviews before M2 paid work would reduce build risk; M0 spike can still proceed to test technical feasibility and sample quality.

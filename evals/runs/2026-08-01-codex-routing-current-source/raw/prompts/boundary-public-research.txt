@@ -1,0 +1,15 @@
+Route one user request using only the candidate frontmatter descriptions below. Do not use tools, inspect files, or load installed skill bodies.
+
+Candidate skills:
+- z-seo-plan: Use when an independent developer asks for SEO, keyword research, ranking, 关键词, 搜索优化, or an SEO plan for a PRD, live URL, or page code. Researches demand and intent, maps primary and supporting terms to pages, and specifies on-page, technical, and content actions.
+- z-write-prd: Use when an independent developer asks to turn an idea, research notes, interviews, feature list, or rough spec into a decision-ready MVP PRD or 产品需求文档. Defines problem, users, goals, scope and non-goals, requirements, flows, metrics, risks, milestones, and acceptance criteria.
+- z-customer-discovery: Use when an independent developer needs to recruit, interview, or debrief real customers. Plans 5–15 Mom Test–style interviews and synthesizes past behavior, current workarounds or spend, pain frequency, and willingness to switch; includes 用户访谈 and 客户发现 requests.
+- z-landing-smoke: Use before building when an independent developer needs a landing-page, waitlist, or pre-order demand smoke test. Produces concise copy, one CTA, a low-cost traffic plan, and explicit conversion, contact-intent, continue, and kill thresholds; includes 落地页 and 等待列表 requests.
+- z-market-validate: Use when an independent developer needs public market research to decide whether an early product idea is worth deeper validation. Scans communities and competitors for demand, objections, alternatives, solo-founder fit, entry wedges, and a go, narrow, or stop recommendation.
+
+User request:
+I have a rough idea but no customer access yet. Use public communities and competitor evidence to decide whether it deserves deeper research.
+
+Reply with exactly two lines:
+selection: <one candidate id or none>
+reason: <one concise sentence>

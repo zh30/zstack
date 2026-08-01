@@ -1,0 +1,2 @@
+selection: none
+reason: 请求属于数据库与 API 技术架构设计，不匹配任何候选 skill。

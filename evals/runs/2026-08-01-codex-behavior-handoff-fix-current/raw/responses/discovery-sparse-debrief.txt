@@ -1,0 +1,58 @@
+Mode: debrief
+
+This note contains positive sentiment, but no usable demand evidence. The interview was shaped by the demo and a leading question, so the answers should not increase confidence in pain, willingness to pay, or switching.
+
+### Structured debrief
+
+**Interview metadata:** Not provided. Interviewee role, ICP fit, recruitment source, date, and relationship warmth are unknown.
+
+**Past incidents — G1 Pain**
+
+No specific incident was captured. “Yes, it would save time” does not establish:
+
+- When the problem last occurred
+- How often it occurs
+- How much time it currently consumes
+- Whether it is important enough to address
+
+**Current solution and cost — G2 Spend**
+
+No current workflow, tool, workaround, labor cost, or existing expenditure was identified. “Probably pay” is hypothetical future intent, not payment evidence.
+
+**Switching signals — G3 Switch**
+
+No credible switching evidence was captured: no active search, prior switch, failed alternative, budget owner, purchasing process, commitment, or switching barrier.
+
+### Mom Test audit
+
+| Issue | Evidence in the note | Better next question |
+|---|---|---|
+| Pitching before discovery | The respondent evaluated a demo | “Before thinking about my demo, walk me through the last time you handled this.” |
+| Compliment accepted as evidence | “My demo was great” | “Thanks. When did this problem last block or delay you?” |
+| Future-tense payment trap | “They would probably pay” | “What have you spent money or staff time on for this problem already?” |
+| Leading yes/no question | “Would the feature save them time?” | “How long did the current process take last time? Walk me through each step.” |
+| Missing switch evidence | No action or commitment recorded | “What alternatives have you tried, and what stopped you from changing?” |
+
+### Gate updates
+
+| Gate | Delta | Reason |
+|---|---|---|
+| G1 Pain | Neutral | No recent story, frequency, or measured consequence |
+| G2 Spend | Neutral | No existing expenditure or costly workaround |
+| G3 Switch | Neutral | No demonstrated action, authority, or switching feasibility |
+
+**Founder pitch leakage: provisional 3/5.** A demo was shown and the recorded discussion centered on the feature’s benefits. The full conversation could move this score, but the excerpt cannot justify a lower one.
+
+There are no safe “gold quotes” to record because the note paraphrases the respondent rather than preserving their exact words.
+
+The best recovery is a short follow-up with this person, followed by interviews with 4–9 additional target users. Start without showing the product. Success means collecting a specific recent incident, the current workflow and quantified cost, and evidence of an attempted or feasible switch. More praise or “probably” answers count as failure to validate.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Reshape the next interview; do not advance to a large build |
+| Evidence classes | assumption |
+| Supported claims | Only that the respondent expressed a positive reaction after seeing the demo; no demand claim is supported |
+| Still unproven | Pain frequency and severity, current time cost, existing spend, willingness to pay, budget authority, and switching feasibility |
+| Contradictions / exclusions | “Great demo” is a compliment; “probably pay” is hypothetical; the time-saving answer followed a leading yes/no question |
+| Source anchors | Pasted note: “demo was great,” “would probably pay,” and “feature would save them time”; all are paraphrased and lack behavioral detail |
+| Next validation | Ask for the last concrete occurrence, current workflow, measured time or money spent, and prior attempts to solve it; pass only if specific past behavior and costs emerge |

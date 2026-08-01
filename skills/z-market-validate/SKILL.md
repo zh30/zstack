@@ -1,20 +1,10 @@
 ---
 name: z-market-validate
 description: >-
-  Market-validate a rough product idea for independent developers: scan social
-  and community demand (X/Twitter, Reddit, HN, Product Hunt, Indie Hackers,
-  optional CN platforms), collect pro and con signals, and produce a realistic
-  report on commercial value, solo-founder fit, short-term return odds, and best
-  entry wedges. Use when the user has an early idea, wants market research,
-  demand validation, "is this worth building", idea vetting, or /z-market-validate.
-license: MIT
-metadata:
-  author: henry
-  tags:
-    - indie
-    - research
-    - validation
-    - market
+  Use when an independent developer needs public market research to decide
+  whether an early product idea is worth deeper validation. Scans communities
+  and competitors for demand, objections, alternatives, solo-founder fit, entry
+  wedges, and a go, narrow, or stop recommendation.
 ---
 
 # Market Validate
@@ -23,13 +13,6 @@ Turn a **raw / half-baked idea** into an evidence-backed validation report for a
 **independent developer** (solo founder / OPC). Bias toward **honest negatives**
 as much as positives. Prefer primary signals from real people complaining, paying,
 or shipping — not generic “AI market size” fluff.
-
-## When to use
-
-- User has a vague idea and wants to know if demand is real
-- User asks: 有没有商业价值 / 适不适合独立开发 / 短期能不能回本 / 从哪切入
-- Pre-build gate before writing code or a full PRD
-- Competitive scan when the idea space is crowded
 
 ## When not to use
 
@@ -53,6 +36,21 @@ language with short translations when helpful.
 4. **Short-term return is hard.** Call out when “quick money” claims are weak; prefer 30/90-day *plausible* paths over fantasy ARR.
 5. **Do not invent numbers.** If you cannot measure volume, say so and use qualitative bands.
 6. **Tools are host-specific.** Use whatever the host provides: web search, X/Twitter search, page fetch/browse, Reddit search, etc. If a channel is unreachable, mark it `blocked` and continue.
+7. **Evidence does not upgrade on handoff.** Preserve whether a claim is a
+   secondary public signal, observed behavior, experiment result, search signal,
+   or assumption when another skill consumes it.
+8. **The handoff is a fixed interface.** End the primary report with exactly
+   one two-column, seven-row Evidence handoff table headed `Field | Value`
+   using these exact labels: `Current
+   decision`, `Evidence classes`, `Supported claims`, `Still unproven`,
+   `Contradictions / exclusions`, `Source anchors`, and `Next validation`.
+   The class cell may contain only applicable names from `primary behavior`,
+   `observed experiment`, `secondary public`, `search signal`, and `assumption`;
+   put provenance and confidence qualifiers in the other fields. Include a
+   class only when supplied inputs or actual results in this report belong to
+   it; a planned next research action does not make that class current.
+   Never leave the class cell empty. If the report has only missing, invalid,
+   or unverified inputs, use `assumption` and state the limitation elsewhere.
 
 ---
 
@@ -158,6 +156,13 @@ or weak evidence — not “good”.
 
 When averaging a **composite**, invert competition first: `competition_fit = 6 - competition_intensity`, then average the six “higher = better” values (demand, pay, competition_fit, indie, time-to-signal, short-term).
 
+Calculate that composite **once** from the six displayed inputs. Round it once to
+two decimal places and treat that result as the report's single display value.
+Copy the exact same value into the score table, executive summary, and any later
+prose; never recompute or reround it from memory. Before delivery, search every
+composite mention and reconcile it with the visible formula. Any mismatch is an
+invalid report, even when the formula itself is correct.
+
 Also pick a **recommendation band**:
 
 | Band | Meaning |
@@ -187,7 +192,11 @@ Prefer wedges that are:
 
 ### Phase 6 — Deliver the report
 
-Use the structure in `references/report-template.md`.
+Use the structure in `references/report-template.md`. Apply
+`references/quality-bar.md` before delivery.
+
+Do not rename, split, or replace the template's seven Evidence handoff rows with
+equivalent prose or custom fields.
 
 Delivery options:
 
@@ -200,6 +209,8 @@ End with:
 - **Top 5 evidence links**
 - **Top 5 disconfirming links**
 - **Next 48-hour actions** (3 concrete tasks, not “keep researching forever”)
+- **Evidence handoff** with supported claims, unproven claims, source anchors,
+  and the next validation
 
 ---
 

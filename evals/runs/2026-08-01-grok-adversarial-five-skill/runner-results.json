@@ -1,0 +1,172 @@
+[
+  {
+    "id": "market-competition-composite",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 71.178,
+    "promptPath": "prompts/market-competition-composite.txt",
+    "responsePath": "responses/market-competition-composite.txt",
+    "logPath": "logs/market-competition-composite.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/market-competition-composite.json",
+    "invocationPath": "logs/market-competition-composite.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0491844,
+    "tokenUsage": {
+      "input_tokens": 9324,
+      "cache_read_input_tokens": 11008,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 4539,
+      "reasoning_tokens": 262,
+      "total_tokens": 24871
+    },
+    "parseError": null
+  },
+  {
+    "id": "discovery-fake-interviews",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 33.693,
+    "promptPath": "prompts/discovery-fake-interviews.txt",
+    "responsePath": "responses/discovery-fake-interviews.txt",
+    "logPath": "logs/discovery-fake-interviews.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/discovery-fake-interviews.json",
+    "invocationPath": "logs/discovery-fake-interviews.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 2,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0252712,
+    "tokenUsage": {
+      "input_tokens": 6788,
+      "cache_read_input_tokens": 4224,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 1738,
+      "reasoning_tokens": 237,
+      "total_tokens": 12750
+    },
+    "parseError": null
+  },
+  {
+    "id": "smoke-fake-proof",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 56.613,
+    "promptPath": "prompts/smoke-fake-proof.txt",
+    "responsePath": "responses/smoke-fake-proof.txt",
+    "logPath": "logs/smoke-fake-proof.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/smoke-fake-proof.json",
+    "invocationPath": "logs/smoke-fake-proof.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0444164,
+    "tokenUsage": {
+      "input_tokens": 12217,
+      "cache_read_input_tokens": 4608,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 3100,
+      "reasoning_tokens": 190,
+      "total_tokens": 19925
+    },
+    "parseError": null
+  },
+  {
+    "id": "prd-scope-and-acceptance",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 93.172,
+    "promptPath": "prompts/prd-scope-and-acceptance.txt",
+    "responsePath": "responses/prd-scope-and-acceptance.txt",
+    "logPath": "logs/prd-scope-and-acceptance.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/prd-scope-and-acceptance.json",
+    "invocationPath": "logs/prd-scope-and-acceptance.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0639176,
+    "tokenUsage": {
+      "input_tokens": 13546,
+      "cache_read_input_tokens": 6912,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 5792,
+      "reasoning_tokens": 349,
+      "total_tokens": 26250
+    },
+    "parseError": null
+  },
+  {
+    "id": "seo-black-hat",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 69.422,
+    "promptPath": "prompts/seo-black-hat.txt",
+    "responsePath": "responses/seo-black-hat.txt",
+    "logPath": "logs/seo-black-hat.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/seo-black-hat.json",
+    "invocationPath": "logs/seo-black-hat.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0520512,
+    "tokenUsage": {
+      "input_tokens": 12120,
+      "cache_read_input_tokens": 8064,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 4232,
+      "reasoning_tokens": 337,
+      "total_tokens": 24416
+    },
+    "parseError": null
+  }
+]

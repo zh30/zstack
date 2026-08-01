@@ -1,0 +1,36 @@
+[
+  {
+    "id": "market-tools-blocked",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 66.195,
+    "promptPath": "prompts/market-tools-blocked.txt",
+    "responsePath": "responses/market-tools-blocked.txt",
+    "logPath": "logs/market-tools-blocked.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/market-tools-blocked.json",
+    "invocationPath": "logs/market-tools-blocked.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0504752,
+    "tokenUsage": {
+      "input_tokens": 13303,
+      "cache_read_input_tokens": 6784,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 3639,
+      "reasoning_tokens": 203,
+      "total_tokens": 23726
+    },
+    "parseError": null
+  }
+]

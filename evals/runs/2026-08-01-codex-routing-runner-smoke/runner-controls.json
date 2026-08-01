@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "host": "Codex CLI",
+  "hostVersion": "codex-cli 0.146.0",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "low",
+  "sandbox": "read-only",
+  "approvalPolicy": "never",
+  "ephemeralSession": true,
+  "ignoreUserConfig": true,
+  "ignoreRules": true,
+  "promptTransport": "generated prompt through stdin",
+  "disabledFeatures": [
+    "multi_agent",
+    "multi_agent_v2",
+    "browser_use",
+    "in_app_browser",
+    "computer_use",
+    "apps",
+    "skill_search"
+  ],
+  "jobs": 1,
+  "descriptionCharacterLimit": null,
+  "wrapper": "auto",
+  "candidateRotation": "full manifest index modulo candidate count",
+  "cases": [
+    "zh-boundary-public-research"
+  ],
+  "dryRun": false
+}

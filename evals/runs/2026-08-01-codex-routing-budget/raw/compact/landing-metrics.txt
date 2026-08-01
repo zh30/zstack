@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: It interprets prelaunch conversion and contact intent against explicit thresholds, then defines the next bounded demand smoke test.

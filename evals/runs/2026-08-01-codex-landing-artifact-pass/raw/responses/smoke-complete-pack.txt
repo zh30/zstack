@@ -1,0 +1,21 @@
+Created the complete smoke-test package under `artifacts/`:
+
+- `artifacts/site/index.html` — deployable landing page, copy, meta/OG, variants, form, and Plausible events
+- `artifacts/site/og-card.svg` — social preview
+- `artifacts/site/_headers` — Cloudflare security headers
+- `artifacts/functions/api/waitlist.ts` — validated Buttondown integration
+- `artifacts/wrangler.toml` — Cloudflare Pages configuration
+- `artifacts/smoke-test-package.md` — protocol, thresholds, UTMs, traffic calendar, drafts, decision rules, and evidence handoff
+- `artifacts/measurement-template.csv` — source-isolated results ledger
+- `artifacts/README.md` — deployment and preflight instructions
+
+Static checks passed, including consistent CTA labels, JavaScript parsing, CSV structure, TypeScript bundling, and mocked API paths.
+
+Remaining external setup:
+
+1. Replace domain/email placeholders and configure Cloudflare Pages.
+2. Add the Buttondown API secret, verify metadata persistence, and enable double opt-in.
+3. Configure Plausible events and complete the real-browser/provider preflight.
+4. Verify current community rules and Reddit Ads eligibility before traffic.
+
+No browser, web, or external-service access was available, so deployment, rendering, provider callbacks, analytics receipt, channel availability, and real demand remain unverified. Do not build the extension yet; run the smoke test first. SEO work is premature until demand clears the registered thresholds.

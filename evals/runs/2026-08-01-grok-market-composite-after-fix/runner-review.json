@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex criterion-by-criterion review of the complete Grok response after the composite-integrity fix",
+  "cases": [
+    {
+      "id": "market-evidence-packet",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Separate supplied unverified notes from unavailable channel evidence and state the confidence limit.",
+          "observed": true,
+          "evidence": "The report labels the notes and adjacent price capture unverified, marks every live public channel blocked or skipped with a reason, and gives low confidence plus an explicit hard evidence limit."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Score all six dimensions, invert competition intensity, and show the composite calculation.",
+          "observed": true,
+          "evidence": "All six dimensions are scored; competition intensity 3 becomes competition_fit 3; the single-source formula shows 3 + 2 + 3 + 4 + 4 + 2 = 18, 18/6 = 3, and display_composite = 3.00. Every report mention reuses 3.00."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Give a commercial, solo-fit, and 30–90 day verdict plus one bounded wedge and exactly three actions.",
+          "observed": true,
+          "evidence": "The response separately rates commercial value Mixed, indie fit Conditional, and 30-90 day odds Low; chooses a local single-agent client-keyed restore wedge; and provides exactly three numbered next-48-hour actions."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, verified prices, or willingness-to-pay evidence.",
+          "observed": false,
+          "evidence": "Every link is reported not found, all counts are attributed to the supplied notes, the adjacent $7-12 band stays dated and unverified, and exact-product payment is explicitly absent."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Recommend a full team-sync or enterprise build before paid and security validation.",
+          "observed": false,
+          "evidence": "The MVP is local and single-agent, while team sync, admin consoles, SSO, enterprise packaging, and broad expansion are excluded until install policy, preference, usage, and paid intent are validated."
+        }
+      ]
+    }
+  ]
+}

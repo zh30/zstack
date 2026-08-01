@@ -1,0 +1,6 @@
+sha256                                                            bytes  path
+fb7589501b37a213704e1a655a625ea2e3dc42bbff9d982dc20c3f679a660629     2546  artifacts/smoke-complete-pack/external-setup-checklist.md
+f62477d288b54f7e7cef1ef8819997b8fd7d861bb9149ffe546859b64e0bea25    12818  artifacts/smoke-complete-pack/index.html
+3b706b62daf67af01de21b69efa265a1b4f8dbb1231efc69660b5c428a63be09     1121  artifacts/smoke-complete-pack/og-card.svg
+e62795f6cd6bbbca04713fd0efc43d4a087f6bc8bbdd38c43a5bb1cb48fdeb40    28004  artifacts/smoke-complete-pack/smoke-test-plan.md
+270bde4854f7fddd0afeecf7cc738de239e4a135e6a8cdde7da8b49a61157628      942  artifacts/smoke-complete-pack/source-tracker.csv

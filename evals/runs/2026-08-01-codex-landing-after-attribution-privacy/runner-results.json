@@ -1,0 +1,77 @@
+[
+  {
+    "id": "smoke-mixed-traffic",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 63.799,
+    "timedOut": false,
+    "promptPath": "prompts/smoke-mixed-traffic.txt",
+    "responsePath": "responses/smoke-mixed-traffic.txt",
+    "logPath": "logs/smoke-mixed-traffic.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/smoke-mixed-traffic.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "smoke-fake-proof",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 124.77,
+    "timedOut": false,
+    "promptPath": "prompts/smoke-fake-proof.txt",
+    "responsePath": "responses/smoke-fake-proof.txt",
+    "logPath": "logs/smoke-fake-proof.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/smoke-fake-proof.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "landing-output-contract",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 254.119,
+    "timedOut": false,
+    "promptPath": "prompts/landing-output-contract.txt",
+    "responsePath": "responses/landing-output-contract.txt",
+    "logPath": "logs/landing-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/landing-output-contract.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

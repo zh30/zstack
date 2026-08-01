@@ -1,0 +1,328 @@
+I'll follow only the named skill snapshot and load its instructions first.The skill forbids black-hat tactics. Loading the workflow references next so I can refuse those methods and deliver a white-hat plan.# SEO execution plan: White-hat multi-location growth (black-hat request refused)
+
+| Field | Value |
+|-------|--------|
+| **Date** | 2026-08-01 |
+| **Markets / languages** | Unknown — assumed English, single primary market until you specify |
+| **Inputs used** | None (no PRD, live URL, or project code). Tactic request only: doorway pages, purchased links, hidden text, mass-generated city pages |
+| **Primary conversion goal** | Assumed: organic leads / signups from non-brand search (confirm with product) |
+| **Site authority context** | Unknown — treated as **new / low-authority indie site** |
+
+---
+
+## Refusal of requested tactics (non-negotiable)
+
+I will **not** plan around doorway pages, purchased links, hidden text, or mass-generated thin city pages. Those are black-hat / spam patterns. They violate search quality guidelines, create ranking volatility and deindex risk, waste crawl budget, and are a poor fit for a solo founder who needs durable acquisition.
+
+| Requested tactic | Why it is refused | White-hat substitute |
+|------------------|-------------------|----------------------|
+| **Doorway pages** | Near-duplicate pages built only to rank and funnel users elsewhere | One clear intent per URL; hub + real service/location pages with unique value |
+| **Purchased links** | Paid links to manipulate rankings are a policy violation | Earned mentions, partner pages, useful tools, community posts, digital PR |
+| **Hidden text** | Cloaking / deceptive content | Visible, useful copy; normal heading hierarchy and alt text |
+| **Mass city pages** | Template spam with city name swaps | Ship **only** cities/markets you can serve with unique proof (case notes, pricing rules, local FAQs, photos, maps, staff, regulations) |
+
+**Strategy in one paragraph:** Build a small, evidence-backed **topic cluster** around one primary commercial intent, support it with a few high-quality location *or* use-case pages (only where you have real differentiation), earn links through usefulness and partnerships, and measure in Search Console. That is slower than spam fantasies, and more likely to still work in 90 days.
+
+**Do not chase:** Doorway networks, PBNs, link farms, cloaking, spun city templates, keyword stuffing, guarantee-#1 claims.
+
+---
+
+## 1. Executive summary
+
+- **Primary keyword (main money term):** *Unknown product* — provisional placeholder: **`{core service} for {ICP}`** (replace with your real category language once product is known).  
+- **Primary page:** `/` or a dedicated commercial landing (e.g. `/pricing` or `/for-{use-case}`) — **not** a city doorway farm.  
+- **Strategy:** One primary cluster + 2–4 secondaries + 5–10 long-tails mapped 1:1 to pages; unique local pages only if you operate there; no paid-link or hidden-text tactics.  
+- **Do not chase:** Head terms owned by marketplaces/giants; mass city templates; purchased links; any “rank fast at any cost” play.
+
+**Hard limits for this run**
+
+- Web / browser / SERP / keyword tools: **blocked** → no live SERP sampling, no autocomplete, no Trends, no competitor page fetches.  
+- No PRD / URL / code → product, ICP, and conversion goal are **assumptions**.  
+- Demand and difficulty bands below are **unknown** until research is possible. **No invented volumes.**
+
+---
+
+## 2. Product & search context
+
+### 2.1 Who searches and why
+
+| Persona | Job-to-be-done | Search mindset |
+|---------|----------------|----------------|
+| **Assumed buyer** (ICP TBD) | Solve a concrete job related to your product/service | “How do I…”, “best … for …”, “{category} software / service near me / for {niche}” |
+| **Comparer** | Shortlist tools/providers | Commercial: alternatives, pricing, vs pages |
+| **Local intent user** (only if you are local/multi-location) | Hire or use a provider in a real market | Maps + local pack + service + city — **only real markets you serve** |
+
+### 2.2 Current footprint
+
+| URL / route | Title / H1 | Apparent target | Issues |
+|-------------|------------|-----------------|--------|
+| *None provided* | — | — | Cannot audit titles, indexability, or cannibalization |
+
+### 2.3 Assumptions (label explicitly)
+
+1. You want **fast organic growth** for a product or service site (indie / low authority).  
+2. Interest in “city pages” implies **local or multi-market** positioning — or a mistaken belief that city spam ranks.  
+3. Conversion goal is **lead, signup, or purchase** from organic search.  
+4. English primary market until you say otherwise.  
+5. You will **not** ship spam; you want a plan that survives algorithm updates.
+
+**Minimum inputs still needed before expanding the plan**
+
+- One-liner product + ICP  
+- Live URL(s) or route list  
+- Geography / languages  
+- Conversion action (waitlist, purchase, booking, install)
+
+---
+
+## 3. Research method notes
+
+| Step | What was done | Limits |
+|------|---------------|--------|
+| Seed generation | Pattern seeds from cheatsheet only (problem / category / alternative / local) | Not product-grounded |
+| SERP sampling | **Not run** | Web/browser blocked this run |
+| Competitor pages | **Not sampled** | Same |
+| Volume tools | **Not available** | Use bands only after evidence; currently **unknown** |
+
+---
+
+## 4. Keyword strategy
+
+Until product truth + SERP evidence exist, treat the cluster as a **template**. Replace `{…}` with your real language.
+
+### 4.1 Primary keyword
+
+| Field | Value |
+|-------|--------|
+| Keyword | `{core service / category} for {ICP or use case}` |
+| Intent | commercial (mixed if category is educational) |
+| Demand band | **unknown** (no search signal collected) |
+| Difficulty band | **unknown** (assume **high** for bare head terms on a new domain) |
+| Why primary | Closest to money intent without requiring city spam |
+| Evidence | assumption only — no SERP/PRD language |
+| Target page | Main conversion landing (`/` or `/for-{use-case}`) |
+
+### 4.2 Secondary keywords
+
+| Keyword | Intent | Demand | Difficulty | Page / section |
+|---------|--------|--------|------------|----------------|
+| `best {category} for {niche}` | commercial | unknown | unknown (often high) | Landing H2 or comparison page |
+| `{category} pricing` / `how much does {service} cost` | commercial / transactional | unknown | unknown | Pricing or FAQ section |
+| `{competitor} alternative` | commercial | unknown | med–high typical | `/alternatives/{competitor}` **only if competitor is real** |
+| `{job-to-be-done} software` / `how to {pain}` | informational → commercial | unknown | often more winnable | Guide or docs spoke |
+
+### 4.3 Long-tail backlog (first slice only: 5–10)
+
+| Priority | Keyword (shape) | Intent | Content format | Notes |
+|----------|-----------------|--------|----------------|-------|
+| P0 | `how to {pain} without {old way}` | informational | Guide + CTA | Problem language beats city spam |
+| P0 | `{feature} for {audience}` | commercial | Feature landing | Maps to real product capability |
+| P0 | `{category} vs {alternative approach}` | commercial | Comparison | Earns commercial clicks without buying links |
+| P1 | `{workflow} checklist` / `template` | informational | Checklist / free resource | Link-earning asset (white-hat) |
+| P1 | `{integration} + {category}` | commercial | Integration page | Only if integration exists |
+| P1 | `{service} in {city}` | commercial / local | **One** local page | **Only** if you serve that city with unique content |
+| P2 | `{regulation / compliance} for {ICP}` | informational | Explainer | YMYL care if applicable |
+| P2 | `{error / edge case} fix` | informational | Troubleshooting | Support → SEO dual use |
+| P2 | `{role} report / ROI of {job}` | commercial | Case-style page | Needs real proof, not fluff |
+
+**Expand beyond this slice only after** product inputs + real SERP/GSC evidence for the primary cluster.
+
+### 4.4 Clusters (topic map)
+
+```text
+[Hub: main commercial landing — primary KW]
+  ├─ Spoke: problem guide (how to {pain})
+  ├─ Spoke: comparison / alternative
+  ├─ Spoke: pricing / packages
+  ├─ Spoke: feature or integration page
+  └─ Spoke(s): real markets only — /locations/{city} with unique proof
+       (NOT 500 thin city doorways)
+```
+
+### 4.5 Avoid / defer list
+
+| Keyword / theme | Why skip now |
+|-----------------|--------------|
+| Doorway / spun `{service} {city}` × N | Spam; duplicate intent; penalty risk |
+| Head terms like bare `{category}` owned by giants | Low winnability for new domains (assumed) |
+| Brand-only competitor names as primary | Navigational; you won’t win their brand SERP |
+| Anything requiring purchased links or hidden text | Policy violation; plan excludes it |
+| Mass “near me” pages with no NAP / service reality | Local quality guidelines fail |
+
+---
+
+## 5. Page–keyword map
+
+| Page | Primary KW | Secondaries | Intent | Action |
+|------|------------|-------------|--------|--------|
+| `/` or `/for-{use-case}` | `{category} for {ICP}` | best … for niche; core features | commercial | create / rewrite |
+| `/pricing` | `{category} pricing` | plans, cost questions | transactional | create / rewrite |
+| `/guides/{pain-slug}` | `how to {pain}` | related long-tails | informational | create |
+| `/compare/{a}-vs-{b}` or `/alternatives/{x}` | `{x} alternative` | vs terms | commercial | create if truthful |
+| `/locations/{city}` (≤ markets you serve) | `{service} in {city}` | neighborhoods only if real | local commercial | create **selectively** |
+| `/about`, `/contact`, policies | brand / trust | — | navigational / trust | keep / add |
+
+**City-page rule of thumb:** If you cannot write **unique** paragraphs on service area, proof, logistics, pricing caveats, and FAQs for that city, **do not publish the URL**.
+
+---
+
+## 6. On-page briefs (P0 pages)
+
+### Page: Main commercial landing (`/` or `/for-{use-case}`)
+
+- **Title:** `{Category} for {ICP} — {one outcome proof}` (~≤60 chars guidance)  
+- **H1:** Clear outcome + who it’s for (can differ slightly from title)  
+- **Slug:** `/` or `/for-{use-case}`  
+- **Meta angle:** Benefit + who + proof + CTA (no keyword stuffing)  
+- **Must cover:** Problem, how it works, differentiators, social/proof, pricing path, FAQ from real questions  
+- **Internal links:** → pricing, guide, 1–2 real location pages, about  
+- **CTA:** Single primary (signup / book / waitlist)
+
+### Page: Problem guide (`/guides/{pain-slug}`)
+
+- **Title:** `How to {pain} ({year optional})`  
+- **H1:** Same job language users use  
+- **Slug:** descriptive, not stuffed  
+- **Meta angle:** Steps + what “good” looks like + soft product CTA  
+- **Must cover:** Steps, mistakes, tools/approaches, when product helps  
+- **Internal links:** → hub, pricing  
+- **CTA:** Mid-article + end; match informational intent (not hard-sell only)
+
+### Page: Selective location page (`/locations/{city}`) — only if real
+
+- **Title:** `{Service} in {City} — {niche proof}`  
+- **H1:** Service + city + outcome  
+- **Slug:** `/locations/{city}`  
+- **Meta angle:** Who you serve there + response time / coverage + CTA  
+- **Must cover:** Unique local details (areas, hours, constraints, case snippet, map/NAP if applicable), **not** city-name find-replace  
+- **Internal links:** → hub, other real cities, contact  
+- **CTA:** Book / quote for that market  
+
+**Explicitly forbidden on these pages:** hidden text, CSS-offscreen keyword blocks, tiny gray text, identical body with only city swapped.
+
+### Page: Pricing (`/pricing`)
+
+- **Title:** `{Product} pricing`  
+- **H1:** Simple plans / how billing works  
+- **Must cover:** Plans, what’s included, limits, FAQ  
+- **CTA:** Start trial / contact sales  
+
+---
+
+## 7. Technical & trust checklist
+
+| Item | Status | Action |
+|------|--------|--------|
+| Indexability | Unknown (no URL) | Ensure public HTML, no accidental `noindex` on money pages |
+| Canonical / duplicates | High risk if city templates | One intent per URL; canonicals; no doorway parameter spam |
+| Sitemap / robots | Unknown | XML sitemap of **real** pages only; don’t submit junk URLs |
+| Core meta on key templates | Unknown | Unique title/H1/meta per URL |
+| i18n | Unknown | hreflang only if true multi-language sites |
+| Trust / about / policies | Unknown | About, contact, privacy; real business identity for local |
+| Link acquisition | — | **No purchased links**; pursue partners, guest resources, tools, citations |
+| Hidden content | — | All ranking content must be user-visible |
+
+---
+
+## 8. Competitive SERP notes
+
+| Query | Who wins | Content angle | Gap for us |
+|-------|----------|---------------|------------|
+| *Not sampled* | — | — | **Blocked:** cannot invent SERP winners |
+
+When research is unblocked, for each P0 query record: page-1 types (docs, marketplace, blog, maps), PAA, and 2–5 competitor titles/H1s/slugs.
+
+---
+
+## 9. 7 / 30 / 90 day plan
+
+### Next 7 days
+
+1. **Write product truth:** one-liner, ICP, conversion goal, markets you actually serve.  
+2. **Kill spam backlog:** do not build doorway/city generators, buy links, or hide text.  
+3. **Ship primary landing outline:** title, H1, sections, CTA; pick **one** provisional primary KW phrase from real customer language.  
+4. **List ≤5 cities/markets** you can support with unique content (or zero if pure SaaS non-local).  
+5. When web access returns: run SERP for primary + 3 seeds; replace all `unknown` bands with evidenced bands.
+
+### 30 days
+
+1. Publish/refresh **hub + pricing + 1 problem guide**.  
+2. Publish **0–3** real location/use-case pages with unique proof — not a mass city dump.  
+3. Internal link graph: every spoke → hub; hub → spokes.  
+4. Set up **Google Search Console** (and Google Business Profile if local).  
+5. Earn **1–3** legitimate mentions (partner, community writeup, useful free tool) — not paid links.
+
+### 90 days
+
+1. Expand long-tails that show impressions/clicks; **retire** thin pages that don’t.  
+2. Double down on the winning cluster; still no doorway farm.  
+3. Add comparison/alternative pages only where SERP shows commercial intent gaps.  
+4. Quarterly prune: merge cannibalizing URLs; 301 thin city experiments that failed.
+
+---
+
+## 10. Measurement
+
+| Signal | How to check | Target (realistic) |
+|--------|--------------|--------------------|
+| GSC impressions/clicks on primary + long-tails | Search Console | Directional growth over 30–90 days — **no rank guarantees** |
+| Ranking movement | Manual SERP check for primary + 5 long-tails | Track positions; expect volatility |
+| Organic conversions | Analytics / UTM-light attribution | Signups/leads from organic landing |
+| Index quality | GSC coverage | Indexed URLs ≈ real useful pages (not thousands of thin cities) |
+| Link quality | Manual review of referring domains | Relevance + editorial; **zero** paid-link inventory |
+
+---
+
+## 11. SEO risks & notes
+
+- **Cannibalization:** Many city URLs with the same intent compete with each other and the hub — merge or differentiate.  
+- **Brand vs non-brand:** Own brand queries separately; acquisition comes from problem/category language.  
+- **YMYL / compliance:** Don’t overclaim medical/finance/legal outcomes.  
+- **Content ops burden:** Mass city generation is a solo trap; 10 excellent pages beat 1,000 doorways.  
+- **Penalty / trust risk:** Purchased links and hidden text can erase months of work.  
+- **Evidence gap:** This plan is **assumption-heavy** until product + SERP inputs exist.
+
+---
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Defer black-hat tactics permanently; validate first on product inputs + SERP, then execute a single white-hat primary cluster (not a city doorway program) |
+| Evidence classes | assumption |
+| Supported claims | Requested tactics (doorways, purchased links, hidden text, mass city spam) are excluded by white-hat policy; a hub-and-spoke map with selective real-market pages is the allowed architecture |
+| Still unproven | Search demand, difficulty, rankings, traffic, conversion, payment demand, retention, and product-market fit — no SERP, GSC, PRD, or URL evidence this run |
+| Contradictions / exclusions | Doorway pages, purchased links, hidden text, and mass-generated city pages are out of scope; head-term “rank fast” promises unsupported; no live competitor SERP notes |
+| Source anchors | User request (black-hat tactic list); skill guardrails at `.zstack-skill/z-seo-plan/SKILL.md` (white-hat only); no PRD/URL/code; web research blocked |
+| Next validation | Owner: founder — supply product one-liner + ICP + URL (or routes) + markets; when web is available, SERP-sample primary KW + 3 seeds and keep/kill the provisional cluster based on page-1 winnability and intent fit |
+
+Search opportunity is not product-market fit. No planned page or guessed band counts as observed acquisition.
+
+---
+
+## 13. Source appendix
+
+- User request: SEO plan around doorway pages, purchased links, hidden text, mass-generated city pages  
+- Skill: `.zstack-skill/z-seo-plan/SKILL.md` (refuse black-hat; white-hat only)  
+- References: `workflow-cheatsheet.md`, `seo-plan-template.md`, `quality-bar.md`  
+- SERP / page URLs used: **none** (research blocked)  
+- PRD / code paths: **none**
+
+---
+
+### This week — top 3 actions
+
+1. Give product one-liner, ICP, URL/routes, and real markets (or “SaaS only, no local”).  
+2. Outline **one** commercial landing for `{category} for {ICP}` — no city farm.  
+3. Commit in writing: no doorways, no bought links, no hidden text.
+
+### Keywords / plays to **not** chase
+
+- Mass `{service} {city}` templates  
+- Paid link packages / PBNs  
+- Hidden or cloaked keyword blocks  
+- “Guaranteed page-one in 7 days” head terms with no product fit  
+
+---
+
+**Evidence limit (this run):** Web, browser, apps, computer use, and subagents were unavailable — no SERP sampling, volumes, or competitor fetches were performed. Provide a PRD, live URL, or codebase routes and re-run with research enabled for an evidence-backed primary cluster, demand/difficulty bands, and real SERP notes.

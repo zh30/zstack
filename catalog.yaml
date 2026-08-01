@@ -1,6 +1,7 @@
 # zstack skill registry
 # status: active | draft | deprecated
 # hosts: agents | claude | codex | grok
+# tags: unique kebab-case values; every skill includes indie
 # All skill ids MUST use the z- prefix (OSS collision safety).
 version: 1
 skills:

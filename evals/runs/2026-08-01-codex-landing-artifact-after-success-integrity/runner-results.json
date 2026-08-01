@@ -1,0 +1,33 @@
+[
+  {
+    "id": "smoke-complete-pack",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 456.036,
+    "timedOut": false,
+    "promptPath": "prompts/smoke-complete-pack.txt",
+    "responsePath": "responses/smoke-complete-pack.txt",
+    "logPath": "logs/smoke-complete-pack.log",
+    "executionMode": "artifact",
+    "artifactPaths": [
+      "artifacts/smoke-complete-pack/README.md",
+      "artifacts/smoke-complete-pack/measurement.csv",
+      "artifacts/smoke-complete-pack/site/functions/api/waitlist.js",
+      "artifacts/smoke-complete-pack/site/index.html",
+      "artifacts/smoke-complete-pack/smoke-test.md"
+    ],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "artifacts/smoke-complete-pack/smoke-test.md"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

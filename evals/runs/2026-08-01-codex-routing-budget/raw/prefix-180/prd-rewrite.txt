@@ -1,0 +1,2 @@
+selection: z-write-prd
+reason: It turns a vague product spec into a professional, decision-ready PRD suitable for solo development.

@@ -1,0 +1,6 @@
+sha256                                                            bytes  path
+4d0644624fd3e1661f03038096cb3eb1528f1772d779fde9a8b1d15e1b18654f  858  prompts.md
+b41069df4ccb74b4acc4fe0ac956ad3f1cbc4f88d148a4d4b02f332573fd93f3  177  raw/artifact-manifest.txt
+0b42dea95743fd6ffaf7c4de880cc6f1a58aedf7a5be43cc43cafbdd41c7863f  18365  raw/market-evidence-packet.md
+46748dcc6313fbbcbdbf4598443863078aca7b6fa2719133382c7fe81f98805a  938  run.json
+b6470e98552af1e4858db92e0ec3d992bf5c2f4ab413244f6de4e4f15addebbd  2640  summary.md

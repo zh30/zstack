@@ -1,0 +1,23 @@
+No. The pooled 6% is encouraging, but it is not enough evidence to build the full product.
+
+You have 12 emails from 200 visits, but the conversions aren’t attributed by source. Depending on who signed up, ad conversion could be anywhere from 0% to 6.7%. Friend traffic should not be pooled with cold traffic.
+
+Next:
+
+- Attribute confirmed signups to `friends` versus `ads`.
+- Reach at least 200 qualified cold-ad visits.
+- Email the 12 signups and ask about their current workaround, urgency, and willingness to pay.
+- Proceed only to a thin MVP if cold conversion remains around 5%+ with at least 10 confirmed cold signups and several substantive replies or payment commitments.
+- If cold conversion is 2–5%, refine the offer and retest. If it remains below 2%, reshape the offer or ICP.
+
+The evidence is limited to your reported aggregate counts; without source-level conversions, replies, or payment behavior, demand quality remains unproven.
+
+| Field | Value |
+|---|---|
+| Current decision | Do not build the full product; continue validation and consider only a thin MVP after stronger evidence. |
+| Evidence classes | observed experiment |
+| Supported claims | 200 reported visits produced 12 emails, for a pooled 6% rate, assuming these are provider-confirmed valid signups. |
+| Still unproven | Cold-ad conversion, visitor qualification, problem urgency, engagement, willingness to pay, and retention. |
+| Contradictions / exclusions | Friend and broad-ad traffic are pooled; the 6% rate cannot be treated as cold-demand conversion. Broad ad visits are not necessarily qualified visits. |
+| Source anchors | User-reported counts: 20 friend visits, 180 broad-ad visits, and 12 total emails. |
+| Next validation | Preserve source attribution, complete at least 200 qualified cold visits, interview the signups, and test a concrete price or deposit before committing to a full build. |

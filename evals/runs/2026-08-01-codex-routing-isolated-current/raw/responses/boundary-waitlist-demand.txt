@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: The request explicitly calls for a pre-build waitlist demand test with traffic and success and kill thresholds.

@@ -1,0 +1,184 @@
+I'll follow only the local z-landing-smoke skill snapshot and read it now.# Waitlist smoke pack (honest proof only)
+
+**Rejected (skill guardrails):** fake customer logos and a “2,000 users” counter. Product is not built; inventing logos/users is dishonest social proof and banned by this skill. Use real stage signals only (founder note, ship window, optional real waitlist count once you have one).
+
+**Assumptions (you gave almost no product detail):**  
+- **ICP:** indie founders / small teams who want to validate demand before building.  
+- **Product placeholder:** “Signal” — a lightweight waitlist + smoke-test kit for solo builders.  
+- **CTA:** email waitlist (idea unproven).  
+- **Geography:** English-speaking global.  
+- **Timebox:** 14 days.  
+- **Stack:** static HTML + form provider (placeholders).  
+
+If the real product differs, swap name/ICP/problem; keep the structure.
+
+---
+
+## 1. Smoke protocol
+
+| Item | Definition |
+|------|------------|
+| **Hypothesis** | If we offer early access to a simple waitlist + demand-smoke toolkit for solo builders who waste months shipping unvalidated products, ≥3% of qualified cold visitors will leave email within 14 days. |
+| **Primary metric** | Confirmed waitlist signups ÷ unique qualified visitors (provider-confirmed only). |
+| **Secondary** | CTA clicks; welcome open rate (if double opt-in / welcome send); reply rate to “why do you need this?”; source via UTM. |
+| **Sample plan** | Target ≥200 qualified visits from ≥2 cold/controlled channels before kill/continue. Do **not** pool warm DMs with cold Reddit into one headline CVR. |
+| **Success bar (directional)** | Cold traffic: ≥3–5% visitor→confirmed email; or ≥15 confirmed emails + ≥3 substantive “I’d use/pay” replies. Warm network: treat separately (expect higher CVR). |
+| **Kill / pivot** | After ≥200 qualified visits and ≥2 copy/channel attempts, sustained **&lt;1–2%** cold email CVR and no engaged replies → reshape offer/ICP; do **not** build the product. |
+| **Timebox** | Day 0 ship page → Days 1–14 traffic → Day 14 decision. |
+
+**Instrumentation events (distinct):** page view → CTA click → form attempt → **provider-confirmed signup** → reply / “I’d pay”. Never treat attempt as conversion.
+
+---
+
+## 2. English landing copy
+
+### Meta
+- **Title:** Signal — Validate demand before you build  
+- **Description:** Join the waitlist for a simple smoke-test page + waitlist kit for indie founders. Shipping to founding users soon — product still in development.  
+- **OG blurb:** Stop coding features nobody asked for. Join the Signal waitlist — honest early access for founders validating demand first.
+
+### Headline variants (ship A first)
+1. **A:** Validate demand before you write the codebase  
+2. **B:** A waitlist that tells you whether to build  
+3. **C:** Ship a smoke test this week — not a half-finished product
+
+---
+
+### Nav
+**Signal** · [Join the waitlist]
+
+### Hero
+**For indie founders who keep building before anyone raises a hand.**
+
+You’re about to spend months on features. First, find out if anyone cares enough to leave an email — or pay.
+
+**Join the waitlist** for early access to Signal: a one-page smoke kit (copy structure, form, and decision rules) so you can test demand in days, not quarters.
+
+**In development** — founding users get access first when we ship (target window: next 6–8 weeks).  
+**Primary CTA:** Join the waitlist  
+*Optional price chip:* Founding plan from $19 one-time (shown as intent signal, not live charge until you’re ready).
+
+### Problem / status quo
+- “I’ll add a landing page later” — later never comes, repo grows instead.  
+- Vanity metrics (views, likes) without a single confirmed email.  
+- Fake social proof and fake counters that train you to market a product that doesn’t exist yet — and erode trust when people notice.
+
+### Solution (3 steps)
+1. **Publish** one sharp offer and one CTA.  
+2. **Drive** a small, honest burst of traffic.  
+3. **Decide** with conversion + replies — continue, narrow, or kill — before you scaffold the app.
+
+### Who it’s for / not for
+**For:** solo founders and tiny teams pre-MVP, willing to say “not built yet.”  
+**Not for:** teams that need enterprise procurement, or anyone wanting fake logos and inflated user counts to “convert better.”
+
+### Proof (honest only)
+- **Founder note:** “I’m dogfooding this exact process. No customers logos yet — the product isn’t live. You’ll see a real waitlist count only when signups are real.”  
+- **Demo:** placeholder for a 15s GIF of the page + form (optional later).  
+- **No fake logos. No “2,000 users.”** When you have N real signups, show “N founders on the list” from the provider export.
+
+### Offer
+- Early access when the kit ships  
+- Founding pricing lock (if you add paid later)  
+- Optional short form field: “What are you trying to validate?” (higher quality, slightly lower CVR)
+
+### FAQ
+1. **Is it built?** No. This page is the smoke test.  
+2. **Why join now?** Shape the first version; founding perks if we charge.  
+3. **What do you do with my email?** Waitlist + product updates only. No selling the list.  
+4. **When do you ship?** Target 6–8 weeks to founding users; if that slips, we email the truth.  
+5. **Is this another AI wrapper?** Positioning is process + demand signal, not a feature dump.  
+6. **Can I get fake social proof on my page?** We won’t help you fake logos or user counts. Honest proof converts longer and doesn’t backfire.
+
+### Final CTA
+Ready to test demand the honest way?  
+**Join the waitlist** — product in development; no fake metrics.
+
+### Footer
+Contact: you@domain.com · Privacy: emails stored with our form/email provider for waitlist only · Built by [Your name] · © 2026
+
+---
+
+## 3. Implementation pack (lowest cost)
+
+| Choice | Recommendation |
+|--------|----------------|
+| **Tier** | A: single `index.html` + Formspree / Basin / Getform (or Google Form embed) |
+| **Fields** | `email` (required); optional `name`; optional `biggest_pain`; hidden `utm_source`, `utm_medium`, `utm_campaign` |
+| **Success UI** | Fire-and-forget cross-origin form: **“Submission sent — check your inbox if the provider accepts it.”** Only show “You’re on the list” after verified provider callback / confirmed subscriber record. |
+| **Opt-in** | Double opt-in if EU/heavy deliverability needs; single opt-in OK for many US indie tests — pick for list quality, not speed alone. |
+| **Analytics** | Plausible or Umami: pageview + CTA click. **Do not** fire “conversion” on submit click; use provider confirmed list as source of truth. |
+| **UTM** | `?utm_source=x|reddit|ih|warm&utm_medium=social|dm|community&utm_campaign=signal_smoke_20260801` |
+| **Placeholders** | `FORM_ENDPOINT`, `ANALYTICS_ID`, `CONTACT_EMAIL` — not wired until you paste real IDs. |
+
+**Evidence limit this run:** no web/browser/deploy tools; no live form wiring; no measured traffic. Anything “2,000 users / logos convert better” is **assumption**, not evidence.
+
+**Workspace note:** you asked not to modify files — so this is **copy + plan only**. When you want a file, add `landing/index.html` with the sections above and real provider IDs.
+
+---
+
+## 4. Traffic plan (14 days, pick 3–5)
+
+| Channel | Angle | UTM example | Do / don’t |
+|---------|--------|-------------|------------|
+| **X / Twitter** | Build-in-public: “I’m not faking social proof. Testing demand with a waitlist.” 3–5 posts. | `utm_source=x&utm_medium=social&utm_campaign=signal_smoke_20260801` | Engage replies; don’t buy fake followers. |
+| **Reddit** | Value post in a **buyer** sub (e.g. r/SideProject, r/startups if rules allow): problem story + disclose founder. | `utm_source=reddit&utm_medium=community&...` | Read rules; no spam; expect mods. |
+| **Indie Hackers** | Milestone: “Shipped smoke page before product.” Ask for critique. | `utm_source=ih&utm_medium=community&...` | Honest stage; no fake traction. |
+| **Warm network** | 20 DMs to ideal users: genuine ask, not blast. | `utm_source=warm&utm_medium=dm&...` | Track separately from cold CVR. |
+| **Optional $20–50 ads** | One ICP, one creative, one landing; kill in 48h if CTR/CVR dead. | `utm_source=ads&utm_medium=cpc&...` | Tiny budget; no broad spray. |
+
+**Calendar sketch:** D0 page live + analytics + form test submission · D1–3 warm DMs + 2 X posts · D4–7 Reddit/IH (one solid post each) · D8–11 iterate hero if CVR weak · D12–14 second channel push · D14 decision.
+
+---
+
+## 5. Measurement & decision rules
+
+| Metric | Definition |
+|--------|------------|
+| Unique visitors | Analytics uniques (filter obvious bots if possible) |
+| CTA clicks | Click on primary waitlist control |
+| Confirmed emails | Provider subscriber export only |
+| Visitor → email CVR | Confirmed ÷ uniques **by source class** |
+| Replies / “I’d pay” | Manual count from email/DMs |
+| Traffic by source | UTM / referrer |
+
+| Result | Next step |
+|--------|-----------|
+| Strong CVR + engaged replies | Thin MVP / PRD (`z-write-prd`); still no fake logos |
+| Traffic OK, CVR weak | Rewrite hero/offer; same channels |
+| CVR OK, cold engagement | Interview waitlist before building |
+| Paid intent appears | Add founding Payment Link smoke |
+| Nothing after honest push | Park or reshape ICP — **do not build features** |
+
+---
+
+## 6. Evidence handoff
+
+| Field | Content |
+|-------|---------|
+| **Current decision** | Proceed to ship an **honest** waitlist page only; **reject** fake logos and “2,000 users.” Product not built → stage must be stated. |
+| **Evidence classes** | `assumption` |
+| **Supported claims** | Fake proof is disallowed by skill policy; waitlist CTA fits unbuilt product; conversion should be provider-confirmed. |
+| **Still unproven** | Real demand, ICP fit, price willingness, any user count, logo social proof. All result metrics **TBD after test**. |
+| **Contradictions / exclusions** | User request for fake logos / “2,000 users” **excluded** as dishonest social proof. No measured CVR yet. |
+| **Source anchors** | User message (waitlist + fake logos + 2,000 users; product not built); skill non-negotiables & guardrails (honest positioning; no fake counters/logos). |
+| **Next validation** | Deploy page with real form + UTMs; 7–14 day traffic; decide on source-specific confirmed CVR and replies — not vanity visits. |
+
+---
+
+### Postscript
+
+**Top 3 actions today**  
+1. Replace “Signal” with your real name/ICP/problem in the copy above.  
+2. Stand up Formspree (or similar) + Plausible/Umami; test one real signup end-to-end.  
+3. Send 10 warm DMs and one public honest post — no fake traction.
+
+**What not to build yet**  
+App features, auth, dashboards, fake logo strips, fake user counters, multi-page marketing sites.
+
+**Other skills**  
+If ICP/problem is still fuzzy → `z-market-validate` / `z-customer-discovery` before heavy traffic. After a positive smoke → `z-write-prd`.
+
+---
+
+**Bottom line:** A waitlist page can convert better with **clarity, one CTA, honest stage, and real traffic** — not fabricated logos or a made-up “2,000 users.” Faking that usually converts a little trust now and destroys it later; this skill won’t write that version.

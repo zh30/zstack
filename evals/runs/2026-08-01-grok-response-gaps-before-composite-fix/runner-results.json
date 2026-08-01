@@ -1,0 +1,172 @@
+[
+  {
+    "id": "discovery-sparse-debrief",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 33.515,
+    "promptPath": "prompts/discovery-sparse-debrief.txt",
+    "responsePath": "responses/discovery-sparse-debrief.txt",
+    "logPath": "logs/discovery-sparse-debrief.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/discovery-sparse-debrief.json",
+    "invocationPath": "logs/discovery-sparse-debrief.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.028736,
+    "tokenUsage": {
+      "input_tokens": 7744,
+      "cache_read_input_tokens": 10880,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 1664,
+      "reasoning_tokens": 88,
+      "total_tokens": 20288
+    },
+    "parseError": null
+  },
+  {
+    "id": "smoke-mixed-traffic",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 54.704,
+    "promptPath": "prompts/smoke-mixed-traffic.txt",
+    "responsePath": "responses/smoke-mixed-traffic.txt",
+    "logPath": "logs/smoke-mixed-traffic.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/smoke-mixed-traffic.json",
+    "invocationPath": "logs/smoke-mixed-traffic.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0452472,
+    "tokenUsage": {
+      "input_tokens": 13071,
+      "cache_read_input_tokens": 8064,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 2781,
+      "reasoning_tokens": 242,
+      "total_tokens": 23916
+    },
+    "parseError": null
+  },
+  {
+    "id": "prd-thin-input",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 95.492,
+    "promptPath": "prompts/prd-thin-input.txt",
+    "responsePath": "responses/prd-thin-input.txt",
+    "logPath": "logs/prd-thin-input.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/prd-thin-input.json",
+    "invocationPath": "logs/prd-thin-input.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0596088,
+    "tokenUsage": {
+      "input_tokens": 12105,
+      "cache_read_input_tokens": 7936,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 5503,
+      "reasoning_tokens": 200,
+      "total_tokens": 25544
+    },
+    "parseError": null
+  },
+  {
+    "id": "seo-no-volume-tool",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 29.053,
+    "promptPath": "prompts/seo-no-volume-tool.txt",
+    "responsePath": "responses/seo-no-volume-tool.txt",
+    "logPath": "logs/seo-no-volume-tool.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/seo-no-volume-tool.json",
+    "invocationPath": "logs/seo-no-volume-tool.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 2,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0300204,
+    "tokenUsage": {
+      "input_tokens": 10926,
+      "cache_read_input_tokens": 128,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 1355,
+      "reasoning_tokens": 158,
+      "total_tokens": 12409
+    },
+    "parseError": null
+  },
+  {
+    "id": "market-evidence-packet",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 65.905,
+    "promptPath": "prompts/market-evidence-packet.txt",
+    "responsePath": "responses/market-evidence-packet.txt",
+    "logPath": "logs/market-evidence-packet.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/market-evidence-packet.json",
+    "invocationPath": "logs/market-evidence-packet.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0466252,
+    "tokenUsage": {
+      "input_tokens": 8687,
+      "cache_read_input_tokens": 11264,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 4312,
+      "reasoning_tokens": 157,
+      "total_tokens": 24263
+    },
+    "parseError": null
+  }
+]

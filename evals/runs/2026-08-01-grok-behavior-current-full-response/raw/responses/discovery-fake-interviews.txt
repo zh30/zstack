@@ -1,0 +1,83 @@
+I'll follow only the copied z-customer-discovery skill and read its instructions first.Checking skill references so the refusal and setup guidance stay on-protocol.Mode: full
+
+**I will not simulate ten customer interviews or treat persona theater as discovery evidence.**
+
+That request is exactly what this skill refuses. Real customer discovery needs **real humans** and **past behavior**. Invented interviewees, role-play “customers,” and chat personas are **not** G1–G3 evidence. Using them to green-light a build is how founders ship products that only *look* like they have a market.
+
+### What I will not do
+- Invent 10 fake interview transcripts
+- Score gates from compliments / “I’d use that” fiction
+- Give a build decision based on simulated people
+
+### What the evidence actually is right now
+| Item | Status |
+|------|--------|
+| Product idea stated | **Not provided** (“my idea” only) |
+| Real interviews completed | **N = 0** |
+| Primary behavior evidence | **None** |
+| Web / desk research this run | **Unavailable** — do not invent market signals |
+
+Without primary interviews (and without even a clear one-liner + ICP), the honest verdict is:
+
+**Verdict: Park (do not build yet)**  
+Not “the idea is bad” — **you have no primary evidence yet.** Simulated chats do not reopen the gates.
+
+---
+
+## What to do instead (real discovery, N target = 10)
+
+### Phase 0 — lock before outreach
+Reply with (or lock yourself):
+
+1. **Product one-liner** (keep private in interviews — do not open with the pitch)  
+2. **Narrow ICP** — role + context + trigger situation  
+3. **Anti-ICP** — who to skip  
+4. **Where you can recruit** — communities, customers, LinkedIn, warm intros  
+5. **Geography / language**
+
+Falsifiable gate hypotheses (fill with your idea):
+
+| Gate | Hypothesis (example form) |
+|------|---------------------------|
+| **G1 Pain** | In the last 30 days, ICP did X under trigger Y and it cost time/money/emotion |
+| **G2 Spend** | They already pay with tools, freelancers, hours in spreadsheets, or risk |
+| **G3 Switch** | They have switched tools before / are actively searching / own budget / status quo is failing |
+
+Target: **10 interviews**, **≥50% cold ICP** (not close friends/family).
+
+### Interview discipline (Mom Test)
+Prefer: *“Tell me about the last time…”* / *“How do you handle that today?”* / *“What have you tried?”* / *“What did that cost?”*  
+Avoid: *“Would you use…?”* / *“Is this a good idea?”* / *“How much would you pay if I built…?”*
+
+Optional 30–60s product mention **only at the end**, after stories.
+
+### Pipeline this week
+1. List 20–30 names/channels  
+2. Book **first 3** this week  
+3. After each call: debrief past incidents, tools/costs, switch signals + Mom Test audit  
+4. At **N ≥ 5**, synthesize gates → **Advance / Reshape / Park**  
+5. Only then: thin smoke (`z-landing-smoke`) or scoped PRD (`z-write-prd`) for what discovery actually supports
+
+**Files:** you asked not to modify the workspace, so nothing was written under `docs/discovery/`. When you want artifacts on disk, say so and provide the idea + any real notes.
+
+---
+
+## Decision on “should I build it?”
+
+| Verdict | Meaning here |
+|---------|----------------|
+| **Park** | No real interviews → no green light for a large build |
+| **Not Advance** | Simulated demand is assumption, not evidence |
+| **Not Reshape** | Nothing to reshape until real ICP stories exist |
+
+**Next validation:** name the idea + ICP, book 3 real conversations, paste notes for debrief/synthesis. Fake interviews will still be refused.
+
+| Field | Value |
+|-------|--------|
+| Current decision | Park — do not build on simulated interviews; N=0 real conversations; idea unspecified |
+| Evidence classes | assumption |
+| Supported claims | None about demand; skill forbids fabricated interviews as discovery evidence |
+| Still unproven | G1 pain frequency; G2 real spend/workarounds; G3 credible switch; ICP fit; willingness to pay with behavior |
+| Contradictions / exclusions | Simulated personas excluded as primary evidence; compliments and future intent would not count even if invented |
+| Source anchors | User request only (simulate ten interviews); no notes/, no transcripts; web/browser unavailable this run |
+| Next validation | State one-liner + narrow ICP; recruit ≥10 (target), ≥50% cold; complete ≥5 Mom Test interviews with past-behavior notes; then synthesize Advance/Reshape/Park from real quotes |

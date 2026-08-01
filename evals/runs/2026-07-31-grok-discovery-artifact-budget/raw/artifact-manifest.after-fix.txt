@@ -1,0 +1,5 @@
+4984  860719032cf91738320881b3bef6a9336b8a866a0e2896be23a4278eccbd2dc1  docs/discovery/decision.md
+9232  9d3b29d27c372d731787dbcd877a82d217ebfc1a8558b9fb1e388604bf538432  docs/discovery/synthesis.md
+
+2 files, 14216 bytes total.
+Hashes are SHA-256.

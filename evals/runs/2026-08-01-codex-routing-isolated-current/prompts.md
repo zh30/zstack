@@ -1,0 +1,30 @@
+# Codex CLI routing prompts
+
+Exact prompt bytes are retained under `raw/prompts/`; expected selections
+and grading were not present in those prompts.
+
+- [market-vague](./raw/prompts/market-vague.txt)
+- [market-public](./raw/prompts/market-public.txt)
+- [discovery-plan](./raw/prompts/discovery-plan.txt)
+- [discovery-debrief](./raw/prompts/discovery-debrief.txt)
+- [landing-waitlist](./raw/prompts/landing-waitlist.txt)
+- [landing-metrics](./raw/prompts/landing-metrics.txt)
+- [prd-notes](./raw/prompts/prd-notes.txt)
+- [prd-rewrite](./raw/prompts/prd-rewrite.txt)
+- [seo-live-url](./raw/prompts/seo-live-url.txt)
+- [seo-prd-map](./raw/prompts/seo-prd-map.txt)
+- [none-code-fix](./raw/prompts/none-code-fix.txt)
+- [none-architecture](./raw/prompts/none-architecture.txt)
+- [boundary-real-interviews](./raw/prompts/boundary-real-interviews.txt)
+- [boundary-public-research](./raw/prompts/boundary-public-research.txt)
+- [boundary-waitlist-demand](./raw/prompts/boundary-waitlist-demand.txt)
+- [zh-market-public](./raw/prompts/zh-market-public.txt)
+- [zh-discovery-plan](./raw/prompts/zh-discovery-plan.txt)
+- [zh-landing-waitlist](./raw/prompts/zh-landing-waitlist.txt)
+- [zh-prd-notes](./raw/prompts/zh-prd-notes.txt)
+- [zh-seo-live-url](./raw/prompts/zh-seo-live-url.txt)
+- [zh-none-code-fix](./raw/prompts/zh-none-code-fix.txt)
+- [zh-none-architecture](./raw/prompts/zh-none-architecture.txt)
+- [zh-boundary-real-interviews](./raw/prompts/zh-boundary-real-interviews.txt)
+- [zh-boundary-public-research](./raw/prompts/zh-boundary-public-research.txt)
+- [zh-boundary-waitlist-demand](./raw/prompts/zh-boundary-waitlist-demand.txt)

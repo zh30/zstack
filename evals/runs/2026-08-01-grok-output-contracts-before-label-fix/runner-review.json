@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex criterion-by-criterion review of the complete Grok output-contract responses",
+  "cases": [
+    {
+      "id": "prd-output-contract",
+      "skill": "z-write-prd",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Section 11 contains one handoff table whose first column is exactly Current decision, Evidence classes, Supported claims, Still unproven, Contradictions / exclusions, Source anchors, and Next validation."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only the five canonical evidence classes in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The field contains only observed experiment, primary behavior, and assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve cold/warm separation, unknown payment, contradictions, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "Cold 27/300 plus two pilots and warm 12/40 remain separate, payment and $29 remain unproven, excluded scope is explicit, anchors identify the brief and PRD sections, and one owner/action/accept/kill pilot validation is bounded."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep the default full core PRD at or below 5000 whitespace-delimited words while retaining testable acceptance criteria for every P0.",
+          "observed": true,
+          "evidence": "The entire response is 3,755 whitespace-delimited words, and every retained functional and non-functional P0 row has an observable acceptance criterion or validation method."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Replace the required handoff table or its field labels with custom prose or subsections.",
+          "observed": false,
+          "evidence": "The fixed seven-row table is present and the short sentence after it supplements rather than replaces the contract."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Combine warm and cold traffic or present signup and pilot interest as validated payment or retention.",
+          "observed": false,
+          "evidence": "The cohorts remain separate throughout; revenue is explicitly not an MVP success metric, no payment was requested, and retention is listed as unproven."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Inflate the core with repeated decisions or implementation-level schemas and exhaustive test matrices not requested by the user.",
+          "observed": false,
+          "evidence": "The PRD stays within the word cap, uses one conceptual entity table and concise acceptance rows, and contains no implementation schema or exhaustive test matrix."
+        }
+      ]
+    },
+    {
+      "id": "market-output-contract",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Section 12 contains one seven-row table with each required label exactly and without Markdown decoration in the first column."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "Evidence classes contains only secondary public and assumption, matching the unverified supplied notes and adjacent capture."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve supplied-note limits, counterevidence, missing payment proof, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The table identifies the notes as the only unverified source, retains Chrome groups, bookmarks, admin blocks, and no-payment evidence, and gives one founder-owned 48-hour validation with success and fail gates."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename, split, or replace required handoff rows with custom fields or prose.",
+          "observed": false,
+          "evidence": "No required row is renamed, split, or replaced."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote supplied notes or adjacent pricing into verified primary behavior, payment, or retention evidence.",
+          "observed": false,
+          "evidence": "The notes and $7-12 band stay unverified, exact-product payment is absent, and actual switching, payment, and retention remain unproven."
+        }
+      ]
+    },
+    {
+      "id": "discovery-output-contract",
+      "skill": "z-customer-discovery",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": false,
+          "evidence": "The table has seven semantic rows, but every first-column label is wrapped in Markdown bold markers, for example **Current decision** and **Evidence classes**, so the cell text is not the exact fixed contract label."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The value contains only primary behavior, an applicable canonical class for the supplied interview summaries."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve the summary-only and small-sample limits, polite-only counterevidence, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The response states N=5 and summaries-only limits, excludes the warm founder compliment, anchors S01-S05, and provides one owner/action/success/fail pilot validation."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Replace the fixed table with skill-specific downstream prose alone.",
+          "observed": false,
+          "evidence": "A seven-row table is present; the downstream artifact map is additional rather than a prose-only replacement."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote compliments, future intent, or the heterogeneous sample into payment, retention, or market-size proof.",
+          "observed": false,
+          "evidence": "The compliment-only warm founder is excluded, the pilot ask is not called payment, and price, retention, and scale beyond N=5 remain unproven."
+        }
+      ]
+    },
+    {
+      "id": "landing-output-contract",
+      "skill": "z-landing-smoke",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": false,
+          "evidence": "The table contains seven semantic rows, but each fixed first-column label is Markdown-bolded, so **Current decision** and the other decorated cells are not exact contract labels."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The value contains only assumption, which is canonical and appropriate before the smoke test runs."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use TBD after test for result-dependent claims and retain warm/cold, attribution, invalid-event, source-anchor, and next-validation boundaries.",
+          "observed": true,
+          "evidence": "The table uses TBD after test for the decision, supported claims, and contradictions; keeps source classes separate; distinguishes attempts from provider-confirmed subscribers; anchors Plausible, Buttondown, spend, and outreach; and gives a bounded Day-10 branch."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename the fixed rows into metric-specific custom fields.",
+          "observed": false,
+          "evidence": "The semantic row names are not replaced by metric-specific custom names; the failure is Markdown decoration around otherwise correct labels."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Present attempts, hypotheses, signups, or planned price as confirmed payment, product value, or retention.",
+          "observed": false,
+          "evidence": "The planned $9 price, thresholds, and all traffic results remain hypotheses or TBD; submit attempts are explicitly invalid as confirmed conversion and payment/value/retention stay unproven."
+        }
+      ]
+    },
+    {
+      "id": "seo-output-contract",
+      "skill": "z-seo-plan",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Section 12 contains one table with all seven unformatted fixed labels exactly."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The field contains only search signal and assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve supplied-note limits, search uncertainty, contradictory SERP evidence, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The table keeps volumes, rankings, traffic, and live SERPs unproven; preserves the CRM/portal-dominated contradiction; anchors the user brief and blocked channels; and gives one founder-owned SERP plus GSC validation with a decision signal."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Merge risks and Evidence handoff into free text or rename the fixed rows.",
+          "observed": false,
+          "evidence": "Risks remain Section 11 and the fixed handoff remains a separate exact-label table."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote search opportunity, planned pages, or guessed bands into observed ranking, traffic, payment, product-market-fit, or retention proof.",
+          "observed": false,
+          "evidence": "All bands are unverified, pages are planned, and rankings, traffic, signups, payment, PMF, and retention are explicitly listed as unproven."
+        }
+      ]
+    }
+  ]
+}

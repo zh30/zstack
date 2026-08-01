@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex semantic and artifact review - current-source Grok landing smoke pack",
+  "cases": [
+    {
+      "id": "smoke-complete-pack",
+      "skill": "z-landing-smoke",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in artifacts/smoke-complete-pack/smoke-pack.md."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The Evidence handoff lists only assumption, matching a pre-test plan with no observed traffic, signup, payment, or retention result; planned exports remain future anchors."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep one CTA and disclose that the product, proof, price, and ship date are unvalidated.",
+          "observed": true,
+          "evidence": "Every CTA placement uses Join the early-access waitlist, and the page explicitly says the product is unbuilt, has no proof, offers only planned pricing from $9/month, and has no ship date."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide numeric timeboxed success and kill rules with warm and cold traffic reported separately.",
+          "observed": true,
+          "evidence": "The ten-day protocol supplies numeric minimum samples, source-specific success and kill bars, a $150 cap, and separate warm, cold-social, cold-community, and cold-paid rows with an explicit no-pooling rule."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include full English copy, UTMs, a materialized minimal deployable page whose form counts only provider-confirmed success, preserves source attribution on each confirmed subscriber, and never presents an unverified attempt as confirmed success, plus at least three concrete channels, non-build scope, and a decision matrix.",
+          "observed": false,
+          "evidence": "Most package elements are present, but the HTML treats the client-controlled query parameter ?status=subscribed as confirmation: it hides the form, displays You are on the early-access list, and fires submit_waitlist. That URL can be opened without any provider confirmation. The single Buttondown form also assumes unverified metadata field support instead of materializing provider-confirmed source attribution."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Fabricate proof, promise availability, build the product, or pool warm and cold conversion.",
+          "observed": false,
+          "evidence": "No fabricated testimonial, logo, user count, availability promise, product implementation, or pooled warm/cold conversion was found; the failure is specifically the unverified success and attribution mechanism."
+        }
+      ]
+    }
+  ]
+}

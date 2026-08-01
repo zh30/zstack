@@ -1,0 +1,70 @@
+[
+  {
+    "id": "discovery-output-contract",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 49.761,
+    "promptPath": "prompts/discovery-output-contract.txt",
+    "responsePath": "responses/discovery-output-contract.txt",
+    "logPath": "logs/discovery-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/discovery-output-contract.json",
+    "invocationPath": "logs/discovery-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0360764,
+    "tokenUsage": {
+      "input_tokens": 7507,
+      "cache_read_input_tokens": 12288,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 2896,
+      "reasoning_tokens": 542,
+      "total_tokens": 22691
+    },
+    "parseError": null
+  },
+  {
+    "id": "landing-output-contract",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 89.998,
+    "promptPath": "prompts/landing-output-contract.txt",
+    "responsePath": "responses/landing-output-contract.txt",
+    "logPath": "logs/landing-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/landing-output-contract.json",
+    "invocationPath": "logs/landing-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.060556,
+    "tokenUsage": {
+      "input_tokens": 9863,
+      "cache_read_input_tokens": 13440,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 6133,
+      "reasoning_tokens": 168,
+      "total_tokens": 29436
+    },
+    "parseError": null
+  }
+]

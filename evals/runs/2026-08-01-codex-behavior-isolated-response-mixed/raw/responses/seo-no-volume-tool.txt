@@ -1,0 +1,22 @@
+I can’t provide exact monthly volume and difficulty for 50 keywords without a measured data source. Any numbers would be fabricated. Keyword difficulty is also vendor-specific, not a universal metric.
+
+This run has no web or keyword-tool access, so I cannot verify SERPs, autocomplete, Trends, competitors, or public demand signals. I also won’t replace 50 invented numbers with 50 guessed “high/medium/low” labels.
+
+To produce a defensible first keyword slice, send:
+
+- Product/site URL, PRD, or a one-sentence product description
+- Target customer
+- Country and search language
+- Primary conversion goal
+
+The first deliverable should cover one primary cluster, 2–4 secondary terms, and 5–10 mapped long-tails. Each term would receive an intent, evidence-backed demand/difficulty band, target page, and priority. Exact metrics require a named source such as Google Keyword Planner, Ahrefs, Semrush, or another provider; its geography, date, and metric definitions should accompany the values.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Validate first; do not generate the requested unsupported metrics |
+| Evidence classes | assumption |
+| Supported claims | Exact monthly volume and vendor-style difficulty cannot be substantiated from the supplied information and unavailable research channels |
+| Still unproven | Candidate keywords, search demand, SERP difficulty, rankings, traffic, conversion, payment, and retention |
+| Contradictions / exclusions | No product input, target market, keyword dataset, volume source, Search Console data, or web/SERP access; fabricated metrics excluded |
+| Source anchors | User-stated absence of Ahrefs and Search Console access; runtime restriction preventing web and public-source research |
+| Next validation | Founder supplies a URL, PRD, or product description plus audience, market/language, and conversion goal; then validate one cluster using an identified keyword-data source |

@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: The request asks for a live-site SEO audit, keyword selection, and query-to-page mapping.

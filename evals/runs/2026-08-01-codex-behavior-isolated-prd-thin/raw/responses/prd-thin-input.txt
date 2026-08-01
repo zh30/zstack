@@ -1,0 +1,361 @@
+# PRD: BriefPilot
+
+| Field | Value |
+|---|---|
+| Status | Draft |
+| Owner | Founder / TBD |
+| Last updated | 2026-08-01 |
+| Version | 0.1 |
+| Primary persona | Independent knowledge-work freelancer managing 2–8 concurrent clients |
+| Platform | Responsive web application |
+| Related docs | None provided |
+
+> Evidence limitation: This PRD is based only on the idea “an AI app for freelancers.” No interviews, market research, competitor analysis, behavioral data, or payment experiments were available. Product choices and validation thresholds are therefore labeled as assumptions.
+
+## 1. Overview
+
+### 1.1 One-liner
+
+BriefPilot is an AI project copilot that helps independent freelancers turn client briefs and messages into reviewed project plans, prioritized tasks, and client-ready progress updates.
+
+### 1.2 Problem statement
+
+Assumption: Freelancers managing several clients spend meaningful time translating scattered briefs, emails, and meeting notes into plans, task lists, and status updates.
+
+The current workflow often spans documents, email, messaging apps, and generic task managers. The freelancer must repeatedly determine:
+
+- What did the client request?
+- What was promised?
+- What should happen next?
+- What does the client need to know?
+
+This administrative work competes with billable delivery. Missed commitments or unclear updates may also damage client trust.
+
+The MVP will address one primary job:
+
+> Help me convert client information into a reliable plan and keep the client informed without reconstructing project context every time.
+
+### 1.3 Goals
+
+Product goals:
+
+1. Reduce the effort required to organize a new client project.
+2. Give the freelancer one reviewed list of deliverables, deadlines, and next actions.
+3. Produce editable client updates grounded in the project’s recorded information.
+4. Keep the freelancer in control of every AI-generated output.
+
+Business goals:
+
+1. Determine whether this workflow is frequent and painful enough to support a paid product.
+2. Recruit 10 relevant pilot users.
+3. Convert at least 3 pilot users to a paid subscription or explicit paid continuation commitment.
+
+All numerical targets are validation thresholds, not existing results.
+
+### 1.4 Non-goals
+
+Version 1 will not include:
+
+- A general-purpose AI chatbot.
+- Invoicing, accounting, tax, or expense management.
+- Lead generation, proposal marketplaces, or CRM automation.
+- Time tracking.
+- Team workspaces, employee management, or multiple roles.
+- Native mobile applications.
+- Automatic sending of client communications.
+- Autonomous changes to plans or deadlines without user approval.
+- Deep integrations with every email, messaging, calendar, or project-management service.
+
+### 1.5 Success metrics
+
+| Metric | Definition | Initial validation threshold | Timeframe |
+|---|---|---:|---|
+| Pilot activation | User creates a project, imports context, and approves an initial plan | At least 50% of invited users | First session |
+| Repeated core use | Activated user generates and exports an update in at least two separate weeks | At least 40% | First 3 weeks |
+| Output acceptance | Generated deliverables/tasks retained after user review, allowing edits | At least 60% | During pilot |
+| Perceived time saved | User-reported reduction in planning or update preparation | Median of at least 20 minutes per project/week | End of pilot |
+| Payment signal | Pilot user pays or makes an explicit paid continuation commitment | At least 3 of 10 users | Within 30 days |
+
+## 2. Users and context
+
+### 2.1 Primary persona
+
+| Attribute | Detail |
+|---|---|
+| Label | Multi-client independent freelancer |
+| Who they are | A solo designer, developer, marketer, writer, or consultant delivering project-based client work |
+| Operating context | Manages 2–8 active clients personally and has no project coordinator |
+| Primary job | Turn client information into an actionable plan and communicate progress reliably |
+| Current workarounds | Email, chat, notes, documents, spreadsheets, and generic task managers |
+| Trigger | A new brief arrives, priorities change, or a client asks for an update |
+| Anti-persona | Agencies, large teams, gig-marketplace workers completing standardized microtasks, and freelancers primarily seeking leads |
+
+Assumption: The underlying coordination workflow is similar enough across selected knowledge-work disciplines for one MVP. Initial pilots should still concentrate on one discipline—recommended: freelance designers or developers—to reduce vocabulary and workflow variation.
+
+### 2.2 Use context
+
+The primary experience is desktop-oriented because users will paste or upload substantial client context and review generated plans. The interface should remain usable on mobile for checking tasks, but mobile optimization is not a launch requirement.
+
+Users may enter commercially sensitive client information. They must know what is stored, be able to delete it, and review all generated content before it leaves the application.
+
+## 3. Solution
+
+### 3.1 Value proposition
+
+For independent freelancers who lose billable time organizing fragmented client information, BriefPilot is a project copilot that turns source material into a reviewed execution plan and client update. Unlike a generic chatbot, it preserves project structure, connects outputs to recorded context, and requires approval before anything is used externally.
+
+### 3.2 Product principles
+
+1. User approval precedes action.
+2. AI outputs remain editable and are never treated as authoritative.
+3. Source context should be visible when reviewing generated content.
+4. One complete project workflow takes priority over broad business-management features.
+5. The product must create value before requiring integrations.
+
+### 3.3 Scope
+
+| In scope for MVP | Out of scope for v1 |
+|---|---|
+| Single-user account | Teams and client accounts |
+| Manual project creation | CRM and lead management |
+| Pasted text and supported document upload | Automatic email or chat ingestion |
+| AI extraction of objectives, deliverables, dates, and questions | Autonomous project management |
+| User review and approval | Automatic client messaging |
+| Prioritized project task list | Full Kanban/custom workflow engine |
+| Draft progress update | Invoicing and time tracking |
+| Copy or export generated update | Native mobile applications |
+
+## 4. P0 user journeys
+
+### Journey A: Turn a brief into a plan
+
+1. The user creates a project.
+2. The user pastes client text or uploads a supported document.
+3. BriefPilot extracts the objective, deliverables, deadlines, dependencies, and unresolved questions.
+4. The user edits, removes, or approves each proposed item.
+5. BriefPilot creates the approved project plan and initial tasks.
+
+Success state: The user reaches a usable project plan without manually transcribing the full brief.
+
+Failure recovery: If extraction fails or the input is incomplete, the original content remains available and the user can retry, replace the source, or enter plan items manually.
+
+### Journey B: Decide what to work on
+
+1. The user opens the home view.
+2. BriefPilot displays next actions across active projects.
+3. The user filters or sorts by deadline and project.
+4. The user marks tasks complete or edits their dates.
+5. The plan reflects the changes immediately.
+
+Success state: The user can identify the next relevant action without reopening source documents.
+
+### Journey C: Prepare a client update
+
+1. The user opens an active project.
+2. The user selects completed work and adds optional notes or blockers.
+3. BriefPilot drafts a structured client update.
+4. The user reviews and edits the draft.
+5. The user copies or exports it for manual sending.
+
+Success state: The user produces an accurate, editable update grounded in selected project information.
+
+Failure recovery: Missing or contradictory information is flagged; the system does not invent progress or send the update automatically.
+
+## 5. Requirements
+
+### 5.1 Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|---|---|---|---|
+| FR-001 | A user can access a private, single-user workspace. | P0 | An unauthenticated visitor cannot access project data; an authenticated user sees only their own projects. |
+| FR-002 | A user can create, rename, archive, and reopen a project. | P0 | A project requires a name; archived projects disappear from active views without losing their data. |
+| FR-003 | A user can provide project context by pasting text or uploading PDF, DOCX, or TXT files. | P0 | The system accepts pasted text and supported files up to the documented limit, identifies unsupported or unreadable files, and preserves the user’s existing project if processing fails. |
+| FR-004 | The system can propose structured plan items from provided context. | P0 | Output separates objectives, deliverables, deadlines, dependencies, and open questions; uncertain or absent information is marked rather than invented. |
+| FR-005 | The user can review AI-proposed items before adding them to the project. | P0 | Each proposed item can be accepted, edited, or rejected; no proposal becomes an approved task or deliverable without confirmation. |
+| FR-006 | The user can manage a project task list. | P0 | Tasks can be created, edited, completed, reopened, and assigned an optional deadline and priority. |
+| FR-007 | The user can view next actions across active projects. | P0 | The home view displays incomplete tasks and supports project and deadline filtering; completed and archived items are excluded by default. |
+| FR-008 | The system can draft a progress update from user-selected project data. | P0 | The user selects completed items and optional blockers; the draft distinguishes completed work, next steps, blockers, and questions; it is editable before export. |
+| FR-009 | The user can copy or export a progress update. | P0 | The final edited text can be copied to the clipboard or downloaded as plain text; the product does not send it to a client. |
+| FR-010 | The user can inspect the context supporting an AI-generated plan or update. | P0 | The review screen links generated content to the relevant imported source or selected project items when available. |
+| FR-011 | The user can submit feedback on an AI output. | P1 | A user can mark an output useful or not useful and optionally explain why. |
+| FR-012 | The user can import tasks from a third-party project tool. | P2 | At least one validated integration can import tasks without duplicating existing records. |
+
+### 5.2 Non-functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria / validation method |
+|---|---|---|---|
+| NFR-001 | Protect client information in transit and at rest. | P0 | Production traffic uses HTTPS; stored project content and uploaded files use provider-supported encryption at rest; access-control tests confirm one user cannot retrieve another user’s records. |
+| NFR-002 | Allow complete account-data deletion. | P0 | A user can request deletion in product; active application data and uploaded files become inaccessible within 24 hours, with backup-retention behavior disclosed. |
+| NFR-003 | Make AI use explicit. | P0 | Before the first AI operation, the interface states that project content will be processed by an AI provider and links to the applicable privacy information. |
+| NFR-004 | Keep generation latency tolerable. | P0 | Under normal pilot load, at least 95% of text-based generation requests complete or show a recoverable error within 30 seconds. |
+| NFR-005 | Preserve user work during AI failure. | P0 | Simulated timeout and provider-error tests confirm that source input and previously approved project data remain intact. |
+| NFR-006 | Control variable AI costs. | P1 | Usage and estimated model cost are recorded per generation; the pilot has a configurable per-user usage ceiling. |
+| NFR-007 | Meet a basic accessibility baseline. | P1 | Primary P0 journeys are keyboard-operable and have no critical automated WCAG 2.1 AA violations. |
+
+### 5.3 Analytics events
+
+| Event | Trigger | Key properties |
+|---|---|---|
+| `project_created` | Project is saved | source, project_id |
+| `context_processed` | Extraction completes | input_type, duration, success |
+| `plan_approved` | User approves initial plan | accepted_count, edited_count, rejected_count |
+| `task_completed` | Task is completed | project_id |
+| `update_generated` | Draft update completes | selected_item_count, duration |
+| `update_exported` | Update is copied or downloaded | export_type |
+| `account_deletion_requested` | User requests deletion | user_id |
+
+Analytics must not contain raw client briefs or generated update text.
+
+## 6. UX and content notes
+
+### 6.1 Information architecture
+
+- Sign in
+- Home / Next actions
+- Projects
+- Project overview
+- Import context
+- Review proposed plan
+- Tasks
+- Generate update
+- Settings and data controls
+
+### 6.2 Critical states
+
+- Empty home: invite the user to create one client project, not “ask AI anything.”
+- Empty project: explain which source material produces a useful plan.
+- Low-confidence extraction: show missing fields and request review.
+- Contradictory dates: display both values and require the user to resolve them.
+- Generation failure: retain all input and offer retry.
+- Usage limit reached: explain the limit without blocking access to existing data.
+- Deleted source: clarify whether derived, approved project items remain.
+
+### 6.3 Key copy
+
+- Onboarding proposition: “Turn a client brief into a plan you can review.”
+- Primary CTA: “Create project”
+- Import CTA: “Generate proposed plan”
+- Review warning: “Check dates, commitments, and deliverables before approving.”
+- Update CTA: “Draft client update”
+
+## 7. Data and integrations
+
+### 7.1 Core entities
+
+| Entity | Purpose | Conceptual fields |
+|---|---|---|
+| User | Workspace owner | ID, email, settings, consent timestamp |
+| Project | Client engagement container | ID, name, status, optional client label, dates |
+| Source | Imported project context | Type, filename, extracted text, processing status |
+| Plan item | Structured project commitment | Type, text, status, source reference, confidence indicator |
+| Task | Actionable work | Title, project, state, priority, due date |
+| Update draft | Editable client communication | Selected inputs, generated text, edited text, created date |
+| Generation record | Operational and cost record | Type, status, latency, token/cost estimate; no raw content in analytics |
+
+### 7.2 Integrations
+
+| System | Purpose | MVP? | Notes |
+|---|---|---:|---|
+| Authentication provider | Secure user access | Yes | Buy rather than build |
+| LLM provider | Extraction and drafting | Yes | Provider choice requires privacy and cost review |
+| File-text extraction service/library | Read supported documents | Yes | Prefer established library |
+| Product analytics | Measure pilot behavior | Yes | Exclude client content |
+| Billing provider | Paid subscriptions | No | Use manual paid pilot or hosted payment links initially |
+| Email/project tools | Automatic import/export | No | Add only after demonstrated demand |
+
+Permissions are single-user only.
+
+## 8. Edge cases and risks
+
+| Item | Impact | Mitigation |
+|---|---|---|
+| AI invents commitments or progress | Client harm and loss of trust | Mandatory review, source references, explicit uncertainty, no automatic sending |
+| Brief contains conflicting dates | Incorrect schedule | Flag conflicts and require user resolution |
+| Uploaded file is scanned or unreadable | No usable extraction | Explain the failure and allow pasted text; OCR is not P0 |
+| Mixed requirements for several projects | Incorrect plan | Ask user to confirm the project and reject unrelated items |
+| Sensitive client data reaches a model provider | Privacy or contractual breach | Explicit disclosure, minimal retention, deletion control, provider review |
+| Broad freelancer needs create feature sprawl | MVP becomes unshippable | Keep the initial brief-to-update workflow and one pilot discipline |
+| Users expect full project management | Poor positioning and churn | Set scope clearly; support simple tasks only |
+| Manual review removes too much time benefit | Weak value proposition | Measure total workflow time during pilot |
+| High-touch onboarding becomes unsustainable | Founder support burden | Provide a sample project and track recurring setup problems |
+
+Open product questions:
+
+1. Which freelancer discipline experiences this workflow most frequently?
+2. Are users permitted to submit client material to a third-party AI provider?
+3. Is brief-to-plan or progress-update generation the stronger entry wedge?
+4. What output quality is sufficient to create recurring use?
+5. Will users pay for a standalone product instead of using a generic chatbot?
+6. Should approved derived items remain when their original source is deleted?
+
+## 9. Indie delivery milestones
+
+| Milestone | Outcome | Exit criteria |
+|---|---|---|
+| M0: Problem and feasibility validation | Confirm the selected persona, workflow, privacy constraints, and extraction quality | Five relevant interviews; at least three show recent examples of the problem; two agree to test with real or sanitized project material |
+| M1: Vertical slice | One user can paste a brief, review extracted items, and create tasks | FR-001 through FR-006 pass end-to-end tests using representative sample briefs |
+| M2: Complete MVP | User can manage next actions and produce an update | All P0 requirements pass; privacy disclosure and deletion flow are tested |
+| M3: Guided pilot | Ten target users use the product with founder support | Activation, repeat-use, quality, time-saved, and support data collected |
+| M4: Paid decision | Decide whether to continue, narrow, or stop | Payment threshold met, or qualitative evidence identifies a specific narrower wedge |
+
+Suggested first build slice: pasted brief → structured proposal → review → approved task list. Do not begin with integrations, billing infrastructure, or a generalized chat interface.
+
+Build versus buy:
+
+- Buy authentication, storage primitives, and hosted model access.
+- Use established document parsers.
+- Build the review workflow, project model, source traceability, and freelancer-specific update experience; these represent the product’s differentiated behavior.
+
+## 10. Launch and feedback
+
+- Beta audience: 10 independent freelancers from one discipline who manage at least two active client projects.
+- Recruitment filter: participant must describe a recent real project-planning or client-update workflow.
+- Feedback channels: in-product output rating, short weekly interview, and observed task completion data.
+- Support approach: founder-led onboarding during the pilot, with questions logged by category.
+
+Kill or pivot triggers:
+
+- Fewer than three of five discovery participants demonstrate the problem through recent behavior.
+- Fewer than two participants will test the workflow with realistic material.
+- Fewer than 20% of activated pilot users generate a second update within three weeks.
+- Users consistently report that manual review takes as long as their existing workflow.
+- No pilot user pays or makes a credible paid continuation commitment.
+- Client confidentiality policies prevent the target persona from using the product.
+
+## 11. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Validate first, then build the narrow P0 brief-to-plan-to-update workflow if M0 exit criteria are met |
+| Evidence classes | assumption |
+| Supported claims | The provided source supports only an intent to explore an AI application for freelancers; it does not support a specific persona, pain, feature, price, or platform |
+| Still unproven | Problem frequency and severity, target discipline, workflow fit, privacy acceptability, AI output quality, repeat use, willingness to pay, acquisition channel, and technical cost |
+| Contradictions / exclusions | No contradictory evidence was supplied; v1 excludes lead generation, accounting, invoicing, time tracking, teams, native mobile apps, autonomous actions, and broad integrations |
+| Source anchors | User one-liner: “an AI app for freelancers”; assumptions A-001 through A-006; proposed requirements FR-001 through NFR-007 |
+| Next validation | Founder conducts five behavior-based interviews with one freelancer discipline; proceed only if at least three provide recent examples of the workflow and at least two commit to testing with realistic material |
+
+## 12. Appendix
+
+### 12.1 Source materials used
+
+- User-provided concept: “an AI app for freelancers.”
+- No external evidence was available.
+
+### 12.2 Assumptions log
+
+| ID | Assumption | Impact if wrong |
+|---|---|---|
+| A-001 | Multi-client knowledge-work freelancers are the best initial persona. | Select a different segment before building. |
+| A-002 | Planning and client updates are frequent, material pains. | Replace the primary job or stop the product. |
+| A-003 | Users will provide client context to an AI service with disclosure and controls. | Require local/private processing or abandon this workflow. |
+| A-004 | Source-grounded review differentiates the product from generic chatbots. | The product may lack a defensible reason to switch. |
+| A-005 | A responsive web application is sufficient for initial use. | Reassess platform priority. |
+| A-006 | One solo developer can ship the P0 workflow using managed services. | Further reduce formats, analytics, or project-management features. |
+
+### 12.3 Decisions to confirm
+
+1. Confirm the initial discipline: freelance designers or developers are the recommended starting candidates.
+2. Confirm that the MVP wedge is client coordination, not lead generation or invoicing.
+3. Confirm the validate-first gate before investing in the full MVP.
+
+The best implementation slices are authentication plus project creation, pasted brief plus structured extraction, and proposal review plus task creation. Given the lack of behavioral or market evidence, problem interviews should precede the complete build.

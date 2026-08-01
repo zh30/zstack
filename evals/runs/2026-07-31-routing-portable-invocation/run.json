@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "routing",
+  "host": {
+    "name": "Agent host not recorded",
+    "version": null
+  },
+  "provenance": {
+    "status": "partial",
+    "gaps": [
+      "The host identity and version, model, permission mode, web-search availability, turn limit, subagent availability, and stop status were not recorded."
+    ]
+  },
+  "executionDefaults": {
+    "model": null,
+    "workspace": "fresh repository-blind agent context",
+    "permissions": null,
+    "webSearch": null,
+    "subagents": null,
+    "maxTurns": null,
+    "stopStatus": null
+  },
+  "runs": [
+    {"id": "market-vague", "case": "market-vague", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-a.md"]},
+    {"id": "discovery-plan", "case": "discovery-plan", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-a.md"]},
+    {"id": "landing-waitlist", "case": "landing-waitlist", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-a.md"]},
+    {"id": "prd-notes", "case": "prd-notes", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-a.md"]},
+    {"id": "seo-live-url", "case": "seo-live-url", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-a.md"]},
+    {"id": "market-public", "case": "market-public", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-b.md"]},
+    {"id": "discovery-debrief", "case": "discovery-debrief", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-b.md"]},
+    {"id": "landing-metrics", "case": "landing-metrics", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-b.md"]},
+    {"id": "prd-rewrite", "case": "prd-rewrite", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-b.md"]},
+    {"id": "seo-prd-map", "case": "seo-prd-map", "phase": "portable-invocation", "grade": "pass", "artifacts": ["core-b.md"]},
+    {"id": "none-code-fix", "case": "none-code-fix", "phase": "portable-invocation", "grade": "pass", "artifacts": ["boundaries.md"]},
+    {"id": "none-architecture", "case": "none-architecture", "phase": "portable-invocation", "grade": "pass", "artifacts": ["boundaries.md"]},
+    {"id": "boundary-real-interviews", "case": "boundary-real-interviews", "phase": "portable-invocation", "grade": "pass", "artifacts": ["boundaries.md"]},
+    {"id": "boundary-public-research", "case": "boundary-public-research", "phase": "portable-invocation", "grade": "pass", "artifacts": ["boundaries.md"]},
+    {"id": "boundary-waitlist-demand", "case": "boundary-waitlist-demand", "phase": "portable-invocation", "grade": "pass", "artifacts": ["boundaries.md"]}
+  ],
+  "runnerIncidents": []
+}

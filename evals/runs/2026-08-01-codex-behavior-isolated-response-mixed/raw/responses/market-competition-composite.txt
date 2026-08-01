@@ -1,0 +1,235 @@
+# Market validation: Generic scheduling tool for small businesses
+
+- **Date:** 2026-08-01
+- **Geography focus:** Global, English-speaking market
+- **Assumed product:** SaaS for sharing availability, booking appointments, reminders, and calendar synchronization
+- **Assumed buyer:** Solo professionals and small service businesses
+- **Evidence limitation:** Web, browser, apps, and subagents were unavailable. No channels could be searched, so this is a provisional structural assessment based only on stated assumptions—not current market validation. Scores have broad uncertainty, roughly ±1 point.
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence |
+|---|---|---|
+| Commercial value? | Mixed | Low |
+| Fit for an independent developer? | Conditional | Medium |
+| Short-term return odds, 30–90 days? | Low | Low |
+| Recommendation band | **Park / reshape** | Medium |
+| Composite | **2.67 / 5** | Low |
+
+A generic scheduling tool is easy enough for one developer to prototype, but the user has already identified the central problem: brutal competition. Established standalone products, calendar-suite features, vertical software, and manual coordination all act as substitutes. The category probably contains real demand, but this report found no current evidence that users want another horizontal scheduler or would switch and pay for it. Do not build the generic product. Run a short validation spike around one workflow-specific wedge.
+
+## 2. Idea framing
+
+- **Problem in user language:** “Coordinating several people’s calendars takes too much back-and-forth, and ordinary booking links do not handle my workflow.”
+- **Proposed solution:** Another scheduling SaaS, potentially differentiated for a narrower workflow.
+- **Initial narrow ICP:** Boutique recruiting agencies coordinating interview panels across client companies.
+- **Non-ICP:** General consumers, generic freelancers, and businesses satisfied by ordinary one-person booking links.
+- **Critical assumption:** Multi-party, cross-company interview coordination remains sufficiently painful that recruiters might adopt a focused tool.
+- **Kill signal:** Prospects report that their ATS, calendar suite, or existing scheduler handles this adequately—or refuse even a concierge trial.
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---|---|---|
+| X/Twitter | blocked | Web access unavailable |
+| Reddit | blocked | Web access unavailable |
+| Hacker News | blocked | Web access unavailable |
+| Product Hunt | blocked | Web access unavailable |
+| Indie Hackers | blocked | Web access unavailable |
+| Reviews/G2/Capterra/app stores | blocked | Web access unavailable |
+| Search/keyword tools | blocked | Web access unavailable |
+| Chinese platforms | skipped | Global English-speaking market assumed |
+
+### 3.2 Positive demand signals
+
+**Not found.** No user posts, buyer quotations, search signals, experiments, or payment behavior could be collected.
+
+Only unverified category assumptions are available:
+
+- Scheduling is a recurring operational task.
+- Calendar coordination can involve measurable labor and delays.
+- A narrower, high-frequency workflow could be more valuable than a generic booking link.
+
+None of these proves unmet demand for this product.
+
+### 3.3 Disconfirming signals
+
+No public signals could be collected. The following are structural assumptions to test:
+
+- The market contains prominent standalone schedulers and bundled calendar-suite alternatives.
+- Basic scheduling is often available free or included in software buyers already use.
+- Calendar access, synchronization failures, time zones, privacy, and notifications create support burden.
+- Switching costs are behavioral: even a better tool must replace an existing link, workflow, or integration.
+- Features are relatively reproducible, weakening a feature-only moat.
+
+### 3.4 Pricing and willingness to pay
+
+**Not found.** No current prices or payment evidence were verified.
+
+Likely budget owners include agency owners, recruiting operations leads, and individual recruiters. The product would need to sell an outcome—less coordinator labor, faster time-to-interview, or fewer scheduling errors—not merely “easier scheduling.”
+
+## 4. Competition and substitutes
+
+Names below are category examples from prior general knowledge; their current capabilities and prices were not verified.
+
+| Substitute | Type | Price signal | Assumed gap | Threat |
+|---|---|---:|---|---|
+| Calendly | Horizontal scheduler | Not verified | Complex workflow-specific coordination may require workarounds | Very high |
+| Google Calendar appointment scheduling | Bundled calendar feature | Not verified | May not cover specialized multi-party operations | Very high |
+| Microsoft Bookings | Bundled business scheduler | Not verified | Potential complexity or ecosystem dependence | High |
+| Cal.com | Scheduling platform | Not verified | Generic configuration may not equal a vertical workflow | High |
+| Acuity Scheduling | Appointment scheduler | Not verified | Primarily appointment-oriented | High |
+| Doodle | Group availability coordination | Not verified | Polling may not automate the complete workflow | High |
+| ATS scheduling features | Vertical bundled substitute | Not verified | May vary by ATS and client access | Very high |
+| Email, spreadsheets, assistants | Manual substitute | Staff time | Slow and error-prone, but familiar and flexible | High |
+
+**Category structure:** crowded horizontal category with bundled and manual substitutes. A new entrant needs a narrow workflow, proprietary distribution, or materially better operational outcome.
+
+## 5. Scores
+
+These are provisional decision scores, not measured market facts.
+
+| Dimension | Score | Evidence |
+|---|---:|---|
+| Demand reality | **3/5** | The underlying job is plausible and recurring, but no organic pain signals were collected. |
+| Willingness to pay | **2/5** | A business outcome might command payment, but no buyer budget or payment behavior was verified. |
+| Competition intensity | **5/5** | The idea is explicitly described as crowded and appears surrounded by standalone, bundled, vertical, and manual substitutes; higher is worse. |
+| Indie fit | **3/5** | A narrow MVP is feasible solo, but calendar integrations, reliability, privacy, and support raise operating cost. |
+| Time-to-signal | **5/5** | A landing page and manual concierge test can produce behavioral evidence within days or weeks. |
+| Short-term return odds | **2/5** | Generic acquisition and switching are difficult; early revenue is plausible only through a narrowly targeted, manual-first offer. |
+| **Composite** | **2.67/5** | Competition is inverted before averaging. |
+
+**Transparent composite calculation—single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 5 = 1
+composite_sum = demand + pay + competition_fit + indie + time + return
+composite_sum = 3 + 2 + 1 + 3 + 5 + 2 = 16
+composite_exact = 16 / 6 = 2.6666666667
+display_composite = round(composite_exact, 2) = 2.67
+```
+
+Competition intensity is the only raw score where higher is worse. Its inverted value, `1`, is used in the composite.
+
+## 6. Commercial value
+
+**Mixed.** Scheduling has commercial value when it reduces paid coordination labor, prevents no-shows, or shortens a revenue-critical process. However, a generic booking link offers no demonstrated reason to pay or switch. A viable proposition must attach scheduling to an expensive workflow—for example, shortening the time required to arrange cross-company interview panels.
+
+## 7. Independent-developer fit
+
+**Conditional.**
+
+- A manual-first or single-calendar MVP is feasible for one developer.
+- A production-grade general scheduler is deceptively demanding: OAuth integrations, calendar edge cases, time zones, retries, reminders, privacy, and high reliability expectations.
+- Broad consumer distribution would be difficult and expensive.
+- Narrow B2B outreach is manageable if the founder can directly reach one professional community.
+- No regulated workflow is assumed, but calendar data and candidate information introduce privacy and security expectations.
+- The founder’s technical and domain skills are unknown.
+
+## 8. Short-term return: 30–90 days
+
+**Odds: Low.**
+
+For this assessment, “return” means either three paid pilot customers or $300 in total pilot revenue—not meaningful recurring revenue at scale.
+
+- **Best plausible path:** Sell a concierge-assisted interview-coordination pilot to boutique recruiters before implementing deep integrations.
+- **Why odds are low:** There is no evidence of switching intent, payment, reachable distribution, or dissatisfaction with existing tools.
+- **What falsifies the path:** Fewer than five of 20 qualified prospects describe the problem as frequent, and none agrees to a paid or deposit-backed pilot.
+
+## 9. Entry directions
+
+### Primary wedge: cross-company interview coordination
+
+- **Who:** Boutique recruiting agencies that routinely coordinate candidates, recruiters, clients, and interview panels.
+- **Job to be done:** Turn multiple calendars, constraints, and time zones into a confirmed interview schedule without prolonged email chains.
+- **First MVP:** Intake form, availability collection links, manually assisted slot matching, approval, and reminders. Avoid deep ATS integrations initially.
+- **Where to find the first 10 prospects:** Direct outreach to boutique agency owners and recruiting operations professionals, plus recruiter communities found during the manual scan.
+- **14-day metric:** At least 10 qualified conversations, five recurring-pain confirmations, three concierge trials, and one paid pilot or deposit.
+
+### Backup wedges
+
+1. Scheduling for professional services requiring deposits, intake documents, and several internal participants.
+2. Scheduling for distributed research interviews requiring participant screening, incentives, and timezone coordination.
+
+### Explicitly do not start with
+
+- A generic “better Calendly”
+- Consumers or every kind of small business
+- A native mobile application
+- Multiple calendar and ATS integrations
+- AI slot recommendations without validated workflow demand
+- A free plan intended to produce viral growth
+
+## 10. Risks and open questions
+
+- Is the coordination problem frequent enough to motivate switching?
+- Who owns the pain and purchasing authority?
+- Do ATS products already solve it sufficiently?
+- Is the real problem scheduling, or slow client decisions and incomplete availability?
+- Will external interviewers authorize calendar access?
+- Can the workflow be delivered without storing sensitive candidate data?
+- What outcome supports payment: hours saved, faster placement, or fewer dropouts?
+- Can prospects be acquired through focused outreach at sustainable cost?
+
+### Manual query pack
+
+Use these queries during the evidence scan:
+
+- `"interview scheduling" recruiter frustrating`
+- `"scheduling interviews" "back and forth"`
+- `recruiter "calendar coordination"`
+- `"interview scheduling software" alternative`
+- `"interview scheduling" "too expensive"`
+- `"interview scheduling" doesn't work`
+- `"interview scheduling" ATS`
+- `Calendly recruiting alternative`
+- `GoodTime alternative recruiter`
+- `Paradox scheduling alternative`
+- `site:reddit.com recruiter interview scheduling`
+- `site:news.ycombinator.com interview scheduling`
+- `interview scheduling software pricing`
+- `cancelled interview scheduling software`
+- `recruiting coordinator manual scheduling`
+- `interview scheduling software reviews`
+
+Record recent, specific statements about frequency, current workaround, money or time lost, existing spend, switching behavior, and objections.
+
+## 11. Next 48 hours
+
+1. **Collect 10 public signals:** Search Reddit plus two recruiter communities, X from the last 90 days, Hacker News, Product Hunt, and one review site. Capture five concrete pain/payment signals and five “already solved” or objection signals with URLs and dates.
+2. **Run 10 problem conversations:** Contact boutique recruiters and ask about their most recent difficult scheduling case, frequency, current workaround, time cost, existing tools, and whether they have tried switching. Do not pitch until the behavioral questions are answered.
+3. **Offer a paid concierge pilot:** Present the manual interview-coordination service to prospects with verified recurring pain. Continue only if at least three try it and one pays or places a deposit; otherwise park or change the wedge.
+
+## 12. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Park |
+| Evidence classes | assumption |
+| Supported claims | Only a structural conclusion: the generic idea faces severe assumed substitution, while a narrow manual-first test is inexpensive and fast. |
+| Still unproven | Current pain frequency, buyer identity, existing spend, willingness to switch, payment, retention, acquisition channel, integration feasibility, and the recruiting wedge itself. |
+| Contradictions / exclusions | No observed contradiction was available because research channels were blocked. Generic horizontal scheduling, broad consumer targeting, and integration-heavy development are excluded from the initial test. |
+| Source anchors | No external sources; user’s description that the category is crowded; assumptions dated 2026-08-01. |
+| Next validation | Founder runs the 48-hour public scan and 10 recruiter conversations; success means five recurring-pain accounts, three trials, and one paid pilot or deposit; failure means zero payment commitment and mostly “already solved” responses. |
+
+## 13. Source appendix
+
+### Top 5 evidence links
+
+1. Not found—web access unavailable.
+2. Not found—web access unavailable.
+3. Not found—web access unavailable.
+4. Not found—web access unavailable.
+5. Not found—web access unavailable.
+
+### Top 5 disconfirming links
+
+1. Not found—web access unavailable.
+2. Not found—web access unavailable.
+3. Not found—web access unavailable.
+4. Not found—web access unavailable.
+5. Not found—web access unavailable.
+
+The **2.67/5** composite supports **Park / reshape**, not immediate construction. The inexpensive next move is a tightly bounded recruiter-workflow spike, with payment behavior—not expressed interest—as the gate.

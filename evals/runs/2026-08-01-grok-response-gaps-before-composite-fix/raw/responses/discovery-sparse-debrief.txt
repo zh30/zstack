@@ -1,0 +1,110 @@
+**Mode: debrief**
+
+Thin note — almost no past behavior, identity, or cost detail. Below is a structured debrief from only what you pasted. **Do not treat this as demand evidence.** No files written (per your instruction).
+
+---
+
+# Interview NN — thin-compliment-pay-intent
+
+| Field | Value |
+|-------|--------|
+| **Date** | Unknown (not in note) |
+| **Interviewee** | Unknown role / identity |
+| **ICP fit** | unknown — cannot score |
+| **Source** | unknown (cold / warm / referral) |
+| **Channel recruited** | unknown |
+| **Duration** | unknown |
+| **Founder pitch leakage (0–5)** | **4–5** — note centers on *your demo* and a feature, not their life |
+
+## 1. Context
+
+You showed a **demo**. They **praised** it and said they would **probably pay**. You asked a **leading yes/no** about whether “the feature” would **save them time**; they said **yes**.
+
+No ICP context, no job-to-be-done story, no timeline of their work, no current workflow.
+
+## 2. Past incidents (G1)
+
+| Incident | When (approx) | What happened | Frequency signal | Cost |
+|----------|---------------|---------------|------------------|------|
+| *(none captured)* | — | — | — | — |
+
+**Missing hard data:** last time the problem hit, trigger, frequency, emotional/money cost, what they did next.
+
+## 3. Current solutions & money/time (G2)
+
+| Solution | Type | Cost signal | Satisfaction |
+|----------|------|-------------|--------------|
+| *(none named)* | — | — | — |
+
+No tools, hacks, freelancers, invoices, hours, or risk already paid. “Would probably pay” is **future intent**, not spend evidence.
+
+## 4. Switch signals (G3)
+
+- **Barriers:** unknown  
+- **Prior failed switches:** unknown  
+- **Decision process:** unknown (budget owner, procurement, what happens if nothing changes)  
+- **Observed:** polite enthusiasm after pitch + soft pay intent — **weak / fake G3** under the skill rubric  
+
+## 5. Verbatim quotes (from your note only)
+
+> “demo was great”  
+> “would probably pay”  
+> [on whether the feature would save time] “yes”
+
+These are **compliments + hypotheticals**, not behavioral gold.
+
+## 6. Mom Test audit
+
+| Issue | Example from talk | Better next time |
+|-------|-------------------|------------------|
+| **Pitch first / product-centric** | Demo framed the conversation | Collect their last 2–3 incidents **before** any demo; demo only at the end (30–60s) |
+| **Compliment as signal** | “Demo was great” | “Thanks — when did this last actually block you? Walk me through that day.” |
+| **Future pay promise** | “Would probably pay” | “What do you pay today for this (tools/people/time)? Show me the last invoice or workflow.” |
+| **Leading / hypothetical feature question** | “Would the feature save you time?” → easy “yes” | “Last time this happened, how long did the workaround take? What did you skip to make room?” |
+| **No past-behavior questions** | Entire note is opinion + future | “Tell me about the last time…”, “How do you handle that today?”, “What have you already tried?” |
+| **Talk/listen imbalance** | Demo + closed questions | Talk less; ask for stories, named tools, frequency, decision process |
+
+**Recovery lines for a re-interview (same person if possible):**
+
+- “Ignore my product for a minute. Walk me through last Tuesday when this came up.”  
+- “Before any solution: what did you do the last time this broke?”  
+- “What have you already tried, and what did that cost?”
+
+## 7. Gate deltas
+
+| Gate | support / neutral / contradict | Why (1 line) |
+|------|--------------------------------|--------------|
+| **G1 Pain** | **neutral** (effectively empty) | No specific recent story, frequency, or cost — only a yes to a leading “save time?” |
+| **G2 Spend** | **neutral** (no real spend data) | “Probably pay” is not money already spent on bad solutions |
+| **G3 Switch** | **neutral → soft contradict of strong claims** | Polite enthusiasm after pitch; no past switch, active search, budget owner, or switching cost |
+
+**Do not green-light a large build** on this note alone.
+
+## 8. Follow-ups
+
+- **People to contact:** same person for a **Mom Test re-interview** (past only); plus 4–9 more ICP (target 5–15 total; ≥50% not close friends/family)  
+- **Facts to verify:** role/ICP fit; last incident date; frequency; current tools & $ / hours; who decides budget; what happens if nothing changes; any active search or failed alternatives  
+- **Next conversation goals (3 must-asks):**  
+  1. “Tell me about the **last time** [problem] happened — what did you do step by step?”  
+  2. “What do you use **today**, and what does that cost in time or money?”  
+  3. “Have you **tried to switch** or buy something for this before? What stopped you?”
+
+---
+
+### Coach take (skeptical on purpose)
+
+This note is classic **false positive**: demo praise + “probably pay” + leading “yes.” Under Mom Test rules, **compliments are not demand** and **future promises are almost worthless**. Evidence classes present: mostly **assumption** / soft opinion; **no primary behavior**.
+
+**Evidence limit:** only the pasted sentence; no transcript, no meta, no web/browser tools. Nothing invented beyond labeling gaps.
+
+### Evidence handoff (single-interview debrief)
+
+| Field | Content |
+|-------|---------|
+| **Current decision** | **Do not advance** on this note; **reshape interview method** and book more past-behavior talks |
+| **Evidence classes** | assumption |
+| **Supported claims** | Interviewee gave polite praise after a demo and agreed a feature might save time (soft, post-pitch) |
+| **Still unproven** | Real/frequent pain (G1); existing spend on workarounds (G2); credible switch/budget (G3); ICP fit |
+| **Contradictions / exclusions** | None strong enough to kill the idea — **also none that support it**; note is noise-heavy, not a kill signal |
+| **Source anchors** | User-pasted note only: demo “great”; “probably pay”; leading “save time?” → “yes” |
+| **Next validation** | Re-interview with past-only guide; complete N≥5 before synthesis; optional later `z-landing-smoke` only if behavior language emerges from real stories |

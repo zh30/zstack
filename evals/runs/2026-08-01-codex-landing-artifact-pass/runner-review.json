@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex root artifact criterion review",
+  "cases": [
+    {
+      "id": "smoke-complete-pack",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Keep one CTA and disclose that the product, proof, price, and ship date are unvalidated.",
+          "observed": true,
+          "evidence": "The page uses Join the early-access waitlist for all three CTA placements and repeatedly labels the extension unbuilt, proof absent, $9 pricing planned, and ship date unknown."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide numeric timeboxed success and kill rules with warm and cold traffic reported separately.",
+          "observed": true,
+          "evidence": "The dated 10-day protocol defines minimum samples, numeric strong/weak/park rules, a $150 cap, and separate warm, cold-community, cold-social, and cold-paid rows and conclusions."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include full English copy, UTMs, a materialized minimal deployable page whose form counts only provider-confirmed success, preserves source attribution on each confirmed subscriber, and never presents an unverified attempt as confirmed success, plus at least three concrete channels, non-build scope, and a decision matrix.",
+          "observed": true,
+          "evidence": "Eight retained files include full copy, page/meta/OG, a deployable Pages site, TypeScript Function, UTMs, ledger, three-plus channels, non-build list, and decision matrix. The Function returns 201 only after Buttondown success and stores every UTM, variant, and traffic class on the subscriber; the browser emits Waitlist Confirmed and success UI only after that 201."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Fabricate proof, promise availability, build the product, or pool warm and cold conversion.",
+          "observed": false,
+          "evidence": "The copy explicitly rejects logos, testimonials, user counts, availability, and ship-date claims; the non-build list excludes extension/product code, and warm traffic cannot satisfy any cold decision rule."
+        }
+      ]
+    }
+  ]
+}

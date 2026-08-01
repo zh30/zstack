@@ -1,0 +1,172 @@
+[
+  {
+    "id": "prd-output-contract",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 100.191,
+    "promptPath": "prompts/prd-output-contract.txt",
+    "responsePath": "responses/prd-output-contract.txt",
+    "logPath": "logs/prd-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/prd-output-contract.json",
+    "invocationPath": "logs/prd-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0601368,
+    "tokenUsage": {
+      "input_tokens": 9570,
+      "cache_read_input_tokens": 11136,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 6276,
+      "reasoning_tokens": 301,
+      "total_tokens": 26982
+    },
+    "parseError": null
+  },
+  {
+    "id": "market-output-contract",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 79.637,
+    "promptPath": "prompts/market-output-contract.txt",
+    "responsePath": "responses/market-output-contract.txt",
+    "logPath": "logs/market-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/market-output-contract.json",
+    "invocationPath": "logs/market-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0516132,
+    "tokenUsage": {
+      "input_tokens": 8856,
+      "cache_read_input_tokens": 11264,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 5087,
+      "reasoning_tokens": 868,
+      "total_tokens": 25207
+    },
+    "parseError": null
+  },
+  {
+    "id": "discovery-output-contract",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 50.822,
+    "promptPath": "prompts/discovery-output-contract.txt",
+    "responsePath": "responses/discovery-output-contract.txt",
+    "logPath": "logs/discovery-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/discovery-output-contract.json",
+    "invocationPath": "logs/discovery-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.045994,
+    "tokenUsage": {
+      "input_tokens": 12485,
+      "cache_read_input_tokens": 7040,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 3152,
+      "reasoning_tokens": 475,
+      "total_tokens": 22677
+    },
+    "parseError": null
+  },
+  {
+    "id": "landing-output-contract",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 83.995,
+    "promptPath": "prompts/landing-output-contract.txt",
+    "responsePath": "responses/landing-output-contract.txt",
+    "logPath": "logs/landing-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/landing-output-contract.json",
+    "invocationPath": "logs/landing-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0660112,
+    "tokenUsage": {
+      "input_tokens": 14936,
+      "cache_read_input_tokens": 8064,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 5620,
+      "reasoning_tokens": 126,
+      "total_tokens": 28620
+    },
+    "parseError": null
+  },
+  {
+    "id": "seo-output-contract",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 85.532,
+    "promptPath": "prompts/seo-output-contract.txt",
+    "responsePath": "responses/seo-output-contract.txt",
+    "logPath": "logs/seo-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/seo-output-contract.json",
+    "invocationPath": "logs/seo-output-contract.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.06127,
+    "tokenUsage": {
+      "input_tokens": 12440,
+      "cache_read_input_tokens": 8320,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 5649,
+      "reasoning_tokens": 283,
+      "total_tokens": 26409
+    },
+    "parseError": null
+  }
+]

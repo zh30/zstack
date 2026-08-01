@@ -1,0 +1,57 @@
+[
+  {
+    "id": "market-competition-composite",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 113.268,
+    "promptPath": "prompts/market-competition-composite.txt",
+    "responsePath": "responses/market-competition-composite.txt",
+    "logPath": "logs/market-competition-composite.log",
+    "grade": null
+  },
+  {
+    "id": "discovery-fake-interviews",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 113.256,
+    "promptPath": "prompts/discovery-fake-interviews.txt",
+    "responsePath": "responses/discovery-fake-interviews.txt",
+    "logPath": "logs/discovery-fake-interviews.log",
+    "grade": null
+  },
+  {
+    "id": "smoke-mixed-traffic",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 113.245,
+    "promptPath": "prompts/smoke-mixed-traffic.txt",
+    "responsePath": "responses/smoke-mixed-traffic.txt",
+    "logPath": "logs/smoke-mixed-traffic.log",
+    "grade": null
+  },
+  {
+    "id": "prd-thin-input",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 228.037,
+    "promptPath": "prompts/prd-thin-input.txt",
+    "responsePath": "responses/prd-thin-input.txt",
+    "logPath": "logs/prd-thin-input.log",
+    "grade": null
+  },
+  {
+    "id": "seo-no-volume-tool",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 228.02,
+    "promptPath": "prompts/seo-no-volume-tool.txt",
+    "responsePath": "responses/seo-no-volume-tool.txt",
+    "logPath": "logs/seo-no-volume-tool.log",
+    "grade": null
+  }
+]

@@ -1,0 +1,227 @@
+# SEO execution plan: fast, white-hat local growth
+
+I can’t build a strategy using doorway pages, hidden text, purchased links, or mass-produced low-value city pages. Those tactics create substantial deindexing, manual-action, reputation, and wasted-content risk.
+
+The fastest defensible substitute is a focused service/location cluster: one strong commercial hub, a small number of genuinely useful city pages, visible expert content, and earned links.
+
+Evidence limit: no product description, target market, URL, code, SERP access, or keyword tool was available. All keywords below are templates, and demand, difficulty, rankings, and traffic remain unknown until validated.
+
+## 1. Executive summary
+
+- **Provisional primary keyword:** `[service category] in [primary city]`
+- **Intent:** Commercial/transactional
+- **Target page:** `/locations/[primary-city]/`
+- **Confidence:** Very low until the service and market are supplied
+- **Conversion goal:** Quote request, booking, trial, or purchase
+- **Strategy:** Establish one excellent city page, support it with service and problem-oriented content, then expand only into locations where the business has real availability and can provide unique local value.
+- **Do not chase:** Hundreds of city permutations, near-duplicate “best” pages, unrelated high-volume terms, paid followed links, or competitor-brand queries without a legitimate comparison.
+
+## 2. Assumptions
+
+This provisional plan assumes:
+
+- The business genuinely serves multiple locations.
+- Searchers combine a service/category with a city or region.
+- The site can publish original local information.
+- Each indexed location has a real offering and conversion path.
+- The domain is new or has limited authority.
+
+Before final keyword selection, provide at least one of: a product/PRD, live URL, or project routes, plus the target country and primary conversion.
+
+## 3. Keyword strategy
+
+### Primary cluster
+
+| Field | Value |
+|---|---|
+| Keyword | `[service category] in [primary city]` |
+| Intent | Commercial/transactional |
+| Demand | Unknown |
+| Difficulty | Unknown |
+| Why primary | Closest provisional match between local intent and conversion |
+| Target | `/locations/[primary-city]/` |
+| Evidence | User requested city-page SEO; no live search evidence available |
+
+### Secondary terms
+
+| Keyword template | Intent | Page placement |
+|---|---|---|
+| `[service category] [primary city] pricing` | Transactional | Pricing section or dedicated pricing page |
+| `best [service category] in [primary city]` | Commercial investigation | Comparison/proof section |
+| `[specific service] in [primary city]` | Commercial | Relevant service page, provided the offering is real |
+| `[service category] near me` | Transactional/local | Location finder, local profile, and primary-city page |
+
+### First long-tail backlog
+
+| Priority | Keyword template | Intent | Planned destination |
+|---|---|---|---|
+| P0 | `how much does [service] cost in [primary city]` | Commercial | `/locations/[primary-city]/#pricing` |
+| P0 | `[service] in [primary city] for [audience]` | Commercial | Primary-city page or audience page |
+| P0 | `same-day [service] in [primary city]` | Transactional | Only if genuinely offered |
+| P1 | `[service] requirements in [primary city]` | Informational | Local guide |
+| P1 | `[service A] vs [service B] in [primary city]` | Commercial | Comparison guide |
+| P1 | `where to get [service] in [primary city]` | Commercial | Primary-city page |
+| P2 | `[service] checklist for [primary city] customers` | Informational | Downloadable guide |
+| P2 | `[service] near [district or landmark]` | Local | Include visibly in a useful city page; do not create a page solely for every landmark |
+
+Do not expand these templates until live SERPs demonstrate how users phrase the need.
+
+## 4. Page architecture
+
+```text
+Homepage
+├── Service hub: /services/[service]/
+│   ├── Specific service pages
+│   ├── Pricing or process page
+│   └── Comparison/problem guides
+└── Location hub: /locations/
+    ├── /locations/[primary-city]/
+    ├── /locations/[validated-city-2]/
+    └── /locations/[validated-city-3]/
+```
+
+| Page | Primary target | Intent | Action |
+|---|---|---|---|
+| `/services/[service]/` | `[service category]` | Commercial | Build or strengthen service truth |
+| `/locations/` | `[service] locations` | Navigational | Create useful location finder |
+| `/locations/[primary-city]/` | `[service] in [primary city]` | Transactional | Build first P0 page |
+| `/pricing/` or city pricing section | `[service] pricing` | Transactional | Add transparent ranges or quote factors |
+| `/guides/[service]-cost-[primary-city]/` | Cost long-tail | Commercial | Create only if it adds depth beyond the city page |
+
+When two URLs answer the same intent, merge them instead of making both compete.
+
+## 5. P0 on-page brief
+
+### `/locations/[primary-city]/`
+
+- **Title:** `[Service] in [Primary City] | [Brand]`
+- **H1:** `[Service] for customers in [Primary City]`
+- **Meta angle:** Specific benefit, proof of local availability, and one conversion action.
+- **Must cover:**
+  - What is actually available in the city
+  - Service area and eligibility
+  - Pricing or factors affecting price
+  - Delivery, booking, or response times
+  - Local regulations or constraints, where relevant
+  - Original customer proof
+  - Named team, partner, or operating model
+  - Real FAQs collected from customers
+- **Internal links:** Service hub, pricing, process, relevant guide, location index.
+- **CTA:** One primary action such as “Check availability” or “Request a quote.”
+
+The body copy must be visible to users. Do not hide keywords through CSS, tiny text, off-screen positioning, accordions created only for indexing, or mismatched crawler content.
+
+## 6. Safe city-page publishing standard
+
+A city URL should be indexable only when it passes all of these checks:
+
+- The business genuinely serves that location.
+- The page contains materially unique local information.
+- A customer can complete the promised action there.
+- Local proof, operating details, or constraints are verifiable.
+- The page answers more than a city-name substitution.
+- It has useful internal links and is reachable from the location hub.
+- Its title, copy, FAQs, and structured data accurately match the visible page.
+
+Generate drafts programmatically if useful, but keep them `noindex` until reviewed. Launch in small batches—such as 3–5 cities—and expand only when Search Console shows distinct impressions and users convert. Consolidate overlapping areas into regional pages when there is insufficient unique value.
+
+## 7. Link acquisition without purchased ranking links
+
+Replace link buying with:
+
+- Original local data or benchmark reports journalists can cite
+- Partnerships with legitimate associations, suppliers, and customers
+- Useful directories that send relevant referral traffic
+- Local sponsorships disclosed appropriately and selected for real audience value
+- Expert commentary and digital PR
+- Unlinked brand-mention outreach
+- Case studies co-created with consenting customers
+- Free tools, templates, or local resources worthy of citation
+
+Do not pay for followed editorial links, use private link networks, automate guest-post placement, or disguise sponsored placements. Advertising may be useful for acquisition, but it should not be treated as purchased ranking authority.
+
+## 8. Technical and trust checklist
+
+| Item | Action |
+|---|---|
+| Indexability | Index only reviewed, valuable pages; keep drafts and thin variants out |
+| Canonicals | Use self-canonicals on distinct pages; consolidate duplicates |
+| Sitemap | Include only canonical, indexable URLs |
+| Internal links | Connect location, service, pricing, and guide pages contextually |
+| Structured data | Represent only real, visible business details |
+| Local identity | Maintain consistent business/service-area information |
+| Trust | Publish contact, about, policies, authorship, and genuine proof |
+| Performance | Test templates before scaling; no score can be claimed without measurement |
+| International targeting | Add localized pages and hreflang only for genuinely supported markets |
+
+If spam pages already exist, inventory them first. Improve and consolidate pages with useful history; remove or deindex pages with no distinct purpose. If purchased links already exist, stop further acquisition and review them carefully before taking remediation steps.
+
+## 9. Execution plan
+
+### Next 7 days
+
+1. Choose one real service and primary city.
+2. Inspect the live SERP for the primary and eight supporting query templates.
+3. Build or rewrite the primary-city page using original business information.
+4. Create the location hub and internal links.
+5. Set all unreviewed generated city pages to `noindex`.
+6. Remove hidden text and verify crawler-visible content matches user-visible content.
+7. Establish Search Console and conversion tracking.
+
+### First 30 days
+
+1. Publish the primary city page and up to two validated supporting pages.
+2. Publish one pricing/cost resource and one audience-specific resource.
+3. Earn the first relevant mentions through partners, customer stories, or original data.
+4. Review indexing, impressions, queries, clicks, and conversions weekly.
+5. Merge or rewrite pages that attract the same queries.
+6. Validate the next city before creating its page.
+
+### Days 31–90
+
+1. Expand only from queries already earning relevant impressions.
+2. Launch 3–5 additional locations that meet the publishing standard.
+3. Refresh weak snippets and page sections using observed query language.
+4. Strengthen pages that produce conversions; consolidate pages that remain indistinguishable.
+5. Build one genuinely cite-worthy local asset.
+6. Stop scaling if pages are crawled but fail to earn distinct impressions or engagement.
+
+## 10. Measurement and decision rules
+
+| Signal | Check | Decision rule |
+|---|---|---|
+| Indexation | Search Console | Investigate if canonical P0 pages remain excluded |
+| Relevant impressions | Search Console query/page reports | Expand a cluster only when queries match the offering |
+| CTR | Search Console | Revise title/snippet after meaningful impression data |
+| Leads or purchases | Analytics/CRM | Prioritize pages producing qualified conversions |
+| Cannibalization | Compare queries by URL | Merge or differentiate URLs sharing the same intent |
+| City-page quality | Manual review | Keep `noindex` until each page provides unique local value |
+| Links | Referral and backlink review | Pursue sources that are relevant and capable of sending real users |
+
+No numeric targets are defensible until baseline traffic and conversion data exist.
+
+## 11. Risks and exclusions
+
+- **Doorway pages:** Excluded; location pages must function as genuine destinations.
+- **Purchased links:** Excluded; use earned editorial citations and legitimate advertising.
+- **Hidden text:** Excluded; all material content must be visible and useful.
+- **Mass generation:** Limited to draft assistance; indexing requires human review and unique value.
+- **Cannibalization:** Likely if city, district, and “near me” pages overlap.
+- **Operational burden:** Every indexed location creates an ongoing accuracy and maintenance obligation.
+- **Unproven opportunity:** Without SERP, product, or customer evidence, even the provisional primary cluster may be wrong.
+
+## 12. Source appendix
+
+- User brief supplied on 2026-08-01.
+- Live SERP, competitor pages, keyword tools, GSC, analytics, PRD, URL, and code: unavailable.
+- No external demand or ranking evidence was observed.
+
+| Field | Value |
+|---|---|
+| Current decision | Reject the proposed spam tactics; validate one legitimate service/location cluster before scaling |
+| Evidence classes | assumption |
+| Supported claims | Only that the requested strategy concerns local/city SEO; no search opportunity or page performance is supported by observed evidence |
+| Still unproven | Search demand, keyword wording, difficulty, rankings, traffic, conversion, payment demand, retention, and product-market fit |
+| Contradictions / exclusions | Doorway pages, purchased ranking links, hidden text, and low-value mass-generated city pages are excluded |
+| Source anchors | User brief dated 2026-08-01; no PRD, URL, code, SERP results, GSC data, or public sources available |
+| Next validation | Founder supplies the service, primary city, market, conversion goal, and URL; then sample the primary query plus eight variants and continue only if relevant search intent is observed |

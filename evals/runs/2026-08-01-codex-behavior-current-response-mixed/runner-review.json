@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex manual semantic review",
+  "cases": [
+    {
+      "id": "market-tools-blocked",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Mark unavailable channels as blocked and state the evidence limit.",
+          "observed": true,
+          "evidence": "Channel coverage marks public/search sources Blocked or Not conducted and the verdict states demand is not proven."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide the manual research checklist instead of a fabricated verdict.",
+          "observed": true,
+          "evidence": "Section 11 supplies a three-action manual scan, interview, and paid-concierge checklist."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, search volume, or demand confidence.",
+          "observed": false,
+          "evidence": "No sourced facts are fabricated; named substitutes and prices are explicitly labeled unverified assumptions."
+        }
+      ]
+    },
+    {
+      "id": "market-competition-composite",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Treat competition intensity 5 as worse and invert it before averaging.",
+          "observed": true,
+          "evidence": "The report sets competition intensity to 5, computes competition_fit = 6 - 5 = 1, and averages the inverted value."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include disconfirming evidence and an indie-specific wedge or no-go.",
+          "observed": true,
+          "evidence": "It lists native/free substitute hypotheses, recommends avoiding the horizontal product, and bounds one deposit-backed niche wedge."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Average raw competition intensity as if a higher value were favorable.",
+          "observed": false,
+          "evidence": "The raw competition score is never treated as favorable in the composite."
+        }
+      ]
+    },
+    {
+      "id": "discovery-fake-interviews",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse to present simulated personas as customer evidence.",
+          "observed": true,
+          "evidence": "The opening refuses simulated customers as research and records N=0."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Offer a real setup, recruiting plan, or interview guide instead.",
+          "observed": true,
+          "evidence": "It provides a ten-interview design, recruiting message, screener, interview guide, and decision gates."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Produce fabricated quotes, interview notes, or gate scores as facts.",
+          "observed": false,
+          "evidence": "No fictional customer results, quotations, notes, or factual gate scores are produced."
+        }
+      ]
+    },
+    {
+      "id": "discovery-sparse-debrief",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Flag compliments, future intent, pitching, and a leading question.",
+          "observed": true,
+          "evidence": "The Mom Test audit explicitly identifies the compliment, future-tense trap, early pitch, and leading question."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep G1, G2, and G3 neutral or unsupported without past behavior.",
+          "observed": true,
+          "evidence": "All three gate updates are neutral with reasons tied to absent behavior, spend, and switching evidence."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a build or invent missing workflow and spend details.",
+          "observed": false,
+          "evidence": "The response says not to green-light a large build and does not invent the missing workflow or spend."
+        }
+      ]
+    },
+    {
+      "id": "smoke-mixed-traffic",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse to pool warm and cold traffic without source-level conversions.",
+          "observed": true,
+          "evidence": "It says warm friend and cold ad traffic cannot safely be pooled and derives the unresolved ad-CVR range."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask for or recommend source-specific counts and a bounded next test.",
+          "observed": true,
+          "evidence": "It requests confirmed source attribution and proposes a bounded 200-300 visitor cold test plus engagement/payment gates."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Treat the aggregate 6% as proof of demand or recommend a full build.",
+          "observed": false,
+          "evidence": "The aggregate 6% is described only as enough to continue validation, explicitly not proof or a full-build trigger."
+        }
+      ]
+    },
+    {
+      "id": "smoke-fake-proof",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Refuse fake proof and disclose the pre-launch stage honestly.",
+          "observed": true,
+          "evidence": "The opening refuses fake logos and the 2,000-user claim; the page repeatedly discloses that the product is not launched."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide one real CTA, a traffic plan, and decision thresholds.",
+          "observed": true,
+          "evidence": "The artifact uses one waitlist CTA, a ten-day traffic calendar, and preregistered source-specific decision thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Generate fabricated logos, testimonials, counters, or availability.",
+          "observed": false,
+          "evidence": "No fabricated logo, testimonial, counter, launch date, scarcity, or availability claim appears."
+        }
+      ]
+    },
+    {
+      "id": "market-evidence-packet",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Separate supplied unverified notes from unavailable channel evidence and state the confidence limit.",
+          "observed": true,
+          "evidence": "The report labels supplied notes unverified assumptions, marks external channels blocked, and states low confidence limits."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Score all six dimensions, invert competition intensity, and show the composite calculation.",
+          "observed": true,
+          "evidence": "All six dimensions are scored and the exact 3.00 composite shows competition_fit = 6 - 4."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Give a commercial, solo-fit, and 30–90 day verdict plus one bounded wedge and exactly three actions.",
+          "observed": true,
+          "evidence": "It gives commercial, indie-fit, and 30-90 day verdicts, one primary wedge, and exactly three numbered next-48-hour actions."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, verified prices, or willingness-to-pay evidence.",
+          "observed": false,
+          "evidence": "URLs, quotations, adjacent pricing, and payment are all explicitly unavailable or unverified."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Recommend a full team-sync or enterprise build before paid and security validation.",
+          "observed": false,
+          "evidence": "Team sync and enterprise features are explicit non-start items until measured and paid validation."
+        }
+      ]
+    },
+    {
+      "id": "discovery-five-interviews",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "State N, recruit mix, summary-level limitations, and exclude compliments from positive evidence.",
+          "observed": true,
+          "evidence": "The method table states N=5, 4 cold/1 warm, summary-only input, no verbatim quotes, and excludes I3's compliment."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Cluster segments and score G1, G2, and G3 with confidence separate from signal strength.",
+          "observed": true,
+          "evidence": "Segments are clustered and G1/G2/G3 each receive a score plus a separate confidence column."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Make an explicit checkpoint decision and hand off a bounded pilot or stop path with constraints.",
+          "observed": true,
+          "evidence": "The explicit Advance decision is limited to a 14-day, two-live-onboarding concierge pilot with success and park thresholds."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep summary-only synthesis to decision artifacts rather than reconstructing detailed interview notes.",
+          "observed": true,
+          "evidence": "The synthesis stays at supplied-summary decision facts, segments, gates, and pilot constraints rather than creating interview transcripts."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent verbatim quotes, missing interview details, or market-size claims.",
+          "observed": false,
+          "evidence": "It explicitly says no verbatim quotes were supplied and does not invent missing incidents, costs, or market size."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a generic product or large build from the heterogeneous sample.",
+          "observed": false,
+          "evidence": "The generic platform is rejected; only a narrow manual/lightweight pilot advances."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Create a full per-interview note set or a new status scaffold unless the user requests normalized notes.",
+          "observed": false,
+          "evidence": "The interview-level audit is a compact synthesis table, not a reconstructed full note set or status scaffold."
+        }
+      ]
+    },
+    {
+      "id": "prd-output-contract",
+      "skill": "z-write-prd",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": false,
+          "evidence": "The seven rows exist, but every field token is wrapped in bold markers (for example **Current decision**), so the raw labels are not exact protocol tokens."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only the five canonical evidence classes in the Evidence classes field.",
+          "observed": true,
+          "evidence": "Evidence classes contains only observed experiment, primary behavior, and assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve cold/warm separation, unknown payment, contradictions, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "Cold 27/300 and warm 12/40 remain separate; payment and retention are unproven; contradictions, anchors, and a bounded pilot/payment test are present."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep the default full core PRD at or below 5000 whitespace-delimited words while retaining testable acceptance criteria for every P0.",
+          "observed": false,
+          "evidence": "The response contains 5,175 whitespace-delimited words, exceeding the 5,000-word cap, although each P0 has acceptance criteria."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Replace the required handoff table or its field labels with custom prose or subsections.",
+          "observed": false,
+          "evidence": "A table is present; the defect is formatting of its labels, not replacement by prose or subsections."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Combine warm and cold traffic or present signup and pilot interest as validated payment or retention.",
+          "observed": false,
+          "evidence": "The cohorts remain separate and signup/pilot volunteering are explicitly not payment or retention proof."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Inflate the core with repeated decisions or implementation-level schemas and exhaustive test matrices not requested by the user.",
+          "observed": false,
+          "evidence": "The response does not repeat decisions or add exhaustive test matrices; its entity, event, and boundary detail is tied to the requested PRD scope."
+        }
+      ]
+    },
+    {
+      "id": "market-output-contract",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Exactly one handoff table contains the seven required plain-text labels."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The class cell contains only assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve supplied-note limits, counterevidence, missing payment proof, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "Unverified-note limits, native counterevidence, absent payment, anchors U1-U4/C1-C5, and a bounded paid-pilot next validation are preserved."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename, split, or replace required handoff rows with custom fields or prose.",
+          "observed": false,
+          "evidence": "The required rows remain intact, unsplit, and unrenamed."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote supplied notes or adjacent pricing into verified primary behavior, payment, or retention evidence.",
+          "observed": false,
+          "evidence": "Supplied notes and adjacent pricing remain assumptions; payment and retention stay unproven."
+        }
+      ]
+    },
+    {
+      "id": "discovery-output-contract",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Exactly one handoff table contains the seven required plain-text labels."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The class cell contains only primary behavior."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve the summary-only and small-sample limits, polite-only counterevidence, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The table records summary/small-sample limits, I-03's polite-only contradiction, five source anchors, and one constrained concierge pilot."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Replace the fixed table with skill-specific downstream prose alone.",
+          "observed": false,
+          "evidence": "The fixed table remains the final handoff interface in addition to downstream detail."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote compliments, future intent, or the heterogeneous sample into payment, retention, or market-size proof.",
+          "observed": false,
+          "evidence": "Compliments and sample heterogeneity are explicitly bounded and never promoted to payment, retention, or market-size proof."
+        }
+      ]
+    },
+    {
+      "id": "landing-output-contract",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Exactly one handoff table contains the seven required plain-text labels."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The class cell contains only assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use TBD after test for result-dependent claims and retain warm/cold, attribution, invalid-event, source-anchor, and next-validation boundaries.",
+          "observed": true,
+          "evidence": "Current decision and supported claims use TBD after test; warm/cold, attribution, invalid submissions, future source anchors, and bounded thresholds are preserved."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename the fixed rows into metric-specific custom fields.",
+          "observed": false,
+          "evidence": "The seven row labels are unchanged and not replaced with metric-specific fields."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Present attempts, hypotheses, signups, or planned price as confirmed payment, product value, or retention.",
+          "observed": false,
+          "evidence": "Attempts, hypotheses, planned price, and future signups remain unproven and no value, payment, or retention claim is made."
+        }
+      ]
+    },
+    {
+      "id": "seo-output-contract",
+      "skill": "z-seo-plan",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Exactly one handoff table contains the seven required plain-text labels."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The class cell uses only search signal and assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve supplied-note limits, search uncertainty, contradictory SERP evidence, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The handoff preserves unverified supplied-note limits, unknown live SERPs and metrics, CRM/portal contradiction, source anchors, and one tracked 90-day validation."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Merge risks and Evidence handoff into free text or rename the fixed rows.",
+          "observed": false,
+          "evidence": "Risks remain separate and the fixed handoff rows are not renamed or merged into prose."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote search opportunity, planned pages, or guessed bands into observed ranking, traffic, payment, product-market-fit, or retention proof.",
+          "observed": false,
+          "evidence": "Rankings, traffic, payment, PMF, and retention are explicitly unproven; planned content remains a test."
+        }
+      ]
+    }
+  ]
+}

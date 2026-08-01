@@ -1,0 +1,408 @@
+I'll follow only the copied z-write-prd skill and read its instructions first.Reading the PRD template and quality bar next so the document matches the skill's required structure.# PRD: Bookable (working name)
+
+| Field | Value |
+|-------|--------|
+| **Status** | Draft |
+| **Owner** | Solo founder (indie) |
+| **Last updated** | 2026-08-01 |
+| **Version** | 0.1 |
+| **Primary persona** | Solo service provider who takes appointments |
+| **Platform** | Responsive web app (mobile browser OK); no native apps in v1 |
+| **Related docs** | User feature notes only (no research packet) |
+
+## Revision history
+
+| Version | Date | Summary |
+|---------|------|---------|
+| 0.1 | 2026-08-01 | Initial PRD from feature notes; scope cut for solo MVP |
+
+---
+
+## Scope conflict (resolved)
+
+**User ask:** treat calendar sync, public booking page, payments, team round-robin, CRM, analytics, and native mobile as **all P0**, and prefer “seamless / delightful” over detailed acceptance criteria.
+
+**Conflict with product discipline for an indie MVP:** shipping all of that as P0 is a multi-product platform (scheduling + payments + CRM + analytics + mobile), not a one-person MVP. Fluffy adjectives are not implementable.
+
+**Recommended resolution (used below):**
+
+| Feature | Priority | Rationale |
+|---------|----------|-----------|
+| Public booking page + host availability | **P0** | Core job: get booked without email ping-pong |
+| Email confirmations + basic host calendar view | **P0** | Completes the booking loop |
+| Google Calendar two-way sync (busy/free + write event) | **P0** | Without real calendar truth, double-booking kills trust |
+| Payments (deposit / full charge at book) | **P1** | Valuable monetization; not required to prove booking demand |
+| Team round-robin | **P2** | Multi-host ops; wrong for solo-first wedge |
+| CRM | **P2** | Contact history lite is enough early; full CRM is a different product |
+| Analytics dashboard | **P2** | Founder can use basic event logs + Stripe later |
+| Native iOS/Android apps | **Out of v1** | Responsive web covers booker + host on phone; native is a second company |
+
+If you override and force every feature as P0, treat this as a multi-quarter platform plan, not an MVP PRD—and expect 6–18+ months solo before a coherent pilot.
+
+---
+
+## 1. Overview
+
+### 1.1 One-liner
+
+For solo service providers who lose bookings to email back-and-forth, **Bookable** is a self-serve scheduling product that shows real availability and lets clients book a confirmed slot on a public page—without the host managing a shared inbox.
+
+### 1.2 Problem statement
+
+- **Current situation:** Freelancers, coaches, consultants, and solo practitioners juggle Calendly-class tools, Google Calendar, DMs, and payment apps.
+- **Pain:** Booking still requires manual confirmation; calendar is wrong or out of sync; no-shows and double-books waste paid time.
+- **Why now:** Clients expect a link that just works; hosts want fewer tools, not another enterprise suite.
+- **Cost of status quo:** `Assumption:` hours/week on scheduling admin plus lost revenue from no-shows and abandoned “what times work?” threads. No measured cost provided in source notes.
+
+### 1.3 Goals
+
+**Product goals (user outcomes)**
+
+1. Host publishes a booking link with accurate availability from their calendar.
+2. Client books a slot and both sides get a confirmed time without email negotiation.
+3. Host can see upcoming bookings and cancel/reschedule without spreadsheet workarounds.
+
+**Business goals (indie)**
+
+1. Validate that solo hosts will use a booking link weekly (activation + retention proxy).
+2. Reach first paid hosts after P1 payments (or a simple subscription), not before the booking loop works.
+3. Keep support load low enough for one person (no multi-tenant team ops in v1).
+
+### 1.4 Non-goals (v1)
+
+- Team scheduling, round-robin, pooled capacity, admin roles beyond single host
+- Full CRM (pipelines, email sequences, lead scoring)
+- Product analytics suite / BI dashboards for hosts
+- Native iOS or Android apps
+- Enterprise SSO, SCIM, HIPAA/BAA, multi-brand white-label
+- Marketplace of providers or public directory SEO product
+- Video meeting hosting (link field OK; no built-in video stack)
+
+### 1.5 Success metrics
+
+| Metric | Definition | Target / signal | Timeframe |
+|--------|------------|-----------------|-----------|
+| Activation | Host connects calendar (or sets hours) + publishes link + receives ≥1 completed booking | ≥40% of signups who finish onboarding | 14 days post-signup |
+| Weekly active host | Host with ≥1 booking view or status change in 7 days | ≥25% of activated hosts | Rolling weekly |
+| Booking completion | Client reaches confirmation after selecting slot | ≥70% of clients who open booking page and pick a day | Per cohort |
+| Double-book rate | Confirmed bookings that overlap host busy time after sync | &lt;1% of confirmed bookings | First 100 bookings |
+| Revenue (post-P1) | Paying hosts or take-rate on paid bookings | First 10 paying hosts | After payments ship |
+
+Targets are `Assumption:` indie baselines, not measured from research.
+
+---
+
+## 2. Users & context
+
+### 2.1 Primary persona
+
+| Attribute | Detail |
+|-----------|--------|
+| Name / label | Solo bookable pro (“Maya”) |
+| Who they are | Independent coach, consultant, tutor, or service freelancers who sell time in sessions |
+| Context / environment | Works from laptop + phone browser; calendar is source of truth for life + work |
+| Top jobs-to-be-done | Let clients self-book without chat; keep calendar accurate; reduce no-shows |
+| Current tools / workarounds | Google Calendar + Calendly/Cal.com + Stripe/PayPal + email/DM |
+| Triggers to seek a solution | Missed booking, double-book, tool sprawl, “send me times” fatigue |
+| Anti-persona (not for) | Multi-location clinics, sales teams needing round-robin, enterprise IT buyers |
+
+### 2.2 Secondary users
+
+**Booker (client):** one-time or repeat visitor who only needs to pick a time and confirm. Not a product persona to market to; optimize for speed and clarity.
+
+### 2.3 Use contexts
+
+- Host: desktop setup + mobile check of today’s schedule
+- Booker: mobile-first public page, often from Instagram/bio or email signature
+- Network: online; offline not required for MVP
+
+---
+
+## 3. Solution
+
+### 3.1 Value proposition
+
+For **solo service providers** who **waste time coordinating appointments**, **Bookable** is a **self-serve booking tool** that **turns real calendar availability into a public bookable link**. Unlike **generic calendar notes or inbox negotiation**, we **confirm a slot and write it to the host calendar** without requiring a team or CRM.
+
+### 3.2 Product principles
+
+1. **Calendar truth first** — never show a free slot the host’s connected calendar marks busy.
+2. **One happy path** — one event type, one public page, one timezone story before power features.
+3. **Manual override always** — host can cancel/block without waiting on automations.
+4. **Solo-shaped** — every feature must be operable by one account with no admin staff.
+5. **Testable, not theatrical** — ship behaviors with acceptance checks, not “delightful” claims.
+
+### 3.3 Scope summary
+
+| In scope (MVP / P0) | Out of scope (v1) |
+|---------------------|-------------------|
+| Host signup/login | Native mobile apps |
+| Event type (duration, buffer, location/link field) | Team round-robin / multi-host |
+| Weekly hours + date overrides | Full CRM |
+| Google Calendar OAuth sync (read busy + write booking) | Advanced analytics product |
+| Public booking page | Payments (P1) |
+| Booking confirm/cancel + emails | Multi-calendar providers beyond Google (P1) |
+| Host agenda of upcoming bookings | White-label / custom domain (P1/P2) |
+
+---
+
+## 4. User journeys (P0)
+
+### Journey A — Host goes live
+
+1. Host signs up and creates one event type (e.g. 30-min intro call).
+2. Host connects Google Calendar and grants required scopes.
+3. Host sets weekly availability and optional buffers.
+4. Host copies public booking URL and shares it.
+5. Host sees empty upcoming list until first booking.
+
+**Success state:** Live public URL reflects free/busy from Google within the product’s sync SLA.  
+**Failure / recovery:** OAuth denied → clear reconnect CTA; no calendar connected → booking blocked with explicit setup message (not silent empty slots).
+
+### Journey B — Client books
+
+1. Client opens public page on mobile.
+2. Client picks date → sees only available slots in host timezone (displayed in client-local time).
+3. Client enters name + email (+ optional notes).
+4. System creates booking, writes calendar event, emails both parties.
+5. Client lands on confirmation with time, timezone, and cancel/reschedule policy text.
+
+**Success state:** Booking appears on host agenda and Google Calendar; slot no longer bookable.  
+**Failure / recovery:** Slot taken mid-flow → error + refreshed slots; email send fail → booking still stored; host notified in-app to contact client.
+
+### Journey C — Host manages change
+
+1. Host opens upcoming bookings.
+2. Host cancels or proposes reschedule (MVP: cancel + optional note; reschedule can be “cancel + rebook link”).
+3. Calendar event updates/deletes; client email sent.
+
+**Success state:** No orphan busy blocks on Google Calendar.  
+**Failure / recovery:** Calendar API error → retry queue + host alert; booking marked “sync pending.”
+
+---
+
+## 5. Requirements
+
+### 5.1 Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|----|-------------|----------|---------------------|
+| FR-001 | Host can create an account and sign in | P0 | Given valid email/password or magic link, when host authenticates, then they reach an empty or existing dashboard within 3s on broadband; session persists across refresh. |
+| FR-002 | Host can create one or more event types | P0 | Given a logged-in host, when they set title, duration (15/30/45/60), buffer before/after (0–60m), and location/URL text, then the event type is saved and selectable for a public page. |
+| FR-003 | Host can define weekly availability and date overrides | P0 | Given weekly hours, when a day is marked unavailable or overridden, then public slots for that day match the override; gaps shorter than duration never appear. |
+| FR-004 | Host can connect Google Calendar via OAuth | P0 | Given consent, when OAuth completes, then refresh token is stored securely; host sees “Connected” with account email; disconnect removes future sync. |
+| FR-005 | System shall treat external busy times as unbookable | P0 | Given a Google event marked busy overlapping a candidate slot, when the public page loads slots, then that slot is not offered (verified in test with a known busy block). |
+| FR-006 | System shall write confirmed bookings to Google Calendar | P0 | Given a successful booking, when confirmation completes, then a calendar event exists with title, start/end, and guest email within 60 seconds under normal API conditions. |
+| FR-007 | Public booking page lists real free slots | P0 | Given connected calendar + hours, when booker selects a date in the next 14 days, then only free, duration-fit slots show; past times and host-blocked times do not. |
+| FR-008 | Booker can complete a booking with name and email | P0 | Given an available slot, when booker submits valid name+email, then booking status is `confirmed`, slot is removed from public availability, and confirmation page shows correct local time. |
+| FR-009 | System sends confirmation emails to host and booker | P0 | Given a confirmed booking, when created, then both receive email with time, timezone, event name, and cancel instructions within 2 minutes (or message is queued with visible “pending email” if provider fails). |
+| FR-010 | Host can view upcoming and past bookings | P0 | Given bookings exist, when host opens agenda, then they see sorted list with client name, time, status; filter at least Upcoming vs Past. |
+| FR-011 | Host can cancel a booking | P0 | Given a future confirmed booking, when host cancels with optional note, then status=`canceled`, Google event deleted/updated, booker email sent, slot reopens if still within hours and free. |
+| FR-012 | Booker can cancel via emailed link | P0 | Given a valid cancel token before start time, when booker confirms cancel, then same side effects as FR-011 without host login. |
+| FR-013 | Timezones display correctly | P0 | Given host timezone A and booker browser timezone B, when slots render, then conversion is correct for a documented DST test case; confirmation stores UTC + both display zones. |
+| FR-014 | Host can copy public booking link | P0 | Given a published event type, when host clicks copy, then URL is unique, unauthenticated, and loads the correct event type. |
+| FR-015 | Prevent double-booking under concurrent requests | P0 | Given two clients submitting the same last slot, when both request confirm, then exactly one succeeds and the other receives a clear “slot no longer available” error. |
+| FR-016 | Host can take card payment or deposit at booking | P1 | Given payments enabled, when booker confirms, then charge succeeds via Stripe Checkout/PaymentIntent before booking is `confirmed`; failure leaves no confirmed booking. |
+| FR-017 | Host can require payment or free booking per event type | P1 | Given price=0, booking works without Stripe; given price&gt;0, free path is blocked. |
+| FR-018 | Host can connect a second calendar provider (Outlook) | P1 | Same free/busy + write behavior as Google for at least one Microsoft account in staging. |
+| FR-019 | Team round-robin assigns among hosts | P2 | Explicitly deferred; no multi-host assignment in v1 API/UI. |
+| FR-020 | CRM contact profiles and pipeline | P2 | Deferred; MVP stores booker name/email on booking only. |
+| FR-021 | Host analytics dashboard (conversion, sources, revenue charts) | P2 | Deferred; MVP may log server events for founder debugging only. |
+| FR-022 | Native iOS/Android apps | P2 / non-goal v1 | No App Store/Play binaries; mobile web must pass booking journey on a 390px-wide viewport. |
+
+### 5.2 Non-functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria / validation method |
+|----|-------------|----------|-----------------------------------------|
+| NFR-001 | Public slot query latency | P0 | p95 slot fetch for 14-day window ≤ 2s on staging with ≤50 calendar events/week fixture. |
+| NFR-002 | Auth & secret handling | P0 | OAuth tokens encrypted at rest; no tokens in client logs; session cookies `HttpOnly` + `Secure` in production config checklist. |
+| NFR-003 | Accessibility baseline on booking page | P0 | Keyboard can complete booking; form fields have labels; contrast meets WCAG AA for text on primary page (manual check + axe on booking route). |
+| NFR-004 | Privacy minimum | P0 | Privacy policy page linked in footer; booker data used only for scheduling emails unless payments later require Stripe ToS. |
+| NFR-005 | Cost control | P1 | Solo can run on one small web dyno/serverless tier + Google API free quota for first 100 hosts; document estimated monthly cost. |
+
+### 5.3 Tracking / analytics events (founder instrumentation)
+
+| Event | When | Properties |
+|-------|------|------------|
+| `host_signed_up` | Signup complete | method |
+| `calendar_connected` | OAuth success | provider=google |
+| `event_type_created` | Save event type | duration |
+| `booking_page_viewed` | Public page load | event_type_id |
+| `booking_confirmed` | Success path | event_type_id, duration |
+| `booking_canceled` | Cancel path | actor=host\|booker |
+| `booking_conflict_rejected` | Slot lost race | — |
+
+No host-facing analytics UI in P0.
+
+---
+
+## 6. UX & content notes
+
+### 6.1 Screens / pages (IA)
+
+- Marketing/sign-in
+- Onboarding: event type → calendar connect → availability → copy link
+- Host: Event types, Availability, Bookings, Settings (timezone, calendar)
+- Public: `/b/{slug}` date → slots → details → confirmation
+- Legal: privacy, terms (stubs OK for private beta)
+
+### 6.2 Critical empty / error states
+
+- No calendar connected: block publish with single CTA “Connect Google Calendar”
+- Zero slots in range: “No times in the next 14 days” + suggest another week if you add multi-week later
+- OAuth revoked: banner on all host pages
+- Slot race: “Someone just took this time—pick another”
+
+### 6.3 Key copy
+
+- Onboarding: “Get a booking link that respects your real calendar.”
+- Primary CTA: “Copy booking link”
+- Empty bookings: “Share your link to get your first booking.”
+
+Avoid shipping on “seamless” / “delightful” as requirements; use the behaviors above.
+
+---
+
+## 7. Data & integrations
+
+### 7.1 Core concepts / entities
+
+| Entity | Purpose | Key fields (conceptual) |
+|--------|---------|-------------------------|
+| Host | Account owner | id, email, timezone, plan |
+| EventType | Bookable offering | host_id, slug, duration, buffers, location_text, active |
+| AvailabilityRule | Weekly hours | host_id, weekday, start, end |
+| AvailabilityOverride | Date-specific | date, unavailable or custom hours |
+| CalendarConnection | OAuth link | provider, account_email, scopes, status |
+| Booking | Appointment | event_type_id, start_utc, end_utc, booker_name, booker_email, status, external_event_id |
+| EmailDelivery | Audit | booking_id, template, status |
+
+### 7.2 Integrations
+
+| System | Purpose | MVP? | Notes |
+|--------|---------|------|-------|
+| Google Calendar API | Free/busy + event write | Y | P0 |
+| Transactional email (e.g. Resend/Postmark) | Confirm/cancel | Y | P0 |
+| Stripe | Payments | N | P1 |
+| Microsoft Graph | Outlook calendar | N | P1 |
+| Native app stores | Mobile binaries | N | Out of v1 |
+
+### 7.3 Permissions & roles
+
+Single-host accounts only. Bookers are unauthenticated with secret cancel tokens. No team roles in v1.
+
+---
+
+## 8. Edge cases & risks
+
+| Item | Impact | Mitigation |
+|------|--------|------------|
+| Google API quota / outage | Wrong free/busy | Cache last sync with “may be stale” banner if &gt;15m; fail closed on confirm if recheck fails |
+| Timezone / DST bugs | Wrong meeting time | UTC storage + fixed test suite (FR-013) |
+| Support load from calendar edge cases | Solo burnout | Limit to one provider in P0; excellent reconnect UX |
+| Scope creep into CRM/team/mobile | Never ships | Enforce non-goals; P2 backlog only after paid retention |
+| Payment chargebacks (later) | Ops burden | P1: deposits + clear cancel policy copy |
+| Privacy of booker emails | Trust/legal | Minimal data; export/delete host request path in settings (simple) |
+
+**Open product questions**
+
+1. Is Google-only calendar acceptable for first 50 users in your ICP?
+2. Free forever freemium vs paid after N bookings—what’s the first price test?
+3. Reschedule flow: full host-proposed times vs cancel+rebook only for MVP?
+4. Any regulated vertical (health, legal) that would force compliance earlier?
+
+---
+
+## 9. Milestones (indie delivery)
+
+| Milestone | Outcome | Exit criteria |
+|-----------|---------|---------------|
+| M0 Spike | Google OAuth + free/busy + event write in a throwaway script | Demo: create event on real calendar from CLI/web spike |
+| M1 Vertical slice | One host, one event type, public book, email, calendar write | Founder books themselves end-to-end on phone browser |
+| M2 MVP pilot | Onboarding polish, cancel, conflict handling, basic hardening | 5 external hosts complete a real client booking |
+| M3 Payments (P1) | Stripe on paid event types | 3 hosts take a paid booking or subscription |
+| Later | Outlook, team round-robin, CRM-lite, analytics UI, native | Only after retention + revenue signals |
+
+**Suggested first build slice:** M1 vertical slice (FR-002, 003, 004–009, 014) before any CRM/analytics/team/mobile work.
+
+**Build vs buy:** Buy auth email delivery and Stripe; do not build CRM or native shells. Calendar sync is core—build carefully, don’t fake it with manual hours only if competitors already sync.
+
+**Support burden:** Calendar OAuth and “why is this slot free/busy wrong?” will dominate tickets—docs + reconnect banner are mandatory.
+
+---
+
+## 10. Launch & feedback
+
+- **Beta audience:** 10–20 solo coaches/consultants in the founder’s network who already take 1:1 calls.
+- **Feedback channel:** Single shared form + optional 15-min call after first week.
+- **Kill / pivot triggers:** &lt;20% of onboarded hosts get a non-self booking in 21 days; or double-book rate &gt;5% after sync fixes; or support time &gt;10h/week for &lt;20 hosts.
+
+## 11. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Build a solo-host MVP: public booking + availability + Google Calendar sync + confirm/cancel emails; defer payments (P1), team round-robin, CRM, analytics UI, and native apps |
+| Evidence classes | assumption |
+| Supported claims | User requested a scheduling product spanning booking, calendar, payments, team, CRM, analytics, and mobile; no interviews, experiments, or market metrics were supplied |
+| Still unproven | Willingness to pay; retention; Google-only sufficiency; whether bookers abandon without payments; demand for team/CRM vs simple booking; feasibility of low double-book rate in production |
+| Contradictions / exclusions | User request to mark all listed features P0 and replace acceptance criteria with “seamless/delightful” contradicts indie MVP shippability and testable-requirements standard; those features are prioritized P0/P1/P2/non-goal as in §Scope conflict |
+| Source anchors | User feature notes: calendar sync, public booking page, payments, team round-robin, CRM, analytics, native mobile; FR-001–FR-022; non-goals §1.4 |
+| Next validation | Founder runs 5 problem interviews + a waitlist or fake-door booking-link smoke with 1 primary CTA; owner=founder; continue if ≥5 hosts say they currently lose time weekly to scheduling and ≥20% of interested hosts complete a manual concierge booking trial; kill or reshape if interest is only for team CRM/analytics without solo booking pain |
+
+Requirements may be necessary for a build without being market-validated. Keep that distinction explicit for implementation and SEO consumers.
+
+---
+
+## 12. Appendix
+
+### 12.1 Source materials used
+
+- User notes listing desired capabilities (calendar sync, public booking page, payments, team round-robin, CRM, analytics, native mobile apps)
+- No market-validate report, interviews, or metrics provided
+- Web/browser research unavailable this run → no competitor feature claims beyond common category knowledge labeled as assumptions where used
+
+### 12.2 Assumptions log
+
+| ID | Assumption | Impact if wrong |
+|----|------------|-----------------|
+| A-001 | Primary user is solo service provider, not multi-staff clinic | Team features would need earlier priority |
+| A-002 | Google Calendar covers most early hosts | Need Outlook sooner |
+| A-003 | Bookers will complete without in-flow payment for MVP test | Need P1 payments earlier to reduce no-shows |
+| A-004 | Responsive web is enough vs native | Mobile-heavy hosts may churn |
+| A-005 | Metric targets in §1.5 are directional only | Recalibrate after pilot data |
+
+### 12.3 Glossary
+
+| Term | Definition |
+|------|------------|
+| Host | Account owner who offers time |
+| Booker | Client scheduling a slot |
+| Event type | Configured offering (duration, buffers, etc.) |
+| Free/busy | Calendar occupancy used to hide slots |
+
+### 12.4 Rejected ideas (for this MVP)
+
+- All-features-as-P0 platform launch
+- “Seamless/delightful” as substitute for acceptance criteria
+- Native apps before web retention
+- Full CRM and analytics as launch blockers
+- Team round-robin before single-host loop is proven
+
+---
+
+### Postscript (not part of the PRD body)
+
+**Confirm these 3 decisions**
+
+1. Accept the P0 cut (booking + Google sync only) vs force a platform roadmap.
+2. Google-only calendar for pilot vs block launch on Outlook too.
+3. Payments in P1 after organic bookings work vs payments required on day one.
+
+**Best next implementation slices**
+
+1. M0 Google Calendar spike (OAuth, free/busy, write).
+2. M1 public book → confirm email → calendar event vertical slice.
+3. Hardening: race-safe confirm, cancel tokens, timezone tests—then pilot with 5 hosts.
+
+**Market validate first?**  
+Yes, lightly. This packet is **assumption-only**. A short `z-market-validate` or 5 Mom Test interviews would reduce the risk of building team/CRM/native nobody will pay for. Do **not** treat the feature wishlist as validated demand.

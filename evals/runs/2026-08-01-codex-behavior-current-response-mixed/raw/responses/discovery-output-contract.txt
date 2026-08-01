@@ -1,0 +1,193 @@
+Mode: synthesize
+
+# Discovery synthesis — client-onboarding workflow
+
+| Field | Value |
+|---|---|
+| Date | 2026-08-01 |
+| N completed | 5 |
+| N target | 10–15 before broad market claims |
+| Cold / warm mix | 4 cold / 1 warm; the supplied summaries do not identify which interview was warm |
+| Provisional ICP | People responsible for recurring, multi-tool client onboarding where manual transfer creates labor, ownership, or failure costs |
+| Evidence basis | Five supplied summaries treated as the complete record; no transcripts, recordings, direct quotations, or external validation |
+
+## 1. Method and evidence limits
+
+This sample is sufficient for pattern detection, not market sizing or a broad product green light.
+
+Material limits:
+
+- The summaries contain no verbatim quotes; none are manufactured below.
+- Interview dates, company sizes, onboarding volumes, and recruitment source per participant are unknown.
+- The warm interview cannot be identified, so possible relationship bias cannot be isolated.
+- Question wording is unavailable. Leading questions, pitch leakage, and future-tense traps cannot be audited reliably.
+- Several summaries omit the most recent incident, exact frequency, and monetary amount.
+- The PM’s pilot request is stronger than a compliment, but it is not equivalent to starting, paying for, or completing a pilot.
+- No evidence yet establishes retention, scalable acquisition, security acceptance, or willingness to migrate actual data.
+
+## 2. Interview-level evidence audit
+
+| ID | Participant | Behavioral evidence | G1 | G2 | G3 | Evidence limitation |
+|---|---|---|---|---|---|---|
+| I-01 | Agency PM | Repeatedly spends 45 minutes copying across tools; pays for Zapier; abandoned a template because ownership was unclear; requested a real pilot | Support | Support | Support | Frequency, budget ownership, pilot terms, and whether the request followed a pitch are unknown |
+| I-02 | Consultant | Pays an assistant for the workflow; identified migration as a barrier | Partial support | Support | Mixed | No recent incident, frequency, amount, or demonstrated switching action |
+| I-03 | Founder | Reported no recent pain or spend; only complimented the pitch | Contradict | Contradict | Contradict | Compliment has no demand value; likely anti-ICP unless future behavior changes |
+| I-04 | Bookkeeper | Experiences weekly failures; pays for VA labor; raised sensitive-file concerns | Support | Support | Mixed | Strong pain and spend, but security concerns may prevent switching; no attempted switch reported |
+| I-05 | Marketer | Uses free automation, has switched tools before, and requires CSV | Neutral/partial | Weak support | Support | Current pain, failure frequency, labor cost, and paid intent are not established |
+
+### Mom Test audit
+
+The evidence contains useful past behavior, especially for the PM, bookkeeper, and marketer’s previous switching. However, the pitch compliment and possibly the pilot request occurred after product discussion. Without the questions or transcript, pitch leakage cannot be scored.
+
+For the next round, recover the missing evidence with:
+
+- “Walk me through the last onboarding that required copying across tools.”
+- “How often did this happen in the last four weeks?”
+- “Who performed each step, and what did that labor cost?”
+- “What happened when ownership was unclear?”
+- “What have you tried to replace this workflow?”
+- “Show me how migration, CSV export, and sensitive files are handled today.”
+- “Who can approve a pilot and its budget?”
+
+## 3. Segments observed
+
+| Segment | Who | N | Implication |
+|---|---|---:|---|
+| Bleeding + paying cost | Agency PM, consultant, bookkeeper | 3 | Best initial segment. All incur existing tool or labor costs, though the consultant’s pain evidence is thin |
+| Bleeding, not paying | Marketer, provisionally | 1 | Has automation and switching behavior, but current pain is not demonstrated; CSV portability is a useful product constraint |
+| Polite only | Founder | 1 | Exclude from the current ICP; praise did not accompany pain, spend, or action |
+
+A narrower high-signal subsegment is the agency PM plus bookkeeper: recurring workflows, measurable operational cost, and concrete failure or manual-work evidence.
+
+## 4. Pain patterns (G1)
+
+| Pattern | Frequency | Evidence |
+|---|---:|---|
+| Manual or assisted coordination across onboarding tools | 3/5 | I-01 performs 45 minutes of copying; I-02 pays an assistant; I-04 pays VA labor |
+| Recurring operational failure | 1/5 explicit | I-04 reports weekly failures |
+| Unclear task ownership undermines workflow adoption | 1/5 | I-01 abandoned a template for this reason |
+| Portability and migration friction constrain adoption | 2/5 | I-02 cites migration; I-05 requires CSV |
+| Sensitive files create a trust barrier | 1/5 | I-04 raises sensitive-file concerns |
+| No meaningful recent problem | 1/5 | I-03 reports neither recent pain nor spend |
+
+The pain is credible in a subset, but “client onboarding” is currently too broad. The strongest common job is reducing recurring coordination labor without losing ownership clarity or data control.
+
+## 5. Status quo and spend (G2)
+
+| Status quo | Cost form | Gap | Source |
+|---|---|---|---|
+| Manual copying across tools plus Zapier | 45 minutes of labor and paid software | Automation has not eliminated handoffs; ownership remains unclear | I-01 |
+| Assistant-managed workflow | Paid human labor | Migration makes replacement costly | I-02 |
+| VA-managed bookkeeping onboarding | Paid human labor plus weekly failure exposure | Sensitive files increase security requirements | I-04 |
+| Free automation | No demonstrated monetary spend | CSV portability is required; current pain is unclear | I-05 |
+| No active workaround | No spend | No demonstrated problem to solve | I-03 |
+
+Three of five already pay a monetary or labor cost. Exact amounts and whether those costs are recoverable product budgets remain unknown.
+
+## 6. Switch barriers (G3)
+
+| Barrier or signal | Frequency | Product implication |
+|---|---:|---|
+| Migration effort | 1/5 | Begin with an overlay or incremental import, not a forced rip-and-replace |
+| CSV portability | 1/5 | Make import and export reversible and testable |
+| Sensitive-file handling | 1/5 | Minimize file custody; define access, retention, encryption, and deletion before a bookkeeping pilot |
+| Unclear ownership | 1/5 | Every onboarding item needs an explicit owner, state, and escalation path |
+| Previous tool switching | 1/5 | Shows switching is possible, but not necessarily for this product |
+| Requested real pilot | 1/5 | Best commitment signal, but must be converted into scheduled access, live cases, and payment evidence |
+| No pain or spend | 1/5 | Exclude rather than trying to persuade |
+
+## 7. Gate scores
+
+| Gate | Score | Confidence | Summary |
+|---|---:|---|---|
+| G1 Pain | 3/5 | Medium-low | Strong concrete pain appears in the PM and bookkeeper, with weaker indirect evidence from the consultant. It is not stable across the full sample |
+| G2 Spend | 4/5 | Medium | Three independent participants already incur paid software or labor costs. Amounts and transferable budgets are missing |
+| G3 Switch | 3/5 | Medium-low | A pilot request, prior switching, and explicit barriers show a plausible path, but nobody has yet migrated, paid, or completed a pilot |
+
+## 8. Decision
+
+**Verdict: Advance**
+
+Advance only to a tightly scoped, paid-or-deposit-backed concierge pilot—not a broad client-onboarding platform.
+
+The recommended wedge is:
+
+> Reduce recurring cross-tool onboarding coordination for service businesses while preserving explicit ownership and reversible data movement.
+
+The first pilot should target I-01, the agency PM, because that participant combines measurable time cost, existing automation spend, a failed alternative, and a concrete request for a pilot.
+
+Pilot scope:
+
+- One onboarding workflow.
+- Three real client-onboarding cases.
+- Integrate with the existing tools rather than requiring full migration.
+- Assign a named owner and status to every handoff.
+- Support CSV export from the beginning.
+- Avoid storing sensitive files in the first pilot unless security requirements are explicitly accepted.
+- Measure manual time, failed or missed handoffs, setup effort, and willingness to pay.
+
+Advance does **not** authorize a large build. If the PM will not schedule access to live cases, name the budget owner, or make a meaningful commitment, reshape around the bookkeeping failure case or park the generalized concept.
+
+## 9. Concrete downstream handoff
+
+For `z-landing-smoke`, test one narrow promise aimed at agency operations/PMs: reduce repetitive cross-tool onboarding work while making ownership visible. Do not claim security, universal integrations, or automatic migration.
+
+For `z-write-prd`, scope only the pilot wedge:
+
+- Workflow steps with explicit owner and status.
+- Minimal integration or manual-assisted synchronization for the PM’s current tools.
+- Activity trail sufficient to diagnose missed handoffs.
+- CSV import/export.
+- Time and failure measurement.
+
+Non-goals:
+
+- Full migration from every incumbent tool.
+- A generic template marketplace.
+- Autonomous handling of sensitive bookkeeping files.
+- Broad SMB positioning.
+- Building for founders who have no recent pain or spend.
+- Enterprise-grade integration breadth before a pilot validates the workflow.
+
+Safe copy inputs—paraphrases from summaries, not customer quotations:
+
+- 45 minutes copying across tools.
+- Unclear ownership caused a template to be abandoned.
+- Weekly onboarding failures.
+- Paying assistants or VAs to keep onboarding moving.
+- Migration, CSV portability, and sensitive files affect switching.
+
+Open questions for the next interviews:
+
+- What is the last concrete onboarding failure?
+- How many onboardings occur per month?
+- What is the fully loaded monthly labor and tool cost?
+- Which system is authoritative for each field?
+- Who owns purchasing and implementation?
+- What minimum migration path makes a trial acceptable?
+- Which files are sensitive, and can the product avoid handling them?
+- What event would cause the customer to abandon the pilot?
+
+## 10. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Advance to one narrow concierge pilot; do not green-light a general platform |
+| Evidence classes | primary behavior |
+| Supported claims | A high-pain subset performs recurring cross-tool work; three participants already incur tool or labor costs; ownership, migration, CSV portability, and sensitive-file handling affect adoption; one participant requested a real pilot |
+| Still unproven | Actual pilot start, payment or deposit, budget ownership, achieved time savings, successful migration, security acceptance, retention, segment prevalence, scalable acquisition, and demand beyond this five-person sample |
+| Contradictions / exclusions | I-03 had no recent pain or spend and supplied only praise; I-05 showed switching behavior but no demonstrated current pain or paid cost; the consultant’s pain frequency is unknown; the bookkeeper’s security concerns may block adoption |
+| Source anchors | User-supplied summaries I-01 agency PM, I-02 consultant, I-03 founder, I-04 bookkeeper, and I-05 marketer; no transcript, direct quotes, or source files were provided |
+| Next validation | Founder schedules I-01 for a three-case concierge pilot within 14 days. Success: access to real cases, named budget owner, explicit commitment such as payment/deposit or equivalent costly action, median manual work reduced from 45 minutes to 15 minutes or less, and no unresolved ownership failures. Failure: no live-case access or commitment, setup/migration outweighs savings, or ownership remains unclear |
+
+## 11. Note index
+
+| ID | Participant | Segment | Gate lean |
+|---|---|---|---|
+| I-01 | Agency PM | Bleeding + paying | G1 support / G2 support / G3 support |
+| I-02 | Consultant | Bleeding + paying | G1 partial / G2 support / G3 mixed |
+| I-03 | Founder | Polite only | G1 contradict / G2 contradict / G3 contradict |
+| I-04 | Bookkeeper | Bleeding + paying | G1 support / G2 support / G3 mixed |
+| I-05 | Marketer | Provisionally bleeding, not paying | G1 neutral-partial / G2 weak / G3 support |
+
+Because browser access, follow-up interviews, and external evidence collection were unavailable, this conclusion rests entirely on the five supplied summaries.

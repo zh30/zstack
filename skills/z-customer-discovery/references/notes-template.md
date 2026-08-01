@@ -60,3 +60,18 @@ Save as: `docs/discovery/notes/NN-short-slug.md`
 
 - People to contact:  
 - Facts to verify:  
+
+## 9. Evidence handoff
+
+Delete non-applicable choices from `Evidence classes`; keep only canonical
+class names. The table must remain exactly two columns and seven data rows.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Continue discovery / reshape the next interview / stop this line of inquiry |
+| Evidence classes | primary behavior / assumption |
+| Supported claims | Claims supported by this interview's concrete past behavior |
+| Still unproven | Claims this one interview cannot establish |
+| Contradictions / exclusions | Compliments, hypotheticals, counterexamples, and invalid prompts |
+| Source anchors | This note id plus short verbatim quotes or pasted-note anchors |
+| Next validation | One founder-owned follow-up with an observable success/fail signal |

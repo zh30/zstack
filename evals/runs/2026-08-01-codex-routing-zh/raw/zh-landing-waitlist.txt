@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: 产品开发前需要单一 CTA 的等待名单落地页、低成本引流计划及明确的继续、调整和停止阈值。

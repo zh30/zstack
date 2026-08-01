@@ -1,11 +1,13 @@
 name: codex
-display_name: OpenAI Codex CLI
+display_name: Legacy Codex compatibility root
 skills_root: ~/.codex/skills
 link_mode: symlink
-enabled: true
+# Current Codex discovers user skills from ~/.agents/skills. Keep this older
+# root available only through `setup.sh --hosts codex` for legacy installs.
+enabled: false
 frontmatter:
   required:
     - name
     - description
-  # Soft limit — doctor warns; Codex may skip invalid skills
+  # Conservative cross-host listing limit used by doctor.
   description_max_chars: 1024

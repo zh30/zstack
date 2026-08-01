@@ -1,0 +1,2 @@
+selection: none
+reason: 该请求是技术架构设计，不属于候选中的市场验证、落地页、SEO、PRD 或客户访谈。

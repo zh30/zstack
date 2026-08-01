@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: The request focuses on recruiting and interviewing ten real customers about their past behavior and workflows.

@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: Request matches waitlist/coming-soon smoke test with one CTA, cheap traffic plan, and continue/kill conversion thresholds.

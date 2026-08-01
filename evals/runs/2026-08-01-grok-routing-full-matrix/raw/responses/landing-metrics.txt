@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: The request is about interpreting prelaunch landing funnel metrics and picking the next bounded demand smoke test, which matches this skill’s waitlist/pre-order smoke-test scope.

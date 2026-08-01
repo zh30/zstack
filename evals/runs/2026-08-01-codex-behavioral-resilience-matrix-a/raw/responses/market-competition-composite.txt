@@ -1,0 +1,236 @@
+# Market validation: a general-purpose scheduling tool
+
+- **Date:** 2026-08-01
+- **Analyst:** agent using `z-market-validate`
+- **Geography focus:** Global, English-speaking B2B market
+- **Assumptions:** This is a horizontal scheduling SaaS competing with tools such as Calendly, Cal.com, Acuity Scheduling, Google Calendar appointment schedules, Microsoft Bookings, and vertical booking products. No distinct ICP or workflow advantage was supplied.
+- **Evidence limitation:** Web, browser, apps, and subagents were unavailable. I could not conduct the required live community scan, verify current pricing, or provide source links. Consequently, this is a provisional category assessment based only on assumptions—not evidence of customer demand, payment, switching, or retention.
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence |
+|---|---|---:|
+| Commercial value? | Mixed | Low |
+| Fit for independent developer? | Conditional | Medium |
+| Short-term return odds (30–90 days)? | Low | Low |
+| **Recommendation band** | **Avoid as stated; explore one narrow wedge** | Medium |
+
+A horizontal scheduling tool addresses a real, recurring job, but the generic version enters a mature category with powerful free and paid substitutes. Building the mechanics is feasible for one developer; achieving reliable calendar behavior, integrations, trust, support, and distribution is considerably harder. Do not build a broad Calendly clone. Proceed only with a short validation spike around a workflow that mainstream schedulers handle poorly.
+
+## 2. Idea framing
+
+- **Problem in user language:** “Arranging appointments takes too many messages, and existing tools do not understand the constraints of my work.”
+- **Proposed solution:** A scheduling application that lets others book available time.
+- **Narrow ICP to test:** Small mobile-service businesses that need travel-time buffers, service-area rules, deposits, and customer intake before confirming an appointment.
+- **Non-ICP:** General knowledge workers, generic one-to-one meetings, recruiting teams, sales teams, and consumers who only need a booking link.
+
+### Success signals
+
+- At least 10 members of the same niche describe the same scheduling workaround.
+- Five prospects agree to a workflow trial.
+- Two pay or place a refundable deposit before a polished product exists.
+- The problem is not solved adequately by configuring an existing product.
+
+### Kill signals
+
+- Prospects describe the inconvenience but will not switch or pay.
+- Calendar availability plus a form solves the workflow.
+- Required calendar, payment, messaging, and routing integrations overwhelm the wedge.
+- Customer acquisition depends on ranking for generic scheduling keywords.
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---|---|---|
+| X/Twitter | blocked | No browsing capability |
+| Reddit | blocked | No browsing capability |
+| Hacker News | blocked | No browsing capability |
+| Product Hunt | blocked | No browsing capability |
+| Indie Hackers | blocked | No browsing capability |
+| Reviews/G2/Capterra/app stores | blocked | No browsing capability |
+| China platforms | skipped | Global English-speaking assumption |
+
+The minimum four-channel scan was therefore not completed.
+
+### 3.2 Demand signals
+
+- **Not found or verified.** No primary posts, complaints, purchase behavior, or dated search signals were accessible.
+- Recurring scheduling is logically useful, but that is an **assumption**, not validated demand for a new entrant.
+
+### 3.3 Disconfirming signals
+
+- **No live objections were verified.**
+- Structural negative: buyers already have numerous dedicated, calendar-native, suite-bundled, and manual alternatives.
+- Structural negative: basic scheduling is increasingly a feature inside broader calendar and productivity suites.
+- Structural negative: reliability and trust expectations are high because missed, duplicated, or incorrectly timed bookings directly harm users.
+
+### 3.4 Willingness-to-pay hints
+
+Existing paid products imply that organizations sometimes allocate budget to scheduling. This does **not** prove that customers will pay a new entrant. Current prices and conversion behavior could not be verified.
+
+A narrow product needs to replace a measurable cost such as:
+
+- Administrative coordination time
+- Missed appointments
+- Unpaid bookings or no-shows
+- Inefficient travel between appointments
+- Manual qualification before booking
+
+## 4. Competition and substitutes
+
+Pricing is deliberately marked unverified.
+
+| Substitute | Type | Price signal | Likely gap to investigate | Threat |
+|---|---|---|---|---|
+| Calendly | Horizontal scheduling SaaS | Free and paid tiers believed to exist; unverified | Specialized operational constraints | Very high |
+| Cal.com | Scheduling platform/open-source substitute | Free/paid structure unverified | A fully managed vertical workflow | High |
+| Acuity Scheduling | Appointment scheduling | Paid positioning believed to exist; unverified | Niche-specific routing and intake | High |
+| Google Calendar appointment schedules | Suite-bundled feature | Bundled/free availability unverified | Advanced workflow specialization | Very high |
+| Microsoft Bookings | Suite-bundled feature | Bundled availability unverified | Small-business vertical UX | High |
+| Square Appointments | Booking plus payments | Pricing unverified | Non-Square workflows or niche operations | High |
+| Jobber/Housecall Pro-style products | Vertical operations suites | Pricing unverified | Simpler, narrower, cheaper workflow | High |
+| Email, phone, forms, spreadsheets | Manual substitute | Low direct software cost | Automation and error reduction | Medium |
+
+**Category structure:** A mature, brutally crowded horizontal category, with defensibility more likely in vertical workflow depth or distribution than in the booking interface itself.
+
+## 5. Scores
+
+| Dimension | Score | Provisional rationale |
+|---|---:|---|
+| **Demand reality** | **4/5** | Scheduling is recurring and consequential, but demand for this particular product or wedge is unverified. |
+| **Willingness to pay** | **3/5** | Paid substitutes suggest budget exists, while free and bundled tools constrain pricing. |
+| **Competition intensity** | **5/5** | Numerous established, free, bundled, open-source, and vertical alternatives make the horizontal market brutal. |
+| **Indie fit** | **3/5** | A narrow MVP is solo-buildable, but calendar correctness, integrations, time zones, support, and trust add significant burden. |
+| **Time-to-signal** | **5/5** | Interviews, a concierge workflow, and payment tests can produce useful evidence within days or weeks. |
+| **Short-term return odds** | **2/5** | A generic launch is unlikely to gain paid distribution quickly; a founder-led vertical wedge might produce a few early sales. |
+
+### Composite calculation
+
+Competition must first be inverted:
+
+```text
+competition_fit = 6 - competition_intensity
+                = 6 - 5
+                = 1
+```
+
+Then average all six higher-is-better values:
+
+```text
+composite
+= (demand + pay + competition_fit + indie_fit
+   + time_to_signal + short_term_return) / 6
+
+= (4 + 3 + 1 + 3 + 5 + 2) / 6
+= 18 / 6
+= 3.0 / 5
+```
+
+**Composite: 3.0/5 — mixed category attractiveness, but misleadingly generous without the competition inversion.** The score supports a validation spike, not building the generic product.
+
+## 6. Commercial value
+
+**Mixed.** Scheduling creates commercial value when it reduces administrative work, prevents no-shows, collects money, or coordinates operational constraints. A generic booking link offers little incremental value because strong substitutes already perform that job. A viable entrant needs to sell an outcome—such as fewer wasted trips or guaranteed deposits—not “easier scheduling.”
+
+The likely payer is a small-business owner or operations lead. The product must replace labor, lost revenue, or part of a larger operations suite rather than merely replace another inexpensive calendar link.
+
+## 7. Independent-developer fit
+
+**Conditional.**
+
+- A concierge prototype or narrow booking flow is feasible for one developer.
+- Production reliability is harder: time zones, daylight-saving changes, calendar synchronization, duplicate bookings, cancellations, notifications, payments, and privacy all create edge cases.
+- Support urgency can be high because booking failures affect real appointments.
+- Infrastructure cost and regulation are manageable for a narrow SaaS, assuming payment details remain with a payment provider.
+- Distribution is the central risk. Generic SEO, launch platforms, and broad paid acquisition favor incumbents.
+- The founder’s access to a specific professional community is unknown and may matter more than technical skill.
+
+## 8. Short-term return
+
+**Odds: Low.**
+
+Success for the first 90 days should mean **two paying businesses or $200–$500 in total collected revenue**, not meaningful recurring revenue at scale.
+
+- **Best plausible path:** Sell a manually assisted, niche-specific scheduling workflow before developing broad integrations.
+- **Why the odds are low:** There is no verified ICP, demand evidence, distribution advantage, or demonstrated switching intent.
+- **What would falsify the path:** Fewer than five of 15 target businesses report the same costly problem, or none of five trial prospects will pay a deposit.
+
+## 9. Entry directions
+
+### Primary wedge: route-aware bookings for mobile-service businesses
+
+- **Who:** One narrow occupation whose staff travel to customers.
+- **Job:** Accept only profitable appointments by accounting for location, travel time, service duration, deposits, and intake requirements.
+- **MVP:** A hosted request form plus manually reviewed booking proposals, deposit link, and calendar confirmation. Avoid real-time multi-calendar optimization initially.
+- **Where to find the first 10 users:** One occupation-specific association, local business directory, or practitioner community. The exact channel requires manual research.
+- **14-day metric:** Ten interviews, five workflow trials, and two payments or deposits.
+
+### Backup wedges
+
+1. Scheduling for paid expert sessions where qualification and payment must happen before calendar confirmation.
+2. Exception management layered onto an existing scheduler: rescheduling, waitlists, cancellation recovery, and deposit enforcement.
+
+### Explicitly do not start with
+
+- A generic Calendly alternative
+- A full calendar client
+- An open scheduling marketplace
+- Team scheduling for every industry
+- AI-generated scheduling as the only differentiation
+- A large integration catalog before payment evidence
+
+## 10. Risks and open questions
+
+- Which narrow occupation experiences the greatest measurable scheduling loss?
+- Will users replace an incumbent, or only request another feature from it?
+- Can the wedge work as an overlay instead of becoming a complete calendar system?
+- Is there a reachable community with affordable distribution?
+- Are deposits, routing, or intake genuinely unsolved rather than poorly configured?
+- What integration failures would create financial or reputational liability?
+- Will users pay enough to cover high-touch onboarding and support?
+
+## 11. Next 48 hours
+
+1. Interview 10 mobile-service operators from one occupation; collect their current workflow, last costly scheduling failure, current tool, monthly spend, and switching trigger.
+2. Create a no-code concierge demo for service-area rules, travel buffers, intake, and deposits; ask five interviewees to schedule one real appointment through it.
+3. Request a concrete commitment: charge two businesses a small setup fee or refundable deposit; stop or change the wedge if nobody pays.
+
+## 12. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Avoid |
+| Evidence classes | assumption |
+| Supported claims | Only a provisional structural assessment: horizontal scheduling appears highly competitive, a narrow MVP appears technically feasible, and validation can be run quickly. |
+| Still unproven | Actual pain frequency, target ICP, current competitor pricing, switching behavior, willingness to pay, acquisition channel, retention, integration feasibility, and support load. |
+| Contradictions / exclusions | Scheduling has evident utility, but that does not establish demand for another generic tool. Generic booking links, broad team scheduling, marketplaces, and AI-only differentiation are excluded. |
+| Source anchors | No external anchors: every web channel was blocked on 2026-08-01. Competitor names and category structure are unverified assumptions. |
+| Next validation | Founder runs 10 interviews and five real concierge trials; pass with two payments/deposits, fail with zero payments or no repeated costly workflow. |
+
+## 13. Source appendix
+
+### Top 5 supporting evidence links
+
+**0/5 available.** External research was unavailable, so supplying links would fabricate evidence.
+
+Manual searches to run:
+
+1. Reddit: `"Calendly alternative" mobile service scheduling`
+2. X: `"I hate Calendly" OR "scheduling is a nightmare"`
+3. Hacker News Algolia: `scheduling tool`, `Calendly alternative`
+4. Product Hunt: recent scheduling and appointment products
+5. G2/Capterra: lowest-rated reviews for Calendly, Acuity, and vertical booking tools
+
+### Top 5 disconfirming evidence links
+
+**0/5 available.** These should be collected from:
+
+1. One- and two-star reviews describing why users cancel scheduling products
+2. Posts saying Google Calendar or Microsoft Bookings is sufficient
+3. Failed scheduling-startup retrospectives
+4. Complaints about price and unwillingness to upgrade
+5. Vertical-business discussions recommending established operations suites
+
+Until that scan and the payment test are complete, the defensible decision is: **do not build a generic scheduling tool; test one narrow operational wedge for 48 hours.**

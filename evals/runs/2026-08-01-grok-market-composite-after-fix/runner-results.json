@@ -1,0 +1,36 @@
+[
+  {
+    "id": "market-evidence-packet",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 76.899,
+    "promptPath": "prompts/market-evidence-packet.txt",
+    "responsePath": "responses/market-evidence-packet.txt",
+    "logPath": "logs/market-evidence-packet.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "grade": null,
+    "rawResultPath": "logs/market-evidence-packet.json",
+    "invocationPath": "logs/market-evidence-packet.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 3,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.0524556,
+    "tokenUsage": {
+      "input_tokens": 8940,
+      "cache_read_input_tokens": 11392,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 5193,
+      "reasoning_tokens": 806,
+      "total_tokens": 25525
+    },
+    "parseError": null
+  }
+]

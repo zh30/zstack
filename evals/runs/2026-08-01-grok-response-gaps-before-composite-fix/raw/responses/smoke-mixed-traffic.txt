@@ -1,0 +1,146 @@
+I'll follow only the named landing-smoke skill and read its instructions first.Checking the metrics guide for source-specific conversion thresholds.# Smoke read: mixed friends + ads (do **not** treat 6% as a build green light)
+
+## Short answer
+
+**No — a pooled 6% visitor→email rate from 20 friend visits + 180 broad-ad visits is not enough to greenlight building the full product.**
+
+That 6% is a **blended vanity rate**. The skill’s non-negotiable is: **do not pool warm traffic with cold ads into one headline CVR** and then decide. Friends inflate conversion; broad ads are a different experiment. Without **source-split confirmed emails**, engagement (replies / “I’d pay”), and a pre-registered success bar, 6% is **directionally interesting aggregate noise**, not a ship-MVP signal.
+
+---
+
+## What you actually measured
+
+| Class | Visits | Emails (as given) | Implied CVR |
+|--------|--------|-------------------|-------------|
+| Friends (warm) | 20 | **unknown** | cannot compute |
+| Broad ads (cold) | 180 | **unknown** | cannot compute |
+| **Pooled** | **200** | **12** | **6%** |
+
+**Evidence limits (this run):** no web/analytics export, no form-provider subscriber list, no UTM→email join, no open/reply/prepay data. Only the numbers you stated. Anything source-specific below is **logic / threshold guidance**, not reconstructed attribution.
+
+Assumptions (labeled):
+
+- “12 emails” = **confirmed** provider acceptances (not form attempts).
+- Friends ≈ warm / high-intent network; ads ≈ **cold broad** (not ICP-narrow retargeting).
+- CTA is email/waitlist-style (not pre-order).
+
+---
+
+## Why 6% is the wrong decision number
+
+1. **Warm vs cold are different hypotheses**  
+   - Warm / DM-like: mid–high single digits to **10%+** possible.  
+   - Cold broad ads: often **~1–5%** visitor→email; cost per email matters more than rate.  
+   A small warm cohort can dominate a blended rate. Example (illustrative only): if friends converted at 40% (8/20) and ads at ~2.2% (4/180), the story is “network likes you; cold market is weak” — not “6% means build.”
+
+2. **Attribution integrity**  
+   Pageviews by source + **one undifferentiated email total** cannot produce source-specific CVR. You must preserve UTM / traffic class on **confirmed** subscribers (or separate forms/tags). Without that, only the **defensible aggregate** is 12/200 = 6% — and that aggregate is **not** a go/kill for full build.
+
+3. **Rate alone is weak on the demand ladder**  
+   View → CTA click → email → qualifying answer → reply → book → pay.  
+   Silent list signups (especially from broad ads / curiosity) sit low. **20 thoughtful “I’d pay for X” replies beat 200 quiet emails.** You reported **zero** of the higher rungs.
+
+4. **Sample humility**  
+   200 total visits is near the “200+ for kill decisions” ballpark for *offer reshape*, but **only 20 warm** is tiny; **180 cold** is a start for cold CVR **if** emails are attributed. Minimum conversion **count** and **quality** still missing for “build the full product.”
+
+---
+
+## Decision matrix applied to *your* result
+
+| Pattern | Your status | Next step |
+|--------|-------------|-----------|
+| Strong **source-specific** CVR + engaged replies | **Not shown** (no split, no replies) | Do **not** proceed to full product |
+| Traffic OK, CVR weak | Possible on **ads** — unproven | Fix attribution; rewrite offer; retest cold only |
+| CVR OK, no engagement | **Possible** if most of 12 are silent | **Interview waitlist before building** |
+| Paid intent | **Not reported** | No paid-MVP prioritization yet |
+| Nothing after honest push | Not this case — you got 12 emails | Park-or-kill is **not** forced |
+
+**Pre-registered style bars (directional, from skill metrics):**
+
+- After **200+** ICP-ish visits and sustained **&lt;1–2%** email CVR across **2 copy variants** → reshape offer (not “problem dead forever”).  
+- Your **pooled** 6% is **above** a crude kill floor — so this is **not** an automatic kill.  
+- It is also **not** automatic **full build**: cold quality, engagement, and ICP fit are still open.
+
+**Verdict for “build the full product?”**  
+→ **No / not yet.**  
+→ **Continue learning:** split sources, talk to the 12, optionally thin MVP only if interviews + cold CVR hold — not a large codebase on blended 6%.
+
+---
+
+## What “enough to build” would look like (indie smoke)
+
+Treat **full product** as expensive. Prefer:
+
+1. **Source-specific** cold CVR in a pre-set band for *your* CTA friction (for broad ads email, often watching **~1–5%** + **acceptable $ per email**).  
+2. **Warm** not used as the headline success metric (use as qualitative + early list only).  
+3. **Engagement:** non-trivial reply / use-case / “I’d pay” rate on a short follow-up to the 12.  
+4. Optional **price signal** (founding price / payment link) before architecture.  
+5. Only then: thin MVP / tighten via PRD — **not** feature sprawl.
+
+---
+
+## Immediate protocol (next 7 days) — measurement fix, not build
+
+**Hypothesis (refined):**  
+If the offer is real for a **narrow ICP**, then **cold ICP-ish** traffic will convert at a pre-set rate **and** a meaningful share of emails will reply with a concrete job-to-be-done; **friend traffic alone must not decide**.
+
+**Primary metric:** confirmed email ÷ unique visitors **by traffic class** (friends vs ads).  
+**Secondary:** welcome open (diagnostic only), **reply rate**, “how did you hear,” any pay intent.
+
+**Do this before more spend or code:**
+
+1. Export provider list; if no source field → **cannot claim 6% per channel** — fix capture (hidden UTM / separate forms).  
+2. Email all 12: 3 short Mom-Test-ish questions (past workaround, last time pain hit, what they’d pay / switch from).  
+3. Pause or retarget **broad** ads until creative + landing speak to **one ICP** (broad ads often buy unfocused clicks).  
+4. Re-run a **timeboxed** cold-only push after copy fix; keep friends out of the success denominator.  
+5. Kill / pivot only after **minimum cold sample + conversion count** and **two honest offer variants** if cold CVR stays &lt;~1–2% *and* interviews are empty — not on blended 6%.
+
+**What not to build yet:** full app, multi-feature roadmap, auth/billing/infra “while the list grows.”  
+**OK later if interviews warm:** single thin slice that ships the promised outcome to founding users.
+
+---
+
+## Smoke protocol snapshot (retrofit)
+
+| Item | Setting |
+|------|---------|
+| Hypothesis | Cold ICP visitors leave email / intent if promise is sharp; warm is bias |
+| Primary | Visitor → **confirmed** email **by source** |
+| Success (example) | Cold CVR in your pre-set band + ≥ several quality replies or pay signals |
+| Kill / reshape | 200+ **qualified cold** visits, 2 variants, sustained &lt;1–2% email **or** emails with zero usable intent after follow-up |
+| Timebox | 7–14 days of **instrumented** cold traffic + outreach to existing 12 |
+| Full product | **Blocked** until source CVR + engagement clear |
+
+---
+
+## Evidence handoff
+
+| Field | Content |
+|-------|---------|
+| **Current decision** | **Do not build the full product** on pooled 6%. Continue smoke: attribute sources, interview the 12, retest **cold** offer; treat blended rate as non-decisive. |
+| **Evidence classes** | `observed experiment`; `assumption` |
+| **Supported claims** | ~200 visits reported (20 friends + 180 ads); 12 emails total; pooled visitor→email ≈ **6%** if all are confirmed; sample is mixed warm+cold; higher demand ladder (replies, pay) **not reported**. |
+| **Still unproven** | Source-specific CVR; ICP fit of ad traffic; email quality; reply/pay intent; whether offer/hero works on cold traffic; unit economics of ads; product willingness beyond email. |
+| **Contradictions / exclusions** | Pooled 6% **must not** be read as “warm-tier success” or as “cold ads are fine.” Friends and broad ads excluded from a single success headline. No proof that conversion is “enough”; no proof demand is dead (6% &gt; crude &lt;1–2% kill floor **only as aggregate**). |
+| **Source anchors** | User report: 20 friend visits, 180 broad-ad visits, 12 emails; skill rules: no pooling warm+cold; cold ads often ~1–5%; ladder prefers replies/pay; attribution requires UTM on confirmed subs. |
+| **Next validation** | (1) Join UTMs to confirmed emails or separate forms; (2) message all 12 for use-case + willingness; (3) narrow ICP creative + landing A/B on cold only; (4) pre-register cold success/kill numbers; (5) only if cold CVR + engagement clear → thin MVP / PRD, not full product. |
+
+---
+
+### Top 3 actions today
+
+1. **Stop using 6% as the build metric** — split friend vs ad numerators/denominators.  
+2. **Write the 12** with a short intent interview.  
+3. **Fix attribution** before buying more broad traffic.
+
+### What **not** to build yet
+
+Full product surface, backend sprawl, or “features to convert better” without a sharper offer test on **cold** traffic.
+
+### Skill loop
+
+If ICP and problem language are still fuzzy after interviews → `z-customer-discovery` / upstream `z-market-validate`. After a **positive** instrumented smoke → `z-write-prd` for a **thin** MVP only.
+
+---
+
+**Bottom line:** 12 emails from mixed traffic is a **reason to keep learning**, not a **mandate to build everything**. Pooled 6% is **not** a full-product green light; source-split cold performance + real replies (or pay) are.

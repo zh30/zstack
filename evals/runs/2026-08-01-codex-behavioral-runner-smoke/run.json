@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "turns": 1,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "skillSource": "exact retained source snapshot"
+  },
+  "runs": [
+    {
+      "id": "runner-smoke-market-tools-blocked",
+      "case": "market-tools-blocked",
+      "phase": "runner-smoke",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 117.404,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/market-tools-blocked.txt",
+        "responses/market-tools-blocked.txt",
+        "skill-snapshots/z-market-validate/SKILL.md",
+        "skill-snapshots/z-market-validate/references/quality-bar.md",
+        "skill-snapshots/z-market-validate/references/report-template.md",
+        "skill-snapshots/z-market-validate/references/sources.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "1/1 runner logs contained the state-database fallback.",
+    "1/1 runner logs contained the Cloudflare MCP OAuth invalid_grant.",
+    "1/1 runner logs contained the installed-skill context-budget warning."
+  ],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private logs corroborated controls and bytes, then were excluded."
+}

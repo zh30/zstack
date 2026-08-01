@@ -1,0 +1,49 @@
+[
+  {
+    "id": "smoke-complete-pack",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 210.802,
+    "timedOut": false,
+    "promptPath": "prompts/smoke-complete-pack.txt",
+    "responsePath": "responses/smoke-complete-pack.txt",
+    "logPath": "logs/smoke-complete-pack.log",
+    "executionMode": "artifact",
+    "artifactPaths": [
+      "artifacts/smoke-complete-pack/landing/index.html",
+      "artifacts/smoke-complete-pack/smoke-pack.md"
+    ],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "artifacts/smoke-complete-pack/smoke-pack.md"
+      ],
+      "errors": []
+    },
+    "grade": null,
+    "rawResultPath": "logs/smoke-complete-pack.json",
+    "invocationPath": "logs/smoke-complete-pack.invocation.json",
+    "isError": false,
+    "errorType": null,
+    "actualModels": [
+      "grok-4.5-build"
+    ],
+    "numTurns": 5,
+    "stopReason": "end_turn",
+    "totalCostUsd": 0.1931528,
+    "tokenUsage": {
+      "input_tokens": 50536,
+      "cache_read_input_tokens": 22016,
+      "cache_creation_input_tokens": 0,
+      "output_tokens": 14246,
+      "reasoning_tokens": 933,
+      "total_tokens": 86798
+    },
+    "parseError": null
+  }
+]

@@ -1,0 +1,8 @@
+date,source,medium,campaign,content,variant,traffic_class,qualified_unique_visitors,cta_clicks,waitlist_attempts,buttondown_accepted_unique,buttondown_double_opt_in,qualified_replies,explicit_9usd_yes,spend_usd,invalid_or_duplicate,attribution_complete,notes
+2026-08-03,warm_dm,outreach,client_restore_smoke_202608,personal_a,a,warm_outreach,,,,,,,,0,,,
+2026-08-04,reddit_organic,community,client_restore_smoke_202608,post_a,a,cold_community,,,,,,,,0,,,
+2026-08-05,x,social,client_restore_smoke_202608,problem_post_a,a,cold_social,,,,,,,,0,,,
+2026-08-06,support_community,community,client_restore_smoke_202608,permission_post_a,a,cold_community,,,,,,,,0,,,
+2026-08-07,reddit_ads,cpc,client_restore_smoke_202608,client_tabs_a,a,cold_paid,,,,,,,,,,,
+2026-08-07,reddit_ads,cpc,client_restore_smoke_202608,rebuild_context_b,b,cold_paid,,,,,,,,,,,
+2026-08-08,x,social,client_restore_smoke_202608,workflow_post_b,b,cold_social,,,,,,,,0,,,

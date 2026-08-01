@@ -1,0 +1,2 @@
+selection: none
+reason: 该请求是修复代码测试，不符合任何候选 skill 的适用范围。

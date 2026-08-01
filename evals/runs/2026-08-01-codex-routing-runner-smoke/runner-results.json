@@ -1,0 +1,15 @@
+[
+  {
+    "id": "zh-boundary-public-research",
+    "expected": "z-market-validate",
+    "selected": "z-market-validate",
+    "pass": true,
+    "formatValid": true,
+    "formatError": null,
+    "exitStatus": 0,
+    "elapsedSeconds": 17.025,
+    "promptPath": "prompts/zh-boundary-public-research.txt",
+    "responsePath": "responses/zh-boundary-public-research.txt",
+    "logPath": "logs/zh-boundary-public-research.log"
+  }
+]

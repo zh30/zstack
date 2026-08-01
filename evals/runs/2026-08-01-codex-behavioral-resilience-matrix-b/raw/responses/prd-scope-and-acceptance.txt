@@ -1,0 +1,389 @@
+# PRD: Solo Scheduling App
+
+| Field | Value |
+|---|---|
+| **Status** | Draft — scope decision required |
+| **Owner** | Founder |
+| **Last updated** | 2026-08-01 |
+| **Version** | 0.1 |
+| **Primary persona** | Independent consultant or coach selling scheduled one-to-one sessions |
+| **Primary platform** | Responsive web application |
+| **Evidence base** | User-provided feature notes only |
+
+> **Scope decision:** The requested calendar sync, public booking, payments, round-robin, CRM, analytics, and native mobile apps are all represented below. They are not all classified as P0. Making every feature P0 would turn the MVP into a multi-product platform that is not plausibly bounded for one developer.
+>
+> **Recommended MVP boundary:** Calendar sync, public booking, and payment collection form the P0 transaction loop. CRM and analytics follow as P1. Team round-robin and native apps remain P2 until single-user demand and retention are demonstrated.
+>
+> **Evidence limit:** Web research, browser testing, customer evidence, and technical spikes were unavailable for this run. All product-market, provider, performance, and conversion targets are therefore labeled assumptions rather than presented as validated findings.
+
+## 1. Overview
+
+### 1.1 One-liner
+
+A web scheduling product for independent consultants and coaches that lets clients find an available time, book, and pay without back-and-forth messages.
+
+### 1.2 Problem statement
+
+**Assumption:** Independent service professionals currently coordinate appointments through email, messaging, calendar invitations, payment links, and manual reminders.
+
+This creates several problems:
+
+- The professional repeatedly communicates available times.
+- A client can select a slot that has since become unavailable.
+- Booking and payment happen in separate workflows.
+- Time-zone mistakes lead to missed appointments.
+- The professional must manually connect customer, booking, and payment records.
+
+The smallest useful product outcome is not a complete scheduling platform. It is one reliable path from calendar availability to a confirmed, paid appointment.
+
+### 1.3 Goals
+
+#### Product goals
+
+1. Let the professional publish bookable availability from an existing calendar.
+2. Let a client book and pay from one public flow.
+3. Prevent overlapping confirmed bookings.
+4. Give both parties an unambiguous confirmation in their respective time zones.
+
+#### Business goals
+
+1. Validate that at least 10 target professionals complete setup and publish a booking page.
+2. Validate that at least five receive a real booking within 30 days of publishing.
+3. Validate willingness to pay through either a paid pilot or actual subscription conversion.
+4. Learn whether CRM, analytics, team routing, or mobile access materially affects adoption or retention.
+
+### 1.4 Non-goals for v1
+
+- Supporting multiple team members or round-robin routing.
+- Shipping native iOS or Android applications.
+- Replacing a general-purpose CRM.
+- Providing advanced revenue attribution or custom analytics reports.
+- Supporting every calendar provider.
+- Supporting classes, group events, resource booking, or recurring appointments.
+- Building custom payment processing, invoicing, tax calculation, or accounting.
+- Serving regulated medical, legal, or other workflows requiring specialized compliance.
+- Providing a marketplace where clients discover service providers.
+
+### 1.5 Success metrics
+
+Targets below are hypotheses, not evidence-backed forecasts.
+
+| Metric | Definition | Initial signal | Timeframe |
+|---|---|---:|---|
+| Setup activation | User connects a calendar, creates an event type, and publishes a page | ≥60% of approved pilot users | Within 24 hours of signup |
+| First-booking rate | Published users receiving at least one completed booking | ≥50% | Within 30 days |
+| Booking completion | Visitors who select a slot and reach confirmed status | ≥40% | First 100 qualified booking attempts |
+| Conflict rate | Confirmed bookings that overlap another busy or confirmed event | <1% | First 100 confirmed bookings |
+| Payment success | Required-payment bookings successfully paid and confirmed | ≥90% excluding customer-declined cards | First 50 payment attempts |
+| Four-week retention proxy | Users whose page receives a booking in two separate weeks | ≥30% | Four weeks after activation |
+
+## 2. Users and context
+
+### 2.1 Primary persona
+
+| Attribute | Detail |
+|---|---|
+| **Label** | Independent paid-session professional |
+| **Who they are** | A solo consultant, coach, tutor, or similar professional selling one-to-one appointments |
+| **Working context** | Manages their own calendar, customers, scheduling, and payments |
+| **Primary job** | “Let a client choose and pay for an available session without requiring me to coordinate it manually.” |
+| **Current workaround** | Email or messaging, calendar invitations, and a separate payment link |
+| **Trigger** | Scheduling administration is consuming time or causing missed revenue |
+| **Anti-persona** | Multi-location businesses, large sales teams, medical practices, and event organizers |
+
+### 2.2 Secondary user
+
+The booking client is a participant rather than a second product persona. They need to understand the service, see correct availability, pay when required, and receive confirmation without creating an account.
+
+### 2.3 Use contexts
+
+- The professional primarily configures services and availability on desktop.
+- Clients may book from either desktop or mobile web.
+- Clients may be in a different time zone from the professional.
+- **Assumption:** The initial market accepts Google Calendar and Stripe as the first supported integrations.
+- Internet access is required; offline booking is not part of the MVP.
+
+## 3. Solution
+
+### 3.1 Value proposition
+
+For independent professionals who lose time coordinating paid appointments, the product is a scheduling and checkout tool that turns calendar availability into confirmed, paid bookings. Unlike assembling calendar invitations, forms, and payment links manually, it maintains one authoritative booking state across the scheduling and payment flow.
+
+### 3.2 Product principles
+
+1. **One complete transaction before platform breadth.**
+2. **The connected calendar is authoritative for availability.**
+3. **No client account is required to book.**
+4. **Payment state and booking state must never be ambiguous.**
+5. **Responsive web comes before native applications.**
+6. **Manual recovery must exist when an integration fails.**
+
+### 3.3 Scope summary
+
+| Priority | Capability | Scope decision |
+|---|---|---|
+| **P0** | Calendar sync | One calendar provider, read busy periods and write confirmed events |
+| **P0** | Public booking page | One-to-one event types, availability, time zones, confirmation |
+| **P0** | Payments | Hosted card checkout for event types requiring prepayment |
+| **P1** | Lightweight CRM | Customer directory derived from bookings, history, and private notes |
+| **P1** | Basic analytics | Booking and revenue funnel using first-party events |
+| **P2** | Team round-robin | Multi-member availability, assignment, roles, and routing |
+| **P2** | Native mobile apps | iOS and Android after mobile jobs and retention are validated |
+
+## 4. P0 user journeys
+
+### Journey A — Publish availability
+
+1. The professional creates an account.
+2. They connect the supported calendar provider.
+3. They create an event type with a title, duration, price, location, and booking rules.
+4. They define weekly availability and minimum notice.
+5. They preview the public page.
+6. They publish and receive a shareable URL.
+
+**Success state:** The URL exposes only slots allowed by working hours, booking rules, and calendar availability.
+
+**Failure and recovery:** If calendar authorization fails or expires, publishing is blocked and the user receives reconnection instructions. Existing confirmed bookings remain visible.
+
+### Journey B — Book and pay
+
+1. A client opens the public booking page.
+2. The page displays the event details and detects or asks for the client’s time zone.
+3. The client chooses an available slot.
+4. The system temporarily holds the slot and rechecks availability.
+5. The client enters contact details and completes hosted payment.
+6. The system confirms the booking, creates a calendar event, and sends confirmations.
+
+**Success state:** The client sees one confirmation containing the appointment time, time zone, payment status, and cancellation or rescheduling link.
+
+**Failure and recovery:** A failed or abandoned payment does not create a confirmed booking. The temporary hold expires, and the client can retry if the slot remains available.
+
+### Journey C — Cancel or reschedule
+
+1. The professional or client opens a secure management link.
+2. They choose cancellation or rescheduling.
+3. The system applies the event’s cutoff policy.
+4. The calendar event and booking state are updated.
+5. Both parties receive the revised details.
+
+**Success state:** The booking page reflects the released or newly occupied slot.
+
+**Failure and recovery:** If the calendar update fails, the booking is marked as requiring attention and the professional is shown a retry action. Refund handling follows an explicit policy rather than occurring implicitly.
+
+## 5. Requirements
+
+### 5.1 Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|---|---|---:|---|
+| **FR-001** | A professional can connect and disconnect one supported calendar account through OAuth. | P0 | Connecting succeeds without handling credentials in the app; the selected calendar is displayed after connection; disconnecting stops future reads and writes; revoked authorization produces a visible reconnect state. |
+| **FR-002** | The system derives bookable slots from weekly availability, calendar busy periods, duration, buffer, notice, and booking horizon. | P0 | Given a busy calendar interval, no overlapping slot is offered; changing a rule changes subsequently displayed slots; generated slots respect the professional’s configured time zone and daylight-saving transitions. |
+| **FR-003** | A professional can create, edit, preview, publish, and unpublish a one-to-one event type. | P0 | An event type requires a title, duration, location, time zone, and availability rules; price is required when payment is enabled; unpublished event types return a non-bookable page; edits affect future attempts but do not silently alter confirmed bookings. |
+| **FR-004** | Each published event type has a stable public booking URL. | P0 | A visitor can view the page without an account; the page shows event details, price, duration, location, and bookable slots; it is usable at a 320px viewport; unavailable dates cannot be selected. |
+| **FR-005** | A client can select a time zone and see all dates and times converted to it. | P0 | The selected time zone is displayed before confirmation; changing it converts displayed times without changing the underlying instant; confirmation shows both the client’s time zone and the professional’s time zone when they differ. |
+| **FR-006** | The system prevents two clients from confirming the same slot. | P0 | A slot is held for a documented checkout window; availability is checked again before confirmation; concurrent attempts produce no more than one confirmed booking; the unsuccessful client receives a slot-unavailable message and alternative times. |
+| **FR-007** | A client can provide the minimum information required for a booking. | P0 | Name and valid email are required; optional notes have a documented maximum length; invalid input is rejected inline; duplicate submission does not create duplicate bookings. |
+| **FR-008** | A professional can require payment through a hosted payment checkout. | P0 | The displayed amount and currency match the configured event type; raw card details do not pass through or persist in the application; a successful provider-confirmed payment creates one confirmed booking; declined or abandoned payment leaves no confirmed booking. |
+| **FR-009** | The system records payment and booking outcomes idempotently. | P0 | Replaying the same payment-provider event does not create another booking, calendar event, or payment record; mismatched amount or currency prevents automatic confirmation and creates a reviewable error. |
+| **FR-010** | A confirmed booking creates an event on the professional’s connected calendar. | P0 | The event contains the correct start, end, attendee, and location information; retrying after a timeout does not create a duplicate; the external event identifier is retained for later updates. |
+| **FR-011** | Both parties receive a confirmation after a booking reaches confirmed status. | P0 | Confirmation is sent only once per successful booking operation; it contains date, time zone, location, payment status, and management link; delivery failure is visible to the professional and can be retried. |
+| **FR-012** | A client or professional can cancel or reschedule subject to configured rules. | P0 | A signed, expiring or revocable link grants access without exposing other bookings; prohibited late changes explain the cutoff; an allowed change updates the booking and calendar; repeated requests remain idempotent. |
+| **FR-013** | The professional can view upcoming and past bookings. | P0 | The dashboard shows client, event type, time, status, and payment state; states distinguish pending, confirmed, cancelled, and attention-required; the user cannot access another account’s records. |
+| **FR-014** | The system maintains a customer directory derived from booking activity. | P1 | Confirmed bookings create or update a customer by normalized email; the professional can view booking history and add a private note; exporting and automation are excluded. |
+| **FR-015** | The professional can view basic scheduling and revenue analytics. | P1 | A selected date range shows booking attempts, confirmed bookings, cancellations, gross paid amount, and booking-page conversion; definitions are visible; totals reconcile with stored booking and payment records for a test dataset. |
+| **FR-016** | A team administrator can configure round-robin event types. | P2 | Members can connect separate calendars; only eligible and available members enter assignment; the documented assignment rule handles ties deterministically; retrying a booking does not reassign it unexpectedly. |
+| **FR-017** | Native mobile clients can support validated mobile jobs. | P2 | Scope requires a separate PRD after discovery; native apps must use the same authoritative booking API and pass platform-specific accessibility, notification, and synchronization tests before release. |
+
+### 5.2 Non-functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria or validation method |
+|---|---|---:|---|
+| **NFR-001** | Booking state must be transactionally consistent. | P0 | Automated concurrency testing submits at least 20 simultaneous confirmation attempts for one slot and produces exactly one confirmed booking. |
+| **NFR-002** | Public booking pages must remain responsive. | P0 | On a representative production-like connection, cached page content renders within 2 seconds at p75 and slot retrieval completes within 3 seconds at p75, measured over at least 100 pilot requests. |
+| **NFR-003** | Account and booking data must be isolated. | P0 | Authorization tests verify that one account cannot read or mutate another account’s event types, calendars, customers, or bookings; public management actions require an unguessable signed token. |
+| **NFR-004** | Sensitive payment and integration data must be minimized. | P0 | No raw card number or security code is accepted by an application endpoint or stored in application logs; OAuth and webhook secrets remain server-side; production logs are checked for these values before launch. |
+| **NFR-005** | The P0 booking flow must meet an accessibility baseline. | P0 | Keyboard-only testing can complete slot selection, form submission, checkout handoff, and confirmation; inputs have accessible labels; automated WCAG 2.1 AA checks produce no critical violations on P0 pages. |
+| **NFR-006** | Time handling must be deterministic. | P0 | All stored appointment instants use UTC plus named IANA time zones; automated tests cover daylight-saving gaps, overlaps, and bookings across two different time zones. |
+| **NFR-007** | Integration failures must be observable and recoverable. | P0 | Failed calendar writes, webhook processing, and confirmation delivery create structured error records without secrets; the professional can see attention-required bookings; retry tests do not duplicate side effects. |
+
+### 5.3 Analytics events
+
+Only events required to calculate MVP metrics are P0.
+
+| Event | Trigger | Required properties |
+|---|---|---|
+| `setup_completed` | Calendar connected and first event type published | account ID, provider, event type ID |
+| `booking_page_viewed` | Public page loaded | event type ID, referrer category |
+| `slot_selected` | Client chooses a slot | event type ID, client time zone |
+| `checkout_started` | Payment-required booking enters checkout | event type ID, amount, currency |
+| `booking_confirmed` | Booking reaches confirmed state | event type ID, paid flag, amount |
+| `booking_cancelled` | Confirmed booking is cancelled | initiator, lead time, refund status |
+| `booking_rescheduled` | Confirmed booking changes time | initiator, lead time |
+
+No full IP address, payment credentials, or free-form client notes should be included in analytics events.
+
+## 6. UX and content notes
+
+### 6.1 Information architecture
+
+**Professional application**
+
+- Sign in and onboarding
+- Calendar connection
+- Event types
+- Availability settings
+- Booking dashboard
+- Account and payment settings
+- Integration health
+
+**Public experience**
+
+- Event details and slot selection
+- Client details
+- Hosted checkout
+- Confirmation
+- Cancellation or rescheduling
+
+**Later**
+
+- Customer directory
+- Analytics
+- Team and member management
+- Native mobile surfaces
+
+### 6.2 Critical states
+
+- No calendar connected: explain why access is needed and offer connection.
+- No available slots: show the next available period or a contact fallback.
+- Authorization expired: stop presenting potentially stale availability until reconnection.
+- Slot lost during checkout: explain that it was taken and return the client to alternatives.
+- Payment succeeded but confirmation is delayed: show a processing state and avoid prompting for a second payment.
+- Calendar write failed: retain the confirmed booking, flag it for the professional, and retry safely.
+- No bookings yet: provide the public URL and a preview/share action.
+
+### 6.3 Product-critical copy
+
+Copy must describe actual state rather than promise a “seamless” or “delightful” experience.
+
+- **Primary professional CTA:** “Publish booking page”
+- **Client CTA:** “Choose a time”
+- **Paid confirmation CTA:** “Pay and confirm”
+- **Processing state:** “Payment received. We’re confirming your appointment—do not pay again.”
+- **Unavailable slot:** “That time was just taken. Choose another available time.”
+
+## 7. Data and integrations
+
+### 7.1 Core entities
+
+| Entity | Purpose | Conceptual fields |
+|---|---|---|
+| Account | Owns configuration and records | ID, email, time zone, status |
+| Calendar connection | External authorization and sync state | provider, external calendar ID, encrypted token reference, status |
+| Event type | Defines a bookable service | title, duration, price, currency, location, rules, published state |
+| Availability rule | Defines bookable working periods | weekday, start/end time, time zone, exceptions |
+| Slot hold | Protects checkout concurrency | event type, start/end, expiration, status |
+| Booking | Authoritative appointment state | event type, customer, start/end, status, external event ID |
+| Customer | Identifies the booking client | name, normalized email |
+| Payment | Records provider outcome | provider IDs, amount, currency, status |
+| Delivery attempt | Tracks confirmation delivery | booking, channel, status, attempt count |
+
+### 7.2 Integrations
+
+| System | Purpose | MVP? | Assumption |
+|---|---|---:|---|
+| Google Calendar | Read busy periods and write events | Yes | First and only P0 calendar provider |
+| Stripe Checkout | Hosted payment collection and webhooks | Yes | Supported in initial launch geography |
+| Transactional email provider | Confirmations and recovery messages | Yes | Provider selected during engineering spike |
+| Apple Calendar / Microsoft 365 | Additional calendar support | No | Consider after provider demand is measured |
+| App Store / Google Play | Native distribution | No | Requires separate mobile validation |
+
+### 7.3 Permissions and roles
+
+P0 is single-user and single-workspace. There is no invitation, member, administrator, or seat-billing model. These become necessary only if round-robin advances to implementation.
+
+## 8. Edge cases and risks
+
+| Item | Impact | Mitigation |
+|---|---|---|
+| OAuth token expires | Availability may become stale | Disable new booking until reconnection; show integration health |
+| Two clients select one slot | Double booking | Expiring hold, final availability check, unique slot constraint |
+| Payment succeeds while webhook is delayed | Client may retry and pay twice | Processing state, idempotency key, provider reconciliation |
+| Calendar write times out | Paid booking may lack an external event | Keep authoritative booking, retry safely, alert professional |
+| Daylight-saving transition | Wrong or nonexistent local time | Named time zones and transition tests |
+| Client disputes or requests refund | High support burden | Explicit cancellation/refund policy and hosted payment records |
+| Email is undeliverable | Client misses details | On-screen confirmation plus visible delivery status |
+| Calendar API quota or outage | Booking flow degrades | Cache safe configuration, fail closed on uncertain availability |
+| CRM expectations expand | Product becomes a general CRM | Limit P1 to customer identity, notes, and booking history |
+| Team permissions expand | Security and billing complexity | Require a separate team PRD before P2 implementation |
+| Two native apps fragment delivery | Slower web improvement and support load | Validate mobile jobs first; retain responsive web as default |
+
+### Open product questions
+
+1. Which initial professional niche has the strongest recurring paid-session use case?
+2. Is payment always required, optional by event type, or collected only for selected services?
+3. What cancellation and refund policy should be the default?
+4. Which launch geography and currency should be supported?
+5. Is Google Calendar sufficient for a paid pilot?
+6. Do customers require video-meeting link generation in P0?
+7. Which observed behavior would justify CRM, analytics, team routing, or native apps?
+
+## 9. Indie delivery milestones
+
+| Milestone | Outcome | Exit criteria |
+|---|---|---|
+| **M0 — Risk spikes** | Prove calendar, payment, and concurrency feasibility | OAuth connection works; free/busy queries handle time zones; a test payment webhook is idempotent; simultaneous slot claims yield one winner |
+| **M1 — Free vertical slice** | Complete a booking without payment | Professional publishes one event type; client books it; calendar event and confirmation are produced |
+| **M2 — Paid vertical slice** | Complete the core paid transaction | Hosted payment, slot hold, webhook confirmation, failure recovery, cancellation, and rescheduling pass P0 tests |
+| **M3 — Private pilot** | Test the P0 product with target professionals | At least 10 pilot users invited; metrics instrumented; no unresolved critical security or double-booking defect |
+| **M4 — Scope gate** | Decide the next capability from observed usage | Advance one of CRM, analytics, team routing, or mobile only when evidence identifies it as the leading adoption or retention constraint |
+
+**Suggested first build slice:** One professional, one event type, one calendar, one available slot, and one unpaid confirmed booking. This exposes the hardest scheduling-state decisions before payment and product breadth are added.
+
+### Build-versus-buy guidance
+
+- Buy OAuth and hosted payment capabilities rather than handling credentials or card data.
+- Buy transactional email delivery while retaining application-owned delivery state.
+- Build the availability and booking state model because it is the product’s core.
+- Do not build native clients, a data warehouse, or team permission infrastructure during the MVP.
+
+### Support burden
+
+The largest likely support categories are calendar reconnection, time-zone confusion, missing confirmations, payment/refund questions, and apparent double bookings. The dashboard must expose integration and booking state well enough that the founder can diagnose these without direct database intervention.
+
+## 10. Launch and feedback
+
+- **Beta audience:** 10–20 independent consultants or coaches who already accept paid appointments.
+- **Feedback channel:** In-product support email plus a short interview after first setup and first booking.
+- **Validation method:** Observe setup completion and actual booking behavior; do not treat stated enthusiasm as product validation.
+- **Kill or reshape triggers:**
+  - Fewer than 30% of qualified pilot users publish a page after assisted onboarding.
+  - No real bookings occur across 10 published pages within 30 days.
+  - Calendar or payment reliability cannot meet the P0 acceptance criteria at an affordable support level.
+  - Pilot users consistently require a different calendar provider or workflow before they can try the core transaction.
+- **Expansion gate:** A later feature advances only when multiple active users encounter the same documented blocker or when an observed experiment shows a material improvement in activation, booking completion, or retention.
+
+## 11. Evidence handoff
+
+| Field | Value |
+|---|---|
+| **Current decision** | Reshape the requested all-P0 scope into a responsive-web MVP: calendar sync, public booking, and payments are P0; CRM and analytics are P1; team round-robin and native apps are P2. |
+| **Evidence classes** | assumption |
+| **Supported claims** | The supplied notes establish that calendar sync, public booking, payments, team round-robin, CRM, analytics, and native mobile apps are desired candidates. They do not establish their priority or required depth. |
+| **Still unproven** | Primary niche, severity and frequency of the scheduling problem, willingness to pay, preferred calendar provider, required currencies and geography, conversion targets, retention, technical feasibility, and demand for every post-MVP capability. |
+| **Contradictions / exclusions** | The request to classify every feature as P0 conflicts with the requirement for an indie-sized MVP. “Seamless” and “delightful” were excluded as substitutes for acceptance criteria because they cannot determine whether a requirement passes. |
+| **Source anchors** | User-provided notes in this request; assumptions and scope decisions in this PRD; requirements FR-001 through FR-017 and NFR-001 through NFR-007. No interviews, experiments, market report, browser results, or external sources were available. |
+| **Next validation** | Founder recruits five target professionals for problem interviews and a clickable booking-flow test. Continue only if at least three report recent scheduling/payment friction and at least two agree to connect a real calendar for a pilot; otherwise narrow or change the persona and workflow. |
+
+## Decisions to confirm
+
+1. Approve the proposed priority split instead of treating all seven capabilities as P0.
+2. Confirm independent paid-session professionals as the initial persona and Google Calendar plus Stripe as the assumed first integrations.
+3. Decide the initial currency, geography, cancellation policy, and whether payment is configurable per event type.
+
+## Best next implementation slices
+
+1. Calendar connection, event configuration, and deterministic availability generation.
+2. Public slot selection with concurrency-safe booking and calendar creation.
+3. Hosted payment, idempotent confirmation, notification, cancellation, and recovery.
+
+Before implementation, the persona, pain, and willingness to connect a real calendar should go through customer discovery or a small observed prototype test. The current notes establish product intent, but not market validation.

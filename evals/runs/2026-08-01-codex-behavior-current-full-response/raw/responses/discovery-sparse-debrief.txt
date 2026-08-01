@@ -1,0 +1,64 @@
+Mode: debrief
+
+Based only on the pasted note; no transcript or behavioral evidence was available.
+
+### Debrief
+
+**Context**
+
+- Interviewee, date, ICP fit, and recruitment source: unknown.
+- The interview included a product demo.
+- Founder pitch leakage: **provisional 4/5**. Every recorded response concerns the pitched product rather than the interviewee’s prior behavior.
+
+**Past incidents (G1)**
+
+None recorded. “It would save time” does not establish:
+
+- When the problem last occurred
+- How frequently it occurs
+- How much time is currently lost
+- Whether the problem was serious enough to prompt action
+
+**Current solutions and costs (G2)**
+
+None recorded. There is no evidence of an existing tool, workaround, manual effort, employee time, or monetary spend.
+
+**Switching signals (G3)**
+
+None recorded. “Probably pay” is hypothetical future intent, not evidence of budget, purchasing authority, active search, or willingness to replace an existing workflow.
+
+**Verbatim evidence**
+
+No direct interviewee quotes were captured; the note contains founder paraphrases. Preserve the original wording only as a source anchor, not as validated demand evidence.
+
+### Mom Test audit
+
+| Issue | What happened | Better question |
+|---|---|---|
+| Compliment accepted as evidence | “My demo was great” | “Thanks. Before the demo, when did this problem last affect you?” |
+| Future-tense payment trap | “They would probably pay” | “What have you already spent trying to solve this?” |
+| Leading question | “Would the feature save them time?” | “Walk me through the last time you did this. How long did each step take?” |
+| Pitch dominated discovery | Responses concern the demo | “Ignore my product for a moment. How do you handle this today?” |
+| No switching investigation | No purchasing or replacement behavior | “Have you tried replacing your current process? What happened?” |
+
+### Gate deltas
+
+| Gate | Delta | Reason |
+|---|---|---|
+| G1 Pain | Neutral | No specific past incident, frequency, or measured consequence |
+| G2 Spend | Neutral | No current workaround or time/money cost documented |
+| G3 Switch | Neutral | Compliment and hypothetical willingness to pay do not demonstrate switching behavior |
+
+**Decision:** Reshape the next interview. Do not treat this conversation as validation or green-light a build.
+
+Re-interview this person without opening with the demo. Ask for their most recent incident, current workflow, actual time or money spent, previous attempts to solve it, and who controls the purchasing decision. Success means they can supply concrete examples and existing costs; failure means the discussion remains complimentary or hypothetical. Continue toward 5–15 interviews before making a market claim.
+
+| Field | Value |
+|---|---|
+| Current decision | Reshape the next interview; no build decision supported |
+| Evidence classes | assumption |
+| Supported claims | The interviewee reacted positively when shown the demo |
+| Still unproven | Real and frequent pain, actual time savings, existing spend, willingness and ability to pay, and credible switching behavior |
+| Contradictions / exclusions | “Great” is a compliment; “probably pay” is hypothetical; the time-saving question was leading |
+| Source anchors | Pasted note: “demo was great,” “would probably pay,” and “feature would save them time” |
+| Next validation | Re-interview without a demo; pass if they describe a recent incident, current workflow, quantified cost, and credible buying or switching process; fail if answers remain hypothetical |

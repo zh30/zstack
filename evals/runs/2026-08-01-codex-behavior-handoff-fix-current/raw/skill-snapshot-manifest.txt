@@ -1,0 +1,14 @@
+sha256                                                            bytes  path
+f6ffd7e174370db7c348889e2ae368fac3876c6c677bb525b51e358501b308d5    11029  skill-snapshots/z-customer-discovery/SKILL.md
+368f18183e88fac7627abd2b1b4801d7752494a50f423be21c83ad409d6e5782     1807  skill-snapshots/z-customer-discovery/references/interview-guide-template.md
+b448cba102afa162ffe8e36de06e826a4f2061118a6808363d5d1b98f1f7ad98     2042  skill-snapshots/z-customer-discovery/references/mom-test-rules.md
+a7882420fd001c27125dca718a790e0665a5b20534ab2007387ddb94643749a9     2079  skill-snapshots/z-customer-discovery/references/notes-template.md
+eec85bcab9adcc27a7e92aa8e000f0c7407afd5ecbc192aba8e6a552d5d5b6bb     1683  skill-snapshots/z-customer-discovery/references/quality-bar.md
+e925677eb4536b3e291960795447d46f4dbb727a7374353ef262ec46372d8d3e     1740  skill-snapshots/z-customer-discovery/references/recruit-scripts.md
+7d91441219c0916302e7079a62872c21a5e249412a2dbe8c05f3910984526fc7     3655  skill-snapshots/z-customer-discovery/references/synthesis-template.md
+c0841ed63673b4300a74afdfc54c5739a8c4799be094940ff0a38bafda9ff64b    15709  skill-snapshots/z-landing-smoke/SKILL.md
+a5df96510f1dcc48a0e81518f4a39a859b4a50407d1ecae92b53b341bdec1b72     1619  skill-snapshots/z-landing-smoke/references/copy-patterns.md
+0ad9e8ecbfe401e5c3d1588854c1e13186298dfea0dc40cb64ba8147d4ab6afc     2110  skill-snapshots/z-landing-smoke/references/distribution-playbook.md
+0d86d449cc9aba458fd29be9a7e8aa795d3ff0ead9048b60ebab0fe15a2e6fa8     3974  skill-snapshots/z-landing-smoke/references/metrics-guide.md
+458c27bf879fee99a4238955fc984014ad6282885c2f76262ed7378208f4783d     2944  skill-snapshots/z-landing-smoke/references/quality-bar.md
+05df182e1b1deca1f7f931d4f89cf8366e05ddee6f2589ea4969e464fffa7492     4374  skill-snapshots/z-landing-smoke/references/smoke-pack-template.md

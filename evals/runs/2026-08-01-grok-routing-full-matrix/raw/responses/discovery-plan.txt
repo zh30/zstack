@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: Recruiting eight real users and a non-leading past-behavior interview guide matches customer discovery interviews, not PRD, SEO, landing, or market scan.

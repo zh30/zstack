@@ -1,0 +1,487 @@
+# PRD: BriefPilot — AI Proposal Copilot for Freelancers
+
+| Field | Value |
+|---|---|
+| **Status** | Draft |
+| **Owner** | Founder |
+| **Last updated** | 2026-08-01 |
+| **Version** | 0.1 |
+| **Primary persona** | Solo knowledge-work freelancer who regularly sends custom proposals |
+| **Platform** | Responsive web application, desktop-first |
+| **Related docs** | None provided |
+
+## Revision history
+
+| Version | Date | Summary |
+|---|---|---|
+| 0.1 | 2026-08-01 | Initial PRD derived from the idea “an AI app for freelancers” |
+
+## 1. Overview
+
+### 1.1 Product decision
+
+The original idea is too broad to implement or validate as stated. “Freelancers” span many professions, and “AI app” does not identify a primary job.
+
+This PRD recommends a narrow starting wedge:
+
+> Build an AI-assisted proposal workspace that helps solo knowledge-work freelancers turn a client inquiry into an accurate, editable, send-ready proposal in under 15 minutes.
+
+**Assumption:** Proposal creation is frequent and painful enough to motivate adoption and payment. No customer interviews, behavioral data, competitor research, or payment experiments were provided.
+
+### 1.2 One-liner
+
+BriefPilot helps solo designers, developers, marketers, and consultants turn unstructured client inquiries into accurate, editable proposals by identifying missing information and drafting scope, deliverables, timelines, and client-facing copy.
+
+### 1.3 Problem statement
+
+**Current situation:** A freelancer receives an inquiry through email, chat, a call, or a referral. Before work can begin, they must interpret an incomplete brief, identify unanswered questions, define deliverables, estimate a timeline, and compose a professional proposal.
+
+**Pain:** This work is repetitive but cannot be entirely templated. Generic AI chat tools can draft prose, but users must repeatedly provide context, construct prompts, correct invented details, and manually assemble the result into a usable document.
+
+**Why now:** AI can reduce drafting effort, but a focused product can add value beyond generic chat by maintaining the freelancer’s service profile, applying a consistent proposal structure, surfacing missing information, and preventing unsupported claims from silently entering the document.
+
+**Cost of the status quo:** Unknown. Likely costs include delayed replies, inconsistent proposals, avoidable scope ambiguity, and unpaid administrative time.
+
+### 1.4 Goals
+
+#### Product goals
+
+1. Enable a freelancer to create a send-ready first proposal in 15 minutes or less.
+2. Convert an incomplete client inquiry into a structured brief with explicit unknowns.
+3. Produce a draft grounded in user-provided facts rather than invented project details.
+4. Keep the freelancer in control of scope, pricing, timeline, and final wording.
+5. Make repeat proposal creation faster by reusing the freelancer’s approved business profile.
+
+#### Business goals
+
+1. Determine whether the proposal workflow is painful and frequent enough to support a focused product.
+2. Recruit 15 qualified pilot users and observe real proposal creation.
+3. Secure at least five explicit paid commitments within the proposed price range before expanding scope.
+4. Identify one freelancer segment with materially stronger activation or repeat use.
+
+### 1.5 Non-goals for v1
+
+BriefPilot v1 will not:
+
+- Operate as a general-purpose AI assistant for every freelance task.
+- Discover leads, scrape job boards, or automate outbound sales.
+- Send proposals directly through email or messaging platforms.
+- Provide legally reviewed contracts, legal advice, or electronic signatures.
+- Manage projects, tasks, time tracking, invoicing, bookkeeping, or taxes.
+- Automatically calculate the “correct” price for a project.
+- Join client calls, record meetings, or transcribe audio.
+- Support agencies, teams, approval workflows, or multiple seats.
+- Offer client portals, proposal analytics, or automated follow-up sequences.
+- Train models on user content or reuse one user’s content for another user.
+- Provide native mobile applications.
+
+### 1.6 Success metrics
+
+Targets below are pilot decision thresholds, not evidence-backed forecasts.
+
+| Metric | Definition | Target or signal | Timeframe |
+|---|---|---|---|
+| Qualified activation | Qualified signup generates and exports a proposal | At least 60% | First 24 hours |
+| Time to first value | Time from starting a brief to first successful export | Median ≤15 minutes | Pilot |
+| Draft usefulness | User answers “Yes” to “Did this draft save meaningful time?” after export | At least 70% | Pilot |
+| Repeat use | Activated user creates a second proposal | At least 30% | Within 14 days |
+| Paid intent | Active pilot user makes a real paid commitment or starts a paid plan | At least 5 of 15 | End of pilot |
+| Grounding failure rate | Exported drafts later reported as containing invented factual details | Under 5% | Pilot |
+
+A “qualified signup” is a solo freelancer who has sent at least two custom client proposals in the preceding three months.
+
+---
+
+## 2. Users and context
+
+### 2.1 Primary persona
+
+| Attribute | Detail |
+|---|---|
+| **Label** | Independent knowledge-work freelancer |
+| **Who they are** | A solo designer, developer, marketer, writer, or consultant selling custom project work |
+| **Business maturity** | Already has a defined service and receives at least occasional qualified inquiries |
+| **Primary job-to-be-done** | When a potential client describes a project, turn that information into a clear proposal quickly enough to keep the opportunity moving |
+| **Current tools** | Email, chat, notes, Google Docs, Notion, proposal templates, and general-purpose AI chat |
+| **Trigger** | A new client inquiry requires a tailored scope, timeline, and price |
+| **Key concern** | Sending inaccurate, generic, or overcommitted work to a client |
+| **Anti-persona** | Marketplace beginners seeking their first client, hourly gig workers who never send proposals, agencies, and regulated professionals requiring specialized documents |
+
+**Assumption:** The first pilot may include several professions, but onboarding and recruitment should favor freelancers selling bounded projects worth enough to justify a formal proposal.
+
+### 2.2 Primary use context
+
+The main workflow takes place on desktop during focused business administration. The user may paste material received elsewhere, but v1 does not need inbox, chat, file-storage, or CRM integrations.
+
+A typical user has:
+
+- An incomplete client message or notes from a conversation.
+- Their own understanding of the service and constraints.
+- A preferred pricing method.
+- Pressure to respond quickly without making an unsafe commitment.
+
+---
+
+## 3. Solution
+
+### 3.1 Value proposition
+
+For solo knowledge-work freelancers who repeatedly turn incomplete client inquiries into custom proposals, BriefPilot is an AI proposal workspace that structures the brief, exposes missing information, and creates an editable first draft. Unlike a static template or generic AI chat, it retains approved business context and distinguishes known facts from assumptions before generating client-facing content.
+
+### 3.2 Product principles
+
+1. **Unknown stays unknown.** Missing client facts must be flagged, not fabricated.
+2. **The user owns commitments.** AI may suggest wording, but the user explicitly approves scope, price, and timeline.
+3. **One strong workflow first.** Brief-to-proposal is the only P0 job.
+4. **Useful before integrated.** Copy, paste, edit, and export are sufficient for MVP.
+5. **Reusable context, visible provenance.** Users can see and change the information shaping a draft.
+6. **Fast exit.** Users can export their work and delete their account without support intervention.
+
+### 3.3 Scope summary
+
+| In scope for MVP | Out of scope for v1 |
+|---|---|
+| Account access | Teams and roles |
+| Reusable freelancer profile | Client CRM |
+| Pasted client inquiry and notes | Email or calendar synchronization |
+| Structured brief extraction | Audio transcription |
+| Missing-information review | Automated client questioning |
+| Proposal generation | Contracts and signatures |
+| Manual editing and regeneration | Project management |
+| User-entered fixed or range pricing | AI-selected final price |
+| Autosave and proposal history | Complex version comparison |
+| PDF and plain-text export | Direct sending and engagement analytics |
+| Data export and account deletion | Native mobile apps |
+
+---
+
+## 4. P0 user journeys
+
+### Journey A — Set up reusable business context
+
+1. The user creates an account.
+2. The user enters their name or business name, service description, typical deliverables, preferred tone, and optional standard terms.
+3. The system shows a preview of the saved profile.
+4. The user edits or approves the profile.
+5. The profile becomes the default context for future drafts.
+
+**Success state:** The profile is saved and can be changed before or during proposal creation.
+
+**Failure and recovery:** If saving fails, entered content remains visible and the user can retry. The product must not silently discard profile content.
+
+### Journey B — Turn an inquiry into a structured brief
+
+1. The user starts a proposal and pastes a client inquiry or their own notes.
+2. The system extracts the client, objective, deliverables, constraints, timeline, budget, and other available facts.
+3. Every extracted field is shown for review.
+4. The system presents missing or ambiguous information as questions.
+5. The user answers, edits, marks an item “unknown,” or excludes it.
+6. The user confirms the brief before draft generation.
+
+**Success state:** A structured brief distinguishes confirmed information from unknown information.
+
+**Failure and recovery:** If extraction fails, the original input remains intact and the user can retry or fill the brief manually.
+
+### Journey C — Generate, edit, and export a proposal
+
+1. The user selects a pricing format: fixed amount, range, or “discuss after discovery.”
+2. The user enters the price and confirms scope and timing.
+3. The system generates a proposal using only approved profile and brief information.
+4. The user edits individual sections or requests a section-level rewrite.
+5. The system autosaves changes.
+6. The user previews and exports the proposal as PDF or plain text.
+
+**Success state:** The user obtains a client-ready document without being forced to leave the product or copy through a generic chat interface.
+
+**Failure and recovery:** If generation fails, the approved brief remains saved. If PDF generation fails, plain-text copy remains available and PDF export can be retried.
+
+---
+
+## 5. Requirements
+
+### 5.1 Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|---|---|---:|---|
+| **FR-001** | A user can create an account and return to saved work. | P0 | A new user can authenticate, sign out, sign back in, and see previously saved profile and proposals. Invalid or expired access attempts show a recoverable error. |
+| **FR-002** | A user can create and edit a reusable freelancer profile. | P0 | The user can save business name, service description, typical deliverables, tone, and optional standard terms. Saved changes appear in the next proposal context. Required fields are clearly identified. |
+| **FR-003** | A user can create a proposal from pasted text. | P0 | The product accepts at least 10,000 characters of plain text, preserves the original input, and creates a draft brief or a clear retryable error. |
+| **FR-004** | The system converts source text into a reviewable structured brief. | P0 | The brief displays extracted objective, deliverables, constraints, timeline, budget, client information, and notes when present. The user can edit every extracted value before generation. |
+| **FR-005** | The system identifies material missing or ambiguous information. | P0 | Before generation, unanswered items are displayed separately from confirmed facts. Each can be answered, marked unknown, or excluded. Generation does not require a user to invent an answer. |
+| **FR-006** | The user explicitly controls price, scope, and timeline commitments. | P0 | The system does not finalize these values without confirmation. The user can choose fixed price, range, or discovery-first language. The confirmation screen shows all three commitment areas. |
+| **FR-007** | The system generates a structured proposal grounded in approved input. | P0 | The generated draft includes summary, objectives, scope, deliverables, process, timeline, investment, assumptions, and next steps. Unknown facts are omitted or labeled for resolution; they are not presented as confirmed. |
+| **FR-008** | The user can manually edit all client-facing content. | P0 | Every generated section is editable. A user can save arbitrary edits, reload the page, and recover the latest saved version. |
+| **FR-009** | The user can regenerate an individual section without replacing unrelated edits. | P0 | Regenerating one section changes only that section. The previous section text remains recoverable until the regenerated version is accepted. |
+| **FR-010** | The user can preview and export a proposal. | P0 | The preview contains no editing controls or internal AI notes. PDF output and copied plain text preserve section order, user edits, price, and timeline. A failed PDF export does not block plain-text copying. |
+| **FR-011** | The user can view and reopen saved proposals. | P0 | The proposal list shows title, client label, last-updated time, and status. Opening an item restores its latest saved content. The user can rename or delete it. |
+| **FR-012** | The product can collect lightweight outcome feedback. | P0 | After first export, the user can answer whether the draft saved meaningful time and optionally add text. Dismissing feedback does not block export. |
+| **FR-013** | The user can export their stored content and delete their account. | P0 | An authenticated user can download a machine-readable copy of profile and proposal content. Account deletion requires confirmation and makes the account inaccessible immediately. |
+| **FR-014** | The user can create and save reusable proposal templates. | P1 | A user can save an existing proposal structure as a named template and select it for a later draft. |
+| **FR-015** | The user can create a client-facing share link. | P1 | The link shows only the exported proposal, can be revoked, and does not expose internal notes or other proposals. |
+| **FR-016** | The product can generate suggested clarification questions for the client. | P1 | Suggestions are editable and copyable; the product does not send them automatically. |
+| **FR-017** | The product can suggest pricing approaches. | P2 | Suggestions are clearly advisory and never replace the user-confirmed price. |
+| **FR-018** | The product can track whether a proposal was accepted. | P2 | The user can manually record won, lost, or no-response status without requiring a CRM. |
+
+### 5.2 Non-functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria or validation method |
+|---|---|---:|---|
+| **NFR-001** | Protect proposal and client information in transit and at rest. | P0 | Production traffic uses HTTPS; stored proposal content is encrypted through the selected managed storage provider; one user cannot retrieve another user’s records in automated authorization tests. |
+| **NFR-002** | Do not use customer content for model training through product configuration. | P0 | The selected model provider and API configuration permit submitted content to be excluded from training. This setting is documented and verified before pilot launch. |
+| **NFR-003** | Keep AI generation acceptably responsive. | P0 | Under pilot load, at least 90% of brief extractions and proposal generations complete within 30 seconds, measured from server receipt to completed response. Operations exceeding the limit show progress or a retryable timeout. |
+| **NFR-004** | Prevent silent data loss. | P0 | Automated tests verify that profile and proposal edits survive refresh after a successful save. Failed saves show an error and retain the unsaved text in the current session. |
+| **NFR-005** | Provide an accessible core workflow. | P0 | Account setup, brief review, editing, and export can be completed using a keyboard; inputs have programmatic labels; automated checks find no critical WCAG 2.1 AA violations on P0 screens. |
+| **NFR-006** | Bound AI operating cost. | P0 | Before paid pilot launch, test runs demonstrate a median model cost of no more than US$0.50 per completed proposal and record cost per generation. If exceeded, pilot usage limits must be configured. |
+| **NFR-007** | Support current desktop browsers and basic mobile recovery. | P1 | P0 flows pass manual smoke tests on the two latest stable versions of Chrome, Safari, Firefox, and Edge. On a 390-pixel viewport, users can at least review and copy an existing proposal without horizontal-page overflow. |
+
+### 5.3 Tracking events
+
+Collect product events without recording raw client inquiries, proposal text, or personal client information in analytics properties.
+
+| Event | Trigger | Allowed properties |
+|---|---|---|
+| `account_created` | Successful signup | acquisition source, timestamp |
+| `profile_completed` | First valid profile save | profession category |
+| `brief_created` | Successful extraction | input-length band, extraction duration |
+| `brief_confirmed` | User approves brief | count of unknown fields |
+| `proposal_generated` | Draft completes | duration, model-cost band |
+| `proposal_exported` | PDF or text export | export type, time from brief start |
+| `proposal_reopened` | Saved proposal is reopened | proposal age band |
+| `outcome_feedback_submitted` | Feedback is sent | structured answer only |
+| `account_deleted` | Deletion completes | account-age band |
+
+---
+
+## 6. UX and content notes
+
+### 6.1 Information architecture
+
+- Authentication
+- Onboarding and freelancer profile
+- Proposal list
+- New proposal: source input
+- Brief review and missing information
+- Commitment confirmation
+- Proposal editor
+- Export preview
+- Settings, data export, and account deletion
+
+### 6.2 Critical states
+
+- **No proposals:** Explain the brief-to-proposal workflow and offer “Create your first proposal.”
+- **Sparse inquiry:** Show what was understood and request only material missing information.
+- **No stated budget:** Offer fixed price, range, or discovery-first options; never invent a client budget.
+- **Generation timeout:** Preserve the brief and offer retry.
+- **Save failure:** Keep current text locally in the session and visibly mark it unsaved.
+- **Model refusal or malformed output:** Do not display raw provider output. Offer retry and manual drafting.
+- **Deleted proposal:** Require confirmation and clearly state whether recovery is available.
+- **Expired authentication:** Preserve local unsaved edits while the user re-authenticates when technically feasible.
+
+### 6.3 Product-critical copy
+
+- **Onboarding value proposition:** “Turn a client inquiry into a proposal without losing control of scope, price, or promises.”
+- **Primary CTA:** “Create proposal”
+- **Brief review heading:** “Confirm what we know”
+- **Unknown-information heading:** “Resolve before you promise”
+- **AI disclaimer near generation:** “BriefPilot drafts from the information you approve. Review every commitment before sending.”
+- **Empty state:** “Paste an inquiry, call notes, or a rough brief. You’ll review the facts before anything becomes client-facing.”
+
+---
+
+## 7. Data and integrations
+
+### 7.1 Core entities
+
+| Entity | Purpose | Key conceptual fields |
+|---|---|---|
+| **User** | Owns all product data | ID, authentication identity, created date, deletion state |
+| **Freelancer profile** | Reusable generation context | business name, service description, deliverables, tone, standard terms |
+| **Proposal** | Container for one opportunity | ID, owner, title, client label, status, source input, timestamps |
+| **Brief** | User-approved project facts | objective, scope, deliverables, constraints, timeline, budget, unknowns |
+| **Proposal content** | Editable client-facing document | ordered sections, current text, generation metadata |
+| **Section revision** | Supports safe regeneration | section ID, previous text, generated text, accepted state |
+| **Feedback** | Captures usefulness signals | structured response, optional comment, proposal ID |
+| **Usage record** | Controls cost and measures reliability | operation type, duration, token or cost estimate, success state |
+
+Raw proposal content should not be copied into general analytics or logs.
+
+### 7.2 Integrations
+
+| System | Purpose | MVP? | Notes |
+|---|---|---:|---|
+| Authentication provider | Secure account access | Yes | Prefer managed authentication |
+| Hosted LLM API | Brief extraction and drafting | Yes | Requires structured output and no-training configuration |
+| Managed database | Profiles and proposals | Yes | Enforce per-user authorization |
+| Object or document renderer | PDF generation | Yes | Buy or use a proven library |
+| Product analytics | Funnel and reliability measurement | Yes | No raw client or proposal content |
+| Payment provider | Paid pilot or subscription | No | A hosted payment link can validate payment before in-app billing |
+| Email provider | Magic links or system messages | Conditional | Only if required by authentication |
+
+### 7.3 Permissions
+
+MVP is single-user. Each record has one owner. No sharing, collaboration, workspace membership, or administrator access to customer content is required beyond narrowly controlled operational support.
+
+---
+
+## 8. Edge cases and risks
+
+| Item | Impact | Mitigation |
+|---|---|---|
+| AI invents requirements, credentials, or commitments | User may send an inaccurate proposal | Separate confirmed facts from unknowns; require commitment confirmation; test with adversarial sparse briefs |
+| Users expect pricing advice | Product may create financial or trust risk | User enters final price; keep pricing suggestions outside P0 |
+| Client messages contain sensitive data | Privacy breach would be severe | Minimize logs, enforce access control, publish retention behavior, support deletion |
+| Several professions require incompatible proposal structures | Generic output may satisfy no segment | Recruit a narrow pilot and measure results by profession |
+| Users paste malicious prompt-like client text | Output could ignore product rules | Treat pasted text as untrusted content; constrain model instructions and validate structured output |
+| Model or provider outage | Core workflow becomes unavailable | Preserve briefs, provide retry, and allow manual editing of existing drafts |
+| AI cost exceeds willingness to pay | Unsustainable unit economics | Measure cost per completed proposal and limit regeneration during pilot |
+| PDF rendering creates support burden | Broken layouts reduce trust | Use a single restrained template in MVP |
+| Users interpret content as legal advice | Liability and trust concern | Do not generate legal claims; label standard terms as user-provided; exclude contracts |
+| High-touch onboarding hides weak product demand | False-positive validation | Limit founder assistance and record whether activation required manual intervention |
+| Broad “freelancer” positioning attracts unqualified users | Low activation obscures the wedge | Recruit based on recent proposal behavior, not job title alone |
+
+### Open product questions
+
+1. Which initial profession has the highest proposal frequency and strongest willingness to pay?
+2. Is proposal creation frequent enough for a subscription, or is usage-based pricing more appropriate?
+3. Which output format is actually required: PDF, Google Docs, Word, or plain text?
+4. What information do users consider too sensitive to submit to an AI provider?
+5. Do users want a generated proposal or primarily a structured brief and clarification checklist?
+6. What proposal sections are common enough to standardize without making drafts generic?
+7. What price range should be tested: approximately US$15–25 per month, per-proposal credits, or another model?
+
+---
+
+## 9. Indie delivery milestones
+
+| Milestone | Outcome | Exit criteria |
+|---|---|---|
+| **M0 — Validation and AI spike** | Confirm the problem and technical grounding approach | Five target-user interviews; three anonymized real inquiries tested; generated drafts distinguish facts from unknowns; model cost measured |
+| **M1 — Local vertical slice** | Prove the full brief-to-export workflow | One user can paste an inquiry, review a brief, generate, edit, and export one PDF |
+| **M2 — Private MVP** | Deliver a self-service product to initial users | Authentication, saved profile, proposal history, section regeneration, analytics, deletion, and all P0 acceptance checks complete |
+| **M3 — Paid pilot** | Test repeat use and willingness to pay | 15 qualified users invited; success metrics measured; real payment mechanism offered |
+| **M4 — Scope decision** | Continue, narrow, reshape, or stop | Founder reviews activation, repeat use, grounding failures, support load, model cost, and paid commitments |
+
+### Suggested first build slice
+
+Build one hard-coded profession scenario with:
+
+1. Pasted inquiry.
+2. Structured brief extraction.
+3. Missing-information review.
+4. User-confirmed scope, price, and timeline.
+5. One editable proposal template.
+6. Plain-text export.
+
+Do not begin with billing, integrations, template libraries, or visual customization.
+
+### Build-versus-buy guidance
+
+- Buy managed authentication rather than implementing authentication primitives.
+- Use a hosted LLM with structured-output support.
+- Use a proven PDF renderer and one fixed template.
+- Use lightweight managed analytics with strict property allowlisting.
+- Use a hosted payment link during validation; integrate subscriptions only after paid intent appears.
+
+### Support burden to monitor
+
+The likely support drivers are misunderstood AI output, PDF formatting, deleted content, provider timeouts, and profession-specific proposal expectations. During pilot, tag every support request and record whether it required founder intervention to complete the core workflow.
+
+---
+
+## 10. Launch and feedback
+
+**Beta audience:** Fifteen solo knowledge-work freelancers who have sent at least two custom proposals in the past three months and have a real upcoming opportunity.
+
+**Recruitment constraint:** Do not count curious signups without recent proposal behavior as qualified pilot users.
+
+**Feedback collection:**
+
+- Observe at least five users creating a proposal from a real, anonymized inquiry.
+- Ask for usefulness feedback immediately after export.
+- Follow up after 7 and 14 days for repeat usage and proposal outcome.
+- Record manual founder assistance separately from self-service activation.
+- Offer a real payment choice rather than asking only hypothetical willingness-to-pay questions.
+
+**Continue signal:**
+
+- At least 60% qualified activation.
+- At least 30% repeat use within 14 days.
+- At least five paid commitments.
+- Grounding failure rate below 5%.
+- AI cost compatible with the tested price.
+
+**Reshape signal:**
+
+- Users value brief extraction and clarification but consistently replace the proposal draft.
+- One profession materially outperforms the others.
+- Users need the workflow occasionally but will pay per proposal rather than subscribe.
+
+**Kill or hold signal:**
+
+- Fewer than 30% of qualified pilot users export a proposal despite guided onboarding.
+- Fewer than two of 15 make a real paid commitment.
+- Users prefer generic AI chat even after experiencing retained context and grounding controls.
+- Safe grounding cannot be achieved at acceptable cost or complexity.
+
+---
+
+## 11. Evidence handoff
+
+| Field | Value |
+|---|---|
+| **Current decision** | Validate first, then build the bounded P0 proposal workflow if target users confirm the pain; do not build a general AI suite for freelancers. |
+| **Evidence classes** | assumption |
+| **Supported claims** | The only source-supported claim is that the desired concept concerns an AI app for freelancers. The proposed persona, problem, workflow, scope, requirements, targets, and price hypothesis are product-shaping assumptions necessary to make the idea testable. |
+| **Still unproven** | Problem frequency and severity; best freelancer segment; advantage over generic AI chat; proposal quality; repeat use; payment; pricing model; privacy expectations; model cost; grounding reliability; preferred export format. |
+| **Contradictions / exclusions** | No contradictory research was supplied. Excluded from v1: general assistant features, lead generation, project management, invoicing, contracts, e-signatures, direct sending, teams, and native mobile apps. |
+| **Source anchors** | User input: “an AI app for freelancers”; assumptions A-001–A-008; proposed build requirements FR-001–FR-018 and NFR-001–NFR-007. Requirements are build decisions, not market evidence. |
+| **Next validation** | Founder interviews five qualified freelancers and observes three real proposal workflows. Proceed to M1 only if at least three independently report this workflow as a recurring material pain and permit testing with an anonymized real inquiry; otherwise reshape the wedge. |
+
+---
+
+## 12. Appendix
+
+### 12.1 Source materials used
+
+- User-provided idea: “an AI app for freelancers.”
+- No interviews, analytics, market report, competitor research, prototype results, links, or payment evidence were provided.
+- Web and browser research were unavailable for this run. Therefore, no external demand, competitor, pricing, or market claims are included.
+
+### 12.2 Assumptions log
+
+| ID | Assumption | Impact if wrong |
+|---|---|---|
+| **A-001** | Proposal creation is a recurring material pain for solo knowledge-work freelancers. | The selected product wedge may have insufficient demand. |
+| **A-002** | Freelancers receive enough unstructured inquiries to benefit from brief extraction. | A template or form product may be more useful than AI extraction. |
+| **A-003** | Faster proposal creation produces meaningful user value. | Users may care more about lead quality, pricing, or follow-up. |
+| **A-004** | Grounded drafting is differentiated from generic AI chat. | Users may remain with existing tools. |
+| **A-005** | A desktop-first web product is sufficient for MVP. | Mobile or inbox integration may be essential. |
+| **A-006** | Users will paste some client information into a hosted AI system. | Privacy concerns could block adoption. |
+| **A-007** | A 15-minute send-ready outcome is achievable without sacrificing accuracy. | The primary promise and activation target must change. |
+| **A-008** | Some users will pay approximately US$15–25 monthly or an equivalent usage price. | The business model or target segment must change. |
+
+### 12.3 Glossary
+
+| Term | Definition |
+|---|---|
+| **Structured brief** | User-reviewable project information extracted from source material, separated into confirmed facts and unknowns |
+| **Grounded draft** | A draft limited to user-approved profile and project information |
+| **Commitment** | Client-facing scope, price, timeline, or other promise requiring explicit user confirmation |
+| **Qualified user** | A solo freelancer who sent at least two custom proposals in the preceding three months |
+| **Activation** | Generation and export of a first proposal |
+
+---
+
+## Decisions to confirm
+
+1. Confirm proposal creation as the initial wedge instead of a general freelancer assistant.
+2. Confirm solo knowledge-work freelancers with recent proposal activity as the primary persona.
+3. Confirm that contracts, invoicing, lead generation, direct sending, and project management remain outside v1.
+
+## Best next implementation slices
+
+1. Validate the workflow using five interviews and three anonymized real inquiries.
+2. Build brief extraction, unknown detection, and manual correction as a standalone spike.
+3. Connect the approved brief to one editable proposal template and plain-text export.
+
+This concept should return to market validation before substantial implementation. Every material product decision in this PRD is currently an assumption; no demand, usage, payment, retention, competitor, or technical experiment evidence was available.

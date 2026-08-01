@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "routing",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository with no zstack files",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSearch": false,
+    "apps": false,
+    "model": "gpt-5.6-sol",
+    "maxTurns": 1
+  },
+  "runs": [
+    {
+      "id": "current-source-market-vague",
+      "case": "market-vague",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.758,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/market-vague.txt",
+        "responses/market-vague.txt"
+      ]
+    },
+    {
+      "id": "current-source-market-public",
+      "case": "market-public",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.746,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/market-public.txt",
+        "responses/market-public.txt"
+      ]
+    },
+    {
+      "id": "current-source-discovery-plan",
+      "case": "discovery-plan",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.734,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/discovery-plan.txt",
+        "responses/discovery-plan.txt"
+      ]
+    },
+    {
+      "id": "current-source-discovery-debrief",
+      "case": "discovery-debrief",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 24.071,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/discovery-debrief.txt",
+        "responses/discovery-debrief.txt"
+      ]
+    },
+    {
+      "id": "current-source-landing-waitlist",
+      "case": "landing-waitlist",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 16.5,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/landing-waitlist.txt",
+        "responses/landing-waitlist.txt"
+      ]
+    },
+    {
+      "id": "current-source-landing-metrics",
+      "case": "landing-metrics",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 18.506,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/landing-metrics.txt",
+        "responses/landing-metrics.txt"
+      ]
+    },
+    {
+      "id": "current-source-prd-notes",
+      "case": "prd-notes",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 18.498,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/prd-notes.txt",
+        "responses/prd-notes.txt"
+      ]
+    },
+    {
+      "id": "current-source-prd-rewrite",
+      "case": "prd-rewrite",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 19.463,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/prd-rewrite.txt",
+        "responses/prd-rewrite.txt"
+      ]
+    },
+    {
+      "id": "current-source-seo-live-url",
+      "case": "seo-live-url",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 17.774,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/seo-live-url.txt",
+        "responses/seo-live-url.txt"
+      ]
+    },
+    {
+      "id": "current-source-seo-prd-map",
+      "case": "seo-prd-map",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 17.762,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/seo-prd-map.txt",
+        "responses/seo-prd-map.txt"
+      ]
+    },
+    {
+      "id": "current-source-none-code-fix",
+      "case": "none-code-fix",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 19.124,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/none-code-fix.txt",
+        "responses/none-code-fix.txt"
+      ]
+    },
+    {
+      "id": "current-source-none-architecture",
+      "case": "none-architecture",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 19.109,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/none-architecture.txt",
+        "responses/none-architecture.txt"
+      ]
+    },
+    {
+      "id": "current-source-boundary-real-interviews",
+      "case": "boundary-real-interviews",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 22.002,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/boundary-real-interviews.txt",
+        "responses/boundary-real-interviews.txt"
+      ]
+    },
+    {
+      "id": "current-source-boundary-public-research",
+      "case": "boundary-public-research",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.991,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/boundary-public-research.txt",
+        "responses/boundary-public-research.txt"
+      ]
+    },
+    {
+      "id": "current-source-boundary-waitlist-demand",
+      "case": "boundary-waitlist-demand",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.98,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/boundary-waitlist-demand.txt",
+        "responses/boundary-waitlist-demand.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-market-public",
+      "case": "zh-market-public",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.969,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-market-public.txt",
+        "responses/zh-market-public.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-discovery-plan",
+      "case": "zh-discovery-plan",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 17.993,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-discovery-plan.txt",
+        "responses/zh-discovery-plan.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-landing-waitlist",
+      "case": "zh-landing-waitlist",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 17.98,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-landing-waitlist.txt",
+        "responses/zh-landing-waitlist.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-prd-notes",
+      "case": "zh-prd-notes",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.36,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-prd-notes.txt",
+        "responses/zh-prd-notes.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-seo-live-url",
+      "case": "zh-seo-live-url",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 21.348,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-seo-live-url.txt",
+        "responses/zh-seo-live-url.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-none-code-fix",
+      "case": "zh-none-code-fix",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 18.9,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-none-code-fix.txt",
+        "responses/zh-none-code-fix.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-none-architecture",
+      "case": "zh-none-architecture",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 18.888,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-none-architecture.txt",
+        "responses/zh-none-architecture.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-boundary-real-interviews",
+      "case": "zh-boundary-real-interviews",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 22.079,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-real-interviews.txt",
+        "responses/zh-boundary-real-interviews.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-boundary-public-research",
+      "case": "zh-boundary-public-research",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 22.066,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-public-research.txt",
+        "responses/zh-boundary-public-research.txt"
+      ]
+    },
+    {
+      "id": "current-source-zh-boundary-waitlist-demand",
+      "case": "zh-boundary-waitlist-demand",
+      "phase": "current-source",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.794,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-waitlist-demand.txt",
+        "responses/zh-boundary-waitlist-demand.txt"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "25/25 runner logs contained the state-database fallback.",
+    "23/25 runner logs contained the Cloudflare MCP OAuth invalid_grant.",
+    "25/25 runner logs contained the installed-skill context-budget warning."
+  ],
+  "archiveNote": "Prompts and final responses are verbatim runner files. Private logs and structured host records corroborated execution controls and retained bytes, then were excluded because they contain ephemeral session identifiers and machine-local paths."
+}

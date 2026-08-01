@@ -1,0 +1,372 @@
+# PRD: Ownership-Aware Client Onboarding Runbook
+
+| Field | Value |
+|---|---|
+| Status | Draft for build decision |
+| Owner | Solo developer / founder |
+| Last updated | 2026-08-01 |
+| Version | 0.1 |
+| Primary persona | Operations lead or agency owner at a small agency |
+| Platform | Assumption: desktop-first responsive web application |
+| Delivery constraint | Six weeks, one developer |
+
+## 1. Overview
+
+### 1.1 One-liner
+
+A lightweight web runbook that helps small agencies execute repeatable client onboarding by assigning every step an explicit owner, due state, completion outcome, external record link, and durable missed-step history.
+
+### 1.2 Problem
+
+Small agencies onboard clients through recurring steps distributed across spreadsheets, checklists, email, bookkeeping systems, and file-storage tools. The operational problem is not primarily storing those records; it is knowing:
+
+- What must happen next.
+- Who owns each step.
+- Whether it is due or overdue.
+- Whether it completed normally or required an exception.
+- Which steps were missed, even if someone resolved them later.
+
+Discovery supports explicit ownership, reusable steps, external record links, and CSV as useful parts of this coordination layer. It also indicates that sensitive files and bookkeeping belong in separate systems.
+
+The MVP therefore coordinates onboarding work without becoming a client portal, document repository, accounting tool, or integration platform.
+
+### 1.3 Primary job-to-be-done
+
+When starting a new client engagement, an agency operator wants to launch a proven onboarding checklist, assign every step to a named owner, and monitor due, completed, excepted, and missed work so that onboarding does not depend on memory or fragmented status updates.
+
+### 1.4 Product and business goals
+
+Product goals:
+
+1. Let an operator define one reusable onboarding workflow.
+2. Let the operator launch and manage one active client run.
+3. Make ownership, due state, and exceptions visible without opening other systems.
+4. Preserve evidence of missed steps after they are resolved.
+5. Link out to records held in appropriate external systems.
+6. Export the run as CSV for reporting or independent retention.
+
+Business goals:
+
+1. Determine whether both pilot volunteers will use the product on real onboarding work.
+2. Observe whether at least one pilot repeats the workflow for another client.
+3. Test willingness to pay separately from signup interest.
+4. Decide after six weeks whether to continue, narrow, or stop.
+
+### 1.5 Evidence treatment
+
+The cold smoke test produced 27 signups from 300 visits, a 9% signup rate, and two pilot volunteers. This is an observed demand signal for further validation, not proof of product use, retention, or payment.
+
+Warm traffic produced 12 signups from 40 visits, a 30% signup rate. It must remain a separate cohort because prior familiarity or trust makes it non-comparable with cold acquisition. The two rates must never be combined into a headline conversion rate.
+
+No payment was requested. Therefore, `$29/month` remains a pricing hypothesis rather than validated willingness to pay.
+
+Discovery findings are treated as directional support for product boundaries and P0 capabilities. No interview count, transcripts, behavioral frequency, or participant segmentation was supplied. Consequently, the PRD does not claim that these requirements are representative of the wider small-agency market.
+
+Web access, browser use, applications, and subagents were unavailable for this run. No competitor, market-size, technical-feasibility, or external-source validation has been added.
+
+### 1.6 Assumptions requiring confirmation
+
+- Assumption: “One workflow, one live run” means each workspace can retain one reusable workflow and have at most one active run at a time. Completed or stopped runs remain viewable, and another run can then be launched.
+- Assumption: CSV means export, not import, because migration is explicitly excluded.
+- Assumption: owners are named responsibility labels, optionally with contact details; owners do not receive accounts or portal access.
+- Assumption: reminders are initiated manually by the operator. The product records the action and supplies copyable context but does not connect to email, Slack, or another messaging system.
+- Assumption: due dates are set per run rather than through a sophisticated workflow scheduling engine.
+- Assumption: the initial product is a single-operator, desktop-first web application.
+
+## 2. Users and context
+
+### 2.1 Primary persona
+
+| Attribute | Definition |
+|---|---|
+| User | Agency owner, operations lead, or account lead at a small agency |
+| Working context | Personally coordinates client onboarding across internal staff, the client, and external systems |
+| Primary need | Reliably execute the same onboarding process while knowing who owes what |
+| Current alternative | Spreadsheet, generic checklist, email follow-up, and links to separate file/accounting systems |
+| Adoption trigger | A new client is signed or an existing onboarding process repeatedly drops steps |
+| Anti-persona | Enterprise operations teams needing granular roles, compliance administration, integrations, or many concurrent workflows |
+
+The only authenticated MVP user is the agency operator. Staff, clients, accountants, and other named owners are responsibility subjects, not product users.
+
+### 2.2 Value proposition
+
+Unlike a generic checklist, the product makes the accountable owner, due condition, exception outcome, and prior missed status part of each onboarding step. Unlike a client portal or practice-management suite, it leaves files, bookkeeping, communication, and authoritative records in their existing systems.
+
+### 2.3 Product principles
+
+1. Ownership is explicit: every live step has exactly one named owner.
+2. History is not rewritten: resolving an overdue step does not erase that it was missed.
+3. Links, not copies: external records remain in their systems of record.
+4. Manual control before automation: reminders and exceptions remain operator-directed.
+5. One complete workflow before breadth: no multiple-workflow or concurrent-run management in MVP.
+
+## 3. Scope
+
+| P0—in the six-week MVP | Explicitly out of scope |
+|---|---|
+| One reusable workflow | Multiple workflows |
+| Ordered reusable steps | Multiple simultaneously active runs |
+| One active client onboarding run | Client or owner portals |
+| Named owner for every live step | File upload, preview, or sensitive-file storage |
+| Due dates and derived due states | Bookkeeping or accounting records |
+| Completion and exception outcomes | CSV import or historical migration |
+| Manual reminder action and log | Email, calendar, Slack, CRM, accounting, or storage connectors |
+| External HTTPS record links | AI generation or recommendations |
+| CSV export | Native mobile applications |
+| Durable missed-step history | Enterprise roles, approvals, SSO, or audit administration |
+| Archived completed/stopped runs | Compliance certification or regulated-workflow scope |
+
+Billing, subscription management, and a public self-service launch are not required for the pilot. The founder may test price through a direct paid-continuation request without building payments.
+
+## 4. P0 journeys and lifecycle states
+
+### 4.1 Create the reusable workflow
+
+1. The operator creates the workspace’s single workflow.
+2. The operator gives it a name and adds ordered steps.
+3. Each step receives a title and optional guidance.
+4. The operator reorders, edits, or removes steps.
+5. The system prevents launch until the workflow contains at least one valid step.
+
+Success state: a reusable workflow is ready to launch.
+
+Recovery: validation identifies missing titles or an empty workflow without discarding valid edits.
+
+### 4.2 Launch a client run
+
+1. The operator selects the workflow and starts a run.
+2. The operator supplies a client/run name.
+3. The system copies the current workflow steps into a run snapshot.
+4. The operator assigns one owner and an optional due date to every step.
+5. The system blocks launch while any step lacks an owner.
+6. The run becomes active and appears on the run board.
+
+Success state: one live run exists with stable step snapshots and explicit owners.
+
+Failure state: if another active run already exists, the product explains that it must be completed or stopped first.
+
+### 4.3 Execute and recover work
+
+1. The operator reviews steps grouped or filtered by status.
+2. The operator opens a step and follows its external record links.
+3. When necessary, the operator records a manual reminder.
+4. The operator marks the step completed or records an exception.
+5. If a due date passes first, the system records a missed-step event.
+6. Later completion or exception closes the step but retains its missed history.
+
+Success state: every step reaches completed or excepted, and the run can be closed.
+
+Recovery: accidental status changes can be corrected while retaining event history.
+
+### 4.4 Export and reuse
+
+1. The operator exports the current or archived run to CSV.
+2. The operator completes or stops the active run.
+3. The workflow remains reusable.
+4. The operator launches the next client run from the same workflow.
+
+Success state: the agency can repeat the process without recreating its steps.
+
+### 4.5 State definitions
+
+Run states:
+
+| State | Meaning | Allowed transition |
+|---|---|---|
+| Draft | Run details and assignments are being prepared | Active or deleted |
+| Active | Steps are being executed | Completed or stopped |
+| Completed | All steps are completed or excepted | Terminal, view/export only |
+| Stopped | Operator ended an unfinished run | Terminal, view/export only |
+
+Step outcome and due state are separate dimensions:
+
+- Outcome: `Open`, `Completed`, or `Excepted`.
+- Due state for open steps: `No due date`, `Upcoming`, `Due today`, or `Missed`.
+- Closed steps display `Completed` or `Excepted` while separately indicating whether they were previously missed.
+- A step becomes missed when its due date has passed in the workspace’s configured timezone while its outcome remains open.
+- Recording an exception requires a reason.
+- Completing or excepting a missed step does not delete its first-missed timestamp or history event.
+
+## 5. Functional requirements
+
+| ID | Requirement | Priority | Acceptance criteria |
+|---|---|---:|---|
+| FR-001 | The operator can create and maintain exactly one reusable workflow containing ordered steps. | P0 | A workflow requires a name and at least one titled step; steps can be added, edited, reordered, and removed; the interface prevents creation of a second workflow. |
+| FR-002 | The operator can launch a run from the workflow. | P0 | Launch creates a snapshot of every current workflow step; later workflow edits do not change an existing run; the system permits at most one `Active` run. |
+| FR-003 | Every run step has one explicit owner. | P0 | Owner is required before activation; owner name is visible in list and detail views; changing the owner records old owner, new owner, actor, and timestamp. |
+| FR-004 | The operator can assign and change an optional due date on each run step. | P0 | The system derives due state using the configured timezone; boundary tests verify upcoming, due-today, and missed states; due-date changes are added to history. |
+| FR-005 | The operator can complete a step. | P0 | Completing an open step records completion time and actor; the step leaves the open queue; reopening it adds a history event rather than deleting the completion event. |
+| FR-006 | The operator can close a step as an exception. | P0 | A non-blank reason is required; the recorded reason and timestamp remain visible; excepted steps count as closed but remain distinguishable from completed steps. |
+| FR-007 | The product preserves missed-step history. | P0 | When an open step passes its due date, a missed event with timestamp is recorded once; later completion, exception, reopening, or due-date change cannot remove that event; archived runs expose it. |
+| FR-008 | The operator can record a manual reminder for an open step. | P0 | The action shows owner, step, client, and due context for copying; confirming it records a reminder timestamp and optional note; it does not claim that a message was delivered. |
+| FR-009 | The operator can attach external record links to a run or run step. | P0 | Users can add, edit, open, and remove a label plus `https://` URL; invalid or non-HTTPS values are rejected; no linked content is copied or previewed. |
+| FR-010 | The operator can export a run to CSV. | P0 | Export includes run name/state and, per step, order, title, owner, due date/state, outcome, exception reason, completion time, first-missed time, missed flag, reminder count, and external-link URLs; a fixture with commas, quotes, and Unicode opens correctly in a standard spreadsheet. |
+| FR-011 | The operator can complete or stop a live run and retain it as read-only history. | P0 | Completion is allowed only when every step is completed or excepted; stopping requires confirmation; both release the active-run slot; archived data remains viewable and exportable. |
+| FR-012 | The operator can view and filter the active run. | P0 | The board displays step, owner, outcome, and due state; filters exist for open, due today, missed, completed, and excepted; clearing filters restores the full ordered list. |
+| FR-013 | The authenticated operator can access their workspace and its records. | P0 | An unauthenticated visitor cannot access workflow or run URLs; records from another test workspace cannot be retrieved by changing an identifier; logout invalidates the session. |
+| FR-014 | The operator can view a chronological activity history for each run step. | P0 | History includes activation, owner/due changes, reminder logs, missed event, completion, exception, and reopening with timestamps; events are oldest-to-newest or newest-to-oldest consistently. |
+
+## 6. Non-functional requirements and data boundaries
+
+| ID | Requirement | Priority | Acceptance criteria / validation |
+|---|---|---:|---|
+| NFR-001 | The MVP must not accept file content. | P0 | Route and UI review confirms there is no upload control, file-upload endpoint, binary-object field, or external-link content ingestion. |
+| NFR-002 | Bookkeeping data must remain outside the product. | P0 | Entity and form review confirms there are no invoices, payments, bank data, ledgers, or accounting-specific fields; only an external record link may point to such a system. |
+| NFR-003 | Workspace data must be access-isolated. | P0 | Automated authorization tests attempt cross-workspace reads and writes for workflow, run, step, link, and history identifiers and receive no protected data. |
+| NFR-004 | Core state changes must be durable. | P0 | Tests reload the application after launch, owner/due update, missed recording, reminder, completion, exception, and archive; the persisted state and corresponding history remain intact. |
+| NFR-005 | The active run must remain practical at small-agency scale. | P0 | With 100 steps and 500 history events, the run board reaches usable content within three seconds on a typical broadband connection in a production-like test. |
+| NFR-006 | Core operation must be keyboard- and screen-reader-usable. | P0 | Workflow editing, run launch, filtering, status changes, link entry, and CSV export work by keyboard; inputs have programmatic labels; automated checks show no critical accessibility violations on P0 screens. |
+| NFR-007 | Dates must be consistent and explainable. | P0 | The workspace stores one timezone; due-state tests cover midnight boundaries; displayed dates include an unambiguous date and use the same timezone throughout the run. |
+
+### 6.1 Core entities
+
+| Entity | Purpose | Conceptual fields |
+|---|---|---|
+| Workspace | Access and date boundary | ID, operator ID, timezone |
+| Workflow | Single reusable definition | ID, name, updated time |
+| Workflow step | Reusable ordered instruction | ID, workflow ID, position, title, guidance |
+| Run | Client-specific execution | ID, workflow snapshot reference, client/run name, state, started/closed times |
+| Run step | Stable execution snapshot | ID, run ID, position, title, guidance, owner, due date, outcome, closed time, first-missed time |
+| Exception | Explains non-standard closure | Run-step ID, reason, created time |
+| External link | Pointer to another system | Parent type/ID, label, HTTPS URL |
+| Reminder log | Records operator action | Run-step ID, time, optional note |
+| History event | Append-only operational history | Parent ID, event type, timestamp, actor, before/after summary |
+
+### 6.2 Sensitive-data boundary
+
+The product stores operational metadata: client/run name, step text, owner name, optional owner contact detail, dates, exception reasons, reminder notes, links, and state history.
+
+The product does not store:
+
+- Uploaded documents or file contents.
+- Credentials or secrets for linked services.
+- Accounting transactions or payment records.
+- Copies, previews, or indexed contents of external pages.
+- Compliance evidence packages.
+
+The UI should warn users not to put secrets, financial details, or sensitive document contents into free-text fields. This is a product boundary, not a claim of regulatory compliance.
+
+### 6.3 Integrations and permissions
+
+There are no P0 external integrations. Links open in a new browser context, and CSV is generated for download. Owner contact details do not cause outbound communication.
+
+MVP permission model: one authenticated operator per workspace. Named step owners have no login, permissions, notifications, or access.
+
+## 7. Information architecture and critical states
+
+Primary screens:
+
+1. Sign-in.
+2. Workflow editor.
+3. New-run setup and owner/due assignment.
+4. Active-run board.
+5. Run-step detail with links, reminder action, outcome controls, and history.
+6. Archived-run list and detail.
+7. Minimal workspace settings for timezone.
+8. CSV export action.
+
+Critical states:
+
+- No workflow: explain the reusable-runbook value and offer “Create workflow.”
+- Workflow has no valid steps: disable launch and identify missing data.
+- No active run: offer “Start client run” and show archived runs.
+- Active-run limit reached: direct the operator to the existing run.
+- Missing owners: identify every unassigned step before activation.
+- Missed step: show current lateness and durable “previously missed” status after closure.
+- Invalid link: preserve the entered label while explaining the HTTPS requirement.
+- CSV failure: retain the run and allow retry; never imply export succeeded before download generation completes.
+- Concurrent edit: Assumption for the single-user MVP—last submitted edit may win, but state-transition requests must be idempotent so duplicate clicks do not duplicate missed or completion events.
+
+## 8. Metrics, validation thresholds, and kill triggers
+
+Cohorts must be reported independently:
+
+- Cold smoke baseline: `27 / 300 = 9%`.
+- Warm smoke baseline: `12 / 40 = 30%`.
+- Pilot volunteers: `2`.
+- Payment baseline: none requested; no conversion value exists.
+
+Pilot metrics:
+
+| Metric | Definition | Six-week decision threshold |
+|---|---|---|
+| Pilot start | Volunteer enters a real workflow and launches a real client run | Both volunteers are invited; at least 1 launches without founder data entry |
+| Operational activation | Pilot launches a run with all steps owned and records at least one completion or exception | At least 1 of 2 pilots activates |
+| Run completion | A real run reaches completed state rather than being abandoned or stopped | At least 1 completed run |
+| Repeat-use proxy | The same pilot launches a second real run from the reusable workflow after closing the first | At least 1 pilot repeats |
+| Ownership utility | Pilot changes an owner, uses an owner filter, or records a reminder during real execution | At least 1 observed ownership-related action |
+| Price validation | After use, pilot accepts a concrete `$29/month` paid-continuation offer | Assumption: at least 1 of 2 accepts; verbal praise without commitment does not count |
+
+Continue if at least one pilot completes a real run, repeats the workflow, and accepts the concrete paid-continuation offer.
+
+Narrow or extend validation if real use occurs but repetition is blocked by naturally long onboarding cycles, provided the pilot supplies a dated next-client commitment. This exception must not be reported as observed retention.
+
+Stop or materially reshape if any of the following occurs:
+
+- Neither volunteer launches a real run despite onboarding assistance.
+- Both pilots revert to their prior system before completing one run.
+- Neither pilot repeats and neither identifies a scheduled real reuse opportunity.
+- Both decline `$29/month` after real use and no narrower paid problem emerges.
+- Pilot use consistently requires portals, stored files, bookkeeping, connectors, or multiple simultaneous runs; that would invalidate the chosen narrow wedge rather than automatically expand P0.
+
+Cold and warm signup rates are acquisition baselines only. They are not six-week product success metrics unless another controlled smoke test is run with the same audience and offer.
+
+## 9. Six-week solo delivery plan
+
+| Week | Outcome | Exit criteria |
+|---|---|---|
+| 1 | Product skeleton and data boundaries | Authentication/workspace skeleton works; one workflow can be saved; core entities and append-only history approach are tested; no file-storage path exists |
+| 2 | First vertical slice | Operator creates a workflow, launches one owned step in a run, sees its due state, completes it, and reloads to find state plus history intact |
+| 3 | Full run execution | Multi-step ordering, owner assignment, due-state calculation, completion, exception, reopening, filters, and run close/stop work |
+| 4 | Coordination and portability | External links, manual reminder log, missed-step recording, archived runs, and CSV export pass acceptance fixtures |
+| 5 | Hardening and pilot readiness | Access-isolation, timezone, accessibility, performance, error-state, and durability checks pass; pilot instrumentation and feedback channel are ready |
+| 6 | Two-pilot operation and decision | Volunteers are onboarded; observed funnel and friction are logged; real-use outcomes and `$29/month` responses are recorded; continue/narrow/stop decision is made |
+
+### 9.1 First vertical slice
+
+Build one end-to-end path before adding breadth:
+
+1. Authenticated operator creates the only workflow.
+2. The workflow contains one titled step.
+3. Operator launches a client run and assigns a named owner and due date.
+4. Active-run view displays the owner and computed due state.
+5. Operator marks the step completed.
+6. A history event records the completion.
+7. After reload, the run, step, completion, and history are unchanged.
+8. The run can be completed, releasing the active-run slot.
+
+This slice validates the core entity boundaries, workflow-to-run snapshot, ownership model, due-state logic, state transition, persistence, and history model. Links, reminders, exceptions, missed events, filters, and CSV should build on that same path.
+
+### 9.2 Build-versus-buy and support burden
+
+Use managed authentication and managed relational persistence if they reduce delivery risk, but do not add a connector framework. CSV generation and due-state calculation are small enough to own directly.
+
+Likely support burdens are timezone misunderstandings, malformed external links, accidental status changes, questions about why only one run is active, and users attempting to enter sensitive data. Address these with explicit UI copy and history rather than founder-operated data repair.
+
+### 9.3 Founder decisions to confirm before Week 1 ends
+
+1. Confirm that “one live run” means one active run at a time, with unlimited sequential archived runs.
+2. Confirm that CSV is export-only.
+3. Confirm that owners are non-user labels and manual reminders do not send messages.
+
+## 10. Open questions
+
+1. What exact agency size and service category produced the discovery evidence?
+2. How long does a typical onboarding run last, and can repetition be observed inside six weeks?
+3. Do due dates need date-only semantics, or is a due time necessary?
+4. Is an owner’s name sufficient, or is optional email/contact context required?
+5. Should workflow steps have default owner labels or default relative due offsets later? These are not P0.
+6. What operational data, if any, did pilot volunteers consider too sensitive to enter?
+7. Will the `$29/month` offer be per workspace, per operator, or subject to a run limit? Assumption for the pilot: one workspace at `$29/month`.
+
+## 11. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Build a six-week pilot MVP with one reusable workflow, at most one active run, explicit owners and due states, completion/exceptions, manual reminder logs, external links, CSV export, and durable missed-step history. |
+| Evidence classes | primary behavior; observed experiment; assumption |
+| Supported claims | Discovery direction supports explicit owners, reusable steps, external record links, and CSV; it separates sensitive file storage and bookkeeping from this product. The cold smoke test observed 27 signups from 300 visits and two pilot volunteers. Warm traffic separately observed 12 signups from 40 visits. |
+| Still unproven | Real workflow activation, completion, repeat use, missed-step value, broader market representativeness, technical usability, willingness to pay, and `$29/month` pricing. Workflow/run limits, export-only CSV, owner-as-label semantics, manual reminder behavior, and web platform are assumptions. |
+| Contradictions / exclusions | Warm and cold traffic must not be combined. Signup interest must not be described as payment or retention validation. Portals, file storage, bookkeeping, migration, connectors, AI, native mobile, enterprise roles, and compliance scope are excluded. |
+| Source anchors | User-supplied discovery summary; cold smoke result `27/300` with two pilot volunteers; warm smoke result `12/40`; statement that no payment was requested; user-supplied P0 and exclusion lists; FR-001–FR-014 and NFR-001–NFR-007 translate those inputs into testable build requirements. |
+| Next validation | Founder runs both volunteers through real onboarding during Week 6, keeps cohort and product-use evidence separate, then makes each a concrete `$29/month` paid-continuation offer. Continue only with observed completion plus repeat use and at least one accepted paid continuation; otherwise narrow, extend for a dated reuse opportunity, or stop under the stated triggers. |

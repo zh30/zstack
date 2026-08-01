@@ -1,0 +1,5 @@
+# Prompt
+
+## smoke-complete-pack
+
+> Create a complete 10-day smoke-test package for an unbuilt Chrome extension that restores client-specific tab workspaces for hands-on support agents at small US SaaS teams. Promise one-click context restore; use the single CTA “Join the early-access waitlist” and a truthful planned price from $9/month. Use English, a $150 ad cap, Cloudflare Pages, Buttondown, and Plausible. There are no testimonials, logos, user counts, or firm ship date. Include complete page/meta/OG copy, implementation and events, UTMs, traffic calendar, source-specific thresholds, and decision rules. Never pool warm outreach with cold traffic.

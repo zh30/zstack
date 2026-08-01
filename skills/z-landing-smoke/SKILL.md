@@ -1,21 +1,10 @@
 ---
 name: z-landing-smoke
 description: >-
-  Build a lowest-cost demand smoke test for independent developers: a concise
-  English landing page plus waitlist / email capture / pre-order CTA, a traffic
-  plan (Product Hunt, Reddit, X, small ads, niche communities), and success
-  metrics (conversion, opens, contact intent, prepaid). Use before writing lots
-  of product code to test if anyone cares. Triggers: smoke test, landing page,
-  waitlist, pre-order page, demand test, 落地页, 等待列表, or /z-landing-smoke.
-license: MIT
-metadata:
-  author: henry
-  tags:
-    - indie
-    - validation
-    - landing
-    - growth
-    - smoke-test
+  Use before building when an independent developer needs a landing-page,
+  waitlist, or pre-order demand smoke test. Produces concise copy, one CTA, a
+  low-cost traffic plan, and explicit conversion, contact-intent, continue, and
+  kill thresholds; includes 落地页 and 等待列表 requests.
 ---
 
 # Landing Smoke Test
@@ -36,13 +25,6 @@ This is the indie answer to “does anyone actually care?”
 - **Traffic without a clear offer is noise.**  
 - **Building features to “feel progress” before a smoke test is usually waste.**  
 - One **sharp ICP + one promise + one CTA** beats a kitchen-sink homepage.
-
-## When to use
-
-- After an idea, `z-market-validate`, or `z-write-prd` — before heavy build  
-- User wants a waitlist / coming-soon / pre-order page  
-- Need a 3–14 day experiment design with kill criteria  
-- Existing product but no proof of demand language online  
 
 ## When not to use
 
@@ -70,6 +52,30 @@ This is the indie answer to “does anyone actually care?”
 6. **Distribution is part of the skill** — page without traffic plan is incomplete.  
 7. **Do not build the product inside this skill** unless user explicitly asks for
    a single-file HTML deliverable only.
+8. **Evidence does not upgrade on handoff.** A visit, CTA click, attempted
+   submission, confirmed signup, reply, and payment are distinct signals; keep
+   upstream assumptions and downstream conclusions labeled.
+9. **The handoff is a fixed interface.** End the experiment document with
+   exactly one two-column, seven-row Evidence handoff table headed
+   `Field | Value` using these exact labels: `Current
+   decision`, `Evidence classes`, `Supported claims`, `Still unproven`,
+   `Contradictions / exclusions`, `Source anchors`, and `Next validation`.
+   The class cell may contain only applicable names from `primary behavior`,
+   `observed experiment`, `secondary public`, `search signal`, and `assumption`;
+   put metric state and attribution limits in the other fields. Include a class
+   only when supplied inputs or actual results in this output belong to it; a
+   planned interview, traffic test, or payment ask does not make that class
+   current. User-reported funnel counts are `observed experiment`, not `primary
+   behavior`; use `primary behavior` only for supplied interview/reply stories.
+   Never leave the class cell empty. Before a test or when inputs are unusable,
+   use `assumption` and keep result-dependent claims `TBD after test`.
+   Treat the seven labels as literal protocol tokens. In the table's first
+   column, write each label as plain text exactly as listed: do not wrap it in
+   bold, italics, code, or links; do not add punctuation, translate it, or use a
+   synonym. For example, write `| Current decision |`, never
+   `| **Current decision** |`.
+   Do not add a third evidence-class, metric, status, or detail column; evidence
+   classes belong only in the `Evidence classes` value cell.
 
 ---
 
@@ -109,12 +115,15 @@ Write a short **Smoke Protocol**:
 2. **Primary metric** — e.g. visitor → email rate; or visitor → paid hold.  
 3. **Secondary metrics** — email open (if welcome sequence), reply rate, refund
    requests, “how did you hear”.  
-4. **Sample plan** — target **N visitors** and **M conversions** before deciding
-   (see `references/metrics-guide.md`).  
-5. **Success bar** — e.g. ≥ 5–10% email CVR on cold-ish traffic, or ≥ 1–3 prepaid
-   on small targeted push (context-dependent; justify).  
-6. **Kill / pivot bar** — e.g. &lt; 1% CVR after 200+ qualified visits → rewrite
-   offer or stop.  
+4. **Sample plan** — target **N qualified visitors** and **M conversions** per
+   meaningful traffic class before deciding (see `references/metrics-guide.md`).
+   Do not pool warm DMs with cold ads into one headline rate.
+5. **Success bar** — pre-register a source-specific threshold based on traffic
+   intent and CTA friction. Treat reference ranges as directional, not universal.
+6. **Kill / pivot bar** — require a minimum sample and conversion count. For
+   example, after 200+ qualified visits across two controlled copy variants,
+   sustained &lt;1–2% email CVR is evidence to reshape the offer—not proof that
+   the entire problem is dead.
 7. **Timebox** — start/end dates; no infinite “soft launch”.  
 
 Indie default: **optimize for learning speed**, not brand perfection.
@@ -177,14 +186,96 @@ Deliver a **build path** tailored to user constraints. Prefer in order:
 Always specify:
 
 - Form fields (email required; name optional; UTM or “source” hidden field)  
-- Success state copy (“You’re on the list — check inbox”)  
-- Double opt-in vs single (default single for smoke speed; note spam tradeoff)  
+- Success state copy that matches what the integration can prove. Use
+  “You’re on the list — check inbox” only after a verified provider callback or
+  a provider-signed/server-validated success redirect. A client-readable query
+  parameter, URL hash, cookie, `localStorage`, or `sessionStorage` flag is not
+  verification, even when used as the configured redirect target. For a static
+  fire-and-forget cross-origin form, keep confirmed UX on the provider page and
+  use a neutral local acknowledgement such as “Submission sent — check your
+  inbox if the provider accepts it.”
+- Consent flow: choose single vs double opt-in from jurisdiction, provider
+  policy, deliverability, and list-quality needs—not speed alone
 - Privacy: where email is stored; no selling list  
 - Analytics: Plausible/Umami/GA4/page view + conversion event (pick one simple)  
 - UTM scheme: `utm_source`, `utm_medium`, `utm_campaign` per channel  
 
-If user is in a code repo and asks to implement, create **minimal files only**
-(e.g. `landing/index.html` or a single route) — **no product app scaffolding**.
+Make the conversion event match the metric definition. Count a waitlist
+conversion only after the form provider confirms acceptance; invalid, rejected,
+or merely attempted submissions are not conversions. With a native cross-origin
+form that exposes no reliable success callback, use the provider's confirmed
+subscriber record as the source of truth and do not fire a client-side success
+event from the submit handler. Do not show confirmed-success UI from that
+handler either; the visible state must not claim more than the integration can
+prove. Never upgrade local UI or analytics from an unsigned `?status=success`
+style parameter. See `references/metrics-guide.md`.
+
+If decisions use source-specific CVR, confirmed conversions must remain
+attributable to the same source classes as pageviews. Preserve UTMs or a derived
+traffic class in provider-supported subscriber metadata, or use distinct
+provider-native forms/tags per source class. Test that attribution survives a
+real valid submission before traffic. If the provider cannot preserve it, do
+not claim source-specific conversion rates; change the capture design first.
+Map only pre-registered, allow-listed source/campaign combinations into decision
+lanes. Store missing or unknown attribution as `unattributed` and exclude it
+from source-specific thresholds; never silently default it into a warm or cold
+lane.
+
+Keep integration logs privacy-safe. Do not log email addresses, free-text form
+answers, secrets, authorization headers, or raw provider response bodies. Log
+only a bounded error category, HTTP status, and a non-PII request identifier
+when one is needed for diagnosis.
+
+Treat the signup endpoint as an untrusted-input boundary. Accept the exact JSON
+media type (parameters such as charset are fine, lookalikes are not), enforce an
+actual request-body byte ceiling even when `Content-Length` is missing or false,
+and reject malformed JSON, `null`, arrays, and non-object roots with one bounded
+4xx error shape. Do not dereference parsed fields before that root-shape check.
+Bound the provider request with an explicit timeout and translate timeout,
+network, and provider failures into finite non-secret categories; no input shape
+or stalled upstream may fall through to an unhandled 500. Never return, log, or
+emit an exception's message, stack, cause, or raw object. Map parser, request
+stream, timeout, network, and provider branches to a hard-coded category
+allow-list; an exception raised below a trusted helper is still untrusted text.
+
+Treat analytics as another external log sink. Before loading pageview analytics
+or emitting a custom event, map query attribution through the registered exact
+allow-list and expose only bounded canonical properties such as decision lane,
+registered placement, and variant. Do not forward a raw query string, full URL,
+URL fragment/hash, arbitrary UTM/referrer value, email address, form answer, or
+provider content to analytics. Unknown or malformed attribution must become
+`unattributed`; strip the query and fragment from the analytics-visible URL and
+discard their raw values before analytics initializes. If in-page navigation
+needs a fragment, restore only an exact registered anchor after the pageview
+boundary and never include it in an analytics payload. The server must derive
+the provider lane independently from the same allow-list—a client-reported lane
+can diagnose the denominator but can never authorize a confirmed conversion.
+
+Fail closed before analytics verification too. When the named analytics
+provider's current script URL, event API, site/domain, or privacy behavior is
+unverified, retain explicit `VERIFY_*` placeholders and do not create, load, or
+request the external script. A fake/example domain is not a gate. Enable the
+network path only after every required value is verified and replaced; queued
+local no-op events may remain, but they must not leave the page.
+
+For a named provider, ground the endpoint, authentication scheme, accepted
+success status, and payload field semantics in current official documentation.
+Record the official URL and verification date in the implementation notes. Do
+not guess whether a provider field accepts names, IDs, slugs, or nested objects.
+If official docs are unavailable, keep the uncertain mapping behind an explicit
+`VERIFY_*` placeholder, label the integration unverified, and block traffic
+until a real provider-accepted record proves the mapping.
+
+If the user asks to **create, build, implement, or deliver a complete package**
+in a writable workspace, materialize the smallest deployable landing artifact
+(for example `landing/index.html`) in addition to the experiment document. Do
+not leave that artifact as an offered “next step.” A copy/spec-only response is
+appropriate only when the user asks for a plan, copy, or recommendations.
+
+Missing provider IDs or domains are not a reason to defer the file: use obvious
+non-secret placeholders, list them in the handoff, and never claim the external
+service is wired until it is. Create **minimal files only** — **no product app
+scaffolding**.
 
 ### Phase 5 — Traffic plan (required deliverable)
 
@@ -240,14 +331,22 @@ Define a **simple dashboard** (spreadsheet is fine):
 
 Use `references/smoke-pack-template.md`. Pass `references/quality-bar.md`.
 
+Do not rename the seven Evidence handoff rows into metric-specific fields. Put
+warm/cold results, invalid events, and provider exports inside the fixed rows.
+Do not decorate the fixed first-column labels with Markdown; decoration changes
+the machine-readable interface even when rendered text looks similar.
+
 **Deliverables (all of them):**
 
 1. Smoke protocol (hypothesis, metrics, kill criteria, timebox)  
 2. English landing copy + meta/OG + headline variants  
 3. Implementation pack (stack + form + events + UTMs)  
-4. Optional: single-file HTML (if useful / requested)  
+4. Single-file HTML when useful or requested; **required** for create/build/
+   implement/complete-package requests in a writable workspace
 5. Traffic calendar (day-by-day or channel checklist)  
 6. Decision rules  
+7. Evidence handoff; before results exist, mark result-dependent fields
+   `TBD after test` instead of filling them from the hypothesis
 
 **Delivery location:**
 

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ClientTab — Restore each client workspace in one click</title>
+  <meta name="description" content="A planned Chrome extension for hands-on support agents at small SaaS teams. Reopen each client's working tabs in one click. Planned pricing from $9/month.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://__REPLACE_WITH_DOMAIN__/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ClientTab">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="One-click client context restore for hands-on SaaS support">
+  <meta property="og:description" content="Stop rebuilding the same browser setup for every client. Join the early-access waitlist for ClientTab, a planned Chrome extension starting from $9/month.">
+  <meta property="og:url" content="https://__REPLACE_WITH_DOMAIN__/">
+  <meta property="og:image" content="https://__REPLACE_WITH_DOMAIN__/__REPLACE_WITH_OG_IMAGE__">
+  <meta property="og:image:alt" content="ClientTab concept preview showing four saved tabs for one client and a one-click restore control">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="One-click client context restore for hands-on SaaS support">
+  <meta name="twitter:description" content="A planned Chrome extension to restore client-specific tab workspaces in one click. Planned from $9/month.">
+  <meta name="theme-color" content="#102a43">
+  <style>
+    :root{--ink:#102a43;--muted:#52677a;--paper:#f7f5ef;--card:#fff;--accent:#ff6b35;--line:#d8e1e8;--ok:#176b45;--error:#a22b2b;--shadow:0 18px 60px rgba(16,42,67,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}.wrap{width:min(1100px,calc(100% - 36px));margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}.brand{font-weight:850;letter-spacing:-.03em;font-size:1.25rem;text-decoration:none}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:0;border-radius:12px;background:var(--accent);color:#271207;font-weight:800;text-decoration:none;cursor:pointer;box-shadow:0 7px 0 #cb471a;transition:transform .15s,box-shadow .15s}.button:hover{transform:translateY(-2px);box-shadow:0 9px 0 #cb471a}.button:focus-visible,input:focus-visible{outline:3px solid #2879c7;outline-offset:3px}.button:disabled{opacity:.65;cursor:wait}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:70px 0 92px}.eyebrow,.chip{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:.82rem;font-weight:750}.hero h1{font-size:clamp(2.8rem,7vw,5.5rem);line-height:.94;letter-spacing:-.065em;margin:22px 0}.lede{max-width:690px;color:var(--muted);font-size:1.18rem}.stage{font-size:.9rem;color:var(--muted);margin-top:18px}.mock{background:var(--ink);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);transform:rotate(1.5deg)}.mock small{color:#bad0df}.tabs{display:grid;gap:10px;margin-top:18px}.tab{background:#183d5c;border:1px solid #315875;border-radius:10px;padding:12px 14px}.mock .restore{width:100%;margin-top:18px;background:#fff4e8;color:#52220d;border:0;border-radius:10px;padding:13px;font-weight:800}.section{padding:84px 0}.section h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.03;letter-spacing:-.045em;max-width:760px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 30px rgba(16,42,67,.05)}.num{font-size:.8rem;font-weight:850;color:var(--accent)}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.plain{list-style:none;padding:0;margin:0}.plain li{padding:13px 0;border-bottom:1px solid var(--line)}.note{border-left:5px solid var(--accent);background:#fff3ea;padding:20px 22px;border-radius:0 14px 14px 0}.offer{background:var(--ink);color:#fff;border-radius:26px;padding:clamp(28px,6vw,60px);display:grid;grid-template-columns:1fr .9fr;gap:42px}.offer p{color:#c8d7e2}.form{display:grid;gap:12px;align-content:start}.form label{font-weight:750}.form input{width:100%;min-height:50px;border:1px solid #9bb0bf;border-radius:10px;padding:0 14px;font:inherit}.fine{font-size:.78rem;color:#b9cad6}.status{min-height:24px;font-size:.9rem}.status[data-kind="ok"]{color:#baf2d4}.status[data-kind="error"]{color:#ffc0c0}.hp{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}.faq{max-width:800px}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{font-weight:800;cursor:pointer}.footer{display:flex;justify-content:space-between;gap:20px;padding:38px 0;color:var(--muted);font-size:.86rem}@media(max-width:760px){.nav .button{display:none}.hero,.offer,.split{grid-template-columns:1fr}.hero{padding-top:38px}.grid3{grid-template-columns:1fr}.mock{transform:none}.section{padding:60px 0}.footer{display:block}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav"><a class="brand" href="#top">ClientTab</a><a class="button" href="#waitlist">Join the early-access waitlist</a></header>
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">For hands-on support agents at small SaaS teams</span>
+        <h1>Restore every client workspace in one click.</h1>
+        <p class="lede">Stop hunting through history and rebuilding the same browser setup. ClientTab is a planned Chrome extension that would reopen the right admin pages, tickets, docs, and dashboards for each client.</p>
+        <p><a class="button" href="#waitlist">Join the early-access waitlist</a></p>
+        <p class="stage"><span class="chip">Planned from $9/month</span> &nbsp; Concept-stage: not built yet, with no firm ship date.</p>
+      </div>
+      <div class="mock" aria-label="Concept illustration of a saved client workspace">
+        <strong>Acme Co. workspace</strong><br><small>Concept preview</small>
+        <div class="tabs"><div class="tab">Support ticket · renewal issue</div><div class="tab">Admin · account settings</div><div class="tab">CRM · Acme Co.</div><div class="tab">Docs · SSO setup</div></div>
+        <button class="restore" type="button" disabled>Restore 4 tabs in one click</button>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="problem"><div class="wrap"><h2 id="problem">Client context disappears every time your tabs do.</h2><div class="grid3">
+      <article class="card"><span class="num">01</span><h3>Rebuild from memory</h3><p>You search history, Slack, the help desk, and bookmarks before the real support work even starts.</p></article>
+      <article class="card"><span class="num">02</span><h3>Mix up client context</h3><p>Similar-looking admin pages make it easy to open the wrong account or lose the thread mid-escalation.</p></article>
+      <article class="card"><span class="num">03</span><h3>Repeat it tomorrow</h3><p>Generic tab managers save windows, not the client-specific working sets your support queue demands.</p></article>
+    </div></div></section>
+
+    <section class="section" aria-labelledby="how"><div class="wrap"><h2 id="how">A focused workflow, not another dashboard.</h2><div class="grid3">
+      <article class="card"><span class="num">STEP 1</span><h3>Save the client set</h3><p>Group the tabs you use for one client into a named workspace.</p></article>
+      <article class="card"><span class="num">STEP 2</span><h3>Close with confidence</h3><p>Clear browser clutter without relying on memory or a permanent tab pile.</p></article>
+      <article class="card"><span class="num">STEP 3</span><h3>Restore in one click</h3><p>Reopen that client's working context when the next ticket or escalation arrives.</p></article>
+    </div></div></section>
+
+    <section class="section"><div class="wrap split">
+      <article class="card"><h2>Built for</h2><ul class="plain"><li>Support agents who directly work across client systems</li><li>Small US SaaS teams with many recurring client contexts</li><li>People who rebuild the same tab sets several times a week</li></ul></article>
+      <article class="card"><h2>Not for</h2><ul class="plain"><li>Teams looking for a help desk, CRM, or ticketing replacement</li><li>Anyone who only needs a generic bookmark folder</li><li>Organizations requiring a finished, audited product today</li></ul></article>
+    </div></section>
+
+    <section class="section"><div class="wrap"><div class="note"><strong>An honest founder note:</strong> ClientTab is a concept being tested before it is built. There are no customer claims, launch date, or finished extension yet. Early-access interest will decide whether a focused first version is worth building.</div></div></section>
+
+    <section class="section" id="waitlist"><div class="wrap offer">
+      <div><span class="eyebrow">Early access</span><h2>Spend less time reconstructing. Spend more time resolving.</h2><p>Join to hear whether the extension moves forward and to help shape the smallest useful version. Planned pricing starts from $9/month; joining is free and is not a purchase.</p></div>
+      <form class="form" id="waitlist-form" novalidate>
+        <label for="email">Work email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com">
+        <div class="hp" aria-hidden="true"><label for="company-website">Company website</label><input id="company-website" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
+        <button class="button" type="submit">Join the early-access waitlist</button>
+        <div class="status" id="form-status" role="status" aria-live="polite"></div>
+        <p class="fine">One short update and an optional research question. Unsubscribe anytime. Your email is stored in Buttondown and will not be sold.</p>
+      </form>
+    </div></section>
+
+    <section class="section"><div class="wrap faq"><h2>Questions, answered plainly.</h2>
+      <details><summary>Is ClientTab available now?</summary><p>No. This page tests whether the problem and proposed one-click restore are worth building. There is no firm ship date.</p></details>
+      <details><summary>What would it cost?</summary><p>Planned pricing starts from $9/month. Final tiers and terms are not set, and joining the waitlist does not lock you into a purchase.</p></details>
+      <details><summary>What would the extension access?</summary><p>The intended workflow requires browser-tab permissions to save and reopen chosen URLs. Exact permissions, storage, and security design are still unproven and would be documented before release.</p></details>
+      <details><summary>Will it replace our help desk or CRM?</summary><p>No. It is intended to restore the browser context around those tools, not replace them.</p></details>
+      <details><summary>What happens after I join?</summary><p>If Buttondown accepts your email, you will see a confirmed message and receive a short welcome email. You may reply with the client setup you rebuild most often.</p></details>
+      <details><summary>How is my email used?</summary><p>Only for this product validation and early-access updates. It is stored in Buttondown, never sold, and you can unsubscribe at any time.</p></details>
+    </div></section>
+
+    <section class="section"><div class="wrap" style="text-align:center"><h2 style="margin-inline:auto">Your next client should be one click away.</h2><a class="button" href="#waitlist">Join the early-access waitlist</a></div></section>
+  </main>
+  <footer class="wrap footer"><span>© 2026 ClientTab · Concept-stage smoke test</span><span>Privacy: email stored in Buttondown, never sold · Contact: __REPLACE_WITH_CONTACT_EMAIL__</span></footer>
+
+  <script>
+    (() => {
+      const CONFIG = {
+        plausibleDomain: "__REPLACE_WITH_DOMAIN__",
+        plausibleScriptSrc: "__VERIFY_PLAUSIBLE_SCRIPT_SRC__"
+      };
+      window.plausible = window.plausible || function(){(window.plausible.q = window.plausible.q || []).push(arguments)};
+      if (!CONFIG.plausibleScriptSrc.startsWith("__")) {
+        const script = document.createElement("script");
+        script.defer = true;
+        script.dataset.domain = CONFIG.plausibleDomain;
+        script.src = CONFIG.plausibleScriptSrc;
+        document.head.appendChild(script);
+      }
+
+      const params = new URLSearchParams(location.search);
+      const attribution = {
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_content: params.get("utm_content") || ""
+      };
+      const track = (name, props = {}) => window.plausible(name, { props });
+      track("view_landing", attribution);
+      document.querySelectorAll('a[href="#waitlist"]').forEach((link) => link.addEventListener("click", () => track("click_cta", attribution)));
+
+      const form = document.querySelector("#waitlist-form");
+      const status = document.querySelector("#form-status");
+      const button = form.querySelector("button");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        status.textContent = "";
+        status.dataset.kind = "";
+        if (!form.reportValidity()) return;
+        button.disabled = true;
+        track("attempt_waitlist", attribution);
+        try {
+          const response = await fetch("/api/waitlist", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              email: form.email.value,
+              company_website: form.company_website.value,
+              ...attribution
+            })
+          });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.category || "not_confirmed");
+          status.textContent = "You're on the list — check your inbox.";
+          status.dataset.kind = "ok";
+          track("submit_waitlist", { lane: result.lane });
+          form.email.value = "";
+        } catch (error) {
+          status.textContent = error.message === "integration_unverified" ? "The waitlist is not connected yet. Please check back shortly." : "We couldn't confirm your signup. Please try again later.";
+          status.dataset.kind = "error";
+          track("waitlist_error", { category: String(error.message).slice(0, 40) });
+        } finally {
+          button.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

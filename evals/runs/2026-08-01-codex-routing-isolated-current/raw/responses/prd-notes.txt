@@ -1,0 +1,2 @@
+selection: z-write-prd
+reason: The request is to transform research notes and a feature list into a decision-ready MVP PRD with scope, non-goals, acceptance criteria, risks, and milestones.

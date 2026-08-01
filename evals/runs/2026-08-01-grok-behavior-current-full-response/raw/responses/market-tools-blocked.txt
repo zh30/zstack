@@ -1,0 +1,261 @@
+Reading the skill's reference templates and source guidance next.# Market validation: AI invoice assistant
+
+## Contents
+
+1. Executive verdict  
+2. Idea framing  
+3. Evidence map  
+4. Competition and substitutes  
+5. Scores  
+6. Commercial value  
+7. Independent-developer fit  
+8. Short-term return  
+9. Entry directions  
+10. Risks and open questions  
+11. Next 48 hours  
+12. Evidence handoff  
+13. Source appendix  
+
+- **Date:** 2026-08-01  
+- **Analyst:** agent + skill `z-market-validate`  
+- **Geography focus:** Unspecified → assumed **global English-first** (not verified)  
+- **Assumptions:**  
+  - Product is roughly **SaaS / AI assistant** that creates, extracts, chases, or reconciles invoices (not fully specified).  
+  - Likely buyers: freelancers, agencies, or SMB operators (not specified).  
+  - Public web and social search are **unavailable this run** (user constraint + host limits).  
+  - No interviews, waitlist, pricing tests, or usage data were supplied.
+
+---
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence (low/med/high) |
+|----------|---------|---------------------------|
+| Commercial value? | Mixed | **low** |
+| Fit for independent developer? | Conditional | **low** |
+| Short-term return odds (30–90d)? | Low | **low** |
+| **Recommendation band** | **Explore with spike** | **low** (research spike only—not build-to-scale) |
+
+**One-paragraph summary:** **Demand is not proven.** Every public demand channel in this skill’s stack was **blocked**, so there are **no** primary quotes, search volumes, review themes, launch comments, or competitor complaint threads to cite. Invoice pain is a *plausible* category (people already pay for billing tools), but plausibility is not evidence. Composite score is **2.50** under explicit assumptions and wide uncertainty. Do **not** treat this as go-to-build market proof; run a short manual scan + 5–10 buyer conversations before shipping product.
+
+---
+
+## 2. Idea framing
+
+- **Problem (user language):** “Invoicing is slow / error-prone / I chase payments / I retype line items from work logs or PDFs” — **inferred**, not validated with buyer quotes this run.  
+- **Proposed solution (as stated):** An **AI invoice assistant** (scope of assist: generate / parse / remind / reconcile — **not specified**).  
+- **ICP (narrow, provisional):** Solo freelancers or 1–5 person service businesses who invoice clients monthly and still do part of the workflow in email + spreadsheets.  
+- **Non-ICP (who to ignore first):** Full-stack ERP buyers, multi-entity accounting firms needing deep tax compliance day one, marketplaces that only want white-label billing APIs.
+
+---
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---------|--------|-------|
+| X/Twitter | **blocked** | Public social search unavailable |
+| Reddit | **blocked** | Public web/social search unavailable |
+| HN | **blocked** | Public web search unavailable |
+| Product Hunt | **blocked** | Public web search unavailable |
+| Indie Hackers | **blocked** | Public web search unavailable |
+| Reviews/Stores (G2, Capterra, App Store) | **blocked** | Public web search unavailable |
+| SEO / keyword pages | **blocked** | Public web search unavailable |
+| CN platforms | **skipped (reason)** | Geography not CN-primary; tools also unavailable |
+
+**Evidence limit:** No channels were searched. Signal counts below are **zero by constraint**, not “no demand exists.” Do not upgrade this into a stop/kill on category reality alone—only a **stop on claiming proven demand**.
+
+### 3.2 Demand signals (positive)
+
+**Not found this run.**  
+0 demand-polarity signal cards (target was 12–30). No links, quotes, dates, or weights can be honestly attached.
+
+### 3.3 Disconfirming signals (negative)
+
+**Not found this run (search blocked).**  
+Cannot confirm objections such as “AI invoices hallucinate amounts,” “accounting already solved this,” “compliance risk,” “too expensive,” or “churned from X.” Those are **hypotheses for the manual checklist**, not observed signals.
+
+### 3.4 Pricing & willingness-to-pay hints
+
+**Not measured this run.**  
+Assumption only: invoicing / AR tooling is often a **paid** category historically, but that does **not** prove willingness to pay for *your* AI wedge, price point, or retention.
+
+---
+
+## 4. Competition & substitutes
+
+**Not researched with sources this run.** Table is **assumption scaffolding** for a manual pass—not competitive intelligence.
+
+| Substitute | Type | Price signal | Gap / complaint | Threat to indie |
+|------------|------|--------------|-----------------|-----------------|
+| Manual (email + PDF + spreadsheet) | Do nothing | Free + time | Unknown this run | High if pain is infrequent |
+| Generic accounting suites (e.g. QuickBooks-class) | Incumbent SaaS | Paid (unverified here) | Unknown this run | High distribution + trust |
+| SMB invoicing tools (FreshBooks / Wave–class) | Category SaaS | Free–paid tiers (unverified) | Unknown this run | High for “just invoice” |
+| Payment rails with invoices (Stripe Invoicing–class) | Platform feature | Usage / SaaS (unverified) | Unknown this run | High if user already on stack |
+| Bookkeeper / VA | Human substitute | Monthly fee | Unknown this run | High for messy edge cases |
+| Horizontal AI (ChatGPT + templates) | DIY AI | Subscription | Unknown this run | High if “good enough” |
+
+**Category structure (assumption):** Crowded **chore / workflow** space with strong incumbents—not an open field. **Unverified** without scans.
+
+---
+
+## 5. Scores (1–5)
+
+Scores are **assumption-heavy** because channels were blocked. Midpoints are *not* endorsement.
+
+| Dimension | Score | Evidence (1 line) |
+|-----------|-------|-------------------|
+| Demand reality | 2 | No organic pain posts retrieved; demand unproven by design of this run |
+| Willingness to pay | 2 | Category often paid in general, but zero WTP signals collected here |
+| Competition intensity | 4 | Assumed crowded incumbents + free/DIY substitutes; **not link-verified** |
+| Indie fit | 3 | Narrow wedge *could* be solo-shippable; compliance/support risk unknown |
+| Time-to-signal | 4 | Landing page, waitlist, or 10 Mom Test calls can learn in days–weeks |
+| Short-term return odds | 2 | No distribution proof, no ICP specificity, no paid signal path observed |
+| **Composite (avg)** | **2.50** | *(do not recalculate here)* |
+
+**Transparent composite calculation — single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 4 = 2
+composite_sum = 2 + 2 + 2 + 3 + 4 + 2 = 15
+composite_exact = 15 / 6 = 2.5
+display_composite = round(composite_exact, 2) = 2.50
+```
+
+---
+
+## 6. Commercial value
+
+**Verdict: Mixed (confidence: low).**  
+Commercial value is *plausible* because invoicing sits near money movement and businesses already budget for billing tools—but **this run supplies no evidence** of frequency of pain, budget owner, switching costs, or willingness to pay for an *AI* layer vs. incumbent “dumb” invoicing. Without buyer habitat quotes or paid-substitute complaint themes, commercial value remains an **assumption**, not a finding.
+
+---
+
+## 7. Independent developer fit
+
+**Verdict: Conditional (confidence: low).**
+
+- **Build scope for MVP:** Feasible if scoped to one job (e.g. “turn time logs / proposals into draft invoices”) rather than full accounting.  
+- **Support / ops burden:** Can become high (wrong amounts, tax fields, client disputes)—unquantified here.  
+- **Distribution:** Unknown; freelancers hang out in communities that were **not** scanned.  
+- **Regulation / liability:** Invoices touch money, tax, and legal documents—liability risk is material for an indie; **not legal advice**, flag for later.  
+- **Skills match:** Unknown (founder skills not provided).
+
+Solo fit improves only with a **narrow, low-liability wedge** and manual-in-the-loop drafts—not autonomous tax/AR for multi-entity companies.
+
+---
+
+## 8. Short-term return (30–90 days)
+
+**Success metric (provisional):** First **5** paid pilots or **$100+** collected for a narrowly defined draft-invoice workflow—not ARR fantasy.
+
+- **Best plausible path:** Manual research → 10 ICP interviews → ugly MVP or concierge service (you generate invoices with AI assist offline) → charge a small monthly fee.  
+- **Why odds are Low:** No channel evidence, vague ICP, crowded substitutes, and zero distribution proof in 30–90 days under current data.  
+- **What would falsify the path:** Interviews show people are fine with current tools; or they will only adopt inside QuickBooks/Xero; or they refuse AI near money without SOC2/accountant brand.
+
+---
+
+## 9. If you go deeper — entry directions
+
+### Primary wedge (recommended *after* research, not before)
+
+- **Who:** Independent freelancers who already invoice monthly from proposals/time logs (not full bookkeeping).  
+- **Job-to-be-done:** “Turn completed work into a correct client-ready invoice draft in minutes.”  
+- **MVP shape:** Concierge or semi-manual AI draft + human confirm before send (no auto-file taxes).  
+- **Where to find first 10 users:** Buyer subreddits / freelance Discords / local freelancers — **after** unblocking search or offline outreach.  
+- **Metric in 14 days:** ≥5 interviews with a past-behavior story of invoicing friction + ≥1 paid pilot commitment.
+
+### Backup wedges
+
+1. **AR follow-up assistant** for freelancers who already create invoices but hate chasing payment (still high support risk).  
+2. **PDF/email invoice data extraction → accounting CSV** for bookkeepers (B2B workflow; sales cycle may be longer).
+
+### Explicitly do **not** start with
+
+- “AI accounting OS for all SMBs”  
+- Autonomous send/charge without human confirm  
+- Broad horizontal “ChatGPT for invoices” with no ICP  
+- Competing head-on with full QuickBooks/Xero feature parity  
+
+---
+
+## 10. Risks & open questions
+
+- **Demand unproven:** Core question answered: **no**, not with current evidence.  
+- **Hallucination / money risk:** Wrong totals destroy trust faster than most SaaS categories.  
+- **Incumbent bundle:** Invoice features may be “free enough” inside tools users already pay for.  
+- **Compliance / tax localization:** Geography unclear; rules vary heavily.  
+- **Open:** Exact workflow (create vs parse vs chase)? Who pays (freelancer vs firm)? Geography? Founder distribution channels?
+
+---
+
+## 11. Next 48 hours (exactly 3 actions)
+
+1. **Write a 1-sentence ICP + job** (who + when they invoice + what they do today) and list 8–12 search queries from the pack below; run them manually on Reddit, X, HN Algolia, and one review site (30–60 min).  
+2. **Message or call 5 people** in that ICP; ask only past-behavior Mom Test questions (last invoice, time spent, tools used, what they already pay)—no pitch.  
+3. **Decision gate:** If ≥3 independent concrete pain stories *and* at least one paid-tool complaint/gap → keep **Explore with spike** for a concierge MVP; if not → **Park / reshape** the one-liner before building product UI.
+
+---
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Explore with spike |
+| Evidence classes | assumption |
+| Supported claims | Public/social channels were blocked this run; therefore **demand is not proven** from primary or secondary public signals; any commercial narrative remains provisional |
+| Still unproven | Organic demand frequency, willingness to pay for an AI wedge, switching from incumbents, retention, safe delivery near money/tax, indie distribution |
+| Contradictions / exclusions | No disconfirming public signals collected (blocked)—cannot claim “no objections”; rejected starting points: full accounting OS, autonomous send, unscoped horizontal AI |
+| Source anchors | User constraint: public web/social search unavailable; skill path `.zstack-skill/z-market-validate/SKILL.md`; zero signal-card URLs this run |
+| Next validation | Owner: founder — complete manual 4-channel scan + 5 ICP interviews in 48h; **success** = ≥3 specific past-behavior pain quotes with tool names; **fail** = only vague “sounds useful” interest |
+
+---
+
+## 13. Source appendix
+
+### Strongest supporting links
+
+1. **not found** (search blocked)  
+2. **not found**  
+3. **not found**  
+4. **not found**  
+5. **not found**  
+
+### Strongest opposing links
+
+1. **not found** (search blocked—cannot sample objections)  
+2. **not found**  
+3. **not found**  
+4. **not found**  
+5. **not found**  
+
+### Manual research checklist (use this instead of trusting this report’s market claims)
+
+From the skill channel playbook—run yourself (≈30–60 min):
+
+1. **Reddit** — search + 2 buyer subs (e.g. freelancing / smallbusiness habitats), not only r/SaaS.  
+2. **X/Twitter** — advanced search last 90 days: hate/pain language around invoicing + AI billing.  
+3. **HN Algolia** — `{invoice}`, `Show HN` invoicing, “how do you invoice”.  
+4. **Product Hunt + 1 review site** (G2/Capterra) — similar launches, **1★ themes**, “alternative to…”.  
+5. Capture **≥10 quotes with links** into the signal-card format before re-scoring.
+
+**Suggested query pack (for your manual pass):**
+
+- `I hate invoicing` / `sick of chasing invoices` / `invoice freelancers struggling`  
+- `looking for invoice automation` / `AI invoice` / `alternative to FreshBooks` / `alternative to QuickBooks invoicing`  
+- `invoice software too expensive` / `worth paying for invoicing` / `{competitor} pricing`  
+- `cancelled {competitor}` / `migrated from {competitor}` / `invoice software doesn't work`  
+- `I built an invoice` / `MRR invoicing` / `failed invoice startup`  
+- Problem phrasing: `retype line items invoice`, `invoice from time tracking`, `PDF invoice extract`
+
+### Signal card dump
+
+**Empty** — no reachable channels; fabricating cards would violate the skill’s anti-BS rules.
+
+---
+
+### Direct answer to your question
+
+**Is demand proven?**  
+**No.** With public web and social search unavailable, this validation has **zero** retrieved demand signals. The honest recommendation is a **research-only spike** (manual scan + interviews), not a claim that the market has validated an AI invoice assistant. Composite **2.50** reflects empty evidence and assumed category crowding—not a measured market.

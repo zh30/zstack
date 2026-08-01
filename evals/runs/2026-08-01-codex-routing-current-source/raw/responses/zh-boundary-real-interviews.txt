@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: 请求核心是招募并访谈十位真实客户，了解其过去行为、工作流程与替代方案。

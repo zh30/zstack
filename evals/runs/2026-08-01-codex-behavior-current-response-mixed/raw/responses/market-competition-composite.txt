@@ -1,0 +1,232 @@
+# Market validation: A generic scheduling tool for small service businesses
+
+- **Date:** 2026-08-01
+- **Analyst:** Codex using `z-market-validate`
+- **Geography focus:** Global English-speaking market
+- **Evidence limit:** Web, browser, apps, and subagents were unavailable. No current community posts, pricing pages, reviews, or customer behavior could be verified. Scores below are explicitly assumption-based and carry low confidence.
+- **Assumptions:** This is a horizontal SaaS product for appointment booking, reminders, calendar synchronization, and rescheduling. No proprietary distribution, existing audience, or specialized vertical workflow was specified.
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence |
+|---|---|---|
+| Commercial value? | Mixed | Low |
+| Fit for independent developer? | Conditional | Low |
+| Short-term return odds (30–90 days)? | Low | Low |
+| **Recommendation band** | **Avoid (as stated)** | Low |
+| **Composite** | **2.83/5** | Low |
+
+**Summary:** Scheduling is a real, paid category, but a generic entrant faces mature incumbents, bundled calendar features, free plans, high reliability expectations, and expensive customer acquisition. The assumed product earns a **2.83/5 composite**. Avoid building the horizontal product as stated. A tightly defined workflow—such as scheduling plus deposits and intake for one underserved service niche—could justify a short validation spike, but it must be tested before substantial development.
+
+## 2. Idea framing
+
+- **Problem in user language:** “Booking clients, collecting required information, handling cancellations, and keeping calendars synchronized takes too much manual coordination.”
+- **Proposed solution:** A scheduling SaaS with booking pages, availability rules, reminders, rescheduling, and calendar integrations.
+- **Narrow ICP for validation:** Independent professionals who lose money from no-shows and need information or payment before accepting an appointment.
+- **Non-ICP initially:** General knowledge workers scheduling free meetings. Calendly-like products and calendar suites already serve this horizontal use case.
+- **Likely substitutes:** Calendly, Cal.com, Acuity Scheduling, Google Calendar appointment scheduling, Microsoft Bookings, industry-specific software, email or messaging, and a human receptionist.
+
+### Research frame
+
+Success would require evidence that one narrow group:
+
+1. Experiences a frequent, costly scheduling failure.
+2. Dislikes a specific incumbent limitation.
+3. Will pay or switch for a clearly better workflow.
+4. Can be reached through a concentrated channel.
+
+Kill signals would include satisfaction with existing free tools, no meaningful cost from the problem, dependence on numerous integrations, or an acquisition cost greater than plausible subscription revenue.
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---|---|---|
+| X/Twitter | blocked | Search unavailable |
+| Reddit | blocked | Search unavailable |
+| Hacker News | blocked | Search unavailable |
+| Product Hunt | blocked | Search unavailable |
+| Indie Hackers | blocked | Search unavailable |
+| Reviews/G2/Capterra/app stores | blocked | Search unavailable |
+| Public keyword data | blocked | Search unavailable |
+| China platforms | skipped | Global English-speaking market assumed |
+
+The minimum four-channel scan could not be completed. Consequently, this report contains no verified signal cards and cannot establish actual demand, switching behavior, pricing, or retention.
+
+### 3.2 Demand signals
+
+**Not found in this run.** Plausible pain—no-shows, calendar coordination, reminders, deposits, intake, and time-zone handling—remains an assumption until supported by dated buyer statements or observed behavior.
+
+### 3.3 Disconfirming signals
+
+**Not found through live research.** The following are hypotheses to test, not observed findings:
+
+- Existing tools may already be “good enough.”
+- Free and bundled offerings may anchor willingness to pay near zero.
+- Buyers may prefer vertical business-management products over another standalone scheduler.
+- Reliability and calendar-integration support may make the product disproportionately costly for a solo founder.
+- “Better design” or “AI scheduling” alone may not create a compelling switching reason.
+
+### 3.4 Pricing and willingness-to-pay
+
+Current prices were not verified. The existence of multiple established paid scheduling products is a secondary category clue that some customers pay, but it does **not** prove willingness to pay for this proposed product.
+
+The strongest plausible buyer is one for whom a missed appointment has a measurable monetary cost. A generic meeting scheduler has a much weaker value story.
+
+## 4. Competition and substitutes
+
+| Substitute | Type | Price signal | Assumed gap to test | Threat to indie |
+|---|---|---|---|---|
+| Calendly | Horizontal scheduler | Current price not verified | Vertical intake, payments, or policy enforcement | Very high |
+| Cal.com | Scheduler and extensible platform | Current price not verified | Simpler niche-specific setup | Very high |
+| Acuity Scheduling | Appointment scheduler | Current price not verified | Specialized workflows or local-market needs | High |
+| Google Calendar appointments | Bundled calendar feature | Current availability/price not verified | Deeper vertical operations | Very high |
+| Microsoft Bookings | Bundled business-suite feature | Current availability/price not verified | Better experience outside Microsoft ecosystems | High |
+| Vertical business software | Scheduling plus operations | Current price not verified | Complexity, niche omissions, or poor UX | High |
+| Email, phone, or messaging | Manual substitute | Usually no new software budget | Automation and reduced coordination | Medium |
+| Receptionist/assistant | Human substitute | Current cost not researched | Lower-cost automation for repetitive work | Medium |
+
+**Category structure:** A mature, brutally crowded horizontal category with powerful bundled substitutes. A viable indie opportunity, if one exists, is more likely to be a narrow workflow product than another general-purpose scheduling platform.
+
+## 5. Scores (1–5)
+
+These are provisional hypothesis scores with wider-than-normal uncertainty because public research was blocked.
+
+| Dimension | Score | One-line rationale |
+|---|---:|---|
+| Demand reality | **3** | Scheduling is recurring, but no verified buyer pain was collected for the proposed product or ICP. |
+| Willingness to pay | **3** | Paid substitutes appear to exist, but current pricing and willingness to switch were not verified. |
+| Competition intensity | **5** | The premise explicitly describes a crowded category with mature and bundled substitutes; higher is worse. |
+| Indie fit | **3** | A narrow MVP is feasible, but calendar reliability, integrations, time zones, and support can expand scope quickly. |
+| Time-to-signal | **5** | A landing page, concierge workflow, and paid pilot can test a narrow wedge within days or weeks. |
+| Short-term return odds | **2** | A generic product has poor 30–90-day odds without an audience, niche, or distribution advantage. |
+| **Composite (average)** | **2.83** | Provisional assumption-based result. |
+
+**Transparent composite calculation — single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 5 = 1
+composite_sum = 3 + 3 + 1 + 3 + 5 + 2 = 17
+composite_exact = 17 / 6 = 2.8333333333333335
+display_composite = round(composite_exact, 2) = 2.83
+```
+
+Competition intensity is the only reversed raw score. All other inputs use higher scores as better conditions for proceeding.
+
+## 6. Commercial value
+
+**Verdict: Mixed.**
+
+Scheduling has commercial value when it affects revenue rather than merely causing inconvenience. Buyers may pay to reduce no-shows, collect deposits, qualify appointments, enforce cancellation policies, or eliminate administrative labor.
+
+That does not establish value for a generic new scheduler. The product would need to replace a measurable cost—for example, missed paid appointments—not merely offer a nicer booking page. Payment behavior, price sensitivity, and dissatisfaction with current tools remain unproven.
+
+## 7. Independent-developer fit
+
+**Verdict: Conditional.**
+
+A narrow prototype is solo-buildable: one calendar provider, one appointment type, deposits, intake, reminders, and a simple booking page. A production-grade horizontal competitor is much less indie-friendly because it invites:
+
+- Multiple calendar, video, CRM, payment, and automation integrations.
+- Time-zone, daylight-saving, recurring-event, and conflict edge cases.
+- High support expectations when bookings or reminders fail.
+- Security and privacy responsibilities for customer and attendee data.
+- Continuous competition with products that already have broad ecosystems.
+
+A solo founder should sell a constrained outcome for one niche, keep manual operations behind the interface initially, and refuse broad integration requests until payment validates them.
+
+## 8. Short-term return (30–90 days)
+
+**Verdict: Low for the generic idea.**
+
+Define short-term success as **three paid design partners or $300 in collected pilot revenue**, not registrations or waitlist emails.
+
+- **Best plausible path:** Pre-sell a scheduling-plus-deposit workflow to one narrow service niche, deliver early onboarding manually, and build only the repeated steps.
+- **Why odds are low:** No audience, ICP, distribution advantage, verified unmet need, or switching trigger was supplied. A generic launch would compete primarily on familiarity, integrations, and trust.
+- **What would falsify the negative judgment:** Within 14 days, at least five qualified prospects describe the same costly failure and three pay a deposit or sign a paid pilot agreement.
+- **What would confirm it:** Prospects like the idea but stay with free or bundled tools, request broad parity features, or refuse even a paid concierge version.
+
+## 9. Entry directions
+
+### Primary wedge: deposit-backed scheduling for one no-show-sensitive niche
+
+- **Who:** Independent service providers with paid appointments, meaningful no-show losses, and no need for a complete practice-management suite.
+- **Job to be done:** Collect a deposit and required intake information while booking, then consistently enforce cancellation and rescheduling rules.
+- **MVP:** One calendar integration, hosted booking page, Stripe deposit, configurable cancellation policy, intake form, and email reminders. Run exceptions manually.
+- **Where to find the first ten prospects:** One buyer-specific association, forum, local directory, or professional community identified during the manual scan.
+- **14-day metric:** Ten interviews, five repeated accounts of the same costly failure, and three paid pilot commitments.
+
+### Backup wedges
+
+1. Scheduling for a niche requiring specialized pre-appointment document or eligibility collection.
+2. A workflow layer that augments an incumbent scheduler rather than replacing its calendar engine.
+
+### Explicitly do not start with
+
+- A horizontal “Calendly, but better” product.
+- AI as the only differentiation.
+- A free product monetized later without a defined budget owner.
+- Multi-calendar, multi-tenant team scheduling, marketplaces, or dozens of integrations in version one.
+- Building before testing whether prospects will pay to switch.
+
+## 10. Risks and open questions
+
+- Which narrowly defined occupation suffers the greatest measurable loss?
+- What exact limitation causes users to abandon or work around existing products?
+- Is the scheduler itself the purchase, or merely one feature of a broader vertical system?
+- Who controls the budget, and what does the purchase replace?
+- How much migration friction exists around booking links, workflows, and customer records?
+- Which integration failures would create refunds or reputational damage?
+- Can prospects be reached through one concentrated, affordable channel?
+- Does the wedge remain narrow after the first five customer requests?
+
+## 11. Source appendix and manual evidence pass
+
+No live evidence links can be supplied without inventing research. Therefore:
+
+### Top five supporting links
+
+1. Not found — web access unavailable.
+2. Not found — X/Twitter unavailable.
+3. Not found — Reddit unavailable.
+4. Not found — review sites unavailable.
+5. Not found — current competitor pages unavailable.
+
+### Top five disconfirming links
+
+1. Not found — web access unavailable.
+2. Not found — negative review search unavailable.
+3. Not found — cancellation or churn search unavailable.
+4. Not found — failed-founder retrospective search unavailable.
+5. Not found — incumbent-alternative search unavailable.
+
+### Manual 30–60 minute search checklist
+
+Run and record ten dated quotes with URLs:
+
+- Reddit: search two buyer-specific communities for `scheduling`, `no show`, `booking`, `deposit`, and `Calendly alternative`.
+- X: search the last 90 days for `"Calendly" too expensive`, `"scheduling tool" hate`, `"appointment booking" no show`, and `"looking for" scheduler`.
+- Hacker News Algolia: search `scheduling`, `Calendly alternative`, and relevant Show HN discussions; prioritize comments.
+- Product Hunt plus G2 or Capterra: inspect competing launches and recent one- or two-star reviews.
+- Indie Hackers: search for scheduling-product revenue, failed launches, acquisition channels, and support burden.
+
+Capture channel, URL, date, short quote or summary, polarity, weight, and indie relevance for each result.
+
+## 12. Next 48 hours
+
+1. Select one no-show-sensitive occupation and interview ten operators, asking about their last missed appointment, current workaround, monetary loss, and what they already pay for.
+2. Create a no-code offer for booking, deposit collection, intake, and cancellation enforcement; ask every qualified interviewee for a paid pilot rather than a waitlist signup.
+3. Run the manual multi-channel scan above and stop unless it produces at least five consistent pain signals plus three paid pilot commitments.
+
+## 13. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Avoid |
+| Evidence classes | assumption |
+| Supported claims | The displayed **2.83** composite follows the required scoring formula; the generic concept is assumed to face intense competition and can be tested quickly with a narrow paid pilot. No external demand claim is supported. |
+| Still unproven | Organic pain frequency, current competitor pricing, willingness to switch, payment, retention, reachable distribution, integration feasibility, and support burden. |
+| Contradictions / exclusions | Paid scheduling products may indicate category value, but that does not prove demand for another entrant. Exclude horizontal scheduling, AI-only differentiation, free-first monetization, and broad integration scope. |
+| Source anchors | User description dated 2026-08-01; no external anchors because every research channel was blocked. |
+| Next validation | Founder: run ten niche interviews and offer paid pilots within 48 hours; proceed to a narrow spike only if at least five prospects report the same costly problem and three commit money. |

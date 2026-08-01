@@ -1,0 +1,307 @@
+# Market validation: Crowded general-purpose scheduling tool
+
+## Contents
+
+1. Executive verdict  
+2. Idea framing  
+3. Evidence map  
+4. Competition and substitutes  
+5. Scores  
+6. Commercial value  
+7. Independent-developer fit  
+8. Short-term return  
+9. Entry directions  
+10. Risks and open questions  
+11. Next 48 hours  
+12. Evidence handoff  
+13. Source appendix  
+
+- **Date:** 2026-08-01  
+- **Analyst:** agent + skill `z-market-validate`  
+- **Geography focus:** Global / EN-primary (assumed; not specified)  
+- **Assumptions:**  
+  - Idea = a **scheduling / calendar booking** product in a **crowded** category (Calendly-class, team calendars, appointment booking, “find a time” tools).  
+  - Solo / indie founder, SaaS-shaped MVP unless stated otherwise.  
+  - No niche ICP, vertical, or wedge was provided → treated as **generic scheduling** until narrowed.  
+  - **Evidence limit:** Web, browser, apps, computer use, and subagents were **unavailable** this run. No live X/Reddit/HN/PH/review fetch. All channel rows are `blocked`. Scores are **category-level, assumption-heavy**, not primary-signal validated. Do **not** treat them as measured demand.
+
+---
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence (low/med/high) |
+|----------|---------|---------------------------|
+| Commercial value? | Mixed | low (no live scan) |
+| Fit for independent developer? | Conditional | med (category structure is well-known; still unproven for *this* build) |
+| Short-term return odds (30–90d)? | Low | med for “generic crowded tool”; higher only if wedge is extreme |
+| **Recommendation band** | **Avoid (as stated)** → reshape to a narrow wedge, then **Explore with spike** | med on “avoid generic”; low on any specific wedge without research |
+
+**One-paragraph summary:** Scheduling pain is real and people already **pay** category leaders, but a **crowded, undifferentiated** scheduling tool faces brutal substitutes (Calendly, Cal.com, Google Calendar + Meet, Outlook, SavvyCal, Calendly alternatives, Notion/Slack integrations, manual Doodle-style links). Without a live multi-channel scan, primary demand for *another* general scheduler is not evidenced here; competition intensity should be treated as near-max. For an indie, composite math is dragged down mainly by **competition intensity = 5** → `competition_fit = 1`. Recommendation: **do not build “yet another Calendly”**; only continue if you **narrow ICP + job** (e.g. one vertical workflow with ugly status quo) and re-validate with real channels.
+
+---
+
+## 2. Idea framing
+
+- **Problem (user language):** “Getting on someone’s calendar is messy—back-and-forth email, timezone hell, no-shows, double-booking.”  
+- **Proposed solution (as stated):** A scheduling tool in a market the user themselves labels **crowded**.  
+- **ICP (narrow):** **Not specified.** Placeholder assumption: freelancers / consultants / small sales teams who book external meetings.  
+- **Non-ICP (who to ignore first):** Enterprise calendar + compliance buyers; full Outlook/Google Workspace replacement; “everyone who has meetings.”
+
+---
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---------|--------|-------|
+| X/Twitter | blocked | No web/X tools this run |
+| Reddit | blocked | No Reddit search |
+| HN | blocked | No Algolia/HN access |
+| Product Hunt | blocked | No PH access |
+| Indie Hackers | blocked | No IH access |
+| Reviews/Stores (G2/Capterra/App Store) | blocked | No review fetch |
+| SEO / keyword volumes | blocked | No keyword tools |
+| CN platforms | skipped (reason) | Geography not CN-primary; tools unavailable |
+
+**Method note:** Per skill, tools unavailable → no fabricated quotes, links, upvote counts, or “I found 27 Reddit posts.” Scores below use **secondary category knowledge + explicit assumptions**, confidence **low**.
+
+### 3.2 Demand signals (positive)
+
+*Live signal cards: **not found** (channels blocked).*
+
+Assumption-level (not primary evidence):
+
+- channel: assumption  
+- url: n/a  
+- quote/summary: Scheduling/booking is a known recurring pain (timezone, no-shows, link fatigue).  
+- polarity: demand  
+- weight: low (no fresh quotes)  
+- indie_relevance: med  
+
+- channel: assumption  
+- url: n/a  
+- quote/summary: Paid category exists (booking SaaS is a real budget line for freelancers and SMBs).  
+- polarity: pricing  
+- weight: low  
+- indie_relevance: high  
+
+### 3.3 Disconfirming signals (negative)
+
+*Live signal cards: **not found** (channels blocked). Disconfirming case is structural, not quote-based.*
+
+- channel: assumption  
+- url: n/a  
+- quote/summary: Category is saturated with free tiers, open-source (e.g. Cal.com-class), and defaults baked into Google/Microsoft.  
+- polarity: competitor  
+- weight: med as structural fact; still not a scraped 1★ theme  
+- indie_relevance: high  
+
+- channel: assumption  
+- url: n/a  
+- quote/summary: Switching costs and habit (“just send my Calendly”) favor incumbents; “me too” features rarely create pull.  
+- polarity: objection  
+- weight: med (category dynamics)  
+- indie_relevance: high  
+
+- channel: assumption  
+- url: n/a  
+- quote/summary: Support burden (calendar sync bugs, OAuth, spam booking, timezone edge cases) is high for solo operators.  
+- polarity: churn / objection  
+- weight: med  
+- indie_relevance: high  
+
+### 3.4 Pricing & willingness-to-pay hints
+
+- **What people already pay:** Public market knowledge (not re-fetched): booking tools commonly freemium → ~$8–20+/seat/month tiers; teams pay for routing, CRM, branding. **Exact current prices: not fetched this run.**  
+- **Free expectations:** High—Google Calendar, free Calendly-like tiers, open-source self-host.  
+- **Budget owners:** Individual freelancers (card), small sales/ops leads, sometimes marketing.  
+- **WTP for undifferentiated product:** Weak; WTP for **outcome in a niche** (e.g. clinic no-shows, multi-party recruiting loops) can be stronger—**unproven here**.
+
+---
+
+## 4. Competition & substitutes
+
+| Substitute | Type | Price signal | Gap / complaint (typical, not live-scraped) | Threat to indie |
+|------------|------|--------------|-----------------------------------------------|-----------------|
+| Calendly (and peers) | SaaS leader | Freemium + paid | Power features gated; “looks like everyone else’s link” | **Very high** |
+| Cal.com / open-source schedulers | OSS + cloud | Free self-host / paid cloud | Ops complexity if self-host | **High** (price floor) |
+| Google Calendar / Outlook | Default platform | Often “free” with suite | Weak external booking UX vs dedicated tools | **High** (distribution) |
+| SavvyCal / Motion / Reclaim-class | Differentiated schedulers | Paid | Niche positioning already taken | **High** in their wedges |
+| Doodle / when2meet / manual email | Manual / lightweight | Free | Ugly but “good enough” for many | **Med–high** |
+| Do nothing / “text me times” | Behavior | $0 | Chaos accepted for low meeting volume | **Med** |
+
+**Category structure:** **Winner-take-most mindshare + long tail of clones**; chore/infrastructure tool with strong free substitutes. Not an open field.
+
+---
+
+## 5. Scores (1–5)
+
+| Dimension | Score | Evidence (1 line) |
+|-----------|-------|-------------------|
+| Demand reality | **3** | Pain is plausible and recurring category-wide, but **no live organic posts** this run; midpoint = mixed/weak evidence, not “good.” |
+| Willingness to pay | **3** | Paid substitutes exist in-category (assumption), free defaults also strong; no buyer quotes or spend evidence fetched. |
+| Competition intensity | **5** | Crowded by definition of the prompt + well-known giants, free tiers, OS, and calendar platforms; higher = worse. |
+| Indie fit | **2** | Calendar sync, reliability, spam/abuse, and support load fight solo scope; only improves with a **tiny** wedge. |
+| Time-to-signal | **4** | Landing + fake-door booking page or waitlist can test interest in days–weeks if ICP is named. |
+| Short-term return odds | **2** | Generic crowded tool: low odds of paid conversion in 30–90d without sharp wedge/distribution. |
+| **Composite (avg)** | **2.5** | See calculation below. |
+
+### Composite calculation (explicit)
+
+Skill rule: invert competition first, then average six “higher = better” scores.
+
+```text
+competition_intensity = 5
+competition_fit       = 6 - competition_intensity = 6 - 5 = 1
+
+composite = mean(
+  demand_reality,          # 3
+  willingness_to_pay,      # 3
+  competition_fit,         # 1
+  indie_fit,               # 2
+  time_to_signal,          # 4
+  short_term_return_odds   # 2
+)
+
+composite = (3 + 3 + 1 + 2 + 4 + 2) / 6
+          = 15 / 6
+          = 2.5
+```
+
+**Do not** average raw competition intensity (5) as if higher were better; that would incorrectly inflate the composite.
+
+**Band mapping (judgment):** Composite **~2.5** + kill-shaped competition → **Avoid (as stated)** for generic scheduling; if reshaped to a narrow wedge, re-score (especially competition intensity and indie fit) after a real scan.
+
+---
+
+## 6. Commercial value
+
+**Mixed (category) / Weak (as a generic new entrant).**  
+Money exists for **booking reliability and sales/consulting pipeline**, but buyers already have cards on incumbents. Commercial value for an indie is less “scheduling market size” and more **whether a specific ICP will switch** for a painful gap (compliance, multi-resource, industry workflow, language/locale, or integration). That switch/payment/retention story is **still unproven** here—no interviews, no pricing page tests, no review mining this run.
+
+---
+
+## 7. Independent developer fit
+
+- **Build scope for MVP:** Non-trivial if real calendar OAuth, availability, timezones, notifications; “link in bio” MVP is easier but commodity.  
+- **Support / ops burden:** High (sync failures = angry users).  
+- **Distribution:** Hard against brand defaults; communities (indie freelancers, vertical Discords) only work with a **niche story**.  
+- **Regulation / liability / capital:** Lower than fintech/health if you stay out of PHI/HIPAA-heavy care scheduling; **rises fast** in clinical or enterprise.  
+- **Skills match:** Unknown; calendar APIs + product taste matter more than raw CRUD.  
+- **Verdict:** **Conditional** — fit is poor for “full Calendly clone,” better for **manual-first niche booking** (e.g. Typeform + Cal + Airtable ops) before full product.
+
+---
+
+## 8. Short-term return (30–90 days)
+
+**Success metric (suggested):** First **3 paid** users at ≥$15/mo **or** 30 qualified waitlist emails from a **named ICP** with stated current tool + pain—not vanity signups.
+
+- **Best plausible path:** Pick one vertical job (e.g. “solo therapists booking intakes” or “B2B consultants with multi-step discovery calls”), ship ugly booking + reminder workflow, sell in one community.  
+- **Why odds are Low (as stated):** Crowded category + no differentiation + blocked research means no proven channel.  
+- **What would falsify the path:** ICP says “Calendly is fine”; $0 conversion on a clear offer; support load from sync bugs exceeds revenue.
+
+---
+
+## 9. If you go deeper — entry directions
+
+### Primary wedge (recommended)
+
+- **Who:** One **named** professional niche that books external meetings weekly and already pays for tools (example placeholder: independent consultants doing paid discovery calls—not “all SMBs”).  
+- **Job-to-be-done:** “Reduce no-shows and back-and-forth for **this** workflow,” not “own the calendar.”  
+- **MVP shape:** Hosted booking page + reminders + one integration; **manual** edge cases OK.  
+- **Where to find first 10 users:** One buyer habitat subreddit/forum/Discord (to be confirmed when tools work)—not Product Hunt as primary.  
+- **Metric in 14 days:** 10 ICP conversations or 25 waitlist with “current tool + hate” fields.
+
+### Backup wedges
+
+1. **Open-source / self-host packaging** for privacy-sensitive small teams (compete on deploy simplicity, not features).  
+2. **Scheduling-adjacent automation** (prep notes, invoice after call) rather than another availability grid.
+
+### Explicitly do **not** start with
+
+- Horizontal “Calendly killer”  
+- Enterprise SSO + complex team routing day one  
+- Competing on pure free tier breadth  
+- Building full calendar sync parity before a wedge is paid
+
+---
+
+## 10. Risks & open questions
+
+- No primary evidence this run → **high risk of over- or under-scoring**.  
+- Habit + free defaults may make WTP illusory.  
+- Support and calendar API fragility.  
+- Open questions: exact ICP? geography? founder distribution? willingness to stay manual for 90 days?  
+- Is “crowded” the user’s diagnosis of **horizontal** tools only, or also of their intended niche?
+
+---
+
+## 11. Next 48 hours (exactly 3 actions)
+
+1. **Write a 1-sentence wedge:** “I help {ICP} do {job} without {current hack}” — reject any sentence that still says “scheduling for everyone.”  
+2. **Manual research pack (60 min, when you have a browser):** Reddit (2 buyer subs) + X last 90 days + HN Algolia + one G2/Capterra page for a leader — capture **10 quotes with links** (5 demand, 5 objections).  
+3. **One-page smoke:** Headline + CTA + “What do you use today?” field; share in **one** ICP community; kill if zero specific pain replies in 48–72h.
+
+---
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Avoid (as stated) |
+| Evidence classes | secondary public / assumption |
+| Supported claims | Horizontal scheduling is a crowded category with strong free and paid substitutes; composite under skill math is 2.5 when competition_intensity=5 → competition_fit=1; undifferentiated indie entry has weak 30–90d return odds. |
+| Still unproven | Organic demand volume; willingness to switch; retention; any specific vertical WTP; live review themes; founder distribution fit. |
+| Contradictions / exclusions | Paid category existence coexists with brutal competition; do not treat “people hate meetings” as proof for a new general scheduler. Rejected: build horizontal Calendly clone first. |
+| Source anchors | No live URLs this run (all default channels blocked). Inputs: user label “crowded scheduling-tool idea”; skill scoring rules in `.zstack-skill/z-market-validate/SKILL.md`; template composite formula. |
+| Next validation | Owner: founder. Action: 60-min multi-channel quote harvest + narrow ICP one-liner. Success: ≥5 specific paid-intent or “I pay for X and hate Y” quotes with links. Fail: only generic “scheduling is hard” memes or zero niche complaints. |
+
+---
+
+## 13. Source appendix
+
+### Strongest supporting links
+
+1. **not found** — live fetch blocked  
+2. **not found**  
+3. **not found**  
+4. **not found**  
+5. **not found**  
+
+### Strongest opposing / disconfirming links
+
+1. **not found** — live fetch blocked (structural opposition only: incumbents + free defaults)  
+2. **not found**  
+3. **not found**  
+4. **not found**  
+5. **not found**  
+
+### Manual research checklist (from skill when tools fail)
+
+1. Reddit search + 2 buyer subreddits  
+2. Twitter/X advanced search last 90 days  
+3. HN Algolia  
+4. Product Hunt search + 1 review site (G2/Capterra)  
+5. Note 10 quotes with links into this template; re-score all six dimensions  
+
+### Signal card dump
+
+Empty of primary cards by design this run; do not invent.
+
+---
+
+### Score recap (every 1–5 + composite)
+
+| # | Dimension | Score |
+|---|-----------|------:|
+| 1 | Demand reality | **3** |
+| 2 | Willingness to pay | **3** |
+| 3 | Competition intensity *(higher = worse)* | **5** |
+| 4 | Indie fit | **2** |
+| 5 | Time-to-signal | **4** |
+| 6 | Short-term return odds | **2** |
+| — | competition_fit = 6 − 5 | **1** |
+| — | **Composite** = (3+3+1+2+4+2)/6 | **2.5** |
+
+**Recommendation:** **Avoid (as stated)** for a generic crowded scheduler; reshape to a narrow wedge, run the live channel scan, then re-score before building.

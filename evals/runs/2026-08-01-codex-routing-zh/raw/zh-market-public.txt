@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: 用户要先通过公开市场研究分析社区需求、竞品、抱怨和替代方案，并给出继续、收窄或停止的判断。

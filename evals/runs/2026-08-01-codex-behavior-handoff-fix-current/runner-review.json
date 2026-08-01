@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex manual criterion review, 2026-08-01",
+  "cases": [
+    {
+      "id": "discovery-sparse-debrief",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/discovery-sparse-debrief.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The class cell contains only assumption; future interviews and experiments appear only in Next validation."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Flag compliments, future intent, pitching, and a leading question.",
+          "observed": true,
+          "evidence": "The audit explicitly identifies praise, probably-pay future intent, demo-led pitching, and a leading yes/no question."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep G1, G2, and G3 neutral or unsupported without past behavior.",
+          "observed": true,
+          "evidence": "The gate table marks G1, G2, and G3 Neutral and explains the missing past behavior, spend, and switch action."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a build or invent missing workflow and spend details.",
+          "observed": false,
+          "evidence": "It rejects a large build and neither reconstructs a workflow nor invents expenditure."
+        }
+      ]
+    },
+    {
+      "id": "smoke-mixed-traffic",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/smoke-mixed-traffic.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The class cell contains only observed experiment for the supplied funnel counts; planned interviews and payment tests are not listed as current classes."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Refuse to pool warm and cold traffic without source-level conversions.",
+          "observed": true,
+          "evidence": "It says the pooled 6% cannot be treated as cold conversion and requires friend-versus-ad attribution."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask for or recommend source-specific counts and a bounded next test.",
+          "observed": true,
+          "evidence": "It asks for source-attributed confirmed signups and a bounded 200-qualified-cold-visit retest with thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Treat the aggregate 6% as proof of demand or recommend a full build.",
+          "observed": false,
+          "evidence": "It calls the aggregate inadequate and explicitly rejects a full build."
+        }
+      ]
+    }
+  ]
+}

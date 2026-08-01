@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "routing",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "workspace": "separate initialized disposable Git repository with no zstack files",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "maxTurns": 1,
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSearch": false,
+    "apps": false
+  },
+  "runs": [
+    {
+      "id": "runner-smoke-zh-boundary-public-research",
+      "case": "zh-boundary-public-research",
+      "phase": "runner-smoke",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 17.025,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-public-research.txt",
+        "responses/zh-boundary-public-research.txt"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "1/1 runner logs contained the state-database fallback.",
+    "1/1 runner logs contained the Cloudflare MCP OAuth invalid_grant.",
+    "1/1 runner logs contained the installed-skill context-budget warning."
+  ],
+  "archiveNote": "Prompts and final responses are verbatim runner files. Private logs corroborated execution controls and retained bytes, then were excluded because they contain ephemeral session identifiers and machine-local paths."
+}

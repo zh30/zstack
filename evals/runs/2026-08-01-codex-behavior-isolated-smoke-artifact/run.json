@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "workspace-write sandbox; writes limited by prompt and post-run audit to artifacts/; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "timeoutSecondsPerCase": 600,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "artifact",
+    "model": "gpt-5.6-sol",
+    "turns": 1,
+    "isolatedHostHome": true,
+    "ambientDesktopContextDisabled": [
+      "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+      "CODEX_PERMISSION_PROFILE",
+      "CODEX_THREAD_ID"
+    ]
+  },
+  "runs": [
+    {
+      "id": "current-smoke-complete-pack",
+      "case": "smoke-complete-pack",
+      "phase": "current",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 527.597,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "artifacts/smoke-complete-pack/smoke-test-plan.md"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-complete-pack.txt",
+        "responses/smoke-complete-pack.txt",
+        "runner-artifact-manifest.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md",
+        "artifacts/smoke-complete-pack/README.md",
+        "artifacts/smoke-complete-pack/functions/api/waitlist.js",
+        "artifacts/smoke-complete-pack/measurement-template.csv",
+        "artifacts/smoke-complete-pack/site/_headers",
+        "artifacts/smoke-complete-pack/site/index.html",
+        "artifacts/smoke-complete-pack/site/og-card.png",
+        "artifacts/smoke-complete-pack/site/og-card.svg",
+        "artifacts/smoke-complete-pack/smoke-test-plan.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

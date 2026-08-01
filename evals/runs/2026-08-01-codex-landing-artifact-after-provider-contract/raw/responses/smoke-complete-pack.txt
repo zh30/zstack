@@ -1,0 +1,17 @@
+Created the complete smoke-test package:
+
+- `artifacts/smoke-test-package.md` — protocol, copy, metadata, OG copy, events, UTMs, calendar, thresholds, and decision rules.
+- `artifacts/landing/index.html` — deployable responsive landing page.
+- `artifacts/landing/functions/api/waitlist.js` — privacy-safe Buttondown confirmation and attribution function.
+- `artifacts/measurement-template.csv` — lane-separated reporting template.
+- `artifacts/README.md` — deployment overview.
+
+Remaining external setup:
+
+- Configure Cloudflare Pages, domain, contact address, and OG image.
+- Verify current Buttondown API contract and add credentials/attribution fragments.
+- Verify and configure Plausible’s current event-enabled script.
+- Run the valid, invalid, duplicate, and attribution preflight before traffic.
+- Create the Reddit campaign with a hard $150 cap.
+
+No web/browser access was available, so provider contracts and live demand evidence remain unverified; the integration intentionally blocks launch until verification.

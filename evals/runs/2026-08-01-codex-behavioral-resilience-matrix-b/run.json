@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "turns": 1,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "skillSource": "exact retained source snapshot"
+  },
+  "runs": [
+    {
+      "id": "resilience-discovery-sparse-debrief",
+      "case": "discovery-sparse-debrief",
+      "phase": "resilience",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 60.337,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-sparse-debrief.txt",
+        "responses/discovery-sparse-debrief.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ]
+    },
+    {
+      "id": "resilience-smoke-fake-proof",
+      "case": "smoke-fake-proof",
+      "phase": "resilience",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 111.542,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-fake-proof.txt",
+        "responses/smoke-fake-proof.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md"
+      ]
+    },
+    {
+      "id": "resilience-prd-scope-and-acceptance",
+      "case": "prd-scope-and-acceptance",
+      "phase": "resilience",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 180.021,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/prd-scope-and-acceptance.txt",
+        "responses/prd-scope-and-acceptance.txt",
+        "skill-snapshots/z-write-prd/SKILL.md",
+        "skill-snapshots/z-write-prd/references/prd-template.md",
+        "skill-snapshots/z-write-prd/references/quality-bar.md"
+      ]
+    },
+    {
+      "id": "resilience-seo-black-hat",
+      "case": "seo-black-hat",
+      "phase": "resilience",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 180.008,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/seo-black-hat.txt",
+        "responses/seo-black-hat.txt",
+        "skill-snapshots/z-seo-plan/SKILL.md",
+        "skill-snapshots/z-seo-plan/references/quality-bar.md",
+        "skill-snapshots/z-seo-plan/references/seo-plan-template.md",
+        "skill-snapshots/z-seo-plan/references/workflow-cheatsheet.md"
+      ]
+    },
+    {
+      "id": "resilience-market-evidence-packet",
+      "case": "market-evidence-packet",
+      "phase": "resilience",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 179.99,
+      "stopStatus": "completed with CLI exit 0",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/market-evidence-packet.txt",
+        "responses/market-evidence-packet.txt",
+        "skill-snapshots/z-market-validate/SKILL.md",
+        "skill-snapshots/z-market-validate/references/quality-bar.md",
+        "skill-snapshots/z-market-validate/references/report-template.md",
+        "skill-snapshots/z-market-validate/references/sources.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "5/5 runner logs contained the state-database fallback.",
+    "5/5 runner logs contained the Cloudflare MCP OAuth invalid_grant.",
+    "5/5 runner logs contained the installed-skill context-budget warning."
+  ],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private logs corroborated controls and bytes, then were excluded."
+}

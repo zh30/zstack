@@ -1,0 +1,5 @@
+date,source,medium,campaign,content,traffic_class,spend_usd,plausible_unique_visitors,cta_clicks,attempts,buttondown_accepted,buttondown_double_opted_in,welcome_opens_diagnostic,qualified_replies,price_positive_replies,notes
+2026-08-03,reddit,community,clienttabs_smoke_202608,customersuccess_problem,cold_community,0,0,0,0,0,0,0,0,0,
+2026-08-03,linkedin,social,clienttabs_smoke_202608,founder_problem_post,cold_social,0,0,0,0,0,0,0,0,0,
+2026-08-03,warm_email,outreach,clienttabs_smoke_202608,personal_note,warm_outreach,0,0,0,0,0,0,0,0,0,
+2026-08-05,reddit,cpc,clienttabs_smoke_202608,ad_a_rebuild_tabs,cold_paid,30,0,0,0,0,0,0,0,0,

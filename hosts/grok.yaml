@@ -2,7 +2,8 @@ name: grok
 display_name: Grok Build
 skills_root: ~/.grok/skills
 link_mode: symlink
-# Default off: Grok already scans ~/.claude/skills and ~/.agents/skills
+# Default off: Grok already scans ~/.claude/skills and ~/.agents/skills.
+# Use `setup.sh --hosts grok` only when an explicit Grok root is desired.
 enabled: false
 frontmatter:
   required:

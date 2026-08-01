@@ -1,0 +1,122 @@
+I'll load the synthesis template and quality bar next so the gate scores and handoff match the skill.Mode: synthesize
+
+# Discovery synthesis — client onboarding
+
+| Field | Value |
+|-------|--------|
+| **Date** | 2026-08-01 |
+| **N completed** | 5 |
+| **N target** | 5 (checkpoint; default study target often 10) |
+| **Cold / warm mix** | 4 cold / 1 warm (as stated; summaries do not label which interview was warm) |
+| **ICP (working)** | Operators who move client data across tools during onboarding (agency PMs, bookkeepers, consultants, marketers) |
+
+**Evidence basis:** Five pasted interview summaries only. No transcripts, note files, or live debriefs. Web/browser unavailable — no external corroboration. Treat summaries as full primary evidence; do not invent quotes.
+
+---
+
+## 1. Method limits
+
+- **Thin notes:** Summaries lack timelines, exact tools beyond named categories (Zapier, free automation, VA/assistant, CSV), and verbatim language.
+- **N=5, mixed roles:** Pattern detection only; not market size or price discovery.
+- **One warm in mix:** Warm bias risk; which person was warm is not specified.
+- **Still unknown:** Budget owner and willingness to pay *for this product*; migration depth; data-sensitivity requirements; whether “pilot” was budgeted; retention after switch.
+- **No observed experiment:** No pilot run, waitlist, or paid conversion in this packet.
+
+## 2. Segments observed
+
+| Segment | Who | N | Implication |
+|---------|-----|---|-------------|
+| Bleeding + paying cost | Agency PM (45 min copy + Zapier); Bookkeeper (weekly failures + paid VA); Consultant (pays assistant) | 3 | Core ICP candidates; cost already in time + labor/tools |
+| Bleeding / workaround, low cash tool spend | Marketer (free automation; has switched tools; wants CSV) | 1 | Pain/switch curiosity without paid stack; price sensitivity likely |
+| Polite only | Founder (no recent pain or spend; pitch compliment only) | 1 | Exclude from demand claims; compliments ≠ G1–G3 |
+
+## 3. Pain patterns (G1)
+
+| Pattern | Frequency | Evidence (summary ids; no invented quotes) |
+|---------|-----------|-----------------------------------------------|
+| Manual copy across tools / onboarding friction | 1 strong + related | S01 Agency PM: repeatedly spends **45 minutes** copying across tools |
+| Recurring process failures | 1 strong | S04 Bookkeeper: **weekly failures** |
+| Labor as workaround for ops load | 2 | S02 Consultant pays an assistant; S04 Bookkeeper paid VA labor |
+| Weak / absent recent pain | 1 | S03 Founder: no recent pain or spend |
+
+## 4. Status quo & spend (G2)
+
+| Solution in market | Cost form | Gaps they hate | Notes |
+|--------------------|-----------|----------------|-------|
+| Zapier | Paid automation | Still manual copy time for agency PM | S01 pays for Zapier **and** burns ~45 min copy |
+| Human assistant / VA | Paid labor | Does not remove process ownership/sensitivity issues | S02 assistant; S04 VA |
+| Free automation | $0 tools | Marketer already on free stack | S05 |
+| Templates | Abandoned | Unclear ownership → dropped | S01 abandoned a template |
+| Nothing recent | No spend | N/A | S03 founder |
+
+## 5. Switch barriers (G3)
+
+| Barrier | How common | Implication for product |
+|---------|------------|-------------------------|
+| Migration | Named by consultant | Onboarding/migration path is a first-class requirement, not an afterthought |
+| Unclear ownership (template abandon) | Agency PM | Multi-party client onboarding needs explicit ownership model |
+| Sensitive files | Bookkeeper | Trust, access control, compliance framing before full data import |
+| Format / control preference (CSV) | Marketer | Export/import and non-lock-in reduce switch friction |
+| Past tool switches | Marketer | Credible switcher segment exists |
+| Pilot request | Agency PM | Highest intent signal in sample — offer structured pilot, not more pitch |
+
+## 6. Gate scores
+
+| Gate | Score (1–5) | Confidence | Summary |
+|------|-------------|------------|---------|
+| G1 Pain | **4** | **med** | Repeated concrete pain (45 min copy; weekly failures) in independent operator interviews; founder contradicts. Thin notes cap confidence. |
+| G2 Spend | **4** | **med** | Multiple pay cost for bad/partial solutions (Zapier, assistant, VA); marketer free-only and founder zero spend keep this from 5. |
+| G3 Switch | **3** | **med-low** | Pilot ask + prior tool switch + CSV preference support feasibility; migration, ownership, and sensitive-file concerns are material barriers. No completed switch *to this product*. |
+
+Confidence is separate from score: small N, summary-only depth, unknown warm ID, mixed roles → not high confidence.
+
+## 7. Decision
+
+**Verdict: Advance**
+
+**Why:** Among five interviews, three show bleeding + real spend/workaround cost; one shows switch history and integration preference; only one is polite-only noise. Gates are not uniform “5,” but behavioral support is enough for a **narrow smoke / paid pilot**, not a large build.
+
+**If Advance — wedge to take into smoke/PRD:**  
+**Client-onboarding data handoff for agency PMs and bookkeepers (and similar ops) who already pay Zapier and/or VA/assistant time**, with: (1) cut manual multi-tool copy, (2) explicit ownership of onboarding steps, (3) migration path, (4) sensitive-file controls, (5) CSV import/export. Lead commercial motion with a **real pilot** (as requested by agency PM), not template dumps.
+
+**Reshape note (secondary):** Broad “any founder” ICP is wrong — drop pitch-only founders with no recent pain/spend.
+
+**Park would require:** If next 5 cold ICP interviews showed only compliments and free tools with no time/money cost — not the case here.
+
+---
+
+## 8. Evidence handoff
+
+| Field | Value |
+|-------|--------|
+| Current decision | Advance |
+| Evidence classes | primary behavior |
+| Supported claims | Ops roles report multi-tool copy time and weekly process failures; money already goes to Zapier, assistants, and VAs; a template was abandoned over unclear ownership; migration is a named barrier; free-automation user has switched tools and wants CSV; one interviewee asked for a real pilot; one founder had no recent pain/spend and only complimented the pitch |
+| Still unproven | Willingness to pay for *this* product; price point; pilot conversion; retention; whether warm contact inflated pilot ask; generalizability beyond N=5 summary-only notes; security/compliance bar for bookkeepers |
+| Contradictions / exclusions | Founder: no recent pain or spend — polite-only, exclude from demand; marketer on free automation — may not match paid wedge without further proof; consultant pay exists but migration may block switch |
+| Source anchors | S01 Agency PM: 45 min copy, Zapier pay, abandoned template (ownership), real pilot ask; S02 Consultant: pays assistant, migration barrier; S03 Founder: no recent pain/spend, pitch compliment; S04 Bookkeeper: weekly failures, paid VA, sensitive-file concerns; S05 Marketer: free automation, prior tool switch, wants CSV. Mix stated 4 cold / 1 warm. No separate notes/*.md. |
+| Next validation | Run a 2-week paid/structured pilot with 2–3 cold ICP (agency PM or bookkeeper), owner = founder; success = ≥1 pilot starts with defined migration + ownership checklist and reports reduced copy time or fewer weekly failures; fail = no pilot start or only compliments without calendar commitment |
+
+### Downstream artifact map
+
+| Artifact | Use in |
+|----------|--------|
+| Phrases/themes to reuse (paraphrase only; no fake quotes): 45 minutes copying across tools; weekly failures; Zapier + still manual; abandoned template / ownership; migration barrier; sensitive files; CSV; real pilot | `z-landing-smoke` copy + CTA (“pilot,” not “great idea”) |
+| Non-goals: build for pitch-only founders; ignore migration/ownership/security; assume free-automation users pay | `z-write-prd` |
+| Open questions: budget owner; security requirements; pilot pricing; which of 5 was warm | next interview round (target +5 cold bleeding+paying) |
+
+**Concrete handoff next step:** Prefer **`z-landing-smoke`** with pilot CTA and operator language, **in parallel** with 2–3 cold pilot conversations; only then **`z-write-prd`** scoped to copy reduction + ownership + migration + sensitive files + CSV for the bleeding+paying segment.
+
+## 9. Note index
+
+| ID | Slug | Gates lean |
+|----|------|------------|
+| S01 | agency-pm | G1 support, G2 support, G3 support (pilot) + barrier (ownership) |
+| S02 | consultant | G1 partial, G2 support, G3 barrier (migration) |
+| S03 | founder | G1 contradict, G2 contradict, G3 weak (compliment) |
+| S04 | bookkeeper | G1 support, G2 support, G3 barrier (sensitive files) |
+| S05 | marketer | G1 weak/neutral, G2 weak (free), G3 partial (switched; CSV) |
+
+---
+
+**Mom Test reminder:** The founder’s pitch compliment is noise. Advance rests on **past cost and behavior** (time, Zapier, VA/assistant, weekly failures, abandoned template, pilot ask, prior switches)—not on enthusiasm.

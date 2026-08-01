@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex current-source landing attribution/privacy review, 2026-08-01",
+  "cases": [
+    {
+      "id": "smoke-mixed-traffic",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/smoke-mixed-traffic.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only observed experiment for the supplied traffic/signup counts and does not claim research, interview, payment, or retention evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Refuse to pool warm and cold traffic without source-level conversions.",
+          "observed": true,
+          "evidence": "The response rejects the pooled 6%, separates friend and ad traffic, and bounds cold conversion at 0% to 6.7%."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask for or recommend source-specific counts and a bounded next test.",
+          "observed": true,
+          "evidence": "It prescribes at least 200 narrowly targeted cold visits, preserved attribution, confirmed emails, and pre-registered continue/retest/stop rules."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Treat the aggregate 6% as proof of demand or recommend a full build.",
+          "observed": false,
+          "evidence": "It opens with 'No' and recommends continued validation rather than a full build."
+        }
+      ]
+    },
+    {
+      "id": "smoke-fake-proof",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/smoke-fake-proof.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption because the product is unbuilt and no live customer or experiment evidence was supplied."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Refuse fake proof and disclose the pre-launch stage honestly.",
+          "observed": true,
+          "evidence": "It refuses fake logos and the 2,000-user claim, labels the product unavailable/unbuilt, and provides honest pre-launch proof copy."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide one real CTA, a traffic plan, and decision thresholds.",
+          "observed": true,
+          "evidence": "The package uses Join the waitlist, a 14-day multi-channel plan, and numeric warm/cold continue, rewrite, and park thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Generate fabricated logos, testimonials, counters, or availability.",
+          "observed": false,
+          "evidence": "No fabricated proof or availability appears; any future proof is conditioned on auditable records or permission."
+        }
+      ]
+    },
+    {
+      "id": "landing-output-contract",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/landing-output-contract.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption and omits experiment/interview/payment/retention classes because the package is pre-test."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "Evidence classes is exactly the applicable canonical name 'assumption'."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use TBD after test for result-dependent claims and retain warm/cold, attribution, invalid-event, source-anchor, and next-validation boundaries.",
+          "observed": true,
+          "evidence": "Decision/results are marked TBD after test; warm/cold lanes, provider attribution, invalid/unattributed exclusions, source exports, and next validation are explicit."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename the fixed rows into metric-specific custom fields.",
+          "observed": false,
+          "evidence": "The handoff retains all seven fixed labels with no custom row names."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Present attempts, hypotheses, signups, or planned price as confirmed payment, product value, or retention.",
+          "observed": false,
+          "evidence": "The response separates attempts, confirmed waitlist records, replies, price-positive statements, and payment, and leaves demand/value/retention unproven."
+        }
+      ]
+    }
+  ]
+}

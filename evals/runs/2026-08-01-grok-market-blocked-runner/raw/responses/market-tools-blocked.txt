@@ -1,0 +1,255 @@
+I'll follow only the z-market-validate skill snapshot and read its instructions first.# Market validation: AI invoice assistant
+
+## Contents
+
+1. Executive verdict  
+2. Idea framing  
+3. Evidence map  
+4. Competition and substitutes  
+5. Scores  
+6. Commercial value  
+7. Independent-developer fit  
+8. Short-term return  
+9. Entry directions  
+10. Risks and open questions  
+11. Next 48 hours  
+12. Evidence handoff  
+13. Source appendix  
+
+- **Date:** 2026-08-01  
+- **Analyst:** agent + skill `z-market-validate`  
+- **Geography focus:** Assumed global English-speaking freelancers / small businesses (not stated by user)  
+- **Assumptions:**  
+  - Product is roughly: AI that creates, extracts, categorizes, or chases invoices (email/PDF/OCR → draft invoice, reminders, bookkeeping assist).  
+  - ICP not specified → default narrow ICP: freelancers and micro-agencies who invoice clients monthly.  
+  - Solo / indie founder context.  
+  - **Public web and social search are unavailable for this run** (host constraint + user instruction). No primary posts, review pages, or competitor pages were fetched.  
+
+---
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence (low/med/high) |
+|----------|---------|---------------------------|
+| Commercial value? | Mixed *(category plausibly commercial; this idea unproven here)* | **low** |
+| Fit for independent developer? | Conditional | **low–med** (scope-dependent; no live evidence) |
+| Short-term return odds (30–90d)? | Low *(under this evidence set)* | **med** on the *odds judgment given blocked research* |
+| **Recommendation band** | **Park / reshape** until demand is scanned; at most a **manual research spike**, not “build now” | **high** that *demand is not proven in this run* |
+
+**One-paragraph summary:**  
+**Demand is not proven.** Under blocked public web/social search, this report has **zero primary or secondary public signal cards** (no quotes, no links, no volumes). Invoice pain and paid accounting tools are *plausible* from general category knowledge, but skill rules forbid treating that as measured demand. Treat any “AI invoice market is huge” story as **assumption**, not evidence. Recommendation: **do not claim demand is proven**; run the manual channel checklist (or restore search tools), then re-score. Until then, **Park / reshape** relative to a build decision.
+
+---
+
+## 2. Idea framing
+
+- **Problem (user language — inferred):** “Invoicing is slow, error-prone, and easy to delay; chasing payments and matching line items from work artifacts is annoying.”  
+- **Proposed solution (as stated):** An **AI invoice assistant** (shape not specified: draft from emails/notes, OCR bills, reminders, AR follow-up, etc.).  
+- **ICP (narrow — assumed):** Solo freelancers / 1–5 person service shops who invoice in English and already use Stripe/PayPal/QuickBooks-ish tools.  
+- **Non-ICP (who to ignore first):** Enterprise AP automation, multi-entity accounting, full ERP replacement, heavily regulated verticals without a compliance plan.
+
+---
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---------|--------|-------|
+| X / Twitter | **blocked** | Public/social search unavailable |
+| Reddit | **blocked** | Same |
+| HN | **blocked** | Same |
+| Product Hunt | **blocked** | Same |
+| Indie Hackers | **blocked** | Same |
+| Reviews / Stores (G2, Capterra, App Store) | **blocked** | Same |
+| SEO / keyword pages | **blocked** | Same |
+| CN platforms | **skipped (reason)** | Geography not China-primary; tools also blocked |
+
+**Evidence limit:** Web, browser, apps, computer use, and subagents were unavailable. **No inventing of posts, ratings, or competitor pricing “as if searched.”**
+
+### 3.2 Demand signals (positive)
+
+**None collected.**  
+Status: `not found` under blocked research — not “no demand in the market.”
+
+### 3.3 Disconfirming signals (negative)
+
+**None collected from channels** (search blocked).  
+
+**Structural disconfirmers (assumption-level only — not public signal cards):**
+
+- Crowded substitutes (accounting suites, Stripe Invoicing, Wave, FreshBooks, QuickBooks, Excel + email) often mean “already solved enough” for many users — **assumption**, weight **n/a** as evidence.  
+- “AI wrapper on invoices” risks low willingness to pay if it only shaves minutes on a monthly chore — **assumption**.  
+- Trust / money-path liability (wrong amounts, tax fields) can kill indie distribution — **assumption**.
+
+Disconfirming section cannot be empty of *explanation* when search is blocked: the honest disconfirming fact is **absence of proof**, which **fails** the “real demand” bar.
+
+### 3.4 Pricing & willingness-to-pay hints
+
+| Finding | Status |
+|---------|--------|
+| What people already pay for invoicing / AR tools | **not measured** (pages not fetched) |
+| Free expectations | **not measured** |
+| Budget owners | Assumed: freelancers pay for tools that get them paid faster; **assumption** |
+
+---
+
+## 4. Competition & substitutes
+
+Named from **category knowledge as assumptions**, not from live scans. Do **not** treat rows as verified pricing or complaint mining.
+
+| Substitute | Type | Price signal | Gap / complaint | Threat to indie |
+|------------|------|--------------|-----------------|-----------------|
+| Manual (Word/Excel + email + bank transfer) | Do-nothing / DIY | Free | Slow, forgotten follow-ups | High inertia |
+| Stripe / PayPal invoicing | Payment rails + simple invoices | Public tiers exist; **not fetched** | May lack AI drafting / project-to-invoice | High if user already on rails |
+| FreshBooks / Wave / QuickBooks / Xero | SMB accounting | Paid tiers common; **not fetched** | Complexity / price; AI may be bolted on | High for full-suite buyers |
+| Receipt/OCR expense apps | Adjacent AP/expense | **not fetched** | Different job (spend vs AR) | Medium if you blur AP/AR |
+| VA / bookkeeper | Human substitute | Hourly | Cost, lag | Medium for “done for you” |
+| Generic ChatGPT + copy-paste | AI substitute | Subscription already paid | Errors, no workflow/system of record | **High** for pure drafting |
+
+**Category structure (provisional):** **chore tool / fragmented SaaS** with strong incumbents — **assumption**, not oligopoly proof.
+
+---
+
+## 5. Scores (1–5)
+
+Scored **for this evidence set only**. Midpoint/low scores reflect **blocked measurement**, not a finished market kill.
+
+| Dimension | Score | Evidence (1 line) |
+|-----------|-------|-------------------|
+| Demand reality | **1** | No organic pain posts or behavior collected; demand **unproven** |
+| Willingness to pay | **2** | Paid substitutes exist as category lore only; no budget talk captured |
+| Competition intensity | **4** | Assumed crowded incumbents + free DIY + ChatGPT; **not** review-mined (higher = worse) |
+| Indie fit | **3** | Narrow wedge *could* be solo-shippable; money/tax support burden unknown |
+| Time-to-signal | **4** | Landing + waitlist or 10 Mom Test calls can run in days **if** channels reopen / manual |
+| Short-term return odds | **2** | With no demand proof and crowded substitutes, first paid users in 30–90d are speculative |
+| **Composite (avg)** | **2.3** | demand 1 + pay 2 + competition_fit `(6-4)=2` + indie 3 + time 4 + ST 2 → **(1+2+2+3+4+2)/6 = 2.3** |
+
+**Scoring note:** Competition intensity inverted via `competition_fit = 6 - 4 = 2` before averaging.
+
+---
+
+## 6. Commercial value
+
+**Verdict: Mixed (category) / Weak (this idea, this run).**  
+
+People *often* pay for getting paid and for bookkeeping, so commercial value of “invoice-related software” is **not zero as a category**. That does **not** prove buyers will pay for an **AI invoice assistant** specifically, switch from incumbents, or trust AI on money fields. Without public complaints, pricing talk, or experiments, commercial value for **your** product remains **unproven**.
+
+---
+
+## 7. Independent developer fit
+
+| Factor | Assessment |
+|--------|------------|
+| MVP build scope | Conditional: draft-from-notes/email is smaller than full AR/collections + tax |
+| Support / ops | Medium–high if numbers are wrong or payments fail; money products escalate support |
+| Distribution | Solo-friendly only via freelancer communities — **channels not scanned** |
+| Regulation / liability | Invoice content, tax, and payment-adjacent features raise compliance risk by geography |
+| Skills match | Unknown (user did not state stack/domain) |
+
+**Fit: Conditional** — only if you wedge tightly (e.g. “draft invoice from client email for freelancers on Stripe”) and avoid becoming a mini-ERP on day one.
+
+---
+
+## 8. Short-term return (30–90 days)
+
+**Success metric (suggested):** 10 problem interviews with *past-behavior* stories **or** 50 waitlist emails from ICP **or** first $1 paid — pick one; none measured here.
+
+- **Best plausible path:** Manual research → 10 Mom Test calls with freelancers who invoiced last month → if pain is “drafting from messy work logs,” ship a ugly MVP (template + AI draft + export PDF), not full accounting.  
+- **Why odds are Low (this run):** No demand proof; strong free/incumbent substitutes assumed; AI novelty alone is a weak 90-day monetization story.  
+- **What would falsify “low”:** Multiple unprompted “I pay for X and still hate Y” stories with money amounts, or paid preorders after a landing spike.
+
+---
+
+## 9. If you go deeper — entry directions
+
+### Primary wedge (recommended *only after* demand scan)
+
+- **Who:** Freelancers who already get paid via Stripe/PayPal and invoice ≥4×/month.  
+- **Job-to-be-done:** Turn completed work notes/emails into a correct draft invoice in minutes.  
+- **MVP shape:** One input (email/notes) → draft line items + client fields → human confirm → PDF/Stripe link.  
+- **Where to find first 10 users:** Buyer habitats (r/freelance, local freelancer Discords, Twitter freelancers) — **not searched this run**.  
+- **Metric in 14 days:** ≥5 users complete a full draft→send workflow twice; ≥1 paid or irrevocable prepay signal.
+
+### Backup wedges
+
+1. **Payment reminder / AR follow-up** for freelancers who already create invoices but hate chasing.  
+2. **Receipt → expense line** for solopreneurs (different job; only if AR wedge dies).
+
+### Explicitly do **not** start with
+
+- Full QuickBooks replacement  
+- Multi-entity / enterprise AP automation  
+- “AI CFO” brand without a single painful workflow  
+- Claiming **demand is proven** from this report  
+
+---
+
+## 10. Risks & open questions
+
+- **Is demand proven?** **No.**  
+- What exact pain is AI solving that templates + Stripe do not?  
+- Will users trust AI on amounts/tax without heavy review (killing time savings)?  
+- Incumbent AI features shipping inside accounting tools? **not checked**  
+- Geography tax/compliance constraints?  
+- Does “assistant” mean AR, AP, or both? Scope blur kills indie focus.
+
+---
+
+## 11. Next 48 hours (exactly 3 actions)
+
+1. **Manual 45–60 min demand pass** (tools still blocked for the agent): Reddit (buyer subs) + X last 90 days + HN Algolia + one review site for “invoice” / “FreshBooks alternative” / “hate invoicing” — save **≥10 quotes with URLs**.  
+2. **Write 5 Mom Test questions** focused on last-month invoicing behavior (time spent, tools paid, failed follow-ups) — no pitch.  
+3. **Book or DM 5 freelancers** who invoiced in the last 30 days; log answers in a simple sheet; **kill or proceed** only after ≥5 real conversations **or** clear public signal cards.
+
+---
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Park / reshape |
+| Evidence classes | assumption |
+| Supported claims | Public/social channels were **blocked** this run; **demand for an AI invoice assistant is not proven** from collected signals (zero signal cards); composite **2.3** reflects evidence poverty + assumed competition, not a validated market. |
+| Still unproven | Organic demand frequency; willingness to pay / switch; retention; which invoice job is painful; competitor gaps; pricing; delivery accuracy; 30–90d monetization. |
+| Contradictions / exclusions | No positive public demand evidence to contradict; excluded “build full AI accounting suite first”; excluded treating category lore as primary demand. |
+| Source anchors | User request 2026-08-01; host note “web/social search unavailable”; skill path `.zstack-skill/z-market-validate/SKILL.md`; no external URLs retrieved. |
+| Next validation | Owner: founder. Action: complete manual channel checklist + 5 behavior interviews. Success: ≥3 high-weight buyer pain quotes with money/time **or** paid intent. Fail: only vague “cool AI” interest or “Excel is fine.” |
+
+---
+
+## 13. Source appendix
+
+### Strongest supporting links
+
+1. **not found** (search blocked)  
+2. **not found**  
+3. **not found**  
+4. **not found**  
+5. **not found**  
+
+### Strongest opposing links
+
+1. **not found** (search blocked)  
+2. **not found**  
+3. **not found**  
+4. **not found**  
+5. **not found**  
+
+### Manual research checklist (from skill `references/sources.md` — use when tools are limited)
+
+1. Reddit search + 2 buyer subreddits (not only r/SaaS)  
+2. Twitter/X advanced search last 90 days  
+3. HN Algolia  
+4. Product Hunt search + 1 review site (G2/Capterra)  
+5. Note **10 quotes with links** into this template; include “scam / too expensive / alternative / cancelled / doesn’t work” queries  
+
+### Signal card dump
+
+*Empty — all channels `blocked` or `skipped`.*
+
+---
+
+### Direct answer
+
+**Is demand proven?** **No.** With public web and social search unavailable, this validation cannot show recurring, specific, organic buyer pain or paid intent. Commercial category plausibility is **not** the same as proven demand for your AI invoice assistant. **Recommendation band: Park / reshape** (research spike only), not build-on-proof.

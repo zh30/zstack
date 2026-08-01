@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1324"/><stop offset="1" stop-color="#16314b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1040" cy="110" r="220" fill="#35d0a0" opacity=".13"/>
+  <rect x="88" y="78" width="190" height="48" rx="24" fill="#35d0a0"/>
+  <text x="183" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#071a17">EARLY ACCESS</text>
+  <text x="88" y="220" font-family="Arial, sans-serif" font-size="66" font-weight="750" fill="#f5f8fb">Restore every client tab</text>
+  <text x="88" y="300" font-family="Arial, sans-serif" font-size="66" font-weight="750" fill="#f5f8fb">workspace in one click.</text>
+  <text x="88" y="382" font-family="Arial, sans-serif" font-size="31" fill="#b9c8d7">Planned Chrome extension for hands-on support agents</text>
+  <text x="88" y="430" font-family="Arial, sans-serif" font-size="31" fill="#b9c8d7">at small US SaaS teams.</text>
+  <text x="88" y="528" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#35d0a0">Planned pricing from $9/month</text>
+</svg>

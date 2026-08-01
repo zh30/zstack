@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: It recruits and structures real customer interviews focused on past behavior and workflows.

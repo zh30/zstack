@@ -1,21 +1,10 @@
 ---
 name: z-customer-discovery
 description: >-
-  Run Mom Test–style customer discovery for independent developers: recruit and
-  structure 5–15 real user interviews focused on past behavior (not future
-  intent), debrief each talk for violations, and synthesize evidence on three
-  gates — pain real/frequent, people already paying for bad solutions, and
-  willingness to switch. Use for user interviews, customer discovery, The Mom
-  Test, 用户访谈, 客户发现, or /z-customer-discovery.
-license: MIT
-metadata:
-  author: henry
-  tags:
-    - indie
-    - validation
-    - discovery
-    - interviews
-    - mom-test
+  Use when an independent developer needs to recruit, interview, or debrief real
+  customers. Plans 5–15 Mom Test–style interviews and synthesizes past behavior,
+  current workarounds or spend, pain frequency, and willingness to switch;
+  includes 用户访谈 and 客户发现 requests.
 ---
 
 # Customer Discovery (Mom Test)
@@ -43,16 +32,9 @@ Every interview and every synthesis updates these:
 |------|----------|-----------------|----------------------|
 | **G1 Pain** | Is the pain real and frequent? | Specific recent stories, triggers, workarounds, time/money/emotion cost | “Sounds annoying”, hypotheticals |
 | **G2 Spend** | Do people already pay cost for bad solutions? | Tools, invoices, freelancers, hours in Excel, risk taken | “I’d pay if it existed” |
-| **G3 Switch** | Would they switch to something better? | Failed alternatives, budget owner, switching cost, “what happens if nothing changes” | Polite enthusiasm after your pitch |
+| **G3 Switch** | Is switching behavior credible and feasible? | Past switches, active search, failed alternatives, budget owner, switching cost, “what happens if nothing changes” | Polite enthusiasm or future intent after your pitch |
 
 Without G1–G3 primary evidence, do **not** green-light a large build.
-
-## When to use
-
-- After a rough idea or `z-market-validate` — need first-hand signal  
-- Before or beside `z-landing-smoke` — interviews supply language; smoke tests behavior at scale  
-- Before `z-write-prd` heavy scope — only encode what discovery supports  
-- Founder keeps pitching friends and needs a coach + process  
 
 ## When not to use
 
@@ -74,6 +56,33 @@ Chinese out). Interview language should match **what interviewees speak**.
 5. **Synthesis cites notes files** (or pasted notes) — traceable quotes.  
 6. **Decision is explicit:** continue / reshape / stop — with gate scores.  
 7. Prefer writing artifacts to disk when in a repo.
+8. **Evidence does not upgrade on handoff.** Public signals remain secondary;
+   interview behavior remains primary but small-sample; compliments and
+   assumptions remain unproven.
+9. **The handoff is a fixed interface.** In every mode, end the primary `setup`,
+   `debrief`, `synthesize`, or `full` output with exactly one two-column,
+   seven-row Evidence handoff table headed `Field | Value` using these exact
+   labels: `Current decision`,
+   `Evidence classes`, `Supported claims`, `Still unproven`, `Contradictions /
+   exclusions`, `Source anchors`, and `Next validation`. The class cell may
+   contain only applicable names from `primary behavior`, `observed experiment`,
+   `secondary public`, `search signal`, and `assumption`; put sample and source
+   limitations in the other fields. Include a class only when supplied inputs
+   or actual results in this output belong to it; a planned next interview or
+   experiment does not make that class current.
+   Never leave the class cell empty. If a debrief contains only compliments,
+   hypotheticals, or missing behavior, use `assumption` and state that those
+   inputs do not support a demand claim.
+   Treat the seven labels as literal protocol tokens. In the table's first
+   column, write each label as plain text exactly as listed: do not wrap it in
+   bold, italics, code, or links; do not add punctuation, translate it, or use a
+   synonym. For example, write `| Current decision |`, never
+   `| **Current decision** |`.
+   Do not add a third evidence-class, status, or detail column. Before results
+   exist, use `assumption` in `Evidence classes` and `TBD after test` for
+   result-dependent fields. If the mode writes multiple files, put the single
+   table in the decision-bearing artifact: the setup README, debrief note, or
+   synthesis/decision document. Do not duplicate it in companion files.
 
 ---
 
@@ -170,7 +179,8 @@ When N≥5 (or user forces early checkpoint):
 1. Read all `notes/*.md` (or all pasted debriefs).  
 2. Cluster pains, costs, switch barriers.  
 3. Segment: *bleeding & paying* / *bleeding not paying* / *polite only*.  
-4. Score G1/G2/G3 with confidence (low/med/high).  
+4. Score G1/G2/G3 with the shared rubric in
+   `references/synthesis-template.md`; report confidence separately.
 5. **Decision** in `decision.md`:
 
 | Verdict | Meaning |
@@ -189,6 +199,16 @@ When N≥5 (or user forces early checkpoint):
 | Stop | Park |
 
 Use `references/synthesis-template.md`. Pass `references/quality-bar.md`.
+Do not replace the template's fixed Evidence handoff table with separate
+downstream prose, even when also providing skill-specific handoff notes.
+
+**Artifact budget for summary-only inputs:** When the user supplies interview
+summaries and asks only for synthesis, treat those summaries as the traceable
+source. Default to `synthesis.md` + `decision.md` (and update an existing
+`README.md` only if one already tracks the study). Do **not** reconstruct a full
+`notes/NN-*.md` set or create a new status scaffold unless the user asks for
+normalized notes. Thin summaries cannot support the precision of full debriefs,
+and duplicating them adds file noise without adding evidence.
 
 ### Phase 5 — Cadence for multi-day work
 

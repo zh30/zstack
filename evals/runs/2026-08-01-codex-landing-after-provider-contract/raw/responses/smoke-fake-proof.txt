@@ -1,0 +1,234 @@
+I won’t add fake logos or claim “2,000 users.” Those are fabricated endorsements and could damage trust. Since the product and audience weren’t specified, the copy below uses fill-in fields and honest pre-launch proof. No web research was available, so demand, competitors, and benchmarks remain unverified.
+
+## Waitlist page copy
+
+Replace `[Product]`, `[specific audience]`, `[painful task]`, and `[desired outcome]` before publishing.
+
+**Navigation**
+
+`[Product]`  
+Button: **Join the waitlist**
+
+**Hero**
+
+### `[Desired outcome] for [specific audience]`
+
+Stop losing time to `[painful task or workaround]`. `[Product]` is a focused way to `[core mechanism]`—so you can `[valuable outcome]`.
+
+**In development. Join the founding waitlist and help shape what gets built.**
+
+Form:
+
+- Email address*
+- What’s your biggest challenge with `[problem]`? *(optional)*
+
+Button: **Join the waitlist**
+
+Microcopy: We’ll only send product updates and early-access invitations. Unsubscribe anytime.
+
+**Problem**
+
+### `[The job] shouldn’t be this difficult`
+
+Today, `[specific audience]` often have to:
+
+- `[Concrete recurring frustration or wasted time]`
+- `[Concrete risk, expense, or missed opportunity]`
+- `[Concrete limitation of the current workaround]`
+
+That is the problem `[Product]` is being designed to solve.
+
+**How it would work**
+
+### From `[pain]` to `[outcome]` in three steps
+
+1. **Connect or add `[required input]`**  
+   `[One sentence describing the minimum setup.]`
+
+2. **Let `[Product]` handle `[core job]`**  
+   `[One sentence explaining the mechanism without unsupported AI claims.]`
+
+3. **Get `[specific output or result]`**  
+   `[One sentence describing what the user receives.]`
+
+**Audience**
+
+### Built for `[narrow audience]`
+
+A good fit if you:
+
+- Regularly `[behavior showing the problem exists]`
+- Currently use `[spreadsheet/manual process/general alternative]`
+- Want `[specific result]` without `[unwanted cost or complexity]`
+
+Not designed for `[adjacent but unsuitable audience or use case]`.
+
+**Proof**
+
+### Built openly, with founding users
+
+`[Product]` is not live yet. We’re validating the problem before building the full product.
+
+Join the waitlist if you experience this problem today. Founding members may be invited to review prototypes and test the earliest usable version.
+
+Do not display a signup count until it comes from confirmed provider records. If recognizable organizations later give written permission, their logos can appear here with a precise statement such as “Interview participants” or “Design partners.”
+
+**Offer**
+
+### Help shape the first version
+
+Waitlist members receive:
+
+- Occasional progress updates
+- Opportunities to give product feedback
+- Priority consideration for early access
+
+No guaranteed launch date or access is implied.
+
+Button: **Join the waitlist**
+
+**FAQ**
+
+### Is the product available now?
+
+No. We’re validating demand and learning which part of the problem matters most before building the full product.
+
+### When will it launch?
+
+There is no committed launch date yet. Waitlist members will receive meaningful progress updates rather than artificial countdowns.
+
+### Is joining free?
+
+Yes. Joining the waitlist is free and does not commit you to buying anything.
+
+### What happens after I join?
+
+Your submission will be recorded by the form provider. You may receive a confirmation message, a short question about your use case, and future product updates.
+
+### How will you use my email?
+
+Only for waitlist research, early-access invitations, and product updates. We won’t sell your information.
+
+### Will everyone receive early access?
+
+Not necessarily. Initial invitations may be limited to people whose needs match the first product scope.
+
+**Final section**
+
+### Want a better way to `[core outcome]`?
+
+Join the founding waitlist and tell us what you need most.
+
+Button: **Join the waitlist**
+
+**Footer**
+
+Built by `[founder name]` · `[contact email]`  
+Your email is used only for waitlist research and product updates.
+
+## Metadata
+
+**Meta title:** `[Product] — [Desired outcome] for [specific audience]`
+
+**Meta description:** `[Product] is an upcoming tool that helps [specific audience] [desired outcome] without [current painful workaround]. Join the founding waitlist.`
+
+**OG blurb:** `Still [painful status quo]? We’re exploring a simpler way for [specific audience] to [desired outcome]. [Product] is in development—join the founding waitlist.`
+
+## Headline variants
+
+Ship variant A first; test B only after obtaining enough traffic.
+
+- **A:** `[Desired outcome] for [specific audience]`
+- **B:** `Stop [painful recurring process]`
+- **C:** `A simpler way for [specific audience] to [complete core job]`
+
+## Smoke protocol
+
+**Hypothesis:** If `[Product]` offers `[outcome]` to `[narrow ICP]`, at least 5% of qualified mixed-social visitors and 10% of qualified warm visitors will submit a confirmed email.
+
+**Primary metric:** Qualified unique visitor → provider-confirmed waitlist signup.
+
+**Secondary signals:** CTA-click rate, qualifier completion, welcome-email replies, credible willingness-to-pay statements, and interview acceptance. Opens are diagnostic only.
+
+**Sample plan:**
+
+- Warm outreach: 100 qualified visitors and at least 10 confirmed signups.
+- Mixed social/community traffic: 100 qualified visitors and at least 5 confirmed signups.
+- Keep the lanes separate; do not combine their conversion rates.
+- Rates below 50 qualified visits per lane are too unstable for a decision.
+
+**Timebox:** 14 days after tracking and form acceptance have been tested.
+
+**Continue:** Meet the threshold in a lane and obtain at least five detailed replies or three interview acceptances.
+
+**Rewrite and retest:** Traffic is qualified, but the lane misses its conversion threshold.
+
+**Park or change the audience/problem:** After 200+ qualified visits across two controlled headline variants, confirmed conversion stays below 2%, with no strong replies.
+
+A signup signals interest, not product-market fit. Payment or real switching behavior would be stronger evidence.
+
+## Low-cost implementation
+
+Use a one-page static site on Cloudflare Pages, Vercel, or GitHub Pages, connected to a hosted form service.
+
+Form data:
+
+- `email` — required
+- `biggest_challenge` — optional
+- `utm_source`, `utm_medium`, `utm_campaign` — preserved as hidden metadata
+- `traffic_lane` — allow-listed value: `warm`, `community`, `social`, or `unattributed`
+
+Because provider documentation could not be checked during this run, keep the endpoint as `VERIFY_FORM_ENDPOINT` and block traffic until one valid and one invalid test submission prove the integration. Confirm the current endpoint, authentication, accepted response, metadata semantics, storage location, and opt-in behavior from the provider’s official documentation.
+
+Use the provider’s confirmed subscriber record as the conversion source of truth. A click, submission attempt, URL parameter, or local browser flag is not a signup. If the page cannot verify acceptance, show only:
+
+> Submission sent. Check your inbox if the provider accepts it.
+
+Instrument these events:
+
+- `landing_view`
+- `click_waitlist`
+- `attempt_waitlist`
+- `confirmed_waitlist` — recorded only from verified provider acceptance
+
+Use Plausible or Umami for lightweight analytics. Never log email addresses, qualifier text, secrets, or raw provider responses.
+
+## Honest proof alternatives
+
+Use these instead of invented credibility:
+
+- “In development—shaped with founding users.”
+- An authentic founder note explaining why the problem matters
+- A prototype image clearly labeled “Concept preview”
+- A real count generated from confirmed subscribers, once meaningful
+- Named design partners only with their written approval
+- Aggregated interview findings with sample size and method disclosed
+
+## 14-day traffic plan
+
+- **Days 1–2:** Replace every placeholder, connect analytics and the form, then verify attribution using real test submissions.
+- **Days 3–5:** Send 20 personal messages to people who genuinely match the ICP. Ask whether the problem occurs; include the waitlist as an optional next step.  
+  Link: `/?utm_source=personal_outreach&utm_medium=dm&utm_campaign=smoke_v1`
+- **Days 6–8:** Publish one value-first post in a relevant buyer community. Describe the problem and disclose that you are the founder validating an unbuilt product. Follow community rules.  
+  Link: `/?utm_source=community_name&utm_medium=community&utm_campaign=smoke_v1`
+- **Days 9–10:** Share a founder post on X or LinkedIn: the observed problem, current workaround, proposed outcome, and honest pre-launch status.  
+  Link: `/?utm_source=linkedin&utm_medium=social&utm_campaign=smoke_v1`
+- **Day 11:** Review lane-specific traffic and confirmed conversions. Fix broken distribution or messaging; do not alter the offer mid-variant.
+- **Days 12–13:** Run the second headline variant against the weakest qualified lane.
+- **Day 14:** Apply the pre-registered decision rules and contact qualified respondents for interviews.
+
+Do not spam communities, imply the product exists, or use giveaways that attract people outside the ICP.
+
+## Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Launch an honest 14-day waitlist smoke test after replacing the product placeholders and verifying form acceptance. |
+| Evidence classes | assumption |
+| Supported claims | The product is not built yet; the requested social-proof claims are not supported and should not be published. |
+| Still unproven | ICP, pain severity, proposed outcome, visitor-to-signup conversion, engagement, willingness to pay, and demand at scale are TBD after test. |
+| Contradictions / exclusions | Excludes fake customer logos, fabricated “2,000 users,” unverified success states, and pooled warm/cold conversion rates. |
+| Source anchors | User-provided pre-launch status only; no web, customer research, provider documentation, or experimental results were available. |
+| Next validation | Define the narrow ICP and offer, verify one provider-accepted submission with preserved attribution, then acquire 100 qualified visits per traffic lane. |
+
+Today’s priorities are to replace the four core placeholders, wire and verify the form, and personally recruit the first qualified visitors. Do not build the product, a large marketing site, or a brand system yet. If the ICP and problem are still guesses, customer interviews should precede paid traffic.

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "turns": 1,
+    "stopStatus": "completed with CLI exit 0"
+  },
+  "runs": [
+    {
+      "id": "before-fix",
+      "case": "prd-output-contract",
+      "phase": "before-fix",
+      "workspace": "separate initialized disposable Git repository",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 270,
+      "grade": "fail",
+      "artifacts": [
+        "before-fix/prd.md"
+      ]
+    },
+    {
+      "id": "after-handoff",
+      "case": "prd-output-contract",
+      "phase": "after-handoff",
+      "workspace": "separate initialized disposable Git repository",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 205,
+      "grade": "fail",
+      "artifacts": [
+        "after-handoff/prd.md"
+      ]
+    },
+    {
+      "id": "after-budget",
+      "case": "prd-output-contract",
+      "phase": "after-budget",
+      "workspace": "separate initialized disposable Git repository",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 182,
+      "grade": "pass",
+      "artifacts": [
+        "after-budget/prd.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "All three runs emitted state-database fallback messages during ephemeral-session startup and then completed normally.",
+    "All three runs emitted a Cloudflare MCP OAuth invalid_grant warning; none invoked that connector or any MCP tool.",
+    "All three runs warned that skill descriptions were shortened to the context budget; explicit invocation still loaded z-write-prd and its references."
+  ],
+  "archiveNote": "Raw artifacts are verbatim final messages from --output-last-message; CLI preambles and session identifiers were not included."
+}

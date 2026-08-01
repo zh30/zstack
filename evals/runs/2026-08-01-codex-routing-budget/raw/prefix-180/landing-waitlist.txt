@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: It directly covers a waitlist landing page, single CTA, low-cost traffic plan, and demand-validation thresholds.

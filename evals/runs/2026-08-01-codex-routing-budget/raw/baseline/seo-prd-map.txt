@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: The request explicitly asks for SEO keyword research, intent mapping, page planning, on-page briefs, and technical notes from a PRD.

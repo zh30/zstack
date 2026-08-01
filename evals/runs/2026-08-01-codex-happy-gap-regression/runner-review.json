@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex root criterion review",
+  "cases": [
+    {
+      "id": "discovery-five-interviews",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "State N, recruit mix, summary-level limitations, and exclude compliments from positive evidence.",
+          "observed": true,
+          "evidence": "The header records N=5, a 4-cold/1-warm mix, unidentified warm membership, summary-only limits, and treats the founder compliment as contradictory rather than positive evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Cluster segments and score G1, G2, and G3 with confidence separate from signal strength.",
+          "observed": true,
+          "evidence": "Separate segment, G1, G2, G3, and gate-score tables distinguish score from Medium or Medium-low confidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Make an explicit checkpoint decision and hand off a bounded pilot or stop path with constraints.",
+          "observed": true,
+          "evidence": "The verdict is Advance narrowly to a three-account, 14-day concierge pilot with explicit pass, reshape, and park conditions."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep summary-only synthesis to decision artifacts rather than reconstructing detailed interview notes.",
+          "observed": true,
+          "evidence": "I01-I05 are declared traceability labels, and the response limits itself to evidence, segment, gate, decision, pilot, and handoff artifacts."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent verbatim quotes, missing interview details, or market-size claims.",
+          "observed": false,
+          "evidence": "It explicitly states that no verbatim quotes are available, identifies missing facts, and says the sample cannot estimate prevalence or market size."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a generic product or large build from the heterogeneous sample.",
+          "observed": false,
+          "evidence": "It rejects a broad product build and narrows the wedge to agency operations/PMs and a concierge pilot."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Create a full per-interview note set or a new status scaffold unless the user requests normalized notes.",
+          "observed": false,
+          "evidence": "The compact evidence table is not a reconstructed note set, and no new status scaffold is created."
+        }
+      ]
+    },
+    {
+      "id": "smoke-complete-pack",
+      "skill": "z-landing-smoke",
+      "grade": "fail",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Keep one CTA and disclose that the product, proof, price, and ship date are unvalidated.",
+          "observed": true,
+          "evidence": "Every CTA uses Join the early-access waitlist, while hero, proof, FAQ, and footer disclose the unbuilt product, absent proof, planned price, and absent ship date."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide numeric timeboxed success and kill rules with warm and cold traffic reported separately.",
+          "observed": true,
+          "evidence": "The August 3-12 plan defines source-specific minimums, strong/weak thresholds, paid stop rules, and prohibits warm/cold pooling."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include full English copy, UTMs, a materialized minimal deployable page whose form counts only provider-confirmed success, preserves source attribution on each confirmed subscriber, and never presents an unverified attempt as confirmed success, plus at least three concrete channels, non-build scope, and a decision matrix.",
+          "observed": false,
+          "evidence": "Copy, UTMs, attribution rules, channels, non-build scope, and decision matrix are present, but the response only lists and describes suggested files; it contains no deployable HTML/JS/Pages Function artifact."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Fabricate proof, promise availability, build the product, or pool warm and cold conversion.",
+          "observed": false,
+          "evidence": "It refuses testimonials, logos, counters, availability and ship-date claims, excludes product code, and keeps every warm/cold calculation separate."
+        }
+      ]
+    },
+    {
+      "id": "prd-evidence-rich-mvp",
+      "skill": "z-write-prd",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Preserve cold/warm separation, mark willingness to pay unknown, and distinguish evidence from assumptions.",
+          "observed": true,
+          "evidence": "The evidence table preserves cold 27/300 and warm 12/40 separately, labels payment unknown, and distinguishes observed smoke/pilot facts from assumptions."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep one primary persona and bounded six-week scope with concrete non-goals.",
+          "observed": true,
+          "evidence": "It selects one small-agency onboarding coordinator, a six-week solo pilot MVP, one workflow/run, and a concrete non-goal list."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Give stable requirement IDs and testable acceptance criteria or validation methods for every retained functional and non-functional P0.",
+          "observed": true,
+          "evidence": "FR-001 through FR-015 and NFR-001 through NFR-008 each include testable acceptance or validation language."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include P0 journeys and failures, conceptual data boundaries, measurable kill triggers, milestones, and a smallest vertical slice.",
+          "observed": true,
+          "evidence": "Four journeys include recovery paths; later sections define states, entities, prohibited data, kill/reshape triggers, weekly milestones, and the persisted first vertical slice."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Reintroduce excluded portal, storage, migration, connector, AI, mobile, enterprise, or compliance scope as P0.",
+          "observed": false,
+          "evidence": "Portals, storage, import/migration, connectors, AI, mobile, enterprise roles, and compliance are explicit non-goals rather than P0 requirements."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent research quotes or describe signup and adjacent spend as validated payment demand.",
+          "observed": false,
+          "evidence": "No quotes are invented; signup, volunteering, payment, and the $29 price hypothesis remain explicitly distinct."
+        }
+      ]
+    },
+    {
+      "id": "seo-supplied-search-notes",
+      "skill": "z-seo-plan",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "State the research limits and avoid fabricated volume, difficulty, ranking, or competitor facts.",
+          "observed": true,
+          "evidence": "The opening evidence limit and keyword tables mark volume, difficulty, rankings, SERPs, and all query notes as unknown or unverified."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Choose one realistic primary keyword and target page, then map a clustered prioritized supporting set without cannibalization.",
+          "observed": true,
+          "evidence": "Agency client onboarding workflow is assigned to the homepage, with a small P0-P2 support map and explicit cannibalization rules."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide a product-specific homepage brief, technical baseline, measurement plan, sequenced 30/60/90 backlog, and avoid list.",
+          "observed": true,
+          "evidence": "Dedicated sections provide the ownership-specific homepage brief, technical checklist, weekly measurement rules, 30/60/90 workload, and avoid table."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Make the broad head term the default target or propose mass programmatic pages for the new domain.",
+          "observed": false,
+          "evidence": "Broad agency software, CRM, portal, and generic onboarding software terms are deferred, and programmatic city/industry pages are explicitly avoided."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Overstate record links as integrations or signup evidence as payment validation.",
+          "observed": false,
+          "evidence": "External URLs are not framed as integrations, and the handoff leaves payment demand, activation, and retention unproven."
+        }
+      ]
+    }
+  ]
+}

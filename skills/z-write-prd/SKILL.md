@@ -1,20 +1,10 @@
 ---
 name: z-write-prd
 description: >-
-  Write a professional Product Requirements Document (PRD) from provided
-  material — idea notes, market-validate reports, user interviews, competitor
-  notes, or rough specs. Acts as a PRD author for independent developers:
-  problem, goals, users, scope, requirements, UX flows, metrics, risks, and
-  MVP cut. Use when asked for a PRD, product requirements, 需求文档, 写 PRD,
-  product spec, or /z-write-prd.
-license: MIT
-metadata:
-  author: henry
-  tags:
-    - indie
-    - product
-    - prd
-    - specs
+  Use when an independent developer asks to turn an idea, research notes,
+  interviews, feature list, or rough spec into a decision-ready MVP PRD or
+  产品需求文档. Defines problem, users, goals, scope and non-goals,
+  requirements, flows, metrics, risks, milestones, and acceptance criteria.
 ---
 
 # Write PRD
@@ -29,13 +19,6 @@ The PRD must be good enough that:
 - the author can build from it without re-deciding basics every day
 - a collaborator / agent can implement without inventing product intent
 - scope is honest about **MVP vs later**
-
-## When to use
-
-- User provides an idea, notes, transcript, or research and wants a PRD
-- After `/z-market-validate` (or any research) and ready to specify the product
-- User asks to rewrite / upgrade a rough PRD into a professional one
-- Need a shared product source of truth before coding
 
 ## When not to use
 
@@ -62,6 +45,33 @@ identifiers, and code terms in their natural form.
 6. **One primary persona + one primary job** for MVP unless evidence demands more.
 7. **If material is insufficient,** ask **≤ 5** blocking questions — then draft
    with labeled assumptions rather than stalling forever.
+8. **Evidence does not upgrade on handoff.** Preserve upstream evidence classes;
+   never turn public interest, interview enthusiasm, signups, or search demand
+   into validated payment, retention, or product requirements.
+9. **The handoff is a fixed interface.** End the PRD with exactly one explicit
+   two-column, seven-row Evidence handoff table headed `Field | Value` using
+   these exact field labels: `Current
+   decision`, `Evidence classes`, `Supported claims`, `Still unproven`,
+   `Contradictions / exclusions`, `Source anchors`, and `Next validation`.
+   In `Evidence classes`, use only `primary behavior`, `observed experiment`,
+   `secondary public`, `search signal`, and `assumption`; do not replace them
+   with custom confidence or source-type labels. Include a class only when
+   supplied inputs or actual results in this PRD belong to it; planned research,
+   pilots, or payment tests do not make that class current.
+   Never leave the class cell empty. If the source packet contains only gaps or
+   unverified product input, use `assumption` and preserve those limits.
+   Treat the seven labels as literal protocol tokens. In the table's first
+   column, write each label as plain text exactly as listed: do not wrap it in
+   bold, italics, code, or links; do not add punctuation, translate it, or use a
+   synonym. For example, write `| Current decision |`, never
+   `| **Current decision** |`.
+10. **Budget the core artifact.** Unless the user explicitly requests an
+    exhaustive or enterprise document, keep a quick PRD around 1,000–2,500
+    words and a default full PRD at or below 5,000 whitespace-delimited words.
+    Target at most 4,700 words before final review so headings, tables, and late
+    corrections do not cross the hard limit. Never cut P0 acceptance criteria
+    or the Evidence handoff to hit it; remove repetition and implementation-level
+    detail first.
 
 ---
 
@@ -137,6 +147,10 @@ Also list **non-functional** needs only if real for indie MVP:
 - cost constraints (e.g. LLM spend per user)
 
 Avoid fake NFRs (“99.99% uptime”) unless the product truly needs them.
+Every retained **P0**, functional or non-functional, needs a concrete acceptance
+criterion or validation method. A P0 NFR with only a descriptive note is not
+implementation-ready; give it a measurable threshold, observable prohibition,
+or explicit test procedure.
 
 ### Phase 3 — UX / flows (lightweight)
 
@@ -173,6 +187,24 @@ Do **not** invent a 12-person staffing plan.
 
 Use the structure in `references/prd-template.md`.  
 Apply the quality bar in `references/quality-bar.md` before delivery.
+
+The Evidence handoff block is an interoperability contract, not optional prose.
+Do not rename its fields, split them into custom subsections, or omit fields
+because similar detail appears elsewhere in the PRD. Use only the canonical
+evidence classes in that table; a richer evidence ledger may appear elsewhere.
+
+Keep one canonical statement of each decision. Do not restate the same scope,
+evidence, risk, or metric in overview prose, a second ledger, requirements,
+milestones, and a postscript merely for completeness. If a full PRD would exceed
+5,000 whitespace-delimited words, keep product decisions, every retained P0 acceptance
+criterion, risks, milestones, and the Evidence handoff in the core; move deep
+schemas, exhaustive test matrices, or secondary P1/P2 detail to a linked
+appendix only when the user or repository actually needs it.
+
+Before delivery, verify both mechanical contracts: the seven first-column
+handoff labels are raw plain text, and the default full core is no more than
+5,000 whitespace-delimited words. When writing a file, `wc -w <path>` is an
+acceptable final check; in chat, draft below the 4,700-word safety target.
 
 **Delivery**
 

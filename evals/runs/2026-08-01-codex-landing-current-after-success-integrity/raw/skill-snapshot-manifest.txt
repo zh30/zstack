@@ -1,0 +1,7 @@
+sha256                                                            bytes  path
+347e03cde14b929170ac53089a1ea494cb5d757db7f8b0f54f2e6ce39759e39d    16191  skill-snapshots/z-landing-smoke/SKILL.md
+a5df96510f1dcc48a0e81518f4a39a859b4a50407d1ecae92b53b341bdec1b72     1619  skill-snapshots/z-landing-smoke/references/copy-patterns.md
+0ad9e8ecbfe401e5c3d1588854c1e13186298dfea0dc40cb64ba8147d4ab6afc     2110  skill-snapshots/z-landing-smoke/references/distribution-playbook.md
+57b52ce0c820241db4939bccfd16b8a538c14ca0af8e7c2c8016b7cea5b47efd     4195  skill-snapshots/z-landing-smoke/references/metrics-guide.md
+12b0709424ef8ce245445e8ba52d24f31bc434af3d8143e3ff9bfaef87277fce     3086  skill-snapshots/z-landing-smoke/references/quality-bar.md
+997572adc1d52ff5e669b141882c8ebbc40fafeea0b77bdcecb0adc315d9e6de     4636  skill-snapshots/z-landing-smoke/references/smoke-pack-template.md

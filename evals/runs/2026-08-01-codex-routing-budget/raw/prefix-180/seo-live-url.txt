@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: It audits a live URL for search demand, selects a primary keyword, and maps supporting queries to pages.

@@ -1,0 +1,23 @@
+Created the complete 10-day smoke-test package.
+
+Artifacts:
+
+- `artifacts/smoke-test-package.md` — protocol, copy, events, UTMs, traffic calendar, $150 allocation, thresholds, decision rules, and evidence handoff
+- `artifacts/site/index.html` — deployable responsive landing page
+- `artifacts/site/functions/api/waitlist.js` — guarded Cloudflare Pages Function
+- `artifacts/site/og-contextdeck.svg` — OG artwork
+- `artifacts/site/_headers` — security and CSP headers
+- `artifacts/cold-metrics.csv` — cold-traffic measurement template
+- `artifacts/warm-metrics.csv` — physically separate warm-outreach template
+
+Syntax checks passed. Warm outreach is never pooled with cold traffic.
+
+Remaining external setup:
+
+1. Create the Cloudflare Pages project and replace domain/contact placeholders.
+2. Verify current Buttondown API semantics, configure double opt-in, and add the API secret.
+3. Verify Plausible’s current script/event contract and configure the four events.
+4. Run real valid/invalid signup and attribution tests before spending.
+5. Check current community rules and ad-platform availability.
+
+Web/browser access was unavailable, so current provider contracts, community rules, ad inventory, and rendered social previews remain explicitly unverified. Do not build the extension yet; run this smoke test first. No SEO or broader market-research loop is needed unless cold distribution proves inconclusive.

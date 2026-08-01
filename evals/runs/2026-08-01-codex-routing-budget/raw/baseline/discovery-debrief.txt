@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: It explicitly debriefs completed interviews for Mom Test violations, past behavior, current spend, and willingness-to-switch evidence.

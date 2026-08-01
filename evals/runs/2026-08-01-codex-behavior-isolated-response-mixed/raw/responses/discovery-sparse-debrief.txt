@@ -1,0 +1,45 @@
+Mode: debrief
+
+This interview produced enthusiasm, but no reliable demand evidence. Do not count it as validation yet.
+
+### Evidence captured
+
+- “My demo was great” — compliment; no gate impact.
+- “They would probably pay” — hypothetical future intent; not evidence of budget or spending.
+- “The feature would save them time” — agreement with a leading question; no measured time cost or past incident.
+
+### Mom Test audit
+
+| Issue | What happened | Better question |
+|---|---|---|
+| Pitching before learning | The demo shaped their responses | “Walk me through the last time you handled this task.” |
+| Future-tense trap | “Would probably pay” | “What have you paid for or tried already?” |
+| Leading question | “Would this save you time?” suggests the desired answer | “How long did this take the last time?” |
+| Missing behavioral detail | No incident, workflow, frequency, or cost was recorded | “When did this last happen, and what did you do?” |
+
+Founder pitch leakage: **4/5** — inferred from the demo-led discussion and feature-validation question.
+
+### Gate updates
+
+| Gate | Update | Reason |
+|---|---|---|
+| G1 Pain | neutral | No specific recent incident, frequency, or quantified time loss |
+| G2 Spend | neutral | “Probably pay” does not show current money or effort spent |
+| G3 Switch | neutral | No active search, past switch, budget owner, commitment, or switching barrier |
+
+### Best follow-up
+
+Return to this person without showing the demo again initially:
+
+1. “Tell me about the last time you encountered this problem.”
+2. “What triggered it, and how did you handle it?”
+3. “How often has that happened recently?”
+4. “How much time did it actually take?”
+5. “What tools, people, or workarounds do you use now?”
+6. “What does that solution cost?”
+7. “Have you tried replacing it before? What happened?”
+8. “Who controls the budget or approves a new tool?”
+
+A credible next signal would be a concrete action: sharing workflow data, introducing the budget owner, scheduling a trial, or agreeing to a paid pilot. Continue discovery toward **5–15 interviews**, including at least half outside close personal contacts.
+
+Evidence limit: this assessment uses only the sparse pasted note. Interviewee context, exact wording beyond the summary, current workflow, recruitment source, and past behavior were not provided.

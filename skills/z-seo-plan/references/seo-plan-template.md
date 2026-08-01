@@ -4,6 +4,22 @@
 
 # SEO execution plan: {product / site}
 
+## Contents
+
+1. Executive summary
+2. Product and search context
+3. Research method
+4. Keyword strategy
+5. Page-keyword map
+6. P0 on-page briefs
+7. Technical and trust checklist
+8. Competitive SERP notes
+9. Execution plan
+10. Measurement
+11. Risks
+12. Evidence handoff
+13. Source appendix
+
 | Field | Value |
 |-------|--------|
 | **Date** | YYYY-MM-DD |
@@ -155,7 +171,25 @@
 - YMYL / compliance:  
 - Content ops burden for solo:  
 
-## 12. Source appendix
+## 12. Evidence handoff
+
+In the final `Evidence classes` cell, delete non-applicable choices and keep only
+canonical class names without qualifiers.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Execute / validate first / defer the cluster |
+| Evidence classes | primary behavior / observed experiment / secondary public / search signal / assumption |
+| Supported claims | Search opportunity and page decisions supported by observed evidence |
+| Still unproven | Rankings, traffic, conversion, payment, and retention not yet observed |
+| Contradictions / exclusions | SERP dominance, weak intent, cannibalization, and deferred themes |
+| Source anchors | Queries, SERP/page URLs, GSC slices, and upstream artifact paths |
+| Next validation | One action + owner + impression/click/conversion decision signal |
+
+Search opportunity is not product-market fit. Preserve any upstream uncertainty
+and do not treat planned pages or guessed bands as observed acquisition.
+
+## 13. Source appendix
 
 - SERP / page URLs used  
 - PRD / code paths referenced  

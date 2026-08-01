@@ -1,0 +1,33 @@
+No—the pooled 6% is encouraging, but it is not enough evidence to build the full product.
+
+The core problem is attribution: you know the 12 emails came from 200 total visits, but not how many came from friends versus ads. The cold-ad conversion rate could therefore be anywhere from:
+
+- 0% if all 12 signups came from friends.
+- 6.7% if all 12 came from ads.
+
+That difference changes the decision completely. Broad cold ads typically produce lower conversion than warm traffic, so pooling them hides the signal.
+
+Recommended decision:
+
+1. Do not build the full product yet.
+2. Contact all 12 subscribers with a concrete use-case question and a price or deposit ask. Replies, calls, and payments are stronger evidence than email capture.
+3. Run another test with source attribution preserved and at least 200 qualified cold visitors—not merely broad traffic.
+4. Pre-register the cold threshold:
+
+   - Continue to a thin MVP: at least 5% confirmed email conversion plus several substantive replies, or any credible payment intent.
+   - Revise and retest: 2–5% with weak engagement.
+   - Reshape the offer or ICP: below 2% after 200+ qualified visits across two controlled variants.
+
+If you discover that most of the 12 emails came from ads, that supports building a small paid-value slice. It still does not justify the full product because email signup demonstrates curiosity, not sustained usage or willingness to pay.
+
+Evidence is limited to your reported aggregate counts; individual signup attribution, traffic quality, confirmation status, replies, and payment intent were not supplied or independently verified.
+
+| Field | Value |
+|---|---|
+| Current decision | Do not build the full product; validate attribution and downstream intent, then consider a thin MVP. |
+| Evidence classes | observed experiment |
+| Supported claims | 200 reported visits produced 12 reported emails, for a 6% aggregate conversion rate. |
+| Still unproven | Cold-ad conversion rate, ICP fit, qualified demand, engagement, willingness to pay, retention, and source-level scalability. |
+| Contradictions / exclusions | Friend and broad-ad traffic were pooled; the 12 emails are not attributable by source. The implied ad conversion range is 0–6.7%, so 6% cannot be treated as cold conversion. |
+| Source anchors | User-reported counts: 20 friend visits, 180 broad-ad visits, and 12 total emails. No provider export or source-level signup records supplied. |
+| Next validation | Attribute confirmed signups by traffic class, follow up with all 12 subscribers using a use-case and payment-intent ask, and test 200+ qualified cold visits against pre-registered thresholds. |

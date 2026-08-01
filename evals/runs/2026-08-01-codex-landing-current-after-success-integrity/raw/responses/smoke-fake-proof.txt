@@ -1,0 +1,262 @@
+I would not use fake customer logos or claim “2,000 users.” Besides misleading visitors, fabricated proof contaminates the smoke test: you would be measuring reactions to a false signal rather than demand for the product.
+
+Because no product, ICP, or customer evidence was supplied—and web research is unavailable—this is an assumption-led, fill-in-ready page. Replace every bracketed field before publishing.
+
+## Smoke protocol
+
+- **Hypothesis:** If `[Product]` offers `[specific outcome]` to `[narrow ICP]`, qualified visitors experiencing `[painful problem]` will join an early-access waitlist.
+- **Primary metric:** Qualified unique visitors → provider-confirmed email signups, measured separately by traffic source.
+- **Secondary metrics:** CTA clicks, qualifying answers, welcome-email replies, explicit “I would pay” responses, and interview bookings.
+- **Sample target:** At least 100 qualified community visitors and 100 cold visitors. Treat fewer than 50 visits from any source as inconclusive. Track warm outreach separately.
+- **Success bar:** At least 5% confirmed signup conversion from niche-community traffic, five or more confirmed signups, and two substantive replies describing the problem.
+- **Strong signal:** A credible request to pay, pre-order, or receive an invoice. One request is a lead, not proof of scale.
+- **Pivot bar:** After 200+ qualified community/cold visits across two headline variants, sustained conversion below 2% means change the ICP, problem, or offer.
+- **Soft-demand warning:** Good signup conversion but no replies or concrete use cases means interview subscribers before building.
+- **Timebox:** August 3–16, 2026.
+
+## Waitlist page copy
+
+### Navigation
+
+**[Product]**
+
+Button: **Join the waitlist**
+
+### Hero
+
+**Get `[desired outcome]` without `[painful workaround]`**
+
+[Product] is being designed for `[narrow ICP]` who need to `[important job]` but are tired of `[specific recurring frustration]`.
+
+**In development — help shape the first useful version.**
+
+Form fields:
+
+- Work email
+- Optional: “What is hardest about `[problem]` today?”
+
+Button: **Join the waitlist**
+
+Microcopy: We’re validating demand before building everything. You’ll receive occasional product updates and can unsubscribe anytime.
+
+### The status quo
+
+**`[Problem]` should not cost you `[time, money, or risk]`.**
+
+Today, `[ICP]` often have to:
+
+- `[Concrete manual or expensive workaround]`
+- `[Concrete consequence, delay, or recurring risk]`
+- `[Reason existing alternatives do not fit this ICP]`
+
+The result is `[measurable or observable cost]`.
+
+### How the proposed solution works
+
+**A focused way to go from `[starting state]` to `[outcome]`.**
+
+1. **Bring in `[input]`**  
+   Add or connect the information you already use.
+
+2. **Handle `[core job]`**  
+   [Product] helps you `[specific mechanism—not “use AI”]`.
+
+3. **Finish with `[valuable result]`**  
+   Review, adjust, and export or act on the result.
+
+Label this section “proposed workflow” if it has not yet been implemented.
+
+### Who it is for
+
+**Built for:**
+
+- `[Specific role]` handling `[specific situation]`
+- People currently using `[spreadsheet/manual process/general tool]`
+- Teams or individuals who experience this problem `[frequency]`
+
+**Not designed for:**
+
+- People who only encounter the problem occasionally
+- Enterprises needing `[unsupported compliance/integration]` on day one
+- Anyone looking for a finished product today
+
+### Honest proof section
+
+**No inflated counters. No borrowed logos.**
+
+[Product] is not launched yet. This page exists to learn whether `[problem]` is important enough to solve and which part should be built first.
+
+> “I’m building the smallest version that solves `[core job]`. Early subscribers will help determine what makes the first release—and what does not.”  
+> — `[Founder name]`
+
+Add real proof only when it exists:
+
+- A clearly labeled concept prototype
+- An anonymized customer quote used with permission
+- A waitlist total calculated from provider-confirmed subscribers
+- Logos only with the organizations’ explicit approval
+
+### The offer
+
+**Join before the first version takes shape.**
+
+Waitlist members will receive:
+
+- A short update when the prototype is ready
+- An opportunity to describe their current workflow
+- Priority consideration for the first testing group
+
+Do not promise free access, discounts, or a delivery month unless you intend and are able to honor them.
+
+Button: **Join the waitlist**
+
+### FAQ
+
+**Is the product available now?**  
+No. We are validating demand and learning from potential users before building the full product.
+
+**When will it launch?**  
+There is no promised launch date yet. Subscribers will receive an honest update when a testable version exists.
+
+**What will it cost?**  
+Pricing has not been finalized. If you have a price expectation, reply to the welcome email—it is useful input.
+
+**What happens after I join?**  
+After confirming your email, you’ll receive a short welcome message asking about your current workflow. Product updates will be occasional.
+
+**How will you use my email?**  
+Only for research and updates about [Product]. It will not be sold. You can unsubscribe at any time.
+
+**Why ask about my current problem?**  
+Real workflows help determine whether this should be built and which narrow problem deserves attention first.
+
+### Final CTA
+
+**Does `[problem]` keep getting in your way?**
+
+Join the waitlist and tell us how you handle it today.
+
+Button: **Join the waitlist**
+
+### Footer
+
+Built by `[Founder name]` · `[contact email]`  
+Your email is stored by `[form/email provider]` and is never sold.
+
+## Metadata
+
+**Meta title:**  
+[Product] — `[Outcome]` for `[ICP]`
+
+**Meta description:**  
+A focused way for `[ICP]` to `[outcome]` without `[painful workaround]`. Join the early-access waitlist and help shape the first version.
+
+**Open Graph blurb:**  
+We’re exploring a better way for `[ICP]` to `[outcome]`. [Product] is still in development—join the waitlist and help define the first useful release.
+
+### Headline variants
+
+1. **Get `[outcome]` without `[painful workaround]`**
+2. **Stop `[specific recurring pain]`**
+3. **The `[product category]` focused on `[narrow ICP’s core job]`**
+
+Ship variant 1 first. Test another only after obtaining enough comparable traffic.
+
+## Implementation pack
+
+Use one static page with a Mailchimp hosted or embedded signup form. This avoids building an application or custom backend.
+
+- Required field: email
+- Optional qualifier: current problem or workaround
+- Hidden attribution: `utm_source`, `utm_medium`, and `utm_campaign`
+- Consent: use double opt-in while geography and applicable requirements remain unspecified
+- Email storage: disclose Mailchimp or the selected provider
+- Analytics: Plausible with `pageview` and `cta_click`
+- Confirmed signup source of truth: the email provider’s confirmed subscriber record
+- Do not count button clicks, rejected addresses, or attempted submissions as waitlist conversions
+- Do not display “You’re on the list” from a client-side submit handler
+- For an unverified cross-origin submission, use: **“Submission sent — check your inbox if the provider accepts it.”**
+- Use the provider’s confirmation page for definitive success messaging
+
+For trustworthy source-level conversion rates, preserve UTMs in provider-supported subscriber metadata or create separate provider-native forms/tags for each source. Submit one valid test through every form and verify the source value appears in the confirmed record. If attribution is lost, report aggregate conversion only.
+
+## Traffic plan
+
+### Days 1–2: Instrument and verify
+
+- Replace every placeholder with one narrow ICP and concrete problem.
+- Test one valid and one invalid email submission.
+- Confirm double opt-in delivery and UTM attribution.
+- Ask three target users to check whether the headline describes their real problem.
+
+### Days 3–5: Warm outreach
+
+Send 20 personal messages to people who plausibly match the ICP.
+
+Angle: “I’m exploring a tool for `[problem]`. I haven’t built it yet. Does this page describe your workflow accurately?”
+
+Link:  
+`https://example.com/?utm_source=warm_dm&utm_medium=direct&utm_campaign=smoke_aug2026`
+
+Do personalize and invite criticism. Do not ask friends outside the ICP to join merely as a favor.
+
+### Days 6–8: One niche community
+
+Publish a value-first problem post in one community where the target users already discuss the workflow. Disclose that you are the founder and that the product is not built.
+
+Link:  
+`https://example.com/?utm_source=community_name&utm_medium=community&utm_campaign=smoke_aug2026`
+
+Do explain the current workaround and ask how others solve it. Do not lead with a promotional link or violate community rules.
+
+### Days 9–11: Founder-led social posts
+
+Publish three posts:
+
+- The recurring problem and its cost
+- Why you are testing demand before building
+- What you learned from early replies
+
+Link:  
+`https://example.com/?utm_source=x&utm_medium=social&utm_campaign=smoke_aug2026`
+
+Track replies containing real workflows separately from likes and impressions.
+
+### Days 12–14: Small cold test
+
+Only after the message works with qualified people, spend at most $50 on one audience and one creative.
+
+Link:  
+`https://example.com/?utm_source=paid_test&utm_medium=paid_social&utm_campaign=smoke_aug2026`
+
+Stop after 48 hours if targeting is clearly wrong. Do not optimize around cheap clicks from people outside the ICP.
+
+Product Hunt is inappropriate at this stage unless there is a showable prototype.
+
+## Decision rules
+
+- **At least 5% niche-community conversion plus substantive replies:** Conduct five interviews, define a thin MVP, and test willingness to pay.
+- **Conversion is healthy but replies are empty:** Treat it as curiosity, not validated demand; interview subscribers before building.
+- **CTA clicks are healthy but confirmed signups are weak:** Investigate form friction, privacy concerns, and offer clarity.
+- **Below 2% after 200+ qualified community/cold visits and two headlines:** Narrow or change the ICP/problem promise.
+- **No qualified traffic:** The distribution hypothesis failed; do not interpret this as evidence that the problem does not exist.
+- **Credible payment intent appears:** Interview that person immediately and test a narrow paid offer.
+- **Fake proof materially lifts conversion:** Discard that result; it does not validate honest demand.
+
+## Top three actions today
+
+1. Fill in the ICP, painful workaround, outcome, and founder identity.
+2. Publish the static page with a provider-confirmed, double-opt-in form.
+3. Send 10 personalized messages to genuine target users.
+
+Do not build authentication, dashboards, integrations, billing, or an AI pipeline yet. First earn confirmed signups, concrete replies, and preferably payment intent. Public market and competitor evidence could not be checked because web and browser access were unavailable.
+
+| Field | Value |
+|---|---|
+| Current decision | Launch an honest 14-day waitlist smoke test; do not build the product or publish fabricated social proof yet. |
+| Evidence classes | assumption |
+| Supported claims | TBD after test |
+| Still unproven | ICP demand, problem frequency, conversion rate, willingness to pay, viable acquisition channels, product mechanism, and launch timing. |
+| Contradictions / exclusions | Fake customer logos and the “2,000 users” claim are excluded because no supporting evidence was supplied; clicks and attempted submissions are excluded from confirmed signup counts. |
+| Source anchors | User-provided statement that the product is not built; no customer, funnel, market, competitor, or web evidence was available. |
+| Next validation | Publish the honest page, obtain at least 200 qualified community/cold visits with source attribution, collect provider-confirmed signups, and interview respondents who describe a concrete current workaround. |

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "runs": [
+    {
+      "id": "before-fix",
+      "case": "discovery-five-interviews",
+      "phase": "before-fix",
+      "model": "grok-4.5-build",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "grade": "fail",
+      "elapsedSeconds": 180,
+      "artifacts": [
+        "decision.before-fix.md",
+        "synthesis.before-fix.md"
+      ]
+    },
+    {
+      "id": "after-fix",
+      "case": "discovery-five-interviews",
+      "phase": "after-fix",
+      "model": "grok-4.5-build",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "requestedReasoningEffort": "low",
+      "effectiveReasoningEffort": "unsupported by model; host did not report an effective setting",
+      "stopStatus": "stop",
+      "grade": "pass",
+      "elapsedSeconds": 88,
+      "artifacts": [
+        "after-fix/decision.md",
+        "after-fix/synthesis.md"
+      ]
+    }
+  ],
+  "runnerIncidents": []
+}

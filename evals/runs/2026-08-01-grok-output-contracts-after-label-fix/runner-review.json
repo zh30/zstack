@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex criterion-by-criterion review of the complete Grok responses after the literal-label fix",
+  "cases": [
+    {
+      "id": "discovery-output-contract",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Section 8 contains one seven-row table whose first-column cells are the exact unstyled labels Current decision, Evidence classes, Supported claims, Still unproven, Contradictions / exclusions, Source anchors, and Next validation."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The value is primary behavior only, a canonical class appropriate to the supplied interview summaries."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve the summary-only and small-sample limits, polite-only counterevidence, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The response states N=5, summaries-only depth, and unknown warm identity; excludes the compliment-only founder from demand; anchors S01-S05; and gives one founder-owned two-week pilot with explicit success and fail conditions."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Replace the fixed table with skill-specific downstream prose alone.",
+          "observed": false,
+          "evidence": "The fixed table remains the primary interface and the downstream artifact map only supplements it."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote compliments, future intent, or the heterogeneous sample into payment, retention, or market-size proof.",
+          "observed": false,
+          "evidence": "The founder compliment is noise, the pilot ask is not called payment, the mixed-role N=5 sample is not market sizing, and product payment, pilot conversion, retention, and generalizability remain unproven."
+        }
+      ]
+    },
+    {
+      "id": "landing-output-contract",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include one Evidence handoff table with all seven exact contract field labels.",
+          "observed": true,
+          "evidence": "Section 9 contains one seven-row table with every fixed label written as exact plain text in the first column."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The value is assumption only, which is canonical and accurate before any traffic runs."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use TBD after test for result-dependent claims and retain warm/cold, attribution, invalid-event, source-anchor, and next-validation boundaries.",
+          "observed": true,
+          "evidence": "Current decision and Supported claims are TBD after test; warm stays separate from non-warm; Buttondown-confirmed subscribers with retained tags are the conversion source; attempts are invalid as conversions; expected dated sources are named; and one Day-10 decision branch is bounded by Section 2 thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename the fixed rows into metric-specific custom fields.",
+          "observed": false,
+          "evidence": "All fixed row names are retained exactly and no metric-specific field replaces them."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Present attempts, hypotheses, signups, or planned price as confirmed payment, product value, or retention.",
+          "observed": false,
+          "evidence": "Attempted submits are explicitly not conversions, planned $9 pricing is not charged, result claims remain TBD, and payment, retention, and extension value are listed as unproven."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: 请求明确要用等待名单页与少量真实流量做需求冒烟验证，并预设成功与叫停阈值，与该 skill 描述完全吻合。

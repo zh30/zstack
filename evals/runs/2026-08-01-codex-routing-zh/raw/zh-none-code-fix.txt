@@ -1,0 +1,2 @@
+selection: none
+reason: 这是代码测试修复任务，与候选中的市场验证、客户访谈、落地页、SEO 或 PRD 技能均不匹配。

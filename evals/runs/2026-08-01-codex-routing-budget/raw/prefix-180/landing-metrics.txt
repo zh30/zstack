@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: It interprets landing-page funnel metrics and defines the next low-cost, bounded demand experiment.

@@ -1,0 +1,288 @@
+I'll follow only the named skill snapshot and your unverified notes to produce the decision-ready market report.Next I’ll load the report template and quality/source references from the same skill snapshot.# Market validation: Chrome extension that restores client-specific tab workspaces for support agents
+
+## Contents
+
+1. Executive verdict  
+2. Idea framing  
+3. Evidence map  
+4. Competition and substitutes  
+5. Scores  
+6. Commercial value  
+7. Independent-developer fit  
+8. Short-term return  
+9. Entry directions  
+10. Risks and open questions  
+11. Next 48 hours  
+12. Evidence handoff  
+13. Source appendix  
+
+- **Date:** 2026-08-01  
+- **Analyst:** agent + skill `z-market-validate`  
+- **Geography focus:** Not specified; treated as English-speaking / global remote support teams (assumption)  
+- **Evidence limit:** Web, browser, apps, computer use, and subagents were unavailable. No channels were searched. Do not invent URLs. All demand, substitute, and pricing claims below come only from your unverified notes. Confidence is therefore low unless you re-run with live sources.  
+- **Assumptions:** ICP = customer-support agents (not sales/CSM generally); buyer may be agent, team lead, or admin; monetization path is B2B seat-ish SaaS near the adjacent $7–12/user/month band; solo build is a Chrome extension MVP in ≤4 weeks with ≤$500 spend.
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence (low/med/high) |
+|----------|---------|---------------------------|
+| Commercial value? | Mixed | low |
+| Fit for independent developer? | Conditional | med |
+| Short-term return odds (30–90d)? | Low | low |
+| **Recommendation band** | Explore with spike | low |
+
+**One-paragraph summary:** Your notes show a plausible, recurring workflow pain—12 people described rebuilding client context, five daily, three leads estimating 10–20 minutes lost per shift—but they also show strong free substitutes (Chrome saved groups/profiles; four people prefer bookmarks), policy friction (two admins may block extensions), and a hard pay gap: nobody has paid for this exact outcome. Adjacent pricing of about $7–12/user/month is only a dated, unverified capture. For a solo founder with four weeks, $500, and a $500 MRR / 90-day target, the honest composite is **2.83 / 5**. Recommendation is **Explore with spike**: do not build team workspaces or a polished product yet; run a 1–2 week willingness-to-pay spike on the narrow “restore my client tabs” job for individual agents.
+
+## 2. Idea framing
+
+- **Problem (user language):** Support agents rebuild client context by reopening the same tabs/tools every time a client comes back; it burns minutes per shift and feels repetitive.
+- **Proposed solution (as stated):** A Chrome extension that restores a client-specific tab workspace.
+- **ICP (narrow):** Individual customer-support agents who handle many clients/day and already live in Chrome with multi-tab research/tools.
+- **Non-ICP (who to ignore first):** Large enterprises with locked-down browsers; teams whose first ask is shared/admin team workspaces; bookmark-first power users who already feel “solved”; non-support roles (generic browsing productivity).
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---------|--------|-------|
+| X/Twitter | blocked | No web/search tools this run |
+| Reddit | blocked | No web/search tools this run |
+| HN | blocked | No web/search tools this run |
+| Product Hunt | blocked | No web/search tools this run |
+| Indie Hackers | blocked | No web/search tools this run |
+| Reviews/Stores | blocked | No web/search tools this run |
+| CN platforms (if any) | skipped (reason) | Idea framed in English; not China-primary |
+| User unverified notes | partial | Only evidence base for this report |
+
+### 3.2 Demand signals (positive)
+
+All from user notes only — **no URLs**; treat as unverified secondary claims, not observed primary behavior.
+
+```text
+- channel: user notes (community)
+- url: not found (not provided)
+- date: not found
+- quote/summary: 12 community participants described rebuilding client context
+- polarity: demand
+- weight: med  # specific workflow, but n small and unverified
+- indie_relevance: high
+```
+
+```text
+- channel: user notes (community)
+- url: not found
+- date: not found
+- quote/summary: 5 said context rebuild happens daily
+- polarity: demand
+- weight: high if true  # frequency raises pain; still unverified
+- indie_relevance: high
+```
+
+```text
+- channel: user notes (support leads)
+- url: not found
+- date: not found
+- quote/summary: 3 support leads estimated 10–20 minutes lost per shift
+- polarity: demand
+- weight: med  # quantified time loss, but estimate not measured
+- indie_relevance: high
+```
+
+```text
+- channel: user notes (community)
+- url: not found
+- date: not found
+- quote/summary: 2 people asked for team workspaces
+- polarity: demand
+- weight: low  # feature ask, not payment intent; small n
+- indie_relevance: med
+```
+
+### 3.3 Disconfirming signals (negative)
+
+```text
+- channel: user notes (product environment)
+- url: not found
+- date: not found
+- quote/summary: Chrome already has saved groups/profiles
+- polarity: objection / competitor
+- weight: high  # free native substitute in the same browser
+- indie_relevance: high
+```
+
+```text
+- channel: user notes (community)
+- url: not found
+- date: not found
+- quote/summary: 4 people prefer bookmarks
+- polarity: objection
+- weight: med  # explicit “already solved my way”
+- indie_relevance: high
+```
+
+```text
+- channel: user notes (IT/admin)
+- url: not found
+- date: not found
+- quote/summary: 2 admins may block extensions
+- polarity: objection
+- weight: med  # distribution/compliance friction for B2B
+- indie_relevance: high
+```
+
+```text
+- channel: user notes (pay gap)
+- url: not found
+- date: not found
+- quote/summary: nobody has paid for this exact outcome
+- polarity: churn / objection / pricing
+- weight: high  # direct kill signal for “easy SaaS”
+- indie_relevance: high
+```
+
+### 3.4 Pricing & willingness-to-pay hints
+
+- **Exact outcome paid:** none reported (“nobody has paid for this exact outcome”).
+- **Adjacent capture (dated, unverified):** ~$7–12/user/month for a nearby paid tool — useful as a ceiling band only, not proof buyers will pay you.
+- **Budget owner:** unclear. Agents rarely buy tools; leads may care about minutes lost; admins control extension policy and often procurement.
+- **Free expectation risk:** high, because Chrome groups/profiles + bookmarks already cover a large part of “get my tabs back.”
+
+## 4. Competition & substitutes
+
+| Substitute | Type | Price signal | Gap / complaint (from notes) | Threat to indie |
+|------------|------|--------------|------------------------------|-----------------|
+| Chrome saved tab groups | Native browser | Free | May not map cleanly to client identity / one-click client restore (not evidenced beyond product existence) | High |
+| Chrome profiles | Native browser | Free | Heavier than per-client workspace; still free default | High |
+| Bookmarks | Native / habit | Free | 4 people prefer this already | High |
+| Manual rebuild each time | Do nothing | Free (time cost) | 12 described pain; 5 daily; 3 leads 10–20 min/shift | Med (habit inertia) |
+| Adjacent paid tool | Category neighbor | ~$7–12/user/mo (dated, unverified) | Not the same outcome; no proof of your wedge | Med–high if real |
+| Team workspace ask | Future feature / rival positioning | not found | Only 2 people asked; not validated as paid | Low now |
+
+**Category structure:** chore tool / fragmented niche with **strong free defaults** inside Chrome — not a clean empty field.
+
+## 5. Scores (1–5)
+
+| Dimension | Score | Evidence (1 line) |
+|-----------|-------|-------------------|
+| Demand reality | 3 | 12 pain mentions + 5 daily + 3 time estimates, all unverified small-n notes |
+| Willingness to pay | 2 | Zero pay for exact outcome; only dated adjacent $7–12/user/mo capture |
+| Competition intensity | 4 | Chrome groups/profiles + bookmarks preference = strong free substitutes *(1 = open, 5 = brutally crowded; higher is worse)* |
+| Indie fit | 4 | Extension MVP is solo-shippable in weeks; admin blocks and B2B policy are the main drag |
+| Time-to-signal | 4 | Can falsify pay intent with mockups/concierge restore in days if you can reach agents |
+| Short-term return odds | 2 | $500 MRR / 90d needs paid seats with no pay evidence and free defaults |
+| **Composite (avg)** | 2.83 | *(do not recalculate here)* |
+
+**Transparent composite calculation — single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 4 = 2
+composite_sum = 3 + 2 + 2 + 4 + 4 + 2 = 17
+composite_exact = 17 / 6 = 2.8333...
+display_composite = round(composite_exact, 2) = 2.83
+```
+
+**Scoring convention reminder:** Only competition intensity is reversed via `competition_fit = 6 - competition_intensity`. Display composite **2.83** is the single value used everywhere in this report.
+
+## 6. Commercial value
+
+**Verdict: Mixed (low confidence).**  
+There is a coherent paid-story *if* minutes lost are real and owned by a budget holder: 10–20 minutes/shift × multi-agent teams can justify a low seat price near the adjacent $7–12 band. But commercial value is not established: nobody paid for this exact outcome; four people already prefer free bookmarks; Chrome ships free groups/profiles; and admins may block the delivery vehicle (extensions). The product is more “time-saving chore tool” than urgent compliance or revenue tool, so conversion usually needs either (a) an agent who can expense a personal tool, or (b) a lead who will pilot for the team. Neither path is evidenced as ready.
+
+## 7. Independent developer fit
+
+**Verdict: Conditional (medium confidence).**
+
+- **Build scope for MVP:** Feasible solo — save/restore named client tab sets in Chrome; avoid team sync, admin console, SSO first.
+- **Support / ops burden:** Medium — browser updates, edge cases, and “my IT blocked it” tickets can eat time even with few users.
+- **Distribution:** Harder than consumer extensions if buyers sit behind managed Chrome; community notes do not show a clear acquisition channel.
+- **Regulation / liability / capital:** Low capital ($500 fits); low formal regulation, but workplace data sensitivity (client names/URLs in workspaces) needs careful defaults. No legal deep-dive performed.
+- **Skills match:** Unknown; assumed you can ship a Chrome extension. If not, fit drops sharply.
+- **Constraint fit:** Four weeks is enough for a spike MVP; $500 is enough for listing/hosting/landing, not paid acquisition at scale.
+
+## 8. Short-term return (30–90 days)
+
+**Success metric used (your goal):** $500 MRR in 90 days.
+
+Rough math from the only price band in notes (unverified): at $10/user/month midpoint, $500 MRR ≈ **50 paying seats**. At $12, ≈ **42 seats**; at $7, ≈ **72 seats**. With zero documented payments for the exact outcome, that is an aggressive conversion problem, not a packaging polish problem.
+
+- **Best plausible path:** Narrow wedge → 10–15 design partners among agents who already rebuild context daily → paid pilot at $7–12/seat for individuals or small pods → expand only after 5+ paid seats, not after feature requests.
+- **Why odds are Low:** Free native substitutes + “nobody has paid” + possible extension blocks + solo distribution limits make 42–72 paid seats in 90 days unlikely from cold start.
+- **What would falsify the path:** Agents say “Chrome groups are enough”; leads will not trial; admins refuse extensions; people accept a free bookmark recipe instead of paying.
+
+## 9. If you go deeper — entry directions
+
+### Primary wedge (recommended)
+
+- **Who:** Individual support agents who handle many clients and already reopen the same tool tabs per client (daily rebuilders).
+- **Job-to-be-done:** “When client X comes back, put me back into X’s workspace in one click.”
+- **MVP shape:** Chrome extension: name a client → save current tabs → restore/replace window for that client. No team sharing, no admin dashboard, no AI.
+- **Where to find first 10 users:** The same communities where the 12 participants appeared (you must reuse your existing contacts; public URLs not available this run).
+- **Metric in 14 days:** ≥5 agents complete a restore workflow in a real shift **and** ≥3 state a concrete pay/expense intent (or refuse with a clear substitute).
+
+### Backup wedges
+
+1. **Lead-sponsored pilot:** Sell the 10–20 minutes/shift story to support leads as a 2-week pod pilot (still individual workspaces first).  
+2. **Bookmark-plus migration:** Target only people who hate their current bookmark mess (not the 4 who prefer bookmarks).
+
+### Explicitly do **not** start with
+
+- Team workspaces (only 2 asks; multiplies product + policy complexity)  
+- Enterprise admin controls / SSO / managed-browser packaging  
+- Broad “tab productivity for everyone” positioning  
+- Building to the adjacent tool’s full feature set before pay proof  
+- Spending the $500 on ads before 5 real workflow users
+
+## 10. Risks & open questions
+
+- Are the 12 / 5 / 3 / 4 / 2 counts from distinct people and real support roles, or mixed roles/double counts?  
+- Is time loss measured or guessed?  
+- Who owns budget: agent, lead, or IT?  
+- How often do target orgs allow non-allowlisted extensions?  
+- Does client-specific restore beat Chrome tab groups enough to pay?  
+- What is the adjacent paid tool, and why would someone switch (source not provided; not inventing name/URL)?  
+- Can you reach 50 seats without enterprise sales motion?
+
+## 11. Next 48 hours (exactly 3 actions)
+
+1. **Re-contact the 12 community participants (or as many as reachable) with one Mom Test script:** last time they rebuilt client context, what they opened, minutes spent, current workaround (groups/bookmarks/other), and whether they or their lead has ever paid/expensed a browser tool — log answers in a simple sheet; success = ≥6 concrete last-time stories.  
+2. **Run a 15-minute live substitute test with 3 agents:** have them use only Chrome saved groups/profiles + bookmarks for one client reopen; capture whether they still want a client-named restore; success = ≥2 still request your wedge after the free method.  
+3. **Draft a one-page paid pilot offer (no build):** $8/user/month or $0 for 14 days then $8, individual workspaces only, kill criteria if &lt;3 people accept a pilot conversation; success = ≥3 scheduled calls or written pilot interest, else reshape/park.
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | Explore with spike |
+| Evidence classes | assumption |
+| Supported claims | Unverified notes allege recurring client-context rebuild pain (12 participants; 5 daily; 3 leads estimate 10–20 min/shift); free substitutes exist (Chrome groups/profiles; 4 prefer bookmarks); extension policy risk (2 admins may block); no payment for this exact outcome; adjacent price band ~$7–12/user/mo is only a dated capture; solo/4 weeks/$500 and $500 MRR/90d goal are founder constraints; composite display value is 2.83 |
+| Still unproven | Real frequency/severity outside the note sample; willingness to pay or expense; retention after Chrome groups; admin allowlisting rates; distribution path to ~42–72 seats; that team workspaces are a paid need; identity and credibility of the adjacent paid tool |
+| Contradictions / exclusions | Free native Chrome + bookmark preference undercuts paid tab-restore novelty; “nobody paid for exact outcome” contradicts short-term $500 MRR optimism; team workspaces and enterprise admin features are excluded from the first wedge |
+| Source anchors | User-supplied unverified notes only (no URLs provided); public channels blocked this run; pricing anchor = “dated but unverified capture ~$7–12/user/month”; signal cards in §3.2–3.3 |
+| Next validation | Founder-owned 48h contact + substitute test + pilot offer (§11); success = ≥6 last-time stories and ≥3 pilot interests; fail = free substitutes accepted and &lt;3 pay/pilot intents → Park / reshape |
+
+## 13. Source appendix
+
+### Strongest supporting links
+
+1. not found — public search blocked; user notes only  
+2. not found  
+3. not found  
+4. not found  
+5. not found  
+
+### Strongest opposing links
+
+1. not found — Chrome saved groups/profiles cited in notes without URL  
+2. not found — bookmark preference (n=4) without URL  
+3. not found — admin extension block risk (n=2) without URL  
+4. not found — “nobody has paid for this exact outcome” (note claim)  
+5. not found  
+
+### Signal card dump (optional detail)
+
+See §3.2 and §3.3. All cards are **unverified user notes**; weights are provisional and must not be treated as primary behavior or observed experiment evidence.
+
+---
+
+**Bottom line:** Composite **2.83**. Band: **Explore with spike**, not full build. One primary wedge: **individual agent client-tab restore**. Exactly three next-48-hour actions are listed in §11. Re-run with live community/competitor URLs before treating any score as more than a planning prior.

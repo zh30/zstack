@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "workspace": "separate initialized disposable Git repository",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "turns": 1,
+    "stopStatus": "completed with CLI exit 0"
+  },
+  "runs": [
+    {
+      "id": "market-before-fix",
+      "case": "market-output-contract",
+      "phase": "before-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 122,
+      "grade": "fail",
+      "artifacts": ["before-fix/market.md"]
+    },
+    {
+      "id": "market-after-fix",
+      "case": "market-output-contract",
+      "phase": "after-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 160,
+      "grade": "pass",
+      "artifacts": ["after-fix/market.md"]
+    },
+    {
+      "id": "discovery-before-fix",
+      "case": "discovery-output-contract",
+      "phase": "before-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 98,
+      "grade": "fail",
+      "artifacts": ["before-fix/discovery.md"]
+    },
+    {
+      "id": "discovery-after-fix",
+      "case": "discovery-output-contract",
+      "phase": "after-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 109,
+      "grade": "pass",
+      "artifacts": ["after-fix/discovery.md"]
+    },
+    {
+      "id": "landing-before-fix",
+      "case": "landing-output-contract",
+      "phase": "before-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 354,
+      "grade": "fail",
+      "artifacts": ["before-fix/landing.md"]
+    },
+    {
+      "id": "landing-after-fix",
+      "case": "landing-output-contract",
+      "phase": "after-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 411,
+      "grade": "pass",
+      "artifacts": ["after-fix/landing.md"]
+    },
+    {
+      "id": "seo-before-fix",
+      "case": "seo-output-contract",
+      "phase": "before-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 158,
+      "grade": "fail",
+      "artifacts": ["before-fix/seo.md"]
+    },
+    {
+      "id": "seo-after-fix",
+      "case": "seo-output-contract",
+      "phase": "after-fix",
+      "reasoningEffort": "medium",
+      "elapsedSeconds": 157,
+      "grade": "pass",
+      "artifacts": ["after-fix/seo.md"]
+    }
+  ],
+  "runnerIncidents": [
+    "All eight runs emitted state-database fallback messages during ephemeral-session startup and then completed normally.",
+    "All eight runs emitted a Cloudflare MCP OAuth invalid_grant warning; none invoked that connector or any MCP tool.",
+    "All eight runs warned that skill descriptions were shortened to the context budget; explicit invocation still loaded the selected zstack skill and references."
+  ],
+  "archiveNote": "Raw artifacts are verbatim final messages from --output-last-message; CLI preambles and session identifiers were not included."
+}

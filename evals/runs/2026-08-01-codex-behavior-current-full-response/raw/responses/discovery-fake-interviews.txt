@@ -1,0 +1,101 @@
+Mode: full
+
+I can’t simulate ten customers and treat their answers as validation. Invented interviews would create false confidence. You also haven’t supplied the idea or target customer, so the honest decision is: **do not start a substantial build yet**.
+
+### What I need from you
+
+Reply with:
+
+1. Product idea in one sentence.
+2. Narrow target customer: role, context, and triggering situation.
+3. Geography and interview language.
+4. Where you can reach these people.
+5. Any existing interviews, sales, waitlist signups, or usage evidence.
+
+### Ten-interview validation plan
+
+Recruit ten people from the same narrow customer segment:
+
+- At least five cold contacts—not close friends or family.
+- No more than two friendly contacts likely to encourage you.
+- Prefer people who encountered the suspected problem recently.
+- Exclude people outside the buying or usage context.
+- For variable B2B markets, treat ten as a checkpoint and continue to fifteen.
+
+Book the first three interviews this week. Track: `contacted → replied → qualified → booked → completed`.
+
+### Recruitment message
+
+> Hi—I'm researching how [role] currently handles [situation]. I’m not selling anything and would like to understand what happened the last time you dealt with it. Would you have 30 minutes this week? I’m especially interested if this occurred within the last [period].
+
+Screen candidates by asking:
+
+- When did this last happen?
+- Were you personally involved?
+- What do you currently do about it?
+- Are you involved in selecting or paying for the solution?
+
+### Interview guide: 25–40 minutes
+
+Do not begin by describing the product.
+
+1. “Tell me about the last time this happened.”
+2. “What triggered it?”
+3. “Walk me through exactly what you did.”
+4. “Which tools, people, or workarounds were involved?”
+5. “How often has this happened recently?”
+6. “What did the last incident cost in time, money, delay, or risk?”
+7. “What have you already tried to improve?”
+8. “Did you pay for anything or request budget?”
+9. “Have you changed solutions before? What caused the change?”
+10. “What prevents you from changing the current process?”
+11. “Who else participates in the decision?”
+12. “What happens if nothing changes?”
+13. “Who else has dealt with this recently?”
+
+Only at the end, if useful, give a neutral 60-second product description. Treat praise and “I would use it” as weak opinions—not evidence.
+
+### Debrief every interview
+
+Record:
+
+- Specific past incidents and approximate dates.
+- Current workflow, tools, and alternatives.
+- Existing time or money spent.
+- Failed attempts and prior switches.
+- Buyer, budget owner, and switching barriers.
+- Verbatim quotations.
+- Warm or cold recruitment source.
+- Gate result: support, neutral, or contradict.
+- Any leading questions, pitching, or future-tense answers.
+- Pitch-leakage score from 0–5; lower is better.
+
+Segment respondents into:
+
+- **Bleeding and paying:** recurring pain plus demonstrated expenditure.
+- **Bleeding, not paying:** real pain but no meaningful action or cost.
+- **Polite only:** compliments, hypotheticals, or vague stories.
+
+### Decision after ten real interviews
+
+- **Advance to a smoke test or very thin MVP:** repeated recent pain, meaningful existing cost, and credible switching behavior appear across the narrow segment.
+- **Reshape:** pain is real, but the customer segment, trigger, buyer, or proposed wedge is wrong.
+- **Park:** after ten honest conversations, stories are infrequent, workarounds cost little, and nobody has tried to change.
+
+Do not green-light a large build unless all three gates have primary evidence:
+
+- **G1 Pain:** recent, repeated incidents with material consequences.
+- **G2 Spend:** money, labor, time, risk, or operational effort already spent.
+- **G3 Switch:** active search, prior switching, accessible budget owner, or concrete willingness to take a costly next step.
+
+No web, browser, apps, computer use, or real interview access was available in this run. Consequently, there are no customer findings to synthesize and no product-specific build decision beyond “not yet.”
+
+| Field | Value |
+|---|---|
+| Current decision | Do not begin a substantial build; run ten real interviews first. |
+| Evidence classes | assumption |
+| Supported claims | None about customer demand. |
+| Still unproven | G1 pain, G2 existing spend, G3 switching feasibility, ICP, buyer, and product wedge; TBD after test. |
+| Contradictions / exclusions | Simulated personas, compliments, and hypothetical purchase intent are excluded as demand evidence. |
+| Source anchors | TBD after test; no interview notes or primary sources were supplied. |
+| Next validation | Provide the five intake details, recruit ten qualified people with at least five cold contacts, and book the first three interviews this week. |

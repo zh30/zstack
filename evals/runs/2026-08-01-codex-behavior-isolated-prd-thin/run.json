@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "timeoutSecondsPerCase": 600,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "response",
+    "model": "gpt-5.6-sol",
+    "turns": 1,
+    "isolatedHostHome": true,
+    "ambientDesktopContextDisabled": [
+      "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+      "CODEX_PERMISSION_PROFILE",
+      "CODEX_THREAD_ID"
+    ]
+  },
+  "runs": [
+    {
+      "id": "current-prd-thin-input",
+      "case": "prd-thin-input",
+      "phase": "current",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 149.534,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/prd-thin-input.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/prd-thin-input.txt",
+        "responses/prd-thin-input.txt",
+        "skill-snapshots/z-write-prd/SKILL.md",
+        "skill-snapshots/z-write-prd/references/prd-template.md",
+        "skill-snapshots/z-write-prd/references/quality-bar.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

@@ -1,0 +1,16 @@
+sha256                                                            bytes  path
+f740fa0390bfcd50d8a723a9cf0694a283d50ac634c32f7acb5f6bbf5716eacd  2488  prompts.md
+7d5ff87c68c4269b1bda12de1fa580140d8ed07c014fd5f61854eb39d1d93317  1133  raw/artifact-manifest.txt
+67f05b0be1526c8cba288504ede5e277b55bdc77b6d1d084d8048d72d1b75a91  1498  raw/candidate-descriptions.txt
+f17072c8892c83971dbe9bf7549cceef30b0c9e7417bdee592d2bba98ff77b61  145  raw/zh-boundary-public-research.txt
+22c2b3d5df3f775284b6a5f8d5d48cda03b8421e52f71cae3bee7f7b23205617  145  raw/zh-boundary-real-interviews.txt
+a83ffbce45ca97d06fc92d460b363ac86fddf7d80dd97ba4a9546215c225ab26  146  raw/zh-boundary-waitlist-demand.txt
+2450fcbe886409bfcb9ac3fa4478c0559f89f98d2cbac6b57240a2f2181414a1  148  raw/zh-discovery-plan.txt
+570e3dbfd974325350963d563c360f41e367f90634fd19cf1335343e1b122fca  160  raw/zh-landing-waitlist.txt
+4b4305212b7f1a7f8d21ede053e93800ad370bcd4fe3fc063191f63ade2c8858  172  raw/zh-market-public.txt
+6a5425e017710562f5604453020aa5a3f510c0027313e949ea62eda848cca556  143  raw/zh-none-architecture.txt
+2e838d9157f08f246b53d65af123ddc7a237f477d2cc36eb70456221a52f50f6  147  raw/zh-none-code-fix.txt
+7bb3982942e476005d65ea0425915f068befc724126c0efa9cb6c6a5dd649c30  168  raw/zh-prd-notes.txt
+e3ccdc8c756155a409aa9acca0f56912fef9586812f204fe689cd6a16228e243  160  raw/zh-seo-live-url.txt
+7bfa985864a67bd920d97289d7a715661dacd74191c52200a31a001e171fa592  3768  run.json
+3d1d5af39d60216a08fbe6ff0c6f003ed45e4e35d0cbef7c3c68dc66d0671c8a  2436  summary.md

@@ -1,0 +1,2 @@
+selection: z-market-validate
+reason: The request seeks public market validation of demand, competitors, objections, solo-founder fit, and an entry wedge before building.

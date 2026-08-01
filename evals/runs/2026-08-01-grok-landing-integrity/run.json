@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "runs": [
+    {
+      "id": "before-fix",
+      "case": "smoke-complete-pack",
+      "phase": "before-fix",
+      "model": "grok-4.5-build",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "grade": "fail",
+      "failure": "The client submit handler emitted a success event before the cross-origin provider confirmed acceptance.",
+      "artifacts": [
+        "before-fix/docs/smoke/clienttabs-20260731.md",
+        "before-fix/docs/smoke/metrics-sheet.csv",
+        "before-fix/landing/_headers",
+        "before-fix/landing/index.html"
+      ]
+    },
+    {
+      "id": "after-conversion-fix",
+      "case": "smoke-complete-pack",
+      "phase": "after-conversion-fix",
+      "model": "grok-4.5-build",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "grade": "fail",
+      "failure": "Conversion accounting was corrected, but a complete-package request produced only a specification and deferred the deployable page.",
+      "artifacts": [
+        "after-conversion-fix/docs/smoke/tabcontext-20260731.md"
+      ]
+    },
+    {
+      "id": "after-materialization-fix",
+      "case": "smoke-complete-pack",
+      "phase": "after-materialization-fix",
+      "model": "grok-4.5",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "grade": "fail",
+      "failure": "The page was materialized and conversions were provider-confirmed, but UTM pageviews could not be joined to individual confirmed subscribers by traffic class.",
+      "artifacts": [
+        "after-materialization-fix/docs/smoke/clienttabs-20260801.md",
+        "after-materialization-fix/landing/index.html"
+      ]
+    },
+    {
+      "id": "after-attribution-fix",
+      "case": "smoke-complete-pack",
+      "phase": "after-attribution-fix",
+      "model": "grok-4.5",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "elapsedSeconds": 276,
+      "grade": "fail",
+      "failure": "Subscriber attribution was executable, but the page still displayed confirmed-success copy after an unverified timeout.",
+      "artifacts": [
+        "after-attribution-fix/docs/smoke/clientsnap-20260801.md",
+        "after-attribution-fix/landing/index.html"
+      ]
+    },
+    {
+      "id": "final",
+      "case": "smoke-complete-pack",
+      "phase": "final",
+      "model": "grok-4.5",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "elapsedSeconds": 261,
+      "grade": "pass",
+      "artifacts": [
+        "final/docs/smoke/clienttabs-20260801.md",
+        "final/landing/index.html"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "grok-4.5-build became unavailable after the first two valid runs, so later runs used the then-default grok-4.5 model and are not exact same-model comparisons.",
+    "Separate startup and headless max-turn attempts that produced no artifacts were excluded from behavioral grading."
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "discovery-five-interviews",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 87.119,
+    "promptPath": "prompts/discovery-five-interviews.txt",
+    "responsePath": "responses/discovery-five-interviews.txt",
+    "logPath": "logs/discovery-five-interviews.log",
+    "grade": null
+  },
+  {
+    "id": "smoke-complete-pack",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 267.519,
+    "promptPath": "prompts/smoke-complete-pack.txt",
+    "responsePath": "responses/smoke-complete-pack.txt",
+    "logPath": "logs/smoke-complete-pack.log",
+    "grade": null
+  },
+  {
+    "id": "prd-evidence-rich-mvp",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 4289.083,
+    "promptPath": "prompts/prd-evidence-rich-mvp.txt",
+    "responsePath": "responses/prd-evidence-rich-mvp.txt",
+    "logPath": "logs/prd-evidence-rich-mvp.log",
+    "grade": null
+  },
+  {
+    "id": "seo-supplied-search-notes",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 4289.069,
+    "promptPath": "prompts/seo-supplied-search-notes.txt",
+    "responsePath": "responses/seo-supplied-search-notes.txt",
+    "logPath": "logs/seo-supplied-search-notes.log",
+    "grade": null
+  }
+]

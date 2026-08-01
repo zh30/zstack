@@ -1,0 +1,46 @@
+Mode: debrief
+
+This conversation produced enthusiasm, but no reliable demand evidence. Classify it as **polite only**.
+
+### Evidence captured
+
+- “The demo was great” — compliment, not demand.
+- “They would probably pay” — hypothetical future intent.
+- “Yes, it would save time” — answer to a leading question.
+- No specific past incident, frequency, measured time cost, current workaround, existing spend, or switching behavior was recorded.
+
+### Mom Test audit
+
+| Issue | What happened | Better question |
+|---|---|---|
+| Pitching too early | The demo shaped their answers | Before showing anything: “Walk me through the last time you handled this.” |
+| Leading question | “Would the feature save you time?” suggests the desired answer | “How long did the process take last time? What took the most time?” |
+| Future-tense trap | “Probably pay” is noncommittal intent | “What have you paid for or tried to solve this already?” |
+| Missing behavioral detail | No concrete story was captured | “When did this last happen, what triggered it, and what did you do?” |
+| Missing buying context | Budget and authority are unknown | “Who approves spending on tools like this? Tell me about the last purchase.” |
+
+Provisional founder pitch leakage: **4/5**. The evidence appears dominated by the demo and solution-oriented prompting, though the sparse note prevents a definitive score.
+
+### Gate updates
+
+| Gate | Update | Reason |
+|---|---|---|
+| G1 Pain | neutral | Agreement that the feature saves time does not establish a real, frequent pain. |
+| G2 Spend | neutral | “Probably pay” is not evidence of current money, labor, or time already spent. |
+| G3 Switch | neutral | No active search, prior switch, concrete commitment, budget authority, or switching barrier was identified. |
+
+### Decision
+
+**Continue discovery, but do not count this interview as support for any gate and do not green-light a large build.**
+
+Arrange a short follow-up and keep the demo closed initially. Ask:
+
+1. “Tell me about the most recent time this problem occurred.”
+2. “Walk me through exactly what you did.”
+3. “How often has that happened in the last month?”
+4. “How much time or money did the last occurrence cost?”
+5. “What tools, people, or workarounds do you use today?”
+6. “What have you already tried to improve it?”
+7. “What would have to happen for you to replace the current process?”
+
+The evidence limit is substantial: this is one sparse, paraphrased note rather than a transcript, and the interviewee’s role, ICP fit, recruitment source, current workflow, and purchase authority are unknown.

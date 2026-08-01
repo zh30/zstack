@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: It directly covers a waitlist demand test, traffic plan, and success or kill thresholds.

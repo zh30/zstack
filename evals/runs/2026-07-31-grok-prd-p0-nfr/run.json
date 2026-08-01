@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "runs": [
+    {
+      "id": "before-fix",
+      "case": "prd-evidence-rich-mvp",
+      "phase": "before-fix",
+      "model": "grok-4.5-build",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "grade": "fail",
+      "elapsedSeconds": 213,
+      "runnerNote": "One transient model retry occurred before completion.",
+      "artifacts": [
+        "before-fix/client-onboarding-runbook.md"
+      ]
+    },
+    {
+      "id": "after-fix",
+      "case": "prd-evidence-rich-mvp",
+      "phase": "after-fix",
+      "model": "grok-4.5-build",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "grade": "pass",
+      "elapsedSeconds": 176,
+      "artifacts": [
+        "after-fix/client-onboarding-runbook.md"
+      ]
+    }
+  ],
+  "runnerIncidents": []
+}

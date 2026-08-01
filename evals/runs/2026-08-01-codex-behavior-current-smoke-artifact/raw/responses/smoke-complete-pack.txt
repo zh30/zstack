@@ -1,0 +1,16 @@
+Created the complete 10-day smoke-test package:
+
+- `artifacts/index.html` — deployable landing page with truthful copy, single CTA, form routing, and Plausible events
+- `artifacts/og-card.svg` — 1200×630 social-sharing asset
+- `artifacts/smoke-test-plan.md` — protocol, copy, UTMs, $150 traffic calendar, source-specific thresholds, and decision rules
+- `artifacts/source-tracker.csv` — cold/warm-separated measurement tracker
+- `artifacts/external-setup-checklist.md` — launch and QA checklist
+
+Remaining external setup:
+
+1. Deploy through Cloudflare Pages and replace domain/contact placeholders.
+2. Configure Plausible and verify `CTA Click` and `Waitlist Attempt`.
+3. Create five source-attributable Buttondown captures, enable double opt-in, and replace form endpoints.
+4. Validate attribution with real confirmations before launching Reddit organic, X, warm outreach, or the capped Reddit Ads campaign.
+
+No web, browser, account, or live-test access was available, so current platform requirements and funnel results remain unverified. Do not build the extension until the registered smoke-test thresholds are met.

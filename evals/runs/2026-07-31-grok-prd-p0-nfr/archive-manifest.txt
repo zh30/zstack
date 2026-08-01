@@ -1,0 +1,8 @@
+sha256                                                            bytes  path
+d55fd76b58a7784ff3e783fc50a0ba7f4f8e9efffe0ff67c9094f39ff61cef29  888  prompts.md
+04f8cf3e7f51c49a2bfcb9a4c9a5f2802f19c85765a695841afebab2a4573c0b  33223  raw/after-fix/client-onboarding-runbook.md
+deb10ff6a3f1aa8c20b1fa9a21cac5734b7eea6f39f47aa30b115de963e11990  161  raw/artifact-manifest.after-fix.txt
+84bd05290b5a5e3ee96ca849360b6c145e91b60e9354c6840aa733b25397736f  161  raw/artifact-manifest.before-fix.txt
+88181e3dd8fee2beb2e7525ee5400b9f3c77af932f6daddbb3ab2b2c9d0da89c  33415  raw/before-fix/client-onboarding-runbook.md
+01fa7c8119a620cec4631ac993be9078ab8a1c135fe3cc621fed0b26609e5af5  1422  run.json
+5db207f2c995a297e2f50a8978c4a33b9fc31656f35635a82d298eeee8483338  2709  summary.md

@@ -1,0 +1,316 @@
+I wouldn’t add fake logos or “2,000 users.” Besides misleading visitors, fabricated proof contaminates the smoke test: you would be measuring trust in a false claim rather than demand for the product.
+
+Because the product and audience weren’t specified, the copy below uses five placeholders:
+
+- `[PRODUCT]`
+- `[NARROW ICP]`
+- `[PAINFUL TASK]`
+- `[DESIRED OUTCOME]`
+- `[CURRENT WORKAROUND]`
+
+## Smoke protocol
+
+**Hypothesis:** If `[PRODUCT]` promises `[DESIRED OUTCOME]` to `[NARROW ICP]`, qualified visitors will join an explicitly pre-launch waitlist.
+
+**Primary metric:** Qualified unique visitor → provider-confirmed signup.
+
+**Secondary metrics:** CTA clicks, welcome-email opens, replies describing a current problem, and replies expressing willingness to pay.
+
+**Sample plan:**
+
+- 50 qualified warm visitors; aim for at least 5 confirmed signups.
+- 150 qualified cold/community visitors; aim for at least 6 confirmed signups.
+- Report warm and cold traffic separately.
+- Run for 14 days.
+
+**Continue criteria:**
+
+- Warm conversion ≥10%, or cold/community conversion ≥4%; and
+- At least 3 substantive replies describing current pain; and
+- At least 2 respondents agree to a short interview or discuss paying.
+
+**Reshape the offer:** Conversion is 2–4% but replies reveal recurring pain.
+
+**Kill or change ICP:** After 200+ qualified visits across two controlled headline variants, conversion remains below 2% and there are no substantive replies.
+
+These thresholds are initial assumptions, not established benchmarks for this unspecified market.
+
+# Waitlist page copy
+
+## Navigation
+
+**[PRODUCT]**
+
+Button: **Join the waitlist**
+
+## Hero
+
+**For [NARROW ICP]**
+
+# Get [DESIRED OUTCOME] without wrestling with [CURRENT WORKAROUND].
+
+[PRODUCT] is a pre-launch tool being explored for people who regularly deal with `[PAINFUL TASK]`. Join the waitlist to help shape the first useful version and hear when early access opens.
+
+**Email address**  
+`you@company.com`
+
+**What is hardest about [PAINFUL TASK] today?**  
+Optional
+
+Button: **Join the waitlist**
+
+*Pre-launch means pre-launch: there is no finished product yet. No spam, and you can unsubscribe anytime.*
+
+## The status quo
+
+### [PAINFUL TASK] should not require this much effort.
+
+Today, `[NARROW ICP]` often have to:
+
+- Piece together `[CURRENT WORKAROUND]` just to complete the job.
+- Repeat manual work whenever inputs or requirements change.
+- Spend time checking results that should be trustworthy by default.
+
+We’re investigating a smaller, clearer way to reach `[DESIRED OUTCOME]`.
+
+## How the proposed experience would work
+
+### 1. Bring the job
+
+Provide the minimum information needed for `[PAINFUL TASK]`.
+
+### 2. Let [PRODUCT] handle the repetitive work
+
+The planned workflow focuses on removing the most time-consuming steps—not becoming another complicated platform.
+
+### 3. Review and use the result
+
+Stay in control, make corrections, and move forward with a usable output.
+
+*This describes the intended product direction, not functionality available today.*
+
+## Who it is for
+
+[PRODUCT] may be useful if you:
+
+- Are a `[NARROW ICP]`.
+- Encounter `[PAINFUL TASK]` regularly.
+- Already spend meaningful time or money on `[CURRENT WORKAROUND]`.
+
+It is probably not for you if the task happens rarely, the current process already works well, or you are only browsing for free tools.
+
+## Proof, honestly
+
+### Starting with evidence—not invented traction
+
+We don’t have customer logos or thousands of users. The product is still pre-launch.
+
+Early members will help determine which painful part of `[PAINFUL TASK]` deserves to be built first. When we publish signup numbers, testimonials, or customer logos, they will be real and used with permission.
+
+**Founder note:**  
+“I’m testing whether this problem is painful enough to justify a focused product. If you join, I may ask one or two short questions about how you handle it today.”
+
+## The founding-member offer
+
+Join the waitlist to receive:
+
+- Priority consideration for early access.
+- A chance to influence the first workflow.
+- A clear update when the scope and timeline are known.
+
+No delivery date or price is promised yet.
+
+Button: **Join the waitlist**
+
+## FAQ
+
+### Is [PRODUCT] available now?
+
+No. It is a pre-launch concept being validated before substantial development begins.
+
+### When will it launch?
+
+There is no promised date yet. The decision to build—and what gets built—will depend on evidence from qualified users.
+
+### Is joining free?
+
+Yes. Joining the waitlist does not require payment or create a purchase obligation.
+
+### What will you do with my email?
+
+Use it for waitlist updates and relevant research about `[PRODUCT]`. It will not be sold.
+
+### Will every waitlist member receive early access?
+
+Not necessarily. Early access may begin with a small group whose needs match the initial scope.
+
+### Can I leave the list?
+
+Yes. Every marketing email will include an unsubscribe option.
+
+## Final CTA
+
+# Does [PAINFUL TASK] cost you real time today?
+
+Join the waitlist and tell us what makes it difficult. Your answer will influence whether—and how—[PRODUCT] gets built.
+
+Button: **Join the waitlist**
+
+## Footer
+
+**[PRODUCT]** — a pre-launch experiment by `[FOUNDER NAME]`  
+Contact: `[CONTACT EMAIL]`  
+Your email will not be sold.
+
+## Metadata
+
+**Meta title:**  
+[PRODUCT] — [DESIRED OUTCOME] for [NARROW ICP]
+
+**Meta description:**  
+A pre-launch tool exploring a simpler way for [NARROW ICP] to achieve [DESIRED OUTCOME]. Join the waitlist and help shape the first version.
+
+**Open Graph blurb:**  
+Still using [CURRENT WORKAROUND] for [PAINFUL TASK]? [PRODUCT] is exploring a more focused approach. Join the honest pre-launch waitlist.
+
+## Headline variants
+
+Ship variant A first and test the others only after obtaining meaningful traffic.
+
+- **A:** Get [DESIRED OUTCOME] without wrestling with [CURRENT WORKAROUND].
+- **B:** A simpler way for [NARROW ICP] to handle [PAINFUL TASK].
+- **C:** Spend less time on [PAINFUL TASK] and more time on [HIGHER-VALUE ACTIVITY].
+
+## Honest substitutes for fake social proof
+
+Use one or two of these:
+
+- A short founder note explaining why the problem is being investigated.
+- A product walkthrough clearly labeled **Concept preview**.
+- Real quotes from research participants, with permission and without calling them customers.
+- A live waitlist count only after it represents provider-confirmed signups.
+- Logos labeled **Planned integrations**, never “customers,” but only if those integrations are genuinely planned and technically plausible.
+- A dated public changelog showing what was learned and changed.
+
+## Implementation pack
+
+Use one static `index.html`, a reputable hosted form provider, and static hosting. Do not build a custom backend for this test.
+
+**Form fields:**
+
+- Email — required
+- Biggest current difficulty — optional
+- Registered source/campaign — hidden, allow-listed
+- Consent — unchecked where explicit consent is required
+
+The optional pain question may reduce total conversion, but it improves lead quality and supplies useful language for interviews.
+
+**Local acknowledgement:**  
+“Submission sent. Check your inbox if the provider accepts it.”
+
+Only show “You’re on the list” after a verified provider callback or provider-controlled confirmation page. The provider’s confirmed subscriber record is the source of truth.
+
+**Events:**
+
+- `landing_view`
+- `waitlist_cta_click`
+- `waitlist_submit_attempt`
+- `waitlist_signup_confirmed`
+
+Only `waitlist_signup_confirmed` counts as a conversion. Do not send email addresses, form answers, raw URLs, or arbitrary UTM values to analytics.
+
+**Registered attribution lanes:**
+
+- `warm_dm`
+- `reddit_community`
+- `niche_community`
+- `founder_social`
+- `small_paid_test`
+- `unattributed`
+
+Example link:
+
+```text
+https://example.com/?utm_source=reddit&utm_medium=community&utm_campaign=smoke_01
+```
+
+Map only expected combinations to the registered lanes. Unknown values become `unattributed`; do not silently classify them as warm or cold.
+
+Web access was unavailable, so no form or analytics provider’s current endpoint, callback behavior, privacy policy, or script URL has been verified. Keep integrations disabled behind explicit `VERIFY_*` placeholders until official documentation is checked and one real submission successfully reaches the provider with attribution intact.
+
+## 14-day traffic plan
+
+### Days 1–2: Warm problem outreach
+
+Send 20 personal messages to people who genuinely match the ICP.
+
+Angle: “I’m testing whether `[PAINFUL TASK]` is painful enough to justify a focused product. Would you critique this one-page idea?”
+
+Use the `warm_dm` link. Do not imply the product exists or send mass messages.
+
+### Days 3–5: Buyer community
+
+Publish one useful, problem-led post in a relevant buyer community. Describe the current workflow and what you are trying to learn; disclose that you are the founder.
+
+Use the `reddit_community` or `niche_community` link. Ask moderators when promotion rules are unclear.
+
+### Days 6–8: Founder social posts
+
+Publish three short posts:
+
+1. The costly or frustrating status quo.
+2. What interviews or replies changed in the concept.
+3. An honest invitation to the pre-launch waitlist.
+
+Use the `founder_social` link. Avoid fabricated countdowns and engagement bait.
+
+### Days 9–10: Review without rebuilding
+
+Break down views, confirmed signups, and replies by source. Fix only obvious clarity or form problems. Do not add features to the nonexistent product.
+
+### Days 11–13: Controlled headline retest
+
+Run the best-performing channel again with headline B. Keep the audience, offer, CTA, and attribution lane consistent so the comparison remains interpretable.
+
+### Day 14: Decide
+
+Proceed, reshape, or park the idea using the preregistered rules. Interview the strongest respondents before defining an MVP.
+
+## Dashboard
+
+Track:
+
+- Qualified unique visitors by lane
+- CTA clicks
+- Submission attempts
+- Provider-confirmed signups
+- Visitor → confirmed-signup conversion
+- Welcome-email opens
+- Substantive replies
+- Interview agreements
+- Explicit willingness-to-pay statements
+- Invalid, rejected, and unattributed submissions
+
+## Decision rules
+
+- **Strong conversion plus engaged replies:** Interview respondents, define the thinnest paid MVP, then write a PRD.
+- **Adequate traffic but weak conversion:** Rewrite the ICP, pain, or promise and retest.
+- **Good conversion but no replies:** Treat it as soft curiosity; do not build until interviews reveal current behavior.
+- **Several credible payment discussions:** Test a founding price or refundable deposit separately.
+- **No response after the full test:** Park the idea or choose a narrower, more painful use case.
+
+## Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Run an honest 14-day waitlist smoke test; do not claim traction or begin substantial product development yet. |
+| Evidence classes | assumption |
+| Supported claims | The product is not built yet, as supplied by the user. The proposed copy, channels, and thresholds are test assumptions. |
+| Still unproven | Product demand, conversion rate, pain frequency, current spend, willingness to switch, willingness to pay, usable integrations, and all traction claims are TBD after test. |
+| Contradictions / exclusions | Fake customer logos and “2,000 users” are excluded because they are unsupported and would invalidate the demand signal. No external research or provider verification was possible in this run. |
+| Source anchors | User statement that the product is not built; no visitor, signup, interview, payment, public-market, or search evidence supplied. |
+| Next validation | Replace the five copy placeholders, verify the form integration with a real accepted submission, then acquire 200 qualified visits while preserving source attribution. |
+
+Top three actions today: replace the placeholders with one narrow audience and one painful job, publish the static page with a verified form, and send 20 personal critique requests.
+
+Do not build authentication, dashboards, billing, integrations, or a design system yet. Customer discovery should follow any substantive replies; broader market or SEO work can wait until the offer shows a credible demand signal.

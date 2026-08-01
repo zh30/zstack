@@ -1,0 +1,11 @@
+date,cohort,utm_content,unique_visitors,cta_clicks,waitlist_attempts,confirmed_subscribers,welcome_opens,qualified_replies,paid_intent_replies,spend_usd,qa_or_invalid_exclusions,notes
+2026-08-03,qa_only,attribution_test,0,0,0,0,0,0,0,0,0,"Exclude all QA from experiment"
+2026-08-04,reddit_organic,support_post,0,0,0,0,0,0,0,0,0,""
+2026-08-04,x_cold,problem_story,0,0,0,0,0,0,0,0,0,""
+2026-08-05,reddit_paid,restore_tabs_ad,0,0,0,0,0,0,0,0,0,"Spend cumulative <= 30"
+2026-08-06,warm_outreach,personal_note,0,0,0,0,0,0,0,0,0,"Never pool with cold"
+2026-08-07,x_cold,price_question,0,0,0,0,0,0,0,0,0,""
+2026-08-07,reddit_paid,restore_tabs_ad,0,0,0,0,0,0,0,0,0,"Spend cumulative <= 90"
+2026-08-09,reddit_organic,workflow_followup,0,0,0,0,0,0,0,0,0,"Only where community rules allow"
+2026-08-10,reddit_paid,restore_tabs_ad,0,0,0,0,0,0,0,0,0,"Spend cumulative <= 150"
+2026-08-10,warm_outreach,personal_note,0,0,0,0,0,0,0,0,0,"Never pool with cold"

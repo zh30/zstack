@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "routing",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "model": "gpt-5.6-sol",
+    "workspace": "separate initialized disposable Git repository with no zstack files",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "maxTurns": 1,
+    "stopStatus": "completed with CLI exit 0",
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSearch": false,
+    "apps": false
+  },
+  "runs": [
+    {
+      "id": "baseline-market-vague",
+      "case": "market-vague",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/market-vague.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-market-public",
+      "case": "market-public",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/market-public.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-discovery-plan",
+      "case": "discovery-plan",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/discovery-plan.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-discovery-debrief",
+      "case": "discovery-debrief",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/discovery-debrief.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-landing-waitlist",
+      "case": "landing-waitlist",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/landing-waitlist.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-landing-metrics",
+      "case": "landing-metrics",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/landing-metrics.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-prd-notes",
+      "case": "prd-notes",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/prd-notes.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-prd-rewrite",
+      "case": "prd-rewrite",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/prd-rewrite.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-seo-live-url",
+      "case": "seo-live-url",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/seo-live-url.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-seo-prd-map",
+      "case": "seo-prd-map",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/seo-prd-map.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-none-code-fix",
+      "case": "none-code-fix",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/none-code-fix.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-none-architecture",
+      "case": "none-architecture",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/none-architecture.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-boundary-real-interviews",
+      "case": "boundary-real-interviews",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/boundary-real-interviews.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-boundary-public-research",
+      "case": "boundary-public-research",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/boundary-public-research.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "baseline-boundary-waitlist-demand",
+      "case": "boundary-waitlist-demand",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": [
+        "baseline/boundary-waitlist-demand.txt",
+        "candidate-descriptions.baseline.txt"
+      ]
+    },
+    {
+      "id": "prefix180-market-vague",
+      "case": "market-vague",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/market-vague.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-market-public",
+      "case": "market-public",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/market-public.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-discovery-plan",
+      "case": "discovery-plan",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/discovery-plan.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-discovery-debrief",
+      "case": "discovery-debrief",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/discovery-debrief.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-landing-waitlist",
+      "case": "landing-waitlist",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/landing-waitlist.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-landing-metrics",
+      "case": "landing-metrics",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/landing-metrics.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-prd-notes",
+      "case": "prd-notes",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/prd-notes.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-prd-rewrite",
+      "case": "prd-rewrite",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/prd-rewrite.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-seo-live-url",
+      "case": "seo-live-url",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/seo-live-url.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-seo-prd-map",
+      "case": "seo-prd-map",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/seo-prd-map.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-none-code-fix",
+      "case": "none-code-fix",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/none-code-fix.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-none-architecture",
+      "case": "none-architecture",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/none-architecture.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-boundary-real-interviews",
+      "case": "boundary-real-interviews",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/boundary-real-interviews.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-boundary-public-research",
+      "case": "boundary-public-research",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/boundary-public-research.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "prefix180-boundary-waitlist-demand",
+      "case": "boundary-waitlist-demand",
+      "phase": "prefix-180-stress",
+      "grade": "pass",
+      "artifacts": [
+        "prefix-180/boundary-waitlist-demand.txt",
+        "candidate-descriptions.prefix-180.txt"
+      ]
+    },
+    {
+      "id": "compact-market-vague",
+      "case": "market-vague",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/market-vague.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-market-public",
+      "case": "market-public",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/market-public.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-discovery-plan",
+      "case": "discovery-plan",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/discovery-plan.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-discovery-debrief",
+      "case": "discovery-debrief",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/discovery-debrief.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-landing-waitlist",
+      "case": "landing-waitlist",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/landing-waitlist.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-landing-metrics",
+      "case": "landing-metrics",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/landing-metrics.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-prd-notes",
+      "case": "prd-notes",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/prd-notes.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-prd-rewrite",
+      "case": "prd-rewrite",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/prd-rewrite.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-seo-live-url",
+      "case": "seo-live-url",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/seo-live-url.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-seo-prd-map",
+      "case": "seo-prd-map",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/seo-prd-map.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-none-code-fix",
+      "case": "none-code-fix",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/none-code-fix.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-none-architecture",
+      "case": "none-architecture",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/none-architecture.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-boundary-real-interviews",
+      "case": "boundary-real-interviews",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/boundary-real-interviews.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-boundary-public-research",
+      "case": "boundary-public-research",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/boundary-public-research.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    },
+    {
+      "id": "compact-boundary-waitlist-demand",
+      "case": "boundary-waitlist-demand",
+      "phase": "after-compaction",
+      "grade": "pass",
+      "artifacts": [
+        "compact/boundary-waitlist-demand.txt",
+        "candidate-descriptions.compact.txt"
+      ]
+    }
+  ],
+  "runnerIncidents": [
+    "All 45 runs emitted state-database fallback messages during ephemeral-session startup and then completed normally.",
+    "All 45 runs emitted a Cloudflare MCP OAuth invalid_grant warning; no run invoked that connector or any MCP tool.",
+    "All 45 runs warned that installed skill descriptions were shortened to the two-percent skills context budget; the candidate descriptions under test were supplied directly in each routing prompt."
+  ],
+  "archiveNote": "Final response files are verbatim --output-last-message outputs. Candidate description files retain the exact phase inputs. Runner logs were excluded because they contain ephemeral session identifiers and machine-local paths."
+}

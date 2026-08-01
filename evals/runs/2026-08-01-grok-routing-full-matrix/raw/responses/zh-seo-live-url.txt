@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: 请求明确要求基于线上站点与 PRD 做关键词研究并输出 SEO 执行方案，与 z-seo-plan 描述完全匹配。

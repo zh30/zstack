@@ -1,0 +1,173 @@
+I can’t help build doorway pages, hide text, buy ranking links, or mass-publish thin city pages. Those tactics create manual-action, deindexing, reputation, and maintenance risks. Here is the fastest defensible alternative: one focused commercial cluster, genuinely useful location pages, and earned or properly qualified links.
+
+# White-hat SEO execution plan
+
+| Field | Value |
+|---|---|
+| Date | 2026-08-01 |
+| Markets / languages | Not provided |
+| Inputs used | User request only; no product, URL, PRD, code, SERP, or keyword-tool access |
+| Primary conversion goal | Assumed: lead, signup, or purchase |
+| Authority context | Assumed: new or low-authority site |
+
+## Strategy
+
+Use one provisional commercial cluster:
+
+- **Primary keyword:** `[core product/service] for [primary customer]`
+- **Intent:** Commercial
+- **Target:** Homepage or `/[core-category]/`
+- **Demand:** Unknown
+- **Difficulty:** Unknown
+- **Confidence:** Low until live SERP and customer-language research is possible
+
+This placeholder must be replaced with a real query after you provide the product, customer, target market, and site URL.
+
+Secondary terms:
+
+| Keyword pattern | Intent | Destination |
+|---|---|---|
+| `best [category] for [customer]` | Commercial | `/for/[customer]/` |
+| `[category] pricing` | Transactional | `/pricing/` |
+| `[competitor] alternative` | Commercial | `/alternatives/[competitor]/` |
+| `[category] in [primary city]` | Local commercial | One legitimate location page |
+
+Initial long-tail backlog:
+
+| Priority | Query pattern | Page |
+|---|---|---|
+| P0 | `how to [solve core problem]` | `/guides/[problem]/` |
+| P0 | `[category] for [specific use case]` | `/use-cases/[use-case]/` |
+| P0 | `[competitor] alternative for [customer]` | `/alternatives/[competitor]/` |
+| P1 | `[product] vs [competitor]` | `/compare/[product]-vs-[competitor]/` |
+| P1 | `how much does [category] cost` | `/guides/[category]-cost/` |
+| P1 | `[category] setup guide` | `/guides/[category]-setup/` |
+| P2 | `[category] in [city]` | `/locations/[city]/`, only where justified |
+| P2 | `[problem] checklist` | `/resources/[problem]-checklist/` |
+
+## Replace the requested tactics
+
+| Requested tactic | Safe replacement |
+|---|---|
+| Doorway pages | One strong service hub with useful filters or regional sections; create separate pages only for materially distinct intent |
+| Purchased links | Digital PR, integration partnerships, original data, expert contributions, and relevant directories; qualify sponsored placements appropriately |
+| Hidden text | Put useful explanatory copy visibly in the page, using summaries, accordions, tables, and FAQs where appropriate |
+| Mass-generated city pages | Publish location pages only for areas genuinely served and supply unique local proof, logistics, pricing context, examples, and contacts |
+
+A city page should not exist merely because a city name can be inserted into a template. A defensible page needs most of the following:
+
+- Actual availability or operational relevance
+- Location-specific service details and limitations
+- Original local examples, case studies, testimonials, or data
+- Local pricing, delivery times, regulations, or workflows
+- A distinct title, body, FAQ, and conversion path
+- Links from a useful locations hub
+- Ongoing ownership and accuracy checks
+
+Near-duplicate combinations such as every city × every service should be consolidated or excluded from indexing.
+
+## Page map
+
+| Page | Primary target | Intent | Action |
+|---|---|---|---|
+| `/` | `[category] for [primary customer]` | Commercial | Build one clear conversion page |
+| `/for/[customer]/` | `best [category] for [customer]` | Commercial | Demonstrate customer-specific workflow and proof |
+| `/pricing/` | `[category] pricing` | Transactional | Explain plans, inclusions, and buyer questions |
+| `/alternatives/[competitor]/` | `[competitor] alternative` | Commercial | Publish factual, supportable comparison |
+| `/guides/[problem]/` | `how to [solve problem]` | Informational | Provide a complete solution with product path |
+| `/locations/` | `[service] locations` | Mixed | List genuinely served markets |
+| `/locations/[city]/` | `[service] in [city]` | Local commercial | Create only when unique value exists |
+
+Every city page should link to its service hub, relevant proof, pricing, and adjacent genuinely served locations. The hub should link back to every indexable location.
+
+## P0 on-page brief
+
+For the main conversion page:
+
+- **Title:** `[Core Category] for [Primary Customer] | [Brand]`
+- **H1:** `[Core outcome] for [Primary Customer]`
+- **Slug:** `/` or `/[core-category]/`
+- **Meta angle:** Outcome, differentiator, credible proof, and one CTA
+- **Must cover:** customer problem, workflow, capabilities, limitations, proof, pricing path, FAQs, and next step
+- **CTA:** Start, book, request a quote, or join—choose one primary action
+- **Internal links:** Pricing, use case, comparison, guide, and legitimate location hub
+
+Avoid stuffing city names or keyword variants into headings, footers, alt text, or visually concealed elements.
+
+## Technical and trust checklist
+
+| Item | Action |
+|---|---|
+| Indexability | Ensure valuable pages return `200`, render meaningful HTML, and lack accidental `noindex` |
+| Duplicates | Use one canonical URL per intent; consolidate parameter and city/service duplicates |
+| Sitemap | Include only canonical, indexable, useful URLs |
+| Internal search/filter pages | Usually prevent indexing unless they satisfy distinct demonstrated demand |
+| Structured data | Use only types matching visible content and actual business facts |
+| Location consistency | Keep service area, address, contact, and availability claims accurate |
+| Trust | Add ownership, contact, policies, evidence, case studies, and honest limitations |
+| Removal policy | Merge, redirect, or `noindex` pages that remain thin or receive no meaningful engagement |
+
+## 7/30/90-day execution
+
+**Next 7 days**
+
+1. Define the product, primary customer, conversion, and single target market.
+2. Choose one commercial query after inspecting its live results.
+3. Publish or rewrite the main conversion page.
+4. Select three P0 long-tails and map each to one URL.
+5. Audit existing pages for hidden text, doorway behavior, duplicate city copy, and questionable outbound or inbound link arrangements.
+
+**Within 30 days**
+
+1. Publish the three P0 supporting pages.
+2. Create a legitimate locations hub; launch only one to three evidence-rich location pages.
+3. Add contextual internal links throughout the cluster.
+4. Set up Search Console and conversion tracking.
+5. Pursue several relevant editorial mentions through partnerships, useful data, integrations, or expert resources.
+
+**Within 90 days**
+
+1. Expand only queries earning impressions or qualified conversions.
+2. Improve pages with impressions but weak click-through or engagement.
+3. Consolidate overlapping pages.
+4. Add location pages only where operational evidence and distinct content exist.
+5. Retire pages that cannot become genuinely useful.
+
+## Measurement
+
+Track:
+
+- Search Console impressions, clicks, positions, and queries by page
+- Organic leads, signups, or purchases
+- Index coverage for intended pages
+- Brand versus non-brand traffic
+- Performance of location pages compared with the central hub
+- Editorial referring domains and referral conversions—not raw link count
+
+Initial success should mean growing qualified impressions and conversions from the chosen cluster, not an arbitrary number of indexed pages.
+
+## Avoid or defer
+
+- Thousands of city/service permutations
+- Swapped place names in otherwise identical copy
+- Expired-domain networks, private blog networks, and paid ranking links
+- White-on-white text, off-screen keyword blocks, or cloaking
+- Fake offices, reviews, authors, or local proof
+- Competitor pages without accurate comparisons
+- Head terms until live results show a realistic opening
+
+## Evidence limits
+
+Live search, browser research, keyword tools, competitor sampling, and site inspection were unavailable. Consequently, no claim about actual demand, competition, rankings, or SERP composition is being made. The keyword patterns above are a provisional architecture, not researched opportunities.
+
+## Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Validate first; replace the proposed spam tactics with one legitimate commercial cluster |
+| Evidence classes | assumption |
+| Supported claims | A provisional page architecture and implementation sequence can be defined; no market-specific search opportunity has been established |
+| Still unproven | Keyword demand, SERP difficulty, ranking potential, traffic, conversions, payment demand, and retention |
+| Contradictions / exclusions | Doorway pages, hidden text, purchased ranking links, and thin mass-generated city pages are excluded |
+| Source anchors | User request dated 2026-08-01; no external sources or site artifacts were accessible |
+| Next validation | Owner: founder; provide the site URL, product one-liner, primary customer, and target country/city, then inspect one primary query plus 5–10 related results before publishing the cluster |

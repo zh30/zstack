@@ -1,0 +1,708 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "routing",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository with no zstack files",
+    "permissions": "read-only sandbox; no built-in tools; permission mode dontAsk",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSearch": false,
+    "apps": false,
+    "requestedModel": "grok-4.5",
+    "sessionPersistence": false,
+    "maxTurns": 2,
+    "ambientAgentSkillsMayBeDiscovered": true
+  },
+  "runs": [
+    {
+      "id": "grok-routing-full-market-vague",
+      "case": "market-vague",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.241,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/market-vague.txt",
+        "responses/market-vague.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0271364,
+      "tokenUsage": {
+        "input_tokens": 13042,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 169,
+        "reasoning_tokens": 123,
+        "total_tokens": 13339
+      }
+    },
+    {
+      "id": "grok-routing-full-market-public",
+      "case": "market-public",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.962,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/market-public.txt",
+        "responses/market-public.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0109768,
+      "tokenUsage": {
+        "input_tokens": 3305,
+        "cache_read_input_tokens": 9856,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 235,
+        "reasoning_tokens": 195,
+        "total_tokens": 13396
+      }
+    },
+    {
+      "id": "grok-routing-full-discovery-plan",
+      "case": "discovery-plan",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 11.92,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/discovery-plan.txt",
+        "responses/discovery-plan.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0270924,
+      "tokenUsage": {
+        "input_tokens": 13032,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 165,
+        "reasoning_tokens": 119,
+        "total_tokens": 13325
+      }
+    },
+    {
+      "id": "grok-routing-full-discovery-debrief",
+      "case": "discovery-debrief",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.096,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/discovery-debrief.txt",
+        "responses/discovery-debrief.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0272924,
+      "tokenUsage": {
+        "input_tokens": 13036,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 197,
+        "reasoning_tokens": 146,
+        "total_tokens": 13361
+      }
+    },
+    {
+      "id": "grok-routing-full-landing-waitlist",
+      "case": "landing-waitlist",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.788,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/landing-waitlist.txt",
+        "responses/landing-waitlist.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0274864,
+      "tokenUsage": {
+        "input_tokens": 13043,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 227,
+        "reasoning_tokens": 188,
+        "total_tokens": 13398
+      }
+    },
+    {
+      "id": "grok-routing-full-landing-metrics",
+      "case": "landing-metrics",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.855,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/landing-metrics.txt",
+        "responses/landing-metrics.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0275864,
+      "tokenUsage": {
+        "input_tokens": 13042,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 244,
+        "reasoning_tokens": 195,
+        "total_tokens": 13414
+      }
+    },
+    {
+      "id": "grok-routing-full-prd-notes",
+      "case": "prd-notes",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.644,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/prd-notes.txt",
+        "responses/prd-notes.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0275064,
+      "tokenUsage": {
+        "input_tokens": 13035,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 233,
+        "reasoning_tokens": 179,
+        "total_tokens": 13396
+      }
+    },
+    {
+      "id": "grok-routing-full-prd-rewrite",
+      "case": "prd-rewrite",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.553,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/prd-rewrite.txt",
+        "responses/prd-rewrite.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0110348,
+      "tokenUsage": {
+        "input_tokens": 3307,
+        "cache_read_input_tokens": 9856,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 244,
+        "reasoning_tokens": 202,
+        "total_tokens": 13407
+      }
+    },
+    {
+      "id": "grok-routing-full-seo-live-url",
+      "case": "seo-live-url",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.064,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/seo-live-url.txt",
+        "responses/seo-live-url.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0108468,
+      "tokenUsage": {
+        "input_tokens": 3306,
+        "cache_read_input_tokens": 9856,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 213,
+        "reasoning_tokens": 159,
+        "total_tokens": 13375
+      }
+    },
+    {
+      "id": "grok-routing-full-seo-prd-map",
+      "case": "seo-prd-map",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.414,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/seo-prd-map.txt",
+        "responses/seo-prd-map.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0275304,
+      "tokenUsage": {
+        "input_tokens": 13038,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 236,
+        "reasoning_tokens": 184,
+        "total_tokens": 13402
+      }
+    },
+    {
+      "id": "grok-routing-full-none-code-fix",
+      "case": "none-code-fix",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.445,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/none-code-fix.txt",
+        "responses/none-code-fix.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0108728,
+      "tokenUsage": {
+        "input_tokens": 3298,
+        "cache_read_input_tokens": 9856,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 220,
+        "reasoning_tokens": 185,
+        "total_tokens": 13374
+      }
+    },
+    {
+      "id": "grok-routing-full-none-architecture",
+      "case": "none-architecture",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.045,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/none-architecture.txt",
+        "responses/none-architecture.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0272264,
+      "tokenUsage": {
+        "input_tokens": 13024,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 190,
+        "reasoning_tokens": 159,
+        "total_tokens": 13342
+      }
+    },
+    {
+      "id": "grok-routing-full-boundary-real-interviews",
+      "case": "boundary-real-interviews",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.216,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/boundary-real-interviews.txt",
+        "responses/boundary-real-interviews.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0274104,
+      "tokenUsage": {
+        "input_tokens": 13032,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 218,
+        "reasoning_tokens": 180,
+        "total_tokens": 13378
+      }
+    },
+    {
+      "id": "grok-routing-full-boundary-public-research",
+      "case": "boundary-public-research",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.482,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/boundary-public-research.txt",
+        "responses/boundary-public-research.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0274004,
+      "tokenUsage": {
+        "input_tokens": 13033,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 216,
+        "reasoning_tokens": 177,
+        "total_tokens": 13377
+      }
+    },
+    {
+      "id": "grok-routing-full-boundary-waitlist-demand",
+      "case": "boundary-waitlist-demand",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.992,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/boundary-waitlist-demand.txt",
+        "responses/boundary-waitlist-demand.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0108828,
+      "tokenUsage": {
+        "input_tokens": 3309,
+        "cache_read_input_tokens": 9856,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 218,
+        "reasoning_tokens": 179,
+        "total_tokens": 13383
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-market-public",
+      "case": "zh-market-public",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.775,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-market-public.txt",
+        "responses/zh-market-public.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0275544,
+      "tokenUsage": {
+        "input_tokens": 13074,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 228,
+        "reasoning_tokens": 184,
+        "total_tokens": 13430
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-discovery-plan",
+      "case": "zh-discovery-plan",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.159,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-discovery-plan.txt",
+        "responses/zh-discovery-plan.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0273984,
+      "tokenUsage": {
+        "input_tokens": 13059,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 207,
+        "reasoning_tokens": 160,
+        "total_tokens": 13394
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-landing-waitlist",
+      "case": "zh-landing-waitlist",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.405,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-landing-waitlist.txt",
+        "responses/zh-landing-waitlist.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.027568,
+      "tokenUsage": {
+        "input_tokens": 13187,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 199,
+        "reasoning_tokens": 154,
+        "total_tokens": 13386
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-prd-notes",
+      "case": "zh-prd-notes",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.02,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-prd-notes.txt",
+        "responses/zh-prd-notes.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0274904,
+      "tokenUsage": {
+        "input_tokens": 13063,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 221,
+        "reasoning_tokens": 160,
+        "total_tokens": 13412
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-seo-live-url",
+      "case": "zh-seo-live-url",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.322,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-seo-live-url.txt",
+        "responses/zh-seo-live-url.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0272064,
+      "tokenUsage": {
+        "input_tokens": 13068,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 172,
+        "reasoning_tokens": 126,
+        "total_tokens": 13368
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-none-code-fix",
+      "case": "zh-none-code-fix",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.619,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-none-code-fix.txt",
+        "responses/zh-none-code-fix.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0108928,
+      "tokenUsage": {
+        "input_tokens": 3317,
+        "cache_read_input_tokens": 9856,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 217,
+        "reasoning_tokens": 175,
+        "total_tokens": 13390
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-none-architecture",
+      "case": "zh-none-architecture",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.996,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-none-architecture.txt",
+        "responses/zh-none-architecture.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.027838,
+      "tokenUsage": {
+        "input_tokens": 13172,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 249,
+        "reasoning_tokens": 196,
+        "total_tokens": 13421
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-boundary-real-interviews",
+      "case": "zh-boundary-real-interviews",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.296,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-real-interviews.txt",
+        "responses/zh-boundary-real-interviews.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.027662,
+      "tokenUsage": {
+        "input_tokens": 13186,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 215,
+        "reasoning_tokens": 171,
+        "total_tokens": 13401
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-boundary-public-research",
+      "case": "zh-boundary-public-research",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 12.992,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-public-research.txt",
+        "responses/zh-boundary-public-research.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.02798,
+      "tokenUsage": {
+        "input_tokens": 13186,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 268,
+        "reasoning_tokens": 227,
+        "total_tokens": 13454
+      }
+    },
+    {
+      "id": "grok-routing-full-zh-boundary-waitlist-demand",
+      "case": "zh-boundary-waitlist-demand",
+      "phase": "grok-routing-full",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 13.107,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "candidate-descriptions.txt",
+        "prompts/zh-boundary-waitlist-demand.txt",
+        "responses/zh-boundary-waitlist-demand.txt"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 1,
+      "totalCostUsd": 0.0276084,
+      "tokenUsage": {
+        "input_tokens": 13053,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 244,
+        "reasoning_tokens": 197,
+        "total_tokens": 13425
+      }
+    }
+  ],
+  "runnerIncidents": [
+    "market-vague: Grok wrote 4580 private stderr bytes.",
+    "market-vague: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "market-public: Grok wrote 4580 private stderr bytes.",
+    "market-public: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "discovery-plan: Grok wrote 4293 private stderr bytes.",
+    "discovery-plan: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "discovery-debrief: Grok wrote 4580 private stderr bytes.",
+    "discovery-debrief: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "landing-waitlist: Grok wrote 4324 private stderr bytes.",
+    "landing-waitlist: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "landing-metrics: Grok wrote 4293 private stderr bytes.",
+    "landing-metrics: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "prd-notes: Grok wrote 4580 private stderr bytes.",
+    "prd-notes: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "prd-rewrite: Grok wrote 4293 private stderr bytes.",
+    "prd-rewrite: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "seo-live-url: Grok wrote 4293 private stderr bytes.",
+    "seo-live-url: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "seo-prd-map: Grok wrote 4293 private stderr bytes.",
+    "seo-prd-map: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "none-code-fix: Grok wrote 4293 private stderr bytes.",
+    "none-code-fix: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "none-architecture: Grok wrote 4324 private stderr bytes.",
+    "none-architecture: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "boundary-real-interviews: Grok wrote 4293 private stderr bytes.",
+    "boundary-real-interviews: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "boundary-public-research: Grok wrote 4324 private stderr bytes.",
+    "boundary-public-research: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "boundary-waitlist-demand: Grok wrote 4293 private stderr bytes.",
+    "boundary-waitlist-demand: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-market-public: Grok wrote 4293 private stderr bytes.",
+    "zh-market-public: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-discovery-plan: Grok wrote 4611 private stderr bytes.",
+    "zh-discovery-plan: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-landing-waitlist: Grok wrote 4293 private stderr bytes.",
+    "zh-landing-waitlist: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-prd-notes: Grok wrote 4293 private stderr bytes.",
+    "zh-prd-notes: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-seo-live-url: Grok wrote 4580 private stderr bytes.",
+    "zh-seo-live-url: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-none-code-fix: Grok wrote 4293 private stderr bytes.",
+    "zh-none-code-fix: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-none-architecture: Grok wrote 4293 private stderr bytes.",
+    "zh-none-architecture: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-boundary-real-interviews: Grok wrote 4293 private stderr bytes.",
+    "zh-boundary-real-interviews: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-boundary-public-research: Grok wrote 4580 private stderr bytes.",
+    "zh-boundary-public-research: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "zh-boundary-waitlist-demand: Grok wrote 4293 private stderr bytes.",
+    "zh-boundary-waitlist-demand: Grok attempted MCP startup despite the MCP tool exclusion."
+  ],
+  "archiveNote": "Prompts and final responses are verbatim runner files. Private logs corroborated execution controls and retained bytes, then were excluded because they contain ephemeral session identifiers and machine-local paths."
+}

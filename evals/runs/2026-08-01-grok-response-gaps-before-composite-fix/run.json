@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; Read tool only; permission mode dontAsk",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "low",
+    "ephemeralSession": true,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "response",
+    "requestedModel": "grok-4.5",
+    "sessionPersistence": false,
+    "maxTurnsPerCase": 3,
+    "ambientAgentSkillsMayBeDiscovered": true
+  },
+  "runs": [
+    {
+      "id": "before-composite-fix-discovery-sparse-debrief",
+      "case": "discovery-sparse-debrief",
+      "phase": "before-composite-fix",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 33.515,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-sparse-debrief.txt",
+        "responses/discovery-sparse-debrief.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 3,
+      "totalCostUsd": 0.028736,
+      "tokenUsage": {
+        "input_tokens": 7744,
+        "cache_read_input_tokens": 10880,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 1664,
+        "reasoning_tokens": 88,
+        "total_tokens": 20288
+      }
+    },
+    {
+      "id": "before-composite-fix-smoke-mixed-traffic",
+      "case": "smoke-mixed-traffic",
+      "phase": "before-composite-fix",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 54.704,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/smoke-mixed-traffic.txt",
+        "responses/smoke-mixed-traffic.txt",
+        "skill-snapshots/z-landing-smoke/SKILL.md",
+        "skill-snapshots/z-landing-smoke/references/copy-patterns.md",
+        "skill-snapshots/z-landing-smoke/references/distribution-playbook.md",
+        "skill-snapshots/z-landing-smoke/references/metrics-guide.md",
+        "skill-snapshots/z-landing-smoke/references/quality-bar.md",
+        "skill-snapshots/z-landing-smoke/references/smoke-pack-template.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 3,
+      "totalCostUsd": 0.0452472,
+      "tokenUsage": {
+        "input_tokens": 13071,
+        "cache_read_input_tokens": 8064,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 2781,
+        "reasoning_tokens": 242,
+        "total_tokens": 23916
+      }
+    },
+    {
+      "id": "before-composite-fix-prd-thin-input",
+      "case": "prd-thin-input",
+      "phase": "before-composite-fix",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 95.492,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/prd-thin-input.txt",
+        "responses/prd-thin-input.txt",
+        "skill-snapshots/z-write-prd/SKILL.md",
+        "skill-snapshots/z-write-prd/references/prd-template.md",
+        "skill-snapshots/z-write-prd/references/quality-bar.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 3,
+      "totalCostUsd": 0.0596088,
+      "tokenUsage": {
+        "input_tokens": 12105,
+        "cache_read_input_tokens": 7936,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 5503,
+        "reasoning_tokens": 200,
+        "total_tokens": 25544
+      }
+    },
+    {
+      "id": "before-composite-fix-seo-no-volume-tool",
+      "case": "seo-no-volume-tool",
+      "phase": "before-composite-fix",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 29.053,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/seo-no-volume-tool.txt",
+        "responses/seo-no-volume-tool.txt",
+        "skill-snapshots/z-seo-plan/SKILL.md",
+        "skill-snapshots/z-seo-plan/references/quality-bar.md",
+        "skill-snapshots/z-seo-plan/references/seo-plan-template.md",
+        "skill-snapshots/z-seo-plan/references/workflow-cheatsheet.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 2,
+      "totalCostUsd": 0.0300204,
+      "tokenUsage": {
+        "input_tokens": 10926,
+        "cache_read_input_tokens": 128,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 1355,
+        "reasoning_tokens": 158,
+        "total_tokens": 12409
+      }
+    },
+    {
+      "id": "before-composite-fix-market-evidence-packet",
+      "case": "market-evidence-packet",
+      "phase": "before-composite-fix",
+      "grade": "fail",
+      "exitStatus": 0,
+      "elapsedSeconds": 65.905,
+      "stopStatus": "end_turn",
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/market-evidence-packet.txt",
+        "responses/market-evidence-packet.txt",
+        "skill-snapshots/z-market-validate/SKILL.md",
+        "skill-snapshots/z-market-validate/references/quality-bar.md",
+        "skill-snapshots/z-market-validate/references/report-template.md",
+        "skill-snapshots/z-market-validate/references/sources.md"
+      ],
+      "model": "grok-4.5-build",
+      "turns": 3,
+      "totalCostUsd": 0.0466252,
+      "tokenUsage": {
+        "input_tokens": 8687,
+        "cache_read_input_tokens": 11264,
+        "cache_creation_input_tokens": 0,
+        "output_tokens": 4312,
+        "reasoning_tokens": 157,
+        "total_tokens": 24263
+      }
+    }
+  ],
+  "runnerIncidents": [
+    "discovery-sparse-debrief: Grok wrote 4894 private stderr bytes.",
+    "discovery-sparse-debrief: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "smoke-mixed-traffic: Grok wrote 5495 private stderr bytes.",
+    "smoke-mixed-traffic: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "prd-thin-input: Grok wrote 5495 private stderr bytes.",
+    "prd-thin-input: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "seo-no-volume-tool: Grok wrote 4894 private stderr bytes.",
+    "seo-no-volume-tool: Grok attempted MCP startup despite the MCP tool exclusion.",
+    "market-evidence-packet: Grok wrote 5495 private stderr bytes.",
+    "market-evidence-packet: Grok attempted MCP startup despite the MCP tool exclusion."
+  ],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

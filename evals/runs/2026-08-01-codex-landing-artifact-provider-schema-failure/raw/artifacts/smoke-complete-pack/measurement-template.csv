@@ -1,0 +1,7 @@
+date,source_lane,utm_source,utm_medium,utm_campaign,utm_content,qualified_unique_visitors,cta_clicks,waitlist_attempts,buttondown_accepted,buttondown_active_double_opt_in,replies,credible_paid_intent,ad_spend_usd,notes
+2026-08-03,warm_dm,dm,outreach,restore_smoke_202608,support_agent,0,0,0,0,0,0,0,0,"Keep separate from every cold total"
+2026-08-03,reddit_organic,reddit,community,restore_smoke_202608,r_customersuccess,0,0,0,0,0,0,0,0,"Cold organic"
+2026-08-03,support_driven,support_driven,community,restore_smoke_202608,member_post,0,0,0,0,0,0,0,0,"Permission required before posting"
+2026-08-03,x_organic,x,social,restore_smoke_202608,founder_post,0,0,0,0,0,0,0,0,"Cold/mixed organic; do not reclassify"
+2026-08-03,reddit_ads,reddit_ads,cpc,restore_smoke_202608,support_context_v1,0,0,0,0,0,0,0,0,"Cold paid; cumulative cap $150"
+2026-08-03,unattributed,,,,,0,0,0,0,0,0,0,0,"Exclude from every source threshold"

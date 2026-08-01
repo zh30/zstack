@@ -1,0 +1,8 @@
+sha256                                                            bytes  path
+5c9a197b2866317d3c12006ed475abfc65ef4193a9b6b915208e53a9c919603e      478  artifacts/smoke-complete-pack/cold-metrics.csv
+27ec87c95da15adaf0e24192509dbb007ae941840501fc0c009d7c81ca820c01      526  artifacts/smoke-complete-pack/site/_headers
+b83dbb9a71d035c1b49d14185a6e26544a3116138d8fc54a34c767425584b145     5962  artifacts/smoke-complete-pack/site/functions/api/waitlist.js
+c4a1ac2f96a4bfbd204e3e6942667eaebb20c7b600dac0a273799abec214c0f6    15489  artifacts/smoke-complete-pack/site/index.html
+ec5cd0fae81072bd74264d3a7f6ed6c93b4d45c77ac03eb281a33e9b8f793330     1225  artifacts/smoke-complete-pack/site/og-contextdeck.svg
+be633349e1e9ee6fce0493f996b74ffedabcdfcdc18361dfa972f55141b60e14    30674  artifacts/smoke-complete-pack/smoke-test-package.md
+e27a0fe140779fa80c17649015dba86fb9ac15b37b61ec47dd84bd0d0b9fd2e0      257  artifacts/smoke-complete-pack/warm-metrics.csv

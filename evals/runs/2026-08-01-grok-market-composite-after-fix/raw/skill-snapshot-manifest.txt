@@ -1,0 +1,5 @@
+sha256                                                            bytes  path
+e2ffbe41528a423ad27a3c1f4af37cb00eddbcd4f522fe262128e48b741246af    10610  skill-snapshots/z-market-validate/SKILL.md
+1d3cb0c33d281018aefb85834b9af24b0df734197662e48b6f60affe7d5fe74b     1400  skill-snapshots/z-market-validate/references/quality-bar.md
+5c8989376562328331d401ccc506c6fc99e3b19937c79833654a5ac933a071ac     5424  skill-snapshots/z-market-validate/references/report-template.md
+38de5d99837d7fbce310414b71357362c4947a5aa334b98595f58c0e5500634f     3072  skill-snapshots/z-market-validate/references/sources.md

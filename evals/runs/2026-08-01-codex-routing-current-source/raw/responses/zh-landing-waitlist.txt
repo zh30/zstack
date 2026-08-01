@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: 请求是在开发前制作单一 CTA 的等待名单落地页，并配套低成本引流及继续、调整和停止阈值。

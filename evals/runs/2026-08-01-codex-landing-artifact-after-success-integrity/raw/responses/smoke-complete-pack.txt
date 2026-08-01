@@ -1,0 +1,16 @@
+Created the complete 10-day smoke-test package:
+
+- `artifacts/smoke-test.md` — protocol, complete English copy, meta/OG copy, thresholds, UTMs, $150 traffic calendar, decision rules, and evidence handoff.
+- `artifacts/site/index.html` — deployable responsive landing page with the single CTA and Plausible events.
+- `artifacts/site/functions/api/waitlist.js` — Cloudflare Pages Function with Buttondown-confirmed conversion and source attribution.
+- `artifacts/measurement.csv` — source-separated measurement dashboard.
+- `artifacts/README.md` — deployment and launch checklist.
+
+Remaining external setup:
+
+- Add the real domain, contact address, and OG image.
+- Configure Cloudflare Pages, Buttondown credentials/double opt-in, and Plausible goals.
+- Verify Buttondown’s current API schema and metadata retention with real submissions.
+- Configure Reddit Ads and confirm current community/platform rules.
+
+The server function passed local contract tests. Web, browser, account access, and deployment were unavailable, so no live API, tracking, traffic, or demand results are claimed. Do not build the extension before applying the smoke-test decision rules.

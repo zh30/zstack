@@ -1,0 +1,2 @@
+selection: z-landing-smoke
+reason: 未开发产品需单 CTA 等待名单落地页、低成本引流与继续/停止阈值，正对落地页冒烟验证场景。

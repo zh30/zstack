@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-01",
+  "suite": "behavioral",
+  "host": {
+    "name": "Grok Build",
+    "version": "0.2.117",
+    "revision": "f1c06093089f"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "runs": [
+    {
+      "id": "baseline",
+      "case": "seo-supplied-search-notes",
+      "phase": "baseline",
+      "model": "grok-4.5",
+      "workspace": "disposable initialized Git repository",
+      "permissions": "bypassPermissions, constrained to the disposable workspace by runner rules",
+      "webSearch": false,
+      "subagents": false,
+      "maxTurns": 3,
+      "stopStatus": "stop",
+      "elapsedSeconds": 135,
+      "grade": "pass",
+      "artifacts": [
+        "response.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [],
+  "archiveNote": "The response body is preserved verbatim; the exported prompt, progress preamble, and machine-local tool-path block were removed because the prompt is stored separately and local paths are not portable evidence."
+}

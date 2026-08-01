@@ -1,0 +1,49 @@
+Mode: debrief
+
+Verdict: This conversation produced enthusiasm, not demand evidence. Do not count it as validation that the problem is important or that the customer will pay.
+
+### Structured debrief
+
+| Area | What the note establishes | What remains unknown |
+|---|---|---|
+| Context | They saw a demo and reacted positively. | Role, ICP fit, recruitment source, and whether the demo came before discovery questions. |
+| Past incidents (G1) | None captured. | Last occurrence, frequency, severity, workflow, and actual time lost. |
+| Current solution/spend (G2) | None captured. | Existing tools, manual work, labor hours, money spent, and consequences of doing nothing. |
+| Switching behavior (G3) | They said they would “probably pay.” | Budget authority, purchase process, prior attempts to switch, barriers, and any concrete commitment. |
+| Verbatim quotes | None available—the note contains paraphrases. | Exact customer language. |
+
+### Mom Test audit
+
+| Issue | Evidence | Better question |
+|---|---|---|
+| Compliment accepted as evidence | “My demo was great.” | “Thanks. Before the demo, when did this problem last occur?” |
+| Future-intent trap | “They would probably pay.” | “What have you paid for, or tried to buy, to solve this?” |
+| Leading question | “Would the feature save you time?” | “Walk me through how you handled this the last time.” |
+| Abstract benefit | They agreed it would save time. | “How long did the last occurrence take? What made up that time?” |
+| Pitch leakage | The conversation centered on the demo and its feature. | Delay the demo until after collecting concrete stories and current behavior. |
+
+Provisional founder pitch leakage: **3/5**. A demo and feature-led question are evident, but the note is too sparse to determine how much of the conversation they occupied.
+
+### Gate updates
+
+| Gate | Result | Why |
+|---|---|---|
+| G1 Pain | **Neutral** | No specific past incident, frequency, or measured consequence. |
+| G2 Spend | **Neutral** | No existing expenditure of money, labor, or workaround effort was documented. |
+| G3 Switch | **Neutral** | “Probably pay” is hypothetical; there was no purchasing behavior or commitment. |
+
+### Recommended follow-up
+
+Return to this person without pitching and ask:
+
+1. “Tell me about the last time you had to do this.”
+2. “What triggered it, and what did you do step by step?”
+3. “How often has that happened in the last month?”
+4. “How long did the last instance take?”
+5. “How do you solve it today, and what tools or people are involved?”
+6. “What have you already tried to improve it?”
+7. “What does the current approach cost in time or money?”
+8. “Have you switched solutions before? What caused the switch?”
+9. “Who decides whether money can be spent on this?”
+
+Current decision: **continue discovery; do not advance a substantial build from this interview.** The only source is one sparse founder-written note without a transcript, metadata, or behavioral detail, so stronger conclusions would be invented.

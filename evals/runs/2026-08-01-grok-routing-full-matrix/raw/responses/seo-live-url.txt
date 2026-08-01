@@ -1,0 +1,2 @@
+selection: z-seo-plan
+reason: The request asks for keyword opportunities, a primary term, and mapping supporting queries to pages on a live SaaS site—exactly z-seo-plan’s SEO/keyword-to-page scope.

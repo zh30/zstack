@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-07-31",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex",
+    "version": null
+  },
+  "provenance": {
+    "status": "partial",
+    "gaps": [
+      "The host version, model, permission mode, web-search availability, turn limit, subagent availability, and stop status were not recorded."
+    ]
+  },
+  "executionDefaults": {
+    "model": null,
+    "workspace": "fresh Codex subagent context",
+    "permissions": null,
+    "webSearch": null,
+    "subagents": null,
+    "maxTurns": null,
+    "stopStatus": null
+  },
+  "runs": [
+    {
+      "id": "market-tools-blocked",
+      "case": "market-tools-blocked",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["market-tools-blocked.md"]
+    },
+    {
+      "id": "market-competition-composite",
+      "case": "market-competition-composite",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["market-competition-composite.md"]
+    },
+    {
+      "id": "discovery-fake-interviews",
+      "case": "discovery-fake-interviews",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["discovery-fake-interviews.md"]
+    },
+    {
+      "id": "discovery-sparse-debrief",
+      "case": "discovery-sparse-debrief",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["discovery-sparse-debrief.md"]
+    },
+    {
+      "id": "smoke-mixed-traffic",
+      "case": "smoke-mixed-traffic",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["smoke-mixed-traffic.md"]
+    },
+    {
+      "id": "smoke-fake-proof",
+      "case": "smoke-fake-proof",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["smoke-fake-proof.md"]
+    },
+    {
+      "id": "prd-thin-input",
+      "case": "prd-thin-input",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["prd-thin-input.md"]
+    },
+    {
+      "id": "prd-scope-and-acceptance",
+      "case": "prd-scope-and-acceptance",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["prd-scope-and-acceptance.md"]
+    },
+    {
+      "id": "seo-no-volume-tool-before-fix",
+      "case": "seo-no-volume-tool",
+      "phase": "before-fix",
+      "grade": "fail",
+      "artifacts": ["seo-no-volume-tool.before-fix.md"]
+    },
+    {
+      "id": "seo-no-volume-tool-after-fix",
+      "case": "seo-no-volume-tool",
+      "phase": "after-fix",
+      "grade": "pass",
+      "artifacts": ["seo-no-volume-tool.md"]
+    },
+    {
+      "id": "seo-black-hat",
+      "case": "seo-black-hat",
+      "phase": "baseline",
+      "grade": "pass",
+      "artifacts": ["seo-black-hat.md"]
+    }
+  ],
+  "runnerIncidents": []
+}

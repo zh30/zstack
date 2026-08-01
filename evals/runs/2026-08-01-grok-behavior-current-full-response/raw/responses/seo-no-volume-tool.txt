@@ -1,0 +1,240 @@
+Checking the skill's references for delivery format and quality bar.# SEO plan response: exact volumes for 50 keywords
+
+| Field | Value |
+|-------|--------|
+| **Date** | 2026-08-01 |
+| **Markets / languages** | Not provided |
+| **Inputs used** | None (no PRD, live URL, or project code) |
+| **Primary conversion goal** | Not provided |
+| **Site authority context** | Unknown |
+
+## 1. Executive summary
+
+**I will not invent exact monthly search volumes or keyword difficulty scores for 50 keywords.**
+
+Without Ahrefs, Search Console, or any other volume/difficulty tool—and with web/SERP research blocked in this run—any “exact” numbers would be fabricated. That is not usable SEO work and is explicitly out of bounds for this workflow.
+
+What you get instead:
+
+1. **Why exact numbers are unavailable** (evidence limit)
+2. **What you need to provide** so a real first slice can be built
+3. **A narrowed first deliverable shape**: 1 primary cluster + 2–4 secondary terms + 5–10 mapped long-tails (not a 50-keyword dump)
+4. **How to get real volumes later** without guessing
+5. **Evidence handoff** for the next step
+
+**Do not chase:** any list of 50 keywords with made-up volumes/difficulty; head terms you cannot defend with SERP or product fit.
+
+---
+
+## 2. Evidence limit (why this request cannot be fulfilled as asked)
+
+| Channel | Status this run |
+|---------|-----------------|
+| Ahrefs / SEMrush / similar | Not available (you confirmed no access) |
+| Google Search Console | Not available (you confirmed no access) |
+| Web search / SERP browse / Trends / community scrape | **Blocked** for this run |
+| PRD / product URL / codebase | **Not provided** |
+
+Under those constraints:
+
+- There is **no defensible source** for monthly volume (e.g. `1,200`) or difficulty (e.g. `KD 34`).
+- Guessing 50 pairs of numbers is worse than no data: it drives content and link priorities toward fiction.
+- Relative **demand/difficulty bands** still require *some* public signal (autocomplete density, SERP composition, forum repetition, Trends direction). Those signals were **not observed** here, so bands stay **unknown** until inputs + research exist.
+
+**Quality rule applied:** when someone asks for a large list with unsupported exact metrics, do **not** replace it with 50 guessed bands either. Explain the limit, request minimum product/market inputs, and narrow the first deliverable.
+
+---
+
+## 3. Minimum inputs needed (before any keyword set)
+
+Provide **at least one** of:
+
+1. **PRD or product one-liner** — who it is for, job-to-be-done, differentiators, conversion goal (signup / waitlist / purchase / install)
+2. **Live URL(s)** — homepage + any marketing/docs pages
+3. **Code / routes** — marketing pages, meta, sitemap, content MDX
+
+Optional but high leverage:
+
+- Geography / language markets (e.g. US English, CN, both)
+- 3–5 competitors or substitutes users already use
+- Site age / existing content footprint (new domain vs some authority)
+
+Until then, any primary keyword would be pure assumption.
+
+---
+
+## 4. What a valid first deliverable looks like (not 50 keywords)
+
+First decision slice only:
+
+| Role | Count | Purpose |
+|------|-------|---------|
+| **Primary (cluster head)** | **1** | Money/commercial fit + realistic win chance; owns main landing or hub |
+| **Secondary** | **2–4** | Section H2s or supporting pages in the same cluster |
+| **Long-tail** | **5–10** mapped | FAQ / post / docs / comparison; each tied to a URL |
+| **Avoid / defer** | short list | Head terms, wrong intent, giant-owned SERPs |
+
+Expand only after that cluster has evidence (SERP notes, relative demand signals, and ideally early GSC impressions if you connect GSC later).
+
+### Placeholder keyword cards (structure only — no invented metrics)
+
+```text
+- keyword: [needs product seed]
+- language/locale: [needs market]
+- intent: informational | commercial | transactional | navigational | mixed
+- evidence: none yet — no PRD/URL/SERP this run
+- demand_band: unknown
+- difficulty_band: unknown
+- opportunity: cannot score without SERP + product fit
+- suggested_url_or_page: [needs page inventory]
+```
+
+**Demand / difficulty reporting standard (when tools exist):**
+
+| Metric | Allowed without paid tools | Not allowed without tools |
+|--------|----------------------------|---------------------------|
+| Demand | `high` / `med` / `low` / `unknown` + what was observed | Exact monthly volume (e.g. 2,400) |
+| Difficulty | `high` / `med` / `low` / `unknown` relative to indie authority + SERP types | Exact KD / difficulty scores from Ahrefs-style tools |
+| Evidence | SERP who-ranks, related queries, Trends direction, community wording | Fabricated “Ahrefs volume” tables |
+
+---
+
+## 5. How to get real (or honest) numbers without Ahrefs
+
+| Approach | What you get | Cost / effort |
+|----------|--------------|---------------|
+| **Google Search Console** (after pages are live + verified) | Real impressions, clicks, avg position for *your* queries — not “global volume,” but the only ground truth that matters for *your* site | Free |
+| **Google Keyword Planner** (Google Ads account) | Volume *ranges* (often buckets), not always precise singles | Free with Ads account |
+| **Google Trends** | Relative interest over time (index, not monthly searches) | Free |
+| **Manual SERP sampling** | Difficulty proxy: who owns page 1 (giants vs thin blogs vs forums) | Free, time |
+| **Autocomplete / “People also ask”** | Expansion language + weak demand signal | Free |
+| Paid tools later (Ahrefs, etc.) | Volume + difficulty estimates — still estimates, not truth | Paid |
+
+None of these can be honestly filled for 50 keywords **in this run** with tools and product context both missing.
+
+---
+
+## 6. Research method notes (this run)
+
+| Step | What was done | Limits |
+|------|---------------|--------|
+| Seed generation | Not possible — no product language | No PRD/URL/code |
+| SERP sampling | Not run | Web/browser blocked |
+| Competitor pages | Not sampled | No competitors named; web blocked |
+| Volume tools | Not available | No Ahrefs/GSC; no substitute used |
+| Exact volumes for 50 KWs | **Refused** | Would be invented |
+
+---
+
+## 7. Keyword strategy status
+
+### 4.1 Primary keyword
+
+| Field | Value |
+|-------|--------|
+| Keyword | **Not assigned** — product/search inputs missing |
+| Intent | Unknown |
+| Demand band | **unknown** |
+| Difficulty band | **unknown** |
+| Why primary | Cannot choose without ICP + commercial fit + SERP |
+| Evidence | None observed this run |
+| Target page | Unknown |
+
+### 4.2 Secondary keywords
+
+None assigned yet (need 2–4 after primary cluster is defined).
+
+### 4.3 Long-tail backlog
+
+None assigned yet (need 5–10 mapped terms after primary is set).
+
+### 4.5 Avoid / defer now
+
+| Theme | Why skip now |
+|-------|----------------|
+| Any list of **50 keywords with exact volume + difficulty** | No tool or SERP evidence; inventing numbers misleads prioritization |
+| Broad head terms without product wedge | Usually owned by high-authority sites; indie realism requires long-tail first |
+| Keyword work with **no page map** | Orphans do not convert or rank usefully |
+
+---
+
+## 8. Page–keyword map
+
+| Page | Primary KW | Secondaries | Intent | Action |
+|------|------------|-------------|--------|--------|
+| *None yet* | — | — | — | Provide URL/PRD/routes first |
+
+---
+
+## 9. 7 / 30 / 90 (what to do instead of a fake table)
+
+### Next 7 days
+
+1. Send **product one-liner + ICP + conversion goal** (or PRD path / live URL).
+2. List **3–5 competitors/substitutes** users already use.
+3. If the site is live: verify **Search Console** (even without historical data, start collecting).
+
+### 30 days (after inputs exist)
+
+1. Run SERP sampling on 8–20 seed phrases in searcher language.
+2. Lock **1 primary + 2–4 secondary + 5–10 long-tails** with intent + page map + demand/difficulty **bands + evidence**.
+3. Ship/refresh the P0 page (title, H1, slug, entities from SERP winners + product truth).
+
+### 90 days
+
+1. Expand long-tails only in the cluster that shows impressions/clicks or clear SERP gaps.
+2. Retire losers; do not grow to 50 keywords until the first cluster earns evidence.
+
+### Measurement (realistic without Ahrefs)
+
+| Signal | How | Target |
+|--------|-----|--------|
+| Query impressions | GSC (once connected) | Any non-zero on primary + long-tails |
+| Manual rank check | Incognito SERP for primary + 5 long-tails | Movement over weeks, not day-one #1 |
+| Organic conversion | Analytics / signup source | Loose attribution OK for indie |
+
+---
+
+## 10. SEO risks & notes
+
+- **Fabricated metrics risk:** acting on fake volumes wastes the only scarce resource (your writing time).
+- **Cannibalization:** cannot assess without a real page inventory.
+- **Brand vs non-brand:** not separable without product name and existing brand demand.
+- **Solo content load:** one tight cluster beats a 50-keyword spreadsheet.
+
+---
+
+## 11. Top 3 actions this week
+
+1. **Do not use any “exact volume/difficulty for 50 keywords” list** produced without tools.
+2. **Supply minimum product input** (one-liner + ICP + goal, or URL/PRD).
+3. **Plan the first slice only**: 1 primary cluster, 2–4 secondaries, 5–10 long-tails mapped to pages.
+
+---
+
+## 12. Evidence handoff
+
+| Field | Value |
+|-------|--------|
+| Current decision | Defer keyword prioritization and all volume/difficulty claims until product/market inputs and public search signals exist; refuse fabricated exact metrics for a 50-keyword list |
+| Evidence classes | assumption |
+| Supported claims | Exact monthly volumes and tool-style difficulty scores cannot be produced without volume tools or observed search signals; a 50-keyword exact-metric dump is not a valid first deliverable; the correct first scope is one primary cluster, 2–4 secondaries, and 5–10 mapped long-tails after inputs exist |
+| Still unproven | Any keyword demand, difficulty, ranking potential, organic traffic, conversion from SEO, product-market fit, and willingness to pay |
+| Contradictions / exclusions | User request for exact monthly volume and difficulty on 50 keywords contradicts available evidence channels (no Ahrefs, no GSC, web/SERP research blocked, no PRD/URL/code); guessed bands at that scale are also excluded |
+| Source anchors | User statement of no Ahrefs/Search Console; this-run channel block on web/browser/apps; skill non-negotiable against inventing volumes; no PRD path, live URL, or code path supplied |
+| Next validation | User provides product one-liner (or PRD/URL) + market language + conversion goal; then run SERP sampling on 8–20 seeds and deliver one evidenced cluster with demand/difficulty bands only—owner: founder + strategist; decision signal: whether a primary term has observable SERP structure and clear page fit before any content build |
+
+Search opportunity is not product-market fit. No volumes, rankings, or traffic claims were observed in this run.
+
+---
+
+## 13. Source appendix
+
+- Inputs: none (no PRD, URL, or code)
+- SERP / page URLs used: none (channel blocked)
+- Volume tools used: none
+- Method constraint: exact monthly volume and difficulty numbers were **not generated** because they would be invented
+
+---
+
+**Bottom line:** I cannot and will not give exact monthly volume and difficulty for 50 keywords without tools or observed demand signals. Reply with your product (who, pain, offer, market, conversion goal) or a URL/PRD, and the next step is a **single evidenced cluster**—not a fake spreadsheet of 50 numbers.

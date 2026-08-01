@@ -1,0 +1,963 @@
+# Landing smoke test: ClientTabs
+
+“ClientTabs” is a working name; domain and trademark availability have not been checked.
+
+Because web access is unavailable, channel fit, current ad inventory, and current Buttondown/Plausible API capabilities remain unverified assumptions. Confirm community rules and provider features before launch.
+
+| Field | Value |
+|---|---|
+| Date prepared | August 1, 2026 |
+| Test window | August 3–12, 2026 |
+| ICP | Hands-on customer support agents at small US SaaS teams who repeatedly switch between client-specific browser tabs |
+| Problem | Agents lose time reopening, finding, and arranging the same client context |
+| Promise | Restore a saved client tab workspace in one click |
+| CTA | “Join the early-access waitlist” |
+| Price signal | Planned pricing from $9/month |
+| Page language | English |
+| Stack | Cloudflare Pages, Buttondown, Plausible |
+| Paid media cap | $150 total |
+
+## 1. Smoke protocol
+
+### Hypothesis
+
+If hands-on support agents at small US SaaS teams are offered one-click restoration of client-specific tab workspaces, qualified cold visitors will join an early-access waitlist at the source-specific rates below, and some subscribers will reply with a concrete workflow or price-intent signal.
+
+### Primary metric
+
+Confirmed visitor-to-waitlist conversion rate:
+
+```text
+Buttondown double-opt-in-confirmed subscribers attributed to source
+÷
+Plausible unique US visitors attributed to the same source
+```
+
+Do not count CTA clicks, form attempts, rejected addresses, duplicates, unconfirmed subscriptions, or visible success messages as conversions.
+
+### Secondary metrics
+
+- CTA click rate.
+- Valid form-attempt rate.
+- Double-opt-in completion rate.
+- Welcome-email delivery and open rate, used only as operational diagnostics.
+- Qualified replies describing a current workaround.
+- Replies saying that planned pricing from $9/month is plausible.
+- Cost per confirmed subscriber for paid search.
+- Attribution completeness.
+- Traffic volume achieved per source.
+
+### Qualified visitor
+
+A unique landing-page visitor who:
+
+- Arrived through a registered source/UTM combination.
+- Was located in the US according to Plausible.
+- Was not an internal tester, known bot, or obvious referral-spam visit.
+- Viewed the landing page, not merely an ad impression.
+
+Do not require a CTA click or minimum time on page; doing so would bias conversion upward.
+
+### Evidence separation
+
+Maintain separate reporting sheets or dashboard slices for:
+
+- `cold_google`
+- `cold_reddit`
+- `cold_linkedin`
+- `cold_support_community`
+- `warm_dm`
+
+Never combine `warm_dm` traffic or conversions with any cold source, including in an “overall” conversion rate. Cold sources should also retain individual rates.
+
+### Pre-registered source thresholds
+
+Rates below are directional hypotheses, not established benchmarks.
+
+| Source | Minimum before verdict | Continue signal | Retest zone | Weak/pivot signal |
+|---|---:|---|---|---|
+| Cold Google Search ads | 50 qualified visitors | ≥4% and ≥3 confirmed subscribers | 2–3.99% or only 1–2 confirmations | <2% or zero confirmations |
+| Cold Reddit | 60 qualified visitors | ≥6% and ≥4 confirmations | 2–5.99% or 2–3 confirmations | <2% or ≤1 confirmation |
+| Cold LinkedIn organic | 40 qualified visitors | ≥7.5% and ≥3 confirmations | 2.5–7.49% or 1–2 confirmations | <2.5% or zero confirmations |
+| Cold support community | 30 qualified visitors | ≥10% and ≥3 confirmations | 3–9.99% or 1–2 confirmations | <3% or zero confirmations |
+| Warm personal outreach | 20 qualified visitors | ≥15% and ≥3 confirmations | 5–14.99% or 1–2 confirmations | <5% or zero confirmations |
+
+If a source does not reach its minimum, classify it as `inconclusive—distribution`, not as evidence against the product.
+
+### Engagement thresholds
+
+After at least 20 delivered welcome emails:
+
+- Open rate below 35%: investigate deliverability, subject line, and double-opt-in flow. Do not treat it as a demand failure.
+- Strong engagement: at least three qualified replies, including at least two describing a repeated client-switching workflow.
+- Stronger price intent: at least two independent replies saying the planned price is reasonable, asking to buy, or asking how soon they can use it.
+- A reply is not a payment. No payment demand is tested by this waitlist.
+
+### Timebox discipline
+
+Run for exactly 10 calendar days. Do not extend merely because results are weak. Extend only when a documented operational failure—broken form, lost attribution, ad rejection, or deliverability problem—invalidated part of the test.
+
+## 2. Complete landing-page copy
+
+### Meta and social metadata
+
+- Meta title: `ClientTabs — One-Click Client Workspace Restore`
+- Meta description: `For hands-on SaaS support agents: save each client’s tab workspace and restore the full context in one click. Early-access concept; planned from $9/month.`
+- Canonical URL: `https://YOUR_DOMAIN/`
+- OG type: `website`
+- OG site name: `ClientTabs`
+- OG title: `Stop rebuilding every client’s browser context`
+- OG description: `ClientTabs is a planned Chrome extension for hands-on SaaS support agents. Restore a saved client tab workspace in one click. Planned from $9/month.`
+- OG URL: `https://YOUR_DOMAIN/`
+- OG image URL: `https://YOUR_DOMAIN/og-clienttabs.png`
+- OG image alt: `ClientTabs: restore a client-specific tab workspace in one click`
+- Twitter card: `summary_large_image`
+- Twitter title: `One-click client workspace restore for SaaS support`
+- Twitter description: `A planned Chrome extension that restores the tabs you need for each client. Early-access waitlist; planned from $9/month.`
+
+OG image copy:
+
+```text
+ClientTabs
+
+One click back to the right client context
+
+A planned Chrome extension for hands-on SaaS support agents
+```
+
+Use a typographic card, not a fabricated product screenshot.
+
+### Headline variants
+
+Ship variant A for the full initial test. Do not rotate variants automatically with a small sample.
+
+- A — ship this: `Restore every client’s tab workspace in one click`
+- B: `Stop rebuilding your browser context for every client`
+- C: `The client workspace switcher for hands-on SaaS support`
+
+Only test B after the initial test if a cold source reaches its sample minimum but falls in the retest zone. Record `lp_variant` on both pageviews and subscribers.
+
+### Full page
+
+#### Minimal navigation
+
+Brand:
+
+```text
+ClientTabs
+```
+
+Navigation button:
+
+```text
+Join the early-access waitlist
+```
+
+#### Hero
+
+Eyebrow:
+
+```text
+Planned Chrome extension for hands-on SaaS support agents
+```
+
+H1:
+
+```text
+Restore every client’s tab workspace in one click
+```
+
+Subheading:
+
+```text
+Save the tabs you use for each client, then bring the full workspace back when the next ticket, call, or escalation arrives—without searching through history or rebuilding the context by hand.
+```
+
+Price chip:
+
+```text
+Planned pricing from $9/month
+```
+
+Stage disclosure:
+
+```text
+ClientTabs is not built yet. This waitlist is testing whether the workflow is worth building, and no ship date has been set.
+```
+
+Form label:
+
+```text
+Work email
+```
+
+Email placeholder:
+
+```text
+you@company.com
+```
+
+Optional qualifier label:
+
+```text
+What do you reopen when you switch clients? (optional)
+```
+
+Qualifier placeholder:
+
+```text
+For example: admin, logs, CRM, docs, and the client’s dashboard
+```
+
+Submit button:
+
+```text
+Join the early-access waitlist
+```
+
+Consent text:
+
+```text
+By joining, you agree to receive confirmation, early-access, and occasional product-update emails from ClientTabs. Unsubscribe anytime. We will not sell your email.
+```
+
+Form-attempt acknowledgement:
+
+```text
+Submission sent. Check your inbox to confirm your email. You are not on the confirmed waitlist until that step is complete.
+```
+
+Confirmed state, shown only after Buttondown confirms double opt-in:
+
+```text
+Email confirmed. You’re on the early-access waitlist.
+```
+
+Error state:
+
+```text
+We couldn’t send your request. Check the email address and try again, or contact hello@YOUR_DOMAIN.
+```
+
+#### Problem section
+
+Heading:
+
+```text
+Every client switch comes with a hidden setup tax
+```
+
+Body:
+
+```text
+A support conversation rarely lives in one tab. The useful context is scattered across your help desk, CRM, admin tools, logs, documentation, and the client’s own environment.
+```
+
+Bullets:
+
+```text
+You hunt through history for tabs you already opened yesterday.
+
+Similar client names and environments make the wrong context easy to grab.
+
+Urgent work begins with browser housekeeping instead of solving the issue.
+```
+
+#### Solution section
+
+Heading:
+
+```text
+Save the context once. Restore it when the client returns.
+```
+
+Step 1:
+
+```text
+1. Save a client workspace
+
+Group the tabs you rely on for that client under one recognizable workspace.
+```
+
+Step 2:
+
+```text
+2. Switch to other work
+
+Close or move on from those tabs without depending on memory or browser history.
+```
+
+Step 3:
+
+```text
+3. Restore it in one click
+
+When the next ticket or call arrives, reopen the saved client workspace and get back into context.
+```
+
+Accuracy note:
+
+```text
+The exact handling of authentication, duplicate tabs, tab groups, and changed URLs is still being designed. The promise being tested here is one-click restoration of a previously saved workspace—not automatic access to systems you are not already authorized to use.
+```
+
+#### For / not for
+
+Heading:
+
+```text
+Built around repetitive, client-specific support work
+```
+
+For:
+
+```text
+ClientTabs is for you if:
+
+• You work hands-on support, implementation, success, or escalation cases.
+• Your small SaaS team serves multiple clients through browser-based tools.
+• Each client repeatedly requires a recognizable set of tabs.
+• Reconstructing that set costs time or causes avoidable mistakes.
+```
+
+Not for:
+
+```text
+It is probably not for you if:
+
+• You rarely switch between client accounts.
+• One help-desk tab already contains all the context you need.
+• You need shared team automation, credential management, or full session cloning.
+• Your organization prohibits unapproved browser extensions.
+```
+
+#### Honest proof section
+
+Heading:
+
+```text
+A concept under validation—not a finished product
+```
+
+Body:
+
+```text
+There are no customer testimonials, usage numbers, or finished demo to show yet. The first proof we are looking for is simpler: do real support agents recognize this problem strongly enough to join the waitlist and tell us how they handle it today?
+```
+
+Founder note:
+
+```text
+We will use the response to decide whether to build a narrow, privacy-conscious first version. Joining signals interest; it does not guarantee access or a release date.
+```
+
+#### Offer section
+
+Heading:
+
+```text
+Help decide whether ClientTabs gets built
+```
+
+Body:
+
+```text
+Join the early-access waitlist to receive the occasional product update and be considered for early access if development moves forward.
+```
+
+Price line:
+
+```text
+Planned pricing starts at $9/month. Final packaging and pricing may change after workflow and privacy requirements are understood.
+```
+
+Button:
+
+```text
+Join the early-access waitlist
+```
+
+#### FAQ
+
+`Is ClientTabs available now?`
+
+```text
+No. It is an unbuilt concept being tested before significant development begins.
+```
+
+`When will it ship?`
+
+```text
+There is no firm ship date. The 10-day test and follow-up conversations will determine whether the idea should move into a small MVP.
+```
+
+`What would it cost?`
+
+```text
+The current plan is pricing from $9/month. Joining the waitlist is free and does not lock in a purchase or a final price.
+```
+
+`What does “one-click restore” mean?`
+
+```text
+The planned workflow lets you select a saved client workspace and reopen its saved tabs with one action. It does not promise to bypass logins, restore expired sessions, or grant access to restricted systems.
+```
+
+`Will ClientTabs read client data?`
+
+```text
+The product is not built, so its final permissions and data model are not settled. The intended direction is to request only the browser permissions required for workspace restoration and to explain them before installation. Privacy claims will be published only after the architecture exists and can be verified.
+```
+
+`What happens after I join?`
+
+```text
+Buttondown will send a confirmation email. After you confirm, you may receive early-access and product-update emails. You can unsubscribe at any time.
+```
+
+`Who should not join?`
+
+```text
+People looking for a currently available extension, guaranteed release date, team credential manager, or automatic login/session replication should not join.
+```
+
+#### Final CTA
+
+Heading:
+
+```text
+Would one click save you from rebuilding client context?
+```
+
+Body:
+
+```text
+Join the early-access waitlist and tell us what you reopen today.
+```
+
+Button:
+
+```text
+Join the early-access waitlist
+```
+
+#### Footer
+
+```text
+ClientTabs is an unbuilt product concept.
+
+Contact: hello@YOUR_DOMAIN
+Privacy: Your email is stored in Buttondown and used only for confirmation, early-access research, and product updates. It will not be sold.
+
+© 2026 ClientTabs
+```
+
+## 3. Welcome email
+
+Subject:
+
+```text
+Confirmed: you’re on the ClientTabs early-access waitlist
+```
+
+Preview:
+
+```text
+One quick reply will help decide what gets built.
+```
+
+Body:
+
+```text
+Hi,
+
+Thanks for confirming your place on the ClientTabs early-access waitlist.
+
+ClientTabs is still an unbuilt concept: a Chrome extension intended to restore a saved client-specific tab workspace in one click. There is no firm ship date. Planned pricing currently starts at $9/month.
+
+Could you reply with:
+
+1. What do you reopen when you switch to a client today?
+2. How often does that happen in a typical week?
+3. If ClientTabs reliably saved that setup time, would pricing from $9/month fit your budget?
+
+A short, honest answer is more useful than encouragement.
+
+You can unsubscribe at any time using the link below.
+
+— The ClientTabs maker
+```
+
+Record replies manually as:
+
+- `current_workaround`
+- `pain_frequency`
+- `price_positive`
+- `price_negative`
+- `security_or_permissions_objection`
+- `not_icp`
+
+## 4. Implementation package
+
+No files were modified because the request explicitly prohibits it. The intended minimal deployment consists of:
+
+```text
+/index.html
+/confirmed/index.html
+/privacy/index.html
+/functions/api/waitlist.js
+/public/og-clienttabs.png
+```
+
+### Cloudflare Pages
+
+- Serve a mobile-first static page.
+- Use semantic HTML and system fonts.
+- Set `BUTTONDOWN_API_KEY` as a secret environment variable, never client-side.
+- Set `PLAUSIBLE_DOMAIN` and `BUTTONDOWN_LIST_ID` as configuration values.
+- Disable indexing on preview deployments.
+- Add the production domain in Plausible.
+- Exclude internal QA visits using Plausible’s recommended current mechanism.
+- Avoid logging raw email addresses in the Pages Function.
+- Add a strict allowlist for stored UTM and traffic-class values.
+- Apply server-side email validation, a honeypot, and rate limiting.
+- Add CAPTCHA/Turnstile only if actual bot traffic appears; it adds friction and is not part of the initial test.
+
+### Form fields
+
+| Field | Required | Handling |
+|---|---:|---|
+| `email` | Yes | Validate server-side; send only to Buttondown |
+| `workflow_note` | No | Maximum 500 characters; store with subscriber only if Buttondown supports safe metadata |
+| `utm_source` | Hidden | Allowlisted value |
+| `utm_medium` | Hidden | Allowlisted value |
+| `utm_campaign` | Hidden | Must equal `clienttabs_smoke_202608` |
+| `utm_content` | Hidden | Creative/post identifier |
+| `traffic_class` | Hidden | Derived server-side; never trust arbitrary client input |
+| `lp_variant` | Hidden | Initially `a` |
+| `landing_path` | Hidden | Expected production landing path |
+| `company_website` | Honeypot | Reject silently if populated |
+
+Do not collect client names, ticket contents, URLs, or confidential support data.
+
+### Pages Function contract
+
+`POST /api/waitlist`
+
+1. Validate origin, method, email, lengths, honeypot, and rate limit.
+2. Normalize UTMs through an allowlist.
+3. Derive `traffic_class` server-side from the registered UTM map.
+4. Request a double-opt-in subscription from Buttondown.
+5. Preserve attribution using provider-supported subscriber metadata or source-specific tags.
+6. Return an attempt acknowledgement after Buttondown accepts the request.
+7. Do not return “confirmed” merely because the subscription request was accepted.
+8. Treat Buttondown’s confirmed subscriber record as the conversion source of truth.
+
+Suggested responses:
+
+```json
+{ "status": "confirmation_required" }
+```
+
+```json
+{ "status": "already_subscribed" }
+```
+
+```json
+{ "status": "invalid_email" }
+```
+
+```json
+{ "status": "provider_error" }
+```
+
+Before implementation, verify against current Buttondown documentation:
+
+- Double-opt-in behavior.
+- Subscriber metadata and tag support.
+- Confirmation redirect support.
+- Export fields for confirmation status and source attribution.
+- Webhook availability and authentication.
+
+If Buttondown cannot retain the normalized source on each confirmed subscriber, create distinct provider-native forms or tags for every source. Do not calculate source-specific conversion rates until a real confirmation proves attribution survives.
+
+### Consent and privacy
+
+Use double opt-in because this test values list quality and attributable intent more than raw signup volume.
+
+The privacy page should state:
+
+- Controller/contact identity.
+- Email provider: Buttondown.
+- Analytics provider: Plausible.
+- Data collected and purpose.
+- Retention policy.
+- Unsubscribe/deletion method.
+- That the list is not sold.
+- That no product browsing data is collected because the extension does not exist.
+
+This is operational guidance, not legal advice.
+
+## 5. Analytics and event specification
+
+Install the current official Plausible snippet from the Plausible dashboard. Its exact API syntax must be verified because web access is unavailable.
+
+| Event | When fired | Properties | Counts as conversion? |
+|---|---|---|---:|
+| Automatic pageview | Landing page load | UTM segmentation handled by Plausible | No |
+| `cta_click` | User activates a nav, hero, offer, or final CTA | `location`, `traffic_class`, `lp_variant` | No |
+| `waitlist_attempt` | Browser validation passes and POST begins | `traffic_class`, `lp_variant` | No |
+| `waitlist_request_accepted` | Server says Buttondown accepted the request | `traffic_class`, `lp_variant` | No |
+| `waitlist_error` | Validation/provider request fails | `error_type`, `traffic_class`, `lp_variant` | No |
+| `confirmation_page_view` | Confirmation redirect is reached | `lp_variant` only if reliably preserved | Diagnostic only |
+| `waitlist_confirmed` | Only from a verified Buttondown confirmation webhook or equivalent | `traffic_class`, `lp_variant`—never email | Yes, if verified |
+
+Do not send email addresses, free-text qualifier answers, client names, or other personal data to Plausible.
+
+If there is no authenticated confirmation webhook, omit `waitlist_confirmed` from Plausible. Export confirmed subscribers from Buttondown and use that export as the numerator.
+
+### QA before traffic
+
+Run these tests before publishing externally:
+
+- Valid email reaches the confirmation-required state.
+- Invalid email does not create a Buttondown record.
+- Honeypot submission does not create a record.
+- Confirmation produces a confirmed Buttondown subscriber.
+- Subscriber record retains the expected source tag/metadata.
+- Pageview and CTA event carry the matching traffic source and variant.
+- Unconfirmed subscriber is excluded from the primary metric.
+- Email and free text never reach Plausible.
+- Nav, hero, offer, and final buttons all use exactly the same CTA label.
+- Mobile layout, keyboard navigation, labels, focus states, and contrast work.
+
+## 6. UTM registry
+
+Base URL:
+
+```text
+https://YOUR_DOMAIN/
+```
+
+| Source | URL |
+|---|---|
+| Google Search ads | `https://YOUR_DOMAIN/?utm_source=google&utm_medium=cpc&utm_campaign=clienttabs_smoke_202608&utm_content=search_context_restore` |
+| Reddit | `https://YOUR_DOMAIN/?utm_source=reddit&utm_medium=community&utm_campaign=clienttabs_smoke_202608&utm_content=POST_ID` |
+| LinkedIn organic | `https://YOUR_DOMAIN/?utm_source=linkedin&utm_medium=social&utm_campaign=clienttabs_smoke_202608&utm_content=POST_ID` |
+| Support community | `https://YOUR_DOMAIN/?utm_source=support_community&utm_medium=community&utm_campaign=clienttabs_smoke_202608&utm_content=COMMUNITY_POST_ID` |
+| Warm personal outreach | `https://YOUR_DOMAIN/?utm_source=warm_dm&utm_medium=outreach&utm_campaign=clienttabs_smoke_202608&utm_content=CONTACT_BATCH_ID` |
+
+Server-side mapping:
+
+| UTM combination | Traffic class |
+|---|---|
+| `google / cpc` | `cold_google` |
+| `reddit / community` | `cold_reddit` |
+| `linkedin / social` | `cold_linkedin` |
+| `support_community / community` | `cold_support_community` |
+| `warm_dm / outreach` | `warm_dm` |
+| Missing or unknown | `unattributed` |
+
+Never allocate unattributed subscribers to a channel by timestamp. Report them separately and exclude them from source-specific verdicts.
+
+## 7. Channel materials
+
+### Google Search ads
+
+Use phrase and exact match initially. Candidate terms, which require live keyword and policy verification:
+
+```text
+"save tabs for clients"
+"client tab workspace"
+"restore work tabs"
+"customer support browser tabs"
+"switch client workspaces"
+```
+
+Add obvious consumer/research negatives such as:
+
+```text
+free
+homework
+school
+gaming
+restore closed tab shortcut
+browser history recovery
+```
+
+Headlines:
+
+```text
+Restore Client Tabs in One Click
+Stop Rebuilding Client Context
+Tab Workspaces for SaaS Support
+ClientTabs Early-Access Waitlist
+```
+
+Descriptions:
+
+```text
+A planned Chrome extension for support agents who reopen the same client tabs. Planned from $9/month.
+
+Save each client’s tab workspace, then restore it in one click. Concept-stage early-access waitlist.
+```
+
+Do:
+
+- Target the US only.
+- Use one landing page and one promise.
+- Check search terms daily.
+- Exclude generic “restore closed tab” traffic quickly.
+
+Don’t:
+
+- Claim the extension is available.
+- optimize toward the unverified attempt event.
+- Use competitor trademarks without review.
+
+### Reddit draft
+
+Candidate communities must be checked for current rules and buyer fit before posting.
+
+Title:
+
+```text
+Support agents: how do you rebuild browser context when switching clients?
+```
+
+Body:
+
+```text
+I’m exploring a very narrow Chrome extension idea for hands-on support agents at small SaaS teams.
+
+The problem: a client escalation often means reopening the same mix of help-desk, CRM, admin, logs, docs, and client-dashboard tabs. Browser history helps, but it does not reliably recreate the workspace as a client-specific unit.
+
+The proposed workflow is: save that client’s tab workspace once, then restore it in one click when the next ticket or call arrives.
+
+It is not built, there is no ship date, and I’m not presenting this as a launched product. Planned pricing would start at $9/month.
+
+How do you handle this today, and what would make a browser extension unacceptable—permissions, client data, stale URLs, duplicate tabs, or something else?
+
+If this is a recurring problem for you, you can join the early-access waitlist here:
+[UTM LINK]
+
+Disclosure: I’m the maker testing whether this is worth building.
+```
+
+Do: answer every substantive reply and record objections.
+
+Don’t: paste the same post across multiple subreddits or post where self-promotion/research is prohibited.
+
+### LinkedIn draft
+
+```text
+A client escalation rarely starts in one tab.
+
+For hands-on support agents at small SaaS teams, the useful context may be spread across the help desk, CRM, admin, logs, docs, and the client’s own dashboard. Switching clients can mean rebuilding that setup again.
+
+I’m testing an unbuilt Chrome extension concept called ClientTabs:
+
+Save a client-specific tab workspace once. Restore it in one click when that client returns.
+
+It is not available yet, there is no firm ship date, and planned pricing starts at $9/month.
+
+If that workflow would remove a real weekly annoyance, join the early-access waitlist:
+[UTM LINK]
+```
+
+### Permission request for a support community
+
+```text
+Hi [moderator/name]—I’m validating an unbuilt Chrome extension concept for hands-on SaaS support agents who repeatedly reopen client-specific tabs.
+
+Could I post a short, transparent problem description and waitlist link? I’ll disclose that I’m the maker, won’t claim the product exists, and will keep discussion focused on current workflows and browser-permission concerns. No worries if promotional research is not allowed here.
+```
+
+Approved post:
+
+```text
+When you switch from one client escalation to another, how do you restore the right help-desk, CRM, admin, logs, docs, and dashboard tabs?
+
+I’m testing an unbuilt Chrome extension concept that would save those tabs as a client workspace and restore them in one click. There is no ship date. Planned pricing starts at $9/month.
+
+I’d especially value objections around permissions, privacy, stale URLs, and duplicate tabs.
+
+Join the early-access waitlist:
+[UTM LINK]
+
+Disclosure: I’m the maker, and the moderators approved this post.
+```
+
+### Warm outreach
+
+Send individually to 20 people who genuinely match the ICP. Track this separately.
+
+```text
+Hi [Name]—you’ve mentioned doing hands-on work across client accounts, so I’m testing a narrow idea before building it.
+
+It would be a Chrome extension that saves the tabs used for a client and restores that workspace in one click. It is not built, there’s no ship date, and planned pricing starts at $9/month.
+
+Would you take two minutes to look at the page and tell me whether this matches a problem you actually have? If it does, the single next step is to join the early-access waitlist:
+
+[WARM UTM LINK]
+
+A negative answer is useful too.
+```
+
+Do not ask warm contacts to share the cold links. Do not count replies without a confirmed subscription as waitlist conversions.
+
+## 8. Ten-day traffic calendar
+
+| Day | Date | Activity | Paid budget |
+|---|---|---|---:|
+| 1 | Mon, Aug 3 | Deploy to Cloudflare Pages. Complete valid, invalid, confirmation, attribution, mobile, privacy, and analytics QA. Suppress internal traffic. No promotion until all tests pass. | $0 |
+| 2 | Tue, Aug 4 | Publish LinkedIn post A. Send five warm DMs using `CONTACT_BATCH_ID=warm_d2`. Request permission from two relevant support communities. | $0 |
+| 3 | Wed, Aug 5 | Start US Google Search campaign at $20/day. Review actual search terms after initial clicks. Send five additional warm DMs. | Up to $20 |
+| 4 | Thu, Aug 6 | Post to one rule-checked Reddit community. Reply to every comment. Check Buttondown confirmation and attribution integrity. | Up to $20 |
+| 5 | Fri, Aug 7 | Publish LinkedIn follow-up built around the “hidden setup tax.” Send five warm DMs. Pause irrelevant paid terms. | Up to $20 |
+| 6 | Sat, Aug 8 | No new broad post. Respond, code objections, reconcile Buttondown and Plausible by source, and diagnose funnel drop-offs. Do not change the headline midstream. | Up to $20 |
+| 7 | Sun, Aug 9 | Publish in one moderator-approved support community. Send the final five warm DMs. | Up to $20 |
+| 8 | Mon, Aug 10 | Publish a transparent LinkedIn observation without inventing results. Continue ads only if search traffic is ICP-relevant and the form works. | Up to $25 |
+| 9 | Tue, Aug 11 | Optional second Reddit post only in a distinct, rule-checked buyer community with materially different discussion. Otherwise focus on replies and welcome-email follow-up. | Up to $25 |
+| 10 | Wed, Aug 12 | Stop ads by end of day. Export Plausible and Buttondown data, separate every source, classify replies, apply decision rules, and record the verdict. | $0 |
+
+Maximum possible spend: `$150`.
+
+Paid stop conditions:
+
+- Stop immediately for broken attribution, broken confirmation, policy trouble, or predominantly irrelevant search terms.
+- Pause after $75 if there are zero confirmed paid subscribers and at least 25 qualified paid visitors.
+- Spend the remaining budget only if traffic is ICP-relevant and at least one paid confirmation or two strong CTA/form signals suggest the funnel is functioning.
+- Never exceed $150 to chase the sample minimum.
+- If the cap produces fewer than 50 qualified paid visitors, label paid acquisition inconclusive.
+
+## 9. Dashboard
+
+Maintain one row per date, source, content identifier, and landing variant.
+
+| Field | Definition |
+|---|---|
+| Date | Reporting date in America/New_York for US traffic consistency |
+| Source | Registered UTM source |
+| Traffic class | Cold source or `warm_dm` |
+| Content | Post, creative, keyword group, or outreach batch |
+| Variant | Initially `a` |
+| Qualified unique visitors | Plausible US unique visitors after exclusions |
+| CTA clicks | Unique visitors firing `cta_click` |
+| Attempts | Valid browser form attempts |
+| Requests accepted | Buttondown accepted subscription requests |
+| Confirmed subscribers | Buttondown double-opt-in-confirmed records |
+| CTA rate | CTA clicks ÷ qualified visitors |
+| Attempt rate | attempts ÷ qualified visitors |
+| Confirmation completion | confirmed subscribers ÷ accepted requests |
+| Confirmed CVR | confirmed subscribers ÷ qualified visitors |
+| Spend | Paid source cost only |
+| Cost per confirmation | spend ÷ paid confirmed subscribers |
+| Delivered welcome emails | Buttondown deliveries |
+| Opens | Diagnostic only |
+| Qualified replies | Replies containing workflow, frequency, or objection evidence |
+| Positive price replies | Credible positive response to the from-$9/month signal |
+| Notes | Failures, removals, attribution gaps, or unusual traffic |
+
+Warm and cold data may live in the same raw table only if dashboard views and calculations enforce separate filters. No headline metric may mix them.
+
+## 10. Decision rules
+
+### Proceed to a thin MVP
+
+Proceed only if one of these is true:
+
+1. Two independent cold sources each meet their own continue threshold; or
+2. One cold source meets its continue threshold and at least three subscribers produce qualified workflow replies, including two repeated-use cases and two credible positive price signals.
+
+Warm performance may strengthen confidence but cannot satisfy either cold condition.
+
+The MVP should test only save, name, and one-click restore for a single user.
+
+### Interview before building
+
+Do interviews first when:
+
+- A cold source meets its conversion threshold but there are fewer than three qualified replies.
+- Warm outreach is strong while every adequately sampled cold source is weak.
+- Privacy, permissions, authentication, or stale URLs dominate replies.
+- Conversion is strong but double-opt-in completion is poor.
+
+This indicates curiosity or relationship-driven demand, not yet a sufficiently understood product.
+
+### Retest the offer
+
+Retest with headline B and unchanged channel targeting when:
+
+- At least one cold source reaches its minimum and falls in its retest zone.
+- CTA click rate is healthy but confirmed conversion is weak.
+- Visitors consistently misunderstand “workspace restore.”
+
+Run the retest as a new experiment with `lp_variant=b`; do not blend its results with variant A.
+
+### Reshape the ICP or promise
+
+Reshape when:
+
+- An adequately sampled cold source is below its weak threshold.
+- Replies reveal that the workflow belongs more to implementation, success, or MSP roles than frontline support.
+- Users want shared playbooks or credential/session management rather than tab restoration.
+
+### Park the idea
+
+Park when:
+
+- Two adequately sampled cold sources are below their weak thresholds; and
+- Follow-up produces fewer than three qualified pain replies; and
+- No credible price-positive signal appears.
+
+A warm-only success cannot override this rule.
+
+### Inconclusive
+
+Return `inconclusive` when:
+
+- No cold source reaches its sample minimum.
+- Attribution fails.
+- The confirmation flow is broken.
+- Posts are removed or ads cannot reach the ICP.
+- Most traffic is outside the intended geography.
+
+That is a distribution or experiment failure, not proof that the problem is absent.
+
+## 11. What not to build during the smoke test
+
+Do not build:
+
+- The Chrome extension.
+- Account creation or authentication.
+- Tab synchronization.
+- Team sharing or admin controls.
+- Credential, cookie, or session handling.
+- AI tab classification.
+- CRM/help-desk integrations.
+- Billing or checkout.
+- Import/export.
+- A public roadmap.
+- A multi-page marketing site.
+- A fake interactive demo.
+- Product screenshots representing nonexistent functionality.
+- Testimonials, customer logos, user counters, or release countdowns.
+
+## 12. Evidence limits
+
+This package is based on the supplied product premise and explicit assumptions. No public demand research, keyword-volume check, competitor review, community-rule verification, ad forecast, provider-documentation verification, or live experiment occurred because web and browser access were unavailable. Accordingly, all traffic volumes, conversion thresholds, channel choices, and implementation capabilities are pre-registered test assumptions rather than observed evidence.
+
+## 13. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | TBD after test |
+| Evidence classes | assumption |
+| Supported claims | TBD after test |
+| Still unproven | Actual demand, source-specific conversion, willingness to pay, acquisition economics, extension feasibility, permission acceptance, restore reliability, retention, and product value |
+| Contradictions / exclusions | TBD after test; warm outreach must remain excluded from every cold-source rate, and attempts or unconfirmed subscriptions must remain excluded from conversions |
+| Source anchors | TBD after test; planned anchors are the dated Plausible source export, Buttondown confirmed-subscriber export with attribution, ad-platform spend/search-term export, and coded reply log |
+| Next validation | Run the August 3–12 smoke test; owner: founder; apply the pre-registered source thresholds and proceed, retest, reshape, park, or mark inconclusive |
+
+The top three actions are to configure Buttondown double opt-in and attribution, deploy and validate the Cloudflare/Plausible funnel, and prepare the first LinkedIn post plus five warm DMs with separate UTMs. Do not build any extension functionality yet. Public market and keyword validation would be useful after this smoke test only if traffic proves difficult to source or replies reveal a different buyer vocabulary.

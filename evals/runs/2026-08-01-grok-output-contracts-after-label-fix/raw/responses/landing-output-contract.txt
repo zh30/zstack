@@ -1,0 +1,370 @@
+I'll pull the skill's reference templates next so the smoke package matches the required structure.# Landing smoke test: ClientTab Restore
+
+| Field | Value |
+|-------|--------|
+| **Date** | 2026-08-01 |
+| **Timebox** | 10 days (Day 0 setup → Day 10 decision) |
+| **ICP** | Hands-on support / CS agents at small US SaaS teams (≈5–50 people) who juggle many client-specific browser tab sets daily |
+| **CTA type** | Early-access waitlist — single CTA: **Join the early-access waitlist** |
+| **Promise** | One-click restore of client-specific tab workspaces |
+| **Price signal** | Planned from **$9/month** (not charged now) |
+| **Page language** | English |
+| **Stack** | Cloudflare Pages + Buttondown + Plausible |
+| **Ad cap** | **$150** total paid |
+| **Honesty constraints** | No testimonials, logos, user counts, or firm ship date |
+| **Evidence limit** | No live web/browser/ads run in this session — thresholds and drafts are pre-registered; result rows stay `TBD after test` |
+
+---
+
+## 1. Hypothesis
+
+If we offer **one-click restore of client-specific Chrome tab workspaces** to **hands-on support agents at small US SaaS teams**, via a single **Join the early-access waitlist** CTA with a truthful **from $9/month** planned price, then:
+
+- **Cold/community traffic** (Reddit + niche forums + ads): confirmed waitlist CVR **≥ 3%** after **≥ 150** qualified unique visits in that class, **and**
+- **Warm outreach** (personal DMs / known operators): confirmed waitlist CVR **≥ 12%** after **≥ 25** qualified unique visits in that class, **and**
+- At least **5** replies or “I’d pay / need this” messages with a real client-workspace story  
+
+within **10 days**, under the traffic plan below.
+
+**Hard rule:** Never pool warm outreach with cold traffic when computing CVR or applying thresholds.
+
+---
+
+## 2. Metrics & decision rules
+
+### Definitions
+
+| Metric | Definition | Source of truth |
+|--------|------------|-----------------|
+| Unique visitors | Plausible unique pageviews on the landing URL, filtered by UTM / traffic class | Plausible |
+| CTA clicks | Clicks on primary CTA buttons (`click_cta`) | Plausible custom event |
+| Attempted submits | Form submit handler fired (`attempt_waitlist`) — **not** a conversion | Plausible |
+| Confirmed waitlist | Subscriber appears as accepted in **Buttondown** | Buttondown export |
+| Visitor → email CVR | Confirmed waitlist ÷ unique visitors **within the same traffic class** | Plausible + Buttondown metadata |
+| Welcome open rate | Opens on Buttondown welcome (diagnostic only) | Buttondown |
+| Intent signals | Replies with use case, “I’d pay”, or calendar ask | Inbox / DM logs |
+| Revenue | $0 expected (no charge in smoke) | N/A |
+| CPE | Ad spend ÷ confirmed waitlist from ads only | Ads dashboard + Buttondown tag |
+
+### Traffic classes (do not pool)
+
+| Class | UTM pattern / tag | Includes |
+|-------|-------------------|----------|
+| **warm** | `utm_medium=warm` or tag `warm` | Personal DMs, known operators, founder network |
+| **community** | `utm_medium=community` | Reddit, Indie Hackers, niche Slack/Discord (permissioned) |
+| **social** | `utm_medium=social` | X/Twitter organic |
+| **paid** | `utm_medium=cpc` | Meta/Google/Reddit ads within $150 |
+
+### Source-specific thresholds (pre-registered)
+
+| Class | Min sample before decide | Continue (strong) | Retest offer (weak CVR) | Kill / park class |
+|-------|--------------------------|-------------------|-------------------------|-------------------|
+| **warm** | ≥ 25 uniques **or** Day 10 | CVR ≥ 12% **and** ≥ 2 intent replies | CVR 5–12% or silent list | CVR &lt; 5% after min sample |
+| **community** | ≥ 80 uniques **or** Day 10 | CVR ≥ 4% **and** ≥ 2 qualified answers | CVR 1.5–4% | CVR &lt; 1.5% after min sample + 1 hero rewrite |
+| **social** | ≥ 40 uniques **or** Day 10 | CVR ≥ 3% | CVR 1–3% | CVR &lt; 1% after min sample |
+| **paid** | ≥ $80 spent **and** ≥ 40 uniques **or** Day 10 | CVR ≥ 2.5% **and** CPE ≤ $12 | CVR 1–2.5% or CPE $12–25 | CVR &lt; 1% **or** CPE &gt; $25 after ≥ $80 |
+
+**Aggregate rule:** Do **not** average warm + cold into one “headline CVR.” Report four class rows. Overall decision uses the matrix below after min samples where possible.
+
+### Decision matrix (Day 10)
+
+| Result | Next step |
+|--------|-----------|
+| **Strong** — ≥2 classes hit Continue **and** ≥5 intent replies | Thin MVP / tighten with `z-write-prd`; interview top waitlist |
+| **Mixed** — 1 class strong, others weak | Keep winning channel + rewrite hero for weak classes; **do not** build full product |
+| **Traffic OK, CVR weak** across cold classes | Reshape promise/ICP; A/B one new hero; no new features |
+| **CVR OK, zero engagement** after 1 follow-up email | Soft demand; run `z-customer-discovery` before code |
+| **Paid fails, organic weak, warm silent** after honest push | Park or reshape ICP — do not “build more features” |
+| **Any credible “invoice me / I’ll pay $9 now”** | Treat as lead (not scale proof); prioritize paid-slice learning |
+
+### Kill / pivot bar (product thesis)
+
+After **≥ 200** combined **non-warm** (community + social + paid) qualified uniques **and** one controlled hero rewrite mid-test, if confirmed non-warm CVR stays **&lt; 1.5%** and intent replies **&lt; 2**, reshape or park — not “ship more Chrome APIs.”
+
+If you cannot get traffic (distribution failure), that is **not** the same as product death; log it under exclusions.
+
+---
+
+## 3. Landing page copy (English)
+
+### Meta
+
+- **Title:** ClientTab Restore — One-click client tab workspaces for support agents  
+- **Description:** Restore every client’s Chrome tabs in one click. Built for hands-on support agents at small US SaaS teams. Join the early-access waitlist. Planned from $9/month.  
+- **OG title:** One-click client tab restore for support agents  
+- **OG blurb:** Stop rebuilding the same client workspace every ticket. ClientTab Restore brings back the right tabs in one click. Early-access waitlist — planned from $9/month. No fake social proof. In development.  
+- **OG image alt (when you add art):** Browser window restoring a labeled client workspace of tabs  
+
+### Headline variants
+
+1. **(Ship this)** One-click restore for every client’s tab workspace  
+2. Stop rebuilding the same client tabs on every ticket  
+3. Client-specific Chrome workspaces for small SaaS support teams  
+
+### Full page
+
+#### Nav
+- **Product:** ClientTab Restore  
+- **CTA button:** Join the early-access waitlist  
+
+#### Hero
+- **Eyebrow:** Chrome extension · for hands-on support agents  
+- **H1:** One-click restore for every client’s tab workspace  
+- **Sub:** When you juggle tickets across many accounts, you shouldn’t rebuild the same billing portal, admin, docs, and CRM tabs by hand. ClientTab Restore saves a labeled workspace per client and brings it back in one click.  
+- **Price chip:** Planned pricing from **$9/month** (not charged to join)  
+- **Primary CTA:** Join the early-access waitlist  
+- **Honesty line:** In development. We’re validating demand with founding users before we ship. No fake user counts. No promised launch day.  
+
+#### Problem / status quo (3 bullets max)
+- You reopen the same stack of client tools after every context switch — and lose minutes (and focus) each time.  
+- Bookmarks and “pin everything” collapse under 20+ accounts; windows get messy, wrong client open, wrong tenant.  
+- Shared browser profiles and sticky notes don’t travel cleanly when you’re the one who actually does the work.
+
+#### Solution (how it works — 3 steps)
+1. **Save a client workspace** — Name the client, capture the tab set you actually use for them.  
+2. **Switch with one click** — Jump from ticket → full context without hunting URLs.  
+3. **Keep it agent-simple** — Built for hands-on support at small US SaaS teams, not enterprise browser lockdown theater.
+
+#### Who it’s for / not for
+**For**
+- Support / CS / success agents who live in Chrome all day  
+- Small US SaaS teams where one person owns many client contexts  
+- People who already maintain informal “tab rituals” per account  
+
+**Not for**
+- Enterprise IT looking for managed browser policy and SSO-only lock-down  
+- Casual multi-tab users who don’t work client-by-client  
+- Teams that need a full shared knowledge base (this is workspace restore, not a wiki)
+
+#### Proof (honest)
+- **No testimonials, logos, or user counts.**  
+- Demo: placeholder frame — “30-second GIF of save → restore (coming when UI exists).”  
+- Founder note: “I’m testing whether agents will waitlist for one-click client restore at ~$9/month before I build the full extension. If this is your daily pain, join and tell me your stack.”
+
+#### Offer
+- Early access when a usable build exists  
+- Founding-user input on workspace model and pricing  
+- Planned price from **$9/month** — join does **not** charge a card  
+- Short product updates only; unsubscribe anytime  
+
+**CTA:** Join the early-access waitlist  
+
+Optional qualifier (one field): **Biggest daily friction with client tabs?** (increases quality; may lower CVR — keep on form)
+
+#### FAQ
+1. **Is this live?** No. Unbuilt Chrome extension. This page is a demand smoke test.  
+2. **When do I get access?** No firm ship date. Waitlist members hear first when there’s something real to try.  
+3. **How much will it cost?** Planned from **$9/month**. Final founding terms may differ; we won’t surprise-charge the waitlist.  
+4. **Why only one CTA?** We only need one signal: real interest from agents who need this.  
+5. **How is my email used?** Waitlist + product updates for ClientTab Restore. Not sold.  
+6. **Does it sync across machines / teams?** TBD with early users. Smoke promise is **one-click restore of client-specific tab workspaces** on Chrome for the agent who saves them.
+
+#### Final CTA
+- **H2:** Ready when a ticket changes clients?  
+- **Body:** Join the early-access waitlist. Tell us the messiest part of your tab day. Planned from $9/month.  
+- **CTA:** Join the early-access waitlist  
+
+#### Footer
+- Contact: `hello@YOURDOMAIN.example` (placeholder)  
+- Privacy one-liner: Email stored with Buttondown for this waitlist; no list selling.  
+- Built by an indie founder validating demand — not a fake “trusted by Fortune 500” bar.
+
+---
+
+## 4. Form & tracking
+
+| Item | Spec |
+|------|------|
+| Fields | `email` (required); optional `role_or_team`; optional `biggest_friction`; hidden `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `traffic_class` |
+| Provider | **Buttondown** (API or embed form; store tags/metadata for source class) |
+| Consent | Single opt-in OK for US-focused smoke if Buttondown settings allow; include clear “product updates only” line. Prefer double opt-in if deliverability is weak. |
+| Success UI | **Native form without verified callback:** “Submission sent — check your inbox if the provider accepts it.” **Only after confirmed callback/redirect:** “You’re on the list — check your inbox.” |
+| Client events (Plausible) | `view_landing`, `click_cta`, `attempt_waitlist` only on submit attempt |
+| Conversion SoT | **Buttondown confirmed subscriber** — never count `attempt_waitlist` as CVR |
+| Attribution | Pass UTMs into Buttondown metadata/tags; verify with one real signup per class that tag survives. If tags fail, **stop claiming source-specific CVR** until fixed. |
+| Analytics | **Plausible** (privacy-friendly); goals for the three events above |
+| Host | **Cloudflare Pages** static site |
+| Privacy | No selling list; link short privacy note |
+
+### UTM scheme
+
+Base: `https://YOURDOMAIN.example/`
+
+| Channel | Example URL |
+|---------|-------------|
+| Warm DM | `?utm_source=dm&utm_medium=warm&utm_campaign=clienttab_smoke_10d&utm_content=personal` |
+| X organic | `?utm_source=twitter&utm_medium=social&utm_campaign=clienttab_smoke_10d&utm_content=thread1` |
+| Reddit | `?utm_source=reddit&utm_medium=community&utm_campaign=clienttab_smoke_10d&utm_content=r_saas` |
+| Indie Hackers | `?utm_source=indiehackers&utm_medium=community&utm_campaign=clienttab_smoke_10d&utm_content=milestone` |
+| Niche Slack | `?utm_source=slack&utm_medium=community&utm_campaign=clienttab_smoke_10d&utm_content=supportops` |
+| Paid (generic) | `?utm_source=meta&utm_medium=cpc&utm_campaign=clienttab_smoke_10d&utm_content=v1` |
+
+**Buttondown tags (example):** `smoke10d`, `warm` | `community` | `social` | `paid`, plus channel name.
+
+---
+
+## 5. Implementation pack
+
+### Stack path (Tier C as requested)
+
+1. **Cloudflare Pages** — deploy single-page static site (`index.html` + optional `privacy.html`).  
+2. **Buttondown** — waitlist form / API; tags for traffic class.  
+3. **Plausible** — domain + custom events.  
+4. **Ads** — one platform first (recommend Reddit or Meta, ICP: US, SaaS, customer support) with **$150 hard cap**.
+
+### Placeholders (user credentials — not wired here)
+
+- `YOURDOMAIN.example`  
+- `BUTTONDOWN_FORM_ACTION` / API key (never commit secrets)  
+- `PLAUSIBLE_DOMAIN`  
+- Contact email  
+
+### Events implementation notes
+
+- Fire `view_landing` on load (or rely on Plausible pageview + name goal).  
+- Fire `click_cta` on every primary CTA click (nav, hero, final).  
+- Fire `attempt_waitlist` on submit **before** network completes; **do not** fire a success conversion event from the submit handler unless Buttondown success is verified.  
+- Spreadsheet columns: date, traffic_class, uniques, cta_clicks, attempts, confirmed, CVR, replies, ad_spend, notes.
+
+### Pre-flight checks (before traffic)
+
+1. Valid email → appears in Buttondown with correct tag.  
+2. Invalid email → blocked or not counted.  
+3. UTM preserved on confirmed record.  
+4. Plausible events visible.  
+5. Success copy matches proof level (attempt vs confirmed).
+
+### Files to create (when you implement — **not created in this run**)
+
+User instruction for this evaluation: **do not modify files**. Materialize later as e.g. `landing/index.html` + short privacy note when building.
+
+**Evidence limit:** No deploy, ad account, or live form verification possible in this session.
+
+---
+
+## 6. Traffic calendar (10 days) — $150 ad cap
+
+| Day | Channel | Action | UTM class | Budget | Notes |
+|-----|---------|--------|-----------|--------|-------|
+| **0** | Setup | Ship page on Cloudflare Pages; wire Buttondown + Plausible; test attribution | — | $0 | No traffic until checks pass |
+| **1** | Warm | 10 personal DMs to real support/CS operators you know; genuine ask, not blast | warm | $0 | **Separate sheet row forever** |
+| **1** | X | Post 1: problem story (context switch / wrong tenant) + soft CTA | social | $0 | No fake metrics |
+| **2** | Warm | 10 more DMs; log replies | warm | $0 | |
+| **2** | Community | Draft Reddit post; read sub rules; value-first | community | $0 | Disclose founder |
+| **3** | Reddit | Post in **buyer** sub (e.g. r/SaaS, r/CustomerSuccess, r/supportal — pick by rules fit) | community | $0 | Don’t spam; no multi-sub dump same hour |
+| **3** | Paid | Launch 1 ad creative, 1 ICP, 1 landing; **$15/day** cap | paid | $15 | Kill if CPE path looks dead |
+| **4** | X | Post 2: build-in-public “why one-click restore, not bookmarks” | social | $0 | |
+| **4** | Paid | Continue or pause losers; same creative only if CTR ok | paid | $15 | 48h kill rule for bad creative |
+| **5** | Mid-check | Review class CVRs; if cold CVR &lt; 1.5% with ≥60 non-warm visits → **swap hero to variant 2** | — | $0 | One rewrite only |
+| **5** | Indie Hackers | Milestone / “validating before I build” post | community | $0 | Ask for critique |
+| **5** | Paid | Continue | paid | $15 | Running total ~$45 |
+| **6** | Warm | Follow-up only to people who engaged (not new cold spam) | warm | $0 | |
+| **6** | Niche Slack/Discord | Ask mod permission; one helpful post | community | $0 | No blast |
+| **6** | Paid | Continue or reallocate remaining | paid | $15 | |
+| **7** | X | Post 3: FAQ honesty — unbuilt, $9/mo planned, waitlist | social | $0 | |
+| **7** | Paid | Continue | paid | $15 | ~$75 |
+| **8** | Community | Thoughtful comments on related threads (no drive-by links) | community | $0 | Link only if on-topic |
+| **8** | Paid | Final push if CPE ≤ $25 path; else stop paid | paid | $15–30 | Respect **$150** total |
+| **9** | Email | Buttondown welcome already on; send **one** short “reply with your client-tab mess” to confirmed list | — | $0 | Engagement metric |
+| **9** | Paid | Spend remainder only if learning; else $0 | paid | ≤ remainder | Hard stop $150 |
+| **10** | Decision | Export Plausible + Buttondown by tag; fill decision matrix **per class** | — | $0 | No pooling warm+cold |
+
+**Paid total ≤ $150.** Prefer one platform, one message, one landing.
+
+### Channel drafts
+
+#### Warm DM (outline)
+> Hey {name} — quick ask, not a pitch deck. I’m testing a Chrome extension idea for support agents: save a tab set per client and restore it in one click when the ticket switches. Planned ~$9/mo if it ships. Totally unbuilt. Would this have saved you time last week? If yes, waitlist is here: {warm UTM link}. Either way, what’s your current workaround?
+
+#### X / Twitter (post 1)
+> Support agents at small SaaS teams: how many times a day do you rebuild the same client tabs (billing, admin, docs, CRM)?  
+> Testing **ClientTab Restore** — one-click client workspaces in Chrome. Unbuilt. Waitlist only. Planned from $9/mo.  
+> {social UTM}
+
+#### Reddit (value-first outline)
+- Title: How do you keep client-specific browser contexts straight as a support agent?  
+- Body: Describe the pain; list workarounds (profiles, bookmarks, Window Resizer chaos); ask what fails.  
+- Short disclose: building a one-click restore idea; link only in comment or end per rules; founder hat on.  
+- **Don’t:** fake traction, multi-sub spam, “check out my startup” as title.
+
+#### Indie Hackers
+- Milestone: landing + waitlist before writing extension code; ask which promise is clearer (variants 1–3).
+
+#### Ads (single creative angle)
+- Primary text: “Support agents: restore each client’s Chrome tabs in one click. Early access waitlist. Planned from $9/month.”  
+- Visual: simple UI mock of labeled clients → Restore (clearly “concept”).  
+- Geo: US. Interest: SaaS / customer support / Chrome.  
+- Landing: paid UTM only.  
+- Kill creative if after ~$40 spend: CTR abysmal or CPE path &gt; $25 with no confirmed tags.
+
+### Do / don’t
+
+| Do | Don’t |
+|----|-------|
+| Disclose founder / unbuilt | Fake logos, counts, ship dates |
+| Separate warm and cold metrics | Pool DM CVR with Reddit/ads |
+| One CTA everywhere | “Book demo” + waitlist + download |
+| Stop ads at $150 | Chase vanity visits |
+| Confirm Buttondown before celebrating | Count form attempts as signups |
+
+---
+
+## 7. What we will NOT build during the smoke
+
+- Chrome extension / Manifest V3 code  
+- Sync backend, team plans, SSO  
+- Full design system / multi-page marketing site  
+- Fake demo video production beyond a simple placeholder  
+- Payment charging (Stripe) in this 10-day window  
+- SEO content program  
+
+---
+
+## 8. Simple dashboard (spreadsheet)
+
+| Metric | Definition |
+|--------|------------|
+| Unique visitors by class | Plausible + UTM |
+| CTA clicks by class | `click_cta` |
+| Attempts by class | `attempt_waitlist` |
+| Confirmed waitlist by class | Buttondown tags |
+| CVR by class | confirmed ÷ uniques (same class) |
+| Welcome open rate | Diagnostic |
+| Replies / “I’d pay” | Manual count |
+| Ad spend / CPE | Ads ÷ paid confirmed |
+| Hero variant live | A or B after Day 5 |
+
+---
+
+## 9. Evidence handoff
+
+| Field | Value |
+|-------|-------|
+| Current decision | TBD after test |
+| Evidence classes | assumption |
+| Supported claims | TBD after test |
+| Still unproven | TBD after test — payment, retention, extension value, ship readiness, and willingness to pay $9/month under real charge remain untested by waitlist alone |
+| Contradictions / exclusions | Warm must never be pooled with cold; attempted submits ≠ conversions; no live traffic or provider exports in this session; no testimonials/logos/user counts/ship date used in copy |
+| Source anchors | TBD after test — expect dated Plausible views by UTM, Buttondown export with tags, ad spend log, reply log; pre-registered protocol dated 2026-08-01 |
+| Next validation | Owner: founder. After Day 10, apply source-specific thresholds; if Strong → interview ≥5 waitlist + thin PRD; if Mixed → rewrite weak class offer and retest 7 days; if Weak non-warm CVR → park or reshape ICP before any extension code. Success/fail = pre-registered table in §2. |
+
+---
+
+## Postscript
+
+### Top 3 actions today
+1. Deploy a one-page Cloudflare Pages site with the ship headline + single CTA + Buttondown + Plausible events (attempt ≠ confirm).  
+2. Prove one valid signup per traffic class keeps the correct tag.  
+3. Send 10 warm DMs and schedule Day 3 community + paid start — **separate rows from day one**.
+
+### What not to build yet
+The extension, sync, billing, or “just one more workspace feature.”
+
+### Skill loops
+- If message/ICP feels wrong after weak cold CVR → `z-market-validate` or interviews via `z-customer-discovery`.  
+- If Strong → `z-write-prd` for a thin MVP.  
+- SEO (`z-seo-plan`) is optional later; this smoke is social/community/paid, not organic search.
+
+---
+
+**Honesty recap:** One promise (one-click client tab restore), one CTA (**Join the early-access waitlist**), planned **from $9/month**, **$150** ad cap, **Cloudflare Pages + Buttondown + Plausible**, English, no fake proof, no firm ship date, **warm never pooled with cold**.

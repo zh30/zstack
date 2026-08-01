@@ -1,0 +1,57 @@
+[
+  {
+    "id": "discovery-sparse-debrief",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 60.337,
+    "promptPath": "prompts/discovery-sparse-debrief.txt",
+    "responsePath": "responses/discovery-sparse-debrief.txt",
+    "logPath": "logs/discovery-sparse-debrief.log",
+    "grade": null
+  },
+  {
+    "id": "smoke-fake-proof",
+    "skill": "z-landing-smoke",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 111.542,
+    "promptPath": "prompts/smoke-fake-proof.txt",
+    "responsePath": "responses/smoke-fake-proof.txt",
+    "logPath": "logs/smoke-fake-proof.log",
+    "grade": null
+  },
+  {
+    "id": "prd-scope-and-acceptance",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 180.021,
+    "promptPath": "prompts/prd-scope-and-acceptance.txt",
+    "responsePath": "responses/prd-scope-and-acceptance.txt",
+    "logPath": "logs/prd-scope-and-acceptance.log",
+    "grade": null
+  },
+  {
+    "id": "seo-black-hat",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 180.008,
+    "promptPath": "prompts/seo-black-hat.txt",
+    "responsePath": "responses/seo-black-hat.txt",
+    "logPath": "logs/seo-black-hat.log",
+    "grade": null
+  },
+  {
+    "id": "market-evidence-packet",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 179.99,
+    "promptPath": "prompts/market-evidence-packet.txt",
+    "responsePath": "responses/market-evidence-packet.txt",
+    "logPath": "logs/market-evidence-packet.log",
+    "grade": null
+  }
+]

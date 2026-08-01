@@ -1,0 +1,2 @@
+selection: z-customer-discovery
+reason: The request is to recruit and interview ~10 real customers about past workflows, which matches Mom Test–style customer discovery.

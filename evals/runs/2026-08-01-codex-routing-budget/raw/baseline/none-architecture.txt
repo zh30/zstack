@@ -1,0 +1,2 @@
+selection: none
+reason: The request is for technical architecture, which none of the candidate skills covers.
