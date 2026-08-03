@@ -41,40 +41,33 @@ call that out explicitly).
 
 ## Non-negotiables
 
-1. **Evidence over vibes.** Keywords need a reason: SERP result types, related
-   queries, competitor pages, or clear language from PRD/users — not “this
-   sounds popular.”
-2. **Do not invent search volumes.** If you lack volume tools, use **relative
-   bands** (High / Med / Low demand *as evidenced*) and cite what you saw
-   (autocomplete, SERP density, forum repetition, Google Trends direction if
-   available). Never fake exact monthly volumes.
-   If a user requests a large list with unsupported exact metrics, do **not**
-   replace it with an equally large list of guessed bands. Explain the evidence
-   limit, request the minimum product/market inputs, and narrow the first
-   deliverable to **one primary cluster, 2–4 secondary terms, and 5–10 mapped
-   long-tails**. Expand only after that cluster earns evidence.
-3. **Intent first.** Every recommended term gets an intent label.
-4. **Indie realism.** Prefer winnable long-tail and problem-language over
-   head terms owned by Amazon/Wikipedia/giants — unless evidence shows a gap.
-5. **Map keywords → pages.** Orphans are useless.
-6. **White-hat only.** No doorway pages, hidden text, purchased links, spam.
-7. **Tools vary by host.** Use web search, page fetch/browse, code read, and
-   public keyword/SERP tools when available. Mark channels `blocked` if not.
-8. **Evidence does not upgrade on handoff.** Search demand supports a search
-   opportunity, not product-market fit, payment demand, or retention; preserve
-   upstream assumptions and experiment limits.
-9. **The handoff is a fixed interface.** End the plan with exactly one
-   two-column, seven-row Evidence handoff table headed `Field | Value` using
-   these exact labels: `Current decision`,
-   `Evidence classes`, `Supported claims`, `Still unproven`, `Contradictions /
-   exclusions`, `Source anchors`, and `Next validation`. The class cell may
-   contain only applicable names from `primary behavior`, `observed experiment`,
-   `secondary public`, `search signal`, and `assumption`; put research limits
-   and metric confidence in the other fields. Include a class only when
-   supplied inputs or actual results in this plan belong to it; planned SERP
-   research, GSC collection, or publishing does not make that class current.
-   Never leave the class cell empty. With no usable search evidence, use
-   `assumption` and keep demand, difficulty, ranking, and traffic unproven.
+1. **Evidence over vibes.** Ground each keyword in supplied product/user
+   language, observed SERPs, related queries, or public sources. Never invent
+   exact volume, difficulty, ranking, traffic, or competitor facts. Without a
+   qualified tool, use evidenced `high | med | low | unknown` bands.
+2. **Constrain weak inputs.** Do not turn missing metrics into a large guessed
+   list. Request the minimum product/market context and deliver only **one
+   primary cluster, 2–4 secondary terms, and 5–10 mapped long-tails** until the
+   cluster earns evidence.
+3. **Intent and page ownership first.** Label intent, map every pursued term to
+   one page, and resolve cannibalization. Prefer winnable problem-language and
+   long-tail terms for a low-authority indie site.
+4. **White-hat only.** Refuse doorway pages, hidden text, purchased links,
+   cloaking, and mass spam; replace them with distinct legitimate page intent.
+5. **Tools vary by host.** Use available search, browsing, code, and public
+   SERP tools; mark unavailable channels `blocked` and keep their claims
+   unproven.
+6. **Evidence does not upgrade on handoff.** Search opportunity is not proof of
+   product-market fit, payment, ranking, traffic, conversion, or retention.
+7. **The handoff is a fixed interface.** End with exactly one two-column, seven-row Evidence
+   handoff table headed `Field | Value`, with these exact labels: `Current
+   decision`, `Evidence classes`, `Supported claims`, `Still unproven`,
+   `Contradictions / exclusions`, `Source anchors`, and `Next validation`.
+   `Evidence classes` may contain only applicable `primary behavior`, `observed
+   experiment`, `secondary public`, `search signal`, and `assumption`; never
+   include planned evidence. Never leave the class cell empty. With no usable
+   search evidence, use `assumption` and keep demand, difficulty, ranking, and
+   traffic unproven.
 
 ---
 
@@ -83,44 +76,19 @@ call that out explicitly).
 ### Phase 0 — Business & content inventory
 
 Read `references/workflow-cheatsheet.md` for seed, intent, demand, difficulty,
-and cannibalization heuristics before building the inventory.
-
-From PRD / URL / code, extract:
-
-| Field | Source |
-|-------|--------|
-| Product one-liner | PRD / homepage |
-| Primary ICP | PRD persona |
-| Core jobs-to-be-done | PRD / copy |
-| Geography / language markets | User or infer |
-| Existing URLs / routes | URL list or codebase |
-| Current title/H1/meta (if live) | Fetch page |
-| Differentiators | PRD / competitors section |
-| Conversion goals | signup, waitlist, purchase, install |
-
-**Seed list (8–20 phrases)** in *user search language*:
-
-- problem phrases (“how to…”, “best… for…”, “{tool} alternative”)
-- product category + modifier
-- competitor brand + “alternative” / “vs”
-- feature + audience
-- bilingual variants if CN/global
+and cannibalization heuristics. Fill the product/search context in
+`references/seo-plan-template.md`: product truth, ICP and jobs, markets and
+search language, conversion goal, differentiators, site authority, existing
+routes, and current title/H1/meta where available. Generate 8–20 seeds from the
+cheatsheet patterns; bilingual variants are valid when the market uses them.
 
 ### Phase 1 — SERP & demand research (do the work)
 
-For each priority seed (and expansions), **actually search the open web**:
-
-1. Run queries in the target language/region mindset.
-2. Note **who ranks page 1** (type: docs, marketplace, blog, tool, forum, video).
-3. Capture **People Also Ask / related / autocomplete-style** expansions when visible.
-4. Note **SERP features** (ads, maps, shopping, AI overview, sitelinks) — they change CTR and difficulty.
-5. Sample **2–5 competitor or substitute pages**: titles, H1, URL slug, content angle.
-
-Optional public signals (use when reachable; never invent):
-
-- Google Trends direction (up/flat/down) for category terms
-- Reddit / HN / community wording for problem language
-- App store / G2 category labels if B2B SaaS
+For each priority seed, actually search when permitted: use the target
+language/region; record page-one result types, visible related-query features,
+SERP features that affect CTR, and the title/H1/slug/angle of 2–5 competitors
+or substitutes. When reachable, add Trends direction, community wording, or
+category labels. If research is forbidden or blocked, do not imply it happened.
 
 Record **keyword cards**:
 
@@ -135,103 +103,47 @@ Record **keyword cards**:
 - suggested_url_or_page:
 ```
 
-Aim for a researched set, not hundreds of noise terms. The first decision slice
-is **1 primary cluster + 2–4 secondary + 5–10 mapped long-tail**. Expand toward
-8–20 long-tails only after the first slice is prioritized and evidence-backed.
+The first decision slice is **1 primary cluster + 2–4 secondary + 5–10 mapped
+long-tails**. Expand only after it is prioritized and evidence-backed.
 
 ### Phase 2 — Cluster & prioritize
 
-Group keywords into **topic clusters**:
-
-| Role | Definition |
-|------|------------|
-| **Primary (money / head of cluster)** | Best commercial fit + realistic chance; owns the main landing or hub page |
-| **Secondary** | Supports cluster; section H2s or supporting pages |
-| **Long-tail** | Specific questions; FAQ, blog, docs, comparison posts |
-| **Avoid / defer** | Too competitive, wrong intent, off-ICP, brand-only traps |
-
-**Scoring lens for indie (1–5 each, higher = better to pursue now):**
-
-- Relevance to product ICP  
-- Commercial proximity (closer to buy/signup)  
-- Evidence of demand  
-- Winnability for low-authority site  
-- Content fit with existing/planned pages  
-
-Pick **one Primary Keyword** for the main conversion page (state confidence).
-Pick **2–4 secondary** and a **long-tail backlog** ranked P0/P1/P2.
+Cluster terms as primary, secondary, long-tail, or avoid/defer. Score pursuit
+priority 1–5 on product relevance, commercial proximity, demand evidence,
+low-authority winnability, and page/content fit. Pick **one primary keyword**
+and conversion page with confidence, **2–4 secondary terms**, and a P0/P1/P2
+long-tail backlog.
 
 ### Phase 3 — Page & content architecture
 
-Map:
-
-| Page / route | Primary KW | Secondary KWs | Intent | Content type | Status |
-|--------------|------------|---------------|--------|--------------|--------|
-| `/` or landing | | | | | exists / to-build |
-| … | | | | | |
-
-For each P0 page specify:
-
-- Target **title** pattern (≤ ~60 chars guidance, not cargo-cult)
-- **H1** (can differ slightly from title)
-- **Meta description** angle (benefit + proof + CTA — draft optional)
-- **URL slug** recommendation
-- Must-cover **entities / subtopics** (from SERP winners + product truth)
-- **Internal links** from/to
+Use the template's page-keyword map. Each P0 page needs one primary intent,
+secondary terms, status/action, title, H1, slug, meta angle, must-cover
+subtopics grounded in product truth and research, internal links, and CTA.
 
 ### Phase 4 — On-page, technical, and trust checklist
 
-Only flag what matters for *this* product:
-
-**On-page**
-
-- One clear primary intent per URL (no keyword stuffing)
-- Heading hierarchy; image alt where meaningful
-- FAQ schema only if real Q&A content exists
-- CTA alignment with transactional/commercial intent
-
-**Technical (from URL/code when possible)**
-
-- Indexable? (`noindex`, auth walls, client-only empty shells)
-- Canonical / duplicate risk
-- Mobile / CWV only if evidence of issues (don’t invent Lighthouse scores)
-- Sitemap / robots basics
-- i18n / hreflang if multi-language
-
-**E-E-A-T / trust (esp. YMYL — be careful)**
-
-- Author/about, proof, policies if category needs them
-- Avoid medical/finance claims beyond product truth
-
-**Indie pitfalls**
-
-- Blog spam with no product path  
-- Competing with your own pages (cannibalization)  
-- Chasing head terms before product-market message is clear  
+Use the template checklist, but report only inspected or relevant items:
+indexability, canonical/duplicates, sitemap/robots, core meta, real-content
+schema, mobile/CWV evidence, i18n/hreflang, and category-appropriate trust.
+Never invent audit scores or claims. Flag orphan content, cannibalization, and
+head-term work that outruns product clarity.
 
 ### Phase 5 — 30/60/90 execution plan
 
-Concrete tasks only:
-
-| Horizon | Outcomes |
-|---------|----------|
-| **7 days** | Fix titles/H1s on existing pages; pick primary KW; ship 1 cluster outline |
-| **30 days** | Publish/refresh P0 pages; internal links; measure impressions/queries if Search Console exists |
-| **90 days** | Expand long-tail that converts; retire losers; double-down on winning cluster |
-
-Define **success metrics** an indie can see:
-
-- GSC impressions/clicks for target queries (if available)
-- Organic signup / waitlist attributed loosely
-- Ranking movement for primary + 5 long-tails (manual check OK)
+Sequence concrete, six-hours-a-week-realistic work: a shippable 7-day slice,
+P0 publishing and internal links by day 30, then evidence-led expansion or
+retirement by day 90. Measure only available signals such as GSC
+impressions/clicks, manual movement for the primary and five long-tails, and
+loosely attributed organic signup/waitlist conversion.
 
 ### Phase 6 — Deliver
 
 Use `references/seo-plan-template.md`.  
 Pass `references/quality-bar.md` before delivery.
 
-Do not merge risks and Evidence handoff into free text or rename its rows; keep
-the fixed table even when every result-dependent value is still unproven.
+Complete every decision-bearing section, including avoid/defer, page map,
+research limits, source anchors, measurement, and 7/30/90 work. Keep risks and
+the fixed Evidence handoff separate; never rename or add columns to its rows.
 
 **Delivery**
 
@@ -241,19 +153,10 @@ the fixed table even when every result-dependent value is still unproven.
 
 ---
 
-## Collaboration with other zstack skills
+## Cross-skill handoff
 
-| Skill | Relationship |
-|-------|----------------|
-| `z-market-validate` | Demand language & ICP; SEO validates *search* demand, not only social |
-| `z-write-prd` | PRD is primary product source for seeds + page inventory |
-| Build / content later | Plan’s page map becomes content backlog |
-
-## Guardrails
-
-- No fabricated Ahrefs/SEMrush numbers.  
-- No guarantee of rankings.  
-- No black-hat tactics.  
-- If the product is pre-content (API-only, no public pages), say so and propose
-  the **minimum public surface** worth indexing.  
-- Distinguish **brand** queries (own name) from **non-brand** acquisition.
+Use `z-market-validate` language as upstream context, not search proof; use a
+`z-write-prd` artifact as product truth and page inventory. The page map becomes
+the later build/content backlog. For a pre-content or API-only product, propose
+the minimum public surface worth indexing. Separate brand from non-brand
+acquisition and never guarantee rankings.

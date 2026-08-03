@@ -1,0 +1,335 @@
+I wouldn’t use fake logos or claim “2,000 users.” Because the product does not exist yet, those claims would mislead visitors and corrupt the demand test. The page below uses honest scarcity and founder transparency instead.
+
+Replace the bracketed fields before publishing.
+
+## Smoke protocol
+
+Assumptions:
+
+- Product: `[Product Name]`
+- Audience: `[narrow customer type]`
+- Painful task: `[specific recurring problem]`
+- Outcome: `[measurable or observable result]`
+- Stage: demand validation; development has not started
+- CTA: one email waitlist
+- Timebox: 14 days
+
+Hypothesis: If `[Product Name]` promises `[outcome]` to `[ICP]`, at least 5% of qualified niche-community visitors or 10% of personally contacted ideal users will join the confirmed waitlist.
+
+Primary metric: confirmed waitlist signups ÷ qualified unique visitors, measured separately by traffic source.
+
+Secondary signals:
+
+- CTA-click rate
+- Qualifying-answer completion
+- Welcome-email replies describing a real use case
+- Requests for pricing or early paid access
+- Email opens, used only as a deliverability diagnostic
+
+Sample and decision thresholds:
+
+- Warm outreach: target 50 qualified visits and at least 5 confirmed signups.
+- Niche communities: target 150 qualified visits and at least 8 confirmed signups.
+- Below 50 visits is directional, not decisive.
+- After 200 qualified visits across two sequential headline variants, sustained conversion below 2% means reshape the audience, problem, or offer.
+- Good conversion with no substantive replies means interview signups before building.
+- A payment request is a strong lead, but one request does not establish scalable demand.
+
+## Waitlist page copy
+
+### Navigation
+
+`[Product Name]`
+
+Button: **Join the waitlist**
+
+### Hero
+
+Pre-launch badge:
+
+**Not built yet — validating demand with founding users**
+
+Headline:
+
+**[Desired outcome] for [narrow customer type]**
+
+Subheadline:
+
+Stop `[painful current process]`. `[Product Name]` is a proposed tool designed to help you `[specific mechanism]`, so you can `[concrete outcome]`.
+
+Form:
+
+- Work email
+- Optional: “What is the hardest part of `[problem]` today?”
+
+Button: **Join the waitlist**
+
+Form note:
+
+No spam. You’ll receive occasional product updates and can unsubscribe anytime.
+
+Honesty line:
+
+We’ll only build this if enough people have the problem. Joining the waitlist helps us decide—and may earn you early access if we proceed.
+
+### The problem
+
+**Does this sound familiar?**
+
+- You spend `[amount of time]` repeatedly doing `[manual task]`.
+- Existing tools force you to `[costly workaround]`.
+- When `[failure or delay]` happens, it costs you `[time, money, or credibility]`.
+
+### Proposed solution
+
+**A simpler way to `[complete the job]`**
+
+If demand is strong, `[Product Name]` will work like this:
+
+1. **Connect or provide `[input]`**  
+   Start with the information you already use.
+
+2. **Let `[Product Name]` handle `[difficult step]`**  
+   Avoid rebuilding the same process manually.
+
+3. **Get `[useful output]`**  
+   Review it, adjust it, and use it in `[existing workflow]`.
+
+This describes the intended product, not functionality available today.
+
+### Who it is for
+
+**Built for**
+
+- `[specific role]` who handles `[job]` regularly
+- Teams currently relying on `[spreadsheet/manual process/general tool]`
+- People for whom `[problem]` happens at least `[frequency]`
+
+**Probably not for**
+
+- People who only encounter this problem occasionally
+- Teams satisfied with their existing workflow
+- Anyone looking for a finished product today
+
+### Honest proof
+
+**Help shape the first version**
+
+There are no customer logos or inflated signup counters here. The product is still an idea being tested.
+
+Early waitlist members may be invited to:
+
+- A short problem interview
+- Preview proposed workflows
+- Test the smallest useful version
+- Receive founding-user pricing if a paid product launches
+
+Founder note:
+
+> I’m testing whether `[problem]` is painful enough to justify building `[Product Name]`. If you join, I may ask what you do today and what a genuinely useful solution would need to change.
+
+Replace this section later only with verifiable evidence: real interview quotes used with permission, a real prototype, or an accurate confirmed-waitlist count.
+
+### Offer
+
+**Join before we decide what gets built**
+
+Waitlist members will receive:
+
+- The first product update
+- Priority consideration for early access
+- An opportunity to influence the initial scope
+
+No launch date is promised yet.
+
+Button: **Join the waitlist**
+
+### FAQ
+
+**Is the product available now?**
+
+No. This page is testing demand before development begins.
+
+**When will it launch?**
+
+There is no committed launch date. We’ll first evaluate demand and speak with potential users. If we proceed, waitlist members will hear first.
+
+**How much will it cost?**
+
+Pricing has not been finalized. If you have a price expectation, reply to the welcome email—it is useful input.
+
+**What happens after I join?**
+
+You’ll receive a confirmation or welcome message. We may invite you to answer a few questions about your current workflow.
+
+**How will you use my email?**
+
+Only for updates and research related to `[Product Name]`. It will not be sold, and every marketing email will include an unsubscribe option.
+
+**Why join if nothing has been built?**
+
+Join if the problem is real for you and you want a chance to influence a focused solution. If you need a finished tool immediately, this waitlist is not a fit.
+
+### Final CTA
+
+**Should this product exist?**
+
+If `[problem]` regularly costs you time or money, join the waitlist and tell us what needs fixing.
+
+Button: **Join the waitlist**
+
+### Footer
+
+`[Product Name]` · Built by `[Founder Name]`  
+Contact: `[email address]`  
+Your email is used only for product updates and research.
+
+## Metadata
+
+Meta title:
+
+`[Desired Outcome] for [ICP] | [Product Name]`
+
+Meta description:
+
+`[Product Name] is a proposed tool for [ICP] who need to [job] without [painful workaround]. Join the waitlist and help shape the first version.`
+
+Open Graph blurb:
+
+`Still doing [painful task] by hand? Join the [Product Name] waitlist and help shape a simpler way to [desired outcome]. Not built yet—demand validation is underway.`
+
+Headline variants:
+
+1. `[Desired outcome] for [narrow customer type]`
+2. `Stop [painful recurring process]`
+3. `A focused [product category] for [ICP] who need to [job]`
+
+Ship variant 1 first. Test another only after it receives enough qualified traffic to interpret.
+
+## Implementation pack
+
+Use a one-page static site or simple no-code landing-page builder. Do not build authentication, accounts, dashboards, or product infrastructure.
+
+Form fields:
+
+- `email` — required
+- `biggest_problem` — optional, one short answer
+- Source attribution — hidden and allow-listed
+- Variant identifier — hidden, bounded value such as `h1`
+
+Integration choices remain unresolved because no provider, domain, jurisdiction, or official provider documentation was supplied, and web verification is unavailable in this run. Before launch:
+
+- Select an email/form provider.
+- Replace `VERIFY_PROVIDER_ENDPOINT`, `VERIFY_SUCCESS_RESPONSE`, and `VERIFY_ATTRIBUTION_FIELD`.
+- Confirm endpoint, payload, authentication, and success behavior against current official documentation.
+- Send one valid and one invalid test submission.
+- Verify that a successful record appears in the provider and retains its attribution class.
+
+Count `confirmed_waitlist` only after provider-confirmed acceptance. A click, browser-side submit attempt, redirect parameter, cookie, or storage flag is not a conversion.
+
+If the static page cannot verify provider acceptance, show only:
+
+> Submission sent. Check your inbox if the provider accepts it.
+
+Keep definitive “You’re on the list” messaging on a provider-confirmed page or behind a server-validated callback.
+
+Choose single or double opt-in based on applicable law, provider rules, deliverability, and list-quality needs. State where emails are stored and that the list will not be sold.
+
+Track only:
+
+- `landing_view`
+- `click_waitlist`
+- `attempt_waitlist`
+- `confirmed_waitlist` from the provider source of truth
+- `welcome_reply`
+
+Do not send emails, free-text answers, raw URLs, arbitrary UTMs, or provider responses to analytics.
+
+Allow-listed attribution:
+
+- `warm_dm`
+- `reddit`
+- `niche_community`
+- `x_founder`
+- `unattributed`
+
+Example links:
+
+- `?utm_source=warm_dm&utm_medium=direct&utm_campaign=problem_validation`
+- `?utm_source=reddit&utm_medium=community&utm_campaign=problem_validation`
+- `?utm_source=niche_community&utm_medium=community&utm_campaign=problem_validation`
+- `?utm_source=x_founder&utm_medium=social&utm_campaign=problem_validation`
+
+Unknown combinations must become `unattributed`; discard their raw values. Do not report source-level conversion until the same source classification exists on both qualified pageviews and provider-confirmed records.
+
+## 14-day traffic plan
+
+Days 1–2:
+
+- Replace every bracketed field with language from the intended audience.
+- Publish the page and test form confirmation and attribution.
+- Send 10 personal messages to people who closely match the ICP.
+- Ask about their current process; do not claim the product exists.
+
+Days 3–4:
+
+- Send 10 more personalized messages.
+- Publish a founder post explaining the recurring problem and why you are testing before building.
+- Link using the `x_founder` or `warm_dm` attribution lane.
+
+Days 5–7:
+
+- Share one value-first post in a buyer-relevant community.
+- Describe the problem, current workarounds, and proposed approach.
+- Disclose that you are the founder and that the product is not built.
+- Follow community promotion rules; do not mass-post identical copy.
+
+Day 8:
+
+- Review traffic quality, confirmed records, invalid attempts, attribution coverage, and replies.
+- Fix operational problems before interpreting conversion.
+
+Days 9–11:
+
+- If the first headline has sufficient traffic but weak CTA engagement, test one alternative.
+- Keep the audience, channel, and offer stable so the comparison remains interpretable.
+
+Days 12–13:
+
+- Email confirmed signups one question:  
+  “What happened the last time you dealt with `[problem]`, and what did you do instead?”
+- Invite the most specific respondents to short interviews.
+
+Day 14:
+
+- Apply the pre-registered thresholds.
+- Continue, narrow the audience or promise, or park the idea.
+- Do not turn curiosity clicks into a claim of validated demand.
+
+## Decision rules
+
+- Strong conversion plus detailed replies: define the thinnest useful MVP.
+- Strong conversion but silent signups: conduct interviews before writing a PRD or code.
+- Weak CTA clicks: revise the headline or audience/problem match.
+- CTA clicks but few confirmed signups: inspect form friction and provider operation.
+- Below 2% after 200 qualified visits and two controlled variants: reshape the offer or ICP.
+- No qualified traffic: the distribution test failed; it does not independently disprove the problem.
+- Credible willingness to pay: test a transparent founding-price or refundable-deposit offer next.
+
+## Top three actions today
+
+1. Replace the five core placeholders: ICP, problem, current workaround, mechanism, and outcome.
+2. Publish the minimal page with a verified form and attribution path.
+3. Personally invite 10 ideal users and ask about their last real encounter with the problem.
+
+Do not build the product, a logo showcase, an animated demo, user accounts, or a dashboard yet. With no customer research or public evidence supplied—and no web access available—the audience, pain, conversion assumptions, and thresholds remain hypotheses.
+
+| Field | Value |
+|---|---|
+| Current decision | Publish an honest pre-launch waitlist and run a 14-day smoke test; do not build the product yet. |
+| Evidence classes | assumption |
+| Supported claims | The supplied input establishes only that the product is not built. Result-dependent claims are TBD after test. |
+| Still unproven | ICP demand, problem frequency, conversion rate, willingness to reply or pay, acquisition channel, pricing, and build viability. |
+| Contradictions / exclusions | Fake customer logos and the invented “2,000 users” claim are excluded. Visits, clicks, attempts, confirmed signups, replies, and payments must remain distinct. |
+| Source anchors | User-supplied pre-launch status; all product-specific copy tokens, benchmarks, and traffic expectations are assumptions pending measured results. |
+| Next validation | Replace the placeholders, verify the form and attribution path, then collect source-separated qualified traffic, confirmed signups, and substantive replies during the 14-day test. |

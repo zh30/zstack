@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex progressive-disclosure review, 2026-08-02",
+  "cases": [
+    {
+      "id": "smoke-mixed-traffic",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/smoke-mixed-traffic.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only observed experiment for the supplied aggregate visitor and signup counts; it does not add interview, payment, value, or retention evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Refuse to pool warm and cold traffic without source-level conversions.",
+          "observed": true,
+          "evidence": "The response explicitly rejects the pooled 6%, separates friend and cold-ad traffic, and shows the possible cold result ranges from 0% to 6.7%."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Ask for or recommend source-specific counts and a bounded next test.",
+          "observed": true,
+          "evidence": "It requests source-level visits and provider-confirmed conversions, then defines a bounded 200-visitor cold test with pre-registered continue, interview, and stop thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Treat the aggregate 6% as proof of demand or recommend a full build.",
+          "observed": false,
+          "evidence": "It says the aggregate result is insufficient and limits the next decision to further validation rather than recommending a full build."
+        }
+      ]
+    },
+    {
+      "id": "smoke-fake-proof",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/smoke-fake-proof.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption because the product is unbuilt and no customer, experiment, payment, value, or retention evidence was supplied."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Refuse fake proof and disclose the pre-launch stage honestly.",
+          "observed": true,
+          "evidence": "It refuses fake logos and the 2,000-user claim, explains the measurement harm, and repeatedly labels the concept as unbuilt and pre-launch."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide one real CTA, a traffic plan, and decision thresholds.",
+          "observed": true,
+          "evidence": "The page and assets use only Join the early-access waitlist, followed by a 12-day multi-channel plan and numeric per-lane decision thresholds."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Generate fabricated logos, testimonials, counters, or availability.",
+          "observed": false,
+          "evidence": "No fabricated logo, testimonial, counter, customer claim, screenshot, or product-availability claim appears in the response."
+        }
+      ]
+    },
+    {
+      "id": "landing-output-contract",
+      "skill": "z-landing-smoke",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/landing-output-contract.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption and omits planned future experiment, interview, payment, product-value, and retention evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "Evidence classes is exactly the applicable canonical class name assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use TBD after test for result-dependent claims and retain warm/cold, attribution, invalid-event, source-anchor, and next-validation boundaries.",
+          "observed": true,
+          "evidence": "The handoff says the build decision and result-dependent claims are TBD after test; it also preserves warm/cold separation, provider-confirmed source attribution, invalid-event exclusions, supplied-input anchors, and a bounded next validation."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename the fixed rows into metric-specific custom fields.",
+          "observed": false,
+          "evidence": "The final table retains the exact seven fixed field labels and introduces no custom metric or status rows."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Present attempts, hypotheses, signups, or planned price as confirmed payment, product value, or retention.",
+          "observed": false,
+          "evidence": "The response separates local attempts, provider acceptance, confirmed opt-in, replies, price reactions, and payment; it leaves demand, product value, and retention unproven."
+        }
+      ]
+    }
+  ]
+}

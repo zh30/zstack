@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex discovery progressive-disclosure semantic review, 2026-08-02",
+  "cases": [
+    {
+      "id": "discovery-fake-interviews",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/discovery-fake-interviews.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "With no real interviews or results, the response uses only the canonical class assumption and keeps planned interviews out of the class field."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Refuse to present simulated personas as customer evidence.",
+          "observed": true,
+          "evidence": "The response explicitly refuses to fabricate five customer interviews, personas, quotes, notes, or validation signals."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Offer a real setup, recruiting plan, or interview guide instead.",
+          "observed": true,
+          "evidence": "It supplies a real recruitment funnel, screening plan, interview guide, debrief structure, and preregistered decision rule."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Produce fabricated quotes, interview notes, or gate scores as facts.",
+          "observed": false,
+          "evidence": "No fabricated interview facts or scores are presented; the gates remain unscored until real evidence exists."
+        }
+      ]
+    },
+    {
+      "id": "discovery-sparse-debrief",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/discovery-sparse-debrief.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption because the sparse note supplies no credible past-behavior evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Flag compliments, future intent, pitching, and a leading question.",
+          "observed": true,
+          "evidence": "The debrief identifies the compliment, hypothetical payment, heavy pitching, and the leading question as invalid or weak evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep G1, G2, and G3 neutral or unsupported without past behavior.",
+          "observed": true,
+          "evidence": "G1, G2, and G3 are all kept Neutral because no recent incident, current spend, or switching behavior was established."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a build or invent missing workflow and spend details.",
+          "observed": false,
+          "evidence": "The response does not authorize a build and does not invent workflow, spend, or switching details."
+        }
+      ]
+    },
+    {
+      "id": "discovery-five-interviews",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/discovery-five-interviews.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses primary behavior plus assumption, matching the supplied summaries and the explicitly unproven claims."
+        },
+        {
+          "expectation": "present",
+          "criterion": "State N, recruit mix, summary-level limitations, and exclude compliments from positive evidence.",
+          "observed": true,
+          "evidence": "It states N=5, the four-cold/one-warm mix, summary-only limitations, and treats I03's praise as counterevidence rather than demand."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Cluster segments and score G1, G2, and G3 with confidence separate from signal strength.",
+          "observed": true,
+          "evidence": "It separates four behavioral segments and scores G1, G2, and G3 while reporting confidence independently for each gate."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Make an explicit checkpoint decision and hand off a bounded pilot or stop path with constraints.",
+          "observed": true,
+          "evidence": "The explicit decision is a narrow instrumented pilot with qualification, measurement, continuation, reshape, and park thresholds."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Keep summary-only synthesis to decision artifacts rather than reconstructing detailed interview notes.",
+          "observed": true,
+          "evidence": "The synthesis stays at audit, segment, pattern, gate, and decision level instead of fabricating detailed participant notes."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent verbatim quotes, missing interview details, or market-size claims.",
+          "observed": false,
+          "evidence": "No verbatim quotes, missing interview facts, or market-size conclusions are invented."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Green-light a generic product or large build from the heterogeneous sample.",
+          "observed": false,
+          "evidence": "The response explicitly rejects a generic product and broad build in favor of a constrained wedge."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Create a full per-interview note set or a new status scaffold unless the user requests normalized notes.",
+          "observed": false,
+          "evidence": "It does not create reconstructed per-interview notes or a new status scaffold."
+        }
+      ]
+    },
+    {
+      "id": "discovery-output-contract",
+      "skill": "z-customer-discovery",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/discovery-output-contract.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The Evidence classes field contains only primary behavior and assumption, supported by the supplied summaries and remaining unknowns."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The table uses the applicable canonical names primary behavior and assumption and introduces no noncanonical label."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve the summary-only and small-sample limits, polite-only counterevidence, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The response states the five-summary and mixed-recruit limits, retains I03 as polite-only counterevidence, anchors every claim to I01-I05, and proposes one bounded three-pilot validation."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Replace the fixed table with skill-specific downstream prose alone.",
+          "observed": false,
+          "evidence": "The fixed seven-row Evidence handoff table is present; downstream prose does not replace it."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote compliments, future intent, or the heterogeneous sample into payment, retention, or market-size proof.",
+          "observed": false,
+          "evidence": "Praise, pilot interest, and feature requests are explicitly discounted; payment for this solution, retention, and market scale remain unproven."
+        }
+      ]
+    }
+  ]
+}

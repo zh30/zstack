@@ -1,0 +1,8 @@
+sha256                                                            bytes  path
+0e1847deddefedea09fdc7113f511a4b5811f956d22f1aac9c0640e2a1b69282    10305  skill-snapshots/z-customer-discovery/SKILL.md
+368f18183e88fac7627abd2b1b4801d7752494a50f423be21c83ad409d6e5782     1807  skill-snapshots/z-customer-discovery/references/interview-guide-template.md
+b448cba102afa162ffe8e36de06e826a4f2061118a6808363d5d1b98f1f7ad98     2042  skill-snapshots/z-customer-discovery/references/mom-test-rules.md
+a7882420fd001c27125dca718a790e0665a5b20534ab2007387ddb94643749a9     2079  skill-snapshots/z-customer-discovery/references/notes-template.md
+01713b43712d196b6959a5bb29648da381e8c91ebd6fa7e3b4eb43861b2eea64     1763  skill-snapshots/z-customer-discovery/references/quality-bar.md
+e925677eb4536b3e291960795447d46f4dbb727a7374353ef262ec46372d8d3e     1740  skill-snapshots/z-customer-discovery/references/recruit-scripts.md
+7d91441219c0916302e7079a62872c21a5e249412a2dbe8c05f3910984526fc7     3655  skill-snapshots/z-customer-discovery/references/synthesis-template.md

@@ -1,0 +1,14 @@
+sha256                                                            bytes  path
+b39bb5189ee11b73cd8b4c9859fbfa71f4c4129f602e3405e4db48a1cc240e0c  575  prompts/seo-black-hat.txt
+d6586aa60f1df10f8fb983d3e888fa29d35d6e22457aec140a7a373fd167f9aa  571  prompts/seo-no-volume-tool.txt
+f94af5890fe1bf7a4b8dbe4cf3e5518edebda2a1cd5c7471dc18d7fd39013109  1299  prompts/seo-output-contract.txt
+f94af5890fe1bf7a4b8dbe4cf3e5518edebda2a1cd5c7471dc18d7fd39013109  1299  prompts/seo-supplied-search-notes.txt
+aee525f25a6a7447d899eb12979c8de472b8797ca749b44998ed668e1f076dc8  11094  responses/seo-black-hat.txt
+df7626fe052949df82ec27209c20e3753839f97562704d377478e5dd0c6ddf3c  1724  responses/seo-no-volume-tool.txt
+2017b16a3a37954799f61ce8417a745dd647d9cec43f1a7584f0d17e675c0861  22743  responses/seo-output-contract.txt
+30bf0d6f85fe95be59b01f967309c1808ba9fa99a54ec2cb28e775721ff7b2cc  18597  responses/seo-supplied-search-notes.txt
+b6f60028e905f96061aeea3390396309be6951d108a334205864016b07a0acbd  587  skill-snapshot-manifest.txt
+7a6edc37a9b490561c13980704c7facf3d2556c5623bc78cf301d106dc8befb8  7520  skill-snapshots/z-seo-plan/SKILL.md
+446c5b74857bfb42203b4f0afa78eb034e7bfc36cb87375d4f2727fd37d9664a  1833  skill-snapshots/z-seo-plan/references/quality-bar.md
+e8f25ea1c07067df6725ca61a88116d6a8deb90a5ba0300e018ee16b0fe89133  4469  skill-snapshots/z-seo-plan/references/seo-plan-template.md
+a9c370f2885333244cfbfe66566fd871480ce1fa5ba288ca459cc8ab17bbfce5  1797  skill-snapshots/z-seo-plan/references/workflow-cheatsheet.md

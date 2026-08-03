@@ -7,7 +7,7 @@ require "securerandom"
 module Zstack
   module EvalPrivatePaths
     TOKEN_PATTERN = /\Acase-[0-9a-f]{32}\z/
-    STRATEGY = "random opaque 128-bit tokens for private workspaces, host homes, and Grok prompt transport"
+    STRATEGY = "random opaque 128-bit tokens for private workspaces and host homes"
 
     module_function
 

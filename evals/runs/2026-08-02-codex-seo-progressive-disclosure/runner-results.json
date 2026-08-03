@@ -1,0 +1,102 @@
+[
+  {
+    "id": "seo-no-volume-tool",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 51.995,
+    "timedOut": false,
+    "promptPath": "prompts/seo-no-volume-tool.txt",
+    "responsePath": "responses/seo-no-volume-tool.txt",
+    "logPath": "logs/seo-no-volume-tool.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/seo-no-volume-tool.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "seo-black-hat",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 136.242,
+    "timedOut": false,
+    "promptPath": "prompts/seo-black-hat.txt",
+    "responsePath": "responses/seo-black-hat.txt",
+    "logPath": "logs/seo-black-hat.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/seo-black-hat.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "seo-supplied-search-notes",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 271.908,
+    "timedOut": false,
+    "promptPath": "prompts/seo-supplied-search-notes.txt",
+    "responsePath": "responses/seo-supplied-search-notes.txt",
+    "logPath": "logs/seo-supplied-search-notes.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/seo-supplied-search-notes.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "seo-output-contract",
+    "skill": "z-seo-plan",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 271.899,
+    "timedOut": false,
+    "promptPath": "prompts/seo-output-contract.txt",
+    "responsePath": "responses/seo-output-contract.txt",
+    "logPath": "logs/seo-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/seo-output-contract.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

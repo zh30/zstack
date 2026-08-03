@@ -4,10 +4,42 @@
 # Archivers intentionally keep independent invocation and raw-result checks.
 
 require "json"
+require_relative "eval_limits"
+require_relative "eval_output_file"
+require_relative "eval_strict_json"
 
 module Zstack
   module EvalHostContracts
     GROK_FINAL_MARKER = "ZSTACK_FINAL_RESPONSE_V1".freeze
+    GROK_PROMPT_DESCRIPTOR = 9
+    GROK_PROMPT_PATH = "/dev/fd/#{GROK_PROMPT_DESCRIPTOR}".freeze
+    CLAUDE_RESULT_FIELDS = %w[
+      isError
+      subtype
+      apiErrorStatus
+      errorCategory
+      actualModels
+      numTurns
+      stopReason
+      terminalReason
+      totalCostUsd
+      permissionDenials
+      parseError
+    ].freeze
+    GROK_RESULT_FIELDS = %w[
+      apiErrorStatus
+      errorCategory
+      prefinalNarrationBytes
+      finalBoundaryError
+      isError
+      errorType
+      actualModels
+      numTurns
+      stopReason
+      totalCostUsd
+      tokenUsage
+      parseError
+    ].freeze
     GROK_SYSTEM_PROMPTS = {
       "behavioral" => "Execute one isolated zstack behavioral evaluation. Follow only the user prompt and the exact skill snapshot it names. Do not inspect other skills, rules, memories, evaluation files, or user configuration. Use only allowed tools and workspace paths. Use tools silently. Begin the complete final answer with the exact standalone line #{GROK_FINAL_MARKER}; emit that marker exactly once and put no tool-use narration after it.",
       "routing" => "Execute one isolated zstack description-routing evaluation. Follow only the exact user prompt. Do not inspect files, skills, rules, memories, evaluation data, or user configuration. Do not use tools. Begin the required final two-line answer with the exact standalone line #{GROK_FINAL_MARKER}; emit that marker exactly once and put no setup narration after it."
@@ -61,16 +93,25 @@ module Zstack
     end
 
     def claude_result(path)
-      data = JSON.parse(File.read(path))
+      content, read_error = EvalOutputFile.read_optional(path, label: "Claude JSON result")
+      raise read_error if read_error
+
+      data = EvalStrictJson.parse(content)
       raise "Claude JSON result must be an object" unless data.is_a?(Hash)
+      raise "Claude JSON result contains a non-finite number" unless EvalLimits.finite_json_value?(data)
 
       response = data["result"]
       models = data.fetch("modelUsage", {})
       models = {} unless models.is_a?(Hash)
       permission_denials = data.fetch("permission_denials", [])
       permission_denials = [] unless permission_denials.is_a?(Array)
+      total_cost = data["total_cost_usd"]
+      if !total_cost.nil? && !EvalLimits.finite_nonnegative_number?(total_cost)
+        raise "Claude JSON total_cost_usd must be finite and non-negative"
+      end
+      cost_valid = EvalLimits.finite_nonnegative_number?(total_cost)
       completed = data["type"] == "result" && data["subtype"] == "success" && data["is_error"] == false &&
-                  response.is_a?(String) && !response.strip.empty? && !models.empty?
+                  response.is_a?(String) && !response.strip.empty? && !models.empty? && cost_valid
       api_error_status = data["api_error_status"]
       api_error_status = nil unless api_error_status.is_a?(Integer) && api_error_status.between?(100, 599)
       {
@@ -84,7 +125,7 @@ module Zstack
         "numTurns" => data["num_turns"],
         "stopReason" => data["stop_reason"],
         "terminalReason" => data["terminal_reason"],
-        "totalCostUsd" => data["total_cost_usd"],
+        "totalCostUsd" => total_cost,
         "permissionDenials" => permission_denials.length,
         "parseError" => nil
       }
@@ -130,8 +171,12 @@ module Zstack
     end
 
     def grok_result(path)
-      data = JSON.parse(File.read(path))
+      content, read_error = EvalOutputFile.read_optional(path, label: "Grok JSON result")
+      raise read_error if read_error
+
+      data = EvalStrictJson.parse(content)
       raise "Grok JSON result must be an object" unless data.is_a?(Hash)
+      raise "Grok JSON result contains a non-finite number" unless EvalLimits.finite_json_value?(data)
 
       raw_response = data["text"]
       response = nil
@@ -158,8 +203,17 @@ module Zstack
       turns = data["num_turns"]
       stop_reason = data["stopReason"]
       is_error = data["type"] == "error"
+      total_cost = data["total_cost_usd"]
+      if !total_cost.nil? && !EvalLimits.finite_nonnegative_number?(total_cost)
+        raise "Grok JSON total_cost_usd must be finite and non-negative"
+      end
+      token_usage = data["usage"]
+      if !token_usage.nil? && (!token_usage.is_a?(Hash) || !EvalLimits.nonnegative_finite_json_value?(token_usage))
+        raise "Grok JSON usage must contain only finite non-negative JSON numbers"
+      end
       completed = !is_error && response.is_a?(String) && !response.strip.empty? && !models.empty? &&
-                  final_boundary_error.nil? && turns.is_a?(Integer) && turns.positive? && stop_reason == "end_turn"
+                  final_boundary_error.nil? && turns.is_a?(Integer) && turns.positive? && stop_reason == "end_turn" &&
+                  EvalLimits.finite_nonnegative_number?(total_cost) && token_usage.is_a?(Hash)
       api_error_status = grok_api_error_status(data)
       {
         "completed" => completed,
@@ -173,8 +227,8 @@ module Zstack
         "actualModels" => models.keys.sort,
         "numTurns" => turns,
         "stopReason" => stop_reason,
-        "totalCostUsd" => data["total_cost_usd"],
-        "tokenUsage" => data["usage"],
+        "totalCostUsd" => total_cost,
+        "tokenUsage" => token_usage,
         "parseError" => nil
       }
     rescue Errno::ENOENT, JSON::ParserError, RuntimeError => e

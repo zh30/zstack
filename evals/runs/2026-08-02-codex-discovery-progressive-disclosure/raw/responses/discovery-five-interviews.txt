@@ -1,0 +1,171 @@
+Mode: synthesize
+
+# Discovery synthesis — client onboarding
+
+| Field | Value |
+|---|---|
+| Date | 2026-08-02 |
+| N completed | 5 |
+| N target | 10 recommended; 5 more within the narrowed ICP |
+| Cold / warm mix | 4 cold / 1 warm; individual source status was not mapped |
+| Working ICP | People responsible for recurring client onboarding who already spend money or substantial labor moving information across tools |
+
+## 1. Method and evidence limits
+
+The five supplied summaries are the full primary evidence. No transcripts, dates, verbatim quotes, or normalized interview notes were provided.
+
+Consequently:
+
+- This supports pattern detection, not market sizing.
+- Each role appears only once, so role-level conclusions are fragile.
+- The warm interview cannot be identified, preventing source-bias analysis by interview.
+- Interviewer questions are unavailable, so leading-question and future-tense audits are limited.
+- Pilot interest is not payment, completed switching, adoption, or retention.
+- No exact customer language should be presented as quotation or used as proven landing-page copy.
+
+## 2. Evidence audit
+
+| ID | Interview | Observed past behavior and cost | G1 Pain | G2 Spend | G3 Switch | Mom Test audit |
+|---|---|---|---|---|---|---|
+| I1 | Agency PM | Repeatedly spends 45 minutes copying across tools; pays for Zapier; previously abandoned a template because ownership was unclear | Strong | Strong | Moderate–strong: abandoned an alternative and requested a real pilot, but has not yet piloted or paid for this solution | Good behavioral detail. The pilot request is a commitment signal, not proof of adoption. Question quality cannot be audited. |
+| I2 | Consultant | Pays an assistant; identified migration as a barrier | Moderate: costly workaround exists, but frequency and latest incident are missing | Strong | Weak–moderate: migration is an explicit obstacle; no completed switch or active trial | Behavioral spend is useful. Any enthusiasm or future intent is unreported and should receive no weight. |
+| I3 | Founder | No recent pain and no related spend; only complimented the pitch | Contradictory | Contradictory | Contradictory | Clear pitch leakage and compliment contamination. Exclude from positive demand evidence. |
+| I4 | Bookkeeper | Has weekly failures and pays for VA labor; raised sensitive-file concerns | Strong | Strong | Moderate: recurring pain supports motivation, while data sensitivity may block adoption | Strong behavioral evidence for pain and cost. Security concern is a product constraint, not demand proof. |
+| I5 | Marketer | Uses free automation, has switched tools before, and requires CSV | Moderate: active workaround, but failure frequency and recent incident are missing | Weak: no paid solution reported, though setup/operating effort may exist | Strong behavioral switch history; CSV is a concrete portability requirement | Past switching is credible. CSV preference alone does not establish willingness to adopt this product. |
+
+The founder interview should not be averaged into an invented “80% demand” statistic. It is a useful anti-ICP/counterexample.
+
+## 3. Segments observed
+
+| Segment | Who | N | Implication |
+|---|---|---:|---|
+| Bleeding and paying cost | Agency PM, consultant, bookkeeper | 3 | Best recruiting pool. Prioritize recurring onboarding, existing labor/tool cost, and an identifiable workflow owner. |
+| Active workaround, not paying | Marketer | 1 | Potential self-serve segment, but price sensitivity and pain severity remain unproven. Test separately. |
+| Polite only | Founder | 1 | Exclude from the initial ICP unless later behavior shows recent pain, workaround, or spend. |
+
+The three paying users are still materially different professions. The supported common denominator is recurring onboarding plus an existing operational cost—not “all agencies,” “all consultants,” or “all service businesses.”
+
+## 4. Pain patterns — G1
+
+| Pattern | Frequency | Evidence |
+|---|---:|---|
+| Manual or unreliable onboarding operations | 2/5 explicit | I1 repeatedly copies across tools for 45 minutes; I4 experiences weekly failures |
+| Paid human effort compensates for workflow gaps | 2/5 | I2 pays an assistant; I4 pays for VA labor |
+| Active workaround exists without established severity | 1/5 | I5 uses free automation |
+| No recent problem | 1/5 | I3 reported no recent pain |
+| Ownership ambiguity can kill an attempted solution | 1/5 | I1 abandoned a template because ownership was unclear |
+
+Pain is credible inside a narrower “recurring and already costly” segment. It is not supported across the broader founder/client-onboarding population.
+
+## 5. Status quo and spend — G2
+
+| Status quo | Cost form | Evident gap |
+|---|---|---|
+| Cross-tool copying plus Zapier | 45 minutes of labor per repeated workflow plus paid software | Automation has not removed manual transfer; ownership remains unclear |
+| Assistant | Paid human labor | Migration could prevent replacement |
+| VA workaround | Paid human labor and recurring operational failures | Sensitive files constrain automation |
+| Free automation | Setup/operating effort; no monetary spend established | CSV portability is required |
+| No workaround | No recent cost | No demonstrated buying trigger |
+
+Three of five participants already incur monetary or labor cost. The evidence does not establish budgets, price ceilings, purchasing authority, or whether current costs are high enough to fund a new product.
+
+## 6. Switching barriers — G3
+
+| Barrier or signal | Evidence | Product implication |
+|---|---|---|
+| Unclear ownership | I1 abandoned a template for this reason | Every task and handoff needs an explicit owner, status, and escalation path. |
+| Migration burden | I2 | Start without a full migration; import incrementally or layer over the existing workflow. |
+| Sensitive files | I4 | Minimize stored data, expose file-handling boundaries, and test security requirements before promising compliance. |
+| CSV portability | I5 | CSV import/export should be part of the pilot acceptance criteria. |
+| Prior switching | I5 | Switching is behaviorally credible for this participant, conditional on portability. |
+| Pilot request | I1 | Convert interest into a scheduled, scoped pilot; do not count the request as adoption. |
+
+## 7. Gate scores
+
+| Gate | Score | Confidence | Verdict |
+|---|---:|---|---|
+| G1 Pain | 4/5 | Medium | Repeated behavioral support exists, including a quantified manual workflow and weekly failures, but the sample is heterogeneous and two interviews lack incident detail. |
+| G2 Spend | 4/5 | Medium | Three participants already pay through software or human labor. Exact amounts, budgets, and authority are unknown. |
+| G3 Switch | 3/5 | Medium-low | There is a prior tool switch and a real pilot request, but migration, ownership, security, and portability could all block adoption. No completed pilot or purchase exists. |
+
+## 8. Decision
+
+**Verdict: Advance—only into a narrow, instrumented pilot and smoke test, not a broad product build.**
+
+Advance around this hypothesis:
+
+> Teams with recurring client onboarding, an identifiable process owner, and existing paid manual/tooling cost will trial a lightweight workflow layer if it avoids forced migration, assigns ownership clearly, handles sensitive-file boundaries, and supports CSV portability.
+
+The initial wedge should be the agency PM’s repeated cross-tool workflow because it has the densest combined evidence: quantified time, existing software spend, a failed alternative, a specific failure cause, and a direct pilot request.
+
+Do not initially target founders with no recent incident or spend. Do not assume the marketer’s free-tool behavior belongs in the same paid segment.
+
+## 9. Concrete downstream handoff
+
+### Immediate validation: agency PM concierge pilot
+
+Owner: founder.
+
+Within seven days, ask the agency PM to schedule a scoped pilot around the exact recurring workflow already described. Before configuration, document:
+
+- Current trigger, tools, steps, and the measured 45-minute baseline.
+- Owner for every onboarding handoff.
+- What data or files may not enter the system.
+- Whether CSV import or export is required.
+- Migration boundaries: begin with one new onboarding flow, not a full historical migration.
+- Commercial commitment: paid pilot, deposit, or an explicit post-pilot purchasing decision with the budget owner.
+
+Run the pilot on three real onboarding instances if that volume occurs during the agreed test window; otherwise define the number from their actual near-term pipeline rather than fabricating volume.
+
+Advance to a thin MVP only if the pilot:
+
+- Is scheduled and receives real workflow/data access.
+- Completes multiple live instances.
+- Reduces the stated 45-minute task to 15 minutes or less.
+- Produces no unresolved ownership failure.
+- Satisfies the agreed CSV and sensitive-data requirements.
+- Ends with payment or a concrete purchasing step from an identified budget owner.
+
+Reshape or park the wedge if the PM will not schedule/provide access, the workflow cannot be repeated, migration or security blocks use, or the measured time/cost improvement is immaterial.
+
+### Next interview round
+
+Recruit five additional cold participants matching all three conditions: recurring onboarding, a named workflow owner, and current monetary or substantial labor cost. Ask about the last onboarding incident, frequency, current spend, prior attempted replacements, ownership, migration, CSV, sensitive data, and purchasing authority.
+
+The next round should determine whether the agency pattern repeats independently or is a single-client exception.
+
+### Landing-smoke handoff
+
+Test one CTA: **Apply for a workflow pilot**.
+
+Copy concepts may paraphrase the supplied evidence—cross-tool copying, unclear ownership, migration avoidance, CSV portability—but must not be presented as customer quotes. No verbatim phrases were supplied.
+
+### PRD boundary
+
+In scope for a pilot:
+
+- Explicit owner per step
+- Cross-tool workflow orchestration
+- Incremental/no-forced-migration setup
+- CSV import/export
+- Minimal and transparent handling of sensitive files
+- Basic time and failure measurement
+
+Non-goals until further evidence:
+
+- Broad all-in-one CRM replacement
+- Full historical migration
+- Support for every professional-services segment
+- Enterprise compliance claims
+- Advanced customization unrelated to observed barriers
+- Building for compliment-only founders or a price-sensitive self-serve segment
+
+| Field | Value |
+|---|---|
+| Current decision | Advance |
+| Evidence classes | primary behavior / assumption |
+| Supported claims | A narrow recurring-onboarding segment experiences manual or weekly failures; three participants already bear software or human-labor cost; ownership, migration, sensitive files, and CSV affect switching feasibility. |
+| Still unproven | Market prevalence, segment consistency, exact spend, budget authority, willingness to pay, successful migration, pilot completion, adoption, retention, and security requirements. |
+| Contradictions / exclusions | The founder had no recent pain or spend and supplied only a compliment; the marketer reported no paid workaround; consultant frequency is unknown; broad client-onboarding demand is unsupported. |
+| Source anchors | User-supplied summaries I1 agency PM, I2 consultant, I3 founder, I4 bookkeeper, and I5 marketer; no transcripts, note files, or verbatim quotes were supplied. |
+| Next validation | Founder schedules a scoped agency-PM pilot within seven days; advance only if live use materially reduces the 45-minute workflow, resolves ownership, meets portability/data constraints, and produces payment or a concrete purchasing step; otherwise reshape or park. |

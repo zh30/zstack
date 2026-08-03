@@ -1,0 +1,133 @@
+Mode: synthesize
+
+## Method and evidence limits
+
+- Five interview summaries are the full evidence base: four cold and one warm.
+- The warm participant is not identified, so cold-versus-warm results cannot be compared.
+- These are thin summaries, not transcripts. No verbatim quotes, dates, funnel context, or interviewer questions were provided.
+- Leading questions and pitch leakage therefore cannot be reliably scored. Compliments, feature requests, and future intentions receive limited weight.
+- This sample supports pattern detection, not market sizing or broad ICP claims.
+
+## Evidence audit
+
+| ID | Participant | Behavioral evidence | Gate effect | Evidence caveat |
+|---|---|---|---|---|
+| I01 | Agency PM | Repeatedly spends 45 minutes copying across tools; pays for Zapier; abandoned a template because ownership was unclear | Strong G1/G2; moderate G3 | Request for a real pilot is meaningful intent, but no pilot or switch has occurred yet |
+| I02 | Consultant | Pays an assistant; identified migration as a barrier | Moderate G2; G3 barrier | No recent incident, frequency, amount, or onboarding-specific labor share supplied |
+| I03 | Founder | No recent pain or spend; complimented the pitch | Contradicts G1/G2/G3 | Compliment is not demand and may be pitch-contaminated |
+| I04 | Bookkeeper | Weekly failures; pays for VA labor; handles sensitive files | Strong G1/G2; important G3 barrier | No switch attempt or willingness to expose real files established |
+| I05 | Marketer | Uses free automation; has switched tools before; wants CSV | Strongest past G3 behavior; weak G2 | No recent failure, frequency, paid cost, or CSV direction/use case supplied |
+
+Mom Test audit:
+
+- I01 and I04 contain the strongest past-behavior evidence.
+- I02 contains real spend, but its pain context is underspecified.
+- I03 is a clear polite-only result and should not support the product.
+- I05’s past tool switch is credible behavior. The CSV request is a product constraint, not proof of pain or demand.
+- Pitch leakage cannot be quantified from these summaries. I03’s compliment and any post-pitch requests should be discounted.
+
+## Sample segmentation
+
+| Segment | Members | N | Interpretation |
+|---|---|---:|---|
+| Clearly bleeding and paying | I01 agency PM, I04 bookkeeper | 2 | Best initial segment: recurring operational pain plus existing time or labor expenditure |
+| Paying workaround, pain detail thin | I02 consultant | 1 | Potential fit, but requires a recent-event interview before inclusion |
+| Active workflow, not paying | I05 marketer | 1 | Useful for portability requirements; weak monetization evidence |
+| Polite only / anti-ICP | I03 founder | 1 | Exclude unless a future interview establishes recent pain and existing action |
+
+The defensible ICP is not “any founder or professional onboarding clients.” It is service-operation owners or operators with recurring multi-tool onboarding work who already absorb measurable manual labor, automation fees, or failure costs.
+
+## Cross-interview patterns
+
+### Pain
+
+- Repetitive cross-tool copying is strongly supported by I01.
+- Recurring operational failure is strongly supported by I04.
+- Unclear ownership caused abandonment of an attempted workaround in I01.
+- No recent pain was present in I03.
+- Recent pain is unestablished for I02 and I05.
+
+This indicates a real pain cluster, but not a universal one across the broad sample.
+
+### Status quo and spend
+
+| Status quo | Cost form | Evidence | Unresolved gap |
+|---|---|---|---|
+| Manual copying across tools | 45 minutes per repeated workflow | I01 | Frequency and total monthly cost |
+| Zapier | Paid software | I01 | Why it fails to remove the manual work |
+| Assistant | Paid labor | I02 | Amount, frequency, and tasks performed |
+| VA | Paid labor | I04 | Failure impact and monthly cost |
+| Free automation | Setup/maintenance possible, but no cost supplied | I05 | Pain and monetization remain unproven |
+
+Three participants already pay software or labor. That supports willingness to spend on the problem category, but not willingness to pay for this proposed solution.
+
+### Switching signals and barriers
+
+| Signal or barrier | Evidence | Product implication |
+|---|---|---|
+| Requested a real pilot | I01 | Start with a live, narrow pilot; do not count the request as completed adoption |
+| Previously switched tools | I05 | Switching is possible for at least one participant |
+| Migration burden | I02 | Migration effort must be measured and reduced before broader rollout |
+| Unclear ownership | I01 | Every workflow needs an explicit accountable owner and visible handoff state |
+| Sensitive files | I04 | Security and data handling are adoption gates, not later polish |
+| CSV request | I05 | Clarify import versus export and the actual job before committing scope |
+
+## Gate scores
+
+| Gate | Score | Confidence | Verdict |
+|---|---:|---|---|
+| G1 Pain | 4/5 | Medium | Two independent participants show concrete, recurring pain; one has paid help, while two lack recent pain evidence |
+| G2 Spend | 4/5 | Medium | Zapier, assistant labor, and VA labor demonstrate existing expenditure; amounts and purchasing authority are incomplete |
+| G3 Switch | 3/5 | Low | One past switch and one pilot request are positive, but migration, ownership, and sensitive-file barriers remain unresolved |
+
+Confidence is constrained by short summaries, mixed roles, unknown warm-participant identity, and lack of transcripts.
+
+## Decision
+
+**Verdict: Advance — but only to a narrow, instrumented pilot, not a broad build.**
+
+Advance the wedge for operators in client-service businesses who have recurring multi-tool onboarding work and already pay through labor or automation. I01 is the strongest design partner because the participant supplied measurable time cost, existing software spend, a failed alternative, and requested a pilot.
+
+Treat these as exclusions or non-goals for now:
+
+- Generic founder onboarding without recent pain or spend.
+- Broad automation-platform replacement.
+- Building CSV functionality before clarifying import/export and the underlying job.
+- Bookkeeper production use involving sensitive files before security expectations are understood.
+- Full-service migration before the migration barrier has been tested.
+
+## Concrete downstream handoff
+
+Run one concierge pilot with I01, then seek two additional cold pilot candidates matching the bleeding-and-paying segment.
+
+Pilot scope:
+
+- Use one real onboarding workflow.
+- Record the current baseline: 45-minute copying time, tools touched, handoffs, and responsible owner.
+- Preserve explicit ownership throughout the workflow.
+- Avoid unsupported broad integrations; manually support the narrow workflow where necessary.
+- Measure completion time, correction work, failures, and migration/setup time.
+
+Decision threshold after three qualified pilots:
+
+- Continue toward a thin PRD if at least two participants complete a real onboarding, reduce manual work by at least 20 minutes per run, identify a responsible workflow owner, and make a concrete continuation commitment such as payment, deposit, or authorized paid trial.
+- Reshape if time savings occur but migration, security, or ownership prevents continued use.
+- Park if fewer than two participants expose a real workflow, complete a run, or make a continuation commitment.
+
+Copy inputs for a landing smoke test must remain paraphrased themes—not invented customer quotes:
+
+- Repeated cross-tool copying
+- Forty-five-minute onboarding overhead
+- Unclear workflow ownership
+- Weekly operational failures
+- Migration and sensitive-file risk
+
+| Field | Value |
+|-------|-------|
+| Current decision | Advance to a narrow, instrumented pilot; do not authorize a broad build |
+| Evidence classes | primary behavior / assumption |
+| Supported claims | I01 and I04 show recurring operational pain; I01, I02, and I04 already incur software or labor costs; I05 has switched tools before; ownership, migration, file sensitivity, and CSV portability affect adoption |
+| Still unproven | Willingness to pay for this solution, completed switching, migration feasibility, safe handling of sensitive files, retention, repeatable time savings, market scale, and whether CSV means import or export |
+| Contradictions / exclusions | I03 had no recent pain or spend and supplied only praise; I02 and I05 lack recent pain detail; pilot interest and feature requests are not completed adoption |
+| Source anchors | User-provided summaries I01 agency PM, I02 consultant, I03 founder, I04 bookkeeper, and I05 marketer; no transcripts or verbatim quotes supplied |
+| Next validation | Founder runs one real workflow pilot with I01 and recruits two cold bleeding-and-paying operators; advance only if at least two of three complete onboarding, save at least 20 minutes, and make a concrete paid-continuation commitment |

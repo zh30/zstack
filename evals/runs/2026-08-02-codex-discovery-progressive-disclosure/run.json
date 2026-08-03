@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 2,
+  "archiveDate": "2026-08-02",
+  "suite": "behavioral",
+  "host": {
+    "name": "Codex CLI",
+    "version": "0.146.0"
+  },
+  "provenance": {
+    "status": "complete",
+    "gaps": []
+  },
+  "executionDefaults": {
+    "workspace": "separate initialized disposable Git repository containing only the target skill snapshot",
+    "permissions": "read-only sandbox; approval policy never",
+    "webSearch": false,
+    "subagents": false,
+    "reasoningEffort": "medium",
+    "ephemeralSession": true,
+    "timeoutSecondsPerCase": 600,
+    "skillSource": "exact retained source snapshot",
+    "executionMode": "response",
+    "model": "gpt-5.6-sol",
+    "turns": 1,
+    "isolatedHostHome": true,
+    "ambientDesktopContextDisabled": [
+      "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+      "CODEX_PERMISSION_PROFILE",
+      "CODEX_THREAD_ID"
+    ]
+  },
+  "runs": [
+    {
+      "id": "progressive-disclosure-discovery-fake-interviews",
+      "case": "discovery-fake-interviews",
+      "phase": "progressive-disclosure",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 101.851,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/discovery-fake-interviews.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-fake-interviews.txt",
+        "responses/discovery-fake-interviews.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ]
+    },
+    {
+      "id": "progressive-disclosure-discovery-sparse-debrief",
+      "case": "discovery-sparse-debrief",
+      "phase": "progressive-disclosure",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 101.84,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/discovery-sparse-debrief.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-sparse-debrief.txt",
+        "responses/discovery-sparse-debrief.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ]
+    },
+    {
+      "id": "progressive-disclosure-discovery-five-interviews",
+      "case": "discovery-five-interviews",
+      "phase": "progressive-disclosure",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 126.988,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/discovery-five-interviews.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-five-interviews.txt",
+        "responses/discovery-five-interviews.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ]
+    },
+    {
+      "id": "progressive-disclosure-discovery-output-contract",
+      "case": "discovery-output-contract",
+      "phase": "progressive-disclosure",
+      "grade": "pass",
+      "exitStatus": 0,
+      "elapsedSeconds": 146.325,
+      "stopStatus": "completed with CLI exit 0",
+      "evidenceHandoffContract": {
+        "schemaVersion": 1,
+        "passed": true,
+        "candidateTables": 1,
+        "sourcePaths": [
+          "responses/discovery-output-contract.txt"
+        ],
+        "errors": []
+      },
+      "artifacts": [
+        "skill-snapshot-manifest.txt",
+        "prompts/discovery-output-contract.txt",
+        "responses/discovery-output-contract.txt",
+        "skill-snapshots/z-customer-discovery/SKILL.md",
+        "skill-snapshots/z-customer-discovery/references/interview-guide-template.md",
+        "skill-snapshots/z-customer-discovery/references/mom-test-rules.md",
+        "skill-snapshots/z-customer-discovery/references/notes-template.md",
+        "skill-snapshots/z-customer-discovery/references/quality-bar.md",
+        "skill-snapshots/z-customer-discovery/references/recruit-scripts.md",
+        "skill-snapshots/z-customer-discovery/references/synthesis-template.md"
+      ]
+    }
+  ],
+  "runnerIncidents": [],
+  "archiveNote": "Prompts, responses, and skill sources are exact runner files. The criterion review is separate. Private host execution records corroborated controls and bytes, then were excluded."
+}

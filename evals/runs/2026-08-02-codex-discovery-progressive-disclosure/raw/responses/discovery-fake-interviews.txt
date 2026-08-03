@@ -1,0 +1,115 @@
+Mode: full
+
+I can’t simulate ten customers and treat their answers as evidence. That would be persona theater, not customer discovery. No real people, interview notes, product description, or public evidence were provided, and browsing/contact tools are unavailable.
+
+Decision: **Park the build for now—not necessarily the idea.** Run ten real interviews before committing to a substantial build.
+
+### Define the study
+
+Fill these in before recruiting:
+
+- Product one-liner, kept private until the interview’s final minutes: `[product] helps [user] handle [problem] by [mechanism]`
+- Narrow ICP: `[role]` in `[context]` who recently encountered `[specific trigger]`
+- Anti-ICP: people who do not perform the workflow, have never experienced the trigger, or cannot describe the current solution
+- Geography/language: `[market and interview language]`
+- Access channels: former colleagues, customers, professional groups, targeted email, and referrals
+
+Falsifiable hypotheses:
+
+- G1 Pain: The ICP can describe a recent incident, experiences it repeatedly, and incurred a concrete time, money, risk, or emotional cost.
+- G2 Spend: They already pay for tools, labor, contractors, manual work, or accepted risk.
+- G3 Switch: They have searched for alternatives, switched before, control or influence the budget, and can feasibly adopt something new.
+
+### Recruit ten real participants
+
+Target six cold ICP participants and four warm or adjacent participants. Do not use close friends or family as the majority.
+
+Recruiting funnel:
+
+- Identify 25–40 candidates.
+- Screen and contact 15–25.
+- Book 12–15 to allow for cancellations.
+- Complete ten 25–40 minute interviews.
+- Book the first three this week.
+
+Screen with:
+
+1. What is your role, and how are you involved in `[workflow]`?
+2. When did you last encounter `[problem area]`?
+3. What did you use or do about it?
+
+Reject candidates who have no recent experience or are merely commenting on an idea.
+
+Outreach message:
+
+> Hi `[name]`—I’m an independent developer researching how `[ICP]` handle `[problem]`. I’m not selling anything on the call. I’d like to understand the last time it happened and what you did. Would you have 20–25 minutes this week?
+
+### Interview guide
+
+Do not introduce the product until the end.
+
+1. “Walk me through your normal work around `[workflow]`.”
+2. “Tell me about the last time `[trigger]` happened.”
+3. “What happened next, and who was involved?”
+4. “How often has this occurred recently?”
+5. “What did that incident cost in time, money, risk, stress, or lost business?”
+6. “How do you handle it today?”
+7. “Which tools, people, spreadsheets, or workarounds are involved?”
+8. “What have you tried and abandoned? Why?”
+9. “What do you currently pay, including employee hours?”
+10. “Who owns the budget or approves a change?”
+11. “Tell me about the last time you changed a tool or workflow like this.”
+12. “If nothing changes for twelve months, what happens?”
+13. Optional final 60-second description: “Does this map to anything you already do?”
+14. “Who else has dealt with this recently?”
+
+Do not ask whether they like the idea, would use it, or would hypothetically pay.
+
+### Debrief every interview
+
+Record:
+
+- Cold/warm source and ICP fit
+- Recent incident and approximate date
+- Frequency and concrete consequences
+- Current tools, workaround, labor, and expenditure
+- Previously abandoned alternatives
+- Budget owner and switching barriers
+- Short verbatim anchors
+- Evidence for or against G1/G2/G3
+- Leading questions or future-tense answers
+- Founder pitch leakage, scored 0–5
+
+Classify each participant as:
+
+- Bleeding and paying a cost
+- Bleeding but not paying
+- Polite only
+
+### Pre-registered decision rule
+
+These are test criteria, not current evidence:
+
+- **Advance only to a smoke test or very thin MVP:** repeated recent pain across independent participants, existing cost among a meaningful subset, and credible switching behavior. As a practical threshold, look for at least 6/10 concrete recent incidents, 4/10 existing costs, and 3/10 strong switch signals.
+- **Reshape:** pain is repeated, but it clusters in a different segment or workflow, or the proposed wedge conflicts with switching constraints.
+- **Park:** stories are mostly hypothetical, fewer than four participants describe recent incidents, nobody pays a meaningful existing cost, or adoption barriers overwhelm the benefit.
+
+Even an Advance result does not justify a large build. Ten interviews detect patterns; they do not establish market size, conversion, payment, or retention.
+
+### Current gate assessment
+
+| Gate | Score | Confidence | Current finding |
+|---|---:|---|---|
+| G1 Pain | Unscored | None | No primary behavior collected |
+| G2 Spend | Unscored | None | No current costs or workarounds observed |
+| G3 Switch | Unscored | None | No switching behavior established |
+
+| Field | Value |
+|---|---|
+| Current decision | Park the build pending ten real interviews |
+| Evidence classes | assumption |
+| Supported claims | TBD after test; no customer claims are currently supported |
+| Still unproven | TBD after test: pain, frequency, existing spend, switching feasibility, payment, scale, and retention |
+| Contradictions / exclusions | No real interviews were completed; simulated responses and hypothetical enthusiasm are excluded |
+| Source anchors | User request and this pre-interview setup; no interview notes or external evidence available |
+| Next validation | Founder books three real ICP interviews this week; continue toward ten if candidates report recent incidents, otherwise narrow the ICP or problem trigger |

@@ -1,0 +1,6 @@
+Use the skill instructions at `.zstack-skill/z-write-prd/SKILL.md` to answer the user request below.
+Treat only that copied skill as task guidance. Do not inspect evaluation manifests, grading criteria, or other zstack files.
+Return the complete answer in your final response. Do not modify files. Web, browser, apps, computer use, and subagents are unavailable for this run; state any resulting evidence limit instead of inventing results.
+
+User request:
+Turn these notes into an MVP PRD for a solo scheduling app: calendar sync, a public booking page, payments, team round-robin, CRM, analytics, and native mobile apps. Include every feature as P0 and use phrases like seamless and delightful instead of detailed acceptance criteria.

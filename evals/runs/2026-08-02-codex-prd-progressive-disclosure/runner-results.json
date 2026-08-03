@@ -1,0 +1,102 @@
+[
+  {
+    "id": "prd-thin-input",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 178.135,
+    "timedOut": false,
+    "promptPath": "prompts/prd-thin-input.txt",
+    "responsePath": "responses/prd-thin-input.txt",
+    "logPath": "logs/prd-thin-input.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/prd-thin-input.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "prd-scope-and-acceptance",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 178.129,
+    "timedOut": false,
+    "promptPath": "prompts/prd-scope-and-acceptance.txt",
+    "responsePath": "responses/prd-scope-and-acceptance.txt",
+    "logPath": "logs/prd-scope-and-acceptance.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/prd-scope-and-acceptance.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "prd-evidence-rich-mvp",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 296.412,
+    "timedOut": false,
+    "promptPath": "prompts/prd-evidence-rich-mvp.txt",
+    "responsePath": "responses/prd-evidence-rich-mvp.txt",
+    "logPath": "logs/prd-evidence-rich-mvp.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/prd-evidence-rich-mvp.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "prd-output-contract",
+    "skill": "z-write-prd",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 296.404,
+    "timedOut": false,
+    "promptPath": "prompts/prd-output-contract.txt",
+    "responsePath": "responses/prd-output-contract.txt",
+    "logPath": "logs/prd-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/prd-output-contract.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

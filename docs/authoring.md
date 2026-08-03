@@ -43,6 +43,12 @@ Before merging a skill, confirm:
    written deliverable is part of the grade.
 10. Run `./scripts/test.sh`; if Bash changed, also run
    `shellcheck scripts/*.sh scripts/lib/*.sh`.
+
+    Keep each skill package reproducible and inexpensive to snapshot: at most
+    100 regular files, 2 MiB per file, and 5 MiB total. Skill directories must
+    not contain symbolic links or special files. Compress or simplify oversized
+    assets instead of relying on machine-local links or generated dependency
+    trees.
 11. Run affected post-selection cases with
     `ruby scripts/run-codex-behavioral-evals.rb --case <id>` or the Claude/Grok
     counterpart; inspect and grade the raw response in `review.json`. The

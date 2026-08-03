@@ -166,8 +166,9 @@ cd ~/code/zstack
 该未选目录。
 
 在 `skills/` 里改文件，所有宿主立刻看到更新（symlink）。
-遇到冲突时，setup 会跳过并返回非零状态；传入 `--force` 才会把旧路径
-保存为带时间戳的备份。若随后创建链接失败，setup 会自动恢复原路径。
+遇到冲突时，setup 会跳过并返回非零状态；传入 `--force` 才会先原子预留
+带时间戳且不会碰撞的备份目录，并把旧路径保存到
+`*.zstack-backup-*/original`。若随后创建链接失败，setup 会自动恢复原路径。
 全局链接与 `--project` 链接都会被记录，可安全清理：
 
 ```bash
@@ -248,6 +249,7 @@ zstack/
 │   ├── test.sh               # 安装器与校验器集成测试
 │   ├── new-skill.sh          # 脚手架 z-* skill
 │   ├── unlink.sh             # 仅移除 zstack 管理的链接
+│   ├── check-evidence-docs.rb # 保持文档宿主覆盖与证据报告一致
 │   ├── report-evidence-coverage.rb # 行为 / 路由 provenance 覆盖矩阵
 │   ├── run-behavioral-evals.rb # 共享的隔离行为 runner 核心
 │   ├── run-{codex,claude,grok}-behavioral-evals.rb # 宿主入口
@@ -260,7 +262,7 @@ zstack/
 │   ├── generate-evidence-manifests.rb # 重建 / 检查完整评测档案摘要
 │   ├── validate-yaml.rb      # 可选严格 YAML / 重复键校验
 │   ├── validate-evidence.rb  # 评测档案 JSON / 字节数 / SHA-256 校验
-│   └── lib/                  # 共享 shell 解析与不可变评测宿主输入
+│   └── lib/                  # 共享解析与稳定的评测 / 证据输入契约
 ├── skills/
 │   ├── _template/
 │   ├── z-market-validate/
@@ -315,38 +317,50 @@ zstack/
 也已全部通过，并保留了原始工件。
 经逐条复核的 Codex 韧性矩阵 [A](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-a/summary.md)
 与 [B](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-b/summary.md)
-把当前行为案例的完整 provenance 覆盖提升到 20/20。
+在 2026-08-01 的源码快照上首次把完整 provenance 覆盖提升到 20/20。
 随后的 [宿主缺口审计](./evals/runs/2026-08-01-codex-happy-gap-regression/summary.md)
 保留了 3 个通过与 1 个真实工件失败；隔离的
 [artifact 重跑](./evals/runs/2026-08-01-codex-landing-artifact-pass/summary.md)
-保留了可部署页面，并把 Codex 宿主自身的完整覆盖补到 20/20。
+保留了可部署页面，并在该快照上把 Codex 宿主自身的完整覆盖补到 20/20。
 同一套源码快照、防泄漏、人工复核与原子归档协议现已提供 Claude Code
 适配器；它分别记录请求模型与实际模型，并在宿主把 API 错误包装成名义上的
-success 结果时仍会拒绝归档。当前本机配置的 Claude 提供方会在生成前返回
-模型不可用；运行器会将其脱敏标记为 `model-unavailable`，因此 Claude 的真实
-行为证据仍保持 0/20，而不会把外部配置错误算成 skill 通过。
-Grok 适配器进一步加入隔离宿主目录、prompt-file 传输、精确 final-response
+success 结果时仍会拒绝归档。在 2026-08-02 的本机复核中，Claude 提供方在
+生成前返回模型不可用；运行器将其脱敏标记为 `model-unavailable`，没有把外部
+配置错误算成 skill 通过。
+Grok 适配器进一步加入带有界稳定 auth 副本的隔离宿主目录、匿名描述符 prompt-file 传输、精确 final-response
 边界、工具与 sandbox 控制、脱敏 API 错误分类，以及同样的私有 provenance
 核验。经复核的
 [19 案例 response 矩阵](./evals/runs/2026-08-01-grok-behavior-current-full-response/summary.md)
-对 16 个非 landing 案例仍匹配当前源码；已保留的
+是早期 skill 快照的历史证据；已保留的
 [landing artifact 失败](./evals/runs/2026-08-01-grok-behavior-current-smoke-artifact-unverified-success/summary.md)
-推动了更严格的 provider-confirmed-success 规则，因此四个 landing 案例都必须
-重新运行。当前本机 Grok CLI 明确报告未认证，所以 Grok 当前源码行为覆盖如实
-保持在 16/20；确定性的假宿主测试不计入模型证据。随后保留的
+推动了更严格的 provider-confirmed-success 规则。后续 progressive-disclosure
+编辑改变了五个 skill 正文，因此 20 个行为案例都需要新的 Grok 运行；
+2026-08-02 的 Grok CLI 0.2.118 在生成前返回 HTTP 401。确定性的假宿主测试
+不计入模型证据。随后保留的
 [provider schema 失败](./evals/runs/2026-08-01-codex-landing-artifact-provider-schema-failure/summary.md)
 又识别出猜测 Buttondown tag ID 的问题。skill 现在要求带日期的官方 provider
-语义，或显式、阻止上线的 `VERIFY_*` 映射。Codex 把
-[19 案例 response 矩阵](./evals/runs/2026-08-01-codex-behavior-current-full-response/summary.md)、
-[三个 landing response 重跑](./evals/runs/2026-08-01-codex-landing-response-after-closed-analytics-gate/summary.md)
-和 [真实 landing artifact](./evals/runs/2026-08-01-codex-landing-artifact-after-closed-analytics-gate/summary.md)
-组合成 20/20 当前源码覆盖。最新 artifact 会把未知归因排除在决策 lane 外，
+语义，或显式、阻止上线的 `VERIFY_*` 映射。Codex 在 2026-08-02 重新复核了
+[市场验证](./evals/runs/2026-08-02-codex-market-progressive-disclosure/summary.md)、
+[PRD](./evals/runs/2026-08-02-codex-prd-progressive-disclosure/summary.md)、
+[SEO](./evals/runs/2026-08-02-codex-seo-progressive-disclosure/summary.md)、
+[客户发现](./evals/runs/2026-08-02-codex-discovery-progressive-disclosure/summary.md)，
+以及 landing 的 [response](./evals/runs/2026-08-02-codex-landing-progressive-disclosure-response/summary.md)
+与 [artifact](./evals/runs/2026-08-02-codex-landing-progressive-disclosure-artifact/summary.md)，
+在对应源码快照上通过全部 20 个案例。最新 artifact 会把未知归因排除在决策 lane 外，
 在 analytics 初始化前清除 query 与 fragment，在显式 contract 占位符尚未解决时
 不请求 analytics 或 Buttondown，并且不暴露 provider 或异常原始数据。Function
 通过了 18 个本地恶意 intake/provider 场景，包括不信任 `Content-Length` 的真实
 流字节上限；确定性的浏览器检查也证明了关闭的 analytics gate 与有界归因。
 CI 会同时要求行为与路由证据匹配当前 skill 字节，因此 Grok 缺口会失败关闭，
 直到认证恢复并发布经复核的新归档。
+
+<!-- zstack-current-evidence:start -->
+当前源码证据：Claude 行为 **0/20**，
+Codex 行为 **20/20**，Grok 行为
+**0/20**；Claude 路由 **0/25**，
+Codex 路由 **25/25**，Grok 路由 **25/25**。
+<!-- zstack-current-evidence:end -->
+
 跨宿主发现证据及五个 Grok happy-path 的完整结果，记录在
 [宿主兼容性证据](./docs/compatibility.md) 中；其中保留了推动 discovery、
 landing 完整性与 PRD 修复的失败证据。
@@ -381,7 +395,7 @@ Skill 产出的是**决策与工件**（报告、访谈提纲、落地页文案�
 | Skill 目录（5 个） | 可用 |
 | 多宿主 setup/doctor | 可用 |
 | 架构文档 | 可用 |
-| CI 校验 | 已配置；当前会因文档所述 Grok 行为证据 16/20 缺口而失败关闭 |
+| CI 校验 | 已配置；宿主证据缺口会失败关闭（见上方当前源码证据块） |
 | 贡献指南 | 可用 |
 
 ---

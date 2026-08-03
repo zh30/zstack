@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "eval_input_file"
+
 # Deterministically validates the Markdown Evidence handoff emitted by a skill.
 module Zstack
   module EvidenceHandoffContract
@@ -27,10 +29,10 @@ module Zstack
     def evaluate(sources)
       tables = Array(sources).flat_map do |source|
         name = source.fetch(:name)
-        path = source.fetch(:path)
-        next [] unless File.file?(path)
+        content = source_content(source)
+        next [] if content.nil?
 
-        markdown_tables(File.binread(path).force_encoding(Encoding::UTF_8)).each_with_object([]) do |table, matches|
+        markdown_tables(content).each_with_object([]) do |table, matches|
           matches << table.merge("sourcePath" => name) if handoff_candidate?(table)
         end
       end
@@ -54,6 +56,33 @@ module Zstack
         "sourcePaths" => [],
         "errors" => [e.message]
       }
+    end
+
+    def source_content(source)
+      has_path = source.key?(:path)
+      has_content = source.key?(:content)
+      unless has_path ^ has_content
+        raise ArgumentError, "Evidence handoff source must provide exactly one of path or content"
+      end
+
+      if has_content
+        content = source.fetch(:content)
+        raise ArgumentError, "Evidence handoff content source must be a string" unless content.is_a?(String)
+
+        content.dup.force_encoding(Encoding::UTF_8)
+      else
+        path = source.fetch(:path)
+        return nil unless File.exist?(path) || File.symlink?(path)
+
+        expanded = File.expand_path(path)
+        EvalInputFile.read(
+          expanded,
+          label: "Evidence handoff source #{source.fetch(:name)}",
+          root: File.dirname(expanded)
+        )
+      end
+    rescue EvalInputFile::ReadError => e
+      raise ArgumentError, e.message
     end
 
     def review_evidence(result)

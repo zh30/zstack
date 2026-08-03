@@ -1,0 +1,229 @@
+# Market validation: client-specific tab workspaces for support agents
+
+- **Date:** 2026-08-02
+- **Analyst:** Codex using `z-market-validate`
+- **Geography focus:** Not specified; assumed English-speaking, Chrome-based support teams
+- **Evidence limit:** Browsing, browser tools, and subagents were unavailable. No URLs were supplied. Every market claim below comes from the user’s unverified notes and is therefore classified as an **assumption**, not verified customer or market evidence.
+- **Composite:** **2.67**
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence |
+|---|---|---|
+| Commercial value? | Mixed | Low |
+| Fit for independent developer? | Conditional | Medium |
+| Short-term return odds (30–90 days)? | Low | Medium |
+| **Recommendation band** | **Explore with spike** | Medium |
+
+**Summary:** There is a credible workflow problem: some support agents reportedly rebuild client context daily, and support leads estimate 10–20 minutes lost per shift. However, the current evidence does not establish adoption or willingness to pay. Chrome’s native features and bookmarks are adequate substitutes for some users, administrators may block extensions, and nobody has paid for this exact outcome. The **2.67** composite supports a narrow validation spike, not a four-week full build. Pursue one team-oriented wedge and require a concrete paid-pilot signal before investing the full month.
+
+## 2. Idea framing
+
+- **Problem in user language:** “When I switch to a client, I have to find and reopen the tabs needed to rebuild that client’s working context.”
+- **Proposed solution:** A Chrome extension that restores a named client workspace containing the relevant tabs.
+- **Narrow ICP:** Support teams of roughly 5–20 agents whose agents handle multiple recurring clients in browser-based tools and do not already have centrally managed client workspaces.
+- **Likely buyer:** Support lead or operations manager, rather than the individual agent.
+- **Non-ICP:** Solo support agents, teams satisfied with bookmarks or saved tab groups, heavily locked-down organizations, and workflows centered on one customer at a time.
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---|---|---|
+| X/Twitter | Blocked | No web access; no URLs supplied |
+| Reddit | Blocked | No web access; no URLs supplied |
+| Hacker News | Blocked | No web access; no URLs supplied |
+| Product Hunt | Blocked | No web access; no URLs supplied |
+| Indie Hackers | Blocked | No web access; no URLs supplied |
+| Reviews/extension stores | Blocked | No web access; competitor and extension reviews unverified |
+| Support-agent buyer habitats | Blocked | No communities or source URLs identified |
+
+The minimum four-channel scan was not completed. This materially lowers confidence in demand, competitor, and distribution conclusions.
+
+### 3.2 Positive signals
+
+- **P1 — Workflow recurrence**
+  - Source: User-supplied note; no URL
+  - Summary: 12 community participants described rebuilding client context.
+  - Polarity: Demand
+  - Weight: Medium if accurately captured; currently low-confidence
+  - Indie relevance: High
+  - Limitation: Selection method, wording, independence, and audience composition are unknown.
+
+- **P2 — Daily frequency**
+  - Source: User-supplied note; no URL
+  - Summary: Five of the 12 reportedly experience the problem daily.
+  - Polarity: Demand
+  - Weight: Medium if verified
+  - Indie relevance: High
+  - Limitation: This is five reported participants, not evidence that 5/12 of the wider market has daily pain.
+
+- **P3 — Estimated time loss**
+  - Source: User-supplied note; no URL
+  - Summary: Three support leads estimated 10–20 minutes lost per shift.
+  - Polarity: Demand/economic value
+  - Weight: Medium
+  - Indie relevance: High
+  - Limitation: An estimate is weaker than observed time measurements.
+
+- **P4 — Team-workspace requests**
+  - Source: User-supplied note; no URL
+  - Summary: Two people asked for team workspaces.
+  - Polarity: Feature demand
+  - Weight: Low
+  - Indie relevance: High
+  - Limitation: Requests do not establish authority, urgency, or payment intent.
+
+### 3.3 Disconfirming signals
+
+- **N1 — Native substitutes:** Chrome already offers saved tab groups and profiles. The incremental benefit may be too small unless the product adds team administration or support-specific workflow value.
+- **N2 — Bookmarks:** Four people reportedly prefer bookmarks, suggesting the pain is not universal and that a free, familiar alternative is adequate for some users.
+- **N3 — Administrative blocking:** Two administrators may block browser extensions. This threatens installation, security approval, and team-wide deployment.
+- **N4 — No demonstrated payment:** Nobody has paid for this exact outcome. This is the strongest present contradiction to a near-term revenue thesis.
+- **N5 — Adjacent competition:** An unverified dated capture places an adjacent paid tool at approximately $7–12/user/month, implying the category may already contain capable alternatives.
+- **N6 — Reliability risk:** Incorrect, duplicated, stale, or unauthorized tabs could make restoration less useful than expected. No usability or reliability evidence was provided.
+
+### 3.4 Pricing and willingness-to-pay
+
+The only pricing anchor is an adjacent tool reportedly charging approximately **$7–12/user/month**. It is dated, unverified, and does not prove that support teams will pay that amount for this narrower outcome.
+
+Transparent revenue arithmetic:
+
+- At **$12/user/month**, $500 MRR requires at least **42 paid seats**.
+- At **$7/user/month**, it requires at least **72 paid seats**.
+- At an assumed midpoint of **$10/user/month**, it requires **50 paid seats**.
+- If an initial customer averages five seats, that is approximately **9–15 paying teams**, or **10 teams** at the midpoint.
+
+This is mathematically possible but commercially aggressive in 90 days for a solo founder starting without verified buyer access or payment evidence.
+
+## 4. Competition and substitutes
+
+| Substitute | Type | Price signal | Gap or complaint | Threat to indie |
+|---|---|---:|---|---|
+| Chrome saved tab groups | Native feature | Free | May lack support-specific naming, ownership, templates, and team controls | High |
+| Chrome profiles | Native workflow | Free | Better for account separation than rapid client switching | Medium–high |
+| Bookmarks/bookmark folders | Manual substitute | Free | Requires manual opening and maintenance | High |
+| Manual history/search | Do nothing | Free | Slow and error-prone, but requires no behavior change | Medium |
+| Adjacent workspace tool | Paid product | Unverified $7–12/user/month | Product capabilities and complaints not verified | Medium–high |
+| Internal documentation/checklists | Process substitute | Existing tooling | Describes context but may not restore it | Medium |
+
+**Category structure:** A small workflow utility surrounded by strong free substitutes. Differentiation must come from a narrow team workflow, not merely reopening tabs.
+
+## 5. Scores
+
+| Dimension | Score | Evidence |
+|---|---:|---|
+| Demand reality | 3 | Repeated and sometimes daily pain is reported, but all notes are unverified |
+| Willingness to pay | 1 | No payment for this outcome; adjacent pricing is only an unverified anchor |
+| Competition intensity | 4 | Native Chrome functions, bookmarks, profiles, and an adjacent paid product |
+| Indie fit | 4 | A narrow local-first MVP appears feasible, though team sync and security raise scope |
+| Time-to-signal | 4 | A manual or prototype restoration test can produce behavioral evidence quickly |
+| Short-term return odds | 2 | $500 MRR requires roughly 42–72 seats without an established sales channel |
+| **Composite (avg)** | **2.67** | Mixed opportunity suitable for a validation spike |
+
+**Transparent composite calculation — single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 4 = 2
+composite_sum = 3 + 1 + 2 + 4 + 4 + 2 = 16
+composite_exact = 16 / 6 = 2.6666666667
+display_composite = round(composite_exact, 2) = 2.67
+```
+
+## 6. Commercial value
+
+**Verdict: Mixed.** A team with ten agents losing 10–20 minutes per shift could theoretically lose 100–200 staff-minutes daily. That gives a support lead a plausible productivity reason to buy. But the loss estimate has not been observed, the product’s recoverable share is unknown, and free substitutes may already capture much of the value.
+
+The product should be sold as a measurable team outcome—faster, consistent client handoffs—not as generic tab organization. The likely budget owner is support operations. There is no evidence yet that this buyer will allocate budget or pass security review.
+
+## 7. Independent-developer fit
+
+**Verdict: Conditional.**
+
+A four-week MVP is plausible if limited to:
+
+- Creating a named client workspace
+- Saving and restoring its URLs
+- Sharing one workspace definition with a small team
+- Excluding sensitive tab contents and credentials
+- Measuring restoration usage and time saved
+
+The dangerous scope lies in synchronization, permissions, SSO, audit logs, managed-browser policies, security reviews, cross-browser support, and deep integrations. These could turn a simple extension into an enterprise administration product.
+
+Capital requirements are compatible with the $500 budget if development is founder-led. Distribution is the larger constraint: no verified buyer channel was supplied, and administrator resistance could produce substantial presales and support work.
+
+## 8. Short-term return: 30–90 days
+
+**Target:** $500 MRR within 90 days.
+
+**Odds: Low.** The target requires roughly 42–72 paid seats at the only available price anchor. The extension might be quick to prototype, but team purchasing, security approval, and behavior change are slower than product construction.
+
+**Best plausible path:** Sell a narrowly scoped five-seat founding-team pilot directly to support leads, manually onboarding each workspace and treating the extension as assisted software. Ten teams at an assumed $50/month would reach $500 MRR, although both the price and team size still require validation.
+
+**What would falsify the path:** No support lead agrees to a paid pilot; agents do not use restoration repeatedly; measured savings are small; bookmarks or saved groups perform equally well; or administrators reject installation.
+
+## 9. Entry direction
+
+### Primary wedge: shared client-launch kits for small B2B support teams
+
+- **Who:** Support teams of 5–20 agents that repeatedly switch among the same client accounts.
+- **Job to be done:** “When an agent takes over or returns to Client X, open the approved working set immediately so they can act without reconstructing context.”
+- **MVP shape:** A Chrome extension with named shared URL sets, one-click restore, lightweight team sharing, and basic usage measurement. Avoid storing page contents, cookies, passwords, or session data.
+- **Why this wedge:** It directly addresses the reported team-workspace requests, gives a support lead a team-level buying rationale, and differentiates from personal bookmarks or saved groups.
+- **Where to find the first ten users:** The original participants and support leads, followed by manually identified support-operations communities once source access is available.
+- **14-day metric:** At least three teams complete a real workflow trial; at least two use it on three or more shifts; and at least one buyer makes a paid-pilot commitment.
+
+**Backup wedges:** None recommended until this wedge receives or fails a genuine payment signal.
+
+### Explicitly do not start with
+
+- A general-purpose tab manager
+- Enterprise SSO, audit logs, or broad administrative controls
+- Cross-browser support
+- Saving authenticated sessions, credentials, or page contents
+- Building all four weeks before testing a paid pilot
+
+## 10. Risks and open questions
+
+- Are the 12 participants independent target users or members of one unusually receptive community?
+- Does “rebuilding context” primarily mean reopening URLs, or recovering notes, account state, tickets, and credentials?
+- How much of the estimated 10–20 minutes can tab restoration actually remove?
+- Can agents use Chrome’s saved groups just as effectively after brief training?
+- Who can authorize installation and payment?
+- Will security policy permit shared workspace definitions?
+- Does a shared workspace create stale, duplicated, or unauthorized client access?
+- Can the founder reach 9–15 teams within 90 days without exceeding the $500 budget?
+- Competitor capabilities, current pricing, reviews, churn reasons, and market volume remain unverified.
+
+## 11. Next 48 hours
+
+1. **Recontact the evidence owners:** conduct five 20-minute calls—three agents and two support leads—from the original pool. Capture the last actual occurrence, tabs reopened, time spent, current workaround, who controls extensions, and who can pay. Pass: at least three describe a recent repeated workflow and two permit a live observation; fail: answers remain hypothetical or native features already solve it.
+
+2. **Run a behavior test without building the full extension:** prepare one manually configured client-launch kit and observe three agents completing the same context-switch task with their current method and with the kit. Record completion time, missing/incorrect tabs, and whether they reuse it on a later shift. Pass: two agents reuse it and median measured time falls by at least five minutes; fail: no repeat use or negligible improvement.
+
+3. **Ask for a concrete paid commitment:** offer five qualified support leads a 14-day, five-seat founding pilot at $50, refundable if the agreed workflow does not work. Use a simple written scope and payment link or invoice request rather than a waitlist. Pass: at least one pays or obtains an explicit purchasing approval; fail: zero commitments, after which pause development and investigate the objections.
+
+## 12. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Explore with spike |
+| Evidence classes | assumption |
+| Supported claims | The supplied notes suggest recurring client-context reconstruction, including some daily use cases and estimated time loss; they also identify team sharing as a possible differentiator. These are hypotheses suitable for direct validation, not verified market facts. |
+| Still unproven | Source validity, problem prevalence, measured time saved, superiority to Chrome features and bookmarks, buyer authority, installation approval, switching behavior, payment, retention, current competitor pricing, and delivery feasibility |
+| Contradictions / exclusions | Free native substitutes, four reported bookmark preferences, two possible admin blocks, no payment for this outcome, and an adjacent paid tool; exclude generic tab management, enterprise administration, cross-browser work, and sensitive session restoration |
+| Source anchors | User-supplied unverified notes P1–P4 and N1–N6; no URLs or dated primary records supplied; adjacent $7–12 pricing capture is dated and unverified |
+| Next validation | Founder offers five leads a $50 five-seat pilot; success is at least one payment or purchasing approval, while zero commitments triggers a pause and objection review |
+
+## 13. Source appendix
+
+### Strongest supporting links
+
+Not found. No URLs were supplied, and web access was unavailable.
+
+### Strongest opposing links
+
+Not found. No URLs were supplied, and web access was unavailable.
+
+The strongest opposing evidence available is therefore limited to the supplied notes: existing Chrome features, four bookmark-preferring participants, two possible administrator blocks, and the absence of payment for this exact outcome.

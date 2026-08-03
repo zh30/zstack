@@ -16,7 +16,7 @@ description: >-
 ## Output contract
 
 Produce a concrete artifact that records inputs, assumptions, decisions, and the
-next bounded action. Use `TBD until validated` for result fields before evidence
+next bounded action. Use `TBD after test` for result fields before evidence
 exists.
 
 The handoff is a fixed interface. Emit exactly one two-column, seven-row table

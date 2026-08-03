@@ -1,0 +1,13 @@
+sha256                                                            bytes  path
+f02a5bebde12a58e481af0a62fe30cb5846d5b5fd7ffd6f4e8fca39eccfba6b1  1306  prompts/prd-evidence-rich-mvp.txt
+f02a5bebde12a58e481af0a62fe30cb5846d5b5fd7ffd6f4e8fca39eccfba6b1  1306  prompts/prd-output-contract.txt
+2b891da38e8d942b02a901dcbec0d7fb4194069dadea0c09edce9f4039635a57  736  prompts/prd-scope-and-acceptance.txt
+26c99b5121b00991d265ed726f83c03c0de5885f8c53da6639f7e9f6e4fa72b5  521  prompts/prd-thin-input.txt
+e69cd29889d2ebad9961b91a5ed1249663ef30b0a4f8e8f4557ae90e95f685bc  28784  responses/prd-evidence-rich-mvp.txt
+78cdf31970d586f398518aeb61a6f31029605efe91d000ad7ceeb431b1e67230  23500  responses/prd-output-contract.txt
+03537a1db9c3c4bb3f1211489614527bd461534335162e0a34a7306c2ac2179f  21763  responses/prd-scope-and-acceptance.txt
+837954a0b90e45f63d15ecbd17658773b045a0ab6302639313d59b2dc94ef93d  29120  responses/prd-thin-input.txt
+e66188ad9abdf7c4a8bb31427b5e6ddb860142c5d5c56b591f73d451c1e52d42  449  skill-snapshot-manifest.txt
+f334b68af62c48453bad357eb9078da962be2713fb73b648fa60f07162635a4f  9867  skill-snapshots/z-write-prd/SKILL.md
+47c983a733fde14449d4d3b4533c1e5eaf17408f6a8d1e04b30b7736e0d2b30d  5943  skill-snapshots/z-write-prd/references/prd-template.md
+00d280b1f0240a1273046423329f645d3183db4d02fda9075d711301d9905a44  3637  skill-snapshots/z-write-prd/references/quality-bar.md

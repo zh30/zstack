@@ -200,71 +200,28 @@ Always specify:
 - Analytics: Plausible/Umami/GA4/page view + conversion event (pick one simple)  
 - UTM scheme: `utm_source`, `utm_medium`, `utm_campaign` per channel  
 
-Make the conversion event match the metric definition. Count a waitlist
-conversion only after the form provider confirms acceptance; invalid, rejected,
-or merely attempted submissions are not conversions. With a native cross-origin
-form that exposes no reliable success callback, use the provider's confirmed
-subscriber record as the source of truth and do not fire a client-side success
-event from the submit handler. Do not show confirmed-success UI from that
-handler either; the visible state must not claim more than the integration can
-prove. Never upgrade local UI or analytics from an unsigned `?status=success`
-style parameter. See `references/metrics-guide.md`.
+Before specifying or implementing a form, provider endpoint, attribution path,
+or analytics integration, read and apply both
+[Conversion integrity](references/metrics-guide.md#conversion-integrity) and
+[Attribution integrity](references/metrics-guide.md#attribution-integrity).
+They are binding for implementation packs and generated files. For copy-only or
+plan-only requests, identify unresolved integration choices instead of guessing.
 
-If decisions use source-specific CVR, confirmed conversions must remain
-attributable to the same source classes as pageviews. Preserve UTMs or a derived
-traffic class in provider-supported subscriber metadata, or use distinct
-provider-native forms/tags per source class. Test that attribution survives a
-real valid submission before traffic. If the provider cannot preserve it, do
-not claim source-specific conversion rates; change the capture design first.
-Map only pre-registered, allow-listed source/campaign combinations into decision
-lanes. Store missing or unknown attribution as `unattributed` and exclude it
-from source-specific thresholds; never silently default it into a warm or cold
-lane.
+The implementation must preserve these boundaries:
 
-Keep integration logs privacy-safe. Do not log email addresses, free-text form
-answers, secrets, authorization headers, or raw provider response bodies. Log
-only a bounded error category, HTTP status, and a non-PII request identifier
-when one is needed for diagnosis.
-
-Treat the signup endpoint as an untrusted-input boundary. Accept the exact JSON
-media type (parameters such as charset are fine, lookalikes are not), enforce an
-actual request-body byte ceiling even when `Content-Length` is missing or false,
-and reject malformed JSON, `null`, arrays, and non-object roots with one bounded
-4xx error shape. Do not dereference parsed fields before that root-shape check.
-Bound the provider request with an explicit timeout and translate timeout,
-network, and provider failures into finite non-secret categories; no input shape
-or stalled upstream may fall through to an unhandled 500. Never return, log, or
-emit an exception's message, stack, cause, or raw object. Map parser, request
-stream, timeout, network, and provider branches to a hard-coded category
-allow-list; an exception raised below a trusted helper is still untrusted text.
-
-Treat analytics as another external log sink. Before loading pageview analytics
-or emitting a custom event, map query attribution through the registered exact
-allow-list and expose only bounded canonical properties such as decision lane,
-registered placement, and variant. Do not forward a raw query string, full URL,
-URL fragment/hash, arbitrary UTM/referrer value, email address, form answer, or
-provider content to analytics. Unknown or malformed attribution must become
-`unattributed`; strip the query and fragment from the analytics-visible URL and
-discard their raw values before analytics initializes. If in-page navigation
-needs a fragment, restore only an exact registered anchor after the pageview
-boundary and never include it in an analytics payload. The server must derive
-the provider lane independently from the same allow-list—a client-reported lane
-can diagnose the denominator but can never authorize a confirmed conversion.
-
-Fail closed before analytics verification too. When the named analytics
-provider's current script URL, event API, site/domain, or privacy behavior is
-unverified, retain explicit `VERIFY_*` placeholders and do not create, load, or
-request the external script. A fake/example domain is not a gate. Enable the
-network path only after every required value is verified and replaced; queued
-local no-op events may remain, but they must not leave the page.
-
-For a named provider, ground the endpoint, authentication scheme, accepted
-success status, and payload field semantics in current official documentation.
-Record the official URL and verification date in the implementation notes. Do
-not guess whether a provider field accepts names, IDs, slugs, or nested objects.
-If official docs are unavailable, keep the uncertain mapping behind an explicit
-`VERIFY_*` placeholder, label the integration unverified, and block traffic
-until a real provider-accepted record proves the mapping.
+- Count and display success only after provider confirmation, never from an
+  attempt or a client-controlled query, hash, cookie, or storage flag.
+- Keep each confirmed conversion in an allow-listed source class; retain
+  unknown attribution as `unattributed`, and do not claim source-specific CVR
+  when the provider cannot preserve the numerator's source.
+- Keep public errors, logs, and analytics free of PII, secrets, raw external
+  values, and exception text. Validate exact media type, actual body bytes, and
+  a non-null object root; bound provider calls and use finite hard-coded errors.
+- Allow-list attribution before analytics loads, remove query and fragment from
+  its pageview boundary, emit only bounded canonical properties, and keep the
+  network path closed behind unresolved `VERIFY_*` values.
+- Anchor named-provider endpoint, auth, status, and payload semantics to dated
+  official documentation, or leave an explicit launch-blocking placeholder.
 
 If the user asks to **create, build, implement, or deliver a complete package**
 in a writable workspace, materialize the smallest deployable landing artifact

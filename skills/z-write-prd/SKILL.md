@@ -49,29 +49,21 @@ identifiers, and code terms in their natural form.
    never turn public interest, interview enthusiasm, signups, or search demand
    into validated payment, retention, or product requirements.
 9. **The handoff is a fixed interface.** End the PRD with exactly one explicit
-   two-column, seven-row Evidence handoff table headed `Field | Value` using
-   these exact field labels: `Current
-   decision`, `Evidence classes`, `Supported claims`, `Still unproven`,
-   `Contradictions / exclusions`, `Source anchors`, and `Next validation`.
-   In `Evidence classes`, use only `primary behavior`, `observed experiment`,
-   `secondary public`, `search signal`, and `assumption`; do not replace them
-   with custom confidence or source-type labels. Include a class only when
-   supplied inputs or actual results in this PRD belong to it; planned research,
-   pilots, or payment tests do not make that class current.
-   Never leave the class cell empty. If the source packet contains only gaps or
-   unverified product input, use `assumption` and preserve those limits.
-   Treat the seven labels as literal protocol tokens. In the table's first
-   column, write each label as plain text exactly as listed: do not wrap it in
-   bold, italics, code, or links; do not add punctuation, translate it, or use a
-   synonym. For example, write `| Current decision |`, never
-   `| **Current decision** |`.
+   two-column, seven-row Evidence handoff table headed `Field | Value`. Its
+   first column must use these exact plain-text labels: `Current decision`,
+   `Evidence classes`, `Supported claims`, `Still unproven`, `Contradictions /
+   exclusions`, `Source anchors`, and `Next validation`. Do not format,
+   translate, punctuate, or rename them. In `Evidence classes`, use only
+   `primary behavior`, `observed experiment`, `secondary public`, `search
+   signal`, and `assumption`, and include a class only when supplied inputs or
+   actual results support it. Planned research, pilots, or payment tests do not
+   add a current class. Never leave the class cell empty. Use `assumption` for
+   evidence-free or unverified input and preserve that limit.
 10. **Budget the core artifact.** Unless the user explicitly requests an
     exhaustive or enterprise document, keep a quick PRD around 1,000–2,500
-    words and a default full PRD at or below 5,000 whitespace-delimited words.
-    Target at most 4,700 words before final review so headings, tables, and late
-    corrections do not cross the hard limit. Never cut P0 acceptance criteria
-    or the Evidence handoff to hit it; remove repetition and implementation-level
-    detail first.
+    words and a default full PRD at or below 5,000 whitespace-delimited words
+    (draft target: 4,700). Cut repetition and implementation detail before P0
+    acceptance criteria or the Evidence handoff.
 
 ---
 
@@ -146,11 +138,9 @@ Also list **non-functional** needs only if real for indie MVP:
 - multi-tenant / roles only if in scope
 - cost constraints (e.g. LLM spend per user)
 
-Avoid fake NFRs (“99.99% uptime”) unless the product truly needs them.
-Every retained **P0**, functional or non-functional, needs a concrete acceptance
-criterion or validation method. A P0 NFR with only a descriptive note is not
-implementation-ready; give it a measurable threshold, observable prohibition,
-or explicit test procedure.
+Avoid fake NFRs (“99.99% uptime”) unless the product truly needs them. Every
+retained **P0** needs a measurable threshold, observable prohibition, concrete
+acceptance criterion, or explicit validation procedure.
 
 ### Phase 3 — UX / flows (lightweight)
 
@@ -185,26 +175,13 @@ Do **not** invent a 12-person staffing plan.
 
 ### Phase 6 — Write & deliver the PRD
 
-Use the structure in `references/prd-template.md`.  
-Apply the quality bar in `references/quality-bar.md` before delivery.
-
-The Evidence handoff block is an interoperability contract, not optional prose.
-Do not rename its fields, split them into custom subsections, or omit fields
-because similar detail appears elsewhere in the PRD. Use only the canonical
-evidence classes in that table; a richer evidence ledger may appear elsewhere.
-
-Keep one canonical statement of each decision. Do not restate the same scope,
-evidence, risk, or metric in overview prose, a second ledger, requirements,
-milestones, and a postscript merely for completeness. If a full PRD would exceed
-5,000 whitespace-delimited words, keep product decisions, every retained P0 acceptance
-criterion, risks, milestones, and the Evidence handoff in the core; move deep
-schemas, exhaustive test matrices, or secondary P1/P2 detail to a linked
-appendix only when the user or repository actually needs it.
-
-Before delivery, verify both mechanical contracts: the seven first-column
-handoff labels are raw plain text, and the default full core is no more than
-5,000 whitespace-delimited words. When writing a file, `wc -w <path>` is an
-acceptable final check; in chat, draft below the 4,700-word safety target.
+Read and follow `references/prd-template.md`, then apply
+`references/quality-bar.md` before delivery; both are binding. Keep one
+canonical home for each decision. When the core approaches 5,000 words, retain
+product decisions, every P0 acceptance criterion, risks, milestones, and the
+Evidence handoff; move only genuinely deep schemas or secondary P1/P2 detail to
+a needed appendix. Finally verify the raw handoff labels and word count
+(`wc -w <path>` when writing a file).
 
 **Delivery**
 

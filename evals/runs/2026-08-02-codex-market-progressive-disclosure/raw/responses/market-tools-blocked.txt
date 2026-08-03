@@ -1,0 +1,185 @@
+# Market validation: AI invoice assistant
+
+- **Date:** 2026-08-02
+- **Analyst:** agent + skill `z-market-validate`
+- **Geography focus:** United States, pending confirmation
+- **Assumptions:** SaaS for small service businesses; assists with creating invoices, checking details, and following up on overdue payments. No public web, social, review, pricing, customer-interview, or payment evidence was available.
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence |
+|---|---|---|
+| Commercial value? | Weak—not yet demonstrated | Low |
+| Fit for independent developer? | Conditional | Low |
+| Short-term return odds (30–90d)? | Low | Low |
+| **Recommendation band** | Explore with spike | Low |
+
+**Demand is not proven.** The idea describes a plausible business chore, but plausibility is not evidence that a specific customer will switch or pay. Because every research channel was blocked, this report contains assumptions only. That does not establish that demand is absent; it establishes that the current evidence is insufficient.
+
+Composite score: **2.33/5**, reflecting evidence weakness rather than a measured market verdict.
+
+## 2. Idea framing
+
+- **Problem in user language:** “Preparing correct invoices and chasing late payments consumes time, and mistakes delay payment.”
+- **Proposed solution:** An AI assistant that helps create, check, send, and follow up on invoices.
+- **Narrow initial ICP:** US-based independent consultants and small agencies issuing 10–100 recurring client invoices per month without dedicated accounts-receivable staff.
+- **Non-ICP:** Enterprises, healthcare, government billing, international tax-heavy invoicing, and companies needing autonomous bookkeeping or payment execution.
+
+The product definition remains ambiguous. Invoice creation, document extraction, accounts-payable automation, bookkeeping, and collections are different markets with different buyers and risks.
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---|---|---|
+| X/Twitter | Blocked | Public and social search unavailable |
+| Reddit | Blocked | Buyer-community complaints could not be inspected |
+| Hacker News | Blocked | Launches, failures, and objections unavailable |
+| Product Hunt | Blocked | Competitor launches and comments unavailable |
+| Indie Hackers | Blocked | Solo-founder outcomes unavailable |
+| Reviews/stores | Blocked | Pricing, churn, and low-rating themes unavailable |
+| Other public search | Blocked | Competitor sites and search-demand signals unavailable |
+
+No channel was treated as searched.
+
+### 3.2 Demand signals
+
+**Not found.** There are no sourced complaints, repeated workflows, purchase attempts, active searches, switching behavior, or payments in the available evidence.
+
+The assumed pain is reasonable enough to investigate, but it is not a demand signal.
+
+### 3.3 Disconfirming signals
+
+**Not found because research was blocked.** Important untested objections include:
+
+- Existing accounting software may already be sufficient.
+- Users may distrust AI-generated financial details.
+- Invoice volume may be too low to justify another subscription.
+- The actual bottleneck may be client approval, disputes, or cash flow—not invoice preparation.
+- Users may prefer a bookkeeper or built-in automation.
+- Integrations, security expectations, and exception handling may overwhelm a solo operator.
+
+These are hypotheses, not observed objections.
+
+### 3.4 Pricing and willingness to pay
+
+No pricing or payment evidence was available. The likely budget owner is the business owner or operations lead, but this is an assumption. Willingness to pay would need to be tied to a measured outcome such as fewer errors, hours saved, or invoices paid sooner.
+
+## 4. Competition and substitutes
+
+All entries below are assumed categories; pricing and customer complaints were not verified.
+
+| Substitute | Type | Price signal | Possible gap | Threat to indie |
+|---|---|---:|---|---|
+| Existing accounting/invoicing software | Established software | Not found | May require manual setup and follow-up | High: already owns workflow and data |
+| Spreadsheets and templates | Manual process | Free/low-cost assumption | Fragile and repetitive | High for low-volume users |
+| Email/calendar reminders | Manual process | Usually bundled assumption | Follow-ups depend on discipline | Medium |
+| Bookkeeper or virtual assistant | Service | Not found | More costly and human-dependent | Medium; trusted for exceptions |
+| Generic AI assistant | General software | Not found | Lacks reliable integrations and controls | Medium |
+| Do nothing / tolerate delays | Inaction | No new spend | Pain remains | High when pain is infrequent |
+
+**Category structure:** Not established. It may be a crowded feature category embedded inside larger accounting platforms rather than a durable standalone product.
+
+## 5. Scores
+
+| Dimension | Score | Evidence |
+|---|---:|---|
+| Demand reality | 1 | No observable demand evidence |
+| Willingness to pay | 1 | No price, purchase, or switching evidence |
+| Competition intensity | 3 | Unknown; midpoint used because research was blocked |
+| Indie fit | 3 | Narrow assistant is feasible; integrations and financial reliability add burden |
+| Time-to-signal | 4 | A manual paid pilot can test the premise quickly |
+| Short-term return odds | 2 | Possible service-assisted sale, but no acquisition evidence |
+| **Composite (avg)** | **2.33** | Evidence-limited score |
+
+**Transparent composite calculation — single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 3 = 3
+composite_sum = 1 + 1 + 3 + 3 + 4 + 2 = 14
+composite_exact = 14 / 6 = 2.3333333333333335
+display_composite = round(composite_exact, 2) = 2.33
+```
+
+## 6. Commercial value
+
+**Weak on current evidence.** A commercial case would exist if a defined group routinely loses meaningful time or cash because invoicing and follow-up are mishandled—and will pay to improve that outcome. Neither the loss nor willingness to pay has been observed. “Businesses send invoices” proves category activity, not demand for another AI product.
+
+## 7. Independent-developer fit
+
+**Conditional.** A human-assisted MVP for one invoicing system and one narrow workflow is solo-buildable. A broad autonomous invoice assistant is not an attractive starting scope because it introduces integrations, sensitive financial data, auditability, exception handling, customer support, and potentially consequential errors.
+
+Distribution is also unproven. The strongest initial channel may be direct outreach through bookkeepers, fractional CFOs, agency operators, or niche professional groups, but no channel evidence currently supports that assumption.
+
+## 8. Short-term return
+
+Define success as **one paid pilot within 30 days**, not recurring revenue at scale.
+
+- **Best plausible path:** Manually deliver overdue-invoice follow-up for one narrow profession, with AI used behind the scenes.
+- **Odds:** Low from current evidence because no reachable audience, payment behavior, or acute trigger has been demonstrated.
+- **What falsifies it:** Ten qualified prospects reveal few recent late-payment incidents; nobody will share a redacted workflow; or nobody accepts even a small paid pilot after seeing a concrete sample.
+
+## 9. Entry directions
+
+### Primary wedge: overdue-invoice follow-up for small agencies
+
+- **Who:** US agencies with 10–100 monthly invoices and no accounts-receivable employee.
+- **Job-to-be-done:** Detect overdue invoices and prepare context-aware, approval-required follow-up messages.
+- **MVP:** CSV upload or forwarded invoice data, aging view, draft reminders, approval log, and outcome tracking. Keep sending and payment actions human-approved.
+- **Where to find the first ten users:** Direct outreach to agency owners and bookkeepers already serving agencies; this channel must be validated.
+- **14-day metric:** At least 5 workflow conversations, 3 users providing redacted invoice examples, and 1 paid pilot.
+
+### Backup wedges
+
+1. Pre-send invoice error checking for one professional-services niche.
+2. A white-label follow-up assistant for independent bookkeepers.
+
+### Explicitly do not start with
+
+- A universal “AI finance employee”
+- Autonomous payments, bookkeeping entries, or collections
+- Enterprise accounting integrations
+- Every country, tax regime, and invoicing platform
+- Building a full SaaS before obtaining workflow access or payment
+
+## 10. Risks and open questions
+
+- Which single invoicing task is frequent and painful enough to buy?
+- Is the buyer the owner, bookkeeper, operations lead, or accountant?
+- Does the target experience the problem weekly or only occasionally?
+- What do customers already use, and why would they switch?
+- Will users grant access to financial documents?
+- What error rate and audit trail are acceptable?
+- Is this a standalone subscription or merely a feature of incumbent software?
+- Can a solo founder support integrations and financial-data security credibly?
+
+## 11. Next 48 hours
+
+1. **Run a 30–60 minute manual evidence pass:** Search two buyer-focused Reddit communities, X posts from the last 90 days, HN Algolia, Product Hunt, and one software-review site. Record ten linked excerpts covering pain, current solutions, pricing, and objections. If access remains blocked, label it blocked.
+2. **Interview five qualified agency owners or bookkeepers:** Ask about their last late invoice, what they did, time or money lost, tools used, and whether they previously paid for a remedy. Do not ask whether they “like the idea.”
+3. **Offer a bounded paid concierge pilot:** Process one real overdue-invoice batch with human approval. Continue only if at least one prospect pays or makes a credible purchase commitment; otherwise narrow or park the idea.
+
+## 12. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Explore with spike |
+| Evidence classes | assumption |
+| Supported claims | Only that the concept is specific enough for a narrow, manual-first validation test; demand itself is not supported |
+| Still unproven | Problem frequency, economic loss, buyer, switching intent, payment, retention, acquisition channel, competitive gap, accuracy, trust, and delivery feasibility |
+| Contradictions / exclusions | No observed contradictions because all research channels were blocked; exclude broad autonomous finance, enterprise, tax-heavy, and multi-platform scope |
+| Source anchors | No external anchors available; all public web, social, review, and competitor channels were blocked on 2026-08-02 |
+| Next validation | Founder runs one paid concierge pilot; success = payment or credible purchase commitment from at least 1 qualified prospect, failure = none after 10 qualified offers |
+
+## 13. Source appendix
+
+### Strongest supporting links
+
+1. **Not found:** Public research was unavailable, so no supporting link can be supplied honestly.
+
+### Strongest opposing links
+
+1. **Not found:** Public research was unavailable, so no opposing link can be supplied honestly.
+
+**Bottom line:** demand is **not proven**. Proceed only with a short evidence-gathering spike and a paid manual test—not a full product build.

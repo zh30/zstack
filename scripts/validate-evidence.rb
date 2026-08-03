@@ -2,20 +2,100 @@
 # Validate evaluation provenance, run-to-artifact mapping, and retained bytes.
 
 require "digest"
+require "find"
 require "json"
+require "optparse"
 require "pathname"
 require "set"
 require "yaml"
+require_relative "lib/eval_archive_name"
+require_relative "lib/eval_input_file"
+require_relative "lib/eval_limits"
 require_relative "lib/eval_public_text"
+require_relative "lib/eval_strict_json"
+require_relative "lib/eval_strict_yaml"
 
 ROOT = File.expand_path("..", __dir__)
 RUNS_ROOT = File.join(ROOT, "evals", "runs")
 SCHEMA_VERSION = 2
 ARCHIVE_MANIFEST_NAME = "archive-manifest.txt"
 ARCHIVE_MANIFEST_HEADER = "sha256                                                            bytes  path"
+EVAL_ARCHIVE_NAME = Zstack::EvalArchiveName
+MAX_ARCHIVE_FILES = Zstack::EvalLimits::MAX_ARCHIVE_FILES
+MAX_ARCHIVE_FILE_BYTES = Zstack::EvalLimits::MAX_RETAINED_FILE_BYTES
+MAX_ARCHIVE_BYTES = Zstack::EvalLimits::MAX_ARCHIVE_BYTES
+MAX_ARCHIVE_TREE_ENTRIES = Zstack::EvalLimits::MAX_ARCHIVE_TREE_ENTRIES
+MAX_EVIDENCE_ARCHIVES = Zstack::EvalLimits::MAX_EVIDENCE_ARCHIVES
+MAX_EVIDENCE_TREE_ENTRIES = Zstack::EvalLimits::MAX_EVIDENCE_TREE_ENTRIES
 EVAL_PUBLIC_TEXT = Zstack::EvalPublicText
+EVAL_LIMITS = Zstack::EvalLimits
+
+options = { candidate: nil, candidate_name: nil }
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: ruby scripts/validate-evidence.rb [--candidate DIR --candidate-name ARCHIVE]"
+  opts.on("--candidate DIR", "Validate one unpublished directory alongside existing archives") do |value|
+    options[:candidate] = value
+  end
+  opts.on("--candidate-name NAME", "Final archive name used to validate the candidate") do |value|
+    options[:candidate_name] = value
+  end
+end
+begin
+  parser.parse!
+rescue OptionParser::ParseError => e
+  warn "ERROR: #{e.message}"
+  warn parser
+  exit 2
+end
+unless ARGV.empty?
+  warn "ERROR: unexpected positional arguments: #{ARGV.join(" ")}"
+  exit 2
+end
+if options.values.compact.length == 1
+  warn "ERROR: --candidate and --candidate-name must be provided together"
+  exit 2
+end
+
+runs_root_is_real_directory = begin
+  stat = File.lstat(RUNS_ROOT)
+  stat.directory? && !stat.symlink? && stat.uid == Process.uid
+rescue Errno::ENOENT, Errno::EACCES
+  false
+end
+runs_root_exists = File.exist?(RUNS_ROOT) || File.symlink?(RUNS_ROOT)
+candidate_directory = nil
+candidate_archive_name = nil
+if options[:candidate]
+  candidate_directory = File.expand_path(options.fetch(:candidate), ROOT)
+  candidate_archive_name = options.fetch(:candidate_name)
+  unless EVAL_ARCHIVE_NAME.valid_candidate?(candidate_archive_name)
+    warn "ERROR: --candidate-name must use a valid ISO calendar date and YYYY-MM-DD-kebab-slug"
+    exit 2
+  end
+  unless runs_root_is_real_directory &&
+         File.directory?(candidate_directory) && !File.symlink?(candidate_directory) &&
+         File.dirname(File.realpath(candidate_directory)) == File.realpath(RUNS_ROOT)
+    warn "ERROR: --candidate must be a real directory directly under evals/runs"
+    exit 2
+  end
+  candidate_target = File.join(RUNS_ROOT, candidate_archive_name)
+  if File.exist?(candidate_target) || File.symlink?(candidate_target)
+    warn "ERROR: candidate target already exists: evals/runs/#{candidate_archive_name}"
+    exit 2
+  end
+end
+
+CANDIDATE_DIRECTORY = candidate_directory
+CANDIDATE_ARCHIVE_NAME = candidate_archive_name
 
 def relative_to_root(path)
+  if CANDIDATE_DIRECTORY &&
+     (path == CANDIDATE_DIRECTORY || path.start_with?("#{CANDIDATE_DIRECTORY}/"))
+    suffix = Pathname.new(path).relative_path_from(Pathname.new(CANDIDATE_DIRECTORY)).to_s
+    candidate_path = File.join(ROOT, "evals", "runs", CANDIDATE_ARCHIVE_NAME)
+    candidate_path = File.join(candidate_path, suffix) unless suffix == "."
+    return Pathname.new(candidate_path).relative_path_from(Pathname.new(ROOT)).to_s
+  end
   Pathname.new(path).relative_path_from(Pathname.new(ROOT)).to_s
 end
 
@@ -29,9 +109,74 @@ def safe_relative_path?(path)
     !clean_path.start_with?("../")
 end
 
+def read_archive_file(path, errors, require_utf8: true)
+  Zstack::EvalInputFile.read(
+    path,
+    label: relative_to_root(path),
+    require_utf8: require_utf8,
+    root: ROOT
+  )
+rescue Zstack::EvalInputFile::ReadError => e
+  errors << e.message
+  nil
+end
+
+def archive_tree_paths(run_directory)
+  paths = []
+  Find.find(run_directory) do |path|
+    next if path == run_directory
+
+    if paths.length >= MAX_ARCHIVE_TREE_ENTRIES
+      raise "#{relative_to_root(run_directory)}: archive has more than #{MAX_ARCHIVE_TREE_ENTRIES} tree entries"
+    end
+    paths << path
+  end
+  paths.sort
+end
+
+def bounded_top_level_entries(directory)
+  entries = []
+  Dir.each_child(directory) do |name|
+    if entries.length >= MAX_EVIDENCE_ARCHIVES
+      raise "evals/runs has more than #{MAX_EVIDENCE_ARCHIVES} top-level entries"
+    end
+    entries << File.join(directory, name)
+  end
+  entries.sort
+end
+
+def archive_tree_state(run_directory, tree_paths = archive_tree_paths(run_directory))
+  ([run_directory] + tree_paths).map do |path|
+    stat = File.lstat(path)
+    unless stat.uid == Process.uid
+      raise "#{relative_to_root(path)}: archive entry must be owned by uid #{Process.uid}"
+    end
+    if stat.file? && stat.nlink != 1
+      raise "#{relative_to_root(path)}: archive file must have one hard link"
+    end
+    relative = path == run_directory ? "." :
+      Pathname.new(path).relative_path_from(Pathname.new(run_directory)).to_s
+    [
+      relative,
+      stat.ftype,
+      stat.dev,
+      stat.ino,
+      stat.uid,
+      stat.nlink,
+      stat.mode,
+      stat.size,
+      stat.mtime.to_r,
+      stat.ctime.to_r
+    ]
+  end
+end
+
 def load_case_ids(relative_path, errors)
   path = File.join(ROOT, relative_path)
-  document = YAML.safe_load(File.read(path), permitted_classes: [], aliases: false)
+  document = Zstack::EvalStrictYaml.parse(
+    Zstack::EvalInputFile.read(path, label: relative_path, root: ROOT),
+    path
+  )
   unless document.is_a?(Hash)
     errors << "#{relative_path}: YAML root must be a mapping"
     return Set.new
@@ -40,7 +185,7 @@ def load_case_ids(relative_path, errors)
   Array(document["cases"]).each_with_object(Set.new) do |entry, ids|
     ids << entry["id"] if entry.is_a?(Hash) && entry["id"].is_a?(String)
   end
-rescue Errno::ENOENT, Psych::Exception => e
+rescue Errno::ENOENT, Psych::Exception, Zstack::EvalInputFile::ReadError => e
   errors << "#{relative_path}: cannot load case ids: #{e.message}"
   Set.new
 end
@@ -71,7 +216,64 @@ case_ids_by_suite = {
   "behavioral" => load_case_ids("evals/cases.yaml", errors),
   "routing" => load_case_ids("evals/routing.yaml", errors)
 }
-run_directories = Dir.glob(File.join(RUNS_ROOT, "*")).select { |path| File.directory?(path) }.sort
+run_directories = []
+if runs_root_is_real_directory
+  begin
+    top_level_entries = bounded_top_level_entries(RUNS_ROOT)
+  rescue SystemCallError, RuntimeError => e
+    errors << e.message
+    top_level_entries = []
+  end
+  top_level_entries.each do |entry|
+    next if %w[. ..].include?(File.basename(entry))
+    next if CANDIDATE_DIRECTORY && entry == CANDIDATE_DIRECTORY
+
+    if File.symlink?(entry) || !File.directory?(entry)
+      errors << "#{relative_to_root(entry)}: top-level entry must be a real archive directory"
+      next
+    end
+    unless EVAL_ARCHIVE_NAME.valid_published?(File.basename(entry))
+      errors << "#{relative_to_root(entry)}: archive directory name must use a valid ISO calendar date as YYYY-MM-DD or YYYY-MM-DD-kebab-slug"
+    end
+    run_directories << entry
+  end
+elsif runs_root_exists
+  errors << "evals/runs: archive root must be a real directory"
+end
+run_directories << CANDIDATE_DIRECTORY if CANDIDATE_DIRECTORY && runs_root_is_real_directory
+archive_tree_states = {}
+archive_tree_paths_by_directory = {}
+evidence_tree_entries = 0
+evidence_tree_limit_reached = false
+run_directories.each do |run_directory|
+  begin
+    if evidence_tree_limit_reached
+      archive_tree_paths_by_directory[run_directory] = nil
+      archive_tree_states[run_directory] = nil
+      next
+    end
+    tree_paths = archive_tree_paths(run_directory)
+    projected_entries = evidence_tree_entries + tree_paths.length + 1
+    if projected_entries > MAX_EVIDENCE_TREE_ENTRIES
+      errors << "evidence tree has more than #{MAX_EVIDENCE_TREE_ENTRIES} entries"
+      evidence_tree_limit_reached = true
+      archive_tree_paths_by_directory[run_directory] = nil
+      archive_tree_states[run_directory] = nil
+      next
+    end
+    evidence_tree_entries = projected_entries
+    archive_tree_paths_by_directory[run_directory] = tree_paths
+    archive_tree_states[run_directory] = archive_tree_state(run_directory, tree_paths)
+  rescue SystemCallError => e
+    errors << "#{relative_to_root(run_directory)}: archive could not be captured safely: #{e.class}"
+    archive_tree_paths_by_directory[run_directory] = nil
+    archive_tree_states[run_directory] = nil
+  rescue RuntimeError => e
+    errors << e.message
+    archive_tree_paths_by_directory[run_directory] = nil
+    archive_tree_states[run_directory] = nil
+  end
+end
 metadata_count = 0
 metadata_run_count = 0
 archive_manifest_count = 0
@@ -82,14 +284,36 @@ inventory_only_count = 0
 metadata_artifacts = Hash.new { |directories, directory| directories[directory] = Set.new }
 manifest_artifacts = Hash.new { |directories, directory| directories[directory] = Set.new }
 manifest_counts = Hash.new(0)
+archive_files_by_directory = {}
 
-errors << "evals/runs: archive root must not be a symbolic link" if File.symlink?(RUNS_ROOT)
 run_directories.each do |run_dir|
   relative_run = relative_to_root(run_dir)
   errors << "#{relative_run}: archive directory must not be a symbolic link" if File.symlink?(run_dir)
-  Dir.glob(File.join(run_dir, "**", "*"), File::FNM_DOTMATCH).each do |entry|
-    next if %w[. ..].include?(File.basename(entry))
-    errors << "#{relative_to_root(entry)}: archive content must not be a symbolic link" if File.symlink?(entry)
+  archive_files = []
+  Array(archive_tree_paths_by_directory.fetch(run_dir)).each do |entry|
+    if File.symlink?(entry)
+      errors << "#{relative_to_root(entry)}: archive content must not be a symbolic link"
+      next
+    elsif !File.file?(entry) && !File.directory?(entry)
+      errors << "#{relative_to_root(entry)}: archive content must be a regular file or directory"
+      next
+    end
+    archive_files << entry if File.file?(entry)
+  end
+  archive_files_by_directory[run_dir] = archive_files
+  if archive_files.length > MAX_ARCHIVE_FILES
+    errors << "#{relative_run}: archive has #{archive_files.length} files; maximum is #{MAX_ARCHIVE_FILES}"
+  end
+  archive_bytes = 0
+  archive_files.each do |entry|
+    bytes = File.size(entry)
+    archive_bytes += bytes
+    if bytes > MAX_ARCHIVE_FILE_BYTES
+      errors << "#{relative_to_root(entry)}: archive file is #{bytes} bytes; maximum is #{MAX_ARCHIVE_FILE_BYTES}"
+    end
+  end
+  if archive_bytes > MAX_ARCHIVE_BYTES
+    errors << "#{relative_run}: archive is #{archive_bytes} bytes; maximum is #{MAX_ARCHIVE_BYTES}"
   end
   %w[prompts.md summary.md run.json archive-manifest.txt].each do |required_file|
     path = File.join(run_dir, required_file)
@@ -104,7 +328,10 @@ run_directories.each do |run_directory|
 
   archive_manifest_count += 1
   relative_manifest = relative_to_root(manifest_path)
-  lines = File.readlines(manifest_path, chomp: true)
+  manifest_content = read_archive_file(manifest_path, errors)
+  next unless manifest_content
+
+  lines = manifest_content.lines(chomp: true)
   unless lines.shift == ARCHIVE_MANIFEST_HEADER
     errors << "#{relative_manifest}: first line must be the canonical archive-manifest header"
   end
@@ -133,7 +360,10 @@ run_directories.each do |run_directory|
       errors << "#{relative_manifest}:#{line_number}: archived file is missing: #{archive_path}"
       next
     end
-    content = File.binread(retained_path)
+    next if File.size(retained_path) > MAX_ARCHIVE_FILE_BYTES
+
+    content = read_archive_file(retained_path, errors, require_utf8: false)
+    next unless content
     valid = true
     if content.bytesize != bytes.to_i
       errors << "#{relative_manifest}:#{line_number}: byte count mismatch for #{archive_path} (expected #{bytes}, found #{content.bytesize})"
@@ -146,10 +376,8 @@ run_directories.each do |run_directory|
     archive_verified_count += 1 if valid
   end
 
-  archive_files = Dir.glob(File.join(run_directory, "**", "*"), File::FNM_DOTMATCH).select do |path|
-    next false if %w[. ..].include?(File.basename(path))
-    next false if path == manifest_path
-    File.file?(path)
+  archive_files = archive_files_by_directory.fetch(run_directory, []).reject do |path|
+    path == manifest_path
   end.map { |path| Pathname.new(path).relative_path_from(Pathname.new(run_directory)).to_s }.to_set
   (archive_files - listed_paths).each do |archive_path|
     errors << "#{relative_manifest}: archive file is not covered: #{archive_path}"
@@ -159,35 +387,49 @@ run_directories.each do |run_directory|
   end
 end
 
-Dir.glob([
+public_review_paths = Dir.glob([
   File.join(RUNS_ROOT, "*", "runner-review.json"),
   File.join(RUNS_ROOT, "*", "summary.md")
-]).sort.each do |path|
-  if EVAL_PUBLIC_TEXT.machine_local_path?(File.read(path))
+])
+if CANDIDATE_DIRECTORY
+  public_review_paths.concat(%w[runner-review.json summary.md].map { |name| File.join(CANDIDATE_DIRECTORY, name) })
+end
+public_review_paths.select { |path| File.file?(path) }.sort.each do |path|
+  content = read_archive_file(path, errors)
+  next unless content
+
+  if EVAL_PUBLIC_TEXT.machine_local_path?(content)
     errors << "#{relative_to_root(path)}: public review text contains a machine-local path"
   end
 end
 
-Dir.glob(File.join(RUNS_ROOT, "*", "run.json")).sort.each do |path|
+metadata_paths = Dir.glob(File.join(RUNS_ROOT, "*", "run.json"))
+metadata_paths << File.join(CANDIDATE_DIRECTORY, "run.json") if CANDIDATE_DIRECTORY
+metadata_paths.select { |path| File.file?(path) }.sort.each do |path|
   metadata_count += 1
   run_directory = File.dirname(path)
   raw_directory = File.join(run_directory, "raw")
   relative_path = relative_to_root(path)
 
   begin
-    data = JSON.parse(File.read(path))
+    content = Zstack::EvalInputFile.read(path, label: relative_path, root: ROOT)
+    data = Zstack::EvalStrictJson.parse(content)
     unless data.is_a?(Hash)
       errors << "#{relative_path}: JSON root must be an object"
       next
+    end
+    unless EVAL_LIMITS.finite_json_value?(data)
+      errors << "#{relative_path}: must not contain non-finite numbers"
     end
 
     unless data["schemaVersion"] == SCHEMA_VERSION
       errors << "#{relative_path}: schemaVersion must equal #{SCHEMA_VERSION}"
     end
-    unless data["archiveDate"].is_a?(String) && data["archiveDate"].match?(/\A\d{4}-\d{2}-\d{2}\z/)
-      errors << "#{relative_path}: archiveDate must use YYYY-MM-DD"
+    unless EVAL_ARCHIVE_NAME.valid_date?(data["archiveDate"])
+      errors << "#{relative_path}: archiveDate must be a valid ISO calendar date using YYYY-MM-DD"
     end
-    run_directory_date = File.basename(run_directory)[/\A\d{4}-\d{2}-\d{2}/]
+    run_directory_name = run_directory == CANDIDATE_DIRECTORY ? CANDIDATE_ARCHIVE_NAME : File.basename(run_directory)
+    run_directory_date = run_directory_name[/\A\d{4}-\d{2}-\d{2}/]
     if run_directory_date && data["archiveDate"] != run_directory_date
       errors << "#{relative_path}: archiveDate must match the run directory date #{run_directory_date}"
     end
@@ -269,6 +511,23 @@ Dir.glob(File.join(RUNS_ROOT, "*", "run.json")).sort.each do |path|
 
       errors << "#{prefix}.grade must be pass or fail" unless %w[pass fail].include?(run["grade"])
 
+      if run.key?("exitStatus") && !run["exitStatus"].nil? &&
+         (!run["exitStatus"].is_a?(Integer) || run["exitStatus"].negative?)
+        errors << "#{prefix}.exitStatus must be a non-negative integer or null"
+      end
+      if run.key?("elapsedSeconds") && !run["elapsedSeconds"].nil? &&
+         !EVAL_LIMITS.finite_nonnegative_number?(run["elapsedSeconds"])
+        errors << "#{prefix}.elapsedSeconds must be a finite non-negative number or null"
+      end
+      if run.key?("totalCostUsd") && !run["totalCostUsd"].nil? &&
+         !EVAL_LIMITS.finite_nonnegative_number?(run["totalCostUsd"])
+        errors << "#{prefix}.totalCostUsd must be a finite non-negative number or null"
+      end
+      if run.key?("tokenUsage") && !run["tokenUsage"].nil? &&
+         (!run["tokenUsage"].is_a?(Hash) || !EVAL_LIMITS.nonnegative_finite_json_value?(run["tokenUsage"]))
+        errors << "#{prefix}.tokenUsage must be an object with finite non-negative numbers or null"
+      end
+
       %w[model workspace permissions stopStatus].each do |field|
         field_is_present = run.key?(field) || execution_defaults.key?(field)
         value = run.key?(field) ? run[field] : execution_defaults[field]
@@ -323,24 +582,40 @@ Dir.glob(File.join(RUNS_ROOT, "*", "run.json")).sort.each do |path|
         end
       end
     end
+  rescue Zstack::EvalInputFile::ReadError => e
+    errors << e.message
   rescue JSON::ParserError => e
     errors << "#{relative_path}: invalid JSON: #{e.message}"
   end
 end
 
-Dir.glob(File.join(RUNS_ROOT, "*", "raw", "artifact-manifest*.txt")).sort.each do |manifest_path|
+raw_manifest_paths = Dir.glob(File.join(RUNS_ROOT, "*", "raw", "artifact-manifest*.txt"))
+if CANDIDATE_DIRECTORY
+  raw_manifest_paths.concat(Dir.glob(File.join(CANDIDATE_DIRECTORY, "raw", "artifact-manifest*.txt")))
+end
+raw_manifest_paths.sort.each do |manifest_path|
   manifest_count += 1
   run_directory = File.dirname(File.dirname(manifest_path))
   raw_directory = File.dirname(manifest_path)
   manifest_counts[run_directory] += 1
   relative_manifest = relative_to_root(manifest_path)
-  lines = File.readlines(manifest_path, chomp: true)
-  inventory_only_paths = lines.each_with_object([]) do |line, paths|
-    next unless line.start_with?("Unarchived entries are inventory-only:")
+  manifest_content = read_archive_file(manifest_path, errors)
+  next unless manifest_content
 
-    paths.concat(line.split(":", 2).last.split(",").map(&:strip))
-  end.reject(&:empty?).to_set
+  lines = manifest_content.lines(chomp: true)
+  inventory_declarations = lines.select { |line| line.start_with?("Unarchived entries are inventory-only:") }
+  if inventory_declarations.length > 1
+    errors << "#{relative_manifest}: inventory-only entries must use at most one declaration line"
+  end
+  inventory_only_list = inventory_declarations.flat_map do |line|
+    line.split(":", 2).last.split(",").map(&:strip)
+  end.reject(&:empty?)
+  if inventory_only_list.uniq.length != inventory_only_list.length
+    errors << "#{relative_manifest}: inventory-only declaration contains duplicate paths"
+  end
+  inventory_only_paths = inventory_only_list.to_set
   inventory_only_seen = Set.new
+  listed_artifact_paths = Set.new
   entry_count = 0
 
   lines.each_with_index do |line, index|
@@ -365,6 +640,10 @@ Dir.glob(File.join(RUNS_ROOT, "*", "raw", "artifact-manifest*.txt")).sort.each d
       errors << "#{relative_manifest}:#{index + 1}: artifact path must be canonical, relative, and stay inside raw/: #{artifact_path}"
       next
     end
+    unless listed_artifact_paths.add?(artifact_path)
+      errors << "#{relative_manifest}:#{index + 1}: duplicate artifact path: #{artifact_path}"
+      next
+    end
 
     archived_path = archived_candidates(manifest_path, artifact_path).find { |candidate| File.file?(candidate) }
     unless archived_path
@@ -383,7 +662,10 @@ Dir.glob(File.join(RUNS_ROOT, "*", "raw", "artifact-manifest*.txt")).sort.each d
     end
     manifest_artifacts[run_directory] << archived_relative
 
-    content = File.binread(archived_path)
+    next if File.size(archived_path) > MAX_ARCHIVE_FILE_BYTES
+
+    content = read_archive_file(archived_path, errors, require_utf8: false)
+    next unless content
     relative_artifact = relative_to_root(archived_path)
     valid = true
     if content.bytesize != bytes.to_i
@@ -422,6 +704,19 @@ run_directories.each do |run_directory|
   end
   (metadata_artifacts[run_directory] - manifest_artifacts[run_directory]).each do |artifact_path|
     errors << "#{relative_run}: metadata artifact is not covered by a manifest: #{artifact_path}"
+  end
+end
+
+run_directories.each do |run_directory|
+  begin
+    next unless archive_tree_states.fetch(run_directory)
+    next if archive_tree_state(run_directory) == archive_tree_states.fetch(run_directory)
+
+    errors << "#{relative_to_root(run_directory)}: archive changed while evidence validation was running"
+  rescue SystemCallError => e
+    errors << "#{relative_to_root(run_directory)}: archive could not be rechecked safely: #{e.class}"
+  rescue RuntimeError => e
+    errors << e.message
   end
 end
 

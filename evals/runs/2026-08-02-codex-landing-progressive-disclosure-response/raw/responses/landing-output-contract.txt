@@ -1,0 +1,929 @@
+# 10-Day Smoke Test: “ClientDeck” Chrome Extension
+
+“ClientDeck” is a temporary working name; trademark and domain availability are unverified. This package tests demand for an unbuilt product—it does not claim that the extension exists.
+
+Because web access and file writes are unavailable, I could not verify current Buttondown or Plausible API contracts or create the deployable Cloudflare Pages artifact. Those integrations remain explicit launch blockers below.
+
+## 1. Smoke protocol
+
+### Audience
+
+Hands-on customer support agents and support leads at small US SaaS companies, especially people who repeatedly switch between client-specific tabs, dashboards, tickets, documentation, and admin tools.
+
+Exclude enterprise procurement teams, general-purpose tab-management shoppers, and people who do not regularly revisit client-specific browser contexts.
+
+### Offer
+
+A planned Chrome extension that saves a client-specific collection of tabs as a workspace and restores it in one click.
+
+- Single CTA: **Join the early-access waitlist**
+- Planned price: **from $9/month**
+- No payment during this test
+- No firm release date
+- No claim that the extension is already available
+
+### Hypothesis
+
+If qualified support agents at small US SaaS companies see a credible promise of restoring a client’s working context in one click, enough will join an early-access waitlist—and some will reply with a concrete current workaround—to justify customer interviews and a thin MVP.
+
+### Dates
+
+Run from August 3 through August 12, 2026.
+
+Freeze the shipped headline and offer for the first seven days. Only fix defects. Use days 8–10 for a pre-registered headline retest if the first version receives adequate traffic but weak conversion.
+
+### Metrics
+
+Primary metric:
+
+```text
+Confirmed waitlist CVR =
+provider-confirmed, source-attributed subscribers / unique landing visitors
+```
+
+A subscriber counts only after Buttondown confirms acceptance according to its verified official API semantics. A button click, form attempt, client redirect, query parameter, or local success message is not a conversion.
+
+Secondary metrics:
+
+- Hero CTA click rate
+- Valid form-attempt rate
+- Buttondown double-opt-in confirmation rate, if enabled
+- Welcome email open rate
+- Welcome email reply rate
+- Number of replies describing a repeated client-context workflow
+- Number explicitly saying $9/month sounds reasonable
+- Cost per provider-confirmed signup
+- Conversion and engagement by decision lane
+
+Do not combine warm outreach with cold ads or organic community traffic in any headline metric.
+
+### Traffic lanes and thresholds
+
+#### Cold paid traffic
+
+Target: 120–150 attributable unique visitors from Reddit and X ads combined, while retaining each platform separately in raw reporting.
+
+- Continue: at least 5 confirmed signups from 125 visitors, CVR ≥4%, and at least 2 engaged replies across cold signups.
+- Promising but unresolved: 3–4 signups from 125 visitors or CVR 2.5–3.9%. Interview signups and retest the offer once.
+- Reshape or stop: no more than 2 signups after at least 125 visitors, CVR <2%, with technically sound attribution and form delivery.
+- Ad-level early stop: pause a creative after at least 40 landing visits if it produces zero confirmed signups.
+- Cost guardrail: pause a platform if confirmed cost per signup exceeds $30 after at least $60 spent.
+
+Reddit and X results may be summed only into the pre-registered `cold_paid` lane for the lane decision. Keep platform rows visible; do not disguise a losing platform with another platform’s results.
+
+#### Cold organic communities
+
+Target: 60–80 attributable visitors from permitted Reddit posts and support/SaaS communities.
+
+- Continue: at least 5 confirmed signups from 75 visitors, CVR ≥6%, and at least 2 engaged replies.
+- Promising but unresolved: 3–4 signups or CVR 3–5.9%.
+- Reshape: no more than 2 signups after 75 visitors, CVR <3%.
+- If fewer than 50 attributable visitors arrive, report “insufficient sample”; do not declare failure.
+
+#### Warm direct outreach
+
+Target: 25–30 individually selected people who plausibly fit the ICP. Report recipients, visits, signups, and replies separately.
+
+- Continue: at least 5 confirmed signups from 30 delivered messages, signup rate ≥15%, plus at least 3 substantive replies.
+- Soft signal: 3–4 signups or replies that express interest without describing current behavior.
+- Reshape: no more than 2 signups and no more than 1 substantive reply after 30 delivered, personalized messages.
+- Never add these visits or signups to cold-traffic CVR.
+
+A substantive reply must mention at least one of:
+
+- A repeated client-specific workflow
+- A current workaround
+- Frequency of rebuilding context
+- A recent failure or wasted-time incident
+- A price reaction
+- A request to try the product
+
+Compliments such as “cool idea” do not count.
+
+### Experiment-wide decision minimum
+
+Do not make a build decision until either:
+
+- One cold lane reaches its minimum sample and conversion threshold; or
+- The 10 days end, in which case classify underpowered lanes as inconclusive.
+
+Warm success alone authorizes interviews, not an MVP.
+
+---
+
+# 2. Complete landing-page copy
+
+## Working product name
+
+**ClientDeck**
+
+## Navigation
+
+**ClientDeck**
+
+Button:
+
+**Join the early-access waitlist**
+
+## Hero — ship this version first
+
+Eyebrow:
+
+**For hands-on support teams at small SaaS companies**
+
+Headline:
+
+**Restore every tab for a client in one click**
+
+Subheadline:
+
+**Stop rebuilding the same browser context every time a customer needs help. ClientDeck is a planned Chrome extension for saving client-specific tab workspaces and reopening them when the next ticket arrives.**
+
+Price chip:
+
+**Planned pricing from $9/month**
+
+Stage note:
+
+**We’re validating demand before building the full extension. No payment today and no promised release date.**
+
+Email label:
+
+**Work email**
+
+Email placeholder:
+
+**you@company.com**
+
+Optional qualifier label:
+
+**What do you reopen for each client?**  
+**Optional — 160 characters maximum**
+
+Qualifier placeholder:
+
+**For example: admin panel, ticket, logs, docs, and billing**
+
+Button:
+
+**Join the early-access waitlist**
+
+Consent note:
+
+**Join for early-access updates and occasional research questions. Unsubscribe anytime. We will not sell your email.**
+
+The optional qualifier improves signal quality but may reduce conversion. Keep it visibly optional and do not send its contents to analytics.
+
+## Problem section
+
+Heading:
+
+**Client context disappears between tickets**
+
+Body:
+
+**A customer replies, and the real work begins: finding their account, reopening the right dashboard, locating the ticket, pulling up documentation, and remembering where you left off.**
+
+Bullets:
+
+- **Rebuild the same set of tabs whenever a client returns.**
+- **Lose time searching for the correct account, ticket, logs, and notes.**
+- **Risk acting in the wrong client context when several cases overlap.**
+
+## Solution section
+
+Heading:
+
+**Save the context once. Bring it back when needed.**
+
+Step 1:
+
+**Create a client workspace**
+
+**Group the tabs you use for one client—from tickets and admin pages to logs and documentation.**
+
+Step 2:
+
+**Give it a recognizable name**
+
+**Keep each client’s working context separate and easy to find.**
+
+Step 3:
+
+**Restore it in one click**
+
+**Reopen that workspace when the next issue arrives instead of rebuilding it tab by tab.**
+
+Clarifying note:
+
+**These describe the planned workflow. The extension has not been built yet, and the final behavior may change after early-user research.**
+
+## Who it is for
+
+Heading:
+
+**Built for support work with recurring client context**
+
+**ClientDeck may fit you if:**
+
+- You provide hands-on support for a small US SaaS team.
+- You repeatedly open several browser tools for the same clients.
+- You switch between multiple customer cases during the day.
+- Generic bookmarks do not preserve the working context you need.
+
+**It is probably not for you if:**
+
+- You want a general reading-list or personal bookmark manager.
+- Your work happens entirely inside one support application.
+- You rarely return to the same client-specific tools or pages.
+
+## Honest proof section
+
+Heading:
+
+**Help shape the first useful version**
+
+Body:
+
+**ClientDeck is currently an idea under validation—not a finished Chrome extension. There are no customer claims or usage numbers yet. Early-access members may be invited to short research conversations and prototype tests.**
+
+No testimonial cards, company logos, waitlist counters, fake screenshots, or browser-store badges should appear.
+
+If a visual is needed, use a clearly labeled conceptual diagram:
+
+**Concept preview — not a working product**
+
+```text
+Acme Co. workspace
+5 saved tabs
+[Restore workspace]
+```
+
+## Offer section
+
+Heading:
+
+**Join before we decide what to build**
+
+Body:
+
+**Tell us the workflow worth fixing. If demand is strong enough to proceed, waitlist members will hear about research sessions and early-access opportunities first.**
+
+Offer details:
+
+- Planned pricing starts at **$9/month**
+- No charge to join
+- No automatic enrollment in a paid plan
+- No guaranteed access or release date
+- Short updates only; unsubscribe anytime
+
+Button:
+
+**Join the early-access waitlist**
+
+## FAQ
+
+### Is ClientDeck available now?
+
+**No. It is an unbuilt product concept being tested for demand. This page is collecting early-access interest before development begins.**
+
+### What would it do?
+
+**The planned extension would let support agents save tabs as named, client-specific workspaces and restore a workspace in one click. Exact behavior will be shaped by research and technical validation.**
+
+### When will it ship?
+
+**There is no firm release date. We will first decide whether the problem is strong enough to justify building. If development proceeds, waitlist members will receive updates.**
+
+### How much will it cost?
+
+**Planned pricing starts at $9/month. Final pricing, plan limits, and team options are not set. Joining the waitlist does not lock a price or create a purchase obligation.**
+
+### What about client data and browser permissions?
+
+**The privacy and permission model has not been finalized. The intended direction is to request only permissions required for saving and restoring workspaces. Before any release, we would explain what is stored, where it is stored, and which browser permissions are required. Do not submit client names or sensitive customer information in this form.**
+
+### What happens after I join?
+
+**Buttondown will ask you to confirm your email if double opt-in is enabled. After confirmation, you may receive a short welcome message, research questions, and occasional product updates. Joining does not guarantee access.**
+
+### How will you use my email?
+
+**It will be stored by Buttondown and used only for this waitlist, related research, and product updates. It will not be sold. You can unsubscribe at any time.**
+
+## Final CTA
+
+Heading:
+
+**Spend less time rebuilding client context**
+
+Body:
+
+**If reopening the same client tabs is part of your support routine, add your voice before the product is built.**
+
+Button:
+
+**Join the early-access waitlist**
+
+Stage note:
+
+**Unbuilt concept · Planned pricing from $9/month · No payment today**
+
+## Submission states
+
+Before submission:
+
+**Use a work email if possible. Do not include client names or sensitive customer data.**
+
+While processing:
+
+**Sending your request…**
+
+Provider-confirmed success only:
+
+**You’re on the early-access waitlist. Check your inbox to confirm your email if requested.**
+
+Neutral fallback when provider acceptance cannot be verified:
+
+**Submission sent. Check your inbox to see whether it was accepted.**
+
+Validation error:
+
+**Enter a valid email address.**
+
+Bounded service failure:
+
+**The waitlist is temporarily unavailable. Please try again later.**
+
+Never show confirmed-success copy based only on a redirect query, hash, timer, cookie, or browser storage.
+
+## Footer
+
+**ClientDeck is an unbuilt product concept for support teams.**
+
+**Contact: hello@YOUR_DOMAIN**
+
+**Privacy: Your email is stored by Buttondown for waitlist and research updates. We do not sell it. Do not submit client or customer data.**
+
+**© 2026 ClientDeck. Working name.**
+
+No secondary newsletter, demo, contact, social, or “learn more” CTA should compete with the waitlist action. The contact address may remain plain text.
+
+---
+
+# 3. Meta and social copy
+
+```html
+<title>ClientDeck — Restore Client Tabs in One Click</title>
+<meta name="description" content="A planned Chrome extension for small SaaS support teams. Save client-specific tab workspaces and restore them in one click. Join the early-access waitlist.">
+<meta name="robots" content="index,follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClientDeck">
+<meta property="og:title" content="Restore every tab for a client in one click">
+<meta property="og:description" content="ClientDeck is a planned Chrome extension for hands-on SaaS support teams. Join the early-access waitlist. Planned pricing from $9/month.">
+<meta property="og:url" content="https://YOUR_DOMAIN/">
+<meta property="og:image" content="https://YOUR_DOMAIN/og-clientdeck.png">
+<meta property="og:image:alt" content="Concept illustration of a named client workspace restoring five support tabs">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Restore every tab for a client in one click">
+<meta name="twitter:description" content="An unbuilt Chrome extension concept for hands-on SaaS support teams. Planned pricing from $9/month.">
+<meta name="twitter:image" content="https://YOUR_DOMAIN/og-clientdeck.png">
+```
+
+OG share blurb:
+
+**Support agents rebuild the same client context again and again. ClientDeck is a planned Chrome extension for saving client-specific tab workspaces and restoring them in one click. Planned pricing starts at $9/month. Join the early-access waitlist.**
+
+OG image direction:
+
+- 1200×630 pixels
+- Product name and headline
+- Simple conceptual browser-workspace graphic
+- Label: “Concept — not yet available”
+- No Chrome logo unless its trademark requirements are checked
+- No fabricated UI, logos, people, reviews, or user counts
+
+## Headline variants
+
+Ship Variant A first; do not split a small initial sample.
+
+- **A: Restore every tab for a client in one click**
+- **B: Stop rebuilding client context for every support ticket**
+- **C: The client workspace switcher for hands-on SaaS support**
+
+If a retest is justified, change only the headline. Keep audience, price, CTA, traffic targeting, and page body fixed.
+
+---
+
+# 4. Implementation pack
+
+## Architecture
+
+Use:
+
+```text
+Cloudflare Pages
+├── Static single-page landing site
+├── /api/join Cloudflare Pages Function
+├── Buttondown subscriber API
+└── Plausible analytics
+```
+
+The server-side function is necessary to validate submissions, protect provider credentials, preserve attribution, and return confirmed success only after verified provider acceptance.
+
+Required environment variables:
+
+```text
+BUTTONDOWN_API_KEY
+VERIFY_BUTTONDOWN_API_ENDPOINT
+VERIFY_BUTTONDOWN_AUTH_SCHEME
+VERIFY_BUTTONDOWN_SUCCESS_STATUSES
+VERIFY_BUTTONDOWN_SUBSCRIBER_PAYLOAD
+VERIFY_BUTTONDOWN_TAG_OR_METADATA_SEMANTICS
+
+VERIFY_PLAUSIBLE_SCRIPT_URL
+VERIFY_PLAUSIBLE_EVENT_API
+VERIFY_PLAUSIBLE_DOMAIN
+VERIFY_PLAUSIBLE_PRIVACY_BEHAVIOR
+```
+
+All `VERIFY_*` values are launch-blocking. Do not load Plausible or call Buttondown until each relevant value has been checked against dated official documentation and tested with one accepted and one rejected submission.
+
+## Form
+
+Visible fields:
+
+- `email`: required, valid email syntax, maximum 254 characters
+- `workflow`: optional, plain text, maximum 160 characters; prohibit sensitive customer data in nearby copy
+
+Server-derived fields:
+
+- `decision_lane`
+- `placement`
+- `variant`
+- `campaign`
+- consent timestamp
+- page version, such as `smoke-v1`
+
+Do not trust hidden attribution fields supplied by the browser. Recompute the lane server-side from exact allow-listed campaign and placement tokens. Discard raw unknown values.
+
+Recommended consent: double opt-in for list quality and proof that the address is controlled by the subscriber. Track provider acceptance and email confirmation as separate states unless Buttondown’s verified data model defines a trustworthy confirmed state.
+
+## Request handling
+
+`POST /api/join` should:
+
+1. Accept only `application/json` with the exact allowed media type.
+2. Cap actual streamed request bytes—for example, 4 KB—rather than trusting `Content-Length`.
+3. Reject malformed JSON and any null, scalar, or array root.
+4. Allow-list keys and validate field lengths.
+5. Normalize the email for duplicate handling without logging it.
+6. Map only registered attribution combinations; otherwise use `unattributed`.
+7. Call Buttondown with a short timeout, such as five seconds.
+8. Treat a signup as confirmed only when the verified provider response means the subscriber record was accepted.
+9. Return finite public states such as `accepted`, `invalid`, `duplicate`, `rate_limited`, `provider_unavailable`, and `configuration_error`.
+10. Never return or log raw provider bodies, emails, workflow text, credentials, stack traces, or exception messages.
+
+Rate-limit by a privacy-conscious mechanism available on Cloudflare. Add a honeypot and minimum-fill-time check, but never count bot or rejected attempts as conversions.
+
+## Source of truth
+
+Use the provider-confirmed Buttondown subscriber record/export as the conversion authority. Every accepted subscriber must carry a verified source tag or metadata value matching one of:
+
+- `cold_paid_reddit`
+- `cold_paid_x`
+- `cold_organic_reddit`
+- `cold_organic_community`
+- `warm_direct`
+- `unattributed`
+
+If Buttondown cannot persist these values, create distinct provider-native forms or tags per lane. If neither method works, source-specific CVR is unavailable and traffic must not launch until fixed.
+
+## Plausible pageview boundary
+
+Before analytics loads:
+
+1. Read the URL’s UTM values.
+2. Match them against the exact allow-list.
+3. Reduce them to bounded canonical values.
+4. Replace the browser history URL with the origin and pathname only, removing query and fragment.
+5. Load Plausible only if all `VERIFY_PLAUSIBLE_*` configuration is resolved.
+6. Emit only canonical properties.
+
+Never send the email, workflow answer, raw UTM, referrer, query string, fragment, full URL, provider response, or exception text to Plausible.
+
+## Event specification
+
+| Event | Trigger | Authority | Allowed properties |
+|---|---|---|---|
+| `landing_view` | One sanitized pageview | Plausible | `decision_lane`, `placement`, `variant` |
+| `click_waitlist` | Waitlist button reveals/focuses form or scrolls to it | Plausible | Same three properties |
+| `attempt_waitlist` | Locally valid form is sent | Plausible, diagnostic only | Same three properties |
+| `waitlist_accepted` | Verified Buttondown acceptance | Server/provider only | Canonical lane, placement, variant |
+| `email_confirmed` | Verified double-opt-in state, if supported | Buttondown only | Canonical source metadata |
+| `welcome_opened` | Provider-recorded open | Buttondown, directional | No browser event |
+| `welcome_replied` | Manually coded from an actual reply | Measurement sheet | Lane and coded intent only |
+
+`attempt_waitlist` must never be labeled `submit_waitlist` or used in visitor-to-email CVR.
+
+Plausible’s server-side custom event contract is unverified. Until it is confirmed, do not attempt to send `waitlist_accepted` to Plausible; reconcile visits from Plausible with accepted subscribers from Buttondown in the dashboard.
+
+## Privacy and retention
+
+- Buttondown stores email and waitlist status.
+- Cloudflare processes the submission and should retain no form content in logs.
+- Plausible receives only canonical, non-PII event properties.
+- Do not sell or share the list for unrelated marketing.
+- Delete optional workflow answers after synthesis, with a preselected retention period such as 90 days.
+- Provide a real privacy page or modal before launch, without introducing another CTA.
+- Do not collect client names, URLs, ticket IDs, or customer information.
+
+## Welcome email
+
+Subject:
+
+**You’re on the ClientDeck early-access list**
+
+Body:
+
+> Thanks for joining. ClientDeck is still an unbuilt concept: a Chrome extension intended to save client-specific tab workspaces and restore them in one click.
+>
+> Planned pricing starts at $9/month, but final pricing and timing are not set.
+>
+> One question would help: the last time you returned to a client issue, which tabs or tools did you have to reopen?
+>
+> Please do not include client names, URLs, or sensitive customer information.
+>
+> Reply directly if you’re willing to share the workflow. You can unsubscribe at any time.
+
+This email contains no competing button. A direct reply is the requested research behavior.
+
+## Pre-launch verification checklist
+
+- Replace `YOUR_DOMAIN` and contact address.
+- Check working-name and Chrome trademark usage.
+- Verify Buttondown endpoint, authentication, payload, duplicate behavior, accepted status, double-opt-in behavior, and source-field semantics against current official documentation.
+- Verify Plausible script, domain setup, event API, privacy behavior, and query-stripping behavior.
+- Submit one valid test for every decision lane and confirm its source on the provider record.
+- Submit invalid email, malformed JSON, oversized body, unknown UTM, duplicate email, provider timeout, and rate-limit tests.
+- Confirm unknown UTMs become `unattributed`.
+- Confirm no PII, raw URL, query, fragment, workflow text, or secret appears in analytics or logs.
+- Test keyboard operation, labels, focus, contrast, mobile layout, and reduced motion.
+- Verify OG image, metadata, favicon, canonical URL, and a custom 404.
+- Launch paid traffic only after all checks pass.
+
+---
+
+# 5. UTM registry
+
+Campaign:
+
+```text
+clientdeck_smoke_202608
+```
+
+Canonical URLs:
+
+```text
+Reddit paid:
+https://YOUR_DOMAIN/?utm_source=reddit&utm_medium=paid_social&utm_campaign=clientdeck_smoke_202608&utm_content=client_context_v1
+
+X paid:
+https://YOUR_DOMAIN/?utm_source=x&utm_medium=paid_social&utm_campaign=clientdeck_smoke_202608&utm_content=client_context_v1
+
+Reddit organic:
+https://YOUR_DOMAIN/?utm_source=reddit&utm_medium=community&utm_campaign=clientdeck_smoke_202608&utm_content=founder_problem_post
+
+Support community:
+https://YOUR_DOMAIN/?utm_source=support_community&utm_medium=community&utm_campaign=clientdeck_smoke_202608&utm_content=approved_founder_post
+
+Warm direct:
+https://YOUR_DOMAIN/?utm_source=warm_direct&utm_medium=outreach&utm_campaign=clientdeck_smoke_202608&utm_content=personal_message
+```
+
+Exact mapping:
+
+| Registered combination | Decision lane |
+|---|---|
+| `reddit / paid_social / client_context_v1` | `cold_paid_reddit` |
+| `x / paid_social / client_context_v1` | `cold_paid_x` |
+| `reddit / community / founder_problem_post` | `cold_organic_reddit` |
+| `support_community / community / approved_founder_post` | `cold_organic_community` |
+| `warm_direct / outreach / personal_message` | `warm_direct` |
+| Missing or any unregistered value | `unattributed` |
+
+Create separate placement tokens inside the registered server allow-list for each ad or approved community. Do not dynamically pass a subreddit, group name, username, or raw referrer.
+
+---
+
+# 6. Traffic assets
+
+## Cold paid ad copy
+
+### Reddit ad
+
+Headline:
+
+**How many tabs do you reopen for every client issue?**
+
+Body:
+
+**ClientDeck is an unbuilt Chrome extension concept for hands-on SaaS support teams: save a client-specific tab workspace and restore it in one click. Planned pricing from $9/month.**
+
+Button supplied by the ad platform should land on the page; the landing page retains the sole product CTA.
+
+Target interests or communities associated with customer success, SaaS support, help desks, and support operations. Verify each platform’s current targeting and advertising policies before launch.
+
+### X ad
+
+Primary text:
+
+**Support ticket reopened. Admin panel, logs, docs, billing, and the original thread reopened too. We’re testing an unbuilt Chrome extension that would restore a client’s tab workspace in one click. Planned pricing from $9/month.**
+
+Creative:
+
+A plain diagram of five support tabs collapsing into a named client workspace, clearly marked **Concept**.
+
+## Reddit organic post
+
+Title:
+
+**Support agents: what do you have to reopen when an old client issue comes back?**
+
+Body:
+
+> I’m researching a repetitive support workflow: a client replies, and you rebuild their browser context across the ticket, admin panel, logs, docs, billing, or other tools.
+>
+> I’m testing an unbuilt Chrome extension concept that would save those tabs as a client workspace and restore them in one click. Planned pricing would start at $9/month.
+>
+> Before building, I’d like to understand whether this is a frequent problem or merely an annoyance. What did you reopen the last time this happened, and what do you use today?
+>
+> I’m the person evaluating the idea. If the moderators allow it, the early-access page is here: [UTM link]
+
+Do:
+
+- Read and follow community rules.
+- Ask moderators when self-promotion is ambiguous.
+- Lead with the workflow question.
+- Disclose that you are testing your own unbuilt idea.
+- Participate in replies even if nobody joins.
+
+Do not:
+
+- Cross-post identical text broadly.
+- Claim product availability.
+- Ask friends to manufacture votes.
+- disguise the link or founder relationship.
+
+## Approved niche community message
+
+> I’m researching context switching for hands-on SaaS support agents. When a client issue returns, which tabs and tools do you have to reopen?
+>
+> I’m testing an unbuilt Chrome extension concept that would save a client-specific tab workspace and restore it in one click. Planned pricing starts at $9/month. With moderator permission, here is the early-access waitlist: [UTM link]
+>
+> I’d value examples of current workflows, including reasons the idea would not help.
+
+## Warm outreach message
+
+> Hi [Name]—I’m researching a workflow for people who handle customer issues directly at small SaaS teams.
+>
+> The idea is an unbuilt Chrome extension that saves the tabs used for one client and restores that workspace in one click. Planned pricing starts at $9/month.
+>
+> Does this match something you did in the past week? If so, the early-access page is here: [warm UTM link]. A reply describing what you reopen would be even more useful.
+>
+> No need to join if it is not a real problem for you.
+
+Send individually to genuine contacts. Do not automate or ask recipients to forward it indiscriminately.
+
+---
+
+# 7. Ten-day traffic calendar
+
+The total paid cap is **$150**, not a spending target. Spend only after attribution and provider confirmation pass testing.
+
+### Day 1 — August 3: deploy and verify
+
+- Deploy the single-page site to Cloudflare Pages.
+- Connect the custom domain.
+- Complete every launch-blocking provider verification.
+- Run valid, invalid, duplicate, unknown-attribution, privacy, and mobile tests.
+- Record a zero-state dashboard snapshot.
+- No ads or outreach until confirmed attribution appears in Buttondown.
+
+Spend: **$0**
+
+### Day 2 — August 4: warm learning lane
+
+- Send 10 personalized warm messages.
+- Ask 2–3 recipients for the last actual incident, not opinions.
+- Record warm deliveries, visits, signups, and replies separately.
+- Do not change copy based on one reaction.
+
+Spend: **$0**
+
+### Day 3 — August 5: first organic community
+
+- Publish one permitted, value-first Reddit post.
+- Answer replies and record objections.
+- Do not repost if removed; record the exclusion.
+- Send 5 more warm messages.
+
+Spend: **$0**
+
+### Day 4 — August 6: start cold paid traffic
+
+- Launch Reddit at **$20/day** with one audience and one creative.
+- Launch X at **$10/day** with the same promise and equivalent creative.
+- Verify each platform’s visits and accepted signups remain attributable.
+- Do not optimize toward CTA clicks alone.
+
+Maximum cumulative spend: **$30**
+
+### Day 5 — August 7: second community and traffic-quality check
+
+- Post in one moderator-approved support/SaaS community.
+- Send 5 more warm messages.
+- Check landing visits, accepted records, bot anomalies, and cost—not final conversion conclusions.
+- Pause any broken attribution immediately.
+
+Maximum cumulative spend: **$60**
+
+### Day 6 — August 8: continue controlled ads
+
+- Continue Reddit at up to **$20** and X at up to **$10**.
+- Review qualitative replies.
+- Keep Variant A unchanged.
+- Pause a platform only on a registered early-stop rule or technical failure.
+
+Maximum cumulative spend: **$90**
+
+### Day 7 — August 9: finish warm sample
+
+- Send the final 10 warm messages, reaching 30.
+- Follow up once with people who replied but did not answer the workflow question.
+- Do not count warm results in either cold lane.
+- Continue paid traffic within limits if attribution is sound.
+
+Maximum cumulative spend: **$120**
+
+### Day 8 — August 10: first decision checkpoint
+
+- If a paid creative has ≥40 visits and zero accepted signups, pause it.
+- Allocate up to the remaining **$30** only to a platform that has at least one confirmed signup and cost per signup ≤$30.
+- If cold traffic has adequate volume but 2.5–3.9% conversion, switch only the headline to Variant B and record a new page version.
+- Do not retest against the original simultaneously unless each variant can reach a meaningful sample.
+
+Maximum cumulative spend: **$150**
+
+### Day 9 — August 11: engagement follow-up
+
+- Send the welcome question to confirmed subscribers who have not received it automatically.
+- Code replies as repeated workflow, workaround, frequency, incident, price reaction, or vague interest.
+- Do not send another promotional blast.
+- Stop all paid spend at the cap.
+
+Spend cap: **$150 total**
+
+### Day 10 — August 12: close and decide
+
+- Export Buttondown subscriber records and source metadata.
+- Export sanitized Plausible visitors and events by canonical lane.
+- Reconcile provider-confirmed numerators with same-lane denominators.
+- Mark duplicates, rejected attempts, bots, internal tests, and unattributed records separately.
+- Apply the pre-registered lane rules.
+- Write the decision before considering extra features.
+
+---
+
+# 8. Dashboard
+
+Maintain distinct sections for:
+
+1. `cold_paid_reddit`
+2. `cold_paid_x`
+3. Combined pre-registered `cold_paid`
+4. `cold_organic_reddit`
+5. `cold_organic_community`
+6. Combined pre-registered `cold_organic`
+7. `warm_direct`
+8. `unattributed`
+9. Internal tests and invalid traffic
+
+Columns:
+
+- Date
+- Decision lane
+- Registered placement
+- Variant
+- Ad spend
+- Unique visitors
+- CTA clicks
+- Valid attempts
+- Provider-confirmed accepted subscribers
+- Confirmed email addresses, if double opt-in
+- Accepted CVR
+- Confirmed-email CVR
+- Cost per accepted subscriber
+- Welcome opens
+- Substantive replies
+- Concrete-workflow replies
+- Positive $9 price reactions
+- Technical failures
+- Notes and exclusions
+
+Keep `unattributed` records out of lane CVR. Report them as an attribution-quality metric.
+
+---
+
+# 9. Decision rules
+
+## Proceed to customer discovery and a thin prototype
+
+Proceed only if either cold lane reaches its continue threshold and:
+
+- At least three total cold-origin replies describe recent repeated behavior or a current workaround.
+- At least two respondents say $9/month is reasonable, already pay for an alternative, or ask how to get access.
+- No major privacy or Chrome-permission objection invalidates the proposed mechanism.
+
+This authorizes interviews and a narrow prototype—not a polished extension, billing system, team administration, or broad launch.
+
+## Interview before building
+
+Do interviews first if:
+
+- Conversion meets a cold threshold but replies are vague or absent.
+- Warm outreach is strong while cold traffic is weak.
+- People want the outcome but resist a browser extension.
+- Signups cluster around a different role, such as implementation consultants or customer-success managers.
+
+## Retest the offer once
+
+Retest one headline for another controlled sample if:
+
+- Cold traffic reaches minimum volume but CVR is in the unresolved band.
+- CTA click rate is healthy but confirmed signup CVR is weak.
+- Form attempts materially exceed provider-confirmed acceptance because of a correctable implementation problem.
+
+Do not call an integration failure market evidence.
+
+## Narrow or pivot
+
+Narrow the ICP or problem when replies consistently indicate:
+
+- The workflow matters only during onboarding or escalations.
+- Teams organize by account rather than support ticket.
+- Existing browser profiles, bookmarks, tab groups, or help-desk tooling already solve it.
+- Privacy policy blocks client-named workspaces.
+- Users want case-level rather than client-level restoration.
+
+## Park the idea
+
+Park it if both cold lanes meet their minimum samples and remain below their kill thresholds, with:
+
+- Technically valid provider confirmation
+- Defensible source attribution
+- Honest, relevant placements
+- No meaningful workflow replies
+- No credible willingness-to-pay signal
+
+Do not respond by adding more features.
+
+## Budget rule
+
+Hard stop at **$150**. Never shift money into a losing lane merely to exhaust the budget. Any future spend requires a new registered test.
+
+---
+
+# 10. Actions and boundaries
+
+Top three actions today:
+
+1. Replace the working name/domain placeholders and deploy the truthful one-page copy.
+2. Verify Buttondown acceptance and source persistence plus Plausible’s sanitized pageview/event behavior.
+3. Run one real attributed submission per lane before sending traffic.
+
+Do not build yet:
+
+- The Chrome extension
+- Billing
+- Team accounts or admin roles
+- Cloud sync
+- CRM/help-desk integrations
+- AI tab classification
+- A polished product dashboard
+- A multi-page marketing site
+
+The next useful loop is customer discovery after—or alongside—the smoke test. Public market validation may help identify competing workarounds, but it should not delay this inexpensive behavioral test. SEO planning is premature for a 10-day demand test.
+
+| Field | Value |
+|---|---|
+| Current decision | Run the registered 10-day smoke test; build decision is TBD after test. |
+| Evidence classes | assumption |
+| Supported claims | The proposed ICP, one-click restore promise, planned price from $9/month, traffic thresholds, and implementation are test assumptions—not validated demand. |
+| Still unproven | Problem frequency, cold and warm conversion, willingness to pay, reply quality, extension feasibility, Chrome permission acceptability, provider integration, attribution integrity, and demand sufficient to build are TBD after test. |
+| Contradictions / exclusions | No testimonials, logos, user counts, product availability, payment, or firm ship date are claimed. Warm outreach must remain separate from cold paid and cold organic traffic. Web access was unavailable, so current Buttondown and Plausible contracts were not verified; file writes were unavailable, so no deployable artifact was created. |
+| Source anchors | User-supplied product concept and constraints; copied z-landing-smoke instructions; all numerical thresholds in this package are pre-registered assumptions rather than observed results. |
+| Next validation | Verify provider contracts and attribution, deploy the page, collect lane-separated traffic and confirmed signups from August 3–12, 2026, then apply the registered decision rules. |

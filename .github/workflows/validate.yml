@@ -17,7 +17,9 @@ jobs:
   validate:
     name: Validate (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
+    # The complete fault-injection suite normally takes about eight minutes;
+    # keep enough headroom for slower shared macOS and Linux runners.
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -74,6 +76,9 @@ jobs:
 
       - name: Check deterministic evidence manifests
         run: ruby scripts/generate-evidence-manifests.rb --check
+
+      - name: Check documented evidence status
+        run: ruby scripts/check-evidence-docs.rb
 
       - name: Enforce published evidence coverage
         run: |

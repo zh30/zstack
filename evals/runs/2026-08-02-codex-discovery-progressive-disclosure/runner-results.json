@@ -1,0 +1,102 @@
+[
+  {
+    "id": "discovery-fake-interviews",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 101.851,
+    "timedOut": false,
+    "promptPath": "prompts/discovery-fake-interviews.txt",
+    "responsePath": "responses/discovery-fake-interviews.txt",
+    "logPath": "logs/discovery-fake-interviews.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/discovery-fake-interviews.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "discovery-sparse-debrief",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 101.84,
+    "timedOut": false,
+    "promptPath": "prompts/discovery-sparse-debrief.txt",
+    "responsePath": "responses/discovery-sparse-debrief.txt",
+    "logPath": "logs/discovery-sparse-debrief.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/discovery-sparse-debrief.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "discovery-five-interviews",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 126.988,
+    "timedOut": false,
+    "promptPath": "prompts/discovery-five-interviews.txt",
+    "responsePath": "responses/discovery-five-interviews.txt",
+    "logPath": "logs/discovery-five-interviews.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/discovery-five-interviews.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "discovery-output-contract",
+    "skill": "z-customer-discovery",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 146.325,
+    "timedOut": false,
+    "promptPath": "prompts/discovery-output-contract.txt",
+    "responsePath": "responses/discovery-output-contract.txt",
+    "logPath": "logs/discovery-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/discovery-output-contract.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

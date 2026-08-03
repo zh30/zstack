@@ -1,0 +1,102 @@
+[
+  {
+    "id": "market-tools-blocked",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 108.586,
+    "timedOut": false,
+    "promptPath": "prompts/market-tools-blocked.txt",
+    "responsePath": "responses/market-tools-blocked.txt",
+    "logPath": "logs/market-tools-blocked.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/market-tools-blocked.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "market-competition-composite",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 119.656,
+    "timedOut": false,
+    "promptPath": "prompts/market-competition-composite.txt",
+    "responsePath": "responses/market-competition-composite.txt",
+    "logPath": "logs/market-competition-composite.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/market-competition-composite.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "market-evidence-packet",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 119.647,
+    "timedOut": false,
+    "promptPath": "prompts/market-evidence-packet.txt",
+    "responsePath": "responses/market-evidence-packet.txt",
+    "logPath": "logs/market-evidence-packet.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/market-evidence-packet.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  },
+  {
+    "id": "market-output-contract",
+    "skill": "z-market-validate",
+    "completed": true,
+    "exitStatus": 0,
+    "elapsedSeconds": 191.237,
+    "timedOut": false,
+    "promptPath": "prompts/market-output-contract.txt",
+    "responsePath": "responses/market-output-contract.txt",
+    "logPath": "logs/market-output-contract.log",
+    "executionMode": "response",
+    "artifactPaths": [],
+    "artifactError": null,
+    "responsePrivacyError": null,
+    "evidenceHandoffContract": {
+      "schemaVersion": 1,
+      "passed": true,
+      "candidateTables": 1,
+      "sourcePaths": [
+        "responses/market-output-contract.txt"
+      ],
+      "errors": []
+    },
+    "grade": null
+  }
+]

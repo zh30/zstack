@@ -1,0 +1,322 @@
+# 90-day US SEO plan: ownership-aware client onboarding
+
+**Date:** August 2, 2026  
+**Market:** English, United States  
+**Primary conversion:** Product signup, trial, or demo request—use whichever action actually exists  
+**Authority:** New domain; no GSC history, known backlinks, or paid keyword data
+
+## 1. Executive decision
+
+Target one narrow commercial cluster:
+
+- **Primary keyword:** `client onboarding workflow for agencies`
+- **Primary page:** Homepage
+- **Differentiating angle:** Every onboarding step has a clear owner and visible next action.
+- **Supporting pages:** The existing checklist article and one new process guide.
+- **Do not target ownership-aware as a standalone category yet.** Treat it as persuasive product language until searchers demonstrate otherwise.
+
+This is preferable to chasing generic `client onboarding software`: the supplied, unverified notes suggest that broad software results are dominated by established CRM and portal vendors. Agency workflow language appears more mixed, making the narrower audience-and-job formulation a more sensible test for a zero-authority domain.
+
+### Evidence limit
+
+Browsing, live SERP inspection, GSC, backlink tools, and paid keyword tools are unavailable. Demand remains **unknown**. Difficulty assessments below are provisional interpretations of the supplied notes—not verified competitive research or forecasts.
+
+## 2. Product and current-site context
+
+| Page | Present condition | Intended ownership | Action |
+|---|---|---|---|
+| Homepage | Generic | Commercial agency onboarding workflow queries | Rewrite as the cluster hub |
+| Pricing | Existing | Brand and transactional visitors | Keep focused on plans and conversion |
+| Checklist article | Thin | Checklist and template-style informational queries | Expand at its current URL |
+| Process guide | Missing | How-to/process/ownership questions | Create by day 60 |
+
+Likely searcher: a small-agency founder, operations lead, project manager, or account lead trying to prevent client onboarding work from stalling between sales, delivery, and the client.
+
+Primary job: establish what happens next, who owns it, and how the team knows it is complete.
+
+## 3. Cluster selection
+
+These scores are prioritization judgments from 1–5, not keyword metrics.
+
+| Candidate | Relevance | Commercial proximity | Evidence | Winnability | Page fit | Decision |
+|---|---:|---:|---:|---:|---:|---|
+| `client onboarding workflow for agencies` | 5 | 4 | 2 | 3 | 5 | Primary |
+| `client onboarding software for small agencies` | 5 | 5 | 2 | 1 | 4 | Homepage secondary only |
+| `agency client onboarding process` | 4 | 3 | 2 | 3 | 5 | Process-guide secondary |
+| `client onboarding checklist for agencies` | 4 | 2 | 2 | 3 | 5 | Checklist-page secondary |
+
+### Primary keyword card
+
+| Field | Value |
+|---|---|
+| Keyword | `client onboarding workflow for agencies` |
+| Locale | English, United States |
+| Intent | Commercial/mixed |
+| Demand | Unknown |
+| Difficulty | Unknown; supplied notes provisionally suggest medium rather than broad-head-term difficulty |
+| Opportunity | Combines the audience, job, and product category while leaving ownership as the differentiating message |
+| Target | Homepage |
+| Evidence | Supplied autocomplete-style workflow/agency phrases and unverified mixed-result observation |
+
+### Supporting terms
+
+| Keyword | Intent | Demand | Difficulty | Owner |
+|---|---|---|---|---|
+| `agency client onboarding process` | Informational | Unknown | Unknown | Process guide |
+| `client onboarding checklist for agencies` | Informational/resource | Unknown | Unknown | Existing checklist article |
+| `client onboarding automation for agencies` | Commercial/mixed | Unknown | Unknown | Homepage section |
+| `client onboarding software for small agencies` | Commercial | Unknown | Provisionally high | Homepage secondary only |
+
+## 4. Long-tail map
+
+These are search-language hypotheses to test in GSC, not verified exact-volume keywords.
+
+| Priority | Search phrase | Intent | Page |
+|---|---|---|---|
+| P0 | `client onboarding workflow for small agencies` | Commercial | Homepage |
+| P0 | `client onboarding software that assigns task owners` | Commercial | Homepage |
+| P0 | `client onboarding checklist with owners and next steps` | Resource | Checklist article |
+| P1 | `how to create a client onboarding workflow for an agency` | Informational | Process guide |
+| P1 | `client onboarding process for a small agency` | Informational | Process guide |
+| P1 | `how to assign client onboarding tasks` | Informational | Process guide |
+| P1 | `who owns the next step in client onboarding` | Informational | Process-guide FAQ |
+| P1 | `how to automate client onboarding handoffs` | Mixed | Homepage automation section |
+| P2 | `client onboarding workflow template for agencies` | Resource | Embedded in checklist initially |
+
+Topic ownership:
+
+```text
+Homepage: commercial agency onboarding workflow
+├── Checklist article: tasks, owners, handoffs, reusable checklist/template
+└── Process guide: stages, roles, ownership rules, implementation
+```
+
+Cannibalization rules:
+
+- The homepage owns `workflow`, `software`, and commercial `automation` intent.
+- The process guide owns `how to`, stages, role assignment, and process design.
+- The checklist owns checklist and downloadable-template intent.
+- Keep the template on the checklist page initially. Create a separate template URL only if GSC shows distinct template demand.
+- Do not publish separate pages for `agency client onboarding workflow`, `client onboarding workflow for agencies`, and `small agency onboarding workflow`.
+
+## 5. Homepage brief
+
+**URL:** `/`  
+**Primary intent:** Evaluate a workflow product for an agency  
+**Primary keyword:** `client onboarding workflow for agencies`
+
+**Suggested title:**  
+`Client Onboarding Workflow for Small Agencies | [Brand]`
+
+**Suggested H1:**  
+`Keep every client onboarding step owned and moving`
+
+**Meta description:**  
+`Give every client onboarding step a clear owner and next action. Build a repeatable workflow that helps your small agency keep new clients moving.`
+
+### Recommended structure
+
+1. **Hero**
+   - State the audience, job, and ownership benefit immediately.
+   - Primary CTA: the real product action, such as “Start a workflow” or “Request a demo.”
+   - Secondary CTA: “See an example workflow.”
+
+2. **The stalled-handoff problem**
+   - Explain why ordinary checklists go unfinished: the next action exists, but responsibility is ambiguous.
+   - Use the supplied community wording naturally rather than presenting it as research proof.
+
+3. **How the workflow works**
+   - Define the actual product mechanics: how an owner is assigned, how the next step is exposed, and what happens during a handoff.
+   - Remove any mechanism the product does not genuinely support.
+
+4. **Example agency workflow**
+   - Show a real sequence such as contract, kickoff preparation, asset collection, access, strategy, and launch.
+   - For each step, show owner, completion condition, and next action where supported.
+
+5. **Ownership versus a static checklist**
+   - Compare concepts, not competitors.
+   - Explain that a checklist records tasks while an ownership-aware workflow also clarifies responsibility and handoffs.
+
+6. **Automation**
+   - Describe only implemented triggers, reminders, assignments, or integrations.
+   - Do not imply full automation if the product merely organizes manual work.
+
+7. **Small-agency use cases**
+   - Founder-led agency
+   - Account manager handing work to delivery
+   - Client-dependent tasks and approvals
+
+8. **Product proof and trust**
+   - Current screenshots or a short annotated walkthrough
+   - Founder/company identity
+   - Security and privacy facts only where accurate
+   - Link to pricing and product documentation
+
+9. **FAQ**
+   - What is a client onboarding workflow?
+   - Who should own client onboarding?
+   - How do agencies prevent onboarding checklists from stalling?
+   - Can client onboarding handoffs be automated?
+   - How is this different from a CRM or client portal?
+
+10. **Final CTA**
+    - Repeat the same primary action; do not introduce a competing newsletter CTA.
+
+### Internal links
+
+- Link to the checklist using descriptive text such as “agency client onboarding checklist.”
+- Link to the process guide as “how to design your onboarding process.”
+- Link to pricing near the first product explanation and final CTA.
+- Supporting pages should link back with varied, natural anchors—not repeated exact-match text.
+
+## 6. Supporting-page briefs
+
+### Existing checklist article
+
+- **URL:** Preserve its current URL unless it is unusable.
+- **Title:** `Client Onboarding Checklist for Agencies—With Clear Owners`
+- **H1:** `A Client Onboarding Checklist Your Agency Can Actually Finish`
+- **Intent:** Practical resource.
+- **Must cover:** stages, task owner, client-versus-agency responsibility, completion condition, handoff, next action, and a copyable table.
+- **Template:** Include it on this page rather than creating another thin URL.
+- **CTA:** “Turn this checklist into an owned workflow.”
+- **Links:** Homepage, process guide, and pricing where contextually appropriate.
+
+### New process guide
+
+- **Suggested URL:** `/client-onboarding-process-for-agencies/`
+- **Title:** `How to Build a Client Onboarding Process for Your Agency`
+- **H1:** `Build an Agency Client Onboarding Process With Clear Ownership`
+- **Intent:** Educational implementation.
+- **Must cover:** process stages, one accountable owner per step, handoff rules, client-owned actions, completion criteria, exceptions, and a worked example.
+- **FAQ:** Use the “who owns the next step?” language.
+- **CTA:** View or start the product’s workflow.
+- **Avoid:** Turning it into a second software landing page.
+
+## 7. Technical and trust baseline
+
+Current technical status is unknown because no site audit was possible.
+
+| Area | Required baseline |
+|---|---|
+| Indexability | Confirm the homepage, pricing, checklist, and new guide return successful responses and allow indexing |
+| Canonicals | One self-referencing canonical per indexable page; select one HTTPS host |
+| Redirects | Redirect HTTP and alternate host variants consistently; avoid redirect chains |
+| Sitemap | Generate an XML sitemap containing only canonical, indexable URLs |
+| Robots | Reference the sitemap and ensure important CSS, JavaScript, and pages are not blocked |
+| GSC | Verify the preferred property, submit the sitemap, and inspect each P0 URL |
+| Metadata | Unique title, H1, description, canonical, and social preview for each key page |
+| Language | Set document language to `en-US`; do not add hreflang unless another locale exists |
+| Structured data | Add accurate Organization and product/software data only when the visible page supports it; use Article/Breadcrumb data on guides |
+| Performance | Capture mobile lab baselines, compress screenshots, size images explicitly, and limit unnecessary client-side scripts |
+| Content quality | Use real product screenshots, concrete examples, a named author, and updated dates |
+| Trust | Publish accessible About, Contact, Privacy, and Terms pages; make product and company claims verifiable |
+| Accessibility | Semantic headings, labeled controls, keyboard access, alt text, and readable contrast |
+| Duplicates | Prevent staging, parameter, and trailing-slash variants from becoming competing indexable URLs |
+
+Structured data is not a promise of enhanced search presentation. Core Web Vitals should be measured once field data becomes available rather than estimated now.
+
+## 8. Measurement plan
+
+Set up measurement before publishing so the first data is not lost.
+
+### Weekly scorecard
+
+- GSC impressions and clicks by page and query
+- US-only non-brand query impressions
+- Indexed status for each target URL
+- Organic landing sessions, if analytics is available
+- Homepage and article CTA clicks
+- Signup, trial, or demo completions attributed loosely to an organic landing
+- Queries containing `workflow`, `agency`, `checklist`, `process`, `owner`, `next step`, `automation`, or `template`
+
+Keep brand and non-brand acquisition separate. A branded click does not validate the target cluster.
+
+Manually check the primary keyword and five P0/P1 long-tails once a month from a consistent US setup. Treat reported positions as directional because personalization, location, and SERP features can change them.
+
+### Decision rules
+
+- **Technical correction:** If a target page is not indexed, resolve indexability, canonical, rendering, or content-quality issues before publishing more.
+- **Improve the snippet:** If relevant impressions appear but clicks do not, compare query intent with the title and description before changing the page’s subject.
+- **Improve conversion:** If relevant clicks arrive but product actions do not, inspect message match, product proof, CTA, and onboarding friction.
+- **Expand:** Create one new page only when GSC exposes a distinct intent that the current pages cannot satisfy cleanly.
+- **Narrow or stop:** If all target pages are indexable and crawlable but show no relevant non-brand impressions by day 90, pause expansion and reconsider the query wording, audience, and channel.
+- **Do not set traffic or ranking forecasts** until a real baseline exists.
+
+## 9. Six-hours-per-week backlog
+
+### Days 1–7: shippable first slice — 6 hours
+
+- **1.5 hours:** Verify indexability, canonicals, sitemap, robots, preferred host, and current metadata; set up GSC and conversion events.
+- **3.5 hours:** Rewrite and publish the homepage’s hero, problem, mechanics, example workflow, FAQ, and CTA.
+- **1 hour:** Add homepage-to-pricing/checklist links and confirm tracking works.
+
+### By day 30: P0 foundation — remaining 18 hours
+
+- **8 hours:** Expand the existing checklist at its current URL with owners, completion conditions, handoffs, and a copyable template.
+- **3 hours:** Finish the technical baseline and inspect the target URLs in GSC.
+- **3 hours:** Add accurate screenshots, About/Contact information, and privacy/terms links.
+- **2 hours:** Complete reciprocal internal links across homepage, pricing, and checklist.
+- **2 hours:** Record the first GSC/query baseline and correct obvious intent mismatches.
+
+Day-30 deliverable: two substantive cluster pages, working measurement, and clean page ownership.
+
+### Days 31–60: build the informational spoke — 24 hours
+
+- **10 hours:** Create the agency onboarding process guide.
+- **5 hours:** Improve the checklist’s embedded workflow template using real product and agency steps.
+- **3 hours:** Add concrete screenshots or an annotated product walkthrough.
+- **2 hours:** Distribute the useful resource personally in relevant communities or partner conversations where promotion is permitted.
+- **4 hours:** Review indexing, queries, internal links, CTA events, and technical issues.
+
+Day-60 decision: determine whether searchers use workflow, process, checklist, software, automation, or ownership language. Adjust page copy without creating synonym pages.
+
+### Days 61–90: evidence-led refinement — 24 hours
+
+- **4 hours:** Compare the latest 28-day page/query data with the previous comparable period.
+- **8 hours:** Improve the page receiving the most relevant impressions—expand missing subtopics, sharpen its title, or strengthen product proof.
+- **8 hours:** Use only if evidence warrants:
+  - Split out a standalone template page when template intent is clearly distinct, or
+  - Create a focused automation resource when automation queries recur.
+  - If neither occurs, spend the time improving conversion and documentation instead.
+- **4 hours:** Perform targeted, manual outreach for the genuinely useful checklist/template and fix accumulated technical issues.
+
+Day-90 outcome: explicitly choose **continue**, **narrow**, or **pause** based on relevant impressions, clicks, and qualified product actions—not total traffic alone.
+
+## 10. Explicit avoid list
+
+Do not spend the first 90 days targeting:
+
+- `client onboarding software` as a standalone head term
+- `best CRM`, `CRM for agencies`, or CRM comparison terms
+- `client portal software`
+- `project management software`
+- `workflow software` or generic `agency software`
+- Generic employee/customer onboarding queries
+- Separate pages for every word-order or industry variant
+- A standalone ownership-aware category page before search demand appears
+- A separate template page before template intent is visible
+- “Best tools” articles without firsthand evaluation
+- Competitor-alternative pages without factual, maintainable comparisons
+- City or state doorway pages for a non-local product
+- AI-generated article volume, programmatic synonym pages, or thin glossary posts
+- Bought links, link exchanges at scale, private blog networks, hidden text, fake reviews, or unsupported review schema
+- Claims such as “guaranteed to prevent missed steps” or invented performance percentages
+
+## 11. Top three actions this week
+
+1. Verify GSC, sitemap, canonical, indexability, and the real conversion event.
+2. Reposition the homepage around `client onboarding workflow for agencies`.
+3. Rewrite the checklist around owners, completion conditions, handoffs, and next steps.
+
+## Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Execute a constrained 90-day test of the agency client-onboarding-workflow cluster; validate before expanding beyond three search pages |
+| Evidence classes | search signal, assumption |
+| Supported claims | Supplied notes support testing workflow/process/checklist language and using ownership as differentiation; they support deprioritizing broad software terms provisionally |
+| Still unproven | Exact demand, difficulty, live SERP composition, indexability, rankings, backlinks, traffic, conversion, payment, retention, and product-market fit |
+| Contradictions / exclusions | Broad software results are reportedly dominated by CRM/portal vendors; ownership language reflects a problem but is not yet a proven keyword category; synonym pages and broad software themes are excluded |
+| Source anchors | User-supplied product description, current-page inventory, unverified autocomplete/SERP notes, and reported community wording; no external URLs or live search data were available |
+| Next validation | Founder verifies GSC and conversion tracking, publishes the homepage/checklist changes, then uses US non-brand page/query impressions and qualified product actions to make the day-60 and day-90 decisions |

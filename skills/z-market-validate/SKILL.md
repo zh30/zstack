@@ -36,21 +36,19 @@ language with short translations when helpful.
 4. **Short-term return is hard.** Call out when “quick money” claims are weak; prefer 30/90-day *plausible* paths over fantasy ARR.
 5. **Do not invent numbers.** If you cannot measure volume, say so and use qualitative bands.
 6. **Tools are host-specific.** Use whatever the host provides: web search, X/Twitter search, page fetch/browse, Reddit search, etc. If a channel is unreachable, mark it `blocked` and continue.
-7. **Evidence does not upgrade on handoff.** Preserve whether a claim is a
-   secondary public signal, observed behavior, experiment result, search signal,
-   or assumption when another skill consumes it.
+7. **Evidence does not upgrade on handoff.** Preserve each claim's canonical
+   class — `primary behavior`, `observed experiment`, `secondary public`,
+   `search signal`, or `assumption` — when another skill consumes it.
 8. **The handoff is a fixed interface.** End the primary report with exactly
-   one two-column, seven-row Evidence handoff table headed `Field | Value`
-   using these exact labels: `Current
-   decision`, `Evidence classes`, `Supported claims`, `Still unproven`,
-   `Contradictions / exclusions`, `Source anchors`, and `Next validation`.
-   The class cell may contain only applicable names from `primary behavior`,
-   `observed experiment`, `secondary public`, `search signal`, and `assumption`;
-   put provenance and confidence qualifiers in the other fields. Include a
-   class only when supplied inputs or actual results in this report belong to
-   it; a planned next research action does not make that class current.
-   Never leave the class cell empty. If the report has only missing, invalid,
-   or unverified inputs, use `assumption` and state the limitation elsewhere.
+   one two-column, seven-row Evidence handoff table headed `Field | Value`.
+   Its first column must use these exact plain-text labels: `Current decision`,
+   `Evidence classes`, `Supported claims`, `Still unproven`, `Contradictions /
+   exclusions`, `Source anchors`, and `Next validation`. Do not format,
+   translate, split, or rename them. The class cell may contain only applicable
+   names from `primary behavior`, `observed experiment`, `secondary public`,
+   `search signal`, and `assumption`. Planned work does not add a current class.
+   Never leave the class cell empty. Use `assumption` when inputs are only
+   missing, invalid, or unverified, and state that limit elsewhere.
 
 ---
 
@@ -80,11 +78,8 @@ Record assumptions explicitly in the report.
 Produce a short internal frame (can be in notes, not full user-facing yet):
 
 1. **Problem statement** (user pain in their words, not product words)
-2. **Search query pack** (8–20 queries), including:
-   - problem phrases (“I hate…”, “looking for…”, “alternative to…”)
-   - competitor / category names
-   - “vs”, “pricing”, “worth it”, “shutdown”, “refund”
-   - language variants (EN + local language if geography is CN or bilingual)
+2. **Search query pack** (8–20 queries) covering pain, demand, competitors,
+   alternatives, pricing, failure/churn, and relevant language variants
 3. **Success signals** (what would count as “real demand”)
 4. **Kill signals** (what would make this a no-go for an indie)
 
@@ -93,27 +88,13 @@ Read `references/report-template.md` before writing the final doc.
 
 ### Phase 2 — Multi-channel demand scan
 
-Scan **at least 4 channels** when tools allow. Mark each channel status:
-`searched` | `partial` | `blocked` | `skipped (reason)`.
-
-**Default global stack (priority order):**
-
-| Priority | Channel | What to extract |
-|----------|---------|-----------------|
-| 1 | **X / Twitter** | Recent complaints, wishlists, builder threads, pricing talk |
-| 2 | **Reddit** | Subreddit pain posts, “how do you…”, competitor hate/love |
-| 3 | **Hacker News** | Show HN, Ask HN, “who is hiring” is less useful; pain/launch comments |
-| 4 | **Product Hunt** | Similar launches, upvotes as weak signal, comment objections |
-| 5 | **Indie Hackers** | Revenue posts, failed builds, “I built X” retrospectives |
-| 6 | **App Store / Play / G2 / Capterra** (if category fits) | 1★ themes, feature requests |
-| 7 | **SEO / public keyword pages** | Only if accessible; treat volumes as rough |
-
-**If user / idea is China-primary or bilingual, also scan when reachable:**
-
-| Channel | Notes |
-|---------|--------|
-| 即刻 / 微博 / 小红书 / 知乎 / 抖音评论 | Demand + trend language; watch for ad spam |
-| V2EX / 少数派 / 即刻产品圈 | Indie / tech-adjacent CN signal |
+Read and apply `references/sources.md`. When tools allow, scan **at least 4
+relevant channels**, including one buyer habitat rather than only founder
+communities. Choose among X/Twitter, Reddit, Hacker News, Product Hunt, Indie
+Hackers, app/review sites, and public search pages; for China-primary or
+bilingual ideas, add reachable sources such as 即刻、微博、小红书、知乎、V2EX、
+少数派, or buyer-relevant comments. Mark every chosen channel `searched`,
+`partial`, `blocked`, or `skipped (reason)`; never imply access you did not have.
 
 For each useful hit, capture a **signal card**:
 
@@ -142,26 +123,13 @@ agencies, manual process). For each:
 
 ### Phase 4 — Scoring (explicit, humble)
 
-Score each dimension **1–5** with one-line evidence. Midpoint (3) means mixed
-or weak evidence — not “good”.
-
-| Dimension | 1 | 5 | Direction |
-|-----------|---|---|-----------|
-| **Demand reality** | Almost no organic pain | Frequent, specific, recurring pain | higher = better |
-| **Willingness to pay** | Free-only / toy | Clear paid substitutes or budget talk | higher = better |
-| **Competition intensity** | Open field / weak substitutes | Brutal giants + free tools everywhere | **higher = worse** |
-| **Indie fit** | Needs team, heavy support, capital, heavy compliance | Solo can ship + distribute MVP | higher = better |
-| **Time-to-signal** | >6 months to know | Can learn in days–weeks | higher = better |
-| **Short-term return odds** | Near-zero in 90 days | Plausible first paid outcomes in 30–90 days | higher = better |
-
-When averaging a **composite**, invert competition first: `competition_fit = 6 - competition_intensity`, then average the six “higher = better” values (demand, pay, competition_fit, indie, time-to-signal, short-term).
-
-Calculate that composite **once** from the six displayed inputs. Round it once to
-two decimal places and treat that result as the report's single display value.
-Copy the exact same value into the score table, executive summary, and any later
-prose; never recompute or reround it from memory. Before delivery, search every
-composite mention and reconcile it with the visible formula. Any mismatch is an
-invalid report, even when the formula itself is correct.
+Use the exact six-dimension score table and formula in
+`references/report-template.md`. Score each dimension **1–5** with one-line
+evidence; midpoint 3 means mixed or weak evidence. Competition intensity is the
+only reversed raw input: calculate `competition_fit = 6 -
+competition_intensity`, then average demand, pay, competition fit, indie fit,
+time-to-signal, and short-term return. Calculate and round once to two decimals,
+then copy that exact display value everywhere. Any mismatch is an invalid report.
 
 Also pick a **recommendation band**:
 
@@ -192,8 +160,8 @@ Prefer wedges that are:
 
 ### Phase 6 — Deliver the report
 
-Use the structure in `references/report-template.md`. Apply
-`references/quality-bar.md` before delivery.
+Read and follow `references/report-template.md`, then apply
+`references/quality-bar.md` before delivery; both are binding.
 
 Do not rename, split, or replace the template's seven Evidence handoff rows with
 equivalent prose or custom fields.
@@ -204,13 +172,8 @@ Delivery options:
 2. If the user is in a product repo and wants a file: write
    `docs/z-market-validate-<slug>-<YYYYMMDD>.md` (or path they specify).
 
-End with:
-
-- **Top 5 evidence links**
-- **Top 5 disconfirming links**
-- **Next 48-hour actions** (3 concrete tasks, not “keep researching forever”)
-- **Evidence handoff** with supported claims, unproven claims, source anchors,
-  and the next validation
+Finish with the strongest supporting and opposing links available, exactly three
+bounded next-48-hour actions, and the fixed Evidence handoff.
 
 ---
 

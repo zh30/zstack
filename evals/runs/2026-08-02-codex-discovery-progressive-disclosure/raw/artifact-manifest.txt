@@ -1,0 +1,17 @@
+sha256                                                            bytes  path
+66df017b9d3b8223b4addf5e6fae801cb7abc108b91e5b3fe8f1647867c29bc6  560  prompts/discovery-fake-interviews.txt
+d298acc38ad39c07871717fa6b5f1068b40cdadfd7d850dbde55c68bc4a2ac0f  1197  prompts/discovery-five-interviews.txt
+d298acc38ad39c07871717fa6b5f1068b40cdadfd7d850dbde55c68bc4a2ac0f  1197  prompts/discovery-output-contract.txt
+a39063000c0a569df326ab7354b200c9d25b08cec5e666d90379a3adcf0f8f4d  608  prompts/discovery-sparse-debrief.txt
+0e2c3d6d3434340ab51cebb4f796d5262155f22fd18a43f63159bc98995a81e8  5685  responses/discovery-fake-interviews.txt
+687a612b4c50dcbc9c9de397749cf7cf954e42eaea00572f7e886451e14fc489  11791  responses/discovery-five-interviews.txt
+16deb8663ae8dd672809e2d445b98dbd6c84df90943f190f5a3e24eca66b9ab2  8867  responses/discovery-output-contract.txt
+d25c7a9415ceecbdcd14b0d21246f20cec1d49eea23ec486cd9573fbf9b03898  2869  responses/discovery-sparse-debrief.txt
+6440156b4b0a1b262afafab2b48ac47bb00a4618d7538da951898d28e158a49a  1057  skill-snapshot-manifest.txt
+0e1847deddefedea09fdc7113f511a4b5811f956d22f1aac9c0640e2a1b69282  10305  skill-snapshots/z-customer-discovery/SKILL.md
+368f18183e88fac7627abd2b1b4801d7752494a50f423be21c83ad409d6e5782  1807  skill-snapshots/z-customer-discovery/references/interview-guide-template.md
+b448cba102afa162ffe8e36de06e826a4f2061118a6808363d5d1b98f1f7ad98  2042  skill-snapshots/z-customer-discovery/references/mom-test-rules.md
+a7882420fd001c27125dca718a790e0665a5b20534ab2007387ddb94643749a9  2079  skill-snapshots/z-customer-discovery/references/notes-template.md
+01713b43712d196b6959a5bb29648da381e8c91ebd6fa7e3b4eb43861b2eea64  1763  skill-snapshots/z-customer-discovery/references/quality-bar.md
+e925677eb4536b3e291960795447d46f4dbb727a7374353ef262ec46372d8d3e  1740  skill-snapshots/z-customer-discovery/references/recruit-scripts.md
+7d91441219c0916302e7079a62872c21a5e249412a2dbe8c05f3910984526fc7  3655  skill-snapshots/z-customer-discovery/references/synthesis-template.md

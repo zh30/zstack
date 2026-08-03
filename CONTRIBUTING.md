@@ -41,6 +41,18 @@ the body. Active skills also require a directly linked quality bar and the
 The validation scripts require Bash, Git, and Ruby 2.6+. ShellCheck is required
 when Bash changes; CI also runs actionlint through Go.
 
+Use these during the edit loop:
+
+```bash
+./scripts/doctor.sh --source-only --fail-fast
+./scripts/test.sh --smoke
+```
+
+The smoke suite covers repository validation, shared state/lock helpers, Ruby
+warning checks, and CLI input contracts. It deliberately omits runner,
+installer, doctor fault-injection, and scaffold integration cases, so it never
+replaces the full gate below.
+
 Run before opening a pull request:
 
 ```bash
@@ -48,6 +60,7 @@ bash -n scripts/*.sh scripts/lib/*.sh
 shellcheck scripts/*.sh scripts/lib/*.sh  # when Bash changed
 for script in scripts/*.rb scripts/lib/*.rb; do ruby -c "$script"; done
 ruby scripts/generate-evidence-manifests.rb --check
+ruby scripts/check-evidence-docs.rb
 ruby scripts/report-evidence-coverage.rb --require-current-complete-pass
 ruby scripts/report-evidence-coverage.rb \
   --require-current-complete-pass-host codex \
@@ -61,11 +74,16 @@ ruby scripts/report-evidence-coverage.rb \
 git diff --check
 ```
 
+Set `ZSTACK_TEST_TIMING=1` on either test command to prefix each passing stage
+with cumulative wall time when diagnosing a slow local or CI run.
+
 The evidence commands are intentionally current-source gates. They fail after
 a skill-byte or registered-case change until reviewed reruns are published, and
 they may also expose a documented host-authentication gap. Do not replace them
 with the historical `--require-complete-pass*` variants to make a pull request
-green; inspect the coverage report and preserve the limitation instead.
+green; inspect the coverage report, update all marked documentation blocks,
+and preserve the limitation instead. `check-evidence-docs.rb` derives its
+expected Claude/Codex/Grok counts from the same JSON reports used by the gates.
 
 Also invoke a changed skill in at least one supported host. In the pull request,
 include the prompt used, the behavior observed, and any environment limitation.

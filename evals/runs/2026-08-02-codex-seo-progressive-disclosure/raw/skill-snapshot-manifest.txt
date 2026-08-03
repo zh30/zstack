@@ -1,0 +1,5 @@
+sha256                                                            bytes  path
+7a6edc37a9b490561c13980704c7facf3d2556c5623bc78cf301d106dc8befb8     7520  skill-snapshots/z-seo-plan/SKILL.md
+446c5b74857bfb42203b4f0afa78eb034e7bfc36cb87375d4f2727fd37d9664a     1833  skill-snapshots/z-seo-plan/references/quality-bar.md
+e8f25ea1c07067df6725ca61a88116d6a8deb90a5ba0300e018ee16b0fe89133     4469  skill-snapshots/z-seo-plan/references/seo-plan-template.md
+a9c370f2885333244cfbfe66566fd871480ce1fa5ba288ca459cc8ab17bbfce5     1797  skill-snapshots/z-seo-plan/references/workflow-cheatsheet.md

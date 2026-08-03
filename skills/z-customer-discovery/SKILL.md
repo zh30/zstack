@@ -61,28 +61,18 @@ Chinese out). Interview language should match **what interviewees speak**.
    assumptions remain unproven.
 9. **The handoff is a fixed interface.** In every mode, end the primary `setup`,
    `debrief`, `synthesize`, or `full` output with exactly one two-column,
-   seven-row Evidence handoff table headed `Field | Value` using these exact
-   labels: `Current decision`,
-   `Evidence classes`, `Supported claims`, `Still unproven`, `Contradictions /
-   exclusions`, `Source anchors`, and `Next validation`. The class cell may
-   contain only applicable names from `primary behavior`, `observed experiment`,
-   `secondary public`, `search signal`, and `assumption`; put sample and source
-   limitations in the other fields. Include a class only when supplied inputs
-   or actual results in this output belong to it; a planned next interview or
-   experiment does not make that class current.
-   Never leave the class cell empty. If a debrief contains only compliments,
-   hypotheticals, or missing behavior, use `assumption` and state that those
-   inputs do not support a demand claim.
-   Treat the seven labels as literal protocol tokens. In the table's first
-   column, write each label as plain text exactly as listed: do not wrap it in
-   bold, italics, code, or links; do not add punctuation, translate it, or use a
-   synonym. For example, write `| Current decision |`, never
-   `| **Current decision** |`.
-   Do not add a third evidence-class, status, or detail column. Before results
-   exist, use `assumption` in `Evidence classes` and `TBD after test` for
-   result-dependent fields. If the mode writes multiple files, put the single
-   table in the decision-bearing artifact: the setup README, debrief note, or
-   synthesis/decision document. Do not duplicate it in companion files.
+   seven-row Evidence handoff table headed `Field | Value`. Its first column
+   must use these exact plain-text labels: `Current decision`, `Evidence
+   classes`, `Supported claims`, `Still unproven`, `Contradictions / exclusions`,
+   `Source anchors`, and `Next validation`. Do not format, translate,
+   punctuate, split, or rename them. The class cell may contain only applicable
+   names from `primary behavior`, `observed experiment`, `secondary public`,
+   `search signal`, and `assumption`; planned work adds no current class.
+   Never leave the class cell empty. Compliments, hypotheticals, missing
+   behavior, and pre-result setup use `assumption`, with result fields marked
+   `TBD after test`. When a mode writes multiple files, put the single table in
+   its decision-bearing README, debrief note, synthesis, or decision artifact;
+   never duplicate it in companion files.
 
 ---
 
@@ -135,13 +125,11 @@ docs/discovery/
 
 Content requirements:
 
-1. **ICP & hypotheses** — using `references/synthesis-template.md` header style  
-2. **Recruit scripts** — DM / email / community post; screening questions  
-   (`references/recruit-scripts.md`)  
-3. **Interview guide** — 25–40 min arc; past-behavior questions only up front;
-   optional 60-second product mention **only at the end** if useful
-   (`references/interview-guide-template.md`)  
-4. **Scheduling tips** — 5–15 pipeline: list → booked → done  
+1. Use `references/synthesis-template.md` for the ICP and falsifiable gates.
+2. Apply `references/recruit-scripts.md` for screening and outreach.
+3. Apply `references/interview-guide-template.md` for a 25–40 minute,
+   past-behavior-first conversation; any 60-second product mention comes last.
+4. Track the 5–15 pipeline from candidate list through completed interviews.
 
 Push the founder to **book the first 3** this week. Setup without outreach is incomplete.
 
@@ -159,16 +147,9 @@ If the user is mid-week:
 For each completed interview, write `docs/discovery/notes/NN-slug.md` using
 `references/notes-template.md`.
 
-Must include:
-
-- Meta (who, when, how recruited, warm/cold)  
-- Story timeline (past incidents)  
-- Current solutions & costs (G2)  
-- Switching signals (G3)  
-- Verbatim gold quotes  
-- **Mom Test audit** (violations + better questions for next time)  
-- Gate updates: G1/G2/G3 ∈ {support, neutral, contradict} + one-line why  
-- Founder pitch leakage score (0–5, lower better)  
+Record source/mix, concrete past incidents, current solutions and costs,
+switching signals, verbatim anchors, the Mom Test audit, G1/G2/G3 deltas, and
+the 0–5 founder pitch-leakage score required by the template.
 
 If notes are thin, ask for missing past-behavior detail — do not pad with guesses.
 
@@ -176,12 +157,11 @@ If notes are thin, ask for missing past-behavior detail — do not pad with gues
 
 When N≥5 (or user forces early checkpoint):
 
-1. Read all `notes/*.md` (or all pasted debriefs).  
-2. Cluster pains, costs, switch barriers.  
-3. Segment: *bleeding & paying* / *bleeding not paying* / *polite only*.  
-4. Score G1/G2/G3 with the shared rubric in
-   `references/synthesis-template.md`; report confidence separately.
-5. **Decision** in `decision.md`:
+1. Read all `notes/*.md` or pasted debriefs.
+2. Apply `references/synthesis-template.md`: cluster pains, costs, and switch
+   barriers; separate *bleeding & paying*, *bleeding not paying*, and *polite
+   only*; score G1/G2/G3 with confidence kept separate.
+3. Record the explicit **decision** in `decision.md`:
 
 | Verdict | Meaning |
 |---------|---------|
@@ -189,7 +169,7 @@ When N≥5 (or user forces early checkpoint):
 | **Reshape** | Pain exists but ICP/wedge wrong — new hypothesis |
 | **Park** | Weak primary evidence after honest N — stop building |
 
-6. Hand off:
+4. Hand off:
 
 | Next | When |
 |------|------|

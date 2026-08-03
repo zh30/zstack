@@ -1,0 +1,197 @@
+# Smoke pack template — z-landing-smoke
+
+---
+
+# Landing smoke test: {product name}
+
+## Contents
+
+1. Hypothesis
+2. Metrics and decision rules
+3. Landing-page copy
+4. Form and tracking
+5. Implementation notes
+6. Traffic plan
+7. Explicit non-build scope
+8. Evidence handoff
+
+| Field | Value |
+|-------|--------|
+| **Date** | YYYY-MM-DD |
+| **Timebox** | e.g. 10 days |
+| **ICP** | |
+| **CTA type** | waitlist / early access / pre-order |
+| **Page language** | English (default) |
+| **Stack** | |
+
+## 1. Hypothesis
+
+If we offer **{promise}** to **{ICP}** via **{CTA}**, then **{metric}** will be
+at least **{threshold}** within **{timebox}** under **{traffic plan}**.
+
+## 2. Metrics & decision rules
+
+| Metric | Definition | Success | Kill / pivot |
+|--------|------------|---------|--------------|
+| Visitors | | | |
+| Email CVR | emails / visitors | | |
+| Opens | welcome open rate | | |
+| Intent signals | replies / “I’d pay” | | |
+| Revenue | pre-orders $ | | |
+
+**Decision:** …
+
+## 3. Landing page copy (English)
+
+### Meta
+
+- **Title:**  
+- **Description:**  
+- **OG line:**  
+
+### Headline variants
+
+1. (ship this)  
+2.  
+3.  
+
+### Full page
+
+#### Nav
+…
+
+#### Hero
+…
+
+#### Problem
+…
+
+#### Solution (3 steps)
+1.  
+2.  
+3.  
+
+#### For / not for
+…
+
+#### Offer / CTA block
+…
+
+#### FAQ
+…
+
+#### Final CTA + footer
+…
+
+## 4. Form & tracking
+
+| Item | Spec |
+|------|------|
+| Fields | |
+| Provider | |
+| Success message | Verified success after a provider-signed/server-validated callback or redirect, or neutral attempt acknowledgement when confirmation is unavailable |
+| Events | `view_landing`, `click_cta`, `attempt_waitlist`; add a success event only when a provider-signed/server-validated callback exists |
+| Successful-conversion source of truth | Provider confirmation / signed callback / server-validated redirect |
+| Confirmed-conversion attribution | Provider metadata or distinct verified form/tag per source class |
+| Unknown attribution | Store as `unattributed`; exclude from source-specific thresholds |
+| Integration logging | Safe category/status/request id only; no secrets, PII, form text, or raw provider body |
+| Intake boundary | Exact JSON media type; actual streamed-byte cap; plain non-null object root; bounded 4xx errors; provider timeout |
+| Analytics properties | Allow-list before analytics loads; remove query + fragment; bounded lane/placement/variant only, with no raw URL/UTM/referrer/email/form text |
+| Analytics launch gate | Explicit `VERIFY_*` script/event/domain/privacy values; no external request until every required value is resolved |
+| Provider contract anchor | Current official docs URL + verification date for endpoint/auth/status/payload semantics; otherwise `VERIFY_*` and launch blocked |
+| UTM scheme | |
+
+`submit_waitlist` must mean a provider-confirmed success. If the chosen native
+form cannot expose that state reliably, use the provider's subscriber record as
+the conversion source of truth, do not emit a success event on submit attempt,
+and do not show confirmed-success copy after a timeout or unverified submission.
+A client-controlled query parameter, URL hash, cookie, `localStorage`, or
+`sessionStorage` flag is never verification. For a static page without a signed
+or server-validated callback, let the provider own the confirmed-success UX.
+If thresholds differ by source, verify that the confirmed subscriber record also
+preserves the matching UTM or traffic class; aggregate page UTMs are not enough.
+Only allow-listed source/campaign combinations enter a decision lane. Missing or
+unknown combinations remain `unattributed` and never default into warm or cold.
+Initialize analytics only after that mapping. Emit bounded canonical lane,
+registered placement, and variant properties; discard raw values for unknown
+inputs and never send raw queries, full URLs, URL fragments/hashes, arbitrary
+UTMs/referrers, email, or form text. Remove query and fragment before analytics
+initializes; restore only a registered local anchor after the pageview boundary
+when navigation requires one, and never emit it. Derive the provider lane
+independently on the server.
+
+Do not load an analytics script merely because an example domain is present.
+When its contract or site value is unverified, keep an explicit `VERIFY_*` guard
+that prevents script creation and network traffic; a local no-op event queue is
+safe while the guard remains closed.
+
+The server boundary must not trust `Content-Length` as its body limit. Bound the
+actual bytes read, reject JSON lookalike media types and non-object roots before
+field access, and place a finite timeout around the provider call. Malformed,
+oversized, `null`, array, scalar, timeout, and network cases all return a small
+documented error category without raw input or provider content.
+Do not derive that category from exception text. Public responses, logs, and
+analytics use hard-coded labels selected by trusted branches; exception
+messages, stacks, causes, and objects stay private and are not copied anywhere.
+
+## 5. Implementation notes
+
+- Host:  
+- Domain:  
+- Files to create:  
+- Pre-order processor (if any):  
+
+For create/build/implement/complete-package requests in a writable workspace,
+actually create the minimal deployable page file. Do not substitute a file list
+or offer to create the page later. Mark every external-service placeholder and
+list the setup still requiring user-owned credentials.
+
+## 6. Traffic plan
+
+| Day / window | Channel | Action | UTM | Notes |
+|--------------|---------|--------|-----|-------|
+| | | | | |
+
+### Channel posts (drafts)
+
+#### X
+…
+
+#### Reddit
+…
+
+#### Other
+…
+
+## 7. What we will NOT build during the smoke
+
+- …
+
+## 8. Evidence handoff
+
+| Outcome | Next step |
+|---------|-----------|
+| Strong | |
+| Mixed | |
+| Weak | |
+
+In the final `Evidence classes` cell, delete non-applicable choices and keep only
+canonical class names without qualifiers.
+
+The seven first-column labels below are literal interface tokens. Copy them as
+plain text with no Markdown styling, code ticks, links, punctuation, translation,
+or synonyms. Valid: `| Current decision |`. Invalid:
+`| **Current decision** |`.
+
+| Field | Value |
+|-------|-------|
+| Current decision | `TBD after test` / proceed / retest / reshape / park |
+| Evidence classes | primary behavior / observed experiment / secondary public / search signal / assumption |
+| Supported claims | Only claims supported by attributed, provider-confirmed results |
+| Still unproven | Payment, retention, or product value not tested by this CTA |
+| Contradictions / exclusions | Weak sources, failed variants, invalid attempts, and attribution gaps |
+| Source anchors | Dated metric slice, provider export, analytics view, and upstream paths |
+| Next validation | One action + owner + pre-registered success/fail signal |
+
+Before the experiment has run, keep result-dependent rows `TBD after test`.
+Never copy the hypothesis or aggregate traffic into the supported-claims row.

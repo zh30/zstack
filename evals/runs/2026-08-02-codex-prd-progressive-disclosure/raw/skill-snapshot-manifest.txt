@@ -1,0 +1,4 @@
+sha256                                                            bytes  path
+f334b68af62c48453bad357eb9078da962be2713fb73b648fa60f07162635a4f     9867  skill-snapshots/z-write-prd/SKILL.md
+47c983a733fde14449d4d3b4533c1e5eaf17408f6a8d1e04b30b7736e0d2b30d     5943  skill-snapshots/z-write-prd/references/prd-template.md
+00d280b1f0240a1273046423329f645d3183db4d02fda9075d711301d9905a44     3637  skill-snapshots/z-write-prd/references/quality-bar.md

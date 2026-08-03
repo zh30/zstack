@@ -168,8 +168,9 @@ leave that unselected root untouched.
 
 Edit a skill under `skills/` and every host sees the change immediately (symlink).
 Conflicts are skipped and make setup exit non-zero; pass `--force` to preserve
-the old path as a timestamped backup. If link creation then fails, setup restores
-the original path. Managed global and `--project` links are recorded for cleanup:
+the old path as `*.zstack-backup-*/original` inside an atomically reserved,
+timestamped backup directory. If link creation then fails, setup restores the
+original path. Managed global and `--project` links are recorded for cleanup:
 
 ```bash
 ./scripts/unlink.sh
@@ -251,6 +252,7 @@ zstack/
 │   ├── test.sh               # Installer + validator integration tests
 │   ├── new-skill.sh          # Scaffold z-* skill
 │   ├── unlink.sh             # Remove zstack-managed links only
+│   ├── check-evidence-docs.rb # Keep visible host counts aligned with evidence
 │   ├── report-evidence-coverage.rb # Behavioral/routing provenance matrices
 │   ├── run-behavioral-evals.rb # Shared isolated behavioral-runner core
 │   ├── run-{codex,claude,grok}-behavioral-evals.rb # Host entry points
@@ -263,7 +265,7 @@ zstack/
 │   ├── generate-evidence-manifests.rb # Rebuild / check whole eval archives
 │   ├── validate-yaml.rb      # Optional strict YAML + duplicate-key validation
 │   ├── validate-evidence.rb  # Eval archive JSON / byte / SHA-256 validation
-│   └── lib/                  # Shared shell parsing + immutable eval host inputs
+│   └── lib/                  # Shared parsing + stable eval/evidence input contracts
 ├── skills/
 │   ├── _template/
 │   ├── z-market-validate/
@@ -322,36 +324,42 @@ The complete-output [happy-path run](./evals/runs/2026-07-31-happy-path/summary.
 passed all five skills with raw artifacts preserved.
 The reviewed Codex resilience matrices [A](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-a/summary.md)
 and [B](./evals/runs/2026-08-01-codex-behavioral-resilience-matrix-b/summary.md)
-bring complete-provenance behavioral coverage to 20/20 current cases.
+first brought complete-provenance behavioral coverage to 20/20 cases at their
+August 1 source snapshot.
 The subsequent [host-gap audit](./evals/runs/2026-08-01-codex-happy-gap-regression/summary.md)
 preserved three passes and one real artifact failure; the isolated
 [artifact rerun](./evals/runs/2026-08-01-codex-landing-artifact-pass/summary.md)
-retains the deployable page and closes Codex-specific complete coverage at
-20/20.
+retains the deployable page and closed Codex-specific coverage at 20/20 for
+that snapshot.
 The same snapshot, anti-leak, review, and atomic-archive protocol now has a
 Claude Code adapter that records requested versus actual model ids and rejects
 API errors even when the host wraps them in a nominal success result.
-The current local Claude provider rejects its configured models before
-generation; the runner reports this as a redacted `model-unavailable` failure,
-so Claude behavior coverage remains honestly at 0/20.
-The Grok adapter adds an isolated host home, prompt-file transport, an exact
+At the 2026-08-02 local recheck, the Claude provider rejected its configured
+models before generation; the runner reported this as a redacted
+`model-unavailable` failure rather than counting external configuration as
+skill evidence.
+The Grok adapter adds an isolated host home with a bounded stable auth copy,
+anonymous-descriptor prompt-file transport, an exact
 final-response boundary, tool/sandbox controls, redacted API-error categories,
 and the same private-provenance checks. Its reviewed
 [19-case response matrix](./evals/runs/2026-08-01-grok-behavior-current-full-response/summary.md)
-remains current for the 16 non-landing cases. The retained
+remains historical evidence for the earlier skill snapshot. The retained
 [landing artifact failure](./evals/runs/2026-08-01-grok-behavior-current-smoke-artifact-unverified-success/summary.md)
-triggered stricter provider-confirmed-success rules; all four landing cases now
-need a fresh Grok rerun. The local Grok CLI currently reports unauthenticated,
-so current-source Grok behavior coverage is honestly 16/20. Deterministic
-adapter fixtures do not count as model evidence. A retained
+triggered stricter provider-confirmed-success rules. Progressive-disclosure
+edits later changed all five skill bodies, so all 20 behavior cases now need a
+fresh Grok rerun. Grok CLI 0.2.118 returns HTTP 401 before generation, leaving
+the 2026-08-02 recheck at 0/20 current-source Grok behavior cases.
+Deterministic adapter fixtures do not count as model evidence. A retained
 [provider-schema failure](./evals/runs/2026-08-01-codex-landing-artifact-provider-schema-failure/summary.md)
 then exposed a guessed Buttondown tag-ID contract. The skill now requires dated
 official provider semantics or an explicit launch-blocking `VERIFY_*` mapping.
-Codex combines its
-[19-case response matrix](./evals/runs/2026-08-01-codex-behavior-current-full-response/summary.md)
-with the reviewed [three-case landing rerun](./evals/runs/2026-08-01-codex-landing-response-after-closed-analytics-gate/summary.md)
-and [real landing artifact](./evals/runs/2026-08-01-codex-landing-artifact-after-closed-analytics-gate/summary.md)
-for 20/20 current-source coverage. The artifact keeps unknown attribution out
+Codex's latest reviewed reruns cover [market](./evals/runs/2026-08-02-codex-market-progressive-disclosure/summary.md),
+[PRD](./evals/runs/2026-08-02-codex-prd-progressive-disclosure/summary.md),
+[SEO](./evals/runs/2026-08-02-codex-seo-progressive-disclosure/summary.md),
+[discovery](./evals/runs/2026-08-02-codex-discovery-progressive-disclosure/summary.md),
+and landing [response](./evals/runs/2026-08-02-codex-landing-progressive-disclosure-response/summary.md)
+plus [artifact](./evals/runs/2026-08-02-codex-landing-progressive-disclosure-artifact/summary.md)
+passed all 20 cases at their 2026-08-02 source snapshots. The artifact keeps unknown attribution out
 of decision lanes, strips the query and fragment before analytics setup, makes
 no analytics or Buttondown request while explicit contract placeholders remain,
 and exposes no raw provider or exception data. Its Function passed 18 local
@@ -360,6 +368,14 @@ without trusting `Content-Length`; deterministic browser checks also proved the
 closed analytics gate and bounded attribution. CI requires current skill bytes
 for both behavior and routing; the open Grok gap therefore fails closed until a
 reviewed authenticated rerun is published.
+
+<!-- zstack-current-evidence:start -->
+Current-source evidence: Claude behavior **0/20**,
+Codex behavior **20/20**, Grok behavior
+**0/20**; Claude routing **0/25**,
+Codex routing **25/25**, Grok routing **25/25**.
+<!-- zstack-current-evidence:end -->
+
 Cross-host discovery evidence and all five Grok happy-path runs are
 recorded in [host compatibility](./docs/compatibility.md), including retained
 failures that led to discovery, landing-integrity, and PRD fixes.
@@ -394,7 +410,7 @@ Actively developed at `github.com/zh30/zstack`.
 | Skill catalog (5) | Usable |
 | Multi-host setup/doctor | Usable |
 | Architecture docs | Usable |
-| CI validation | Configured; currently fails closed on the documented Grok 16/20 behavior-evidence gap |
+| CI validation | Configured; host-specific evidence gaps fail closed (see the current-source block above) |
 | Contributor guide | Usable |
 
 ---

@@ -1,0 +1,213 @@
+# Market validation: Generic scheduling SaaS for professionals and small teams
+
+- **Date:** 2026-08-02
+- **Analyst:** agent + skill `z-market-validate`
+- **Geography focus:** Global, English-speaking market
+- **Assumptions:** A horizontal Calendly-style SaaS for booking meetings, built by one independent developer. No specific niche, proprietary distribution, or differentiated workflow was supplied.
+- **Evidence limit:** Web, browser, apps, and subagents were unavailable. No channels could be searched, so this is an assumption-only preliminary evaluation—not evidence of demand, payment, switching, or retention.
+
+## 1. Executive verdict
+
+| Question | Verdict | Confidence |
+|---|---|---|
+| Commercial value? | Mixed | Low |
+| Fit for independent developer? | Conditional | Low |
+| Short-term return odds (30–90 days)? | Low | Low |
+| **Recommendation band** | **Avoid (as stated)** | Medium |
+
+**Summary:** The composite is **2.67**. Scheduling is plausibly valuable, but a generic tool enters a mature category with strong incumbents, free substitutes, difficult calendar integrations, and high reliability expectations. Avoid building the horizontal product as stated. Only proceed after identifying a narrow workflow where scheduling is one step in a more expensive problem.
+
+## 2. Idea framing
+
+- **Problem in user language:** “Coordinating availability, reminders, intake, and rescheduling takes too much back-and-forth.”
+- **Proposed solution:** A general-purpose scheduling link and calendar coordination SaaS.
+- **Narrow ICP used for evaluation:** Small professional-service teams that schedule external meetings.
+- **Non-ICP:** Consumers, general internal-team meetings, large enterprises, and anyone satisfied with existing calendar booking features.
+
+### Success signals
+
+- At least 10 target users describe the same scheduling-related loss.
+- At least 3 currently pay for a workaround or commit to a paid pilot.
+- The desired outcome requires more than another booking page.
+- One reachable niche supplies the first 10 prospects without paid mass-market acquisition.
+
+### Kill signals
+
+- Users consider existing free tools good enough.
+- Differentiation is mainly lower price, prettier UI, or generic AI.
+- Calendar synchronization and support dominate the founder’s time.
+- Prospects praise the concept but will not switch or pay.
+
+## 3. Evidence map
+
+### 3.1 Channel coverage
+
+| Channel | Status | Notes |
+|---|---|---|
+| X/Twitter | Blocked | No web access |
+| Reddit | Blocked | No web access |
+| Hacker News | Blocked | No web access |
+| Product Hunt | Blocked | No web access |
+| Indie Hackers | Blocked | No web access |
+| Reviews/app stores | Blocked | No web access |
+| Buyer communities | Blocked | No web or app access |
+| CN platforms | Skipped | Global English-speaking scope assumed |
+
+The required four-channel scan was not possible.
+
+### 3.2 Demand signals
+
+**Not found.** No primary behavior, observed experiment, public discussion, or search signal could be collected.
+
+Assumptions requiring validation:
+
+- External appointment coordination can create costly administrative work.
+- Reminders, intake, payment, and rescheduling may be more valuable than availability display alone.
+- Some vertical workflows may remain poorly served despite the mature horizontal category.
+
+### 3.3 Disconfirming signals
+
+No sourced signals were available. The preliminary objections are assumptions:
+
+- Mature scheduling products and built-in calendar features reduce switching urgency.
+- Free plans may anchor willingness to pay near zero for basic booking.
+- Reliability, time zones, recurring availability, conferencing, and calendar synchronization create a broad edge-case surface.
+- A new horizontal entrant may face high acquisition costs and weak differentiation.
+
+### 3.4 Pricing and willingness-to-pay
+
+**Not found.** Competitor pricing and customer payment behavior could not be verified. The key question is not whether scheduling software can be sold, but whether this proposed product creates enough incremental value to cause switching.
+
+## 4. Competition and substitutes
+
+The following landscape is an unverified category map, not current competitive research.
+
+| Substitute | Type | Price signal | Possible gap | Threat to indie |
+|---|---|---|---|---|
+| Calendly | Horizontal scheduling SaaS | Not verified | Specialized workflows may need more context | Very high |
+| Cal.com | Scheduling platform/open-source option | Not verified | Vertical packaging or service may be simpler | Very high |
+| SavvyCal | Scheduling SaaS | Not verified | Some niche workflows may remain unsupported | High |
+| Google Calendar appointment scheduling | Calendar-native feature | Not verified | Cross-system workflows may be limited | Very high |
+| Microsoft Bookings | Suite-integrated scheduling | Not verified | Smaller firms may find suite workflows heavy | Very high |
+| Vertical booking platforms | Industry-specific software | Not verified | Quality likely varies by vertical | High |
+| Email or messaging | Manual workaround | Free/included | Slow and labor-intensive | High |
+| Assistant or coordinator | Human service | Not verified | Expensive but flexible | Medium |
+
+**Category structure:** Assumed mature, heavily contested horizontal category with powerful suite bundling. A niche workflow may be fragmented, but that must be demonstrated.
+
+## 5. Scores (1–5)
+
+Except for competition intensity, higher scores are better for proceeding.
+
+| Dimension | Score | Evidence |
+|---|---:|---|
+| Demand reality | **3/5** | The underlying coordination problem is plausible, but no target-user evidence was available. |
+| Willingness to pay | **3/5** | Payment is plausible for business outcomes, but unverified for this product or segment. |
+| Competition intensity | **5/5** | Assumed brutally crowded; this is the sole reversed raw input. |
+| Indie fit | **3/5** | An MVP is feasible, but integrations, reliability, and support enlarge the operating burden. |
+| Time-to-signal | **4/5** | Interviews, concierge tests, and paid-pilot requests can test a niche quickly. |
+| Short-term return odds | **2/5** | A generic launch is unlikely to earn quickly without an audience, wedge, or distribution advantage. |
+| **Composite (avg)** | **2.67** | Assumption-only preliminary result. |
+
+**Transparent composite calculation — single source of truth**
+
+```text
+competition_fit = 6 - competition_intensity = 6 - 5 = 1
+composite_sum = 3 + 3 + 1 + 3 + 4 + 2 = 16
+composite_exact = 16 / 6 = 2.6666666666666665
+display_composite = round(composite_exact, 2) = 2.67
+```
+
+## 6. Commercial value
+
+**Mixed.** Businesses may pay when scheduling errors cause lost revenue, staff time, missed appointments, or slow deal cycles. Basic availability sharing alone is unlikely to provide a strong switching reason. The promising value proposition is an expensive workflow outcome—such as shortening interview coordination—not “easier scheduling.”
+
+No payment behavior or budget replacement has been verified.
+
+## 7. Independent-developer fit
+
+**Conditional.**
+
+- **MVP scope:** A narrow concierge workflow or single-calendar prototype is manageable.
+- **Support burden:** Potentially high because booking mistakes are visible, urgent, and trust-damaging.
+- **Distribution:** Weak for a horizontal product; potentially workable through one profession’s communities and direct outreach.
+- **Regulation and liability:** Usually moderate, but healthcare, payments, and sensitive intake can increase compliance exposure.
+- **Capital:** Low for validation, higher for a polished multi-calendar platform.
+- **Skills match:** Unknown.
+- **Operational risk:** Calendar APIs, time zones, retries, cancellations, webhooks, and conferencing integrations can consume substantial maintenance time.
+
+## 8. Short-term return: 30–90 days
+
+**Odds: Low.**
+
+For this evaluation, “return” means either one paid pilot or the first **$100 in revenue**.
+
+- **Best plausible path:** Sell a manual-first scheduling coordination service to one narrow business niche, then automate only the repeated steps.
+- **Why odds are low:** The generic proposition lacks a switching trigger, proven distribution, and verified willingness to pay.
+- **What would falsify this judgment:** Three target businesses committing to paid pilots for the same workflow within 14 days.
+
+## 9. Entry directions
+
+### Primary wedge: boutique recruiting agencies coordinating multi-party interviews
+
+- **Who:** Recruiting agencies that coordinate candidates, client interviewers, and internal recruiters.
+- **Job to be done:** Reduce the messages and delays required to schedule or reschedule multi-party interviews.
+- **MVP shape:** A concierge service with a lightweight intake form, availability collection, proposed time generation, reminders, and manual exception handling.
+- **Where to find the first 10 prospects:** Direct outreach to boutique agency owners and recruiter communities; these channels remain unverified.
+- **14-day metric:** Ten interviews, three workflow demonstrations, and at least one paid pilot. Praise or waitlist signups do not count.
+
+### Backup wedges
+
+1. Scheduling plus intake and deposits for one high-value professional service.
+2. Cross-company scheduling for customer research teams recruiting external participants.
+
+### Explicitly do not start with
+
+- A generic Calendly alternative.
+- Lower price as the primary differentiation.
+- “AI scheduling” without a specific costly workflow.
+- Multi-calendar infrastructure, a marketplace, mobile apps, or enterprise administration in the first version.
+- Healthcare or other compliance-heavy scheduling before validating payment.
+
+## 10. Risks and open questions
+
+- Which specific scheduling failure costs the customer money?
+- Who owns the budget, and what do they pay for now?
+- What would make users switch from their current tool?
+- Does the wedge occur frequently enough to support recurring revenue?
+- Can the workflow begin manually without deep calendar access?
+- Is the niche reachable by one founder?
+- Are incumbent complaints severe or merely inconvenient?
+- How much exception handling and urgent support will each account require?
+
+## 11. Next 48 hours
+
+1. Conduct a 30–60 minute manual scan of Reddit, X, HN, Product Hunt, and one review site using queries such as `"interview scheduling" frustrating`, `"Calendly alternative"`, `"scheduling tool" too expensive`, and `switched from Calendly`; record ten dated quotes with links, including at least three objections.
+2. Contact ten boutique recruiting-agency owners with a five-question problem interview focused on their last scheduling failure, current workaround, frequency, cost, and existing spend; do not pitch the product.
+3. Offer a manual interview-coordination pilot to the three strongest prospects at a real price; continue only if at least one pays or three make explicit, time-bounded pilot commitments.
+
+## 12. Source appendix
+
+### Strongest supporting links
+
+**Not found:** browsing was unavailable.
+
+### Strongest opposing links
+
+**Not found:** browsing was unavailable.
+
+### Manual evidence checklist
+
+Capture channel, URL, date, short quote or summary, polarity, weight, and indie relevance for every result. Seek both demand and terms such as “too expensive,” “cancelled,” “doesn’t work,” “alternative,” and “switched from.”
+
+## 13. Evidence handoff
+
+| Field | Value |
+|---|---|
+| Current decision | Avoid |
+| Evidence classes | assumption |
+| Supported claims | Only a preliminary strategic judgment: a generic scheduling product lacks a defined wedge and appears structurally difficult for a solo founder. No market behavior is supported. |
+| Still unproven | Demand, willingness to pay, switching behavior, retention, incumbent weaknesses, pricing, channel access, and delivery feasibility |
+| Contradictions / exclusions | The category may contain profitable vertical niches, but none was evidenced. Generic horizontal scheduling, price-led differentiation, and unspecified AI positioning are excluded. |
+| Source anchors | No external anchors; all channels were blocked on 2026-08-02. |
+| Next validation | Founder conducts ten recruiting-agency problem interviews; proceed to a concierge test only if at least three report the same costly recurring workflow and one accepts a paid pilot. |

@@ -1,7 +1,8 @@
 # Host compatibility evidence
 
-Last verified: **2026-08-01**. Host discovery is an external contract, so this
-page records evidence rather than promising identical behavior forever.
+Evidence status last rechecked: **2026-08-02**. Host discovery is an external
+contract, so this page records evidence rather than promising identical
+behavior forever.
 
 ## Current discovery matrix
 
@@ -9,7 +10,7 @@ page records evidence rather than promising identical behavior forever.
 |------|---------------------|----------|-----------------|
 | Claude Code | `~/.claude/skills` | [Official skills docs](https://code.claude.com/docs/en/skills) | Explicitly documented |
 | Codex | `~/.agents/skills` | [Official skills docs](https://developers.openai.com/codex/skills) | Explicitly documented |
-| Grok Build | `~/.agents/skills` plus Claude compatibility | `grok inspect --json`, Grok Build 0.2.117 | Verified with zstack directory symlinks |
+| Grok Build | `~/.agents/skills` plus Claude compatibility | `grok inspect --json`, Grok Build 0.2.118 | Verified with zstack directory symlinks |
 
 `~/.codex/skills` is not in the current Codex discovery list. zstack retains it
 as an explicit legacy profile only:
@@ -33,13 +34,21 @@ Explicit optional profiles remain untouched by later default setup runs.
 |-------|----------------|-----------------|
 | Source validation | Portable frontmatter, links, catalog, eval coverage | `./scripts/doctor.sh --source-only` |
 | Install integration | Safe symlink setup, optional-profile semantics, rollback, unlink | `./scripts/test.sh` |
-| Runtime discovery | A real host lists all five installed zstack skills | Grok Build 0.2.117 `inspect` |
+| Runtime discovery | A real host lists all five installed zstack skills | Grok Build 0.2.118 `inspect` |
 | Routing behavior | Descriptions select the intended skill, reject unrelated work, survive context pressure, and route Chinese requests | Codex [routing run](../evals/runs/2026-07-31-routing/summary.md), [routing-budget regression](../evals/runs/2026-08-01-codex-routing-budget/summary.md), and [Chinese routing regression](../evals/runs/2026-08-01-codex-routing-zh/summary.md); Grok [full 25-case matrix](../evals/runs/2026-08-01-grok-routing-full-matrix/summary.md) |
-| Complete behavior | A selected skill produces a decision-ready artifact from current source | Codex [19-case response matrix](../evals/runs/2026-08-01-codex-behavior-current-full-response/summary.md), [closed-gate landing rerun](../evals/runs/2026-08-01-codex-landing-response-after-closed-analytics-gate/summary.md), and [verified landing artifact](../evals/runs/2026-08-01-codex-landing-artifact-after-closed-analytics-gate/summary.md) provide 20/20 current coverage; Grok's [19-case matrix](../evals/runs/2026-08-01-grok-behavior-current-full-response/summary.md) remains current for 16 non-landing cases, while the retained [unverified-success artifact failure](../evals/runs/2026-08-01-grok-behavior-current-smoke-artifact-unverified-success/summary.md) explains the four pending landing reruns |
+| Complete behavior | A selected skill produces a decision-ready artifact from current source | Codex's latest reviewed reruns cover [market](../evals/runs/2026-08-02-codex-market-progressive-disclosure/summary.md), [PRD](../evals/runs/2026-08-02-codex-prd-progressive-disclosure/summary.md), [SEO](../evals/runs/2026-08-02-codex-seo-progressive-disclosure/summary.md), [discovery](../evals/runs/2026-08-02-codex-discovery-progressive-disclosure/summary.md), and landing [response](../evals/runs/2026-08-02-codex-landing-progressive-disclosure-response/summary.md) plus [artifact](../evals/runs/2026-08-02-codex-landing-progressive-disclosure-artifact/summary.md). Grok retains historical evidence; fresh behavior runs are blocked before generation by HTTP 401. Current counts are checked in the block below. |
+
+<!-- zstack-current-evidence:start -->
+Current-source evidence: Claude behavior **0/20**,
+Codex behavior **20/20**, Grok behavior
+**0/20**; Claude routing **0/25**,
+Codex routing **25/25**, Grok routing **25/25**.
+<!-- zstack-current-evidence:end -->
 
 The Grok runtime inspection found all five skills from
-`~/.agents/skills/<name>/SKILL.md`. Clean, isolated, no-web Grok runs now cover
-all five happy paths: market validation and SEO passed directly; discovery exposed
+`~/.agents/skills/<name>/SKILL.md`. Historical clean, isolated, no-web Grok runs
+covered all five happy paths on their recorded source snapshots: market
+validation and SEO passed directly; discovery exposed
 an artifact-budget failure and passed after the fix; PRD exposed missing P0-NFR
 validation methods and passed after the fix; landing smoke exposed premature
 conversion events, deferred deployable output, disconnected UTM/subscriber
@@ -119,24 +128,24 @@ artifact runner grants an isolated workspace-write sandbox, accepts files only
 under `artifacts/`, verifies the skill snapshot remained byte-identical, rejects
 private workspace paths in the final response, and hashes every deliverable.
 The reviewed [landing artifact rerun](../evals/runs/2026-08-01-codex-landing-artifact-pass/summary.md)
-retains eight deployable/test-plan files and passes all criteria. Codex now has
-a complete-provenance pass for 20/20 current cases, not only any-host coverage.
+retains eight deployable/test-plan files and passes all criteria. At that
+August 1 source snapshot, Codex had a complete-provenance pass for 20/20 cases,
+not only any-host coverage.
 
 The isolated behavioral protocol now also has a Claude Code adapter sharing the
 same snapshot, anti-leak, review, and atomic-publication core. Integration tests
 exercise safe mode, the `Read`-only tool allowlist, requested-versus-actual model
 provenance, private JSON/invocation exclusion, invocation tamper rejection, and
 the host's unusual `is_error=true` result shape. These deterministic adapter
-tests are not Claude behavior evidence: until a real reviewed Claude archive is
-published, the host-specific coverage report correctly remains 0/20 for Claude.
-The latest local Claude probe reached the configured provider but received HTTP
-404 before generation for every configured model family. The runner now reports
-this safely as `model-unavailable` without echoing provider error text. This is
-kept as an explicit external configuration gap rather than being mislabeled as
-skill behavior evidence.
+tests are not Claude behavior evidence. At the 2026-08-02 recheck, the latest
+local Claude probe reached the configured provider but received HTTP 404 before
+generation for every configured model family. The runner reports this safely as
+`model-unavailable` without echoing provider error text. This remains an
+explicit external configuration gap rather than being mislabeled as skill
+behavior evidence; the marked block above carries the live count.
 
 The same core now has a Grok adapter with an isolated ephemeral host home,
-prompt-file transport, fixed system-prompt override, read-only/workspace
+anonymous-descriptor prompt-file transport, fixed system-prompt override, read-only/workspace
 sandboxes, tool allowlists, and requested-versus-actual model records. The
 adapter explicitly discloses that Grok may still discover the standard Agent
 Skills hub, and it records MCP startup attempts as incidents while excluding
@@ -163,9 +172,11 @@ showed that a plausible-looking Buttondown tag-ID mapping contradicted the
 [official subscriber-create tag-name contract](https://docs.buttondown.com/api-subscribers-create)
 checked on 2026-08-01. The source now requires dated official
 endpoint/auth/status/payload semantics or launch-blocking `VERIFY_*`
-placeholders. Codex's full response matrix, latest three landing response
-reruns, and verified real-file artifact cover all 20 current cases. The latest
-artifact's Function passed 18 deterministic adversarial scenarios covering
+placeholders. After progressive-disclosure edits changed every skill body,
+Codex reran and passed all 20 registered cases against the exact new snapshots:
+market, PRD, SEO, and discovery passed 4/4 each; landing passed three response
+cases plus its real-file artifact case. The latest artifact's Function passed
+18 deterministic adversarial scenarios covering
 media type, malformed and non-object JSON, actual streamed-byte limits, hostile
 stream errors, provider timeout/network/rejection/acceptance, attribution, and
 diagnostic privacy. Separate browser tests proved that query and fragment data
@@ -174,11 +185,13 @@ unresolved Plausible values make no external request. Buttondown and Plausible
 remain explicitly blocked until their current official contracts, real records,
 and network behavior are verified.
 
-Grok remains current for 16/20 behavior cases; all 25 routing cases remain
-current. Its prior client-controlled success-parameter failure is retained, the
-skill fix is present, and two attempted reruns were not archived because the
-local CLI returned HTTP 401 before model generation. Every case carries an exact
-seven-row Evidence handoff;
+At the 2026-08-02 recheck, Grok had 0/20 current-source behavior cases because
+all five skill snapshots had changed; all 25 routing cases remained current
+because their descriptions and routing inputs did not change. Grok's historical
+20/20 matrix and prior client-controlled success-parameter failure remain
+retained. Fresh behavior probes with Grok CLI 0.2.118 were not archived because
+the local CLI returned HTTP 401 before model generation. Every case carries an exact seven-row
+Evidence handoff;
 the archive validates its bytes mechanically and binds a separate semantic
 review of evidence-class applicability. CI enforces the same current-source
 rule for both behavior and all 25 routing cases, so the current Grok gap fails

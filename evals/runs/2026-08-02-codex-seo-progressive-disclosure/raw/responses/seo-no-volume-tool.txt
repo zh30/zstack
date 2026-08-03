@@ -1,0 +1,21 @@
+I can’t provide exact monthly volume and difficulty numbers for 50 keywords without a qualified data source. Those numbers would be fabricated—and keyword difficulty is vendor-specific, not a universal measurement. Search Console would not supply market-wide keyword volume or difficulty anyway.
+
+To produce a defensible list, provide:
+
+- Product URL, PRD, or short product description
+- Target country and language
+- Target customer
+- Primary conversion goal
+- A Keyword Planner, Semrush, Moz, or similar export, if numeric metrics are required
+
+Then I can normalize and prioritize the data into one primary cluster, 2–4 secondary terms, and 5–10 initial long-tails. The list should expand toward 50 only after that cluster has evidence. Without an export, I can use only `high | med | low | unknown` bands—and browsing is unavailable in this run, so even those bands currently remain `unknown`.
+
+| Field | Value |
+|-------|-------|
+| Current decision | Validate first; do not manufacture a 50-keyword metric table |
+| Evidence classes | assumption |
+| Supported claims | No qualified keyword dataset, product context, locale, or target market was supplied; numeric volume and difficulty therefore cannot be supported |
+| Still unproven | Keyword demand, difficulty, search intent, rankings, traffic, conversion, payment, and retention |
+| Contradictions / exclusions | Exact unsupported metrics and an unprioritized 50-keyword dump are excluded |
+| Source anchors | User-stated lack of Ahrefs and Search Console access; runtime restriction blocking web research |
+| Next validation | Founder supplies product context, locale, and a keyword-tool export; then map and prioritize the first evidence-backed cluster |

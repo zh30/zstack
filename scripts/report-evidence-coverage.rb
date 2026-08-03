@@ -2,9 +2,19 @@
 # Report which current behavioral or routing cases have archived passing evidence.
 
 require "json"
+require "find"
 require "optparse"
 require "digest"
+require "rbconfig"
 require "yaml"
+require_relative "lib/eval_behavioral_prompt"
+require_relative "lib/eval_bounded_command"
+require_relative "lib/eval_evidence_tree"
+require_relative "lib/eval_input_file"
+require_relative "lib/eval_limits"
+require_relative "lib/eval_routing_prompt"
+require_relative "lib/eval_strict_json"
+require_relative "lib/eval_strict_yaml"
 require_relative "lib/evidence_handoff_contract"
 
 ROOT = File.expand_path("..", __dir__)
@@ -12,9 +22,12 @@ CATALOG_PATH = File.join(ROOT, "catalog.yaml")
 CASES_PATH = File.join(ROOT, "evals", "cases.yaml")
 ROUTING_PATH = File.join(ROOT, "evals", "routing.yaml")
 RUNS_ROOT = File.join(ROOT, "evals", "runs")
+EVIDENCE_VALIDATOR = File.join(ROOT, "scripts", "validate-evidence.rb")
 SUPPORTED_HOST_FAMILIES = %w[claude codex grok].freeze
 SUPPORTED_SUITES = %w[behavioral routing].freeze
 EVIDENCE_HANDOFF_CONTRACT = Zstack::EvidenceHandoffContract
+EVAL_BEHAVIORAL_PROMPT = Zstack::EvalBehavioralPrompt
+EVAL_ROUTING_PROMPT = Zstack::EvalRoutingPrompt
 CODEX_AMBIENT_CONTEXT_KEYS = %w[
   CODEX_INTERNAL_ORIGINATOR_OVERRIDE
   CODEX_PERMISSION_PROFILE
@@ -22,15 +35,30 @@ CODEX_AMBIENT_CONTEXT_KEYS = %w[
 ].freeze
 
 def load_yaml(path)
-  YAML.safe_load(
-    File.read(path),
-    permitted_classes: [],
-    permitted_symbols: [],
-    aliases: false,
-    filename: path
-  )
+  Zstack::EvalStrictYaml.parse(Zstack::EvalInputFile.read(path, label: path, root: ROOT), path)
 rescue Errno::ENOENT, Psych::Exception => e
   raise "cannot load #{path.delete_prefix("#{ROOT}/")}: #{e.message}"
+end
+
+def validate_archives!
+  result = Zstack::EvalBoundedCommand.capture(
+    RbConfig.ruby,
+    EVIDENCE_VALIDATOR,
+    timeout_seconds: Zstack::EvalLimits::EVIDENCE_TOOL_TIMEOUT_SECONDS,
+    max_output_bytes: Zstack::EvalLimits::MAX_EVIDENCE_TOOL_OUTPUT_BYTES
+  )
+  if result.timed_out
+    raise "evidence validation timed out after #{Zstack::EvalLimits::EVIDENCE_TOOL_TIMEOUT_SECONDS} seconds"
+  end
+  if result.output_limited
+    raise "evidence validation exceeded #{Zstack::EvalLimits::MAX_EVIDENCE_TOOL_OUTPUT_BYTES} output bytes"
+  end
+  return if result.status.success?
+
+  diagnostics = [result.stderr, result.stdout].join("\n")
+  first_error = diagnostics.each_line.map(&:strip).find { |line| !line.empty? }
+  detail = first_error ? ": #{first_error}" : ""
+  raise "evidence validation failed#{detail}"
 end
 
 def host_family(name)
@@ -43,44 +71,108 @@ def host_family(name)
 end
 
 def execution_contract_current?(archive_data)
-  return true unless host_family(archive_data.dig("host", "name")) == "codex"
-
+  family = host_family(archive_data.dig("host", "name"))
+  return false unless SUPPORTED_HOST_FAMILIES.include?(family)
   defaults = archive_data["executionDefaults"]
   return false unless defaults.is_a?(Hash)
-  return false unless defaults["isolatedHostHome"] == true
-  return false unless defaults["ambientDesktopContextDisabled"] == CODEX_AMBIENT_CONTEXT_KEYS
-  return false unless defaults["timeoutSecondsPerCase"].is_a?(Integer) && defaults["timeoutSecondsPerCase"].positive?
+  return false unless defaults["webSearch"] == false
+  return false unless defaults["subagents"] == false
+  return false unless defaults["ephemeralSession"] == true
+  timeout = defaults["timeoutSecondsPerCase"]
+  if !timeout.nil? && (!timeout.is_a?(Integer) || !timeout.between?(1, Zstack::EvalLimits::MAX_RUNNER_TIMEOUT_SECONDS))
+    return false
+  end
 
-  incidents = Array(archive_data["runnerIncidents"])
-  incidents.none? { |incident| incident.match?(/MCP OAuth invalid_grant|installed-skill context-budget warning/) }
+  case family
+  when "claude"
+    return false unless defaults["sessionPersistence"] == false
+    return false unless Zstack::EvalLimits.finite_positive_number?(defaults["maxBudgetUsdPerCase"])
+  when "grok"
+    return false unless defaults["sessionPersistence"] == false
+    return false unless defaults["maxTurns"].is_a?(Integer) && defaults["maxTurns"].between?(1, Zstack::EvalLimits::MAX_GROK_TURNS)
+    return false unless defaults["ambientAgentSkillsMayBeDiscovered"] == true
+  when "codex"
+    return false unless defaults["isolatedHostHome"] == true
+    return false unless defaults["ambientDesktopContextDisabled"] == CODEX_AMBIENT_CONTEXT_KEYS
+    return false unless timeout.is_a?(Integer) && timeout.between?(1, Zstack::EvalLimits::MAX_RUNNER_TIMEOUT_SECONDS)
+    incidents = Array(archive_data["runnerIncidents"])
+    return false if incidents.any? { |incident| incident.match?(/MCP OAuth invalid_grant|installed-skill context-budget warning/) }
+  end
+  true
 end
 
 def load_frontmatter(path)
-  content = File.read(path)
+  content = Zstack::EvalInputFile.read(path, label: path, root: ROOT)
   match = content.match(/\A---\r?\n(?<yaml>.*?)\r?\n---(?:\r?\n|\z)/m)
   raise "#{path.delete_prefix("#{ROOT}/")}: missing closed frontmatter" unless match
 
-  data = YAML.safe_load(match[:yaml], permitted_classes: [], permitted_symbols: [], aliases: false, filename: path)
+  data = Zstack::EvalStrictYaml.parse(match[:yaml], path)
   raise "#{path.delete_prefix("#{ROOT}/")}: frontmatter must be a mapping" unless data.is_a?(Hash)
 
   data
 end
 
-def tree_signature(path)
+def read_evidence_file(snapshot, path, require_utf8: true)
+  content = Zstack::EvalInputFile.read(
+    path,
+    label: path,
+    require_utf8: require_utf8,
+    root: ROOT
+  )
+  snapshot.verify_content!(path, content)
+  content
+end
+
+def tree_signature(path, evidence_snapshot: nil)
   return nil unless File.directory?(path) && !File.symlink?(path)
 
-  entries = Dir.glob(File.join(path, "**", "*"), File::FNM_DOTMATCH).reject do |entry|
-    %w[. ..].include?(File.basename(entry))
-  end.sort.map do |entry|
-    return nil if File.symlink?(entry) || (!File.file?(entry) && !File.directory?(entry))
-    next if File.directory?(entry)
+  paths = []
+  Find.find(path) do |entry|
+    next if entry == path
+    return nil if paths.length >= Zstack::EvalLimits::MAX_SKILL_TREE_ENTRIES
+
+    paths << entry
+  end
+  paths.sort!
+  files = 0
+  bytes = 0
+  entries = paths.map do |entry|
+    stat = File.lstat(entry)
+    return nil if stat.symlink? || (!stat.file? && !stat.directory?)
+    next if stat.directory?
+
+    files += 1
+    return nil if files > Zstack::EvalLimits::MAX_SKILL_FILES
 
     relative = entry.delete_prefix("#{path}/")
-    [relative, File.size(entry), Digest::SHA256.file(entry).hexdigest]
+    content = if evidence_snapshot
+                read_evidence_file(evidence_snapshot, entry, require_utf8: false)
+              else
+                Zstack::EvalInputFile.read(
+                  entry,
+                  label: relative,
+                  require_utf8: false,
+                  root: ROOT
+                )
+              end
+    bytes += content.bytesize
+    return nil if bytes > Zstack::EvalLimits::MAX_SKILL_BYTES
+    [relative, content.bytesize, Digest::SHA256.hexdigest(content)]
   end.compact
   return nil if entries.empty?
+  observed_paths = []
+  Find.find(path) do |entry|
+    next if entry == path
+    return nil if observed_paths.length >= Zstack::EvalLimits::MAX_SKILL_TREE_ENTRIES
+
+    observed_paths << entry
+  end
+  observed_paths.sort!
+  return nil unless observed_paths == paths
 
   Digest::SHA256.hexdigest(entries.map { |entry| entry.join("\0") }.join("\n"))
+rescue SystemCallError, Zstack::EvalInputFile::ReadError
+  nil
 end
 
 def current_candidate_descriptions(active_entries)
@@ -95,52 +187,80 @@ def current_candidate_descriptions(active_entries)
   end.sort.join
 end
 
-def behavioral_source_current?(archive, run, entry, current_skill_signatures)
+def behavioral_source_current?(archive, run, entry, current_skill_signatures, evidence_snapshot)
+  return false unless run["grade"] == "pass" && run["exitStatus"] == 0
+
   id = entry.fetch("id")
   skill = entry.fetch("skill")
   snapshot = File.join(archive, "raw", "skill-snapshots", skill)
-  return false unless tree_signature(snapshot) == current_skill_signatures.fetch(skill)
+  return false unless tree_signature(snapshot, evidence_snapshot: evidence_snapshot) == current_skill_signatures.fetch(skill)
 
   prompt_path = File.join(archive, "raw", "prompts", "#{id}.txt")
-  return false unless File.file?(prompt_path) && File.read(prompt_path).end_with?("User request:\n#{entry.fetch("prompt")}\n")
+  prompt = read_evidence_file(evidence_snapshot, prompt_path)
+  return false unless prompt.b == EVAL_BEHAVIORAL_PROMPT.build(entry).b
 
   review_path = File.join(archive, "runner-review.json")
-  return false unless File.file?(review_path)
-  review = JSON.parse(File.read(review_path))
+  review_content = read_evidence_file(evidence_snapshot, review_path)
+  review = Zstack::EvalStrictJson.parse(review_content)
   reviewed = Array(review["cases"]).find { |candidate| candidate["id"] == run["case"] }
-  return false unless reviewed
+  return false unless reviewed && reviewed["grade"] == "pass"
 
   mechanical = run["evidenceHandoffContract"]
   return false unless mechanical.is_a?(Hash) && mechanical["schemaVersion"] == 1 && mechanical["passed"] == true
-  mechanical_review = Array(reviewed["criteria"]).find do |criterion|
+  criteria = Array(reviewed["criteria"])
+  mechanical_review = criteria.find do |criterion|
     criterion["expectation"] == "present" && criterion["criterion"] == EVIDENCE_HANDOFF_CONTRACT::CRITERION
   end
   return false unless mechanical_review && mechanical_review["observed"] == true
 
   expected = Array(entry["must"]).map { |criterion| ["present", criterion] } +
              Array(entry["must_not"]).map { |criterion| ["absent", criterion] }
-  observed = Array(reviewed["criteria"]).map { |criterion| [criterion["expectation"], criterion["criterion"]] }
-  observed == expected
-rescue Errno::ENOENT, JSON::ParserError, KeyError
+  reviewed_criteria = criteria.map { |criterion| [criterion["expectation"], criterion["criterion"]] }
+  return false unless reviewed_criteria == expected
+
+  criteria.all? do |criterion|
+    criterion["expectation"] == "present" ? criterion["observed"] == true : criterion["observed"] == false
+  end
+rescue Errno::ENOENT, JSON::ParserError, KeyError, Zstack::EvalInputFile::ReadError
   false
 end
 
-def routing_source_current?(archive, run, entry, candidate_descriptions)
+def routing_source_current?(archive, run, entry, candidate_descriptions, case_index, evidence_snapshot)
+  return false unless run["grade"] == "pass" && run["exitStatus"] == 0
+
   candidates_path = File.join(archive, "raw", "candidate-descriptions.txt")
-  return false unless File.file?(candidates_path) && File.read(candidates_path) == candidate_descriptions
+  candidates_content = read_evidence_file(evidence_snapshot, candidates_path)
+  return false unless candidates_content == candidate_descriptions
 
   results_path = File.join(archive, "runner-results.json")
-  return false unless File.file?(results_path)
-  archived_result = Array(JSON.parse(File.read(results_path))).find { |candidate| candidate["id"] == run["case"] }
-  return false unless archived_result && archived_result["expected"] == entry.fetch("expected_skill")
+  results_content = read_evidence_file(evidence_snapshot, results_path)
+  archived_result = Array(Zstack::EvalStrictJson.parse(results_content)).find { |candidate| candidate["id"] == run["case"] }
+  expected_skill = entry.fetch("expected_skill")
+  return false unless archived_result &&
+                      archived_result["expected"] == expected_skill &&
+                      archived_result["selected"] == expected_skill &&
+                      archived_result["pass"] == true &&
+                      archived_result["executionCompleted"] == true &&
+                      archived_result["formatValid"] == true &&
+                      archived_result["exitStatus"] == 0 &&
+                      archived_result["responsePrivacyError"].nil?
 
+  controls_path = File.join(archive, "runner-controls.json")
+  controls_content = read_evidence_file(evidence_snapshot, controls_path)
+  controls = Zstack::EvalStrictJson.parse(controls_content)
+  return false unless controls["descriptionCharacterLimit"].nil? &&
+                      controls["candidateRotation"] == "full manifest index modulo candidate count" &&
+                      %w[auto en zh].include?(controls["wrapper"])
+
+  candidates = candidate_descriptions.lines(chomp: true).map { |line| line.split("\t", 2) }
+  return false if candidates.empty? || candidates.any? { |candidate| candidate.length != 2 || candidate.any?(&:empty?) }
+  ordered_candidates = candidates.rotate(case_index % candidates.length)
+  style = EVAL_ROUTING_PROMPT.wrapper_style(controls.fetch("wrapper"), entry.fetch("prompt"))
+  expected_prompt = EVAL_ROUTING_PROMPT.build(ordered_candidates, entry.fetch("prompt"), style)
   prompt_path = File.join(archive, "raw", "prompts", "#{entry.fetch("id")}.txt")
-  return false unless File.file?(prompt_path)
-  prompt = File.read(prompt_path)
-  user_prompt = entry.fetch("prompt")
-  prompt.include?("\nUser request:\n#{user_prompt}\n\nReply with exactly two lines:") ||
-    prompt.include?("\n用户请求：\n#{user_prompt}\n\n严格只回复两行：")
-rescue Errno::ENOENT, JSON::ParserError, KeyError
+  prompt = read_evidence_file(evidence_snapshot, prompt_path)
+  prompt.b == expected_prompt.b
+rescue Errno::ENOENT, JSON::ParserError, KeyError, Zstack::EvalInputFile::ReadError
   false
 end
 
@@ -180,6 +300,11 @@ begin
   unknown_hosts = (options[:required_host_families] + options[:required_current_host_families]).uniq - SUPPORTED_HOST_FAMILIES
   raise "unknown host family: #{unknown_hosts.join(", ")}" unless unknown_hosts.empty?
   raise "unknown evidence suite: #{options[:suite]}" unless SUPPORTED_SUITES.include?(options[:suite])
+  evidence_snapshot = Zstack::EvalEvidenceTree.capture(RUNS_ROOT)
+  validate_archives!
+  unless Zstack::EvalEvidenceTree.capture(RUNS_ROOT) == evidence_snapshot
+    raise "evidence archive tree changed during validation"
+  end
 
   catalog = load_yaml(CATALOG_PATH)
   active_entries = Array(catalog.fetch("skills")).select { |entry| entry["status"] == "active" }
@@ -201,6 +326,7 @@ begin
   manifest_label = manifest_path.delete_prefix("#{ROOT}/")
   raise "#{manifest_label} has duplicate ids" unless case_ids.uniq.length == case_ids.length
   current_cases_by_id = current_cases.to_h { |entry| [entry.fetch("id"), entry] }
+  case_indexes = cases.each_with_index.to_h { |entry, index| [entry.fetch("id"), index] }
   current_skill_signatures = if options[:suite] == "behavioral"
                                active_entries.to_h do |entry|
                                  id = entry.fetch("id")
@@ -215,8 +341,9 @@ begin
   candidate_descriptions = options[:suite] == "routing" ? current_candidate_descriptions(active_entries) : nil
 
   archived_runs = []
-  Dir.glob(File.join(RUNS_ROOT, "*", "run.json")).sort.each do |path|
-    data = JSON.parse(File.read(path))
+  evidence_snapshot.run_json_paths.each do |path|
+    content = read_evidence_file(evidence_snapshot, path)
+    data = Zstack::EvalStrictJson.parse(content)
     next unless data["suite"] == options[:suite]
 
     host_name = data.dig("host", "name").to_s
@@ -228,9 +355,15 @@ begin
       source_current = if current_entry.nil? || !execution_current
                          false
                        elsif options[:suite] == "behavioral"
-                         behavioral_source_current?(archive, run, current_entry, current_skill_signatures)
+                         behavioral_source_current?(
+                           archive, run, current_entry, current_skill_signatures, evidence_snapshot
+                         )
                        else
-                         routing_source_current?(archive, run, current_entry, candidate_descriptions)
+                         routing_source_current?(
+                           archive, run, current_entry, candidate_descriptions,
+                           case_indexes.fetch(current_entry.fetch("id")),
+                           evidence_snapshot
+                         )
                        end
       archived_runs << {
         "archive" => File.basename(File.dirname(path)),
@@ -243,7 +376,7 @@ begin
         "sourceCurrent" => source_current
       }
     end
-  rescue JSON::ParserError => e
+  rescue Zstack::EvalInputFile::ReadError, JSON::ParserError => e
     raise "cannot parse #{path.delete_prefix("#{ROOT}/")}: #{e.message}"
   end
 
@@ -336,6 +469,10 @@ begin
     "cases" => case_reports
   }
   report[options[:suite] == "behavioral" ? "skills" : "targets"] = group_reports
+
+  unless Zstack::EvalEvidenceTree.capture(RUNS_ROOT) == evidence_snapshot
+    raise "evidence archive tree changed while coverage was reported"
+  end
 
   if options[:json]
     puts JSON.pretty_generate(report)

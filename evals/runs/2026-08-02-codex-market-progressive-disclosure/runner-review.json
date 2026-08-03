@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex market progressive-disclosure semantic review, 2026-08-02",
+  "cases": [
+    {
+      "id": "market-tools-blocked",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/market-tools-blocked.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption because no public, customer, experiment, search, payment, or retention evidence was available; planned research adds no class."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Mark unavailable channels as blocked and state the evidence limit.",
+          "observed": true,
+          "evidence": "The channel table marks X, Reddit, HN, Product Hunt, Indie Hackers, reviews, and public search blocked, says no channel was treated as searched, and labels the report assumption-only."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Provide the manual research checklist instead of a fabricated verdict.",
+          "observed": true,
+          "evidence": "The response replaces a demand verdict with a bounded manual scan across buyer communities, X, HN, Product Hunt, and reviews, followed by behavior interviews and a paid concierge test."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, search volume, or demand confidence.",
+          "observed": false,
+          "evidence": "No link, quote, volume, price, or demand fact is invented; unknown categories and objections are explicitly labeled assumptions or not found."
+        }
+      ]
+    },
+    {
+      "id": "market-competition-composite",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/market-competition-composite.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption because browsing was blocked and no supplied market results existed; future interviews and pilots are not promoted into current evidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Treat competition intensity 5 as worse and invert it before averaging.",
+          "observed": true,
+          "evidence": "The score table assigns competition intensity 5 as brutally crowded, converts it to competition_fit 1, and computes (3+3+1+3+4+2)/6 = 2.67."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include disconfirming evidence and an indie-specific wedge or no-go.",
+          "observed": true,
+          "evidence": "It documents free/incumbent substitutes, reliability and distribution objections, recommends avoiding the horizontal product, and offers only a recruiting-agency concierge wedge after direct validation."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Average raw competition intensity as if a higher value were favorable.",
+          "observed": false,
+          "evidence": "Raw competition intensity is never averaged as favorable; the displayed composite consistently uses the inverted fit value."
+        }
+      ]
+    },
+    {
+      "id": "market-evidence-packet",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/market-evidence-packet.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff uses only assumption because all supplied notes and the adjacent price capture are explicitly unverified, while unavailable web channels contribute no evidence class."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Separate supplied unverified notes from unavailable channel evidence and state the confidence limit.",
+          "observed": true,
+          "evidence": "The report separates user-supplied P1-P4/N1-N6 notes from seven blocked channels, states that source wording and independence are unknown, and repeatedly limits confidence."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Score all six dimensions, invert competition intensity, and show the composite calculation.",
+          "observed": true,
+          "evidence": "All six scores are shown; competition 4 becomes fit 2 and the transparent calculation produces the single 2.67 display value."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Give a commercial, solo-fit, and 30–90 day verdict plus one bounded wedge and exactly three actions.",
+          "observed": true,
+          "evidence": "The report gives separate Mixed, Conditional, and Low commercial/indie/90-day verdicts, one support-team launch-kit wedge, and exactly three bounded next-48-hour actions."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Invent links, quotes, verified prices, or willingness-to-pay evidence.",
+          "observed": false,
+          "evidence": "It supplies no invented URLs or quotes, labels $7-$12 as an unverified adjacent anchor, and states that nobody has paid for the exact outcome."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Recommend a full team-sync or enterprise build before paid and security validation.",
+          "observed": false,
+          "evidence": "It limits the next step to a lightweight paid and security validation spike, explicitly excluding enterprise administration, sensitive session restoration, and a full four-week build before commitment."
+        }
+      ]
+    },
+    {
+      "id": "market-output-contract",
+      "skill": "z-market-validate",
+      "grade": "pass",
+      "criteria": [
+        {
+          "expectation": "present",
+          "criterion": "Include exactly one two-column, seven-row Evidence handoff table using the exact plain-text field labels and only canonical evidence class names.",
+          "observed": true,
+          "evidence": "Mechanical check found one valid Evidence handoff table in responses/market-output-contract.txt."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Include only evidence classes supported by supplied inputs or actual results; omit unused canonical classes and planned future evidence.",
+          "observed": true,
+          "evidence": "The handoff contains only assumption, the sole applicable canonical class for unverified supplied notes; no future interview, payment, or retention class is added."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Use only applicable canonical names in the Evidence classes field.",
+          "observed": true,
+          "evidence": "The Evidence classes value is exactly the applicable canonical class assumption."
+        },
+        {
+          "expectation": "present",
+          "criterion": "Preserve supplied-note limits, counterevidence, missing payment proof, source anchors, and one bounded next validation.",
+          "observed": true,
+          "evidence": "The final handoff retains unverified-note limits, native/bookmark/admin counterevidence, absent payment, dated supplied anchors, and one paid-pilot validation with explicit pass/fail outcomes."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Rename, split, or replace required handoff rows with custom fields or prose.",
+          "observed": false,
+          "evidence": "The response contains exactly one mechanically valid two-column, seven-row handoff with all fixed raw field labels unchanged."
+        },
+        {
+          "expectation": "absent",
+          "criterion": "Promote supplied notes or adjacent pricing into verified primary behavior, payment, or retention evidence.",
+          "observed": false,
+          "evidence": "Supplied notes remain assumptions, adjacent pricing is called unverified, and payment, buyer authority, switching, and retention remain explicitly unproven."
+        }
+      ]
+    }
+  ]
+}

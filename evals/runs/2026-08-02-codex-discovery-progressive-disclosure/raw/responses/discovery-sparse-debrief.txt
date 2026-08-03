@@ -1,0 +1,46 @@
+Mode: debrief
+
+This conversation produced no reliable demand evidence. It captured a compliment, hypothetical purchase intent, and agreement with a leading question.
+
+### Structured debrief
+
+**Context:** Unknown role, ICP fit, recruitment source, workflow, and problem context. Evidence is limited to the pasted summary; there is no transcript or concrete behavioral detail.
+
+**Founder pitch leakage: 4/5.** The demo came before evidence gathering, so the interviewee was reacting to your solution rather than describing their existing behavior.
+
+### Mom Test audit
+
+| What happened | Assessment | Better follow-up |
+|---|---|---|
+| “My demo was great” | Compliment, not demand | “Thanks. Before seeing it, how did you handle this?” |
+| “They would probably pay” | Future-tense, noncommittal hypothetical | “What do you currently spend on this problem?” |
+| “Would the feature save time?” | Leading question that invites agreement | “Walk me through the last time you did this manually.” |
+| “Yes” | Opinion without quantified evidence | “How long did it take, and how often does that happen?” |
+
+### Gate deltas
+
+| Gate | Delta | Reason |
+|---|---|---|
+| G1 Pain | Neutral | No recent incident, frequency, consequence, or measured time cost |
+| G2 Spend | Neutral | No existing tool, labor, budget, or money/time expenditure identified |
+| G3 Switch | Neutral | “Probably pay” reveals neither commitment nor switching feasibility |
+
+Do not treat this as validation. Revisit the same person if possible and ask, without showing the demo again:
+
+1. “Tell me about the last time you encountered this problem.”
+2. “What exactly did you do?”
+3. “How long did it take?”
+4. “How often has that happened recently?”
+5. “What tools or people do you use today, and what do they cost?”
+6. “Have you tried replacing that process before? What happened?”
+7. “Who decides whether to buy or change the current workflow?”
+
+| Field | Value |
+|---|---|
+| Current decision | Reshape the next interview; continue discovery without treating this note as validation |
+| Evidence classes | assumption |
+| Supported claims | The interviewee reacted positively to the demo; no behavioral demand claim is supported |
+| Still unproven | Real pain, frequency, current time or money cost, willingness to pay, budget authority, and ability to switch |
+| Contradictions / exclusions | “Great” is a compliment; “probably pay” is hypothetical; “save time” followed a leading prompt |
+| Source anchors | Pasted note: “demo was great,” “would probably pay,” and “feature would save them time” |
+| Next validation | Conduct a past-behavior follow-up; success requires a specific recent incident plus quantified current cost and a credible switching process, while continued opinions without examples count as failure |

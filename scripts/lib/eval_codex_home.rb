@@ -1,6 +1,7 @@
 # Minimal Codex home construction for evaluation processes.
 
-require "fileutils"
+require_relative "eval_auth_file"
+require_relative "eval_host_home"
 
 module Zstack
   module EvalCodexHome
@@ -15,22 +16,21 @@ module Zstack
     module_function
 
     def prepare(root:, case_id:, auth_path:)
-      home = File.join(root, ".codex-homes", case_id)
-      FileUtils.mkdir_p(home, mode: 0o700)
-      File.chmod(0o700, home)
+      home, identity = EvalHostHome.create(
+        root: root,
+        directory_name: ".codex-homes",
+        case_id: case_id
+      )
 
-      copied_auth = false
-      if File.exist?(auth_path)
-        raise "Codex auth path must be a regular file" unless File.file?(auth_path)
-        raise "Codex auth path must not be a symbolic link" if File.symlink?(auth_path)
-
+      begin
         destination = File.join(home, "auth.json")
-        FileUtils.copy_file(auth_path, destination)
-        File.chmod(0o600, destination)
-        copied_auth = true
-      end
+        copied_auth = EvalAuthFile.copy_optional(source: auth_path, destination: destination)
 
-      [home, copied_auth]
+        [home, copied_auth]
+      rescue StandardError
+        EvalOwnedDirectory.remove_if_same(home, identity)
+        raise
+      end
     end
 
     def environment(home)

@@ -1,0 +1,18 @@
+Created the complete 10-day smoke-test package:
+
+- `artifacts/smoke-plan.md` — copy, OG/meta, UTMs, $150 traffic calendar, source-specific thresholds, events, decision rules, and evidence handoff.
+- `artifacts/index.html` — deployable responsive landing page.
+- `artifacts/functions/api/waitlist.js` — guarded Cloudflare Pages/Buttondown integration.
+- `artifacts/_headers` — security headers.
+- `artifacts/README.md` — deployment instructions and verification checklist.
+
+Remaining external setup:
+
+1. Create Cloudflare Pages, Buttondown, and Plausible accounts.
+2. Verify current official provider contracts and replace all `VERIFY_*` placeholders.
+3. Add the Buttondown API key as an encrypted Pages variable.
+4. Test attribution persistence, validation cases, analytics sanitization, and the OG image before purchasing traffic.
+
+Web/browser access was unavailable, so provider behavior, community rules, and market evidence remain unverified. The integrations intentionally make no external requests until configured. The server validation tests passed for the launch-blocked, `null`, and array cases.
+
+Do not build the extension yet; first run the registered smoke test.

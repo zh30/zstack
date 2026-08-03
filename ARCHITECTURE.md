@@ -65,7 +65,7 @@ Ground truth last verified on 2026-07-31; see
 |------|--------------------|----------------------|-------|
 | **Claude Code** | `~/.claude/skills/<name>/SKILL.md` | `.claude/skills/` | Official docs explicitly support symlinked skill directories. |
 | **Codex** | `~/.agents/skills/<name>/SKILL.md` | `.agents/skills/` from CWD to repo root | Official docs explicitly support symlinked skill directories. Optional `agents/openai.yaml`. |
-| **Grok Build** | `~/.grok/skills/`, plus compatibility discovery of `~/.agents/skills/` and `~/.claude/skills/` | `.grok/skills/`, `.agents/skills/`, `.claude/skills/` | Confirmed with `grok inspect --json` on Grok Build 0.2.117. |
+| **Grok Build** | `~/.grok/skills/`, plus compatibility discovery of `~/.agents/skills/` and `~/.claude/skills/` | `.grok/skills/`, `.agents/skills/`, `.claude/skills/` | Confirmed with `grok inspect --json` on Grok Build 0.2.118. |
 
 **Implication for zstack:** default installation needs only
 **`~/.agents/skills`** + **`~/.claude/skills`**. The former covers current Codex
@@ -126,8 +126,9 @@ zstack/
 │   ├── setup.sh              # Primary installer (bash, zero deps)
 │   ├── unlink.sh             # Clean uninstall of zstack links only
 │   ├── doctor.sh             # Validate skills + link health
-│   ├── test.sh               # Integration tests
+│   ├── test.sh               # Fast smoke mode + complete integration tests
 │   ├── new-skill.sh          # Scaffold from _template
+│   ├── check-evidence-docs.rb # Keep visible host counts aligned with evidence
 │   ├── report-evidence-coverage.rb # Behavioral/routing evidence matrices
 │   ├── run-behavioral-evals.rb # Shared snapshot-isolated runner core
 │   ├── run-{codex,claude,grok}-behavioral-evals.rb # Host runner entries
@@ -267,6 +268,38 @@ Setup records the latest repository root in `~/.zstack/root` and every managed
 link as `repo-root|link-path` in `~/.zstack/links`. The latter lets uninstall
 find project-local links and links from more than one clone.
 
+These state leaves must be single-link regular text files without NUL bytes;
+hardlinked aliases are rejected so the private state inode cannot be rewritten
+through an external pathname. The root record must contain exactly one safe
+absolute path. Before parsing either file, setup,
+unlink, and doctor reject a root record larger than 4 KiB or a link manifest
+larger than 1 MiB. The format, integrity, and size checks keep corrupted local
+state from changing path meaning inside Bash or turning maintenance commands
+into unbounded reads. Setup and unlink normalize the state directory to mode
+`700`; generated root and link records use mode `600`, keeping absolute local
+paths private to the current user. Doctor warns when those paths later become
+group- or world-accessible. Repair or remove a reported invalid state file
+before retrying.
+
+State-file transitions are fail-closed. Under the shared mutation lock, setup
+and unlink snapshot an existing manifest or root record, bind that snapshot to
+the source inode and exact bytes, require both source and snapshot to remain
+single-link regular files, and parse only the snapshot. A non-empty replacement
+is published by rename and then rechecked against an exclusive expected snapshot
+for the candidate inode, single-link state, and exact bytes before success is
+reported. Destructive cleanup first binds the expected snapshot inode, moves the
+identity-matched path into a private, atomically reserved quarantine, rechecks
+both identities and single-link states, validates the expected bytes there, and
+only then deletes it; a raced replacement or reference snapshot is restored or
+preserved instead of being removed. The same quarantine primitive is used for
+transaction-temp and PID-lock cleanup and does not depend on `mktemp`, so
+allocator failure cannot strand an otherwise releasable lock.
+
+This is state-integrity protection, not whole-command rollback: links that were
+successfully created or removed can remain when a later state publication fails.
+The command exits non-zero without claiming success, preserves conflicting or
+raced content, and a safe retry reconciles the recorded state.
+
 ### 6.2 Link strategy (v1)
 
 For each skill marked `status: active` in `catalog.yaml`, and for each enabled
@@ -311,6 +344,8 @@ manifest ownership to the new clone.
   escape into an unrelated filesystem location.
 - Serialize setup and unlink mutations with a recoverable PID lock under
   `~/.zstack/`; live operations block competitors and stale locks self-heal.
+  Recovery and release refuse lock directories containing anything except the
+  regular `pid` owner file, preserving unknown contents for manual inspection.
 - `unlink.sh` removes a recorded or discovered link only when its target resolves
   under the current `ZSTACK_ROOT/skills/`; backups and non-links are preserved.
 
@@ -443,6 +478,19 @@ enabled: false              # default off — Grok already reads ~/.claude + ~/.
 9. git commit
 ```
 
+`new-skill.sh` applies the same snapshot contract to both scaffold templates and
+the catalog transaction. It publishes the generated directory and catalog by
+rename, verifies the published catalog against an exclusive expected snapshot,
+and rolls back only while that publication proof remains intact. If the catalog
+or its expected snapshot changes, it preserves the published catalog and skill
+instead of using ambiguous rollback evidence. Every file snapshot is allocated
+and identity-tracked before bytes are copied into it; a same-byte replacement
+inode is therefore rejected and preserved rather than mistaken for transaction
+state during cleanup. Generated scaffold files likewise start as identity-bound
+random files and reach their fixed package names through exclusive hard links;
+an existing destination is never overwritten, and cleanup registration follows
+the original inode to its published name.
+
 ### Quality bar for merge
 
 - [ ] Valid YAML frontmatter with `name` + `description`
@@ -467,15 +515,46 @@ enabled: false              # default off — Grok already reads ~/.claude + ~/.
 
 1. **Structure** — every `skills/*/SKILL.md` exists; name regex; name == dirname;
    references over 100 lines expose a Contents section near the top.
-2. **YAML + frontmatter** — use Ruby's standard YAML parser when available to
-   reject syntax errors, aliases, and duplicate keys; always enforce required
-   frontmatter fields and a non-empty description with Bash/AWK.
+2. **YAML + frontmatter** — use the shared strict Ruby parser when available to
+   reject syntax errors, aliases, duplicate keys, multiple documents, and
+   complex mapping keys; stable bounded reads also reject linked files or path
+   components and bind the opened descriptor to the pre-open inode before any
+   content is read, copied, or hashed. Runners, archivers, evidence tools, and `doctor` share this
+   contract instead of assuming `doctor` already ran. Doctor also batch-parses
+   the exact workflow, catalog, host, behavioral, and routing snapshots consumed
+   by its later checks, so strict syntax and semantic validation cannot silently
+   refer to different source versions. Before and after all multi-stage skill
+   checks, it also captures the bounded skill tree twice and compares canonical
+   paths, file digests, inode metadata, modes, ownership, and link counts. At
+   the pre-content boundary, the first pass also writes the exact bounded bytes
+   into an owner-private tree; package, handoff, catalog, skill, and portability
+   checks read only that snapshot, so a later live-path replacement cannot be
+   opened before the final drift check rejects the run. It
+   repeats that comparison after an installed skill-link audit. A concurrent
+   skill-package change therefore invalidates the run, either skipping link
+   checks or explicitly invalidating link results instead of accepting a
+   mixed-source result. Always enforce
+   required frontmatter fields and a non-empty description with Bash/AWK.
 3. **Catalog** — require paths, status, hosts, kebab-case category, unique
    kebab-case tags including `indie`, and a meaningful summary.
 4. **Host profiles** — require matching names, display names, safe HOME-contained
    roots, symlink mode, positive limits, and frontmatter fields.
-5. **Portability lint** — reject machine-local skill paths and host-specific tool ids across skill content.
-6. **Links** — for each host, installed links must resolve under `$ZSTACK_ROOT/skills`.
+5. **Skill content scans** — reject machine-local skill paths and host-specific
+   tool ids, and validate the Evidence handoff contract, without following
+   rejected skill-tree symlinks. Later Bash/AWK/grep content reads use the
+   owner-private Ruby snapshot whose source state must equal the earlier
+   baseline. Without Ruby, a conservative
+   Bash preflight runs at both boundaries, requires current-user real
+   directories and single-link regular files, rejects symlinks and special
+   entries, and enforces the same 100,000-entry, 10,000-file, 2 MiB per-file,
+   and 512 MiB collection bounds.
+6. **Links** — under the shared setup/unlink mutation lock, each installed link
+   must resolve under `$ZSTACK_ROOT/skills`. Before multi-stage parsing, doctor
+   captures single-link, byte-exact snapshots of the catalog, host profiles,
+   behavioral and routing manifests, and installed root/link state. It
+   revalidates every live source before using the derived views and skips the
+   link audit rather than report a mixed snapshot while inputs drift or another
+   maintenance command is active.
 7. **Collisions** — detect non-zstack paths occupying the same skill name.
 8. **Behavioral manifest** — require unique, typed cases with non-empty prompts
    and criteria; every active skill needs three total, including happy-path and
@@ -484,12 +563,36 @@ enabled: false              # default off — Grok already reads ~/.claude + ~/.
    leakage, valid active targets, two cases per active skill, two no-match
    cases across the suite, and Chinese positive/no-match coverage when
    descriptions advertise Chinese triggers.
-10. **Secret lint** — scan tracked and unignored commit candidates for common
-   credential and private-key signatures without reading ignored local secrets.
+10. **Commit-candidate lint** — capture one NUL-safe inventory of existing
+   tracked/unignored paths (excluding intentional worktree deletions),
+   bind its inode and every regular-file or symlink state before the Markdown
+   and secret scans, then independently re-enumerate and recapture the final
+   candidate set. Content, identity, and set-membership drift are rejected.
+   Secret matching scans
+   that same exact candidate set for common AI-provider credentials (including
+   Hugging Face tokens and long `XAI_API_KEY` assignments), current and
+   compatibility Cloudflare/Wrangler authentication assignments, Stripe,
+   GitHub, npm, Google, Slack, AWS, and private-key signatures without reading
+   ignored local state.
+   A detection is reported as one aggregate error with at most five validated
+   repository-relative paths (then one ellipsis); matched content and secret
+   values are never echoed.
+   When Git metadata is unavailable (for example, a source archive), the Bash
+   fallback conservatively excludes zstack transaction state, `.gstack`,
+   `node_modules`, root `logs/`, OS metadata, `*.log`/PID files, and private
+   `.env`/`.dev.vars` variants and Wrangler state while retaining
+   `.env.example` and `.dev.vars.example` as public source. Before content
+   scans, that fallback also enforces the same candidate count, inventory,
+   per-file, and total-byte limits as the Ruby state capture. It enumerates
+   every non-directory entry, then accepts only current-user regular files or
+   symlinks and requires regular files to have one hard link, preventing write
+   aliases outside the repository.
 
 CI runs Bash syntax, strict YAML, and the integration suite on Linux and macOS;
 both jobs parse every Ruby script, while Linux also runs ShellCheck and
-Actionlint. Ruby 2.6+ is required for contributor tests, evidence tooling, and
+Actionlint. Marked current-evidence blocks in README and the compatibility page
+are checked against the coverage reporter's JSON, so source-byte changes cannot
+leave visible host counts stale. Ruby 2.6+ is required for contributor tests, evidence tooling, and
 live routing evaluation. It remains an optional doctor enhancement for basic
 install users: the portable Bash/AWK validation contract still runs when Ruby is
 absent. The suite copies only tracked or unignored source into temporary
@@ -588,7 +691,8 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 - Integration tests, ShellCheck, and CI
 - Four behavioral regression cases per active skill (happy-path, edge, and adversarial)
 - English and Chinese description-only routing cases, including boundaries and no-matches
-- Grok runtime discovery and complete no-web behavior runs for all five skills
+- Archived Grok runtime discovery and a historical complete no-web behavior
+  matrix for all five skills; current-source gaps fail closed in CI
 - Shared isolated Codex/Claude/Grok behavioral and routing runners with
   per-process-group wall-clock limits, plus reviewed atomic archivers
 - Response/artifact behavioral execution modes with audited deliverable capture
@@ -597,8 +701,9 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 
 ### Next, only with evidence
 
-- Add clean Claude behavior archives once a configured provider/model pair is available,
-  then re-run host/model matrices after upgrades
+- Restore current Grok behavior coverage once authentication is available, and
+  add clean Claude behavior archives once a configured provider/model pair is
+  available; re-run host/model matrices after upgrades
 - Additional original workflows where the current product journey has a proven gap
 - Logical packs only after the catalog is large enough that selective install
   solves a real problem
@@ -615,6 +720,6 @@ Roadmap is **skill-by-skill creation**, not import pipelines.
 
 ---
 
-*Last updated: 2026-07-31 — locked: minimal frontmatter, current default host
-roots, explicit legacy profiles, z- prefix, docs-only third-party links, and
-original skills only.*
+*Locked decisions: minimal frontmatter, current default host roots, explicit
+legacy profiles, z- prefix, docs-only third-party links, and original skills
+only.*

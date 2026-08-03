@@ -5,34 +5,54 @@ require "date"
 require "digest"
 require "fileutils"
 require "json"
-require "open3"
 require "optparse"
 require "pathname"
 require "rbconfig"
 require "set"
 require "tmpdir"
 require "yaml"
+require_relative "lib/eval_archive_candidate"
+require_relative "lib/eval_archive_lock"
+require_relative "lib/eval_archive_name"
+require_relative "lib/eval_archive_output"
+require_relative "lib/eval_archive_raw_files"
+require_relative "lib/eval_bounded_command"
 require_relative "lib/eval_codex_home"
 require_relative "lib/eval_host_contracts"
+require_relative "lib/eval_input_file"
+require_relative "lib/eval_limits"
+require_relative "lib/eval_owned_directory"
 require_relative "lib/eval_private_paths"
+require_relative "lib/eval_process_supervisor"
+require_relative "lib/eval_routing_prompt"
+require_relative "lib/eval_source_snapshot"
+require_relative "lib/eval_strict_json"
+require_relative "lib/eval_strict_yaml"
 
 ROOT = File.expand_path("..", __dir__)
 RUNS_ROOT = File.join(ROOT, "evals", "runs")
 ROUTING_PATH = File.join(ROOT, "evals", "routing.yaml")
 ARCHIVE_MANIFEST_SCRIPT = File.join(ROOT, "scripts", "generate-evidence-manifests.rb")
 EVIDENCE_VALIDATOR = File.join(ROOT, "scripts", "validate-evidence.rb")
-RAW_MANIFEST_HEADER = "sha256                                                            bytes  path"
 HOST_FAMILY = ENV.fetch("ZSTACK_ROUTING_HOST", "")
 HOST_NAMES = { "codex" => "Codex CLI", "claude" => "Claude Code", "grok" => "Grok Build" }.freeze
 HOST_NAME = HOST_NAMES[HOST_FAMILY]
 raise "set ZSTACK_ROUTING_HOST to codex, claude, or grok" unless HOST_NAME
 STRUCTURED_HOSTS = %w[claude grok].freeze
 EVAL_HOST_CONTRACTS = Zstack::EvalHostContracts
+EVAL_ARCHIVE_CANDIDATE = Zstack::EvalArchiveCandidate
+EVAL_ARCHIVE_NAME = Zstack::EvalArchiveName
+EVAL_ARCHIVE_OUTPUT = Zstack::EvalArchiveOutput
+EVAL_ARCHIVE_RAW_FILES = Zstack::EvalArchiveRawFiles
+EVAL_BOUNDED_COMMAND = Zstack::EvalBoundedCommand
 EVAL_CODEX_HOME = Zstack::EvalCodexHome
 EVAL_PRIVATE_PATHS = Zstack::EvalPrivatePaths
+EVAL_PROCESS_SUPERVISOR = Zstack::EvalProcessSupervisor
+EVAL_ROUTING_PROMPT = Zstack::EvalRoutingPrompt
 GROK_SYSTEM_PROMPT = EVAL_HOST_CONTRACTS.grok_system_prompt("routing")
 GROK_ISOLATED_CONFIG = EVAL_HOST_CONTRACTS::GROK_ISOLATED_CONFIG
 GROK_FINAL_MARKER = EVAL_HOST_CONTRACTS::GROK_FINAL_MARKER
+GROK_PROMPT_PATH = EVAL_HOST_CONTRACTS::GROK_PROMPT_PATH
 REQUIRED_DISABLED_FEATURES = %w[
   multi_agent
   multi_agent_v2
@@ -51,6 +71,26 @@ REQUIRED_DISABLED_FEATURES = %w[
   goals
   tool_suggest
 ].freeze
+REQUIRED_RESULT_FIELDS = %w[
+  id
+  expected
+  selected
+  pass
+  executionCompleted
+  formatValid
+  formatError
+  exitStatus
+  elapsedSeconds
+  timedOut
+  outputLimited
+  workspaceLimitError
+  hostOutputBytes
+  promptPath
+  responsePath
+  logPath
+  responsePrivacyError
+  responseFileError
+].freeze
 
 def fail_usage(message, parser = nil)
   warn "ERROR: #{message}"
@@ -58,9 +98,10 @@ def fail_usage(message, parser = nil)
   exit 2
 end
 
-def load_json(path)
-  data = JSON.parse(File.read(path))
+def load_json(source_snapshot, path)
+  data = Zstack::EvalStrictJson.parse(source_snapshot.read_text(path))
   raise "#{path}: JSON root must be an object or array" unless data.is_a?(Hash) || data.is_a?(Array)
+  raise "#{path}: JSON contains a non-finite number" unless Zstack::EvalLimits.finite_json_value?(data)
 
   data
 rescue Errno::ENOENT, JSON::ParserError => e
@@ -68,36 +109,33 @@ rescue Errno::ENOENT, JSON::ParserError => e
 end
 
 def load_routing_cases
-  document = YAML.safe_load(
-    File.read(ROUTING_PATH),
-    permitted_classes: [],
-    permitted_symbols: [],
-    aliases: false,
-    filename: ROUTING_PATH
+  content = Zstack::EvalInputFile.read(
+    ROUTING_PATH,
+    label: "evals/routing.yaml",
+    root: ROOT
   )
-  Array(document.fetch("cases")).to_h { |entry| [entry.fetch("id"), entry] }
+  document = Zstack::EvalStrictYaml.parse(
+    content,
+    ROUTING_PATH
+  )
+  [Array(document.fetch("cases")), content]
 rescue Errno::ENOENT, KeyError, Psych::Exception => e
   raise "cannot load evals/routing.yaml: #{e.message}"
 end
 
-def regular_source_file(run_directory, relative_path)
-  unless relative_path.is_a?(String) && !relative_path.empty?
-    raise "runner path must be a non-empty relative string"
-  end
-  candidate = Pathname.new(relative_path)
-  clean = candidate.cleanpath.to_s
-  unless !candidate.absolute? && clean == relative_path && !clean.start_with?("../") && clean != "."
-    raise "runner path must be canonical and stay inside the run directory: #{relative_path}"
-  end
+def assert_routing_manifest_unchanged!(expected_content)
+  current_content = Zstack::EvalInputFile.read(
+    ROUTING_PATH,
+    label: "evals/routing.yaml",
+    root: ROOT
+  )
+  return if current_content == expected_content
 
-  path = File.join(run_directory, relative_path)
-  raise "runner file must not be a symbolic link: #{relative_path}" if File.symlink?(path)
-  raise "runner file is missing: #{relative_path}" unless File.file?(path)
-  unless File.realpath(path).start_with?("#{File.realpath(run_directory)}/")
-    raise "runner file resolves outside the run directory: #{relative_path}"
-  end
+  raise "evals/routing.yaml changed while archive was being prepared"
+end
 
-  path
+def regular_source_file(source_snapshot, relative_path)
+  source_snapshot.capture(relative_path)
 end
 
 def validate_controls!(controls, result_ids)
@@ -117,14 +155,67 @@ def validate_controls!(controls, result_ids)
   raise "controls.json: host must be #{HOST_NAME}" unless controls["host"] == HOST_NAME
   raise "controls.json: dryRun must be false" unless controls["dryRun"] == false
   raise "controls.json: ephemeralSession must be true" unless controls["ephemeralSession"] == true
-  unless controls["timeoutSecondsPerCase"].is_a?(Integer) && controls["timeoutSecondsPerCase"].positive?
-    raise "controls.json: timeoutSecondsPerCase must be a positive integer"
+  unless controls["timeoutSecondsPerCase"].is_a?(Integer) &&
+         controls["timeoutSecondsPerCase"].between?(1, Zstack::EvalLimits::MAX_RUNNER_TIMEOUT_SECONDS)
+    raise "controls.json: timeoutSecondsPerCase is outside the runner safety limit"
+  end
+  unless controls["jobs"].is_a?(Integer) && controls["jobs"].between?(1, Zstack::EvalLimits::MAX_RUNNER_JOBS)
+    raise "controls.json: jobs is outside the runner safety limit"
+  end
+  unless controls["maxCasesPerRun"] == Zstack::EvalLimits::MAX_RUNNER_CASES &&
+         result_ids.length <= Zstack::EvalLimits::MAX_RUNNER_CASES
+    raise "controls.json: case count exceeds the runner safety limit"
+  end
+  unless controls["maxHostOutputBytesPerCase"] == Zstack::EvalProcessSupervisor::MAX_HOST_OUTPUT_BYTES
+    raise "controls.json: maxHostOutputBytesPerCase must match the runner safety limit"
+  end
+  unless controls["maxPromptBytesPerCase"] == Zstack::EvalLimits::MAX_PROMPT_BYTES &&
+         controls["maxPromptBytesPerRun"] == Zstack::EvalLimits::MAX_RUN_PROMPT_BYTES &&
+         controls["promptBytes"].is_a?(Integer) &&
+         controls["promptBytes"].between?(1, Zstack::EvalLimits::MAX_RUN_PROMPT_BYTES)
+    raise "controls.json: prompt byte limits must match the runner safety limits"
+  end
+  unless controls["runtimeTreeMonitoring"] == true &&
+         controls["concurrentRuntimeMonitoring"] == true &&
+         controls["pidMonitoringStartsAtSpawn"] == true &&
+         controls["sharedRootMonitoring"] == true &&
+         controls["privatePromptIntegrityMonitoring"] == (HOST_FAMILY == "grok") &&
+         controls["outputDirectoryIdentityMonitoring"] == true &&
+         controls["outputTreeMonitoring"] == true &&
+         controls["exclusiveRunnerOutputs"] == true &&
+         controls["workspaceViolationStopsRun"] == true &&
+         controls["anonymousPromptDescriptor"] == true &&
+         controls["singleLinkInputFiles"] == true &&
+         controls["singleLinkRuntimeFiles"] == true &&
+         controls["maxRuntimeOutputFiles"] == Zstack::EvalLimits::MAX_RUNTIME_OUTPUT_FILES &&
+         controls["maxRuntimeOutputTreeEntries"] == Zstack::EvalLimits::MAX_RUNTIME_OUTPUT_TREE_ENTRIES &&
+         controls["maxRuntimeOutputBytes"] == Zstack::EvalLimits::MAX_RUNTIME_OUTPUT_BYTES &&
+         controls["maxRuntimeGitFiles"] == Zstack::EvalLimits::MAX_RUNTIME_GIT_FILES &&
+         controls["maxRuntimeGitTreeEntries"] == Zstack::EvalLimits::MAX_RUNTIME_GIT_TREE_ENTRIES &&
+         controls["maxRuntimeGitBytes"] == Zstack::EvalLimits::MAX_RUNTIME_GIT_BYTES &&
+         controls["maxRuntimeHostHomeFiles"] == Zstack::EvalLimits::MAX_RUNTIME_HOST_HOME_FILES &&
+         controls["maxRuntimeHostHomeTreeEntries"] == Zstack::EvalLimits::MAX_RUNTIME_HOST_HOME_TREE_ENTRIES &&
+         controls["maxRuntimeHostHomeBytes"] == Zstack::EvalLimits::MAX_RUNTIME_HOST_HOME_BYTES
+    raise "controls.json: runtime tree limits must match the runner safety limits"
   end
   unless controls.fetch("cases") == result_ids
     raise "controls.json: cases must exactly match results.json order"
   end
   unless controls["privateCaseIdentifiers"] == EVAL_PRIVATE_PATHS::STRATEGY
     raise "controls.json: private case-identifier strategy changed"
+  end
+  raise "controls.json: webSearch must be false" unless controls["webSearch"] == false
+  raise "controls.json: subagents must be false" unless controls["subagents"] == false
+  unless %w[auto en zh].include?(controls["wrapper"])
+    raise "controls.json: wrapper must be auto, en, or zh"
+  end
+  description_limit = controls["descriptionCharacterLimit"]
+  unless description_limit.nil? || (description_limit.is_a?(Integer) &&
+         description_limit.between?(80, Zstack::EvalLimits::MAX_DESCRIPTION_CHARACTERS))
+    raise "controls.json: descriptionCharacterLimit is outside the runner safety limit"
+  end
+  unless controls["candidateRotation"] == "full manifest index modulo candidate count"
+    raise "controls.json: candidateRotation changed"
   end
 
   if HOST_FAMILY == "codex"
@@ -155,14 +246,17 @@ def validate_controls!(controls, result_ids)
     raise "controls.json: Claude Chrome must be disabled" unless controls["chrome"] == false
     raise "controls.json: Claude MCP servers must be disabled" unless controls["mcpServers"] == false
     raise "controls.json: Claude session persistence must be disabled" unless controls["sessionPersistence"] == false
-    unless controls["maxBudgetUsdPerCase"].is_a?(Numeric) && controls["maxBudgetUsdPerCase"].positive?
-      raise "controls.json: Claude maxBudgetUsdPerCase must be positive"
+    unless Zstack::EvalLimits.finite_positive_number?(controls["maxBudgetUsdPerCase"])
+      raise "controls.json: Claude maxBudgetUsdPerCase must be finite and positive"
     end
     raise "controls.json: Claude resultFormat must be json" unless controls["resultFormat"] == "json"
   else
     raise "controls.json: Grok sandbox must be read-only" unless controls["sandbox"] == "read-only"
     raise "controls.json: Grok approval policy must be dontAsk" unless controls["approvalPolicy"] == "dontAsk"
-    raise "controls.json: Grok prompt transport must be file" unless controls["promptTransport"] == "generated prompt through file"
+    unless controls["promptTransport"] == "generated prompt through anonymous descriptor"
+      raise "controls.json: Grok prompt transport must use an anonymous descriptor"
+    end
+    raise "controls.json: Grok prompt descriptor path changed" unless controls["promptDescriptorPath"] == GROK_PROMPT_PATH
     raise "controls.json: Grok allowedTools must be empty" unless controls["allowedTools"] == []
     raise "controls.json: Grok system prompt changed" unless controls["systemPromptOverride"] == GROK_SYSTEM_PROMPT
     raise "controls.json: Grok final-response boundary changed" unless controls["finalResponseBoundary"] == GROK_FINAL_MARKER
@@ -184,40 +278,51 @@ def validate_controls!(controls, result_ids)
     raise "controls.json: Grok plan mode must be disabled" unless controls["planMode"] == false
     raise "controls.json: Grok verbatim prompt must be true" unless controls["verbatimPrompt"] == true
     raise "controls.json: Grok session persistence must be disabled" unless controls["sessionPersistence"] == false
-    unless controls["maxTurnsPerCase"].is_a?(Integer) && controls["maxTurnsPerCase"].positive?
-      raise "controls.json: Grok maxTurnsPerCase must be positive"
+    unless controls["maxTurnsPerCase"].is_a?(Integer) &&
+           controls["maxTurnsPerCase"].between?(1, Zstack::EvalLimits::MAX_GROK_TURNS)
+      raise "controls.json: Grok maxTurnsPerCase is outside the runner safety limit"
     end
     raise "controls.json: Grok resultFormat must be json" unless controls["resultFormat"] == "json"
   end
 end
 
-def parse_response(path, candidate_ids)
-  raw = File.read(path).strip
+def parse_response(source_snapshot, path, candidate_ids)
+  raw = source_snapshot.read_text(path).strip
   lines = raw.lines.map(&:strip).reject(&:empty?)
   selection_match = lines.first&.match(/\Aselection:\s*(z-[a-z0-9-]+|none)\s*\z/i)
   reason_match = lines[1]&.match?(/\Areason:\s*\S.+\z/i)
   selected = selection_match && selection_match[1].downcase
   allowed = selected == "none" || candidate_ids.include?(selected)
   format_valid = lines.length == 2 && selection_match && reason_match && allowed
-  [selected, !!format_valid]
+  error = if lines.length != 2
+            "response must contain exactly two non-empty lines"
+          elsif !selection_match
+            "selection line is malformed"
+          elsif !allowed
+            "selection is not a candidate"
+          elsif !reason_match
+            "reason line is empty or malformed"
+          end
+  [selected, !!format_valid, error]
 end
 
-def candidate_ids(path)
-  ids = File.readlines(path, chomp: true).map do |line|
+def load_candidate_entries(source_snapshot, path)
+  entries = source_snapshot.read_text(path).lines.map(&:chomp).map do |line|
     id, description = line.split("\t", 2)
     unless id&.match?(/\Az-[a-z0-9-]+\z/) && description.is_a?(String) && !description.empty?
       raise "candidate-descriptions.txt has an invalid line"
     end
-    id
+    [id, description]
   end
+  ids = entries.map(&:first)
   raise "candidate-descriptions.txt has duplicate ids" unless ids.uniq.length == ids.length
   raise "candidate-descriptions.txt has no candidates" if ids.empty?
 
-  ids
+  entries
 end
 
-def reject_private_runner_data!(path)
-  content = File.read(path)
+def reject_private_runner_data!(source_snapshot, path)
+  content = source_snapshot.read_text(path)
   if content.match?(/session id:\s*[0-9a-f-]{16,}/i) ||
      content.match?(/zstack-(?:codex|claude|grok)-routing-workspaces-/) ||
      content.match?(/case-[0-9a-f]{32}/)
@@ -232,7 +337,7 @@ def log_field(content, field, case_id)
   match[1]
 end
 
-def codex_runner_incidents(results, controls)
+def codex_runner_incidents(source_snapshot, results, controls)
   patterns = {
     "state-database fallback" => /state db discrepancy/,
     "Cloudflare MCP OAuth invalid_grant" => /invalid_grant/,
@@ -243,7 +348,7 @@ def codex_runner_incidents(results, controls)
   results.each do |result|
     id = result.fetch("id")
     log_path = result.fetch("logSource")
-    content = File.read(log_path)
+    content = source_snapshot.read_text(log_path)
     if content.match?(/^Reading additional input from stdin|^<stdin>$/)
       raise "#{id}: runner log shows additional stdin beyond the generated prompt"
     end
@@ -269,8 +374,8 @@ def codex_runner_incidents(results, controls)
       raise "#{id}: runner log workdir is not the isolated case workspace"
     end
     raise "#{id}: private case token was reused" unless seen_tokens.add?(private_token)
-    prompt = File.read(result.fetch("promptSource")).rstrip
-    response = File.read(result.fetch("responseSource")).strip
+    prompt = source_snapshot.read_text(result.fetch("promptSource")).rstrip
+    response = source_snapshot.read_text(result.fetch("responseSource")).strip
     raise "#{id}: runner log does not contain the exact generated prompt" unless content.include?(prompt)
     raise "#{id}: runner log does not contain the retained final response" unless content.include?(response)
 
@@ -298,12 +403,12 @@ def expected_claude_arguments(controls)
   ]
 end
 
-def claude_runner_incidents(results, controls)
+def claude_runner_incidents(source_snapshot, results, controls)
   seen_tokens = Set.new
   results.each_with_object([]) do |result, incidents|
     id = result.fetch("id")
-    invocation = load_json(result.fetch("invocationSource"))
-    raw = load_json(result.fetch("rawResultSource"))
+    invocation = load_json(source_snapshot, result.fetch("invocationSource"))
+    raw = load_json(source_snapshot, result.fetch("rawResultSource"))
     raise "#{id}: private invocation must be an object" unless invocation.is_a?(Hash)
     raise "#{id}: private Claude result must be an object" unless raw.is_a?(Hash)
     raise "#{id}: invocation schemaVersion must equal 2" unless invocation["schemaVersion"] == 2
@@ -320,14 +425,16 @@ def claude_runner_incidents(results, controls)
       raise "#{id}: invocation workspace is not the isolated routing workspace"
     end
     raise "#{id}: private case token was reused" unless seen_tokens.add?(private_token)
-    prompt = File.binread(result.fetch("promptSource"))
+    prompt = source_snapshot.read(result.fetch("promptSource"))
     unless invocation["promptSha256"] == Digest::SHA256.hexdigest(prompt) && invocation["promptBytes"] == prompt.bytesize
       raise "#{id}: invocation prompt digest or byte count changed"
     end
     raise "#{id}: Claude result type must be result" unless raw["type"] == "result"
     raise "#{id}: Claude result subtype must be success" unless raw["subtype"] == "success"
     raise "#{id}: Claude result is marked as an API error" unless raw["is_error"] == false
-    response = File.read(result.fetch("responseSource"))
+    raise "#{id}: isError differs from Claude JSON" unless result["isError"] == raw["is_error"]
+    raise "#{id}: subtype differs from Claude JSON" unless result["subtype"] == raw["subtype"]
+    response = source_snapshot.read_text(result.fetch("responseSource"))
     raise "#{id}: retained response differs from the Claude JSON result" unless raw["result"] == response
     models = raw.fetch("modelUsage", {})
     raise "#{id}: Claude modelUsage must be a non-empty object" unless models.is_a?(Hash) && !models.empty?
@@ -339,6 +446,9 @@ def claude_runner_incidents(results, controls)
       raw_field = { "stopReason" => "stop_reason", "terminalReason" => "terminal_reason", "totalCostUsd" => "total_cost_usd" }.fetch(field)
       raise "#{id}: #{field} differs from Claude JSON" unless result[field] == raw[raw_field]
     end
+    unless Zstack::EvalLimits.finite_nonnegative_number?(result["totalCostUsd"])
+      raise "#{id}: totalCostUsd must be a finite non-negative number"
+    end
     denials = raw.fetch("permission_denials", [])
     raise "#{id}: Claude permission_denials must be an array" unless denials.is_a?(Array)
     raise "#{id}: permissionDenials differs from Claude JSON" unless result["permissionDenials"] == denials.length
@@ -347,7 +457,7 @@ def claude_runner_incidents(results, controls)
     raise "#{id}: Claude error category must be null for a complete run" unless result["errorCategory"].nil?
     raise "#{id}: parseError must be null" unless result["parseError"].nil?
 
-    stderr = File.read(result.fetch("logSource"))
+    stderr = source_snapshot.read_text(result.fetch("logSource"))
     incidents << "#{id}: Claude wrote #{stderr.bytesize} private stderr bytes." unless stderr.empty?
   end
 end
@@ -376,12 +486,12 @@ def extract_grok_final_response(raw_text, id)
   [response, raw_text[0...marker.begin(0)].to_s.bytesize]
 end
 
-def grok_runner_incidents(results, controls)
+def grok_runner_incidents(source_snapshot, results, controls)
   seen_tokens = Set.new
   results.each_with_object([]) do |result, incidents|
     id = result.fetch("id")
-    invocation = load_json(result.fetch("invocationSource"))
-    raw = load_json(result.fetch("rawResultSource"))
+    invocation = load_json(source_snapshot, result.fetch("invocationSource"))
+    raw = load_json(source_snapshot, result.fetch("rawResultSource"))
     raise "#{id}: private invocation must be an object" unless invocation.is_a?(Hash)
     raise "#{id}: private Grok result must be an object" unless raw.is_a?(Hash)
     raise "#{id}: invocation schemaVersion must equal 2" unless invocation["schemaVersion"] == 2
@@ -400,10 +510,8 @@ def grok_runner_incidents(results, controls)
     prompt_indexes = arguments.each_index.select { |index| arguments[index] == "--prompt-file" }
     raise "#{id}: Grok invocation must contain one prompt-file argument" unless prompt_indexes.length == 1
     private_prompt_path = arguments[prompt_indexes.fetch(0) + 1]
-    unless private_prompt_path.is_a?(String) && File.basename(private_prompt_path) == "#{private_token}.txt" &&
-           File.basename(File.dirname(private_prompt_path)) == ".prompt-files" &&
-           File.dirname(File.dirname(private_prompt_path)) == File.dirname(workspace)
-      raise "#{id}: Grok prompt transport path is not opaque and isolated"
+    unless private_prompt_path == GROK_PROMPT_PATH
+      raise "#{id}: Grok prompt transport must use the inherited anonymous descriptor"
     end
     unless arguments == expected_grok_arguments(controls, private_prompt_path, workspace)
       raise "#{id}: invocation arguments do not match the isolated Grok routing contract"
@@ -419,8 +527,8 @@ def grok_runner_incidents(results, controls)
       raise "#{id}: Grok home is not isolated beside the routing workspace"
     end
     auth_path = environment["GROK_AUTH_PATH"]
-    unless auth_path.is_a?(String) && Pathname.new(auth_path).absolute? && !auth_path.empty?
-      raise "#{id}: Grok auth path must be an absolute private path"
+    unless auth_path.is_a?(String) && File.dirname(auth_path) == grok_home && File.basename(auth_path) == "auth.json"
+      raise "#{id}: Grok auth path must stay inside the isolated Grok home"
     end
     unless environment["GROK_MANAGED_MCPS_ENABLED"] == "0" && environment["GROK_OFFICIAL_MARKETPLACE_AUTO_REGISTER"] == "0"
       raise "#{id}: Grok environment isolation flags changed"
@@ -429,12 +537,14 @@ def grok_runner_incidents(results, controls)
            invocation["isolatedConfigBytes"] == GROK_ISOLATED_CONFIG.bytesize
       raise "#{id}: Grok isolated config digest or byte count changed"
     end
-    prompt = File.binread(result.fetch("promptSource"))
+    prompt = source_snapshot.read(result.fetch("promptSource"))
     unless invocation["promptSha256"] == Digest::SHA256.hexdigest(prompt) && invocation["promptBytes"] == prompt.bytesize
       raise "#{id}: invocation prompt digest or byte count changed"
     end
     raise "#{id}: Grok result is marked as an API error" if raw["type"] == "error"
-    response = File.read(result.fetch("responseSource"))
+    raise "#{id}: isError differs from Grok JSON" unless result["isError"] == (raw["type"] == "error")
+    raise "#{id}: errorType differs from Grok JSON" unless result["errorType"] == raw["type"]
+    response = source_snapshot.read_text(result.fetch("responseSource"))
     extracted_response, prefinal_bytes = extract_grok_final_response(raw["text"], id)
     raise "#{id}: retained response differs from the marked Grok final response" unless extracted_response == response
     raise "#{id}: prefinalNarrationBytes differs from the Grok JSON result" unless result["prefinalNarrationBytes"] == prefinal_bytes
@@ -452,48 +562,52 @@ def grok_runner_incidents(results, controls)
     raise "#{id}: stopReason differs from Grok JSON" unless result["stopReason"] == raw["stopReason"]
     raise "#{id}: Grok routing run did not finish with end_turn" unless result["stopReason"] == "end_turn"
     raise "#{id}: totalCostUsd differs from Grok JSON" unless result["totalCostUsd"] == raw["total_cost_usd"]
+    unless Zstack::EvalLimits.finite_nonnegative_number?(result["totalCostUsd"])
+      raise "#{id}: totalCostUsd must be a finite non-negative number"
+    end
     raise "#{id}: tokenUsage differs from Grok JSON" unless result["tokenUsage"] == raw["usage"]
-    raise "#{id}: Grok token usage must be an object" unless result["tokenUsage"].is_a?(Hash)
+    unless result["tokenUsage"].is_a?(Hash) && Zstack::EvalLimits.nonnegative_finite_json_value?(result["tokenUsage"])
+      raise "#{id}: Grok token usage must be an object with finite non-negative numbers"
+    end
     raise "#{id}: parseError must be null" unless result["parseError"].nil?
 
     incidents << "#{id}: discarded #{prefinal_bytes} pre-final narration bytes from private Grok output." if prefinal_bytes.positive?
-    stderr = File.read(result.fetch("logSource"))
+    stderr = source_snapshot.read_text(result.fetch("logSource"))
     incidents << "#{id}: Grok wrote #{stderr.bytesize} private stderr bytes." unless stderr.empty?
     incidents << "#{id}: Grok attempted MCP startup despite the MCP tool exclusion." if stderr.match?(/MCP server/i)
   end
 end
 
-def runner_incidents(results, controls)
+def runner_incidents(source_snapshot, results, controls)
   case HOST_FAMILY
-  when "codex" then codex_runner_incidents(results, controls)
-  when "claude" then claude_runner_incidents(results, controls)
-  else grok_runner_incidents(results, controls)
+  when "codex" then codex_runner_incidents(source_snapshot, results, controls)
+  when "claude" then claude_runner_incidents(source_snapshot, results, controls)
+  else grok_runner_incidents(source_snapshot, results, controls)
   end
 end
 
-def write_json(path, data)
+def json_content(data)
   content = JSON.pretty_generate(data)
   content = content.gsub(/\[\n[[:space:]]*\]/, "[]").gsub(/\{\n[[:space:]]*\}/, "{}")
-  File.write(path, content + "\n")
-end
-
-def write_raw_manifest(raw_directory)
-  paths = Dir.glob(File.join(raw_directory, "**", "*")).select do |path|
-    File.file?(path) && !File.basename(path).start_with?("artifact-manifest")
-  end.sort
-  lines = [RAW_MANIFEST_HEADER]
-  paths.each do |path|
-    relative = Pathname.new(path).relative_path_from(Pathname.new(raw_directory)).to_s
-    lines << "#{Digest::SHA256.file(path).hexdigest}  #{File.size(path)}  #{relative}"
-  end
-  File.write(File.join(raw_directory, "artifact-manifest.txt"), lines.join("\n") + "\n")
+  content + "\n"
 end
 
 def run_checked(*command)
-  output, error, status = Open3.capture3(*command, stdin_data: "")
-  return output.strip if status.success?
+  result = EVAL_BOUNDED_COMMAND.capture(
+    *command,
+    timeout_seconds: Zstack::EvalLimits::EVIDENCE_TOOL_TIMEOUT_SECONDS,
+    max_output_bytes: Zstack::EvalLimits::MAX_EVIDENCE_TOOL_OUTPUT_BYTES
+  )
+  rendered = command.join(" ")
+  if result.timed_out
+    raise "command timed out after #{Zstack::EvalLimits::EVIDENCE_TOOL_TIMEOUT_SECONDS} seconds: #{rendered}"
+  end
+  if result.output_limited
+    raise "command exceeded #{Zstack::EvalLimits::MAX_EVIDENCE_TOOL_OUTPUT_BYTES} output bytes: #{rendered}"
+  end
+  return result.stdout.strip if result.status.success?
 
-  detail = [output, error].reject(&:empty?).join("\n").strip
+  detail = [result.stdout, result.stderr].reject(&:empty?).join("\n").strip
   raise "command failed: #{command.join(" ")}#{detail.empty? ? "" : "\n#{detail}"}"
 end
 
@@ -516,30 +630,28 @@ rescue OptionParser::ParseError => e
 end
 fail_usage("unexpected positional arguments: #{ARGV.join(" ")}", parser) unless ARGV.empty?
 %i[run_directory archive phase].each { |field| fail_usage("--#{field.to_s.tr("_", "-")} is required", parser) unless options[field] }
-unless options[:archive].match?(/\A\d{4}-\d{2}-\d{2}-[a-z0-9][a-z0-9-]*\z/)
-  fail_usage("--archive must use YYYY-MM-DD-kebab-slug")
-end
+fail_usage("--archive must use a valid ISO calendar date and YYYY-MM-DD-kebab-slug") unless EVAL_ARCHIVE_NAME.valid_candidate?(options[:archive])
 unless options[:phase].match?(/\A[a-z0-9][a-z0-9-]*\z/)
   fail_usage("--phase must be kebab-case")
 end
 archive_date = options[:archive][0, 10]
-begin
-  Date.iso8601(archive_date)
-rescue Date::Error
-  fail_usage("--archive begins with an invalid calendar date")
-end
 
 run_directory = File.expand_path(options[:run_directory])
 fail_usage("--run-dir must be a real directory") unless File.directory?(run_directory) && !File.symlink?(run_directory)
 
 temporary_archive = nil
+temporary_archive_identity = nil
 published_archive = nil
+published_archive_identity = nil
+source_snapshot = nil
+publication_lock = nil
 begin
-  controls_path = regular_source_file(run_directory, "controls.json")
-  results_path = regular_source_file(run_directory, "results.json")
-  candidates_path = regular_source_file(run_directory, "candidate-descriptions.txt")
-  controls = load_json(controls_path)
-  results = load_json(results_path)
+  source_snapshot = Zstack::EvalSourceSnapshot.new(run_directory)
+  controls_path = regular_source_file(source_snapshot, "controls.json")
+  results_path = regular_source_file(source_snapshot, "results.json")
+  candidates_path = regular_source_file(source_snapshot, "candidate-descriptions.txt")
+  controls = load_json(source_snapshot, controls_path)
+  results = load_json(source_snapshot, results_path)
   raise "controls.json must contain an object" unless controls.is_a?(Hash)
   raise "results.json must contain a non-empty array" unless results.is_a?(Array) && !results.empty?
   raise "results.json entries must be objects" unless results.all? { |entry| entry.is_a?(Hash) }
@@ -549,12 +661,19 @@ begin
     raise "results.json ids must be unique kebab-case strings"
   end
   validate_controls!(controls, result_ids)
-  candidates = candidate_ids(candidates_path)
-  routing_cases = load_routing_cases
+  candidate_entries = load_candidate_entries(source_snapshot, candidates_path)
+  candidates = candidate_entries.map(&:first)
+  routing_case_entries, routing_manifest_content = load_routing_cases
+  routing_cases = routing_case_entries.to_h { |entry| [entry.fetch("id"), entry] }
+  routing_case_indexes = routing_case_entries.each_with_index.to_h { |entry, index| [entry.fetch("id"), index] }
 
   source_files = [controls_path, results_path, candidates_path]
   normalized_results = results.map do |result|
     id = result.fetch("id")
+    missing_fields = REQUIRED_RESULT_FIELDS.reject { |field| result.key?(field) }
+    unless missing_fields.empty?
+      raise "#{id}: result is missing required fields: #{missing_fields.join(", ")}"
+    end
     registered = routing_cases[id]
     raise "results.json references unknown routing case: #{id}" unless registered
     unless result["expected"] == registered.fetch("expected_skill")
@@ -566,25 +685,41 @@ begin
     unless result["promptPath"] == expected_prompt_path && result["responsePath"] == expected_response_path && result["logPath"] == expected_log_path
       raise "#{id}: runner paths do not match the canonical output layout"
     end
-    prompt_path = regular_source_file(run_directory, expected_prompt_path)
-    response_path = regular_source_file(run_directory, expected_response_path)
-    log_path = regular_source_file(run_directory, expected_log_path)
+    prompt_path = regular_source_file(source_snapshot, expected_prompt_path)
+    response_path = regular_source_file(source_snapshot, expected_response_path)
+    log_path = regular_source_file(source_snapshot, expected_log_path)
     source_files.concat([prompt_path, response_path])
-    prompt = File.read(prompt_path)
-    raise "#{id}: prompt leaked expected_skill" if prompt.include?("expected_skill")
-    unless prompt.include?(registered.fetch("prompt"))
-      raise "#{id}: prompt does not contain the registered user request"
+    rotation = routing_case_indexes.fetch(id) % candidate_entries.length
+    ordered_candidates = candidate_entries.rotate(rotation)
+    style = EVAL_ROUTING_PROMPT.wrapper_style(controls.fetch("wrapper"), registered.fetch("prompt"))
+    expected_prompt = EVAL_ROUTING_PROMPT.build(
+      ordered_candidates,
+      registered.fetch("prompt"),
+      style,
+      controls["descriptionCharacterLimit"]
+    )
+    unless source_snapshot.read(prompt_path) == expected_prompt.b
+      raise "#{id}: prompt differs from the canonical routing wrapper"
     end
 
-    selected, format_valid = parse_response(response_path, candidates)
-    unless result["selected"] == selected && result["formatValid"] == format_valid
+    selected, format_valid, format_error = parse_response(source_snapshot, response_path, candidates)
+    unless result["selected"] == selected && result["formatValid"] == format_valid && result["formatError"] == format_error
       raise "#{id}: retained response does not match results.json parsing"
     end
     exit_status = result["exitStatus"]
     raise "#{id}: exitStatus must be a non-negative integer" unless exit_status.is_a?(Integer) && exit_status >= 0
     raise "#{id}: executionCompleted must be true for archiving" unless result["executionCompleted"] == true
     raise "#{id}: timedOut must be false for archiving" unless result["timedOut"] == false
-    raise "#{id}: responsePrivacyError must be null" unless result["responsePrivacyError"].nil?
+    elapsed_seconds = result["elapsedSeconds"]
+    unless Zstack::EvalLimits.finite_nonnegative_number?(elapsed_seconds)
+      raise "#{id}: elapsedSeconds must be a finite non-negative number"
+    end
+    unless result.key?("responsePrivacyError") && result["responsePrivacyError"].nil?
+      raise "#{id}: responsePrivacyError must be present and null"
+    end
+    unless result.key?("responseFileError") && result["responseFileError"].nil?
+      raise "#{id}: responseFileError must be present and null"
+    end
     passed = result.fetch("executionCompleted") && exit_status.zero? && format_valid && selected == result.fetch("expected")
     raise "#{id}: retained response grade does not match results.json" unless result["pass"] == passed
 
@@ -594,47 +729,80 @@ begin
       "selected" => selected,
       "pass" => passed,
       "exitStatus" => exit_status,
-      "elapsedSeconds" => result["elapsedSeconds"],
+      "elapsedSeconds" => elapsed_seconds,
       "promptSource" => prompt_path,
       "responseSource" => response_path,
       "logSource" => log_path
     }
     if STRUCTURED_HOSTS.include?(HOST_FAMILY)
+      host_result_fields = HOST_FAMILY == "claude" ? EVAL_HOST_CONTRACTS::CLAUDE_RESULT_FIELDS : EVAL_HOST_CONTRACTS::GROK_RESULT_FIELDS
+      missing_fields = (%w[rawResultPath invocationPath] + host_result_fields).reject { |field| result.key?(field) }
+      unless missing_fields.empty?
+        raise "#{id}: structured-host result is missing required fields: #{missing_fields.join(", ")}"
+      end
       expected_raw_path = "logs/#{id}.json"
       expected_invocation_path = "logs/#{id}.invocation.json"
       unless result["rawResultPath"] == expected_raw_path && result["invocationPath"] == expected_invocation_path
         raise "#{id}: structured-host private paths do not match the canonical output layout"
       end
-      normalized["rawResultSource"] = regular_source_file(run_directory, expected_raw_path)
-      normalized["invocationSource"] = regular_source_file(run_directory, expected_invocation_path)
-      fields = if HOST_FAMILY == "claude"
-                 %w[actualModels numTurns stopReason terminalReason totalCostUsd permissionDenials apiErrorStatus errorCategory parseError]
-               else
-                 %w[actualModels numTurns stopReason totalCostUsd tokenUsage prefinalNarrationBytes finalBoundaryError apiErrorStatus errorCategory parseError]
-               end
-      fields.each { |field| normalized[field] = result[field] }
+      normalized["rawResultSource"] = regular_source_file(source_snapshot, expected_raw_path)
+      normalized["invocationSource"] = regular_source_file(source_snapshot, expected_invocation_path)
+      host_result_fields.each { |field| normalized[field] = result.fetch(field) }
+    end
+    raise "#{id}: outputLimited must be false for archiving" unless result["outputLimited"] == false
+    raise "#{id}: workspaceLimitError must be null for archiving" unless result["workspaceLimitError"].nil?
+    host_output_bytes = result["hostOutputBytes"]
+    unless host_output_bytes.is_a?(Integer) && host_output_bytes >= 0
+      raise "#{id}: hostOutputBytes must be a non-negative integer"
+    end
+    host_output_paths = if STRUCTURED_HOSTS.include?(HOST_FAMILY)
+                          [normalized.fetch("rawResultSource"), log_path]
+                        else
+                          [log_path, response_path]
+                        end
+    retained_host_output_bytes = host_output_paths.sum { |path| source_snapshot.bytesize(path) }
+    unless host_output_bytes == retained_host_output_bytes
+      raise "#{id}: hostOutputBytes does not match retained host output"
+    end
+    if host_output_bytes > EVAL_PROCESS_SUPERVISOR::MAX_HOST_OUTPUT_BYTES
+      raise "#{id}: hostOutputBytes exceeds the runner safety limit"
     end
     normalized
   end
-  source_files.each { |path| reject_private_runner_data!(path) }
-  incidents = runner_incidents(normalized_results, controls)
+  actual_prompt_bytes = normalized_results.sum { |result| source_snapshot.bytesize(result.fetch("promptSource")) }
+  raise "controls.json: promptBytes differs from retained prompts" unless controls.fetch("promptBytes") == actual_prompt_bytes
+  source_files.each { |path| reject_private_runner_data!(source_snapshot, path) }
+  incidents = runner_incidents(source_snapshot, normalized_results, controls)
 
   FileUtils.mkdir_p(RUNS_ROOT)
   raise "evals/runs must not be a symbolic link" if File.symlink?(RUNS_ROOT)
+  publication_lock = Zstack::EvalArchiveLock.acquire(RUNS_ROOT)
   target = File.join(RUNS_ROOT, options[:archive])
   raise "archive target already exists: #{target}" if File.exist?(target) || File.symlink?(target)
 
   run_checked(RbConfig.ruby, EVIDENCE_VALIDATOR)
   temporary_archive = Dir.mktmpdir(".zstack-routing-archive-", RUNS_ROOT)
+  temporary_archive_identity = Zstack::EvalOwnedDirectory.capture(
+    temporary_archive,
+    label: "routing archive transaction directory"
+  )
+  archive_output = EVAL_ARCHIVE_OUTPUT.new(temporary_archive)
   raw_directory = File.join(temporary_archive, "raw")
   raw_prompts = File.join(raw_directory, "prompts")
   raw_responses = File.join(raw_directory, "responses")
   FileUtils.mkdir_p(raw_prompts)
   FileUtils.mkdir_p(raw_responses)
-  FileUtils.cp(candidates_path, File.join(raw_directory, "candidate-descriptions.txt"))
+  raw_contents = {}
+  raw_contents["candidate-descriptions.txt"] = source_snapshot.read(candidates_path)
+  source_snapshot.copy(candidates_path, File.join(raw_directory, "candidate-descriptions.txt"))
   normalized_results.each do |result|
-    FileUtils.cp(result.fetch("promptSource"), File.join(raw_prompts, "#{result.fetch("id")}.txt"))
-    FileUtils.cp(result.fetch("responseSource"), File.join(raw_responses, "#{result.fetch("id")}.txt"))
+    id = result.fetch("id")
+    prompt_relative = "prompts/#{id}.txt"
+    response_relative = "responses/#{id}.txt"
+    raw_contents[prompt_relative] = source_snapshot.read(result.fetch("promptSource"))
+    raw_contents[response_relative] = source_snapshot.read(result.fetch("responseSource"))
+    source_snapshot.copy(result.fetch("promptSource"), File.join(raw_directory, prompt_relative))
+    source_snapshot.copy(result.fetch("responseSource"), File.join(raw_directory, response_relative))
   end
 
   prompt_index = [
@@ -648,7 +816,7 @@ begin
     id = result.fetch("id")
     prompt_index << "- [#{id}](./raw/prompts/#{id}.txt)"
   end
-  File.write(File.join(temporary_archive, "prompts.md"), prompt_index.join("\n") + "\n")
+  archive_output.write("prompts.md", prompt_index.join("\n") + "\n")
 
   host_revision = nil
   host_version = case HOST_FAMILY
@@ -732,7 +900,7 @@ begin
     "ephemeral session identifiers and machine-local workspace paths.",
     "Results apply to these cases, descriptions, controls, model, and host version."
   ])
-  File.write(File.join(temporary_archive, "summary.md"), summary.join("\n") + "\n")
+  archive_output.write("summary.md", summary.join("\n") + "\n")
 
   metadata_runs = normalized_results.map do |result|
     id = result.fetch("id")
@@ -773,11 +941,38 @@ begin
                      else
                        "read-only sandbox; no built-in tools; permission mode dontAsk"
                      end,
-    "webSearch" => false,
-    "subagents" => false,
+    "webSearch" => controls.fetch("webSearch"),
+    "subagents" => controls.fetch("subagents"),
     "reasoningEffort" => controls.fetch("reasoningEffort"),
     "ephemeralSession" => true,
     "timeoutSecondsPerCase" => controls.fetch("timeoutSecondsPerCase"),
+    "maxCasesPerRun" => controls.fetch("maxCasesPerRun"),
+    "maxHostOutputBytesPerCase" => controls.fetch("maxHostOutputBytesPerCase"),
+    "maxPromptBytesPerCase" => controls.fetch("maxPromptBytesPerCase"),
+    "maxPromptBytesPerRun" => controls.fetch("maxPromptBytesPerRun"),
+    "promptBytes" => controls.fetch("promptBytes"),
+    "runtimeTreeMonitoring" => controls.fetch("runtimeTreeMonitoring"),
+    "concurrentRuntimeMonitoring" => controls.fetch("concurrentRuntimeMonitoring"),
+    "pidMonitoringStartsAtSpawn" => controls.fetch("pidMonitoringStartsAtSpawn"),
+    "sharedRootMonitoring" => controls.fetch("sharedRootMonitoring"),
+    "privatePromptIntegrityMonitoring" => controls.fetch("privatePromptIntegrityMonitoring"),
+    "anonymousPromptDescriptor" => controls.fetch("anonymousPromptDescriptor"),
+    "promptDescriptorPath" => controls["promptDescriptorPath"],
+    "outputDirectoryIdentityMonitoring" => controls.fetch("outputDirectoryIdentityMonitoring"),
+    "outputTreeMonitoring" => controls.fetch("outputTreeMonitoring"),
+    "exclusiveRunnerOutputs" => controls.fetch("exclusiveRunnerOutputs"),
+    "workspaceViolationStopsRun" => controls.fetch("workspaceViolationStopsRun"),
+    "singleLinkInputFiles" => controls.fetch("singleLinkInputFiles"),
+    "singleLinkRuntimeFiles" => controls.fetch("singleLinkRuntimeFiles"),
+    "maxRuntimeOutputFiles" => controls.fetch("maxRuntimeOutputFiles"),
+    "maxRuntimeOutputTreeEntries" => controls.fetch("maxRuntimeOutputTreeEntries"),
+    "maxRuntimeOutputBytes" => controls.fetch("maxRuntimeOutputBytes"),
+    "maxRuntimeGitFiles" => controls.fetch("maxRuntimeGitFiles"),
+    "maxRuntimeGitTreeEntries" => controls.fetch("maxRuntimeGitTreeEntries"),
+    "maxRuntimeGitBytes" => controls.fetch("maxRuntimeGitBytes"),
+    "maxRuntimeHostHomeFiles" => controls.fetch("maxRuntimeHostHomeFiles"),
+    "maxRuntimeHostHomeTreeEntries" => controls.fetch("maxRuntimeHostHomeTreeEntries"),
+    "maxRuntimeHostHomeBytes" => controls.fetch("maxRuntimeHostHomeBytes"),
     "skillSearch" => false,
     "apps" => false
   }
@@ -809,28 +1004,51 @@ begin
     "runnerIncidents" => incidents,
     "archiveNote" => "Prompts and final responses are verbatim runner files. Private logs and structured host records corroborated execution controls and retained bytes, then were excluded because they contain ephemeral session identifiers and machine-local paths."
   }
-  write_json(File.join(temporary_archive, "run.json"), metadata)
-  write_json(File.join(temporary_archive, "runner-controls.json"), controls)
-  write_json(File.join(temporary_archive, "runner-results.json"), results)
-  write_raw_manifest(raw_directory)
+  archive_output.write("run.json", json_content(metadata))
+  archive_output.write("runner-controls.json", json_content(controls))
+  archive_output.write("runner-results.json", json_content(results))
+  raw_manifest_content = EVAL_ARCHIVE_RAW_FILES.write_manifest(raw_directory, raw_contents)
 
-  run_checked(RbConfig.ruby, ARCHIVE_MANIFEST_SCRIPT, temporary_archive)
+  publication_lock.verify!
+  run_checked(RbConfig.ruby, ARCHIVE_MANIFEST_SCRIPT, "--publication-lock-held", temporary_archive)
+  candidate_snapshot = EVAL_ARCHIVE_CANDIDATE.capture(temporary_archive)
+  publication_lock.verify!
+  run_checked(
+    RbConfig.ruby, EVIDENCE_VALIDATOR,
+    "--candidate", temporary_archive,
+    "--candidate-name", options[:archive]
+  )
+  EVAL_ARCHIVE_RAW_FILES.verify!(raw_directory, raw_contents, raw_manifest_content)
+  EVAL_ARCHIVE_CANDIDATE.verify!(temporary_archive, candidate_snapshot)
+  assert_routing_manifest_unchanged!(routing_manifest_content)
+  publication_lock.verify!
+  raise "archive target appeared during publication: #{target}" if File.exist?(target) || File.symlink?(target)
   File.rename(temporary_archive, target)
-  temporary_archive = nil
   published_archive = target
+  published_archive_identity = temporary_archive_identity
+  temporary_archive = nil
+  temporary_archive_identity = nil
+  publication_lock.verify!
   validation_output = run_checked(RbConfig.ruby, EVIDENCE_VALIDATOR)
+  EVAL_ARCHIVE_CANDIDATE.verify!(target, candidate_snapshot, relocated: true)
+  EVAL_ARCHIVE_RAW_FILES.verify!(File.join(target, "raw"), raw_contents, raw_manifest_content)
+  assert_routing_manifest_unchanged!(routing_manifest_content)
+  publication_lock.verify!
   puts "ARCHIVE=#{Pathname.new(target).relative_path_from(Pathname.new(ROOT))}"
   puts validation_output
 rescue Interrupt
   warn "ERROR: interrupted"
   exit 130
 rescue StandardError => e
-  if published_archive && File.directory?(published_archive)
-    FileUtils.remove_entry(published_archive)
+  if published_archive
+    Zstack::EvalOwnedDirectory.remove_if_same(published_archive, published_archive_identity)
     published_archive = nil
+    published_archive_identity = nil
   end
   warn "ERROR: #{e.message}"
   exit 2
 ensure
-  FileUtils.remove_entry(temporary_archive) if temporary_archive && File.exist?(temporary_archive)
+  source_snapshot&.close
+  Zstack::EvalOwnedDirectory.remove_if_same(temporary_archive, temporary_archive_identity)
+  publication_lock&.close
 end
