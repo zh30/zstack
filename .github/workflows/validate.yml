@@ -18,7 +18,9 @@ jobs:
     name: Validate (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     # The complete fault-injection suite normally takes about eight minutes;
-    # keep enough headroom for slower shared macOS and Linux runners.
+    # keep enough headroom for slower shared Linux runners.
+    # macOS matrix entry removed 2026-11-10 to cut Actions cost; the same
+    # bash/ruby validation already runs on Linux.
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -26,8 +28,6 @@ jobs:
         include:
           - os: ubuntu-latest
             lint: true
-          - os: macos-latest
-            lint: false
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
